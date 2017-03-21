@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<!-- 导入数据库配置文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		    <property name="driverClass" value="${driverClass}"></property>
+			<property name="jdbcUrl" value="${jdbcUrl}"></property>
+			<property name="user" value="${user}"></property>
+			<property name="password" value="${password}"></property>
+	        <!-- 指定数据库连接池的最大连接数 -->
+	        <property name="maxPoolSize" value="${maxPoolSize}"/>
+	        <!-- 指定数据库连接池的最小连接数 -->
+	        <property name="minPoolSize" value="${minPoolSize}"/>
+	        <!--指定数据库连接池的初始化连接参数  -->
+	        <property name="initialPoolSize" value="${initialPoolSize}"/>
+	        <!--指定数据库连接池的连接的最大的空闲时间  -->
+	        <property name="maxIdleTime" value="${maxIdleTime}"/>
+	</bean>
+	
+	<!--定义了Hibernate的SessionFactory  -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	    <property name="dataSource">
+	    	<ref bean="dataSource"/>
+	    </property>
+	    <property name="packagesToScan">
+	    	<list>
+	    		<value>test.SpringMVC.entity</value>
+	    	</list>
+	    </property>
+	    <property name="hibernateProperties">
+	    	<props>
+		    	<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+		    	<prop key="hibernate.show_sql">true</prop>
+		    	<prop key="hibernate.format_sql">true</prop>
+		    	<prop key="hibernate.hbm2ddl.auto">update</prop>
+		    	<prop key="hibernate.fetch_size">50</prop>
+		    	<prop key="hibernate.batch_size">50</prop>
+	    	</props>
+	    </property>
+	</bean>
+	
+	<!--  Hibernate事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
+        <property name="sessionFactory" ref="sessionFactory"/>  
+    </bean>  
+    
+    <!--   定义DAO bean的事务代理-->  
+    <bean id="transactionBase" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean" lazy-init="true" abstract="true">  
+        <!--   为事务代理bean注入事务管理器-->  
+        <property name="transactionManager"><ref bean="transactionManager"/></property>  
+  		<!--   设置事务属性-->  
+        <property name="transactionAttributes">  
+			<props>  
+     		    <prop key="sav*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="delete*">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="get*">PROPAGATION_NEVER</prop>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>  
+				<prop key="modify*">PROPAGATION_REQUIRED,readOnly,-Exception</prop>
+             </props>   
+        </property>  
+      
+   
+    </bean>
+</beans>
