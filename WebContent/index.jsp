@@ -15,5 +15,5 @@
 
 --%>
 <%
-response.sendRedirect("index");
+response.sendRedirect("main/index");
 %>
