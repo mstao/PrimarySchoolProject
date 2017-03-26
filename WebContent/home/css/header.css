@@ -1,0 +1,229 @@
+*{
+	margin:0;
+	padding:0;
+}
+body {
+	background-color: #FFFFF;
+	/*font-family: "Lucida Grande", Lucida Sans Unicode, Hiragino Sans GB, WenQuanYi Micro Hei, Verdana, Aril, sans-serif;
+    */
+	font-family:"Microsoft YaHei" ! important;
+}
+.header-top-bg{
+	background: #34A9B1;
+	width: 100%;
+	height: 40px;
+}
+.header-top {
+	width: 1170px;     
+	height: 40px;          
+	line-height: 40px;
+    margin: 0 auto;
+	color: #FFFFFF;
+}
+.header-top >a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.header-top >a:hover{
+	color: #EF9722;
+	text-decoration: none;
+}
+.header-top > a:first-child{
+	margin-right: 7px;
+}
+.header-top > a:not(:first-child){
+	margin-left: 7px;
+	margin-right: 7px;
+}
+.search {
+	display: inline-block;
+	padding: 0 5px;
+	float: right;
+}
+.search input {
+	border: 1px solid #fff;
+	line-height:20px;
+	
+	border-radius:3px ;
+	height:20px;
+	width: 240px;
+	font-size:15px;
+	padding:3px;
+	background: url(../img/search_s.png) 248px #F4F4F4 no-repeat;
+	padding-right: 30px;
+}
+.search input:focus{
+	border: 1px solid #fff;
+	line-height:20px;
+	
+	border-radius:3px ;
+	height:20px;
+	width: 240px;
+	font-size:15px;
+	padding:3px;
+	background: url(../img/search_s.png) 248px #FFFFFF no-repeat;
+	padding-right: 30px;
+}
+
+/* WebKit browsers */
+::-webkit-input-placeholder {
+	color: #777;
+}
+/* Mozilla Firefox 4 to 18 */
+:-moz-placeholder {
+	color: #777;
+	opacity: 1;
+}
+/* Mozilla Firefox 19+ */
+::-moz-placeholder {
+	color: #777;
+	opacity: 1;
+}
+/* Internet Explorer 10+ */
+:-ms-input-placeholder {
+	color: #777;
+}
+
+
+.search .search_btn{
+	background-color:#f4f4f4;
+	display:inline-block;	
+	border-radius:0px 3px 3px 0px;
+    height:28px;
+	width:30px;
+    position: relative;
+	line-height:28px;
+	left: -1px;
+}
+
+.search_btn > img{
+     position: relative;
+     top: 5px;
+     left: 4px;;
+}
+
+.header-school-logo-bg{
+	width: 100%;
+	background: #006372;
+	height: 150px;
+}
+.header-school-logo-bg .school-logo{
+	width: 1170px;
+	margin: 0 auto;
+}
+.header-school-logo-bg .school-logo > img{
+	border: 0px;
+	display: inline-block;
+}
+.header-school-logo-bg .school-logo > img:first-child{
+	position: relative;
+	top: -15px;
+}
+.header-nav-bg{
+	background: #34A9B1;
+	width: 100%;
+	height: 50px;
+}
+.fixednav {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 100;
+}
+
+.page-menu-wrapper a{
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.page-menu-wrapper li{
+	list-style-type: none;
+}
+.page-menu-wrapper {
+
+	width: 1170px;
+	text-decoration: none;                
+	line-height: 50px;
+	margin: 0 auto;
+	background-color: #292D33; 
+	
+}
+.page-menu-wrapper > ul > li {
+	position: relative;
+	float: left;
+	margin-right: -1px;
+}
+
+.page-menu-wrapper > ul > li >ul{
+	z-index: 100;
+}
+
+.menu-show  {
+	float: left;
+	
+}
+.menu-show{
+	margin-left:0px ;
+}
+
+.page-menu-wrapper > .menu-show > li:last-child {
+	border-right: none;
+}
+.page-menu-wrapper a {
+	position: relative;
+	display: block;
+	padding: 0 30px;
+	transition: all .3s ease-out;
+}
+.page-menu-wrapper > ul > li:hover > a {
+	color: #34A9B1;
+	background-color: #FFFFFF;
+}                 
+.page-menu-wrapper > ul > li:hover .dropdown-menu {
+	display: block;
+}
+.dropdown-menu {
+	display: none;
+	position: absolute;
+	width: 260px;
+	font-size: 18px;
+	text-align: left;
+	background-color: #FFFFFF;
+	
+}
+
+
+
+/*follow*/
+.dropdown-menu.follow {
+	width: 165px;
+	 
+}
+.dropdown-menu.follow a {
+	padding-left: 20px;
+	font-size: 14px;
+}
+.dropdown-menu.follow a:before {
+	left: 10px;
+}
+
+.dropdown-menu.follow li > a {
+	color: #34A9B1;
+}
+.dropdown-menu > li >a {
+	margin-left:10px;
+}
+
+.dropdown-menu.follow li > a:hover {
+	background-color: #34A9B1;
+} 
+
+.dropdown-menu.follow li:hover a {
+	color: #FFFFFF;
+	margin-left: 20px;
+} 
+.clear{
+	clear: both;
+}
+
+

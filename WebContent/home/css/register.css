@@ -1,0 +1,89 @@
+
+.content{
+	width:900px;
+	margin: 0 auto;
+}
+.content-left,.content-right{
+	float:left;
+}
+.content-name{
+	color: #444444;
+	width:100%;
+	margin-top:60px;
+	height:80px;
+	text-align: center;
+}
+
+.content-left{
+	margin-right: 70px;
+	width:400px;
+	height:354px;
+}
+.content-left img{
+	border-radius: 20px;
+	width:400px;
+	height:354px;
+}
+.content-right { 
+	border: #C9CACE solid 1px;
+	width: 400px; 
+	height:334px;
+	padding-top:20px;
+}
+.content-right div{
+	width: 380px;
+	height: 45px;
+	margin:10px 10px;
+	border-radius: 3px;
+}
+/*#content-right-user{
+	background:url(img/user.png) 2px 2px no-repeat ;
+}*/
+.content-right div input[type="text"],
+.content-right div input[type="password"]{
+	width: 80%;
+	height:40px;
+	margin-left:5%;
+	padding-left: 40px;
+}
+/*图标*/
+.content-right div input[type="text"][id="username"]{
+	background: url(../img/user.png) 0 4px no-repeat;
+}
+.content-right div input[type="text"][id="number"]{
+	background: url(../img/number.png) 0 4px no-repeat;
+}
+.content-right div input[type="password"]{
+	background: url(../img/password.png) 0 4px no-repeat;
+}
+.content-right div input[type="submit"]{
+	width: 91%;
+	height:50px;
+	margin-left:5%;
+}
+.content-right span{
+	height:35px;
+	position:relative;
+	left: 210px;
+}
+.content-right span a{
+	color: #006269;
+	text-decoration: none;
+}
+.content-right span a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+.button input[type="submit"]{
+	border: 1px solid #C8C8C8;
+	color: #444444;
+	cursor: pointer;
+	font-size: 20px;
+}
+.content-bottoms{
+	
+	width: 300px;
+	margin: 0 auto;
+	position: relative;
+	top:60px;
+}

@@ -1,0 +1,170 @@
+/*轮幕图*/
+.content-wrapper{
+	
+	margin:0 auto;
+	width:1170px;
+	height: 200px;
+	position: relative;
+}
+.content-wrapper span{
+	background-color: #006269;
+	color: white;
+	font-size:30px;
+	height: 50px;
+	width:128px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 5px;
+	left:0;
+	bottom:0;
+	position:absolute;
+}
+/*位置导航*/
+.content-location{
+	margin:30px auto;
+	width:1170px;
+}
+.content-location a{
+	color:#444444;
+	text-decoration: none;
+}
+.content-location span{
+	color:#444444;
+	bottom: 10px;
+	position: relative;
+}
+.content-location span a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+/*主体部分a ul li*/
+.content-bottom{
+	margin:0 auto;
+	width:1170px;
+	height: 710px;
+	position: relative;
+}
+.content-bottom a{
+	color:#444444;
+	text-decoration: none;
+}
+.content-bottom ul{
+	margin-top: 10px;
+}
+.content-bottom ul li{
+	list-style: none;
+	line-height: 2.0em;
+	
+}
+.content-bottom a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+/*校园动态导航*/
+.top-left{
+	width:250px;
+	min-height:160px;
+	
+}
+.top-left ul li {
+	font-size:18px;
+	left:50px;
+	position: relative;
+	/*border-top: gray solid 1px;*/
+	line-height: 2.6em;
+}
+.top-left ul li a{
+	display: block;
+	width:180px;
+	height: 40px;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+
+.top-left ul li a:hover{
+    width:180px;
+	height: 40px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background: #006372;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+/*标题栏加入边框*/
+.top-left-bottom{
+	padding-bottom:10px;
+	color: #006269;
+	border-bottom: #CCCCCC solid 1px;
+}
+.top-left-bottom img{
+	bottom: -4px;
+	position: relative;
+}
+.top-left-bottom span{
+	color: #666666;
+}
+
+/*轮幕图*/
+.top-center{
+	width:420px;
+	height:344px;
+    float: left;
+    
+}
+/*作息表*/
+.bottom-left{
+	margin-top: 40px;
+	width:250px;
+	height:160px;
+}
+.float-div{
+
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width:420px;
+	height:300px;
+	float: left;
+}
+
+.float-div  span{
+	float: right;
+	position: relative;
+	top: 5px;
+	color: #666666;
+}
+
+.slider-news{
+	margin-top: 18px;
+}
+
+.top-contaner-left{
+	float: left;
+}
+.top-contaner-right{
+	float: right;
+    margin-top: -20px;
+}
+.right{
+	margin-left: 40px;
+}
+ .clearfix:after{  /*最简方式*/
+    content: '';
+    display: block;
+    clear: both;
+}
+/* 新浪使用方式
+.clearfix:after{ 
+    content: '';
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+*/
+.clearfix{ /*兼容 IE*/
+    zoom: 1;
+}
+.clear{
+	clear: both;
+}

@@ -1,0 +1,109 @@
+.content-wrapper{
+	
+	margin:0 auto;
+	width:1170px;
+	height: 200px;
+	position: relative;
+}
+.content-wrapper span{
+	background-color: #006269;
+	color: white;
+	font-size:30px;
+	height: 50px;
+	width:128px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 5px;
+	left:0;
+	bottom:0;
+	position:absolute;
+}
+/*位置导航*/
+.content-location{
+	margin:30px auto;
+	width:1170px;
+}
+.content-location a{
+	color:#444444;
+	text-decoration: none;
+}
+.content-location span{
+	color:#444444;
+	bottom: 10px;
+	position: relative;
+}
+.content-location span a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+.content{
+	width: 1170px;
+	margin: 0 auto;
+	border-top: 1px dashed #CCCCCC;
+}
+.trends-top{
+	border-bottom: 1px dashed #CCCCCC;
+	padding-bottom: 5px;
+	
+}
+.trends-top img{
+	position: relative;
+	top:5px;
+}
+.trends-top .tag-ch{
+	color:#006372;
+	font-size: 27px;
+	margin-left: 5px;
+}
+.class-content{
+	margin-top: 20px;
+}
+
+.class-content-only{
+	margin-top: 20px;
+}
+
+.only-navi{
+	display: block;
+}
+.only-navi >img{
+	display: inline-block;
+	background: #EAE3C9;
+	height: 32px;
+	float: left;
+}
+.only-navi >span{
+	float: left;
+    display: table-cell;
+	color: #FFFFFF;
+	font-size: 20px;
+	height: 32px;
+	width: 80px;
+	background: #EE9620;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+
+.only-info{
+	clear: both;
+	margin-top: 10px;
+}
+.only-info >span >img{
+	position: relative;
+	top: 10px;
+}
+.only-info >span{
+	margin-right: 10px;
+}
+.only-info >span >a{
+	text-decoration: none;
+	color: #444444;
+}
+.only-info >span >a:hover{
+	text-decoration: underline;
+	color: #EE9620;
+}
+.clear{
+	clear:both;
+}

@@ -1,0 +1,131 @@
+.footer-bg{
+	background: #006372;
+	width: 100%;
+	height: 200px;
+	margin-top: 40px;
+}
+
+.footer{
+	width: 1170px;
+	margin: 0 auto;
+	margin-bottom: 67px;
+}
+.footer .left-con{
+	float: left;
+	width: 80px;
+	margin-top:20px ;
+	border-right: 1px solid #FFFFFF;
+	
+}
+.footer .left-con ul li {
+	list-style-type: none;
+
+}
+.footer .left-con ul li a{
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 14px;
+}
+.footer .left-con ul li a:hover{
+	color: #EF9722;
+}
+.footer .center-con{
+	width: 500px;
+	margin: 0 auto;
+}
+.footer .center-con span{
+	color: #FFFFFF;
+	display: block;
+	margin-top: 5px;
+}
+.footer .center-con .school-logo{
+
+}
+.footer .center-con .school-name{
+	color: #FFFFFF;
+	font-size: 18px;
+}
+.footer .center-con .copyright,.ad{
+	font-size: 14px;
+}
+.footer .reight-con{
+	float: right;
+}
+.fixed-login{
+	position: fixed;
+	display: none;
+	bottom: 0px;
+	background: #349D96;
+	width: 100%;
+	height: 50px;
+	z-index: 500;
+	filter:alpha(opacity=80);  
+    -moz-opacity:0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;
+}
+.fixed-login-content{
+	height: 50px;
+	width: 1170px;
+	margin:0 auto;
+	
+	
+}
+.fixed-login-content .fixed-login-image{
+    height: 30px;
+	float: left;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.fixed-login-imag img{
+	cursor: pointer;
+	position: relative;
+	
+}
+.fixed-login-content img:not(:first-child){
+	margin-left: 5px;
+}
+.fixed-login-content .fixed-login-input{
+	display: inline-block;
+    float: right;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+.fixed-login-content .fixed-login-input >input{
+	height: 20px;
+	width:160px;
+	border-radius: 3px;
+	border: 1px solid #fff;	
+	background:#ECECEC;
+	border-radius:3px;
+	font-size:15px;
+	padding:3px;
+}
+.fixed-login-content .fixed-login-input >input:focus{
+	background:#FFFFFF;
+}
+.fixed-login-content .fixed-login-input  .input-submit{
+  padding: 1px 6px;
+  border-radius: 3px;
+  border: 1px solid;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: all .5s;
+  transition: all .5s;
+  color: #FFFFFF;
+  border-color: #ffffff;
+  background: -webkit-linear-gradient(left, #a3f7bf, #a3f7bf) no-repeat;
+  background: linear-gradient(to right, #a3f7bf, #a3f7bf) no-repeat;
+  background-size: 0% 100%;
+}
+.fixed-login-content .fixed-login-input  .input-submit:hover{
+  background-size: 100% 100%;
+  color: #27323A;
+  
+}

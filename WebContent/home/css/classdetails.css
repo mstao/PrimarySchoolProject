@@ -1,0 +1,121 @@
+@charset "utf-8";
+*{margin:0px; padding:0px;}
+body{ font-size:12px; margin:0 auto; padding:0px; color:#333333; background: url(../img/classbg.jpg);background-color:transparent;}
+div{margin:0 auto; overflow:hidden;}
+span{ overflow:hidden;}
+li{overflow:hidden;}
+ul{
+	list-style-type:none;
+	overflow: hidden;
+}
+a{text-decoration:none; overflow:hidden; color:#333333;}
+img{border:0px;}
+.fr{ float:right;}
+.fl{ float:left;}
+
+#topBag{ width:1000px; height:149px; }
+#topBagL{ width:auto; height:149px; float:left;  font-size:40px; font-weight:bold;   color:#EE9620; line-height:110px; padding-left:117px; min-width:443px;}
+#topBagR{ height:38px; line-height:38px; float:right;}
+#topBagR a:hover{ text-decoration:underline;}
+
+#navDiv{ width:1000px; height:41px; }
+#navDiv li{ width:166px; height:41px; float:left; }
+#navDiv li a{ display:block; width:166px; height:41px; float:left; line-height:41px; text-align:center; font-size:16px; font-family:"微软雅黑"; color:#444444;}
+#navDiv li a:hover{ color: #EE9620;}
+
+#mianBag{ width:990px; height:auto; background:#FFF; padding:10px 5px 18px 5px;}
+#mianDiv1{ width:990px; height:auto; }
+
+#tpthDiv{ width:558px; height:232px; float:left; padding:10px; border:1px solid #dfdfdf;}
+#tpthDiv img{ width:558px; height:232px;}
+
+.KSS_titleBox{ line-height:35px !important;}
+
+#bjjianjie{ width:399px; height:253px; float:right; background:#34A9B1;}
+#bjjianjieT{ width:399px; height:35px; background:url(../images/jjt.png) no-repeat top center;}
+#bjjianjieT div{ height:35px; line-height:35px; float:left; font-size:15px; font-family:"微软雅黑"; color:#FFF;  padding-left:38px;}
+#bjjianjieT span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; float: right;}
+#bjjianjieT span a{ color:#ff8a00;}
+
+#bjjianjieM{ width:369px; height:168px; border-left:1px solid #ffe7ca; border-right:1px solid #ffe7ca; background:#fffef0; line-height:24px; padding:12px 14px 20px 14px; text-indent:24px; }
+#bjjianjieM img{ width:165px; height:90px; float:left; padding-right:17px;}
+#bjjianjieB{ width:399px; height:18px; background:url(../images/jjb.png) no-repeat top center;}
+
+#mianDiv2{ width:990px; height:auto; padding-top:21px;}
+
+#mianDiv2L{ width:360px; height:auto; float:left;}
+#banjidt{ width:360px; height:201px; background:#FFFEF0;}
+#banjidtT{ width:360px; height:35px; margin-top:9px; border-bottom:1px dashed #ff8a00;}
+#banjidtT div{ height:40px; line-height:35px;   float:left; font-size:15px; color:#ff8a00; font-weight:bold; padding-left:20px;}
+#banjidtT div>img{position: relative;right: 5px;}
+#banjidtT div>span{
+	position: relative;
+    font-size: 15px;
+	color: #ff8a00;
+	top: -10px;
+}
+
+#banjidtT >span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; font-weight:bold;float: right;}
+#banjidtT span a{ color:#ff8a00;}
+.banjidtM{ width:333px; height:144px; margin-top:7px;}
+.banjidtM li{ width:333px; height:24px; float:left; line-height:24px; background:url(../images/jt1.png) no-repeat left center; }
+.banjidtM li a{ display:block; width:220px; height:24px; float:left; text-indent:12px;}
+.banjidtM li a:hover{ color:#ff8a00; text-decoration:underline;}
+.banjidtM li span{ display:block; width:100px; height:24px; float:right; text-align:right; color:#adaca3;}
+
+#xswenzhang{ width:360px; height:201px;  margin-top:11px; background: #FFFCFB;}
+#xswenzhangT{ width:360px; height:35px; margin-top:9px; border-bottom: 1px dashed #E75025;}
+#xswenzhangT div{ height:35px; line-height:35px; float:left; font-size:15px; font-family:"微软雅黑"; color:#e75025; font-weight:bold; padding-left:20px;}
+
+#xswenzhangT div>img{position: relative;right: 5px;}
+#xswenzhangT div>span{
+	position: relative;
+    font-size: 15px;
+     color: #E75025;
+	top: -4px;
+}
+#xswenzhangT span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; font-weight:bold; float: right;}
+#xswenzhangT span a{ color:#e75025;}
+.xswenzhangM{ width:333px; height:144px; margin-top:7px;}
+.xswenzhangM li{ width:333px; height:24px; float:left; line-height:24px;  }
+.xswenzhangM li a{ display:block; width:270px; height:24px; float:left; text-indent:12px;}
+.xswenzhangM li a:hover{ color:#e75025; text-decoration:underline;}
+.xswenzhangM li span{ display:block; width:50px; height:24px; float:right; text-align:right; color:#adaca3;}
+
+#banjixc{ width:614px; height:413px; float:right; background:#F9FFFD ;}
+#banjixcT{ width:614px; height:44px; border-bottom: 1px dashed #128758;}
+#banjixcT div{ height:44px; line-height:52px; float:left; font-size:15px; font-family:"微软雅黑"; color:#128758; font-weight:bold; padding-left:20px;}
+#banjixcT span{ display:block; height:44px; line-height:54px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; font-weight:bold; float: right;}
+#banjixcT span a{ color:#128758;}
+#banjixcT div>img{position: relative;right: 5px; top: 5px;}
+#banjixcT div>span{
+	position: relative;
+    font-size: 15px;
+     color: #128758;
+	top: -4px;
+}
+#banjixcM{width:612px; height:359px; border-left:1px solid #def4ed; border-right:1px solid #def4ed; background:#f9fffd; }
+#banjixcM li{ width:185px; height:165px; float:left; margin-left:14px; margin-top:13px; display:inline;}
+#banjixcM li img{ width:179px; height:131px; padding:2px; border:1px solid #318c4e; display:block; margin:0px auto;}
+#banjixcM li span{ display:block; width:185px; height:28px; line-height:28px; margin:0px auto; text-align:center; color:#318c4e;}
+#banjixcB{ width:614px; height:10px; background:url(../images/bjxcb.png) no-repeat top center;}
+
+#banjifcDiv{ width:990px; height:auto; margin-top:22px; }
+#banjifcDivT{ width:990px; height:35px; background:#FFFEF0; border-bottom: 1px dashed #EE9620;}
+#banjifcDivT div{ height:35px; line-height:35px; float:left; font-size:15px; font-family:"微软雅黑"; color:#EE9620; font-weight:bold; padding-left:20px;}
+#banjifcDivT div>span{
+	font-size: 15px;
+}
+#banjifcDivT div>img{
+	position: relative;right: 5px;
+}
+#banjifcDivT span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#EE9620; font-weight:bold; padding-right:25px;}
+#banjifcDivT span a{ color:#ff8a00;}
+#banjifcDivM{ width:988px; height:200px; border-left:1px solid #ffe7ca; border-right:1px solid #ffe7ca; background:#fffef0; padding-top:14px;}
+#banjifcDivMul{ width:955px; height:165px; }
+#banjifcDivMul img{
+	margin-left: 10px;
+}
+
+
+
