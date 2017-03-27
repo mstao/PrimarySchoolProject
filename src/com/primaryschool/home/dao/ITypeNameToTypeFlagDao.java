@@ -9,5 +9,11 @@ package com.primaryschool.home.dao;
 *
  */
 public interface ITypeNameToTypeFlagDao {
-
+	String findTrendsTypeFlagByTypeName(String name);
+	
+	String findTeacherTypeFlagByTypeName(String name);
+	
+	String findManageTypeFlagByTypeName(String name);
+	
+	String findPartyTypeFlagByTypeName(String name);
 }

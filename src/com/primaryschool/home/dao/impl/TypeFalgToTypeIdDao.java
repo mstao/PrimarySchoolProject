@@ -9,7 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 import com.primaryschool.home.entity.EducationType;
+import com.primaryschool.home.entity.ManageType;
+import com.primaryschool.home.entity.PartyType;
 import com.primaryschool.home.entity.StudentType;
+import com.primaryschool.home.entity.TeacherType;
 import com.primaryschool.home.entity.TrendsType;
 
 /**
@@ -62,13 +65,48 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 
 
 	@Override
-	public int findStudentTYpeIdByTypeFlag(String flag) {
+	public int findStudentTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
 		String hql="from StudentType  tt where tt.itemTypeFlag=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
 		query.setString(0, flag);
 		
 		StudentType tt=(StudentType)query.uniqueResult();
+		return tt.getId();
+	}
+	
+	@Override
+	public int findTeacherTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from TeacherType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		TeacherType tt=(TeacherType)query.uniqueResult();
+		return tt.getId();
+	}
+
+
+	@Override
+	public int findManageTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from ManageType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		ManageType tt=(ManageType)query.uniqueResult();
+		return tt.getId();
+	}
+
+
+	@Override
+	public int findPartyTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from PartyType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		PartyType tt=(PartyType)query.uniqueResult();
 		return tt.getId();
 	}
 

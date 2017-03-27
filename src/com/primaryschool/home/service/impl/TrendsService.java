@@ -2,15 +2,13 @@ package com.primaryschool.home.service.impl;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.primaryschool.home.dao.ITrendsDao;
-import com.primaryschool.home.entity.Trends;
+
 import com.primaryschool.home.service.ITrendsService;
 
 
