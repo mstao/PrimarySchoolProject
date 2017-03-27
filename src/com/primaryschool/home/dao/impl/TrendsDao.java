@@ -36,7 +36,7 @@ public class TrendsDao<T> implements ITrendsDao<T> {
 		// TODO Auto-generated method stub
 		//根据类型获取id
 		int id=typeFlagToTypeId.findTrendsTypeIdByTypeFlag(flag);
-		String hql="from Trends t where t.typeId=? order by t.addTime desc";
+		String hql="from Trends t where t.typeId=? and t.isPublish=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);
@@ -47,12 +47,12 @@ public class TrendsDao<T> implements ITrendsDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Trends findTrendsInfoById(int id) {
+	public T findTrendsInfoById(int id) {
 		// TODO Auto-generated method stub
 		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Trends t,TrendsType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
-		return (Trends) query.uniqueResult();
+		return (T) query.uniqueResult();
 	}
 
     @Override
@@ -73,5 +73,16 @@ public class TrendsDao<T> implements ITrendsDao<T> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean addViewCount(int id) {
+		// TODO Auto-generated method stub
+		String hql="update Trends t set t.viewCount=t.viewCount+1  where t.id=?";
+		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
+		query.setInteger(0,id);
+		return (query.executeUpdate()>0);
+	}
+
+	
 
 }

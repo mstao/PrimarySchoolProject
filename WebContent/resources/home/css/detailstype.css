@@ -123,8 +123,7 @@ a:hover{
 
 /*时间轴*/
 .container-bottom-right{
-	position:relative;
-	top:30px;
 	width:450px;
 	float:left;
+	height:600px;
 }

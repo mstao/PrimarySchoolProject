@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>Insert title here</title>
+<title>${trends.itemTitle}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/detailstype.css" />
@@ -26,10 +26,10 @@
 <%--S 主体 --%>
 <div class="content-wrapper">
 			<img src="${CTP_HOME}/img/school-f.jpg" />
-			<span>阳光德育</span>
-		</div>
+			<span>${trends.itemTypeName}</span>
+</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">阳光德育</a> > <a href="#">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${trends.itemTypeName}</a> > <a href="#">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">
@@ -75,7 +75,7 @@
 								<div class="circlecontent">
 									<div class="timeblock">
 
-    									<span class="numf">123</span>
+    									<span class="numf">2017</span>
 									</div>
 								<div class="timeyear">YEAR</div>
 							</div>
@@ -85,7 +85,9 @@
 	
 	<div id="content">
 		<ul class="list">
-			<li style="margin-top:-110px;">
+		
+		   <c:forEach items="${latestTrends}" var="latestTrends">
+		 	<li >
 				<div class="liwrap">
 					<div class="lileft">
 						<div class="date">
@@ -97,134 +99,14 @@
 					<div class="point"><b></b></div>
 					
 					<div class="liright">
-						<div class="histt"><a href="#">HTML5 CSS3 发展历程 发布</a></div>
-						<div class="hisct">修正了上一版本中的错误，欢迎大家测试，如果发现问题请联系我们,谢谢。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。
-						我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章。我是一个很长很长的文章5。
-						我是一个很长很长的文章4。我是一个很长很长的文章3。我是一个很长很长的文章2。我是一个很长很长的文章1。</div>
+						<div class="histt"><a href="${CTP}/details/trends?id=${latestTrends.id}&flag=${trends.itemTypeFlag}">${latestTrends.itemTitle}</a></div>
+						<div class="hisct">${latestTrends.itemContent}</div>
 					</div>
 				</div>
 			</li>
-			<li>
-				<div class="liwrap">
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2013</span>
-							<span class="md">0807</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">HTML5 CSS3 发展历程 发布</a></div>
-						<div class="hisct">随着用户的访问量增大,功能不能满足需求，我们进行了重大更新，对设计和功能都进行大幅度的升级,增加了原创，欣赏版块</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="liwrap">
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2013</span>
-							<span class="md">0528</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">官方微博</a></div>
-						<div class="hisct">推出了HTML5 CSS3 官方微博</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="liwrap">
-				
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2013</span>
-							<span class="md">0524</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">HTML5 CSS3 发展历程 上线</a></div>
-						<div class="hisct">虽然功能还未健全，但是我们已迫不及待的让它去接受广大用户的火眼金睛</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="liwrap">
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2013</span>
-							<span class="md">0508</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">初期讨论</a></div>
-						<div class="hisct">在集体探讨下，发现目前的HTML5 CSS3 发展历程已经不能满足需求，集体讨论=，这时候，韩老师之前的设计稿被端上了会议桌。</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="liwrap">
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2012</span>
-							<span class="md">0701</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">灵感迸发</a></div>
-						<div class="hisct">某天晚上的凌晨三点一刻，预想建立这样一个功能的网站，专为网页设计师。</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="liwrap">
-				
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2012</span>
-							<span class="md">0524</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">HTML5 CSS3 发展历程 上线</a></div>
-						<div class="hisct">虽然功能还未健全，但是我们已迫不及待的让它去接受广大用户的火眼金睛</div>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div class="liwrap">
-					<div class="lileft">
-						<div class="date">
-							<span class="year">2013</span>
-							<span class="md">3月1日</span>
-						</div>
-					</div>
-					
-					<div class="point"><b></b></div>
-					
-					<div class="liright">
-						<div class="histt"><a href="#">初见成效</a></div>
-						<div class="hisct">代码笔记第一版上线</div>
-					</div>
-				</div>
-			</li>
+			</c:forEach>
+			
+			
 		</ul>
 	</div>
 </div>
@@ -236,7 +118,7 @@
 		
 		
 		
-		<div class="clear"></div>
+<div class="clear"></div>
 		
 <%--E 主体 --%>
 

@@ -17,11 +17,11 @@
 			<property name="user" value="root"></property>
 			<property name="password" value="123"></property>
 	        <!-- 指定数据库连接池的最大连接数 -->
-	        <property name="maxPoolSize" value="40"/>
+	        <property name="maxPoolSize" value="100"/>
 	        <!-- 指定数据库连接池的最小连接数 -->
 	        <property name="minPoolSize" value="40"/>
 	        <!--指定数据库连接池的初始化连接参数  -->
-	        <property name="initialPoolSize" value="1"/>
+	        <property name="initialPoolSize" value="40"/>
 	        <!--指定数据库连接池的连接的最大的空闲时间  -->
 	        <property name="maxIdleTime" value="20"/>
 	</bean>

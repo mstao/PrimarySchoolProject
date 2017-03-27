@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
+import com.primaryschool.home.entity.EducationType;
+import com.primaryschool.home.entity.StudentType;
 import com.primaryschool.home.entity.TrendsType;
 
 /**
@@ -41,6 +43,32 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 		query.setString(0, flag);
 		
 		TrendsType tt=(TrendsType)query.uniqueResult();
+		return tt.getId();
+	}
+	
+	@Override
+	public int findEducationTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from EducationType  tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		EducationType tt=(EducationType)query.uniqueResult();
+		
+	//	System.out.println("类型转换获取Id"+tt);
+		
+		return tt.getId();
+	}
+
+
+	@Override
+	public int findStudentTYpeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from StudentType  tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		StudentType tt=(StudentType)query.uniqueResult();
 		return tt.getId();
 	}
 

@@ -29,9 +29,21 @@ public class TrendsService<T> implements  ITrendsService<T>{
 	}
 
 	@Override
-	public Trends findTrendsInfoById(int id) {
+	public T findTrendsInfoById(int id) {
 		// TODO Auto-generated method stub
-		return (Trends)trendsDao.findTrendsInfoById(id);
+		return (T)trendsDao.findTrendsInfoById(id);
+	}
+
+	@Override
+	public boolean addViewCount(int id) {
+		// TODO Auto-generated method stub
+		return trendsDao.addViewCount(id);
+	}
+
+	@Override
+	public List<T> findLatestTrendsInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return (List<T>) trendsDao.findTrendsInfo(flag, position, item_per_page);
 	}
 
 }
