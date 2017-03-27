@@ -23,7 +23,7 @@
 				<div class="page-menu-wrapper">
 					
 			     <ul >
-                 <li><a href="javascript:void(0);">网站首页</a>
+                 <li><a href="${pageContext.request.contextPath}/main/index">网站首页</a>
                  	
                  </li>
 

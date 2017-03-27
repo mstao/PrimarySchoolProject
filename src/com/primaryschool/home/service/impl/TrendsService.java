@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.primaryschool.home.dao.ITrendsDao;
+import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ITrendsService;
 
 
@@ -28,9 +29,9 @@ public class TrendsService<T> implements  ITrendsService<T>{
 	}
 
 	@Override
-	public List<T> findTrendsInfoById(int id) {
+	public Trends findTrendsInfoById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return (Trends)trendsDao.findTrendsInfoById(id);
 	}
 
 }

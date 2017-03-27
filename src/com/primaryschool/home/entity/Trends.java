@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * 
@@ -49,6 +52,28 @@ public class Trends implements Serializable{
 	
 	@Column(name = "is_publish")
 	private int isPublish;
+	
+    //临时属性
+    @Transient
+    private String itemTypeFlag;
+    
+    @Transient
+	private String itemTypeName;
+    
+    public Trends(){}
+    
+	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
+			  String itemTypeName,String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.itemTypeName = itemTypeName;
+		this.itemTypeFlag = itemTypeFlag;
+		
+	}
 
 	public int getId() {
 		return id;
@@ -112,6 +137,22 @@ public class Trends implements Serializable{
 
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
+	}
+
+	public String getItemTypeFlag() {
+		return itemTypeFlag;
+	}
+
+	public void setItemTypeFlag(String itemTypeFlag) {
+		this.itemTypeFlag = itemTypeFlag;
+	}
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
 	}
 	
 	

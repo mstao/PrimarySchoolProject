@@ -1,0 +1,130 @@
+.content-wrapper{
+	
+	margin:0 auto;
+	width:1170px;
+	height: 200px;
+	position: relative;
+}
+.content-wrapper span{
+	background-color: #006269;
+	color: white;
+	font-size:30px;
+	height: 50px;
+	width:128px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 5px;
+	left:0;
+	bottom:0;
+	position:absolute;
+}
+/*位置导航*/
+.content-location{
+	margin:30px auto;
+	width:1170px;
+}
+.content-location a{
+	color:#444444;
+	text-decoration: none;
+}
+.content-location span{
+	color:#444444;
+	bottom: 10px;
+	position: relative;
+}
+.content-location span a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+.container-bottom{
+	margin: auto;
+	top:10px;
+	height: 50px;
+	width:1170px;
+	
+}
+.container-bottom-top > img{
+	position:relative;
+	top:6px;
+}
+.container-bottom-top{
+	font-size:15px;
+}
+.container-bottom-top > a{
+	color:black;
+}
+a:hover{
+	color:#EF9722;
+}
+.container-bottom-top > a{
+	text-decoration: none;
+}
+/*设置新闻详细内容和时间轴两个div的位置*/
+.container-bottom-center{
+	
+}
+/* 新闻的详细内容*/
+.container-bottom-lift{
+	margin-top:0px;
+	width:720px;
+	float:left;
+}
+/*新闻标题*/
+.news-title{
+	width:720px;
+	margin-top:15px;
+	text-align: center;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #CCCCCC; 
+	
+}
+.news-title > span{
+	font-size:25px;
+}
+/*新闻作者，发布时间，浏览量*/
+.new-attribute{
+	width:720px;
+	margin-top:10px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color:#666666;
+}
+/*新闻属性名，包括“作者”，“发布时间”，“浏览次数”*/
+.new-attribute-span{
+	font-family: "arial black";
+	font-size:14px;
+}
+/*新闻作者名字*/
+.new-attribute-name{
+	font-size:14px;
+	color:darkmagenta;
+}
+/* 新闻发布时间*/
+.new-attribute-time{
+	font-size:14px;
+	color:burlywood;
+}
+/*新闻浏览次数*/
+.new-attribute-times{
+	font-size:14px;
+	color:cadetblue;
+}
+/*新闻正文*/
+.new-details{
+	width:720px;
+	margin-top:20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size:16px;
+	color: #444444;
+}
+
+/*时间轴*/
+.container-bottom-right{
+	position:relative;
+	top:30px;
+	width:450px;
+	float:left;
+}

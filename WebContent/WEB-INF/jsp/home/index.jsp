@@ -69,8 +69,8 @@
 					<div class="news">
 						<div class="current-new">
 					   
-					    <c:forEach items="${news}" var="news_list">
-			             <div class="current-new-info"><img src="${CTP_HOME}/img/dot.png"/><a href="" target="_blank">${news_list.itemTitle}</a><span class="data-sub pub-data">[${news_list.addTime}]</span><img src="${CTP_HOME}/img/hot.gif" /></div>
+					     <c:forEach items="${news}" var="news_list">
+			             <div class="current-new-info"><img src="${CTP_HOME}/img/dot.png"/><a href="${CTP}/details/trends?id=${news_list.id}" target="_blank">${news_list.itemTitle}</a><span class="data-sub pub-data">[${news_list.addTime}]</span><img src="${CTP_HOME}/img/hot.gif" /></div>
 						</c:forEach>	
 							
 					    <div class="look-more-news"><span><a href="#">更多新闻<img src="${CTP_HOME}/img/more.png"/></a></span></div>

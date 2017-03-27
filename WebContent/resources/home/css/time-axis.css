@@ -1,0 +1,151 @@
+@charset "utf-8";
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+
+/* history */
+#history{
+	
+	width:600px;
+	height:450px;
+	position:relative;
+	margin:0px auto 0 auto;
+	float:left;
+	}
+.title{height:95px;line-height:95px;text-indent:280px;}
+.title h2{color:#7c7c7c;font-size:18px;font-weight:500;
+}
+/*时间轴最上面的年份圈圈*/
+#circle{
+	width:50px;
+	height:50px;
+	position:relative;
+	top:0px;
+	left:100px;
+	border:6px 
+	solid rgba(0,0,0,0.15);
+	border-radius:95px;
+	text-indent:0;
+	text-align:center;
+	-webkit-transition:all 0.3s linear;
+	-moz-transition:all 0.3s linear;
+	-o-transition:all 0.3s linear;
+	transition:all 0.3s linear;
+}
+.timeyear{
+	position: relative;
+	top:-70px;
+	color:#b0b0b0;
+	font-size:10px;
+	line-height:20px;
+}
+.timeblock > span{
+	position: relative;
+	top:-27px;
+}
+
+#content{
+	position: relative;
+	top:-50px;
+	height:355px;
+	width:460px;
+	overflow:hidden;
+	background:url(../img/vertical.png) 
+	no-repeat 125px 12px;
+	padding-top:10px;
+	}
+.list{overflow:hidden;position:relative;}
+
+.list li{
+	height:110px;
+	vertical-align:bottom;
+	overflow:hidden;
+	position:relative;
+	}
+.liwrap{
+	height:55px;
+	margin-top:0px;
+	}
+.lileft{
+	position:absolute;
+	top:0;
+	left:0px;
+	height:55px;
+	width:100px;
+	line-height:55px;
+	text-align:right;
+	}
+.liright{
+	position:relative;
+	top:-60px;
+	left:160px;
+	height:155px;
+	width:300px;
+	}
+	/*时间轴链接*/
+.histt{
+
+	width:300px;
+	height:30px;
+	line-height:30px;
+	}
+.histt a{
+	text-decoration: none;
+	font-size:20px;
+	color:#747474;
+	-webkit-transition:all 0.3s linear;
+	-moz-transition:all 0.3s linear;
+	-o-transition:all 0.3s linear;
+	transition:all 0.3s linear;
+}
+/*时间轴新闻简介*/
+.hisct{
+	width:300px;
+	font-size:13px;
+	color:#6e6e6e;
+	}
+.md{
+	font-size:17px;
+	color:#AEAEAE;}
+.year{
+	font-size:10px;
+	color:#AEAEAE;
+	margin-right:5px;
+}
+.point{
+	width:55px;
+	height:55px;
+	position:relative;
+	top:0;
+	left:100px;
+	background:url(../img/point.png) no-repeat 0px 18px;
+	overflow:hidden;
+	}
+.point b{
+	height:16px;
+	width:16px;
+	background:#fff;
+	display:block;
+	margin:17px 0 0 19px;
+	border-radius:18px;
+	border:2px solid #6bc30d;
+	-webkit-transition:all 0.1s linear;
+	-moz-transition:all 0.1s linear;
+	-o-transition:all 0.1s linear;
+	transition:all 0.1s linear;
+	position:absolute;
+	top:0;left:0;
+}
+.thiscur .point b{border:7px solid rgba(107,195,13,0.6);margin:12px 0px 0px 14px;border-radius:52px;}
+.thiscur .histt a{color:#6bc30d;}
+
+#arrow{
+	position:fixed;
+	top:50%;
+	right:0px;
+	
+	}
+*html #arrow{
+	position:absolute;
+	top:expression(eval(document.documentElement.scrollTop));
+	margin-top:350px;
+	}

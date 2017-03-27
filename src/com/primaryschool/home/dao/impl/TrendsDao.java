@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITrendsDao;
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
+import com.primaryschool.home.entity.Trends;
 
 /**
  * 
@@ -44,10 +45,14 @@ public class TrendsDao<T> implements ITrendsDao<T> {
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findTrendsInfoById(int id) {
+	public Trends findTrendsInfoById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Trends t,TrendsType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		return (Trends) query.uniqueResult();
 	}
 
     @Override

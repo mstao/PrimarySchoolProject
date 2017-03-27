@@ -44,7 +44,9 @@ public class IndexController {
 		String flag="news";
 	 
 		ArrayList<Trends>  news=(ArrayList<Trends>) trendsService.findTrendsInfo(flag, position, item_per_page);
- 		
+ 		/*for(Trends t:news){
+ 			System.out.println("id--"+t.getId());
+ 		}*/
 		//获取校内通知
 		flag="notice";
 		ArrayList<Trends>  notice=(ArrayList<Trends>) trendsService.findTrendsInfo(flag, position, item_per_page);
@@ -53,5 +55,7 @@ public class IndexController {
 		request.setAttribute("notice", notice);
 		return "home/index";
 	}
+	
+
 	
 }
