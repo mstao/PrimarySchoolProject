@@ -73,7 +73,7 @@
 			               <div class="current-new-info"><img src="${CTP_HOME}/img/dot.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}" target="_blank">${news_list.itemTitle}</a><span class="data-sub pub-data">[${news_list.addTime}]</span><img src="${CTP_HOME}/img/hot.gif" /></div>
 						</c:forEach>	
 							
-					    <div class="look-more-news"><span><a href="#">更多新闻<img src="${CTP_HOME}/img/more.png"/></a></span></div>
+					    <div class="look-more-news"><span><a href="${CTP}/list/trends?flag=${newsFlag}&p=1">更多新闻<img src="${CTP_HOME}/img/more.png"/></a></span></div>
 						</div>
 						
 					   <!--S 滚动-->
@@ -87,7 +87,7 @@
 						
 						
 						</div>
-						<a class="look-more-notice" href="#">更多<img src="${CTP_HOME}/img/more.png"/></a>
+						<a class="look-more-notice" href="${CTP}/list/trends?flag=${noticeFlag}&p=1">更多<img src="${CTP_HOME}/img/more.png"/></a>
 				   <!--E 滚动-->			
 					</div>
 					<!--E 右侧新闻-->
@@ -215,15 +215,10 @@
 				         <dd class="tp" >
 				           <div>
 				           	<ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
+						        
+						      <c:forEach items="${student}" var="student_list">
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${student_list.itemTitle}</a><span class="pub-data sub-time">[${student_list.addTime}]</span></li>
+							  </c:forEach>
 							</ul>
 				           </div>
 				         </dd>
@@ -362,15 +357,9 @@
 				         <dd class="tp" >
 				           <div>
 				           	<ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
+						      <c:forEach items="${manage}" var="manage_list">
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${manage_list.itemTitle}</a><span class="pub-data sub-time">[${manage_list.addTime}]</span></li>
+							  </c:forEach>
 							</ul>
 				           </div>
 				         </dd>
@@ -435,15 +424,9 @@
 				         <dd class="tp" >
 				           <div>
 				           	<ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
+						      <c:forEach items="${party}" var="party_list"> 
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${party_list.itemTitle}</a><span class="pub-data sub-time">[${party_list.addTime}]</span></li>
+							  </c:forEach>
 							</ul>
 				           </div>
 				         </dd>

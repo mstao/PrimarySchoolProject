@@ -39,7 +39,7 @@
 					</ul>
                  </li>
                  
-                 <li><a href="schoolNews.html">校园动态</a>
+                 <li><a href="${pageContext.request.contextPath}/category/trends">校园动态</a>
                  	<ul class="dropdown-menu follow">
 							<li><a href="校园动态/news_list.html">校内新闻</a></li>
 							<li><a href="校园动态/notice_list.html">通知公告</a></li>

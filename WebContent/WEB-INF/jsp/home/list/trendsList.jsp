@@ -5,12 +5,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${typeName}列表</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/list.css" />
+<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
 </head>
@@ -24,42 +25,31 @@
 		<div class="content">
 			<!--S list-->
 			<div class="list">
-				<div class="list-navi"><span>校内新闻<img src="img/jiantou.png"/></span></div>
+				<div class="list-navi"><span>${typeName}<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
 				<div class="list-content">
 					<ul>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
-						<li><span><img src="img/time.png" /> 2017-01-07</span><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></li>
+					  <c:forEach items="${trends}" var="trends_list">
+						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/trends?id=${trends_list.id}&flag=${typeFlag}">${trends_list.itemTitle}</a></li>
+					  </c:forEach>
 					</ul>
 				</div>
+				
+				<!-- 分页导航引入 -->
+			    ${toolBar}
+				
 			</div>
 			<!--E list-->
 			
 			<!--S right-->
 			<div class="hot">
-				<div class="hot-navi"><span class="img-span"><img src="img/trends.png"/></span><span class="span">近期热点</span></div>
+				<div class="hot-navi"><span class="img-span"><img src="${CTP_HOME}/img/trends.png"/></span><span class="span">近期热点</span></div>
 				
-				<div class="hot-content">
-					<div class="hot-content-sum"><img src="img/time.png" /><span>2017.01.01</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/look.png" /><span>111</span></div>
-					<span class="hot-news-detail"><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></span>
-				</div>
-				<div class="hot-content">
-					<div class="hot-content-sum"><img src="img/time.png" /><span>2017.01.01</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/look.png" /><span>111</span></div>
-					<span class="hot-news-detail"><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></span>
-				</div>
-				<div class="hot-content">
-					<div class="hot-content-sum"><img src="img/time.png" /><span>2017.01.01</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/look.png" /><span>111</span></div>
-					<span class="hot-news-detail"><a href="#">2017年华师附小春季学期开学典礼隆重举行！</a></span>
-				</div>
+				<c:forEach items="${hotTrends}" var="hotTrends">
+					<div class="hot-content">
+						<div class="hot-content-sum"><img src="${CTP_HOME}/img/time.png" /><span>${hotTrends.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${CTP_HOME}/img/look.png" /><span>${hotTrends.viewCount}</span></div>
+						<span class="hot-news-detail"><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${typeFlag}">${hotTrends.itemTitle}</a></span>
+					</div>
+				</c:forEach>
 			</div>
 			
 			<!--E right-->

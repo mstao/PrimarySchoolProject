@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
@@ -62,7 +63,7 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request){
 		int position=0;
-		int item_per_page=7;
+		int item_per_page=PageSizeConfig.HOME_INDEX_PAGESIZE;
 		//获取校园动态信息
 		
 		//获取校内新闻信息
@@ -100,8 +101,13 @@ public class IndexController {
 		request.setAttribute("news", news);
 		request.setAttribute("notice", notice);		
 		request.setAttribute("education", education);
+		request.setAttribute("student", student);
+		request.setAttribute("teacher", teacher);
+		request.setAttribute("manage", manage);
+		request.setAttribute("party", party);
 		
 		
+	
 		request.setAttribute("newsFlag", newsFlag);
 		request.setAttribute("noticeFlag", noticeFlag);
 		

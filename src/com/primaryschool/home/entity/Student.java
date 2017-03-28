@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="ps_student")
@@ -48,6 +49,35 @@ public class Student implements Serializable{
 	@Column(name="is_publish")
 	private int isPublish;
 
+	//临时属性
+    @Transient
+    private String itemTypeFlag;
+    
+    @Transient
+	private String itemTypeName;
+    
+	public Student(){}
+    
+    public Student(int id,String itemTitle,String addTime){
+    	super();
+    	this.id = id;
+		this.itemTitle = itemTitle;
+		this.addTime = addTime;
+    }
+	
+    public Student(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
+			  String itemTypeName,String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.itemTypeName = itemTypeName;
+		this.itemTypeFlag = itemTypeFlag;
+		
+	}
+    
 	public int getId() {
 		return id;
 	}

@@ -13,4 +13,9 @@ public interface ITrendsService<T> {
     boolean addViewCount(int id);
     /**获取最近更新**/
     List<T> findLatestTrendsInfo(String flag,int position, int item_per_page);
+    /**获取记录总数**/
+    int  findTrendsCount(String flag);
+    /**获取最近更新**/
+    List<T>  findHotTrendsInfo(String flag,int position,int item_per_page);
+    
 }

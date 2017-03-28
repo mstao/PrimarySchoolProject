@@ -23,7 +23,7 @@ public class ManageDao<T> implements IManageDao<T> {
 	public List<T> findManageInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeIdDao.findManageTypeIdByTypeFlag(flag);
-		String hql="from Manage m where m.typeId=? and m.isPublish=1 order by m.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Manage(m.id,m.itemTitle,m.addTime) from Manage m where m.typeId=? and m.isPublish=1 order by m.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

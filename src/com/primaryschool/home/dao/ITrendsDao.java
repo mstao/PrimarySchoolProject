@@ -16,5 +16,9 @@ public interface ITrendsDao<T> {
      boolean deleteTrendsById(String[] ids);     
      /**浏览量+1**/
      boolean  addViewCount(int id);
+     /**获取记录总数**/
+     int  findTrendsCount(String flag);
+     /**获取近期热点**/
+     List<T>  findHotTrendsInfo(String flag,int position,int item_per_page);
 
 }

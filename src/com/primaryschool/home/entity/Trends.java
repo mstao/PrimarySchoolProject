@@ -62,6 +62,13 @@ public class Trends implements Serializable{
     
     public Trends(){}
     
+    public Trends(int id,String itemTitle,String addTime){
+    	super();
+    	this.id = id;
+		this.itemTitle = itemTitle;
+		this.addTime = addTime;
+    }
+    
 	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
 			  String itemTypeName,String itemTypeFlag) {
 		super();

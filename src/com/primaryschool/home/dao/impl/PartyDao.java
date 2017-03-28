@@ -23,7 +23,7 @@ public class PartyDao<T> implements IPartyDao<T> {
 	public List<T> findPartyInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeIdDao.findPartyTypeIdByTypeFlag(flag);
-		String hql="from Party p where p.typeId=? and p.isPublish=1 order by p.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Party(p.id,p.itemTitle,p.addTime) from Party p where p.typeId=? and p.isPublish=1 order by p.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

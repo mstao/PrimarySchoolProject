@@ -23,7 +23,7 @@ public class TeacherDao<T> implements ITeacherDao<T> {
 	public List<T> findTeacherInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeIdDao.findTeacherTypeIdByTypeFlag(flag);
-		String hql="from Teacher t where t.typeId=? and t.isPublish=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Teacher(t.id,t.itemTitle,t.addTime) from Teacher t where t.typeId=? and t.isPublish=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

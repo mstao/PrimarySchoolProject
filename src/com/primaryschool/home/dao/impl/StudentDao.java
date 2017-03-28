@@ -28,7 +28,7 @@ public class StudentDao<T> implements IStudentDao<T> {
 		
 			int id=typeFlagToTypeId.findStudentTypeIdByTypeFlag(flag);
 
-			String hql="from Student t where t.typeId=? and t.isPublish=1 order by t.addTime desc";
+			String hql="select new com.primaryschool.home.entity.Student(t.id,t.itemTitle,t.addTime) from Student t where t.typeId=? and t.isPublish=1 order by t.addTime desc";
 			Query query=sessionFactory.getCurrentSession().createQuery(hql);
 			query.setInteger(0, id);
 			query.setFirstResult(position);

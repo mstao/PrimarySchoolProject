@@ -2,6 +2,8 @@ package com.primaryschool.global.util;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 
 
 /** 
@@ -9,6 +11,7 @@ import java.util.List;
  * @Description: TODO 分页工具类
  * @date 2016年12月20日 下午3:59:12  
  */
+
 public class PageHelper{
     // 总共的数据量
     private int total;

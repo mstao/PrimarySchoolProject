@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+.pager {
+	color:#666666;
+}
+.pager{ 
+	text-align:center; 
+	background:#f1f1f1; 
+	padding:7px 0;
+}
+.pager a{ 
+	margin:0 5px; 
+	border:#6185a2 solid 1px; 
+	display:inline-block; 
+	padding:2px 6px 1px; 
+	line-height:16px; 
+	background:#fff; 
+	color:#225599;
+	text-decoration:none;
+}
+.pager a:hover{ 
+	border:skyblue solid 1px; 	
+}
