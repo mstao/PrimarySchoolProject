@@ -18,7 +18,13 @@
 <link rel="stylesheet" href="${CTP_HOME}/css/index.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="${CTP_HOME}/js/module/loadinfo.js" ></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
+<script type="text/javascript">
+
+var CTPPATH="${pageContext.request.contextPath}";
+var CTP_HOME=CTPPATH+"/resources/home";
+</script>
 </head>
 <body>
 <%--引入header --%>
@@ -102,7 +108,7 @@
 			<!--S 阳光德育-->
 			<div class="even-bg sunshine-bg">
 			<div class="content-div sunshine">
-				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/sun.png"/> <span class="tag-ch">阳光德育</span><span class="tag-en">Sunshine moral education</span> <a class="link-tag" href="#">进入>></a></div>
+				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/sun.png"/> <span class="tag-ch">阳光德育</span><span class="tag-en">Sunshine moral education</span> <a class="link-tag" href="${CTP}/list/education?">进入>></a></div>
 			  
 			    	 <!--S 轮播图-->
 					<div class="slider-sunshine">
@@ -120,7 +126,7 @@
 			    <!--tab-->
 			    <div class="tab-container">
 					 <div class="tab">
-				       <ul class="tab-card">
+				       <ul class="tab-card  tab-card-education">
 				         <li>主题教育</li>
 				         <li>国旗下讲话</li>
 				         <li>少先队活动</li>
@@ -128,51 +134,28 @@
 				         <li>心灵驿站</li>
 				       </ul>
 				       <dl class="tab-paper">
-				         <dd class="tp" >
+				         <dd class="tp">
 				           <div>
 				           	<ul>
 						        <c:forEach items="${education}"  var="education_list">
-									<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${education_list.itemTitle}</a><span class="pub-data sub-time">[${education_list.addTime}]</span></li>
+									<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}">${education_list.itemTitle}</a><span class="pub-data sub-time">[${education_list.addTime}]</span></li>
 								</c:forEach>
 							</ul>
 				           </div>
 				         </dd>
 				         <dd class="tp" >
 				           <div>
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
-				             
 				           </div>
 				         </dd>
 				         <dd class="tp">
-				              <div >
-				             <p>标签三</p>
-				             <p>标签三</p>
-				             
-				           </div>       
+				              <div></div>       
 				         </dd>
 				         <dd class="tp">
 				           <div >
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
 				           </div>
 				         </dd>
 				         <dd class="tp">
 				           <div >
-						          <ul>
-								
-										<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-										<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-										<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-									</ul>
 				           </div>
 				         </dd>
 				       </dl>
@@ -204,7 +187,7 @@
 			    <!--tab-->
 			    <div class="tab-container stu-container" >
 					 <div class="tab">
-				       <ul class="tab-card">
+				       <ul class="tab-card tab-card-student">
 				         <li>沐浴书香</li>
 				         <li>活动风采</li>
 				         <li>班级主页</li>
@@ -283,7 +266,7 @@
 			    <!--tab-->
 			    <div class="tab-container teacher-container">
 					 <div class="tab">
-				       <ul class="tab-card">
+				       <ul class="tab-card tab-card-teacher">
 				         <li>教学资源</li>
 				         <li>教师风采</li>
 				         <li>教师培训</li>
@@ -346,7 +329,7 @@
 			  <!--tab-->
 			    <div class="tab-container school-container">
 					 <div class="tab">
-				       <ul class="tab-card">
+				       <ul class="tab-card tab-card-manage">
 				         <li>部门链接</li>
 				         <li>评职评优</li>
 				         <li>教师会议</li>
@@ -415,7 +398,7 @@
 			    <!--tab-->
 			    <div class="tab-container school-container">
 					 <div class="tab">
-				       <ul class="tab-card">
+				       <ul class="tab-card tab-card-party">
 				         <li>支部活动</li>
 				         <li>工会活动</li>
 				        

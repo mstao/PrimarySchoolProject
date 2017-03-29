@@ -67,6 +67,14 @@ public class Manage implements Serializable{
 		this.addTime = addTime;
     }
 	
+    public Manage(int id , String itemTitle,String addTime,int viewCount){
+    	super();
+    	this.id = id;
+		this.itemTitle = itemTitle;
+		this.addTime = addTime;
+		this.viewCount =viewCount;
+    }
+    
     public Manage(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
 			  String itemTypeName,String itemTypeFlag) {
 		super();
@@ -143,5 +151,22 @@ public class Manage implements Serializable{
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
 	}
+
+	public String getItemTypeFlag() {
+		return itemTypeFlag;
+	}
+
+	public void setItemTypeFlag(String itemTypeFlag) {
+		this.itemTypeFlag = itemTypeFlag;
+	}
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
+	}
+	
 	
 }

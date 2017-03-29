@@ -80,7 +80,7 @@ public class IndexController {
 		//获取阳光教育-主题教育
 		String educationFlag="education";
 		ArrayList<Education>  education=(ArrayList<Education>)educationService.findEducationInfo(educationFlag, position, item_per_page);
-		
+		//获取
 		//获取学生天地-沐浴书香
 		String  studentFlag="book";
 		
@@ -110,11 +110,11 @@ public class IndexController {
 	
 		request.setAttribute("newsFlag", newsFlag);
 		request.setAttribute("noticeFlag", noticeFlag);
-		
+		request.setAttribute("educationFlag", educationFlag);
 		
 		return "home/index";
 	}
 	
-
+	
 	
 }

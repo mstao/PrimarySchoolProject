@@ -48,13 +48,13 @@
                  
                   
                  
-                 <li><a href="阳光德育/主题教育.html">阳光德育</a>
+                 <li><a href="${pageContext.request.contextPath}/category/education">阳光德育</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="#">主题教育</a></li>
-							<li><a href="#">国旗下讲话</a></li>
-							<li><a href="#">少先队活动</a></li>
-							<li><a href="#">家长委员会</a></li>
-							<li><a href="#">心灵驿站</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=education&p=1">主题教育</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=speak&p=1">国旗下讲话</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=active&p=1">少先队活动</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=parents&p=1">家长委员会</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=stagent&p=1">心灵驿站</a></li>
 							
 					</ul>
                  </li>

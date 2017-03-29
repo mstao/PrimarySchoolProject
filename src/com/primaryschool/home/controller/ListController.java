@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.ITrendsService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
@@ -19,7 +21,11 @@ import com.primaryschool.home.service.ITypeFlagToTypeNameService;
 public class ListController {
     @Autowired
     private ITrendsService<Trends> trendsService;
-	@Autowired
+	
+    @Autowired
+    private IEducationService<Education> educationService;
+    
+    @Autowired
 	private IPageHelperService pageHelperService;
 	@Autowired
 	private ITypeFlagToTypeNameService typeFlagToTypeNameService;
@@ -53,8 +59,45 @@ public class ListController {
         request.setAttribute("toolBar", toolBar);
         request.setAttribute("typeName", typeName);
         request.setAttribute("typeFlag", flag);
-        request.setAttribute("trends", trends);
-        request.setAttribute("hotTrends", hotTrends);
+        request.setAttribute("item", trends);
+        request.setAttribute("hotItem", hotTrends);
 		return "home/list/trendsList";
 	}
+	
+	@RequestMapping("/education")
+	public String education(String flag, int p ,HttpServletRequest request){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//当前的url
+		String url="./list/enducation?flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=educationService.findEducationCount(flag);
+		//设置每页显示的数据量
+		int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		
+		//根据偏移量获取数据
+		ArrayList<Education>  education=(ArrayList<Education>) educationService.findEducationInfo(flag, position, item_pre_page);
+	   	
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+        
+        //根据typeFlag获取typeName
+        String typeName=typeFlagToTypeNameService.findEducationTypeNameByTypeFlag(flag);
+        
+        //获取该类型的热点信息
+        ArrayList<Education> hotEducation=(ArrayList<Education>)educationService.findHotEducationInfo(flag, 0, PageSizeConfig.HOME_HOT_PAGESIZE);
+        
+        request.setAttribute("toolBar", toolBar);
+        request.setAttribute("typeName", typeName);
+        request.setAttribute("typeFlag", flag);
+        request.setAttribute("item", education);
+        request.setAttribute("hotItem", hotEducation);
+		
+		return "home/list/trendsList";
+	}
+	
 }

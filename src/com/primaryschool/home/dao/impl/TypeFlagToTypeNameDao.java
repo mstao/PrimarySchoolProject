@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITypeFlagToTypeNameDao;
+import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
 import com.primaryschool.home.entity.PartyType;
 import com.primaryschool.home.entity.TeacherType;
@@ -59,6 +60,18 @@ public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
 		query.setString(0, flag);
 		
 		PartyType tt=(PartyType)query.uniqueResult();
+		return tt.getItemTypeName();
+	}
+	
+	
+	@Override
+	public String findEducationTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from EducationType  tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		EducationType tt=(EducationType)query.uniqueResult();
 		return tt.getItemTypeName();
 	}
 	

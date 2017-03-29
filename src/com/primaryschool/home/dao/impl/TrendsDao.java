@@ -104,7 +104,7 @@ public class TrendsDao<T> implements ITrendsDao<T> {
 	public List<T> findHotTrendsInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeId.findTrendsTypeIdByTypeFlag(flag);
-		String hql="from Trends t where t.typeId=? and t.isPublish=1 order by t.viewCount desc";
+		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.addTime,t.viewCount) from Trends t where t.typeId=? and t.isPublish=1 order by t.viewCount desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

@@ -28,7 +28,7 @@
 				<div class="list-navi"><span>${typeName}<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
 				<div class="list-content">
 					<ul>
-					  <c:forEach items="${trends}" var="trends_list">
+					  <c:forEach items="${item}" var="trends_list">
 						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/trends?id=${trends_list.id}&flag=${typeFlag}">${trends_list.itemTitle}</a></li>
 					  </c:forEach>
 					</ul>
@@ -44,7 +44,7 @@
 			<div class="hot">
 				<div class="hot-navi"><span class="img-span"><img src="${CTP_HOME}/img/trends.png"/></span><span class="span">近期热点</span></div>
 				
-				<c:forEach items="${hotTrends}" var="hotTrends">
+				<c:forEach items="${hotItem}" var="hotTrends">
 					<div class="hot-content">
 						<div class="hot-content-sum"><img src="${CTP_HOME}/img/time.png" /><span>${hotTrends.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${CTP_HOME}/img/look.png" /><span>${hotTrends.viewCount}</span></div>
 						<span class="hot-news-detail"><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${typeFlag}">${hotTrends.itemTitle}</a></span>

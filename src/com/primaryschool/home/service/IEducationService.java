@@ -4,7 +4,15 @@ import java.util.List;
 
 public interface IEducationService<T> {
 	 /**获取阳光德育记录**/
-    List<T> findEducationInfo(String type,int position,int item_per_page);
+    List<T> findEducationInfo(String flag,int position,int item_per_page);
     /**根据id获获取详细信息**/
-    List<T> findEducationInfoById(int id);
+    T findEducationInfoById(int id);
+    /**浏览量+1**/
+    boolean addViewCount(int id);
+    /**获取最近更新**/
+    List<T> findLatestEducationInfo(String flag,int position, int item_per_page);
+    /**获取记录总数**/
+    int  findEducationCount(String flag);
+    /**获取最近更新**/
+    List<T>  findHotEducationInfo(String flag,int position,int item_per_page);
 }

@@ -23,9 +23,33 @@ public class EducationService<T> implements IEducationService<T> {
 	}
 
 	@Override
-	public List<T> findEducationInfoById(int id) {
+	public T findEducationInfoById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return (T)educationDao.findEducationInfoById(id);
+	}
+
+	@Override
+	public boolean addViewCount(int id) {
+		// TODO Auto-generated method stub
+		return educationDao.addViewCount(id);
+	}
+
+	@Override
+	public List<T> findLatestEducationInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return (List<T>)educationDao.findEducationInfo(flag, position, item_per_page);
+	}
+
+	@Override
+	public int findEducationCount(String flag) {
+		// TODO Auto-generated method stub
+		return educationDao.findEducationCount(flag);
+	}
+
+	@Override
+	public List<T> findHotEducationInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return (List<T>)educationDao.findHotEducationInfo(flag, position, item_per_page);
 	}
 	
 

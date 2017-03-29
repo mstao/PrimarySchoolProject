@@ -10,7 +10,7 @@
 	color: white;
 	font-size:30px;
 	height: 50px;
-	width:128px;
+	min-width:128px;
 	padding-left: 10px;
 	padding-top: 10px;
 	padding-right: 5px;

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>${trends.itemTitle}</title>
+<title>${item.itemTitle}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/detailstype.css" />
@@ -26,10 +26,10 @@
 <%--S 主体 --%>
 <div class="content-wrapper">
 			<img src="${CTP_HOME}/img/school-f.jpg" />
-			<span>${trends.itemTypeName}</span>
+			<span>${item.itemTypeName}</span>
 </div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${trends.itemTypeName}</a> > <a href="#">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${item.itemTypeName}</a> > <a href="#">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">
@@ -41,20 +41,20 @@
 				<div class="container-bottom-lift">
 					<!--描述：新闻标题 -->
 					<div class="news-title">
-						<span> ${trends.itemTitle}</span>
+						<span> ${item.itemTitle}</span>
 					</div>
 					<!--描述：新闻作者，发布时间 -->
 					<div class="new-attribute">
 						<span class="new-attribute-span">作者：</span>
 						<span class="new-attribute-name">小学网站</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span class="new-attribute-span">发布时间：</span>
-						<span class="new-attribute-time">${trends.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="new-attribute-time">${item.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span class="new-attribute-span">浏览次数：</span>
-						<span class="new-attribute-times">${trends.viewCount}</span>
+						<span class="new-attribute-times">${item.viewCount}</span>
 					</div>
 					<!--描述：新闻具体内容 -->
 					<div class="new-details">
-						${trends.itemContent}
+						${item.itemContent}
 					</div>
 				</div>
 				<!--描述：时间轴-->
@@ -86,7 +86,7 @@
 	<div id="content">
 		<ul class="list">
 		
-		   <c:forEach items="${latestTrends}" var="latestTrends">
+		   <c:forEach items="${latestItem}" var="latestItem">
 		 	<li >
 				<div class="liwrap">
 					<div class="lileft">
@@ -99,8 +99,8 @@
 					<div class="point"><b></b></div>
 					
 					<div class="liright">
-						<div class="histt"><a href="${CTP}/details/trends?id=${latestTrends.id}&flag=${trends.itemTypeFlag}">${latestTrends.itemTitle}</a></div>
-						<div class="hisct">${latestTrends.itemContent}</div>
+						<div class="histt"><a href="${CTP}/details/trends?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+						<div class="hisct">${latestItem.itemContent}</div>
 					</div>
 				</div>
 			</li>

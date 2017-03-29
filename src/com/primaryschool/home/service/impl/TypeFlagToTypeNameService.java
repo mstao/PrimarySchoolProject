@@ -36,4 +36,10 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 		return null;
 	}
 
+	@Override
+	public String findEducationTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeNameDao.findEducationTypeNameByTypeFlag(flag);
+	}
+
 }

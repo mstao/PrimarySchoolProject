@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>校园动态</title>
+<title>Insert title here</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/alldetails.css"/>
@@ -22,23 +22,27 @@
 
 <%--S 主体 --%>
 
+		
 		<div class="content-wrapper">
 			<img src="${CTP_HOME}/img/school-f.jpg" />
-			<span>校园动态</span>
+			<span>阳光德育</span>
 		</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">校园动态</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">阳光德育</a></span>
 		</div>
 		<div class="content-bottom">
+		
 			
-	      <div class="top-contaner-left">	
+			<div class="top-contaner-left">	
 			<!-- 校园动态-->
 			<div class="top-left">
 				<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 				<ul>
-					<li><a href="#">校内新闻</a></li>
-					<li><a href="#">通知公告</a></li>
-					
+					<li><a href="#">主题教育</a></li>
+					<li><a href="#">国旗下讲话</a></li>
+					<li><a href="#">少先队活动</a></li>
+					<li><a href="#">家长委员会</a></li>
+					<li><a href="#">心灵驿站</a></li>
 				</ul>
 			</div>
 			<!--作息表-->
@@ -70,13 +74,13 @@
 			</div>
 			<!--热门排行-->
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>主题教育</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
 				<ul>
-				  <c:forEach items="${hotTrends}" var="hotTrends">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${newsFlag}"> ${hotTrends.itemTitle}</a><span>[${hotTrends.addTime}]</span></li>
-				  </c:forEach>
+				   <c:forEach items="${education}" var="education_list">
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${education_list.itemTitle}</a><span>[${education_list.addTime}]</span></li>
+				   </c:forEach>
 				</ul>
-				<c:if test="${empty hotTrends}">
+				<c:if test="${empty education}">
 				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 				</c:if>
 				
@@ -85,37 +89,68 @@
             <div class="clear"></div>
 			<!--校内新闻-->
 			<div class="float-div">
-				<div class="top-left-bottom"><b>校内新闻</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>国旗下讲话</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
-				  <c:forEach items="${news}" var="news_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}"> ${news_list.itemTitle}</a><span>[${news_list.addTime}]</span></li>
-				  </c:forEach>
+				   <c:forEach items="${speak}" var="speak_list">
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${speak_list.itemTitle}</a><span>[${speak_list.addTime}]</span></li>
+				   </c:forEach>
 				</ul>
-				<c:if test="${empty news}">
+				<c:if test="${empty speak}">
 				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 				</c:if>
+				
 			</div>
 			
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>通知公告</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>少先队活动</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
-				  <c:forEach items="${notice}" var="notice_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${notice_list.id}&flag=${noticeFlag}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>
+				   <c:forEach items="${active}" var="active_list">
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${active_list.itemTitle}</a><span>[${active_list.addTime}]</span></li>
+				   </c:forEach>
+				</ul>
+				
+				<c:if test="${empty active}">
+				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
+				</c:if>
+			</div>
+			<div class="clear"></div>
+			<div class="float-div ">
+				<div class="top-left-bottom"><b>家长委员会</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<ul>
+				  <c:forEach items="${parents}" var="parents_list">
+					<li><img src="${CTP_PATH}/img/sjiantou.png"/><a href="#"> ${parents_list.itemTitle}</a><span>[${parents_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
-				<c:if test="${empty notice}">
+				<c:if test="${empty parents}">
+				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
+				</c:if>
+				
+			</div>
+			<div class="float-div right">
+				<div class="top-left-bottom"><b>心灵驿站</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<ul>
+				
+				  <c:forEach items="${stagent}" var="stagent_list">
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${stagent_list.itemTitle}</a><span>[${stagent_list.addTime}]</span></li>
+				  </c:forEach>
+				</ul>
+				
+				<c:if test="${empty stagent}">
 				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 				</c:if>
 			</div>
 			
+			
 	       </div>
 	
+		
+		</div>
 			
-	    </div>
-	    <div class="clear"></div>
+		
+		<div class="clear"></div>
 <%--E 主体 --%>
 
-<%--引入footer --%>
+<%--引入 footer --%>
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>

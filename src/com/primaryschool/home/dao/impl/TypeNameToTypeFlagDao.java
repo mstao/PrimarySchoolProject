@@ -65,4 +65,10 @@ public class TypeNameToTypeFlagDao implements ITypeNameToTypeFlagDao {
 		return tt.getItemTypeFlag();
 	}
 
+	@Override
+	public String findEducationTypeFlagByTypeName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
