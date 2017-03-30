@@ -21,10 +21,35 @@ public class TeacherService<T> implements ITeacherService<T>{
 		return (List<T>)teacherDao.findTeacherInfo(flag, position, item_per_page);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findTeacherInfoById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return (List<T>)teacherDao.findTeacherInfoById(id);
+	}
+
+	@Override
+	public boolean addViewCount(int id) {
+		// TODO Auto-generated method stub
+		return teacherDao.addViewCount(id);
+	}
+
+	@Override
+	public List<T> findLatestTeacherInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return (List<T>)teacherDao.findTeacherInfo(flag, position, item_per_page);
+	}
+
+	@Override
+	public int findTeacherCount(String flag) {
+		// TODO Auto-generated method stub
+		return teacherDao.findTeacherCount(flag);
+	}
+
+	@Override
+	public List<T> findHotTeacherInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return teacherDao.findHotTeacherInfo(flag, position, item_per_page);
 	}
 
 }

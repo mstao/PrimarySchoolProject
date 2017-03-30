@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Student;
+import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IPageHelperService;
+import com.primaryschool.home.service.IStudentService;
+import com.primaryschool.home.service.ITeacherService;
 import com.primaryschool.home.service.ITrendsService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
 
@@ -26,9 +30,19 @@ public class ListController {
     private IEducationService<Education> educationService;
     
     @Autowired
+    private IStudentService<Student> studentService;
+    
+    @Autowired
+    private ITeacherService<Teacher>  teacherService;
+    
+    
+    @Autowired
 	private IPageHelperService pageHelperService;
 	@Autowired
 	private ITypeFlagToTypeNameService typeFlagToTypeNameService;
+	
+	//设置每页显示的数据量
+	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
 	
 	@RequestMapping("/trends")
 	public String details(String flag, int p ,HttpServletRequest request){
@@ -40,8 +54,6 @@ public class ListController {
 		String url="./list/trends?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=trendsService.findTrendsCount(flag);
-		//设置每页显示的数据量
-		int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
 		//计算偏移量
 		int position=(p-1)*item_pre_page;
 		
@@ -64,6 +76,7 @@ public class ListController {
 		return "home/list/trendsList";
 	}
 	
+	
 	@RequestMapping("/education")
 	public String education(String flag, int p ,HttpServletRequest request){
 		String sp=p+"";
@@ -74,8 +87,7 @@ public class ListController {
 		String url="./list/enducation?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=educationService.findEducationCount(flag);
-		//设置每页显示的数据量
-		int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
+		
 		//计算偏移量
 		int position=(p-1)*item_pre_page;
 		
@@ -100,4 +112,75 @@ public class ListController {
 		return "home/list/trendsList";
 	}
 	
+	
+	@RequestMapping("/student")
+	public String student(String flag, int p ,HttpServletRequest request){
+		
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//当前的url
+		String url="./list/student?flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=studentService.findStudentCount(flag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		
+		//根据偏移量获取数据
+		ArrayList<Student>  student=(ArrayList<Student>) studentService.findStudentInfo(flag, position, item_pre_page);
+	   	
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+        
+        //根据typeFlag获取typeName
+        String typeName=typeFlagToTypeNameService.findStudentTypeNameByTypeFlag(flag);
+        
+        //获取该类型的热点信息
+        ArrayList<Student> hotStudent=(ArrayList<Student>)studentService.findHotStudentInfo(flag, 0, PageSizeConfig.HOME_HOT_PAGESIZE);
+        
+        request.setAttribute("toolBar", toolBar);
+        request.setAttribute("typeName", typeName);
+        request.setAttribute("typeFlag", flag);
+        request.setAttribute("item", student);
+        request.setAttribute("hotItem", hotStudent);
+		
+		return "home/list/trendsList";
+	}
+	
+	@RequestMapping("/teacher")
+	public String teacher(String flag, int p ,HttpServletRequest request){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//当前的url
+		String url="./list/teacher?flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=teacherService.findTeacherCount(flag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		
+		//根据偏移量获取数据
+		ArrayList<Teacher>  teacher=(ArrayList<Teacher>) teacherService.findTeacherInfo(flag, position, item_pre_page);
+	   	
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+        
+        //根据typeFlag获取typeName
+        String typeName=typeFlagToTypeNameService.findTeacherTypeNameByTypeFlag(flag);
+        
+        //获取该类型的热点信息
+        ArrayList<Teacher> hotTeacher=(ArrayList<Teacher>)teacherService.findHotTeacherInfo(flag, 0, PageSizeConfig.HOME_HOT_PAGESIZE);
+        
+        request.setAttribute("toolBar", toolBar);
+        request.setAttribute("typeName", typeName);
+        request.setAttribute("typeFlag", flag);
+        request.setAttribute("item", teacher);
+        request.setAttribute("hotItem", hotTeacher);
+		
+		return "home/list/trendsList";
+	}
 }

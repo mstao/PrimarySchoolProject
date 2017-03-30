@@ -14,6 +14,8 @@ public interface ITypeFlagToTypeNameDao {
 	
 	String findEducationTypeNameByTypeFlag(String flag);
 	
+	String findStudentTypeNameByTypeFlag(String flag);
+	
 	String findTeacherTypeNameByTypeFlag(String flag);
 	
 	String findManageTypeNameByTypeFlag(String flag);

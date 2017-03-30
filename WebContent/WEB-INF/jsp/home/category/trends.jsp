@@ -121,7 +121,7 @@
 </html>
 <script type="text/javascript">
 	$(function(){
-		 //新闻轮播
+		 //轮播
 	    $(".slider-news").YuxiSlider({
 			width:420, //容器宽度
 			height:300, //容器高度

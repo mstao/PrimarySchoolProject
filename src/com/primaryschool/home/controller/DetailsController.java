@@ -58,6 +58,7 @@ public class DetailsController{
 	
 	@RequestMapping("/trends")
 	public String trends(int id,String flag,HttpServletRequest request){	
+		String url="trends";
 		
 		//将浏览量+1
 		trendsService.addViewCount(id);
@@ -68,11 +69,14 @@ public class DetailsController{
         ArrayList<Trends> latestTrends=(ArrayList<Trends>)trendsService.findLatestTrendsInfo(flag, position, item_per_page);
 	    request.setAttribute("item", trends);
 	    request.setAttribute("latestItem", latestTrends);
+	    request.setAttribute("url", url);
 		return "home/details/trendsDetails";
 	}
 	
 	@RequestMapping("/education")
 	public String education(int id,String flag,HttpServletRequest request){
+		
+		String url="education";
 		//浏览量+1
 		educationService.addViewCount(id);
 		//根据id获取详细信息
@@ -83,7 +87,42 @@ public class DetailsController{
 		
 		request.setAttribute("item", education);
 	    request.setAttribute("latestItem", latestEducation);
-		return "home/details/trendsDetails";
+	    request.setAttribute("url", url);
+	    return "home/details/trendsDetails";
 	}
 	
+	@RequestMapping("/student")
+	public  String student(int id,String flag,HttpServletRequest request){
+		String url="student";
+		//浏览量+1
+		studentService.addViewCount(id);
+		//根据id获取详细信息
+		Student student=(Student)studentService.findStudentInfoById(id);
+		
+		//获取最近更新
+		ArrayList<Student>  latestStudent=(ArrayList<Student>) studentService.findLatestStudentInfo(flag, position, item_per_page);
+		
+		request.setAttribute("item", student);
+	    request.setAttribute("latestItem", latestStudent);
+	    request.setAttribute("url", url);
+	    return "home/details/trendsDetails";
+	}
+	
+   @RequestMapping("/teacher")
+   public String teacher(int id,String flag,HttpServletRequest request){
+	   String url="teacher";
+		//浏览量+1
+		teacherService.addViewCount(id);
+		//根据id获取详细信息
+		Teacher teacher=(Teacher)teacherService.findTeacherInfoById(id);
+		
+		//获取最近更新
+		ArrayList<Teacher>  latestTeacher=(ArrayList<Teacher>) teacherService.findLatestTeacherInfo(flag, position, item_per_page);
+		
+		request.setAttribute("item", teacher);
+	    request.setAttribute("latestItem", latestTeacher);
+	    request.setAttribute("url", url);
+	    return "home/details/trendsDetails";
+	    
+   }
 }

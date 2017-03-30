@@ -21,7 +21,7 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 	@Override
 	public String findTeacherTypeNameByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return null;
+		return typeFlagToTypeNameDao.findTeacherTypeNameByTypeFlag(flag);
 	}
 
 	@Override
@@ -40,6 +40,12 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 	public String findEducationTypeNameByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
 		return typeFlagToTypeNameDao.findEducationTypeNameByTypeFlag(flag);
+	}
+
+	@Override
+	public String findStudentTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeNameDao.findStudentTypeNameByTypeFlag(flag);
 	}
 
 }

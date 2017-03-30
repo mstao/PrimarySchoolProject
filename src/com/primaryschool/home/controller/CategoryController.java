@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITrendsService;
 
 /**
@@ -33,6 +35,9 @@ public class CategoryController {
 	
 	@Autowired
 	private IEducationService<Education> educationService;
+	
+	@Autowired
+	private IStudentService<Student>  studentService;
 	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	@RequestMapping("/trends")
@@ -97,4 +102,32 @@ public class CategoryController {
 		return "home/category/education";
 	}
 	
+	
+	@RequestMapping("/student")
+	public String student(ModelMap map){
+		
+		String bookFlag="book";
+		String activityFlag="activity";
+		String labFlag="lab";
+		
+		//获取沐浴书香
+		ArrayList<Student> book=(ArrayList<Student>)studentService.findStudentInfo(bookFlag, 0, pageSize);
+		
+		//获取活动风彩
+		ArrayList<Student> activity=(ArrayList<Student>)studentService.findStudentInfo(activityFlag, 0, pageSize);
+		
+		//获取综合实验课
+		
+		ArrayList<Student> lab=(ArrayList<Student>)studentService.findStudentInfo(activityFlag, 0, pageSize);
+		
+		map.put("bookFlag", bookFlag);
+		map.put("activityFlag", activityFlag);
+		map.put("labFlag", labFlag);
+		
+		map.put("book", book);
+		map.put("activity", activity);
+		map.put("lab", lab);
+		
+		return "home/category/student";
+	}
 }

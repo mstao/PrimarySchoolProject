@@ -41,8 +41,8 @@
                  
                  <li><a href="${pageContext.request.contextPath}/category/trends">校园动态</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="校园动态/news_list.html">校内新闻</a></li>
-							<li><a href="校园动态/notice_list.html">通知公告</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/trends?flag=news&p=1">校内新闻</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/trends?flag=notice&p=1">通知公告</a></li>
 					</ul>
                  </li>
                  
@@ -59,12 +59,12 @@
 					</ul>
                  </li>
                  
-                 <li><a href="学生天地/学生天地.html">学生天地</a>
+                 <li><a href="${pageContext.request.contextPath}/category/student">学生天地</a>
                  	<ul class="dropdown-menu follow">
-                 		    <li><a href="#">沐浴书香</a></li>
-							<li><a href="#">活动风采</a></li>
+                 		    <li><a href="${pageContext.request.contextPath}/list/student?flag=book&p=1">沐浴书香</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/student?flag=activity&p=1">活动风采</a></li>
 							<li><a href="#">班级主页</a></li>
-							<li><a href="#">综合实验课</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/student?flag=lab&p=1">综合实验课</a></li>
 							
 					</ul>
                  </li>

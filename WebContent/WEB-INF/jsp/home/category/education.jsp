@@ -77,7 +77,7 @@
 				<div class="top-left-bottom"><b>主题教育</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${education}" var="education_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${education_list.itemTitle}</a><span>[${education_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}"> ${education_list.itemTitle}</a><span>[${education_list.addTime}]</span></li>
 				   </c:forEach>
 				</ul>
 				<c:if test="${empty education}">
@@ -92,7 +92,7 @@
 				<div class="top-left-bottom"><b>国旗下讲话</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${speak}" var="speak_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${speak_list.itemTitle}</a><span>[${speak_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${speak_list.id}&flag=${speakFlag}"> ${speak_list.itemTitle}</a><span>[${speak_list.addTime}]</span></li>
 				   </c:forEach>
 				</ul>
 				<c:if test="${empty speak}">
@@ -105,7 +105,7 @@
 				<div class="top-left-bottom"><b>少先队活动</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${active}" var="active_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${active_list.itemTitle}</a><span>[${active_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${active_list.id}&flag=${activeFlag}"> ${active_list.itemTitle}</a><span>[${active_list.addTime}]</span></li>
 				   </c:forEach>
 				</ul>
 				
@@ -118,7 +118,7 @@
 				<div class="top-left-bottom"><b>家长委员会</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				  <c:forEach items="${parents}" var="parents_list">
-					<li><img src="${CTP_PATH}/img/sjiantou.png"/><a href="#"> ${parents_list.itemTitle}</a><span>[${parents_list.addTime}]</span></li>
+					<li><img src="${CTP_PATH}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${parents_list.id}&flag=${parentsFlag}"> ${parents_list.itemTitle}</a><span>[${parents_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				<c:if test="${empty parents}">
@@ -131,7 +131,7 @@
 				<ul>
 				
 				  <c:forEach items="${stagent}" var="stagent_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> ${stagent_list.itemTitle}</a><span>[${stagent_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${stagent_list.id}&flag=${stagentFlag}"> ${stagent_list.itemTitle}</a><span>[${stagent_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				
@@ -156,7 +156,7 @@
 </html>
 <script type="text/javascript">
 	$(function(){
-		 //新闻轮播
+		 //轮播
 	    $(".slider-news").YuxiSlider({
 			width:420, //容器宽度
 			height:300, //容器高度

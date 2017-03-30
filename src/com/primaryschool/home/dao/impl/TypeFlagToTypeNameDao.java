@@ -9,6 +9,7 @@ import com.primaryschool.home.dao.ITypeFlagToTypeNameDao;
 import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
 import com.primaryschool.home.entity.PartyType;
+import com.primaryschool.home.entity.StudentType;
 import com.primaryschool.home.entity.TeacherType;
 import com.primaryschool.home.entity.TrendsType;
 
@@ -72,6 +73,18 @@ public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
 		query.setString(0, flag);
 		
 		EducationType tt=(EducationType)query.uniqueResult();
+		return tt.getItemTypeName();
+	}
+	
+	
+	@Override
+	public String findStudentTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from StudentType  tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		StudentType tt=(StudentType)query.uniqueResult();
 		return tt.getItemTypeName();
 	}
 	

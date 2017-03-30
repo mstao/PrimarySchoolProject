@@ -99,7 +99,7 @@
 					<div class="point"><b></b></div>
 					
 					<div class="liright">
-						<div class="histt"><a href="${CTP}/details/trends?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+						<div class="histt"><a href="${CTP}/details/${url}?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
 						<div class="hisct">${latestItem.itemContent}</div>
 					</div>
 				</div>

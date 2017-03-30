@@ -200,7 +200,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           	<ul>
 						        
 						      <c:forEach items="${student}" var="student_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${student_list.itemTitle}</a><span class="pub-data sub-time">[${student_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${student_list.id}&flag=${studentFlag}">${student_list.itemTitle}</a><span class="pub-data sub-time">[${student_list.addTime}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>

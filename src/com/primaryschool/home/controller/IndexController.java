@@ -111,7 +111,7 @@ public class IndexController {
 		request.setAttribute("newsFlag", newsFlag);
 		request.setAttribute("noticeFlag", noticeFlag);
 		request.setAttribute("educationFlag", educationFlag);
-		
+		request.setAttribute("studentFlag", studentFlag);
 		return "home/index";
 	}
 	
