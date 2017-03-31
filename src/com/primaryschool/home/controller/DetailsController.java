@@ -110,7 +110,7 @@ public class DetailsController{
 	
    @RequestMapping("/teacher")
    public String teacher(int id,String flag,HttpServletRequest request){
-	   String url="teacher";
+	    String url="teacher";
 		//浏览量+1
 		teacherService.addViewCount(id);
 		//根据id获取详细信息
@@ -124,5 +124,22 @@ public class DetailsController{
 	    request.setAttribute("url", url);
 	    return "home/details/trendsDetails";
 	    
+   }
+   
+   @RequestMapping("/party")
+   public String party(int id,String flag,HttpServletRequest request){
+	    String url="party";
+		//浏览量+1
+		partyService.addViewCount(id);
+		//根据id获取详细信息
+		Party party=(Party)partyService.findPartyInfoById(id);
+		
+		//获取最近更新
+		ArrayList<Party>  latestParty=(ArrayList<Party>) partyService.findLatestPartyInfo(flag, position, item_per_page);
+		
+		request.setAttribute("item", party);
+	    request.setAttribute("latestItem", latestParty);
+	    request.setAttribute("url", url);
+	    return "home/details/trendsDetails";
    }
 }

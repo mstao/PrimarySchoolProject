@@ -33,7 +33,7 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 	@Override
 	public String findPartyTypeNameByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return null;
+		return typeFlagToTypeNameDao.findPartyTypeNameByTypeFlag(flag);
 	}
 
 	@Override

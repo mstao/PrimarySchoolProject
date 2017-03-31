@@ -22,9 +22,33 @@ public class PartyService<T> implements IPartyService<T>{
 	}
 
 	@Override
-	public List<T> findPartyInfoById(int id) {
+	public T findPartyInfoById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		return partyDao.findPartyInfoById(id);
+	}
+
+	@Override
+	public boolean addViewCount(int id) {
+		// TODO Auto-generated method stub
+		return partyDao.addViewCount(id);
+	}
+
+	@Override
+	public List<T> findLatestPartyInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return partyDao.findPartyInfo(flag, position, item_per_page);
+	}
+
+	@Override
+	public int findPartyCount(String flag) {
+		// TODO Auto-generated method stub
+		return partyDao.findPartyCount(flag);
+	}
+
+	@Override
+	public List<T> findHotPartyInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return partyDao.findHotPartyInfo(flag, position, item_per_page);
 	}
 
 }

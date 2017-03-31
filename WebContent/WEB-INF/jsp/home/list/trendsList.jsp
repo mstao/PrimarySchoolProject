@@ -29,7 +29,7 @@
 				<div class="list-content">
 					<ul>
 					  <c:forEach items="${item}" var="trends_list">
-						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/trends?id=${trends_list.id}&flag=${typeFlag}">${trends_list.itemTitle}</a></li>
+						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/${durl}?id=${trends_list.id}&flag=${typeFlag}">${trends_list.itemTitle}</a></li>
 					  </c:forEach>
 					</ul>
 				</div>
@@ -47,7 +47,7 @@
 				<c:forEach items="${hotItem}" var="hotTrends">
 					<div class="hot-content">
 						<div class="hot-content-sum"><img src="${CTP_HOME}/img/time.png" /><span>${hotTrends.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${CTP_HOME}/img/look.png" /><span>${hotTrends.viewCount}</span></div>
-						<span class="hot-news-detail"><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${typeFlag}">${hotTrends.itemTitle}</a></span>
+						<span class="hot-news-detail"><a href="${CTP}/details/${durl}?id=${hotTrends.id}&flag=${typeFlag}">${hotTrends.itemTitle}</a></span>
 					</div>
 				</c:forEach>
 			</div>

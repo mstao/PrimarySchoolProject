@@ -23,9 +23,9 @@ public class TeacherService<T> implements ITeacherService<T>{
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findTeacherInfoById(int id) {
+	public T findTeacherInfoById(int id) {
 		// TODO Auto-generated method stub
-		return (List<T>)teacherDao.findTeacherInfoById(id);
+		return (T)teacherDao.findTeacherInfoById(id);
 	}
 
 	@Override

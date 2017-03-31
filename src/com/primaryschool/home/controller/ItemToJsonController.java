@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.alibaba.fastjson.JSON;
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
 
@@ -39,6 +41,10 @@ public class ItemToJsonController {
      
     @Autowired
     private ITeacherService<Teacher>  teacherService;
+    
+    @Autowired
+    private IPartyService<Party>  partyService;
+    
     int position=0;
 	int item_per_page=PageSizeConfig.HOME_INDEX_PAGESIZE;
 	
@@ -91,6 +97,7 @@ public class ItemToJsonController {
 		}
 	}
 	
+	@RequestMapping("/teacher")
 	public void TeacherToJson(String  flag,HttpServletResponse response){
 	    response.setCharacterEncoding("UTF-8");  
 		
@@ -101,6 +108,32 @@ public class ItemToJsonController {
 		ArrayList<Teacher>  teacher=(ArrayList<Teacher>)teacherService.findTeacherInfo(flag, position, item_per_page);
         //调用fastjson生成json信息
 		String json = JSON.toJSONString(teacher, true);
+		System.out.println(json);
+		response.setContentType("application/json");
+		try {
+			out=response.getWriter();
+			out.write(json);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+	}
+	
+	
+	@RequestMapping("/party")
+	public void PartyToJson(String  flag,HttpServletResponse response){
+		response.setCharacterEncoding("UTF-8");  
+			
+		PrintWriter out=null;
+		
+		System.out.println(flag);
+		//根据类型获取信息
+		ArrayList<Party>  party=(ArrayList<Party>)partyService.findPartyInfo(flag, position, item_per_page);
+        //调用fastjson生成json信息
+		String json = JSON.toJSONString(party, true);
 		System.out.println(json);
 		response.setContentType("application/json");
 		try {

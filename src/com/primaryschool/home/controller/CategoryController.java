@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
+import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
+import com.primaryschool.home.service.ITeacherService;
 import com.primaryschool.home.service.ITrendsService;
 
 /**
@@ -39,7 +43,15 @@ public class CategoryController {
 	@Autowired
 	private IStudentService<Student>  studentService;
 	
+	@Autowired
+	private ITeacherService<Teacher>  teacherService;
+	
+	@Autowired
+	private IPartyService<Party>  partyService;
+	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
+	
+	
 	@RequestMapping("/trends")
 	public String trends(ModelMap model){
 		
@@ -130,4 +142,63 @@ public class CategoryController {
 		
 		return "home/category/student";
 	}
+	
+	@RequestMapping("/teacher")
+	public String  teacher(ModelMap map){
+		String resourcesFlag="resources";
+		String teachersFlag="teachers";
+		String trainFlag="train";
+		String prizeFlag="prize";
+		
+		//获取教学资源
+		ArrayList<Teacher> resources=(ArrayList<Teacher>)teacherService.findTeacherInfo(resourcesFlag, 0, pageSize);
+		
+		//获取教师风采
+		ArrayList<Teacher> teachers=(ArrayList<Teacher>)teacherService.findTeacherInfo(teachersFlag, 0, pageSize);
+		
+		//获取教师培训
+		ArrayList<Teacher> train=(ArrayList<Teacher>)teacherService.findTeacherInfo(trainFlag, 0, pageSize);
+				
+		//获取获奖登记
+		ArrayList<Teacher> prize=(ArrayList<Teacher>)teacherService.findTeacherInfo(prizeFlag, 0, pageSize);
+						
+		
+		map.put("resourcesFlag", resourcesFlag);
+		map.put("teachersFlag", teachersFlag);
+		map.put("trainFlag", trainFlag);
+		map.put("prizeFlag", prizeFlag);
+		
+		map.put("resources", resources);
+		map.put("teachers", teachers);
+		map.put("train", train);
+		map.put("prize", prize);
+		
+		return "home/category/teacher";
+	}
+	
+	@RequestMapping("/party")
+	public String party(ModelMap map){
+		String branchFlag="branch";
+		String tradeUnionFlag="trade_union";
+		
+		//获取热门
+		ArrayList<Party>  hotBranch=(ArrayList<Party>) partyService.findHotPartyInfo(branchFlag, 0, pageSize);
+		
+		//获取支部活动
+		ArrayList<Party>  branch=(ArrayList<Party>) partyService.findPartyInfo(branchFlag, 0, pageSize);
+		
+		//获取工会活动
+		ArrayList<Party>  tradeUnion=(ArrayList<Party>) partyService.findPartyInfo(tradeUnionFlag, 0, pageSize);
+	
+	    map.put("branchFlag", branchFlag);
+	    map.put("tradeUnionFlag", tradeUnionFlag);
+	    
+	    map.put("hotBranch", hotBranch);
+	    map.put("branch", branch);
+	    map.put("tradeUnion",tradeUnion);
+	    
+	    return "home/category/party";
+	}
+	
+	
 }

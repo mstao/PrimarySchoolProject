@@ -55,7 +55,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 			
 			<!--S 校园动态-->
 			<div class="content-div campus-trends">
-				<div class="trends-top campus-trends-top"><img src="${CTP_HOME}/img/dongtai.png"/> <span class="tag-ch">校园动态</span><span class="tag-en">Trends and Activities</span> <a class="link-tag" href="#">进入>></a></div>
+				<div class="trends-top campus-trends-top"><img src="${CTP_HOME}/img/dongtai.png"/> <span class="tag-ch">校园动态</span><span class="tag-en">Trends and Activities</span> <a class="link-tag" href="${CTP}/category/trends">进入>></a></div>
 			    
 			     <!--S 校园动态内容-->
 			     <div class="campus-nav-tag"><span class="news-tag">校内新闻</span><span class="jiantou"><img src="${CTP_HOME}/img/jiantou.png"/></span> <span class="notice-tag">通知公告</span><span class="jiantou-notice"><img src="${CTP_HOME}/img/jiantou.png"/></span> </div>
@@ -108,7 +108,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 			<!--S 阳光德育-->
 			<div class="even-bg sunshine-bg">
 			<div class="content-div sunshine">
-				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/sun.png"/> <span class="tag-ch">阳光德育</span><span class="tag-en">Sunshine moral education</span> <a class="link-tag" href="${CTP}/list/education?">进入>></a></div>
+				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/sun.png"/> <span class="tag-ch">阳光德育</span><span class="tag-en">Sunshine moral education</span> <a class="link-tag" href="${CTP}/category/education">进入>></a></div>
 			  
 			    	 <!--S 轮播图-->
 					<div class="slider-sunshine">
@@ -169,7 +169,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 		
 		<!--S 学生天地-->
 		<div class="student-site">
-			<div class="trends-top student-trends-top"><img src="${CTP_HOME}/img/stu-site.png"/> <span class="tag-ch">学生天地</span><span class="tag-en">The world of students</span> <a class="link-tag" href="#">进入>></a></div>
+			<div class="trends-top student-trends-top"><img src="${CTP_HOME}/img/stu-site.png"/> <span class="tag-ch">学生天地</span><span class="tag-en">The world of students</span> <a class="link-tag" href="${CTP}/category/student">进入>></a></div>
 		
 					<!--S 轮播图-->
 					<div class="slider-sunshine">
@@ -207,30 +207,14 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				         </dd>
 				         <dd class="tp" >
 				           <div>
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
-				             
 				           </div>
 				         </dd>
 				         <dd class="tp">
 				              <div >
-				             <p>标签三</p>
-				             <p>标签三</p>
-				             
 				           </div>       
 				         </dd>
 				         <dd class="tp">
 				           <div >
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
 				           </div>
 				         </dd>
 				         
@@ -248,7 +232,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 		
 			<div class="even-bg teacher-bg">
 			<div class="content-div sunshine">
-				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/teacher.png"/> <span class="tag-ch">教师园地</span><span class="tag-en">The teachers' corner</span> <a class="link-tag" href="#">进入>></a></div>
+				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/teacher.png"/> <span class="tag-ch">教师园地</span><span class="tag-en">The teachers' corner</span> <a class="link-tag" href="${CTP}/category/teacher">进入>></a></div>
 			  
 			    	 <!--S 轮播图-->
 					<div class="slider-sunshine">
@@ -278,7 +262,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           <div>
 				           	<ul>
 						       <c:forEach items="${teacher}" var ="teacher_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${teacher_list.itemTitle}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${teacher_list.id}&flag=${teacherFlag}">${teacher_list.itemTitle}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
 							   </c:forEach>
 							</ul>
 				           </div>
@@ -408,23 +392,16 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           <div>
 				           	<ul>
 						      <c:forEach items="${party}" var="party_list"> 
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${party_list.itemTitle}</a><span class="pub-data sub-time">[${party_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}">${party_list.itemTitle}</a><span class="pub-data sub-time">[${party_list.addTime}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>
 				         </dd>
 				         <dd class="tp" >
 				           <div>
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
-				             
 				           </div>
 				         </dd>
-				         
+				         </dl>
 				  </div>
 				</div>
 			    <!--tab-->
