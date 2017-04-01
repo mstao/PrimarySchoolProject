@@ -1,6 +1,5 @@
 package com.primaryschool.home.service.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.primaryschool.global.util.PageHelper;

@@ -12,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
@@ -48,6 +50,9 @@ public class CategoryController {
 	
 	@Autowired
 	private IPartyService<Party>  partyService;
+	
+	@Autowired
+	private IManageService<Manage> manageService;
 	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	
@@ -200,5 +205,39 @@ public class CategoryController {
 	    return "home/category/party";
 	}
 	
+	
+	@RequestMapping("/manage")
+	public String manage(ModelMap map){
+		
+		String departmentFlag="department";
+		String recommendationFlag="recommendation";
+		String noticeFlag="notice";
+		String rulesFlag="rules";
+		
+		//获取部门链接
+		ArrayList<Manage>  department=(ArrayList<Manage>) manageService.findManageInfo(departmentFlag, 0, pageSize);
+	
+	    //获取评职评优
+		ArrayList<Manage>  recommendation=(ArrayList<Manage>) manageService.findManageInfo(recommendationFlag, 0, pageSize);
+	
+	    //获取教师会议
+		ArrayList<Manage>  notice=(ArrayList<Manage>) manageService.findManageInfo(noticeFlag, 0, pageSize);
+		
+		//获取规章制度
+		
+		ArrayList<Manage>  rules=(ArrayList<Manage>) manageService.findManageInfo(rulesFlag, 0, pageSize);
+	
+	    map.put("departmentFlag", departmentFlag);
+	    map.put("recommendationFlag",recommendationFlag);
+	    map.put("noticeFlag", noticeFlag);
+	    map.put("rulesFlag", rulesFlag);
+	    
+	    map.put("department", department);
+	    map.put("recommendation", recommendation);
+	    map.put("notice", notice);
+	    map.put("rules", rules);
+	    
+	    return "home/category/manage";
+	}
 	
 }

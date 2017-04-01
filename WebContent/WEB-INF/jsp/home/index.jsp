@@ -325,37 +325,22 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           <div>
 				           	<ul>
 						      <c:forEach items="${manage}" var="manage_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">${manage_list.itemTitle}</a><span class="pub-data sub-time">[${manage_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${manage_list.id}&flag=${manageFlag}">${manage_list.itemTitle}</a><span class="pub-data sub-time">[${manage_list.addTime}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>
 				         </dd>
 				         <dd class="tp" >
-				           <div>
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
-				             
+				           <div>				             
 				           </div>
 				         </dd>
 				         <dd class="tp">
 				              <div >
-				             <p>标签三</p>
-				             <p>标签三</p>
-				             
+
 				           </div>       
 				         </dd>
 				         <dd class="tp">
 				           <div >
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
 				           </div>
 				         </dd>
 				         <dd class="tp">

@@ -142,4 +142,22 @@ public class DetailsController{
 	    request.setAttribute("url", url);
 	    return "home/details/trendsDetails";
    }
+   
+   @RequestMapping("/manage")
+   public String manage(int id,String flag,HttpServletRequest request){
+	   
+	    String url="manage";
+		//浏览量+1
+		manageService.addViewCount(id);
+		//根据id获取详细信息
+		Manage manage=(Manage)manageService.findManageInfoById(id);
+		
+		//获取最近更新
+		ArrayList<Manage>  latestManage=(ArrayList<Manage>) manageService.findLatestManageInfo(flag, position, item_per_page);
+		
+		request.setAttribute("item", manage);
+	    request.setAttribute("latestItem", latestManage);
+	    request.setAttribute("url", url);
+	    return "home/details/trendsDetails";
+   }
 }

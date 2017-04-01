@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
@@ -39,6 +41,10 @@ public class ListController {
     
     @Autowired
     private IPartyService<Party> partyService;
+    
+    @Autowired
+    
+    private IManageService<Manage> manageService;
     
     @Autowired
 	private IPageHelperService pageHelperService;
@@ -242,6 +248,43 @@ public class ListController {
         request.setAttribute("typeFlag", flag);
         request.setAttribute("item", party);
         request.setAttribute("hotItem", hotParty);
+        
+        return "home/list/trendsList";
+	}
+	
+	@RequestMapping("/manage")
+	public String manage(String flag, int p ,HttpServletRequest request){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//查看详细信息url
+		String durl="manage";
+		
+		//当前的url
+		String url="./list/manage?flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=manageService.findManageCount(flag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		
+		//根据偏移量获取数据
+		ArrayList<Manage>  manage=(ArrayList<Manage>) manageService.findManageInfo(flag, position,item_pre_page );
+	   	
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+        
+        //根据typeFlag获取typeName
+        String typeName=typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
+        
+      
+        
+        request.setAttribute("durl", durl);
+        request.setAttribute("toolBar", toolBar);
+        request.setAttribute("typeName", typeName);
+        request.setAttribute("typeFlag", flag);
+        request.setAttribute("item", manage);
         
         return "home/list/trendsList";
 	}
