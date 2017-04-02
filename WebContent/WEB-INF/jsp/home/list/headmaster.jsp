@@ -27,46 +27,18 @@
 				<div class="list-navi  headmaster-navi"><span>校长信箱<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
 				<div class="list-content headmaster-content">
 					
-						
+				 <c:forEach items="${headMasterInfo}" var="headMasterInfo">
 					<div  class="headmaster-info">
-					<img alt="" src="${CTP_HOME}/img/h.jpg">
+					<img alt="" src="${headMasterInfo.avatar}">
 					<div class="headmaster-info-right">
-				     <div><span>职务:</span><span>校长1</span></div>	
-				     <div><span>姓名:</span><span>xxxxxx</span></div>
-				     <div><span>具体工作:</span><span>xxxxxx笑嘻嘻的微软微软笑嘻嘻的微软微软</span></div>
-				     <div><a href="mailto:499445428@qq.com" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
+				     <div><span>职务:</span><span>${headMasterInfo.postName}</span></div>	
+				     <div><span>姓名:</span><span>${headMasterInfo.name}</span></div>
+				     <div><span>具体工作:</span><span>${headMasterInfo.work}</span></div>
+				     <div><a href="mailto:${headMasterInfo.email}" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
 					</div>
 					</div>
+				</c:forEach>
 					
-					<div  class="headmaster-info">
-					<img alt="" src="${CTP_HOME}/img/h.jpg">
-					<div class="headmaster-info-right">
-				     <div><span>职务:</span><span>校长2</span></div>	
-				     <div><span>姓名:</span><span>xxxxxx</span></div>
-				     <div><span>具体工作:</span><span>xxxxxx笑嘻嘻的微软微软笑嘻嘻的微软微软笑嘻嘻的微软</span></div>
-				     <div><a href="mailto:499445428@qq.com" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
-					</div>
-					</div>
-					
-					<div  class="headmaster-info">
-					<img alt="" src="${CTP_HOME}/img/h.jpg">
-					<div class="headmaster-info-right">
-				     <div><span>职务:</span><span>校长3</span></div>	
-				     <div><span>姓名:</span><span>xxxxxx</span></div>
-				     <div><span>具体工作:</span><span>xxxxxx笑嘻嘻的微软微软笑嘻嘻的微软微软笑嘻嘻的微软微软笑嘻嘻的</span></div>
-				     <div><a href="mailto:499445428@qq.com" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
-					</div>
-					</div>
-					
-					<div  class="headmaster-info">
-					<img alt="" src="${CTP_HOME}/img/h.jpg">
-					<div class="headmaster-info-right">
-				     <div><span>职务:</span><span>校长4</span></div>	
-				     <div><span>姓名:</span><span>xxxxxx</span></div>
-				     <div><span>具体工作:</span><span>xxxxxx笑嘻嘻的微软微软</span></div>
-				     <div><a href="mailto:499445428@qq.com" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
-					</div>
-					</div>
 				</div>
 				
 				

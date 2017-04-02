@@ -11,12 +11,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
@@ -54,6 +56,8 @@ public class CategoryController {
 	@Autowired
 	private IManageService<Manage> manageService;
 	
+	@Autowired
+	private ICultureService<Culture> cultureService;
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	
 	
@@ -240,4 +244,27 @@ public class CategoryController {
 	    return "home/category/manage";
 	}
 	
+	
+	@RequestMapping("/culture")
+	public String culture(ModelMap map){
+		String introduceFlag="introduce";
+		String affairsFlag="affairs";
+		
+		//获取学校介绍
+		ArrayList<Culture> introduce=(ArrayList<Culture>) cultureService.findCultureInfo(introduceFlag,  0, pageSize);
+		
+		//获取校务公开
+		ArrayList<Culture> affairs=(ArrayList<Culture>) cultureService.findCultureInfo(affairsFlag,  0, pageSize);
+		
+		//获取热门
+		ArrayList<Culture> hot=(ArrayList<Culture>) cultureService.findHotCultureInfo(introduceFlag, 0, pageSize);
+		
+		map.put("introduceFlag", introduceFlag);
+		map.put("affairsFlag", affairsFlag);
+		
+		map.put("introduce", introduce);
+		map.put("affairs", affairs);
+		map.put("hot", hot);
+		return "home/category/culture";
+	}
 }

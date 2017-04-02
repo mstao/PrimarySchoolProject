@@ -31,10 +31,10 @@
 			    	
 				<ul class="menu-show">
 					
-                 <li><a href="学校文化/学校简介.html">学校文化</a>
+                 <li><a href="${pageContext.request.contextPath}/category/culture">学校文化</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="#">学校简介</a></li>
-							<li><a href="#">校务公开</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/culture?flag=introduce">学校简介</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/culture?flag=affairs">校务公开</a></li>
 							<li><a href="#">校园风光</a></li>
 					</ul>
                  </li>

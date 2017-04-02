@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -28,9 +29,7 @@ public class HeadMaster {
 	@Column(name="headmaster_name")
 	private String name;
 	
-	@Column(name="headmaster_post")
-	private String post;
-	
+
 	@Column(name="headmaster_work")
 	private String work;
 
@@ -39,8 +38,23 @@ public class HeadMaster {
 	
 	@Column(name="headmaster_avatar")
 	private String avatar;
+    
+	@Column(name="post_id")
+	private String postId;
 
-
+	@Transient
+	private String postName;
+	
+	public HeadMaster(){}
+	public HeadMaster(int id,String name,String work,String email,String avatar,String postName){
+		super();
+		this.id=id;
+		this.name=name;
+		this.work=work;
+		this.email=email;
+		this.avatar=avatar;
+		this.postName=postName;
+	}
 	
 	public int getId() {
 		return id;
@@ -58,13 +72,6 @@ public class HeadMaster {
 		this.name = name;
 	}
 
-	public String getPost() {
-		return post;
-	}
-
-	public void setPost(String post) {
-		this.post = post;
-	}
 
 	public String getWork() {
 		return work;
@@ -90,12 +97,25 @@ public class HeadMaster {
 		this.avatar = avatar;
 	}
 
-	@Override
-	public String toString() {
-		return "HeadMaster [id=" + id + ", name=" + name + ", post=" + post + ", work=" + work + ", email=" + email
-				+ ", avatar=" + avatar + "]";
+	
+	
+	public String getPostId() {
+		return postId;
 	}
+
+	public void setPostId(String postId) {
+		this.postId = postId;
+	}
+
 	
-	
+	public String getPostName() {
+		return postName;
+	}
+
+	public void setPostName(String postName) {
+		this.postName = postName;
+	}
+
+
 	
 }

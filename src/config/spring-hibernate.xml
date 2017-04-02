@@ -44,6 +44,7 @@
 		    	<prop key="hibernate.hbm2ddl.auto">update</prop>
 		    	<prop key="hibernate.fetch_size">50</prop>
 		    	<prop key="hibernate.batch_size">50</prop>
+		    	<prop key="current_session_context_class">thread</prop>
 	    	</props>
 	    </property>
 	</bean>
@@ -53,13 +54,13 @@
         <property name="sessionFactory" ref="sessionFactory"/>  
     </bean>  
     
-    <!--   配置事务拦截器-->
-	<bean id="transactionInterceptor"
+   <!--   配置事务拦截器-->
+	 <!--<bean id="transactionInterceptor"
 	      class="org.springframework.transaction.interceptor.TransactionInterceptor">
-	    <!--   事务拦截器bean需要依赖注入一个事务管理器 -->
+	      事务拦截器bean需要依赖注入一个事务管理器
 	    <property name="transactionManager" ref="transactionManager"/>
 	    <property name="transactionAttributes">
-	        <!--   下面定义事务传播属性-->
+	          下面定义事务传播属性
 	        <props>
 	            <prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
@@ -71,23 +72,23 @@
 	    </property>
 	</bean>
     
-    <!-- 自动创建事务代理  -->
+    自动创建事务代理 
 	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-	    <!-- 指定对满足哪些bean name的bean自动生成业务代理  -->
+	    指定对满足哪些bean name的bean自动生成业务代理 
 	    <property name="beanNames">
-	        <!-- 下面是所有需要自动创建事务代理的bean -->
+	        下面是所有需要自动创建事务代理的bean
 	        <list>
 	            <value>*Dao</value>
 	            <value>*Service</value>
 	           
 	        </list>
 	    </property>
-	    <!-- 下面定义BeanNameAutoProxyCreator所需的事务拦截器 -->
+	    下面定义BeanNameAutoProxyCreator所需的事务拦截器
 	    <property name="interceptorNames">
 	        <list>
 	            <value>transactionInterceptor</value>
 	        </list>
 	    </property>
 	</bean>
-    
+     -->
 </beans>

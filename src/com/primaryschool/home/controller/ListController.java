@@ -7,16 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.HeadMaster;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IHeadMasterInfoService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.IPartyService;
@@ -47,11 +50,16 @@ public class ListController {
     
     private IManageService<Manage> manageService;
     
+    
+    @Autowired
+    private IHeadMasterInfoService<HeadMaster> headMasterService;
+    
     @Autowired
 	private IPageHelperService pageHelperService;
     
 	@Autowired
 	private ITypeFlagToTypeNameService typeFlagToTypeNameService;
+	
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -300,8 +308,11 @@ public class ListController {
 	* @throws
 	 */
 	@RequestMapping("/headmaster-email")
-	public String heademaster(){
+	public String heademaster(ModelMap map){
 		
+		//获取校长的信息
+		ArrayList<HeadMaster>  headMasterInfo=(ArrayList<HeadMaster>) headMasterService.findHeadMasterInfo();
+		map.put("headMasterInfo",  headMasterInfo);
 		
 		return "/home/list/headmaster";
 	}

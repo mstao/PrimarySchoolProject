@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
+import com.primaryschool.home.entity.CultureType;
 import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
 import com.primaryschool.home.entity.PartyType;
@@ -107,6 +108,17 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 		query.setString(0, flag);	//?设值
 		
 		PartyType tt=(PartyType)query.uniqueResult();
+		return tt.getId();
+	}
+
+	@Override
+	public int findCultureTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from CultureType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		CultureType tt=(CultureType)query.uniqueResult();
 		return tt.getId();
 	}
 

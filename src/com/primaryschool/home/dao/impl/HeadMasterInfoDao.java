@@ -25,9 +25,8 @@ public class HeadMasterInfoDao<T> implements IHeadMasterInoDao<T> {
 	@Override
 	public List<T> findHeadMasterInfo() {
 		// TODO Auto-generated method stub
-		String hql=" from Manage m where m.typeId=? and m.isPublish=1 order by m.addTime desc";
+		String hql="select new com.primaryschool.home.entity.HeadMaster(hm.id,hm.name,hm.work,hm.email,hm.avatar,hmp.postName) from HeadMaster hm,HeadMasterPost hmp where hm.postId=hmp.id order by hm.postId asc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-
 		return query.list();
 	}
 

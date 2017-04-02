@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
@@ -35,6 +37,9 @@ import com.primaryschool.home.service.ITrendsService;
 @RequestMapping("/details")
 public class DetailsController{
 
+	@Autowired
+	private ICultureService<Culture> cultureService;
+	
 	@Autowired  
 	private ITrendsService<Trends> trendsService;
 	
@@ -159,5 +164,22 @@ public class DetailsController{
 	    request.setAttribute("latestItem", latestManage);
 	    request.setAttribute("url", url);
 	    return "home/details/trendsDetails";
+   }
+   
+   @RequestMapping("/culture")
+   public String culture(int id,String flag,HttpServletRequest request){
+	    String url="culture";
+		//浏览量+1
+		cultureService.addViewCount(id);
+		//根据id获取详细信息
+		Culture culture=(Culture)cultureService.findCultureInfoById(id);
+		
+		//获取最近更新
+		ArrayList<Culture>  latestCulture=(ArrayList<Culture>) cultureService.findLatestCultureInfo(flag, position, item_per_page);
+		
+		request.setAttribute("item", culture);
+	    request.setAttribute("latestItem", latestCulture);
+	    request.setAttribute("url", url);
+	   return "home/details/trendsDetails";
    }
 }
