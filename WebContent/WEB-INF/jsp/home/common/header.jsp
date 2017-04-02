@@ -86,14 +86,14 @@
 					</ul>
                  </li>
                  
-                  <li><a href="学校管理/学校管理.html">学校管理</a>
+                  <li><a href="${pageContext.request.contextPath}/category/manage">学校管理</a>
                  	<ul class="dropdown-menu follow">
 							
-	                        <li><a href="#">部门链接</a></li>
-	                        <li><a href="#">评职评优</a></li>
-	                        <li><a href="#">教师会议</a></li>
-	                        <li><a href="#">规章制度</a></li>
-	                        <li><a href="#">校长信箱</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=department&p=1">部门链接</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=recommendation&p=1">评职评优</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=notice&p=1">教师会议</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=rules&p=1">规章制度</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/list/headmaster-email">校长信箱</a></li>
 					</ul>
                  </li>
                  

@@ -27,7 +27,7 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 	@Override
 	public String findManageTypeNameByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return null;
+		return typeFlagToTypeNameDao.findManageTypeNameByTypeFlag(flag);
 	}
 
 	@Override

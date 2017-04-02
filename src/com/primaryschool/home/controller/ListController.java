@@ -1,6 +1,7 @@
 package com.primaryschool.home.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -278,14 +279,30 @@ public class ListController {
         //根据typeFlag获取typeName
         String typeName=typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
         
-      
+        //获取热点信息
+        List<Manage> hotManage= (List<Manage> ) manageService.findHotManageInfo(flag,  0, PageSizeConfig.HOME_HOT_PAGESIZE);
         
         request.setAttribute("durl", durl);
         request.setAttribute("toolBar", toolBar);
         request.setAttribute("typeName", typeName);
         request.setAttribute("typeFlag", flag);
         request.setAttribute("item", manage);
-        
+        request.setAttribute("hotItem", hotManage);
         return "home/list/trendsList";
+	}
+	
+	/**
+	 * 
+	* @Title: heademaster
+	* @Description: TODO   映射到校长信箱
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/headmaster-email")
+	public String heademaster(){
+		
+		
+		return "/home/list/headmaster";
 	}
 }
