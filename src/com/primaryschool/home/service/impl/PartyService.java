@@ -4,13 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.primaryschool.home.dao.IPartyDao;
 import com.primaryschool.home.service.IPartyService;
 
 @Service
-@Transactional
 public class PartyService<T> implements IPartyService<T>{
     @Autowired 
     private IPartyDao<T> partyDao;

@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.primaryschool.home.dao.ITrendsDao;
 
@@ -14,7 +13,6 @@ import com.primaryschool.home.service.ITrendsService;
 
 
 @Service
-@Transactional
 public class TrendsService<T> implements  ITrendsService<T>{
 	private  Logger logger = LoggerFactory.getLogger(this.getClass());
     

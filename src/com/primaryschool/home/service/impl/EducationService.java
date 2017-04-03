@@ -4,13 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.primaryschool.home.dao.IEducationDao;
 import com.primaryschool.home.service.IEducationService;
 
 @Service
-@Transactional
 public class EducationService<T> implements IEducationService<T> {
 
 	@Autowired 

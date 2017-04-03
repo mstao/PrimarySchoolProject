@@ -9,21 +9,24 @@
 	
 	
 	<!-- 导入外部文件 -->
-   <!--  <context:property-placeholder location="classpath*:config/db.properties"/> -->
+    <context:property-placeholder location="classpath:config/db.properties"/> 
+   
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		   <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
-			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/school"></property>
-			<property name="user" value="root"></property>
-			<property name="password" value="123"></property>
+		   <property name="driverClass" value="${jdbc.driverclass}"></property>
+			<property name="jdbcUrl" value="${jdbc.url}"></property>
+			<property name="user" value="${jdbc.username}"></property>
+			<property name="password" value="${jdbc.password}"></property>
 	        <!-- 指定数据库连接池的最大连接数 -->
-	        <property name="maxPoolSize" value="100"/>
+	        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
 	        <!-- 指定数据库连接池的最小连接数 -->
-	        <property name="minPoolSize" value="40"/>
+	        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
 	        <!--指定数据库连接池的初始化连接参数  -->
-	        <property name="initialPoolSize" value="40"/>
+	        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"/>
 	        <!--指定数据库连接池的连接的最大的空闲时间  -->
-	        <property name="maxIdleTime" value="20"/>
+	        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"/>
+	        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+			<property name="acquireIncrement" value="${c3p0.acquireIncrement}" />
 	</bean>
 	
 	<!--定义了Hibernate的SessionFactory  -->
@@ -55,12 +58,12 @@
     </bean>  
     
    <!--   配置事务拦截器-->
-	 <!--<bean id="transactionInterceptor"
+	 <bean id="transactionInterceptor"
 	      class="org.springframework.transaction.interceptor.TransactionInterceptor">
-	      事务拦截器bean需要依赖注入一个事务管理器
+	      <!-- 事务拦截器bean需要依赖注入一个事务管理器 -->
 	    <property name="transactionManager" ref="transactionManager"/>
 	    <property name="transactionAttributes">
-	          下面定义事务传播属性
+	          <!-- 下面定义事务传播属性 -->
 	        <props>
 	            <prop key="save*">PROPAGATION_REQUIRED,-Exception</prop>
 				<prop key="update*">PROPAGATION_REQUIRED,-Exception</prop>
@@ -72,23 +75,23 @@
 	    </property>
 	</bean>
     
-    自动创建事务代理 
+    <!-- 自动创建事务代理  -->
 	<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
-	    指定对满足哪些bean name的bean自动生成业务代理 
+	   <!--  指定对满足哪些bean name的bean自动生成业务代理 --> 
 	    <property name="beanNames">
-	        下面是所有需要自动创建事务代理的bean
+	        <!-- 下面是所有需要自动创建事务代理的bean -->
 	        <list>
 	            <value>*Dao</value>
 	            <value>*Service</value>
 	           
 	        </list>
 	    </property>
-	    下面定义BeanNameAutoProxyCreator所需的事务拦截器
+	    <!-- 下面定义BeanNameAutoProxyCreator所需的事务拦截器 -->
 	    <property name="interceptorNames">
 	        <list>
 	            <value>transactionInterceptor</value>
 	        </list>
 	    </property>
 	</bean>
-     -->
+    
 </beans>

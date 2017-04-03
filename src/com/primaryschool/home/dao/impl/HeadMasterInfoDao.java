@@ -5,8 +5,9 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import com.primaryschool.home.dao.IHeadMasterInoDao;
+import com.primaryschool.home.dao.IHeadMasterInfoDao;
 
 /**
  * 
@@ -16,7 +17,8 @@ import com.primaryschool.home.dao.IHeadMasterInoDao;
 * @date 2017年4月1日 上午9:33:58
 *
  */
-public class HeadMasterInfoDao<T> implements IHeadMasterInoDao<T> {
+@Repository
+public class HeadMasterInfoDao<T> implements IHeadMasterInfoDao<T> {
 
 	@Autowired
 	private SessionFactory sessionFactory;

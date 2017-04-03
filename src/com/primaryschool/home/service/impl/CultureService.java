@@ -4,13 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.primaryschool.home.dao.ICultureDao;
 import com.primaryschool.home.service.ICultureService;
 
 @Service
-@Transactional
 public class CultureService<T> implements ICultureService<T> {
     
 	@Autowired

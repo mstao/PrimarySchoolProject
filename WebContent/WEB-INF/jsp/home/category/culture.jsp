@@ -37,9 +37,9 @@
 <div class="top-left">
 	<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 	<ul>
-		<li><a href="#">学校简介</a></li>
-		<li><a href="#">校务公开</a></li>
-		<li><a href="#">校园风光</a></li>
+		<li><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">学校简介</a></li>
+		<li><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">校务公开</a></li>
+		<li><a href="${CTP}/list/imglist">校园风光</a></li>
 	</ul>
 </div>
 <!--作息表-->
@@ -71,19 +71,21 @@
 </div>
 <!--热门排行-->
 <div class="float-div right">
-	<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+	<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">更多>></a></span></div>
 	<ul>
 	  <c:forEach items="${hot}" var="introduce_list">
 		<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/culture?id=${introduce_list.id}&flag=${introduceFlag}"> ${introduce_list.itemTitle}</a><span>[${introduce_list.addTime}]</span></li>
 	  </c:forEach>
 	</ul>
-	
+	<c:if test="${empty hot}">
+	<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
+	</c:if>
 </div>
 
          <div class="clear"></div>
-<!--校内新闻-->
+<!---->
 	<div class="float-div">
-		<div class="top-left-bottom"><b>学校简介</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>学校简介</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">更多>></a></span></div>
 		<ul>
 		
 			 <c:forEach items="${introduce}" var="introduce_list">
@@ -91,15 +93,21 @@
 			 </c:forEach>
 			
 		</ul>
+		<c:if test="${empty introduce}">
+		<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
+		</c:if>
 	</div>
 	
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>校务公开</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>校务公开</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${affairs}" var="affairs_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/culture?id=${affairs_list.id}&flag=${affairsFlag}"> ${affairs_list.itemTitle}</a><span>[${affairs_list.addTime}]</span></li>
 		  </c:forEach>
 		</ul>
+		<c:if test="${empty affairs}">
+		<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
+		</c:if>
 	</div>
 	
       </div>

@@ -48,4 +48,10 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 		return typeFlagToTypeNameDao.findStudentTypeNameByTypeFlag(flag);
 	}
 
+	@Override
+	public String findCultureTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeNameDao.findCultureTypeNameByTypeFlag(flag);
+	}
+
 }

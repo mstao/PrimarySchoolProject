@@ -1,7 +1,10 @@
 package com.primaryschool.home.service;
 
 public interface ITypeFlagToTypeNameService {
-    String findTrendsTypeNameByTypeFlag(String flag);
+    
+	String findCultureTypeNameByTypeFlag(String flag);
+	
+	String findTrendsTypeNameByTypeFlag(String flag);
 	
     String findEducationTypeNameByTypeFlag(String flag);
     
