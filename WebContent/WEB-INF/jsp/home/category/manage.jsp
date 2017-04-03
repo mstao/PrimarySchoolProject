@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>学校管理</title>
+<title>${SCHOOL_MANAGE}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/alldetails.css"/>
@@ -25,10 +25,10 @@
 <%--S 主体 --%>
 <div class="content-wrapper">
 	<img src="${CTP_HOME}/img/school-f.jpg" />
-	<span>学校管理</span>
+	<span>${SCHOOL_MANAGE}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">学校管理</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_MANAGE}</a></span>
 </div>
 <div class="content-bottom">
 
@@ -36,13 +36,13 @@
 	<div class="top-contaner-left">	
 	<!-- 校园动态-->
 	<div class="top-left">
-		<div class="top-left-bottom"><b>学校管理</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+		<div class="top-left-bottom"><b>${SCHOOL_MANAGE}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 		<ul>
-			<li><a href="#">部门链接</a></li>
-			<li><a href="#">评职评优</a></li>
-			<li><a href="#">教师会议</a></li>
-			<li><a href="#">规章制度</a></li>
-			<li><a href="#">校长信箱</a></li>
+			 <li><a href="${pageContext.request.contextPath}/list/manage?flag=department&p=1">${SCHOOL_MANAGE_DEPARTMENT}</a></li>
+             <li><a href="${pageContext.request.contextPath}/list/manage?flag=recommendation&p=1">${SCHOOL_MANAGE_RECOMMENDATION}</a></li>
+             <li><a href="${pageContext.request.contextPath}/list/manage?flag=notice&p=1">${SCHOOL_MANAGE_NOTICE}</a></li>
+             <li><a href="${pageContext.request.contextPath}/list/manage?flag=rules&p=1">${SCHOOL_MANAGE_RULES}</a></li>
+             <li><a href="${pageContext.request.contextPath}/list/headmaster-email">${SCHOOL_MANAGE_EMAIL}</a></li>
 		</ul>
 	</div>
 	<!--作息表-->
@@ -74,7 +74,7 @@
 	</div>
 	<!---->
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>部门链接</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_DEPARTMENT}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${department}" var="department_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${department_list.id}&flag=${departmentFlag}"> ${department_list.itemTitle}</a><span>[${department_list.addTime}]</span></li>
@@ -88,7 +88,7 @@
           <div class="clear"></div>
 	<!--校内新闻-->
 	<div class="float-div">
-		<div class="top-left-bottom"><b>评职评优</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_RECOMMENDATION}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		 <c:forEach items="${recommendation}" var="recommendation_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${recommendation_list.id}&flag=${recommendationFlag}"> ${recommendation_list.itemTitle}</a><span>[recommendation_list.addTime]</span></li>
@@ -100,7 +100,7 @@
 	</div>
 	
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>教师会议</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_NOTICE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${notice}" var="notice_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${notice_list.id}&flag=${noticeFlag}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>
@@ -114,7 +114,7 @@
 	</div>
 	<div class="clear"></div>
 	<div class="float-div ">
-		<div class="top-left-bottom"><b>规章制度</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_RULES}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${rules}" var="rules_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${rules_list.id}&flag=${rulesFlag}"> ${rules_list.itemTitle}</a><span>[${rules_list.addTime}]</span></li>
@@ -126,7 +126,7 @@
 		
 	</div>
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>校长信箱</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_EMAIL}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
 			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>

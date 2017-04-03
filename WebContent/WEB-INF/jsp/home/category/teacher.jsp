@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>教师园地</title>
+<title>${SCHOOL_TEACHER}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/alldetails.css"/>
@@ -26,10 +26,10 @@
 		
 <div class="content-wrapper">
 	<img src="${CTP_HOME}/img/school-f.jpg" />
-	<span>教师园地</span>
+	<span>${SCHOOL_TEACHER}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">教师园地</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_TEACHER}</a></span>
 </div>
 <div class="content-bottom">
 
@@ -37,12 +37,12 @@
 	<div class="top-contaner-left">	
 	<!-- 校园动态-->
 <div class="top-left">
-	<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+	<div class="top-left-bottom"><b>${SCHOOL_TEACHER}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 	<ul>
-		<li><a href="#">教学资源</a></li>
-		<li><a href="#">教师风采</a></li>
-		<li><a href="#">教师培训</a></li>
-		<li><a href="#">获奖登记</a></li>
+		<li><a href="${pageContext.request.contextPath}/list/teacher?flag=resources&p=1">${SCHOOL_TEACHER_RESOURCES}</a></li>
+        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=teachers&p=1">${SCHOOL_TEACHER_TEACHERS}</a></li>
+        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=train&p=1">${SCHOOL_TEACHER_TRAIN}</a></li>
+        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=prize&p=1">${SCHOOL_TEACHER_PRIZE}</a></li>
 	</ul>
 </div>
 <!--作息表-->
@@ -74,7 +74,7 @@
 </div>
 <!--热门排行-->
 <div class="float-div right">
-	<div class="top-left-bottom"><b>教学资源</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+	<div class="top-left-bottom"><b>${SCHOOL_TEACHER_RESOURCES}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
 	<ul>
 	  <c:forEach items="${resources}" var="resources_list">
 		<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${resources_list.id}&flag=${resourcesFlag}"> ${resources_list.itemTitle}</a><span>[${resources_list.addTime}]</span></li>
@@ -88,7 +88,7 @@
          <div class="clear"></div>
 <!---->
 	<div class="float-div">
-		<div class="top-left-bottom"><b>教师风采</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_TEACHERS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${teachers}" var="teachers_list"> 
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${teachers_list.id}&flag=${teachersFlag}"> ${teachers_list.itemTitle}</a><span>[${teachers_list.addTime}]</span></li>
@@ -100,7 +100,7 @@
 	</div>
 	
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>教师培训</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_TRAIN}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${train}" var="train_list"> 
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${train_list.id}&flag=${trainFlag}"> ${train_list.itemTitle}</a><span>[${train_list.addTime}]</span></li>
@@ -112,7 +112,7 @@
 	</div>
 	<div class="clear"></div>
 	<div class="float-div ">
-		<div class="top-left-bottom"><b>获奖登记</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_PRIZE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		
 		   <c:forEach items="${prize}" var="prize_list">

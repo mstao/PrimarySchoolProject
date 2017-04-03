@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
@@ -268,14 +268,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           </div>
 				         </dd>
 				         <dd class="tp" >
-				           <div>
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
-				             
+				           <div>				             
 				           </div>
 				         </dd>
 				         <dd class="tp">
@@ -286,13 +279,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           </div>       
 				         </dd>
 				         <dd class="tp">
-				           <div >
-				             <ul>
-						
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-							</ul>
+				           <div>
 				           </div>
 				         </dd>
 				         

@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>${SCHOOL_CULTURE}</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <title>Insert title here</title>
@@ -25,21 +25,21 @@
 <%--S 主体 --%>
 <div class="content-wrapper">
 	<img src="${CTP_HOME}/img/school-f.jpg" />
-	<span>学校文化</span>
+	<span>${SCHOOL_CULTURE}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">学校文化</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_CULTURE}</a></span>
 </div>
 <div class="content-bottom">
 	
 	<div class="top-contaner-left">	
 	<!-- 校园动态-->
 <div class="top-left">
-	<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+	<div class="top-left-bottom"><b>${SCHOOL_CULTURE}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 	<ul>
-		<li><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">学校简介</a></li>
-		<li><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">校务公开</a></li>
-		<li><a href="${CTP}/list/imglist">校园风光</a></li>
+		<li><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">${SCHOOL_CULTURE_INTRODUCE}</a></li>
+		<li><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">${SCHOOL_CULTURE_AFFAIRS}</a></li>
+		<li><a href="${CTP}/list/imglist">${SCHOOL_CULTURE_SIGHT}</a></li>
 	</ul>
 </div>
 <!--作息表-->
@@ -85,7 +85,7 @@
          <div class="clear"></div>
 <!---->
 	<div class="float-div">
-		<div class="top-left-bottom"><b>学校简介</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_CULTURE_INTRODUCE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">更多>></a></span></div>
 		<ul>
 		
 			 <c:forEach items="${introduce}" var="introduce_list">
@@ -99,7 +99,7 @@
 	</div>
 	
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>校务公开</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_CULTURE_AFFAIRS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${affairs}" var="affairs_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/culture?id=${affairs_list.id}&flag=${affairsFlag}"> ${affairs_list.itemTitle}</a><span>[${affairs_list.addTime}]</span></li>

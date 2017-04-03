@@ -362,8 +362,15 @@ public class ListController {
         return "home/list/trendsList";
 	}
 	
+	//校园风光
 	@RequestMapping("/imglist")
 	public  String imglist(ModelMap map){
 		return "/home/list/imageList";
+	}
+	
+	//班级列表
+	@RequestMapping("/class")
+	public String classList(ModelMap map){
+		return "/home/list/classList";
 	}
 }

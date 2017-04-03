@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>SpringMVC2</display-name>
+  <display-name>PrimarySchoolProject</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,27 +10,34 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
- <!-- 加载log4j的配置文件 -->
-	 <context-param>
+ 	<!-- 加载log4j的配置文件 -->
+	<context-param>
 	  <param-name>log4jConfigLocation</param-name>
 	  <param-value>classpath:config/log4j.properties</param-value>
-	 </context-param>
+	</context-param>
 	
 	 <!--Spring默认刷新Log4j配置文件的间隔,单位为millisecond-->
-	 <context-param>
+	<context-param>
 	  <param-name>log4jRefreshInterval</param-name>
 	  <param-value>60000</param-value>
-	 </context-param>
-	
-	 <!--Spring用于log4j初始化的监听器-->
-	 <listener>
+	</context-param>
+	 
+	<!-- 加载网站配置文件 -->
+	<servlet>
+	    <servlet-name>ReadWebConfig</servlet-name>
+	    <servlet-class>com.primaryschool.home.read.ReadWebConfig</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+	<!--Spring用于log4j初始化的监听器-->
+	<listener>
 	  <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-	 </listener>
+	</listener>
 	 
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	    <!-- 加载Spring的配置文件 -->  
+	<!-- 加载Spring的配置文件 -->  
     <context-param>  
         <param-name>contextConfigLocation</param-name>  
         <param-value>  
@@ -104,23 +111,23 @@
   		<url-pattern>/*</url-pattern>
  	 </filter-mapping>
 
-<!-- 解决乱码 -->
-<filter>
-  <filter-name>encodingFilter</filter-name>
-  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-  <init-param>
-   <param-name>encoding</param-name>
-   <param-value>UTF-8</param-value>
-  </init-param>
-  <init-param>
-   <param-name>forceEncoding</param-name>
-   <param-value>true</param-value>
-  </init-param>
- </filter>
- <filter-mapping>
-  <filter-name>encodingFilter</filter-name>
-  <url-pattern>/*</url-pattern>
- </filter-mapping> 
+    <!-- 解决乱码 -->
+	<filter>
+	  <filter-name>encodingFilter</filter-name>
+	  <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+	  <init-param>
+	   <param-name>encoding</param-name>
+	   <param-value>UTF-8</param-value>
+	  </init-param>
+	  <init-param>
+	   <param-name>forceEncoding</param-name>
+	   <param-value>true</param-value>
+	  </init-param>
+	</filter>
+	<filter-mapping>
+	  <filter-name>encodingFilter</filter-name>
+	  <url-pattern>/*</url-pattern>
+	</filter-mapping> 
 
 
 </web-app>

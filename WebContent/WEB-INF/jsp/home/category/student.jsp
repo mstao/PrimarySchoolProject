@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>学生天地</title>
+<title>${SCHOOL_STUDENT}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/alldetails.css"/>
@@ -25,10 +25,10 @@
 <%--S 主体 --%>
 <div class="content-wrapper">
 	<img src="${CTP_HOME}/img/school-f.jpg" />
-	<span>学生天地</span>
+	<span>${SCHOOL_STUDENT}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">学生天地</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_STUDENT}</a></span>
 </div>
 <div class="content-bottom">
 
@@ -36,12 +36,12 @@
 	<div class="top-contaner-left">	
 	<!-- 校园动态-->
 	<div class="top-left">
-		<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+		<div class="top-left-bottom"><b>${SCHOOL_STUDENT}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 		<ul>
-			<li><a href="#">沐浴书香</a></li>
-			<li><a href="#">活动风采</a></li>
-			<li><a href="#">班级主页</a></li>
-			<li><a href="#">综合实验课</a></li>
+			 <li><a href="${pageContext.request.contextPath}/list/student?flag=book&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
+			 <li><a href="${pageContext.request.contextPath}/list/student?flag=activity&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
+			 <li><a href="${pageContext.request.contextPath}/list/class">${SCHOLL_STUDENT_CLASS}</a></li>
+			 <li><a href="${pageContext.request.contextPath}/list/student?flag=lab&p=1">${SCHOOL_STUDENT_LAB}</a></li>
 		
 		</ul>
 	</div>
@@ -74,7 +74,7 @@
 	</div>
 	<!--热门排行-->
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>沐浴书香</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_STUDENT_BOOK}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
 		<ul>
 		
 		  <c:forEach items="${book}" var="book_list">
@@ -89,7 +89,7 @@
           <div class="clear"></div>
 	<!--活动风采-->
 	<div class="float-div">
-		<div class="top-left-bottom"><b>活动风采</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_STUDENT_ACTIVITY}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach  items="${activity}" var="activity_list">
 			<li><img src="${CTP}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${activity_list.id}&flag=${activityFlag}"> ${activity_list.itemTitle}</a><span>[${activity_list.addTime}]</span></li>
@@ -101,7 +101,7 @@
 	</div>
 	
 	<div class="float-div right">
-		<div class="top-left-bottom"><b>综合实验课</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+		<div class="top-left-bottom"><b>${SCHOOL_STUDENT_LAB}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 		<ul>
 		  <c:forEach items="${lab}" var="lab_list">
 			<li><img src="${CTP}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${lab_list.id}&flag=${labFlag}"> ${lab_list.itemTitle}</a><span>[${lab_list.addTime}]</span></li>

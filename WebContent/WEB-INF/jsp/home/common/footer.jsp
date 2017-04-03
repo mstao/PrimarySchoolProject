@@ -17,9 +17,9 @@
 			  	   <div class="center-con">
 			  	   	
 							<img src="${pageContext.request.contextPath}/resources/home/img/logo.png" width="100"  height="100" class="school-logo"/>
-							<span class="school-name">华中师范大学附属郑州高新区万科城小学</span>
-							<span class="copyright">Copyright&copy;2017 www.xxxx.com .All Rights Reserved</span>
-							<span class="ad">地址:郑州高新技术开发区xxx&nbsp;邮编:450000</span>
+							<span class="school-name">${WEBSITE_NAME}</span>
+							<span class="copyright">Copyright&copy;${WEB_CURRENT_YEAR} www.xxxx.com .All Rights Reserved</span>
+							<span class="ad">地址:${SCHOOL_ADDRESS}&nbsp;邮编:${SCHOOL_POSTCODE}</span>
 			  	   </div>
 			  	   </center>
 			  	   <div class="reight-con"></div>

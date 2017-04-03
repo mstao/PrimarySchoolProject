@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>校园动态</title>
+<title>${SCHOOL_TRENDS}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/alldetails.css"/>
@@ -24,20 +24,20 @@
 
 		<div class="content-wrapper">
 			<img src="${CTP_HOME}/img/school-f.jpg" />
-			<span>校园动态</span>
+			<span>${SCHOOL_TRENDS}</span>
 		</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">校园动态</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_TRENDS}</a></span>
 		</div>
 		<div class="content-bottom">
 			
 	      <div class="top-contaner-left">	
 			<!-- 校园动态-->
 			<div class="top-left">
-				<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+				<div class="top-left-bottom"><b>${SCHOOL_TRENDS}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 				<ul>
-					<li><a href="#">校内新闻</a></li>
-					<li><a href="#">通知公告</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/trends?flag=news&p=1">${SCHOOL_TRENDS_NEWS}</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/trends?flag=notice&p=1">${SCHOOL_TRENDS_NOTICE}</a></li>
 					
 				</ul>
 			</div>
@@ -85,7 +85,7 @@
             <div class="clear"></div>
 			<!--校内新闻-->
 			<div class="float-div">
-				<div class="top-left-bottom"><b>校内新闻</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NEWS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				  <c:forEach items="${news}" var="news_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}"> ${news_list.itemTitle}</a><span>[${news_list.addTime}]</span></li>
@@ -97,7 +97,7 @@
 			</div>
 			
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>通知公告</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NOTICE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				  <c:forEach items="${notice}" var="notice_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${notice_list.id}&flag=${noticeFlag}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>

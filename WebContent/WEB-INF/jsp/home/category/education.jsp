@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>Insert title here</title>
+<title>${SCHOOL_EDUCATION}</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/alldetails.css"/>
@@ -25,10 +25,10 @@
 		
 		<div class="content-wrapper">
 			<img src="${CTP_HOME}/img/school-f.jpg" />
-			<span>阳光德育</span>
+			<span>${SCHOOL_EDUCATION}</span>
 		</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">阳光德育</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_EDUCATION}</a></span>
 		</div>
 		<div class="content-bottom">
 		
@@ -36,13 +36,13 @@
 			<div class="top-contaner-left">	
 			<!-- 校园动态-->
 			<div class="top-left">
-				<div class="top-left-bottom"><b>校园动态</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+				<div class="top-left-bottom"><b>${SCHOOL_EDUCATION}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 				<ul>
-					<li><a href="#">主题教育</a></li>
-					<li><a href="#">国旗下讲话</a></li>
-					<li><a href="#">少先队活动</a></li>
-					<li><a href="#">家长委员会</a></li>
-					<li><a href="#">心灵驿站</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/education?flag=education&p=1">${SCHOOL_EDUCATION_MAIN}</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/education?flag=speak&p=1">${SCHOOL_EDUCATION_SPEAK}</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/education?flag=active&p=1">${SCHOOL_EDUCATION_ACTIVE}</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/education?flag=parents&p=1">${SCHOOL_EDUCATION_PARENTS}</a></li>
+					<li><a href="${pageContext.request.contextPath}/list/education?flag=stagent&p=1">${SCHOOL_EDUACTION_STAGENT}</a></li>
 				</ul>
 			</div>
 			<!--作息表-->
@@ -74,7 +74,7 @@
 			</div>
 			<!--热门排行-->
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>主题教育</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_EDUCATION_MAIN}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${education}" var="education_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}"> ${education_list.itemTitle}</a><span>[${education_list.addTime}]</span></li>
@@ -89,7 +89,7 @@
             <div class="clear"></div>
 			<!--校内新闻-->
 			<div class="float-div">
-				<div class="top-left-bottom"><b>国旗下讲话</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_EDUCATION_SPEAK}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${speak}" var="speak_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${speak_list.id}&flag=${speakFlag}"> ${speak_list.itemTitle}</a><span>[${speak_list.addTime}]</span></li>
@@ -102,7 +102,7 @@
 			</div>
 			
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>少先队活动</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_EDUCATION_ACTIVE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${active}" var="active_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${active_list.id}&flag=${activeFlag}"> ${active_list.itemTitle}</a><span>[${active_list.addTime}]</span></li>
@@ -115,7 +115,7 @@
 			</div>
 			<div class="clear"></div>
 			<div class="float-div ">
-				<div class="top-left-bottom"><b>家长委员会</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_EDUCATION_PARENTS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				  <c:forEach items="${parents}" var="parents_list">
 					<li><img src="${CTP_PATH}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${parents_list.id}&flag=${parentsFlag}"> ${parents_list.itemTitle}</a><span>[${parents_list.addTime}]</span></li>
@@ -127,7 +127,7 @@
 				
 			</div>
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>心灵驿站</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${SCHOOL_EDUACTION_STAGENT}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
 				
 				  <c:forEach items="${stagent}" var="stagent_list">
