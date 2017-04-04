@@ -29,9 +29,9 @@
                    
         <li><a href="">班级风采</a></li>
                    
-        <li><a href="news.aspx?hy_id=691&big_id=379">班级相册</a></li>
+        <li><a href="">班级相册</a></li>
                    
-        <li><a href="news.aspx?hy_id=691&big_id=380">班级动态</a></li>
+        <li><a href="">班级动态</a></li>
                  
     </ul>
 </div>
@@ -45,8 +45,8 @@
 					<div class="slider-news">
 					<ul>
 				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
+						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
+					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
 				   	
 					</ul>
 				    </div>
@@ -61,7 +61,7 @@
                 <span><a href="">更多>></a></span>
             </div>
             <div id="bjjianjieM">
-            	<img src="img/bg1.jpg" />
+            	<img src="${CTP_HOME}/img/bg1.jpg" />
                 <span id="Lab_about">暂无内容</span>
             </div>
             <div id="bjjianjieB"></div>
@@ -73,7 +73,7 @@
             <!--班级动态-->
             <div id="banjidt">
                 <div id="banjidtT" class="navi">
-                	<div><img src="img/class-dongtai.png"/><span>班级动态</span></div>
+                	<div><img src="${CTP_HOME}/img/class-dongtai.png"/><span>班级动态</span></div>
                 	<span><a href="#">更多>></a></span>
                 </div>
                 <div class="banjidtM">
@@ -86,8 +86,8 @@
             <!--学生文章-->
             <div id="xswenzhang">
                 <div id="xswenzhangT" class="navi">
-                	<div><img src="img/wenzhang.png" /><span>学生文章</span></div>
-                	<span><a href="news.aspx?hy_id=691&big_id=381">更多>></a></span>
+                	<div><img src="${CTP_HOME}/img/wenzhang.png" /><span>学生文章</span></div>
+                	<span><a href="">更多>></a></span>
                 </div>
                 <div class="xswenzhangM">
                     <ul>
@@ -100,7 +100,7 @@
         <!--班级相册-->
         <div id="banjixc">
         	<div id="banjixcT">
-            	<div><img src="img/green.png"/> <span>成长故事</span></div>
+            	<div><img src="${CTP_HOME}/img/green.png"/> <span>成长故事</span></div>
                 <span><a href="#">更多>></a></span>
             </div>
             <div id="banjixcM">
@@ -115,13 +115,13 @@
     <!--班级风采-->
     <div id="banjifcDiv">
     	<div id="banjifcDivT">
-        	<div><img src="img/fengcai.png"/><span>班级风采</span></div>
+        	<div><img src="${CTP_HOME}/img/fengcai.png"/><span>班级风采</span></div>
             <span><a href="">更多>></a></span>
         </div>
         <div id="banjifcDivM">
         	<div id="banjifcDivMul">
-            	<a href=""><img src="img/bg1.jpg"  title="ddddd"/><span></span></a>
-                <a href=""><img src="img/bg1.jpg"  title="ddddd"/><span></span></a>
+            	<a href=""><img src="${CTP_HOME}/img/bg1.jpg"  title="ddddd"/><span></span></a>
+                <a href=""><img src="${CTP_HOME}/img/bg1.jpg"  title="ddddd"/><span></span></a>
         	</div>
         </div>
         <div id="banjifcDivB"></div>
