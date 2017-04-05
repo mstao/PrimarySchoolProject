@@ -371,6 +371,8 @@ public class ListController {
 	//班级列表
 	@RequestMapping("/class")
 	public String classList(ModelMap map){
+		
+		
 		return "/home/list/classList";
 	}
 }
