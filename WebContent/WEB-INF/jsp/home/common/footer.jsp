@@ -9,7 +9,7 @@
 			  	   			<li><a href="#">加入收藏</a></li>
 			  	   			<li><a href="#">联系我们</a></li>
 			  	   			<li><a href="#">版权声明</a></li>
-			  	   			<li><a href="#">登录后台</a></li>
+			  	   			<li><a href="${pageContext.request.contextPath}/admin/loginRegister/showTeaLogin">登录后台</a></li>
 			  	   			
 			  	   		</ul>
 			  	   </div>

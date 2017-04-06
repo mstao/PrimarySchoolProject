@@ -27,11 +27,11 @@
 	<span>班级主页</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">班级主页</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOLL_STUDENT_CLASS}</a></span>
 </div>
 
 <div class="content">
-	<div class="trends-top"><img src="${CTP_HOME}/img/class2.png"/> <span class="tag-ch">班级主页</span> </div>
+	<div class="trends-top"><img src="${CTP_HOME}/img/class2.png"/> <span class="tag-ch">${SCHOLL_STUDENT_CLASS}</span> </div>
     
     <!--S CONETNT-->
     <div class="class-content">

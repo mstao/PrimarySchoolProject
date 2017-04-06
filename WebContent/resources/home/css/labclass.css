@@ -1,0 +1,83 @@
+@CHARSET "UTF-8";
+.content-wrapper{
+	
+	margin:0 auto;
+	width:1170px;
+	height: 200px;
+	position: relative;
+}
+.content-wrapper span{
+	background-color: #006269;
+	color: white;
+	font-size:30px;
+	height: 50px;
+	min-width:128px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 5px;
+	left:0;
+	bottom:0;
+	position:absolute;
+}
+/*位置导航*/
+.content-location{
+	margin:30px auto;
+	width:1170px;
+}
+.content-location a{
+	color:#444444;
+	text-decoration: none;
+}
+.content-location span{
+	color:#444444;
+	bottom: 10px;
+	position: relative;
+}
+.content-location span a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+
+.trends-top{
+	border-bottom: 1px dashed #CCCCCC;
+	padding-bottom: 5px;
+	
+}
+.trends-top img{
+	position: relative;
+	top:5px;
+}
+.trends-top .tag-ch{
+	color:#006372;
+	font-size: 27px;
+	margin-left: 5px;
+}
+.content{
+	width:1170px;
+	margin:0  auto;
+}
+.content .labclass-list{
+	margin-top:20px;
+	
+	width:400px;
+}
+.content .labclass-list > span{
+	display:inline-block;
+	margin-top:20px;
+}
+.content .labclass-list > span:not(even){
+	margin-left:30px;
+}
+.content .labclass-list > span >a{
+	color:#666666;
+	text-decoration:none;
+    font-size:17px;
+}
+.content .labclass-list > span >a:hover{
+	color:#EE9621;
+	text-decoration: underline;
+}
+.content .labclass-list > span > img{
+	position: relative;
+	top:4px;
+}

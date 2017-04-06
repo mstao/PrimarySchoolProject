@@ -17,11 +17,13 @@ import com.primaryschool.home.entity.HeadMaster;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
+import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IHeadMasterInfoService;
+import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.IPartyService;
@@ -29,6 +31,7 @@ import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
 import com.primaryschool.home.service.ITrendsService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
+import com.primaryschool.home.service.impl.LabClassService;
 
 @Controller
 @RequestMapping("/list")
@@ -66,6 +69,8 @@ public class ListController {
 	@Autowired
 	private ITypeFlagToTypeNameService typeFlagToTypeNameService;
 	
+	@Autowired
+	private ILabClassService<StudentLab> labClassService;
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -320,7 +325,7 @@ public class ListController {
 		ArrayList<HeadMaster>  headMasterInfo=(ArrayList<HeadMaster>) headMasterService.findHeadMasterInfo();
 		map.put("headMasterInfo",  headMasterInfo);
 		
-		return "/home/list/headmaster";
+		return "home/list/headmaster";
 	}
 	
 	
@@ -365,7 +370,7 @@ public class ListController {
 	//校园风光
 	@RequestMapping("/imglist")
 	public  String imglist(ModelMap map){
-		return "/home/list/imageList";
+		return "home/list/imageList";
 	}
 	
 	//班级列表
@@ -373,6 +378,19 @@ public class ListController {
 	public String classList(ModelMap map){
 		
 		
-		return "/home/list/classList";
+		return "home/list/classList";
 	}
+	
+	//综合实验课列表
+	@RequestMapping("/labclass")
+	public String labClassList(ModelMap map){
+		
+		List<StudentLab> labClass=labClassService.findLabClassListInfo();
+		
+		map.put("labClass", labClass);
+		
+		return "home/list/labClassList";
+	}
+	
+	
 }

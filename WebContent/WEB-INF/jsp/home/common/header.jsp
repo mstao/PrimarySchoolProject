@@ -6,7 +6,7 @@
 		   <div class="header-top-bg">
 				<div class="header-top" >
 					
-						<a href="#">成绩查询</a>|<a href="">课表查询</a>|<a href="#">在线报名</a>
+						<a href="#">成绩查询</a>|<a href="">课表查询</a>|<a href="${pageContext.request.contextPath}/admin/loginRegister/showStuLogin">在线报名</a>
 						<div class="search">
 						   <input type="text" name="" class="searchinput" placeholder="输入搜索关键词">
 					    </div>
@@ -50,11 +50,11 @@
                  
                  <li><a href="${pageContext.request.contextPath}/category/education">${SCHOOL_EDUCATION}</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/list/education?flag=education&p=1">${SCHOOL_EDUCATION_MAIN}</a></li>
-							<li><a href="${pageContext.request.contextPath}/list/education?flag=speak&p=1">${SCHOOL_EDUCATION_SPEAK}</a></li>
-							<li><a href="${pageContext.request.contextPath}/list/education?flag=active&p=1">${SCHOOL_EDUCATION_ACTIVE}</a></li>
-							<li><a href="${pageContext.request.contextPath}/list/education?flag=parents&p=1">${SCHOOL_EDUCATION_PARENTS}</a></li>
-							<li><a href="${pageContext.request.contextPath}/list/education?flag=stagent&p=1">${SCHOOL_EDUACTION_STAGENT}</a></li>
+							<li><a href="#">${SCHOOL_EDUCATION_MAIN}</a></li>
+							<li><a href="#">${SCHOOL_EDUCATION_SPEAK}</a></li>
+							<li><a href="#">${SCHOOL_EDUCATION_ACTIVE}</a></li>
+							<li><a href="#">${SCHOOL_EDUCATION_PARENTS}</a></li>
+							<li><a href="#">${SCHOOL_EDUACTION_STAGENT}</a></li>
 							
 					</ul>
                  </li>
@@ -64,7 +64,7 @@
                  		    <li><a href="${pageContext.request.contextPath}/list/student?flag=book&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
 							<li><a href="${pageContext.request.contextPath}/list/student?flag=activity&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
 							<li><a href="${pageContext.request.contextPath}/list/class">${SCHOLL_STUDENT_CLASS}</a></li>
-							<li><a href="${pageContext.request.contextPath}/list/student?flag=lab&p=1">${SCHOOL_STUDENT_LAB}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/labclass">${SCHOOL_STUDENT_LAB}</a></li>
 							
 					</ul>
                  </li>
@@ -74,7 +74,7 @@
 							<li><a href="${pageContext.request.contextPath}/list/teacher?flag=resources&p=1">${SCHOOL_TEACHER_RESOURCES}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=teachers&p=1">${SCHOOL_TEACHER_TEACHERS}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=train&p=1">${SCHOOL_TEACHER_TRAIN}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=prize&p=1">${SCHOOL_TEACHER_PRIZE}</a></li>
+	                        <li><a href="#">${SCHOOL_TEACHER_PRIZE}</a></li>
 					</ul>
                  </li>
                  
