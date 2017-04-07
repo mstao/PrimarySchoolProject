@@ -24,4 +24,6 @@ public interface ITypeFlagToTypeNameDao {
 	String findManageTypeNameByTypeFlag(String flag);
 	
 	String findPartyTypeNameByTypeFlag(String flag);
+	
+	String findLabClassTypeNameByTypeFlag(String flag);
 }

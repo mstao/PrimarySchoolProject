@@ -24,20 +24,21 @@
 
 		<div class="content-wrapper">
 			<img src="${CTP_HOME}/img/school-f.jpg" />
-			<span>${SCHOOL_TRENDS}</span>
+			<span>${labname.labName}</span>
 		</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_TRENDS}</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="${CTP}/list/labclass">${SCHOOL_STUDENT_LAB}</a>  > <a href="javascript:void(0);">${labname.labName}</a></span>
 		</div>
 		<div class="content-bottom">
 			
 	      <div class="top-contaner-left">	
 			<!-- 校园动态-->
 			<div class="top-left">
-				<div class="top-left-bottom"><b>${SCHOOL_TRENDS}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+				<div class="top-left-bottom"><b>${SCHOOL_STUDENT_LAB}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 				<ul>
-					<li><a href="${pageContext.request.contextPath}/list/trends?flag=news&p=1">${SCHOOL_TRENDS_NEWS}</a></li>
-					<li><a href="${pageContext.request.contextPath}/list/trends?flag=notice&p=1">${SCHOOL_TRENDS_NOTICE}</a></li>
+				    <li><a href="javascript:void(0);">${LABCLASS_INTRO}</a></li>
+					<li><a href="${CTP}/list/labClassMenu?id=${id}&flag=${topicFlag}&p=1">${LABCLASS_TOPIC}</a></li>
+					<li><a href="${CTP}/list/labClassMenu?id=${id}&flag=${showFlag}&p=1">${LABCLASS_SHOW}</a></li>
 					
 				</ul>
 			</div>
@@ -70,40 +71,39 @@
 			</div>
 			<!--热门排行-->
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
-				<ul>
-				  <c:forEach items="${hotTrends}" var="hotTrends">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${newsFlag}"> ${hotTrends.itemTitle}</a><span>[${hotTrends.addTime}]</span></li>
-				  </c:forEach>
-				</ul>
-				<c:if test="${empty hotTrends}">
-				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
+				<div class="top-left-bottom"><b>${LABCLASS_INTRO}</b> <img src="${CTP_HOME}/img/jiantou.png"/></div>
+				<div class="class-intro-con" style="color:#444444; padding-top:10px;">
+				${introduce.introduce}
+				</div>
+				
+				<c:if test="${empty content}">
+				<div class='no-message'><img src='${CTP_HOME}/img/no-content.png' /></div>
 				</c:if>
 				
 			</div>
 			
             <div class="clear"></div>
-			<!--校内新闻-->
+			
 			<div class="float-div">
-				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NEWS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${LABCLASS_TOPIC}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
-				  <c:forEach items="${news}" var="news_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}"> ${news_list.itemTitle}</a><span>[${news_list.addTime}]</span></li>
+				  <c:forEach items="${content}" var="content_list">
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${content_list.id}&flag=${topicFlag}"> ${content_list.itemTitle}</a><span>[${content_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
-				<c:if test="${empty news}">
+				<c:if test="${empty content}">
 				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 				</c:if>
 			</div>
 			
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NOTICE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${LABCLASS_SHOW}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
 				<ul>
-				  <c:forEach items="${notice}" var="notice_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${notice_list.id}&flag=${noticeFlag}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>
+				  <c:forEach items="${show}" var="show_list">
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${show_list.id}&flag=${showFlag}"> ${show_list.itemTitle}</a><span>[${show_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
-				<c:if test="${empty notice}">
+				<c:if test="${empty show}">
 				<div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 				</c:if>
 			</div>

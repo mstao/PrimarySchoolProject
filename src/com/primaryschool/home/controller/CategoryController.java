@@ -3,7 +3,6 @@ package com.primaryschool.home.controller;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,10 +15,14 @@ import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
+import com.primaryschool.home.entity.StudentLab;
+import com.primaryschool.home.entity.StudentLabMenuContent;
+import com.primaryschool.home.entity.StudentLabMenuIntroduce;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
@@ -30,13 +33,14 @@ import com.primaryschool.home.service.ITrendsService;
 * @ClassName: CategoryController
 * @Description: TODO  类别分发控制器
 * @author Mingshan
+ * @param <T>
 * @date 2017年3月28日 下午6:15:30
 *
 */
 
 @Controller
 @RequestMapping("/category")
-public class CategoryController {
+public class CategoryController<T> {
     
 	@Autowired  
 	private ITrendsService<Trends> trendsService;
@@ -58,6 +62,10 @@ public class CategoryController {
 	
 	@Autowired
 	private ICultureService<Culture> cultureService;
+	
+	@Autowired
+	private ILabClassService<T>  labClassService;
+	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	
 	
@@ -266,5 +274,46 @@ public class CategoryController {
 		map.put("affairs", affairs);
 		map.put("hot", hot);
 		return "home/category/culture";
+	}
+	
+	
+
+	/**
+	 * 
+	* @Title: labClass
+	* @Description: TODO综合实验课 详细信息
+	* @param @param id 为实验课的id
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/labclass")
+	public String labClass(int id,ModelMap map){
+		String topicFlag="topic";
+		String showFlag="show";
+		//获取实验课简介
+	    StudentLabMenuIntroduce introduce=(StudentLabMenuIntroduce)labClassService.findLabClassIntroduce(id);
+		//获取实验课-每周主题列表
+
+		ArrayList<StudentLabMenuContent> content=(ArrayList<StudentLabMenuContent>)labClassService.findLabClassContent(id,topicFlag, 0, pageSize);
+		
+		//获取实验课-成果展示列表
+		ArrayList<StudentLabMenuContent> show=(ArrayList<StudentLabMenuContent>)labClassService.findLabClassContent(id,showFlag, 0, pageSize);
+		
+		//根据id获取实验课名称
+		StudentLab labname=(StudentLab)labClassService.findLabClassNameById(id);
+		
+		map.put("topicFlag", topicFlag);
+		map.put("showFlag", showFlag);
+		
+		map.put("introduce", introduce);
+		map.put("content", content);
+		map.put("show", show);
+		map.put("labname", labname);
+		map.put("id", id);
+		
+		return "home/category/labclass";
+		
 	}
 }

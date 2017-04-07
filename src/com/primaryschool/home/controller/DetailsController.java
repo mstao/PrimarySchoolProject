@@ -182,4 +182,9 @@ public class DetailsController{
 	    request.setAttribute("url", url);
 	   return "home/details/trendsDetails";
    }
+   
+   @RequestMapping("/labClassMenu")
+   public String  labClassMenu(int id,String flag,HttpServletRequest request){
+	   return "home/details/trendsDetails";
+   }
 }

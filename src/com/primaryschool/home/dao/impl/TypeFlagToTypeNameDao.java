@@ -10,6 +10,7 @@ import com.primaryschool.home.entity.CultureType;
 import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
 import com.primaryschool.home.entity.PartyType;
+import com.primaryschool.home.entity.StudentLabMenuType;
 import com.primaryschool.home.entity.StudentType;
 import com.primaryschool.home.entity.TeacherType;
 import com.primaryschool.home.entity.TrendsType;
@@ -99,6 +100,18 @@ public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
 		
 		CultureType tt=(CultureType)query.uniqueResult();
 		return tt.getItemTypeName();
+	}
+	
+	
+	@Override
+	public String findLabClassTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from StudentLabMenuType  tt where tt.menuTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		StudentLabMenuType tt=(StudentLabMenuType)query.uniqueResult();
+		return tt.getMenuName();
 	}
 	
 	

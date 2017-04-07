@@ -80,6 +80,19 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
    	private static  String  SCHOOL_MANAGE_RULES;
    	private static  String  SCHOOL_MANAGE_EMAIL;
 	
+   	/**综合实验课  课程信息**/
+   	private static  String  LABCLASS_INTRO;
+   	private static  String  LABCLASS_TOPIC;
+   	private static  String  LABCLASS_SHOW;
+   	
+   	/**教学资源    具体信息**/
+   	private static  String  TEACHER_RESOURCES_DISCUSS;
+   	private static  String  TEACHER_RESOURCES_DESIGN;
+   	private static  String  TEACHER_RESOURCES_COURSEWARE;
+   	private static  String  TEACHER_RESOURCES_MICROLECTURE;
+   	private static  String  TEACHER_RESOURCES_QUESTION_BANK;
+   	
+   	
 	/**当前年份**/
 	private static  String  WEB_CURRENT_YEAR;
 	static {   
@@ -156,8 +169,18 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
 	          SCHOOL_MANAGE_RULES=prop.getProperty("SCHOOL_MANAGE_RULES").trim();
 	          SCHOOL_MANAGE_EMAIL=prop.getProperty("SCHOOL_MANAGE_EMAIL").trim();
 	          
-	         
-	          	          
+	          /*综合实验课  课程信息*/
+	          LABCLASS_INTRO=prop.getProperty("LABCLASS_INTRO").trim();
+	          LABCLASS_TOPIC=prop.getProperty("LABCLASS_TOPIC").trim();
+	          LABCLASS_SHOW=prop.getProperty("LABCLASS_SHOW").trim();
+	          
+	          /*教学资源    具体信息*/
+	          TEACHER_RESOURCES_DISCUSS=prop.getProperty("TEACHER_RESOURCES_DISCUSS").trim();
+	          TEACHER_RESOURCES_DESIGN=prop.getProperty("TEACHER_RESOURCES_DESIGN").trim();
+	          TEACHER_RESOURCES_COURSEWARE=prop.getProperty("TEACHER_RESOURCES_COURSEWARE").trim();
+	          TEACHER_RESOURCES_MICROLECTURE=prop.getProperty("TEACHER_RESOURCES_MICROLECTURE").trim();
+	          TEACHER_RESOURCES_QUESTION_BANK=prop.getProperty("TEACHER_RESOURCES_QUESTION_BANK").trim();
+	          
 	          
 	          in.close();
 	          bf.close();
@@ -220,6 +243,21 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
 		getServletContext().setAttribute("SCHOOL_MANAGE_NOTICE",SCHOOL_MANAGE_NOTICE);
 		getServletContext().setAttribute("SCHOOL_MANAGE_RULES",SCHOOL_MANAGE_RULES);
 		getServletContext().setAttribute("SCHOOL_MANAGE_EMAIL",SCHOOL_MANAGE_EMAIL);
+		
+		
+		
+		getServletContext().setAttribute("LABCLASS_INTRO",LABCLASS_INTRO);
+		getServletContext().setAttribute("LABCLASS_TOPIC",LABCLASS_TOPIC);
+		getServletContext().setAttribute("LABCLASS_SHOW",LABCLASS_SHOW);
+		
+		
+		getServletContext().setAttribute("TEACHER_RESOURCES_DISCUSS",TEACHER_RESOURCES_DISCUSS);
+		getServletContext().setAttribute("TEACHER_RESOURCES_DESIGN",TEACHER_RESOURCES_DESIGN);
+		getServletContext().setAttribute("TEACHER_RESOURCES_COURSEWARE",TEACHER_RESOURCES_COURSEWARE);
+		getServletContext().setAttribute("TEACHER_RESOURCES_MICROLECTURE",TEACHER_RESOURCES_MICROLECTURE);
+		getServletContext().setAttribute("TEACHER_RESOURCES_QUESTION_BANK",TEACHER_RESOURCES_QUESTION_BANK);
+		
+		
 		
 		
 		getServletContext().setAttribute("WEB_CURRENT_YEAR",WEB_CURRENT_YEAR);

@@ -18,6 +18,7 @@ import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLab;
+import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ICultureService;
@@ -35,7 +36,7 @@ import com.primaryschool.home.service.impl.LabClassService;
 
 @Controller
 @RequestMapping("/list")
-public class ListController {
+public class ListController<T> {
 	
 	@Autowired
 	private ICultureService<Culture> cultureService;
@@ -70,7 +71,7 @@ public class ListController {
 	private ITypeFlagToTypeNameService typeFlagToTypeNameService;
 	
 	@Autowired
-	private ILabClassService<StudentLab> labClassService;
+	private ILabClassService<T> labClassService;
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -299,7 +300,7 @@ public class ListController {
         String typeName=typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
         
         //获取热点信息
-        List<Manage> hotManage= (List<Manage> ) manageService.findHotManageInfo(flag,  0, PageSizeConfig.HOME_HOT_PAGESIZE);
+        ArrayList<Manage> hotManage= (ArrayList<Manage> ) manageService.findHotManageInfo(flag,  0, PageSizeConfig.HOME_HOT_PAGESIZE);
         
         request.setAttribute("durl", durl);
         request.setAttribute("toolBar", toolBar);
@@ -356,7 +357,7 @@ public class ListController {
         String typeName=typeFlagToTypeNameService.findCultureTypeNameByTypeFlag(flag);
         
         //获取热点信息
-        List<Culture> hotCulture= (List<Culture> ) cultureService.findHotCultureInfo(flag,  0, PageSizeConfig.HOME_HOT_PAGESIZE);
+        ArrayList<Culture> hotCulture= (ArrayList<Culture> ) cultureService.findHotCultureInfo(flag,  0, PageSizeConfig.HOME_HOT_PAGESIZE);
         
         map.put("durl", durl);
         map.put("toolBar", toolBar);
@@ -385,11 +386,65 @@ public class ListController {
 	@RequestMapping("/labclass")
 	public String labClassList(ModelMap map){
 		
-		List<StudentLab> labClass=labClassService.findLabClassListInfo();
+		ArrayList<StudentLab> labClass=(ArrayList<StudentLab>) labClassService.findLabClassListInfo();
 		
 		map.put("labClass", labClass);
 		
 		return "home/list/labClassList";
+	}
+	
+	
+
+	/**
+	 * 
+	* @Title: labClassMenuList
+	* @Description: TODO 获取实验课子栏目的列表信息
+	* @param @param id 为实验课的id
+	* @param @param p
+	* @param @param flag
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/labClassMenu")
+	public String labClassMenuList(int id,String flag,int p,ModelMap map){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//查看详细信息url
+		String durl="labClassMenu";
+		
+		//当前的url
+		String url="./list/labClassMenu?flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=labClassService.findLabClassContentCount(flag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+		
+        //根据typeFlag  获取 typeName
+        String typeName=typeFlagToTypeNameService.findLabClassTypeNameByTypeFlag(flag);
+       System.out.println("TYPE_NAME--"+typeName+"type--"+flag);
+        //获取信息
+		ArrayList<StudentLabMenuContent>  list=(ArrayList<StudentLabMenuContent>) labClassService.findLabClassContent(id, flag, position, item_pre_page);
+		
+		//获取该类型的热门信息
+		ArrayList<StudentLabMenuContent>  hotlist=(ArrayList<StudentLabMenuContent>) labClassService.findHotLabClassContent(id, flag, position, item_pre_page);
+		
+		map.put("durl", durl);
+        map.put("toolBar", toolBar);
+        map.put("typeName", typeName);
+        map.put("typeFlag", flag);
+        map.put("item", list);
+        map.put("hotItem", hotlist);
+        
+		return "home/list/trendsList";
 	}
 	
 	

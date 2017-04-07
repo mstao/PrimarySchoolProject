@@ -8,6 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+/**
+ * 
+* @ClassName: StudentLabMenuContent
+* @Description: TODO 综合实验课  子栏目 -内容
+* @author Mingshan
+* @date 2017年4月7日 下午9:45:06
+*
+ */
 
 @Entity
 @Table(name="ps_student_lab_menu_content")
@@ -26,6 +36,9 @@ public class StudentLabMenuContent implements Serializable{
 	@Column(name="item_content")
 	private String itemContent;
 	
+	@Column(name="author")
+	private String author;
+	
 	@Column(name="menu_id")
 	private int  menuId;
 	
@@ -41,8 +54,16 @@ public class StudentLabMenuContent implements Serializable{
 	@Column(name="is_publish")
 	private int isPublish;
 
+	@Column(name="lab_id")
+	private int labId;
 	
-	
+	//临时属性
+    @Transient
+    private String itemTypeFlag;
+    
+    @Transient
+	private String itemTypeName;
+    
 	
 	public StudentLabMenuContent(){}
 	
@@ -54,6 +75,23 @@ public class StudentLabMenuContent implements Serializable{
 		this.itemTitle = itemTitle;
 		this.addTime = addTime;
 		this.viewCount = viewCount;
+	}
+
+	 
+	
+
+	public StudentLabMenuContent(int id, String itemTitle, String itemContent, String author, String addTime,
+			int viewCount, int isImage, String itemTypeFlag, String itemTypeName) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.author = author;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.isImage = isImage;
+		this.itemTypeFlag = itemTypeFlag;
+		this.itemTypeName = itemTypeName;
 	}
 
 
@@ -124,6 +162,52 @@ public class StudentLabMenuContent implements Serializable{
 
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
+	}
+
+
+	public int getLabId() {
+		return labId;
+	}
+
+
+	public void setLabId(int labId) {
+		this.labId = labId;
+	}
+
+
+
+	public String getAuthor() {
+		return author;
+	}
+
+
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+
+
+	public String getItemTypeFlag() {
+		return itemTypeFlag;
+	}
+
+
+
+	public void setItemTypeFlag(String itemTypeFlag) {
+		this.itemTypeFlag = itemTypeFlag;
+	}
+
+
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
 	}
 	
 	

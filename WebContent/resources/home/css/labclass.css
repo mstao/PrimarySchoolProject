@@ -39,6 +39,7 @@
 }
 
 .trends-top{
+	border-top:1px dashed #CCCCCC;
 	border-bottom: 1px dashed #CCCCCC;
 	padding-bottom: 5px;
 	
@@ -59,7 +60,7 @@
 .content .labclass-list{
 	margin-top:20px;
 	
-	width:400px;
+	width:420px;
 }
 .content .labclass-list > span{
 	display:inline-block;
@@ -71,7 +72,7 @@
 .content .labclass-list > span >a{
 	color:#666666;
 	text-decoration:none;
-    font-size:17px;
+    font-size:18px;
 }
 .content .labclass-list > span >a:hover{
 	color:#EE9621;
