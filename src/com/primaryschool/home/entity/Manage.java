@@ -49,7 +49,10 @@ public class Manage implements Serializable{
 	
 	@Column(name="is_publish")
 	private int isPublish;
-
+	
+	@Column(name="author")
+	private String author;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -166,6 +169,14 @@ public class Manage implements Serializable{
 
 	public void setItemTypeName(String itemTypeName) {
 		this.itemTypeName = itemTypeName;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	
 	

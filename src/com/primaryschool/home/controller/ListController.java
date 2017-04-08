@@ -20,6 +20,8 @@ import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
+import com.primaryschool.home.entity.TeachingResourcesClass;
+import com.primaryschool.home.entity.TeachingResourcesMenu;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
@@ -30,6 +32,7 @@ import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
+import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITrendsService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
 import com.primaryschool.home.service.impl.LabClassService;
@@ -57,9 +60,7 @@ public class ListController<T> {
     private IPartyService<Party> partyService;
     
     @Autowired
-    
     private IManageService<Manage> manageService;
-    
     
     @Autowired
     private IHeadMasterInfoService<HeadMaster> headMasterService;
@@ -72,6 +73,9 @@ public class ListController<T> {
 	
 	@Autowired
 	private ILabClassService<T> labClassService;
+	
+	@Autowired
+	private ITeachingResourcesService<T> teachingResourcesService;
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -430,7 +434,7 @@ public class ListController<T> {
 		
         //根据typeFlag  获取 typeName
         String typeName=typeFlagToTypeNameService.findLabClassTypeNameByTypeFlag(flag);
-       System.out.println("TYPE_NAME--"+typeName+"type--"+flag);
+      
         //获取信息
 		ArrayList<StudentLabMenuContent>  list=(ArrayList<StudentLabMenuContent>) labClassService.findLabClassContent(id, flag, position, item_pre_page);
 		
@@ -443,9 +447,30 @@ public class ListController<T> {
         map.put("typeFlag", flag);
         map.put("item", list);
         map.put("hotItem", hotlist);
-        
+        map.put("cid", id);
 		return "home/list/trendsList";
 	}
 	
+	/**
+	 * 
+	* @Title: teachingResources
+	* @Description: TODO 教学资源列表
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/teachingResources")
+	public String teachingResources(ModelMap map){
+		
+		//获取班级列表
+		/*ArrayList<TeachingResourcesClass> classlist=(ArrayList<TeachingResourcesClass>)  teachingResourcesService.findTeachingResourcesClassList();
+		
+		//获取教学资源项目列表
+		ArrayList<TeachingResourcesMenu>   menu=(ArrayList<TeachingResourcesMenu>) teachingResourcesService.findTeachingResourcesMeun();
+		
+		map.put("classlist", classlist);*/
+		return "home/list/teachingResources";
+	}
 	
 }

@@ -29,7 +29,7 @@
 			<span>${item.itemTypeName}</span>
 </div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${item.itemTypeName}</a> > <a href="#">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${item.itemTypeName}</a> > <a href="javascript:void(0);">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">
@@ -99,7 +99,17 @@
 					<div class="point"><b></b></div>
 					
 					<div class="liright">
-						<div class="histt"><a href="${CTP}/details/${url}?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+					   
+					   
+					   <c:choose>
+					     <c:when test="${empty cid}">
+					         <div class="histt"><a href="${CTP}/details/${url}?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+					     </c:when>
+					     <c:otherwise>
+					     	 <div class="histt"><a href="${CTP}/details/${url}?cid=${cid}&id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+					     </c:otherwise>
+					   </c:choose>
+						
 						<div class="hisct">${latestItem.itemContent}</div>
 					</div>
 				</div>

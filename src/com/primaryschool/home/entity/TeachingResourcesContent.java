@@ -10,21 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-/**
- * 
-* @ClassName: StudentLabMenuContent
-* @Description: TODO 综合实验课  子栏目 -内容
-* @author Mingshan
-* @date 2017年4月7日 下午9:45:06
-*
- */
-
 @Entity
-@Table(name="ps_student_lab_menu_content")
-public class StudentLabMenuContent implements Serializable{
-	
+@Table(name="ps_teaching_resources_content")
+public class TeachingResourcesContent implements Serializable{
 
-	private static final long serialVersionUID = 8533008634404773449L;
+	private static final long serialVersionUID = 691846506297438767L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +26,8 @@ public class StudentLabMenuContent implements Serializable{
 	@Column(name="item_content")
 	private String itemContent;
 	
-	@Column(name="author")
-	private String author;
-	
 	@Column(name="menu_id")
-	private int  menuId;
+	private int  typeId;
 	
 	@Column(name="add_time")
 	private String addTime;
@@ -53,48 +40,21 @@ public class StudentLabMenuContent implements Serializable{
 	
 	@Column(name="is_publish")
 	private int isPublish;
-
-	@Column(name="lab_id")
-	private int labId;
 	
+	@Column(name="author")
+	private String author;
+	
+	@Column(name="class_id")
+	private int classId;
 	//临时属性
     @Transient
-    private String itemTypeFlag;
+    private String resourcesName;
     
     @Transient
-	private String itemTypeName;
+	private String className;
+
     
-	
-	public StudentLabMenuContent(){}
-	
-	
-	
-	public StudentLabMenuContent(int id, String itemTitle, String addTime, int viewCount) {
-		super();
-		this.id = id;
-		this.itemTitle = itemTitle;
-		this.addTime = addTime;
-		this.viewCount = viewCount;
-	}
-
-	 
-	
-
-	public StudentLabMenuContent(int id, String itemTitle, String itemContent, String author, String addTime,
-			int viewCount, String itemTypeFlag, String itemTypeName) {
-		super();
-		this.id = id;
-		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
-		this.author = author;
-		this.addTime = addTime;
-		this.viewCount = viewCount;
-		this.itemTypeFlag = itemTypeFlag;
-		this.itemTypeName = itemTypeName;
-	}
-
-
-
+    
 	public int getId() {
 		return id;
 	}
@@ -119,17 +79,13 @@ public class StudentLabMenuContent implements Serializable{
 		this.itemContent = itemContent;
 	}
 
-	
-	public int getMenuId() {
-		return menuId;
+	public int getTypeId() {
+		return typeId;
 	}
 
-
-	public void setMenuId(int menuId) {
-		this.menuId = menuId;
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
-
-
 
 	public String getAddTime() {
 		return addTime;
@@ -163,52 +119,37 @@ public class StudentLabMenuContent implements Serializable{
 		this.isPublish = isPublish;
 	}
 
-
-	public int getLabId() {
-		return labId;
-	}
-
-
-	public void setLabId(int labId) {
-		this.labId = labId;
-	}
-
-
-
 	public String getAuthor() {
 		return author;
 	}
-
-
 
 	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-
-
-	public String getItemTypeFlag() {
-		return itemTypeFlag;
+	public int getClassId() {
+		return classId;
 	}
 
-
-
-	public void setItemTypeFlag(String itemTypeFlag) {
-		this.itemTypeFlag = itemTypeFlag;
+	public void setClassId(int classId) {
+		this.classId = classId;
 	}
 
-
-
-	public String getItemTypeName() {
-		return itemTypeName;
+	public String getResourcesName() {
+		return resourcesName;
 	}
 
-
-
-	public void setItemTypeName(String itemTypeName) {
-		this.itemTypeName = itemTypeName;
+	public void setResourcesName(String resourcesName) {
+		this.resourcesName = resourcesName;
 	}
-	
-	
-	
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+    
+    
 }

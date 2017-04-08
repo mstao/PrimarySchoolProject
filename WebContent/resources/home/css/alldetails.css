@@ -18,6 +18,7 @@
 	left:0;
 	bottom:0;
 	position:absolute;
+	opacity: 0.8;
 }
 /*位置导航*/
 .content-location{

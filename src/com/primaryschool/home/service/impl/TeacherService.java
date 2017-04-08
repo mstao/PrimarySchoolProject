@@ -8,6 +8,15 @@ import org.springframework.stereotype.Service;
 import com.primaryschool.home.dao.ITeacherDao;
 import com.primaryschool.home.service.ITeacherService;
 
+/**
+ * 
+* @ClassName: TeacherService
+* @Description: TODO教师园地  service
+* @author Mingshan
+* @date 2017年4月8日 下午8:08:21
+*
+* @param <T>
+ */
 @Service
 public class TeacherService<T> implements ITeacherService<T>{
     @Autowired

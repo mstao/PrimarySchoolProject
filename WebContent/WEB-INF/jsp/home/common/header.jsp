@@ -71,7 +71,7 @@
                  
                  <li><a href="${pageContext.request.contextPath}/category/teacher">${SCHOOL_TEACHER}</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/list/teacher?flag=resources&p=1">${SCHOOL_TEACHER_RESOURCES}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/teachingResources">${SCHOOL_TEACHER_RESOURCES}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=teachers&p=1">${SCHOOL_TEACHER_TEACHERS}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/teacher?flag=train&p=1">${SCHOOL_TEACHER_TRAIN}</a></li>
 	                        <li><a href="#">${SCHOOL_TEACHER_PRIZE}</a></li>

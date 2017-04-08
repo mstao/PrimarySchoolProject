@@ -24,4 +24,8 @@ public interface ILabClassService<T> {
    
     /**获取记录总数**/
     int  findLabClassContentCount(String flag);
+    
+    /**根据记录id获取记录的具体内容**/
+    
+    T  findLabClassContentById(int mid);
 }

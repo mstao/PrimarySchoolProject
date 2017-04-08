@@ -50,6 +50,9 @@ public class Culture implements Serializable{
 	@Column(name="is_publish")
 	private int isPublish;
     
+	@Column(name="author")
+	private String author;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -151,5 +154,36 @@ public class Culture implements Serializable{
 	public void setIsPublish(int isPublish) {
 		this.isPublish = isPublish;
 	}
+
+
+	public String getAuthor() {
+		return author;
+	}
+
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+
+	public String getItemTypeFlag() {
+		return itemTypeFlag;
+	}
+
+
+	public void setItemTypeFlag(String itemTypeFlag) {
+		this.itemTypeFlag = itemTypeFlag;
+	}
+
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
+	}
+	
 	
 }

@@ -126,7 +126,7 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 	@Override
 	public int findLabClassTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		String hql="from StudentLabMenuType tt where tt.menuTypeFlag=?";
+		String hql="from StudentLabMenuType tt where tt.itemTypeFlag=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
 		query.setString(0, flag);	//?设值
 		

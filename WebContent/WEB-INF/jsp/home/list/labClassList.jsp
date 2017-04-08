@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>综合实验课-${WEBSITE_NAME}</title>
+<title>${SCHOOL_STUDENT_LAB}-${WEBSITE_NAME}</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 

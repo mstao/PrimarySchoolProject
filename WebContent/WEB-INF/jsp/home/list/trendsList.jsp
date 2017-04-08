@@ -29,7 +29,7 @@
 				<div class="list-content">
 					<ul>
 					  <c:forEach items="${item}" var="trends_list">
-						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/${durl}?id=${trends_list.id}&flag=${typeFlag}">${trends_list.itemTitle}</a></li>
+						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/${durl}?cid=${cid}&id=${trends_list.id}&flag=${typeFlag}">${trends_list.itemTitle}</a></li>
 					  </c:forEach>
 					</ul>
 				</div>

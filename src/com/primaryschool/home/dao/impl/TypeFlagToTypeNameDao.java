@@ -106,12 +106,12 @@ public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
 	@Override
 	public String findLabClassTypeNameByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		String hql="from StudentLabMenuType  tt where tt.menuTypeFlag=?";
+		String hql="from StudentLabMenuType  tt where tt.itemTypeFlag=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
 		query.setString(0, flag);
 		
 		StudentLabMenuType tt=(StudentLabMenuType)query.uniqueResult();
-		return tt.getMenuName();
+		return tt.getItemTypeName();
 	}
 	
 	

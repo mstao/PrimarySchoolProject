@@ -30,10 +30,10 @@ public class StudentLabMenuType implements Serializable{
 	private  int id;
 	
 	@Column(name="item_title")
-	private  String menuName;
+	private  String itemTypeName;
 	
 	@Column(name="item_type_flag")
-	private  String menuTypeFlag;
+	private  String itemTypeFlag;
 
 	public int getId() {
 		return id;
@@ -43,21 +43,22 @@ public class StudentLabMenuType implements Serializable{
 		this.id = id;
 	}
 
-	public String getMenuName() {
-		return menuName;
+	public String getItemTypeName() {
+		return itemTypeName;
 	}
 
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
 	}
 
-	public String getMenuTypeFlag() {
-		return menuTypeFlag;
+	public String getItemTypeFlag() {
+		return itemTypeFlag;
 	}
 
-	public void setMenuTypeFlag(String menuTypeFlag) {
-		this.menuTypeFlag = menuTypeFlag;
+	public void setItemTypeFlag(String itemTypeFlag) {
+		this.itemTypeFlag = itemTypeFlag;
 	}
+
 	
 	
 	

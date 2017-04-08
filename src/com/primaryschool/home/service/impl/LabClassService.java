@@ -56,4 +56,10 @@ public class LabClassService<T> implements ILabClassService<T> {
 		return labClassDao.findLabClassContentCount(flag);
 	}
 
+	@Override
+	public T findLabClassContentById(int mid) {
+		// TODO Auto-generated method stub
+		return labClassDao.findLabClassContentById(mid);
+	}
+
 }

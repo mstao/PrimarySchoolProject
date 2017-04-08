@@ -69,6 +69,15 @@ public class CategoryController<T> {
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	
 	
+	/**
+	 * 
+	* @Title: trends
+	* @Description: TODO 校园动态
+	* @param @param model
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/trends")
 	public String trends(ModelMap model){
 		
@@ -95,6 +104,15 @@ public class CategoryController<T> {
 		return "home/category/trends";
 	}
 	
+	/**
+	 * 
+	* @Title: education
+	* @Description: TODO 阳光德育
+	* @param @param model
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/education")
 	public  String education(ModelMap model){
 		
@@ -131,7 +149,15 @@ public class CategoryController<T> {
 		return "home/category/education";
 	}
 	
-	
+	/**
+	 * 
+	* @Title: student
+	* @Description: TODO 学生天地
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/student")
 	public String student(ModelMap map){
 		
@@ -160,6 +186,15 @@ public class CategoryController<T> {
 		return "home/category/student";
 	}
 	
+	/**
+	 * 
+	* @Title: teacher
+	* @Description: TODO 教师园地
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/teacher")
 	public String  teacher(ModelMap map){
 		String resourcesFlag="resources";
@@ -193,6 +228,15 @@ public class CategoryController<T> {
 		return "home/category/teacher";
 	}
 	
+	/**
+	 * 
+	* @Title: party
+	* @Description: TODO 党务工会
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/party")
 	public String party(ModelMap map){
 		String branchFlag="branch";
@@ -217,7 +261,15 @@ public class CategoryController<T> {
 	    return "home/category/party";
 	}
 	
-	
+	/**
+	 * 
+	* @Title: manage
+	* @Description: TODO 学校管理
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/manage")
 	public String manage(ModelMap map){
 		
@@ -253,6 +305,15 @@ public class CategoryController<T> {
 	}
 	
 	
+	/**
+	 * 
+	* @Title: culture
+	* @Description: TODO 学校文化列表
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/culture")
 	public String culture(ModelMap map){
 		String introduceFlag="introduce";
@@ -288,6 +349,7 @@ public class CategoryController<T> {
 	* @return String    返回类型
 	* @throws
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/labclass")
 	public String labClass(int id,ModelMap map){
 		String topicFlag="topic";

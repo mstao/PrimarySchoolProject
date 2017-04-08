@@ -13,10 +13,12 @@ import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
+import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
@@ -35,7 +37,7 @@ import com.primaryschool.home.service.ITrendsService;
 
 @Controller
 @RequestMapping("/details")
-public class DetailsController{
+public class DetailsController<T>{
 
 	@Autowired
 	private ICultureService<Culture> cultureService;
@@ -58,6 +60,8 @@ public class DetailsController{
     @Autowired
     private IPartyService<Party> partyService;
 	
+    @Autowired
+    private ILabClassService<T> labClassService;
     int position=0;
 	int item_per_page=7;
 	
@@ -183,8 +187,22 @@ public class DetailsController{
 	   return "home/details/trendsDetails";
    }
    
+   @SuppressWarnings("unchecked")
    @RequestMapping("/labClassMenu")
-   public String  labClassMenu(int id,String flag,HttpServletRequest request){
+   public String  labClassMenu(int cid,int id,String flag,HttpServletRequest request){
+	   
+	   String url="labClassMenu";
+	   labClassService.addViewCount(id);
+	   //根据id获取信息
+	   StudentLabMenuContent content=(StudentLabMenuContent)labClassService.findLabClassContentById(id);
+	   System.out.println("flag=="+flag);
+	   //获取最近更新
+	   ArrayList<StudentLabMenuContent> latestContent=(ArrayList<StudentLabMenuContent>) labClassService.findLabClassContent(cid, flag, position, item_per_page);
+	   
+	   request.setAttribute("item", content);
+	   request.setAttribute("latestItem", latestContent);
+	   request.setAttribute("url", url);
+	   request.setAttribute("cid", cid);
 	   return "home/details/trendsDetails";
    }
 }

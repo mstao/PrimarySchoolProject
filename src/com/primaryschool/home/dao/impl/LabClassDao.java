@@ -127,7 +127,7 @@ public class LabClassDao<T> implements ILabClassDao<T> {
 	@Override
 	public T findLabClassContentById(int mid) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Manage(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Manage t,ManageType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
+		String hql="select new com.primaryschool.home.entity.StudentLabMenuContent(t.id,t.itemTitle,t.itemContent,t.author,t.addTime,t.viewCount,tt.itemTypeFlag,tt.itemTypeName)from StudentLabMenuContent t,StudentLabMenuType tt  where tt.id=t.menuId and t.id=? and t.isPublish=1";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, mid);
 		return (T) query.uniqueResult();

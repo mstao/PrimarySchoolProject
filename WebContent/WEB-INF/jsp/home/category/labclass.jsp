@@ -85,10 +85,10 @@
             <div class="clear"></div>
 			
 			<div class="float-div">
-				<div class="top-left-bottom"><b>${LABCLASS_TOPIC}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${LABCLASS_TOPIC}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/labClassMenu?id=${id}&flag=${topicFlag}&p=1">更多>></a></span></div>
 				<ul>
 				  <c:forEach items="${content}" var="content_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${content_list.id}&flag=${topicFlag}"> ${content_list.itemTitle}</a><span>[${content_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/labClassMenu?cid=${id}&id=${content_list.id}&flag=${topicFlag}"> ${content_list.itemTitle}</a><span>[${content_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				<c:if test="${empty content}">
@@ -97,10 +97,10 @@
 			</div>
 			
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>${LABCLASS_SHOW}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${LABCLASS_SHOW}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/labClassMenu?id=${id}&flag=${showFlag}&p=1">更多>></a></span></div>
 				<ul>
 				  <c:forEach items="${show}" var="show_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${show_list.id}&flag=${showFlag}"> ${show_list.itemTitle}</a><span>[${show_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/labClassMenu?cid=${id}&id=${show_list.id}&flag=${showFlag}"> ${show_list.itemTitle}</a><span>[${show_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				<c:if test="${empty show}">
