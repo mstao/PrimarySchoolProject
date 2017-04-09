@@ -19,6 +19,7 @@ import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.StudentLabMenuIntroduce;
 import com.primaryschool.home.entity.Teacher;
+import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
@@ -27,6 +28,7 @@ import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
+import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITrendsService;
 
 /**
@@ -65,6 +67,9 @@ public class CategoryController<T> {
 	
 	@Autowired
 	private ILabClassService<T>  labClassService;
+	
+	@Autowired
+	private ITeachingResourcesService<T> teachingResourcesService;
 	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	
@@ -377,5 +382,62 @@ public class CategoryController<T> {
 		
 		return "home/category/labclass";
 		
+	}
+	
+	/**
+	 * 
+	* @Title: teachingResources
+	* @Description: TODO 教学资源
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/teachingResources")
+	public  String teachingResources(int classId,int menuId,ModelMap map){
+		String discussFlag="discuss";
+		String designFlag="design";
+		String coursewareFlag="courseware";
+		String microlectureFlag="microlecture";
+		String questionBankFlag="question-bank";
+		
+		//获取教学研讨
+		ArrayList<TeachingResourcesContent> discuss=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, discussFlag, 0, pageSize);
+		
+		//获取教学设计
+		ArrayList<TeachingResourcesContent> design=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, designFlag, 0, pageSize);
+		
+		//课件
+		ArrayList<TeachingResourcesContent> courseware=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, coursewareFlag, 0, pageSize);
+		
+		//微课
+		ArrayList<TeachingResourcesContent> microlecture=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, microlectureFlag, 0, pageSize);
+		
+		//题库
+		ArrayList<TeachingResourcesContent> questionBank=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, questionBankFlag, 0, pageSize);
+		
+		//年级名称
+		String className=teachingResourcesService.findTeachingResourcesClassNameByClassId(classId);
+		
+		String menuName=teachingResourcesService.findTeachingResourcesMenuNameByMenuId(menuId);
+		
+		
+		map.put("discussFlag", discussFlag);
+		map.put("designFlag", designFlag);
+		map.put("coursewareFlag", coursewareFlag);
+		map.put("microlectureFlag", microlectureFlag);
+		map.put("questionBankFlag", questionBankFlag);
+		
+		
+		map.put("discuss", discuss);
+		map.put("design", design);
+		map.put("courseware", courseware);
+		map.put("microlecture", microlecture);
+		map.put("questionBank", questionBank);
+		
+		map.put("className", className);
+		map.put("menuName", menuName);
+		return "home/category/teachingResources";
 	}
 }

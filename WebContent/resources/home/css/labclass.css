@@ -62,8 +62,11 @@
 }
 .content .labclass-list{
 	margin-top:20px;
+	padding:10px;
+	width:450px;
+	outline: 2px dashed #CCCCCC;
+	outline-offset: -8px;
 	
-	width:420px;
 }
 .content .labclass-list > span{
 	display:inline-block;

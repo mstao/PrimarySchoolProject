@@ -17,5 +17,17 @@ public interface ITeachingResourcesDao<T> {
 	List<T> findTeachingResourcesClassList();
 	
 	/**获取教学资源的内容列表**/
-	List<T> findTeachingResourcesMeun();
+	List<T> findTeachingResourcesMenu();
+	
+	/**获取教学资源的内容**/
+	List<T> findTeachingResourcesContent(int menuId,int classId,String flag,int position,int item_per_page);
+	
+	/**根据menuId 来获取menuName**/
+	String findTeachingResourcesMenuNameByMenuId(int menuId);
+	
+	/**根据年级id获取年级名称**/
+	String findTeachingResourcesClassNameByClassId(int classId);
+	
+	/**根据id获取详细内容**/
+	T findTeachingResourcesContentById(int id);
 }

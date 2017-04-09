@@ -28,8 +28,8 @@ public class TeachingResourcesMenu implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="resources_name")
-	private String resourcesName;
+	@Column(name="resource_name")
+	private String resourceName;
 
 	public int getId() {
 		return id;
@@ -39,13 +39,14 @@ public class TeachingResourcesMenu implements Serializable{
 		this.id = id;
 	}
 
-	public String getResourcesName() {
-		return resourcesName;
+	public String getResourceName() {
+		return resourceName;
 	}
 
-	public void setResourcesName(String resourcesName) {
-		this.resourcesName = resourcesName;
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
 	}
-	
+
+
 	
 }

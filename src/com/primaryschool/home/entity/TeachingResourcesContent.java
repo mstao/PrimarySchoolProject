@@ -27,7 +27,7 @@ public class TeachingResourcesContent implements Serializable{
 	private String itemContent;
 	
 	@Column(name="menu_id")
-	private int  typeId;
+	private int  menuId;
 	
 	@Column(name="add_time")
 	private String addTime;
@@ -46,15 +46,56 @@ public class TeachingResourcesContent implements Serializable{
 	
 	@Column(name="class_id")
 	private int classId;
+	
+	@Column(name="type_id")
+	private int typeId;
+	
 	//临时属性
     @Transient
     private String resourcesName;
     
     @Transient
 	private String className;
+    
+    @Transient
+    private String itemTypeFlag;
+    
+    @Transient
+	private String itemTypeName;
+    
 
+    public TeachingResourcesContent(){}
     
     
+    
+	public TeachingResourcesContent(int id, String itemTitle, String addTime, int viewCount) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+	}
+
+	
+
+
+	public TeachingResourcesContent(int id, String itemTitle, String itemContent, String addTime, int viewCount,
+			String author, String resourcesName, String className, String itemTypeFlag, String itemTypeName) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.author = author;
+		this.resourcesName = resourcesName;
+		this.className = className;
+		this.itemTypeFlag = itemTypeFlag;
+		this.itemTypeName = itemTypeName;
+	}
+
+
+
 	public int getId() {
 		return id;
 	}
@@ -79,13 +120,19 @@ public class TeachingResourcesContent implements Serializable{
 		this.itemContent = itemContent;
 	}
 
-	public int getTypeId() {
-		return typeId;
+	
+
+	public int getMenuId() {
+		return menuId;
 	}
 
-	public void setTypeId(int typeId) {
-		this.typeId = typeId;
+
+
+	public void setMenuId(int menuId) {
+		this.menuId = menuId;
 	}
+
+
 
 	public String getAddTime() {
 		return addTime;
@@ -149,6 +196,42 @@ public class TeachingResourcesContent implements Serializable{
 
 	public void setClassName(String className) {
 		this.className = className;
+	}
+
+
+
+	public int getTypeId() {
+		return typeId;
+	}
+
+
+
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
+	}
+
+
+
+	public String getItemTypeFlag() {
+		return itemTypeFlag;
+	}
+
+
+
+	public void setItemTypeFlag(String itemTypeFlag) {
+		this.itemTypeFlag = itemTypeFlag;
+	}
+
+
+
+	public String getItemTypeName() {
+		return itemTypeName;
+	}
+
+
+
+	public void setItemTypeName(String itemTypeName) {
+		this.itemTypeName = itemTypeName;
 	}
     
     

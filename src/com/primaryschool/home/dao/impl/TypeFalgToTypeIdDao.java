@@ -15,6 +15,7 @@ import com.primaryschool.home.entity.PartyType;
 import com.primaryschool.home.entity.StudentLabMenuType;
 import com.primaryschool.home.entity.StudentType;
 import com.primaryschool.home.entity.TeacherType;
+import com.primaryschool.home.entity.TeachingResourcesContentType;
 import com.primaryschool.home.entity.TrendsType;
 
 /**
@@ -131,6 +132,17 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 		query.setString(0, flag);	//?设值
 		
 		StudentLabMenuType tt=(StudentLabMenuType)query.uniqueResult();
+		return tt.getId();
+	}
+
+	@Override
+	public int findTeachingResourcesTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from TeachingResourcesContentType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		TeachingResourcesContentType tt=(TeachingResourcesContentType)query.uniqueResult();
 		return tt.getId();
 	}
 

@@ -43,6 +43,7 @@
     	<c:forEach items="${labClass}" var="labClass">
     	<span><img src="${CTP_HOME}/img/shetuan.png"/> <a href="${CTP}/category/labclass?id=${labClass.id}">${labClass.labName}</a></span>
     	</c:forEach>
+    	<br><br>
     	</div>
     	<!--e class-info-->
     </div>

@@ -79,9 +79,9 @@
 	font-weight: bold;
 	text-transform: uppercase;
 	margin: 1px;
-	background: #F1F1F1; /* old browsers */
+	background: #F1F1F1; 
 	padding: 20px 55px;
-	padding-bottom:24px;
+	padding-bottom:26px;
 	width: 50px;
 	height: 10px;
 }
@@ -90,22 +90,60 @@
 .table-content-div{
 	margin-top:20px;
 	float:left;
+	opacity: 0.9;
 }
 .table-content-div .tab-content { 
 	overflow:hidden;
 	background: #f1f1f1;
 	padding: 20px;
-	outline: 2px dashed #EF9722;
-	outline-offset: -8px; /*Delete if you don't want an offset*/
-	min-height: 250px; /* Change this value if you need more or less content space */
+	outline: 2px dashed #CCCCCC;
+	outline-offset: -8px; 
+	min-height: 250px; 
 	width: 600px;
+	
 
 }
 
 .js-load-a{
-    text-shadow: 0 1px 0 #006372;
-    opacity: 0.9;
+	color: #FFFFFF !important;
+	background: #006372 !important; 
+	width: 45px !important;
+	height: 10px;
     border-left: 5px solid #ff6600;
-   
+    
 }
 
+.tab-content  .grade-span{
+	color:#888888;
+	width:100%;
+	display: block;
+	border-bottom:1px dashed #999999; 
+}
+.tab-content  .grade-span >b{
+	display: inline-block;
+    position:relative;
+    top:-10px;
+	margin-left:5px;
+	
+}
+.tab-content .content-list{
+	margin-top:10px;
+	width:435px;
+}
+.tab-content .content-list >span{
+   margin-left:10px;
+   margin-top:10px;
+   display: inline-table;
+}
+.tab-content .content-list >span >a{
+	color:#444444;
+	text-decoration: none;
+}
+.tab-content .content-list >span >a:hover{
+	color:#EE9620;
+	text-decoration: underline;
+}
+.tab-content .content-list >span >img{
+	position: relative;
+	top:4px;
+}

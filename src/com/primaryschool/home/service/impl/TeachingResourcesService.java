@@ -31,9 +31,33 @@ public class TeachingResourcesService<T> implements ITeachingResourcesService<T>
 	}
 
 	@Override
-	public List<T> findTeachingResourcesMeun() {
+	public List<T> findTeachingResourcesMenu() {
 		// TODO Auto-generated method stub
-		return teachingResourcesDao.findTeachingResourcesMeun();
+		return teachingResourcesDao.findTeachingResourcesMenu();
+	}
+
+	@Override
+	public List<T> findTeachingResourcesContent(int menuId, int classId,String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findTeachingResourcesContent(menuId, classId, flag, position, item_per_page);
+	}
+
+	@Override
+	public String findTeachingResourcesMenuNameByMenuId(int menuId) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findTeachingResourcesMenuNameByMenuId(menuId);
+	}
+
+	@Override
+	public String findTeachingResourcesClassNameByClassId(int classId) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findTeachingResourcesClassNameByClassId(classId);
+	}
+
+	@Override
+	public T findTeachingResourcesContentById(int id) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findTeachingResourcesContentById(id);
 	}
 
 }

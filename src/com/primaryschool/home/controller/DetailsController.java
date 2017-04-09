@@ -187,6 +187,18 @@ public class DetailsController<T>{
 	   return "home/details/trendsDetails";
    }
    
+   /**
+    * 
+   * @Title: labClassMenu
+   * @Description: TODO 综合实验课
+   * @param @param cid
+   * @param @param id
+   * @param @param flag
+   * @param @param request
+   * @param @return    设定文件
+   * @return String    返回类型
+   * @throws
+    */
    @SuppressWarnings("unchecked")
    @RequestMapping("/labClassMenu")
    public String  labClassMenu(int cid,int id,String flag,HttpServletRequest request){
@@ -203,6 +215,12 @@ public class DetailsController<T>{
 	   request.setAttribute("latestItem", latestContent);
 	   request.setAttribute("url", url);
 	   request.setAttribute("cid", cid);
+	   return "home/details/trendsDetails";
+   }
+   
+   @RequestMapping("/teachingResources")
+   public String  teachingResources(){
+	   
 	   return "home/details/trendsDetails";
    }
 }

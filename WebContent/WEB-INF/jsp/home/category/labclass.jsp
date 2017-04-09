@@ -34,7 +34,7 @@
 	      <div class="top-contaner-left">	
 			<!-- 校园动态-->
 			<div class="top-left">
-				<div class="top-left-bottom"><b>${SCHOOL_STUDENT_LAB}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
+				<div class="top-left-bottom"><b>${labname.labName}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 				<ul>
 				    <li><a href="javascript:void(0);">${LABCLASS_INTRO}</a></li>
 					<li><a href="${CTP}/list/labClassMenu?id=${id}&flag=${topicFlag}&p=1">${LABCLASS_TOPIC}</a></li>

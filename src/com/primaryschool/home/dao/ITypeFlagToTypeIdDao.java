@@ -17,4 +17,7 @@ public interface ITypeFlagToTypeIdDao {
     int findPartyTypeIdByTypeFlag(String flag);
     //综合实验课  
     int findLabClassTypeIdByTypeFlag(String flag);
+    
+    //教学资源
+    int findTeachingResourcesTypeFlag(String flag);
 }

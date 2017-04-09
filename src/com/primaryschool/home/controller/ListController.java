@@ -464,12 +464,13 @@ public class ListController<T> {
 	public String teachingResources(ModelMap map){
 		
 		//获取班级列表
-		/*ArrayList<TeachingResourcesClass> classlist=(ArrayList<TeachingResourcesClass>)  teachingResourcesService.findTeachingResourcesClassList();
+		ArrayList<TeachingResourcesClass> classlist=(ArrayList<TeachingResourcesClass>)  teachingResourcesService.findTeachingResourcesClassList();
 		
 		//获取教学资源项目列表
-		ArrayList<TeachingResourcesMenu>   menu=(ArrayList<TeachingResourcesMenu>) teachingResourcesService.findTeachingResourcesMeun();
+		ArrayList<TeachingResourcesMenu>   menu=(ArrayList<TeachingResourcesMenu>) teachingResourcesService.findTeachingResourcesMenu();
 		
-		map.put("classlist", classlist);*/
+		map.put("classlist", classlist);
+		map.put("menu", menu);
 		return "home/list/teachingResources";
 	}
 	
