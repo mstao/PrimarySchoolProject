@@ -1,6 +1,8 @@
 package com.primaryschool.home.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,25 +13,32 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.Grade;
 import com.primaryschool.home.entity.HeadMaster;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
+import com.primaryschool.home.entity.Sclass;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.TeachingResourcesClass;
+import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.TeachingResourcesMenu;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.IClassHomePageService;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IGradeService;
 import com.primaryschool.home.service.IHeadMasterInfoService;
 import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.IPartyService;
+import com.primaryschool.home.service.ISclassService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
 import com.primaryschool.home.service.ITeachingResourcesService;
@@ -76,6 +85,15 @@ public class ListController<T> {
 	
 	@Autowired
 	private ITeachingResourcesService<T> teachingResourcesService;
+	
+    @Autowired
+    private IClassHomePageService<ClassHomePage> classHomePageService;
+    
+    @Autowired
+    private IGradeService<Grade> gradeService;
+	
+	@Autowired
+	private ISclassService<Sclass> sclassService;
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -372,21 +390,55 @@ public class ListController<T> {
         return "home/list/trendsList";
 	}
 	
-	//校园风光
+
+	/**
+	 * 
+	* @Title: imglist
+	* @Description: TODO 校园风光
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/imglist")
 	public  String imglist(ModelMap map){
 		return "home/list/imageList";
 	}
 	
-	//班级列表
+
+	/**
+	 * 
+	* @Title: classList
+	* @Description: TODO 班级列表
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/class")
 	public String classList(ModelMap map){
-		
-		
-		return "home/list/classList";
+		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
+		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String formatDate = sdf.format(date);
+        int d=Integer.parseInt(formatDate);
+		map.put("year", d);
+		map.put("sclass", sclass);
+		map.put("grade", grade);
+		return "/home/list/classList";
 	}
 	
-	//综合实验课列表
+
+	/**
+	 * 
+	* @Title: labClassList
+	* @Description: TODO 综合实验课列表
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
 	@RequestMapping("/labclass")
 	public String labClassList(ModelMap map){
 		
@@ -472,6 +524,82 @@ public class ListController<T> {
 		map.put("classlist", classlist);
 		map.put("menu", menu);
 		return "home/list/teachingResources";
+	}
+	
+	
+	/**
+	 * 
+	* @Title: mainClass
+	* @Description: TODO 
+	* @param @param classId
+	* @param @param gradeFlag
+	* @param @param classFlag
+	* @param @param flag
+	* @param @param p
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/mainClass")
+	public String mainClass(int classId,int gradeFlag,String classFlag,String flag, int p ,ModelMap map){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//查看详细信息url
+		String durl="mainClass";
+		
+		//当前的url
+		String url="./list/mainclass?classId='"+classId+"'&gradeFlag='"+gradeFlag+"'&classFlag='"+classFlag+"'&flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=classHomePageService.findClassHomePageCount(flag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		
+		//根据偏移量获取数据
+		ArrayList<ClassHomePage>  mainClass=(ArrayList<ClassHomePage>) classHomePageService.findClassHomePageInfo(classId, flag, position, item_pre_page);
+	   	
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+        
+        //根据typeFlag获取typeName
+        String typeName=typeFlagToTypeNameService.findClassTypeNameByTypeFlag(flag);
+        
+        //获取热点信息
+        List<ClassHomePage> hotClass= (List<ClassHomePage> ) classHomePageService.findHotClasshomepageInfo(flag, position, item_pre_page);
+        map.put("classId",classId);
+        map.put("grade",gradeFlag);
+        map.put("className",classFlag);
+        map.put("durl", durl);
+        map.put("toolBar", toolBar);
+        map.put("typeName", typeName);
+        map.put("typeFlag", flag);
+        map.put("item", mainClass);
+        map.put("hotItem", hotClass);
+        return "home/list/mainClass";
+	}
+	
+	/**
+	 * 
+	* @Title: teachingResources
+	* @Description: TODO 教学资源 - 子目录 -列表
+	* @param @param menuId
+	* @param @param classId
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/teachngResources")
+	public String teachingResources(int menuId,int classId,	String flag,ModelMap map){
+		
+		//根据
+		//
+		ArrayList<TeachingResourcesContent> discuss=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, flag, position, item_pre_page);
+		//
+		return "home/list/trendsList";
 	}
 	
 }

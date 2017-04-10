@@ -60,4 +60,10 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 		return typeFlagToTypeNameDao.findLabClassTypeNameByTypeFlag(flag);
 	}
 
+	@Override
+	public String findClassTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeNameDao.findClassTypeNameByTypeFlag(flag);
+	}
+
 }

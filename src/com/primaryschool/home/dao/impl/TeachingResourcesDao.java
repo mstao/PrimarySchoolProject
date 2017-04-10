@@ -1,5 +1,6 @@
 package com.primaryschool.home.dao.impl;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -112,6 +113,22 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T)query.uniqueResult();
+	}
+
+
+	@Override
+	public int findTeachingResourcesContentCount(int menuId, int classId, String flag) {
+		// TODO Auto-generated method stub
+		BigInteger count;
+		int r;
+		//根据类型获取id
+		int id=typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
+		String sql="select count(CASE WHEN t.type_id=? and t.is_publish=1 THEN 1 ELSE NULL END) from ps_teaching_resources_content_type t";
+		Query query  = sessionFactory.getCurrentSession().createSQLQuery(sql); 
+		query.setInteger(0,id);
+		count= (BigInteger) query.uniqueResult();
+		r=count.intValue();
+		return r;
 	}
 
 }

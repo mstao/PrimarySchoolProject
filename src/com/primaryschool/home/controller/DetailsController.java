@@ -6,8 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.ClassHomePage;
+import com.primaryschool.home.entity.ClassSynopsis;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
@@ -16,6 +20,8 @@ import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.IClassHomePageService;
+import com.primaryschool.home.service.IClassSynopsisService;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.ILabClassService;
@@ -62,8 +68,20 @@ public class DetailsController<T>{
 	
     @Autowired
     private ILabClassService<T> labClassService;
+    
+    @Autowired
+   	private IClassHomePageService<ClassHomePage> classhomepageService;
+       
+    @Autowired
+   	private IClassSynopsisService<ClassSynopsis> classSynopsisService;
+       
+    
+       
     int position=0;
 	int item_per_page=7;
+	
+	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
+	
 	
 	@RequestMapping("/trends")
 	public String trends(int id,String flag,HttpServletRequest request){	
@@ -207,7 +225,7 @@ public class DetailsController<T>{
 	   labClassService.addViewCount(id);
 	   //根据id获取信息
 	   StudentLabMenuContent content=(StudentLabMenuContent)labClassService.findLabClassContentById(id);
-	   System.out.println("flag=="+flag);
+	//   System.out.println("flag=="+flag);
 	   //获取最近更新
 	   ArrayList<StudentLabMenuContent> latestContent=(ArrayList<StudentLabMenuContent>) labClassService.findLabClassContent(cid, flag, position, item_per_page);
 	   
@@ -223,4 +241,98 @@ public class DetailsController<T>{
 	   
 	   return "home/details/trendsDetails";
    }
+   
+   
+   //班级主页详细内容
+   
+   @RequestMapping("/classhomepage")
+   public  String classhomepage(int classId, int gradeFlag,String classFlag,ModelMap model){
+		
+		String synopsisFlag="synopsis";
+		String dynamicFlag="dynamic";
+		String growthstoryFlag="growthstory";
+		String articleFlag="article";
+		String styleFlag="style";
+		int classidFlag = classId;
+		
+		//获取班级简介
+		ClassSynopsis synopsis=(ClassSynopsis) classSynopsisService.findClassSynopsisInfo(classidFlag);
+	    //获取班级动态
+		ArrayList<ClassHomePage>  dynamic=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,dynamicFlag, 0, pageSize);
+		//获取成长故事
+		ArrayList<ClassHomePage>  growthstory=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,growthstoryFlag, 0, pageSize);
+		//获取学生文章
+		ArrayList<ClassHomePage>  article=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,articleFlag, 0, pageSize);
+		//获取班级风采
+		ArrayList<ClassHomePage>  style=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,styleFlag, 0, pageSize);
+		//获取所在班级
+		
+		
+		model.put("synopsis", synopsis);
+		model.put("dynamic", dynamic);
+		model.put("growthstory", growthstory);
+		model.put("article", article);
+		model.put("style", style);
+		model.put("grade", gradeFlag);
+		model.put("className", classFlag);
+		model.put("classId", classidFlag);
+		
+		model.put("synopsisFlag",synopsisFlag);
+		model.put("dynamicFlag", dynamicFlag);
+		model.put("growthstoryFlag", growthstoryFlag);
+		model.put("articleFlag", articleFlag);
+		model.put("styleFlag", styleFlag);
+		
+		return "home/details/classDetails";
+	}
+   
+   
+    @RequestMapping("/mainClass")
+	public  String mainClass(int classId, int gradeFlag,String classFlag,String type,ModelMap model){
+		
+		String synopsisFlag="synopsis";
+		String dynamicFlag="dynamic";
+		String growthstoryFlag="growthstory";
+		String articleFlag="article";
+		String styleFlag="style";
+		int classidFlag = classId;
+		if(type.equals("班级动态")){
+			 //获取班级动态
+			ArrayList<ClassHomePage>  dynamic=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,dynamicFlag, 0, pageSize);
+			model.put("tongyi", dynamic);
+		}else if(type.equals("班级风采")){
+			//获取班级风采
+			ArrayList<ClassHomePage>  style=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,styleFlag, 0, pageSize);
+			model.put("tongyi", style);
+		}else if(type.equals("成长故事")){
+			//获取成长故事
+			ArrayList<ClassHomePage>  growthstory=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,growthstoryFlag, 0, pageSize);
+			model.put("tongyi", growthstory);
+		}else if(type.equals("学生文章")){
+			//获取学生文章
+			ArrayList<ClassHomePage>  article=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,articleFlag, 0, pageSize);
+			model.put("tongyi", article);
+		}
+		ArrayList<ClassHomePage>  style=(ArrayList<ClassHomePage>)classhomepageService.findClassHomePageInfo(classidFlag,styleFlag, 0, pageSize);
+		ClassSynopsis synopsis=(ClassSynopsis) classSynopsisService.findClassSynopsisInfo(classidFlag);
+		model.put("style", style);
+		model.put("synopsis", synopsis);
+		model.put("classtype", type);
+		model.put("grade", gradeFlag);
+		model.put("className", classFlag);
+		model.put("classId", classidFlag);
+		
+		return "home/details/mainClass";
+	}
+   @RequestMapping("/newsinfo")
+   public String newsinfo(int id,int gradeFlag,String classFlag,int classId,ModelMap model){
+	   
+	   ClassHomePage info=classhomepageService.findClassHomePageInfoById(id);
+	   model.put("classId", classId);
+	   model.put("newsinfo", info);
+	   model.put("grade", gradeFlag);
+	   model.put("className", classFlag);
+	   return "home/details/classNewsDetail";
+   }
+   
 }

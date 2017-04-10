@@ -30,4 +30,7 @@ public interface ITeachingResourcesDao<T> {
 	
 	/**根据id获取详细内容**/
 	T findTeachingResourcesContentById(int id);
+	
+	/**根据类型获取教学资源内容的数量**/
+	int  findTeachingResourcesContentCount(int menuId,int classId,String flag);
 }

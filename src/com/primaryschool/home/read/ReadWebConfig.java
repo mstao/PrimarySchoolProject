@@ -92,6 +92,14 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
    	private static  String  TEACHER_RESOURCES_MICROLECTURE;
    	private static  String  TEACHER_RESOURCES_QUESTION_BANK;
    	
+   	/**班级主页**/
+   	private static  String CLASS_MAINPAGE;
+   	private static  String CLASS_SYNOPSIS;
+   	private static  String CLASS_PHOTO;
+   	private static  String CLASS_ACIVITY;
+   	private static  String CLASS_STORY;
+   	private static  String CLASS_ARTICLE;
+	
    	
 	/**当前年份**/
 	private static  String  WEB_CURRENT_YEAR;
@@ -181,6 +189,13 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
 	          TEACHER_RESOURCES_MICROLECTURE=prop.getProperty("TEACHER_RESOURCES_MICROLECTURE").trim();
 	          TEACHER_RESOURCES_QUESTION_BANK=prop.getProperty("TEACHER_RESOURCES_QUESTION_BANK").trim();
 	          
+	          /**班级主页**/
+	          CLASS_MAINPAGE=prop.getProperty("CLASS_MAINPAGE").trim();
+	          CLASS_SYNOPSIS=prop.getProperty("CLASS_SYNOPSIS").trim();
+	          CLASS_PHOTO=prop.getProperty("CLASS_PHOTO").trim();
+	          CLASS_ACIVITY=prop.getProperty("CLASS_ACIVITY").trim();
+	          CLASS_STORY=prop.getProperty("CLASS_STORY").trim();
+	          CLASS_ARTICLE=prop.getProperty("CLASS_ARTICLE").trim();
 	          
 	          in.close();
 	          bf.close();
@@ -257,7 +272,12 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
 		getServletContext().setAttribute("TEACHER_RESOURCES_MICROLECTURE",TEACHER_RESOURCES_MICROLECTURE);
 		getServletContext().setAttribute("TEACHER_RESOURCES_QUESTION_BANK",TEACHER_RESOURCES_QUESTION_BANK);
 		
-		
+		getServletContext().setAttribute("CLASS_MAINPAGE",CLASS_MAINPAGE);
+		getServletContext().setAttribute("CLASS_SYNOPSIS",CLASS_SYNOPSIS);
+		getServletContext().setAttribute("CLASS_PHOTO",CLASS_PHOTO);
+		getServletContext().setAttribute("CLASS_ACIVITY",CLASS_ACIVITY);
+		getServletContext().setAttribute("CLASS_STORY",CLASS_STORY);
+		getServletContext().setAttribute("CLASS_ARTICLE",CLASS_ARTICLE);
 		
 		
 		getServletContext().setAttribute("WEB_CURRENT_YEAR",WEB_CURRENT_YEAR);

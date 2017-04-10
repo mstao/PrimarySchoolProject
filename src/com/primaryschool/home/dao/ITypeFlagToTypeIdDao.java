@@ -20,4 +20,6 @@ public interface ITypeFlagToTypeIdDao {
     
     //教学资源
     int findTeachingResourcesTypeFlag(String flag);
+    //班级主页信息
+    int findClasshomepageIdByTypeFlag(String flag);
 }

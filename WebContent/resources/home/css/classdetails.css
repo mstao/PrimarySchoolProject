@@ -42,7 +42,32 @@ img{border:0px;}
 #bjjianjieB{ width:399px; height:18px; background:url(../images/jjb.png) no-repeat top center;}
 
 #mianDiv2{ width:990px; height:auto; padding-top:21px;}
-
+#mianDiv2-nav{width:260px; height:413px;background:#FFFEF0;float:left}
+#mianDiv2-nav span{color:#FF8A00;}
+#mianDiv2-navT{font-size:15px;color:#444444;line-height: 2.6em;border-bottom: 1px dotted #FF8A00;}
+#mianDiv2-navT img{position: relative;bottom: -7px;}
+#mianDiv2-nav ul li{font-size:18px;
+	left:50px;
+	position: relative;
+	/*border-top: gray solid 1px;*/
+	line-height: 2.6em;}
+#mianDiv2-nav ul li a{display: block;
+	width:180px;
+	height: 40px;
+	color:#444444;
+	margin-top: 10px;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
+#mianDiv2-nav ul li a:hover{
+    width:180px;
+	height: 40px;
+	color: #FFFFFF;
+	text-decoration: none;
+	background: #FF8A00;
+	padding-left: 20px;
+	padding-bottom: 10px;
+}
 #mianDiv2L{ width:360px; height:auto; float:left;}
 #banjidt{ width:360px; height:201px; background:#FFFEF0;}
 #banjidtT{ width:360px; height:35px; margin-top:9px; border-bottom:1px dashed #ff8a00;}
@@ -58,10 +83,8 @@ img{border:0px;}
 #banjidtT >span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; font-weight:bold;float: right;}
 #banjidtT span a{ color:#ff8a00;}
 .banjidtM{ width:333px; height:144px; margin-top:7px;}
-.banjidtM li{ width:333px; height:24px; float:left; line-height:24px; background:url(../images/jt1.png) no-repeat left center; }
-.banjidtM li a{ display:block; width:220px; height:24px; float:left; text-indent:12px;}
-.banjidtM li a:hover{ color:#ff8a00; text-decoration:underline;}
-.banjidtM li span{ display:block; width:100px; height:24px; float:right; text-align:right; color:#adaca3;}
+.banjidtM li span{float:right}
+.banjidtM li a:hover{ color:#EF9722;}
 
 #xswenzhang{ width:360px; height:201px;  margin-top:11px; background: #FFFCFB;}
 #xswenzhangT{ width:360px; height:35px; margin-top:9px; border-bottom: 1px dashed #E75025;}
@@ -77,12 +100,22 @@ img{border:0px;}
 #xswenzhangT span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; font-weight:bold; float: right;}
 #xswenzhangT span a{ color:#e75025;}
 .xswenzhangM{ width:333px; height:144px; margin-top:7px;}
-.xswenzhangM li{ width:333px; height:24px; float:left; line-height:24px;  }
-.xswenzhangM li a{ display:block; width:270px; height:24px; float:left; text-indent:12px;}
-.xswenzhangM li a:hover{ color:#e75025; text-decoration:underline;}
-.xswenzhangM li span{ display:block; width:50px; height:24px; float:right; text-align:right; color:#adaca3;}
+.xswenzhangM li a:hover{ color:#EF9722;}
+.xswenzhangM li span{ float:right;}
 
-#banjixc{ width:614px; height:413px; float:right; background:#F9FFFD ;}
+#mianDiv2-det{ width:714px; height:413px; float:right; background:#F9FFFD ;}
+#mianDiv2-detT{ width:714px; height:44px; border-bottom: 1px dashed #128758;}
+#mianDiv2-detTs{display:block; height:44px; position: relative; top: -20px;line-height:12px; font-size:14px; font-family:"微软雅黑"; color:#FFF; font-weight:bold; float: right;}
+#mianDiv2-detTs a{ color:#FF8A00;}
+#mianDiv2-detT div>img{position: relative;right: 5px; top: 5px;}
+#mianDiv2-detT div>span{
+	position: relative;
+    font-size: 15px;
+     color: #128758;
+	top: -4px;
+}
+
+#banjixc{ width:614px; height:413px; float:left; background:#F9FFFD ;}
 #banjixcT{ width:614px; height:44px; border-bottom: 1px dashed #128758;}
 #banjixcT div{ height:44px; line-height:52px; float:left; font-size:15px; font-family:"微软雅黑"; color:#128758; font-weight:bold; padding-left:20px;}
 #banjixcT span{ display:block; height:44px; line-height:54px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; font-weight:bold; float: right;}
@@ -94,10 +127,35 @@ img{border:0px;}
      color: #128758;
 	top: -4px;
 }
-#banjixcM{width:612px; height:359px; border-left:1px solid #def4ed; border-right:1px solid #def4ed; background:#f9fffd; }
-#banjixcM li{ width:185px; height:165px; float:left; margin-left:14px; margin-top:13px; display:inline;}
-#banjixcM li img{ width:179px; height:131px; padding:2px; border:1px solid #318c4e; display:block; margin:0px auto;}
-#banjixcM li span{ display:block; width:185px; height:28px; line-height:28px; margin:0px auto; text-align:center; color:#318c4e;}
+
+#mianDiv2-detB span{
+	padding-right: 50px;
+	position: relative;
+	float: right;
+	font-size: 15px;
+	color: #666666;
+}
+#mianDiv2-detB a{
+	font-size: 16px;
+	color:#444444;
+	text-decoration: none;
+}
+#mianDiv2-detB ul{
+	margin-top: 10px;
+}
+#mianDiv2-detB ul li a{
+	list-style: none;
+	line-height: 2.0em;
+	
+}
+#mianDiv2-detB a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+#banjixcM{width:612px; height:359px; border-left:1px solid #def4ed; border-right:1px solid #def4ed; margin-top:9px;background:#f9fffd; }
+#banjixcM li{float:left;padding-left:15px;width:590px;}
+#banjixcM li span{float:right;}
+#banjixcM li a:hover{color:#EF9722;}
 #banjixcB{ width:614px; height:10px; background:url(../images/bjxcb.png) no-repeat top center;}
 
 #banjifcDiv{ width:990px; height:auto; margin-top:22px; }
@@ -119,3 +177,40 @@ img{border:0px;}
 
 
 
+#mainBag-left{background-color:#FFFEF0;width:650px;min-height:600px;height: auto;float:left;}
+/*新闻标题*/
+.news-title{background-color:#FFFEF0;width:600px;margin-top:15px;text-align: center;padding-top: 25px;padding-bottom: 25px;border-bottom: 1px solid #CCCCCC; 	}
+.news-title > span{font-size:20px;}
+/*新闻作者，发布时间，浏览量*/
+.new-attribute{
+	background-color:#FFFEF0;
+	margin-top:10px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+}
+/*新闻属性名，包括“作者”，“发布时间”，“浏览次数”*/
+.new-attribute-span{font-family: "arial black";font-size:16px;}
+/*新闻作者名字*/
+.new-attribute-name{font-size:16px;color:darkmagenta;}
+/* 新闻发布时间*/
+.new-attribute-time{font-size:16px;color:burlywood;}
+/*新闻浏览次数*/
+.new-attribute-times{font-size:16px;color:cadetblue;}
+/*新闻正文*/
+.new-details{
+	background-color:#FFFEF0;
+	color:#444444;
+	font-size: 16px;
+	margin-top:20px;
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-indent: 2em;
+}
+.new-details > span{font-family: "微软雅黑";font-size:20px;}
+#mainBag-right{background-color:#FFFEF0;width:300px;height: 340px;padding:0 10px;float:right;}
+
+
+.footer{background: #F5F2E3;width: 990px;}

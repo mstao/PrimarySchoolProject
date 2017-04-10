@@ -17,4 +17,6 @@ public interface ITypeFlagToTypeNameService {
 	String findPartyTypeNameByTypeFlag(String flag);
 	
 	String findLabClassTypeNameByTypeFlag(String flag);
+	
+	String findClassTypeNameByTypeFlag(String flag);
 }

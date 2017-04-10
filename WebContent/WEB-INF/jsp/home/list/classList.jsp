@@ -27,95 +27,28 @@
 	<span>班级主页</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOLL_STUDENT_CLASS}</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">班级主页</a></span>
 </div>
 
 <div class="content">
-	<div class="trends-top"><img src="${CTP_HOME}/img/class2.png"/> <span class="tag-ch">${SCHOLL_STUDENT_CLASS}</span> </div>
+	<div class="trends-top"><img src="${CTP_HOME}/img/class2.png"/> <span class="tag-ch">班级主页</span> </div>
     
     <!--S CONETNT-->
     <div class="class-content">
     	<!--s class-info-->
-    	
+    	<c:forEach items="${grade}" var="grade">
+    	<c:set var="grades" value="${year-grade.gradeCode+1}"></c:set>
     	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2016级</span></div>
+    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>${grade.gradeCode }年</span></div>
     		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
+    		<c:forEach items="${sclass }" var="sclass">
+    		<c:if test="${sclass.gradeCode==grade.gradeCode }">
+    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="${CTP }/details/classhomepage?classId=${sclass.id }&gradeFlag=${grades}&classFlag=${sclass.className }">${grades}年级${sclass.className }</a></span>
+    		</c:if>
+    		</c:forEach>
     		</div>
     	</div>
-    	
-    	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2015级</span></div>
-    		
-    		
-    		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
-    		</div>
-    	</div>
-    	
-    	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2014级</span></div>
-    		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
-    		</div>
-    	</div>
-    	
-    	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2013级</span></div>
-    		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
-    		</div>
-    	</div>
-    	
-    	
-    	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2012级</span></div>
-    		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
-    		</div>
-    	</div>
-    	
-    	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2011级</span></div>
-    		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
-    		</div>
-    	</div>
-    	
-    	<div class="class-content-only">
-    		<div class="only-navi"><img src="${CTP_HOME}/img/class-nvai.png"/><span>2011级</span></div>
-    		<div class="only-info">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(1)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(2)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(3)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(4)班</a></span>
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="#">一(5)班</a></span>
-    		</div>
-    	</div>
+    	</c:forEach>
     	<!--e class-info-->
     </div>
     

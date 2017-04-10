@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITypeFlagToTypeNameDao;
+import com.primaryschool.home.entity.ClassHomePageType;
 import com.primaryschool.home.entity.CultureType;
 import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
@@ -14,6 +15,14 @@ import com.primaryschool.home.entity.StudentLabMenuType;
 import com.primaryschool.home.entity.StudentType;
 import com.primaryschool.home.entity.TeacherType;
 import com.primaryschool.home.entity.TrendsType;
+/**
+ * 
+* @ClassName: TypeFlagToTypeNameDao
+* @Description: TODO  通过类型flag获取类型name
+* @author Mingshan
+* @date 2017年4月10日 上午8:20:22
+*
+ */
 
 @Repository
 public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
@@ -111,6 +120,17 @@ public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
 		query.setString(0, flag);
 		
 		StudentLabMenuType tt=(StudentLabMenuType)query.uniqueResult();
+		return tt.getItemTypeName();
+	}
+	
+	@Override
+	public String findClassTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from ClassHomePageType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		ClassHomePageType tt=(ClassHomePageType)query.uniqueResult();
 		return tt.getItemTypeName();
 	}
 	
