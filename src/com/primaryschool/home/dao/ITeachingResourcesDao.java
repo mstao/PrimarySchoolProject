@@ -33,4 +33,10 @@ public interface ITeachingResourcesDao<T> {
 	
 	/**根据类型获取教学资源内容的数量**/
 	int  findTeachingResourcesContentCount(int menuId,int classId,String flag);
+	
+	/**浏览量+1**/
+	boolean  addViewCount(int tid);
+	
+	/**获取人们教学资源**/
+	List<T> findHotTeachingResourcesContent(int menuId,int classId,String flag,int position,int item_per_page);
 }

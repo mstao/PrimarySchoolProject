@@ -60,4 +60,17 @@ public class TeachingResourcesService<T> implements ITeachingResourcesService<T>
 		return teachingResourcesDao.findTeachingResourcesContentById(id);
 	}
 
+	@Override
+	public int findTeachingResourcesContentCount(int menuId, int classId, String flag) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findTeachingResourcesContentCount(menuId, classId, flag);
+	}
+
+	@Override
+	public List<T> findHotTeachingResourcesContent(int menuId, int classId, String flag, int position,
+			int item_per_page) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findHotTeachingResourcesContent(menuId, classId, flag, position, item_per_page);
+	}
+
 }

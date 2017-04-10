@@ -19,4 +19,6 @@ public interface ITypeFlagToTypeNameService {
 	String findLabClassTypeNameByTypeFlag(String flag);
 	
 	String findClassTypeNameByTypeFlag(String flag);
+	
+	String findTeachingResourcesContentTypeNameByTypeFlag(String flag);
 }

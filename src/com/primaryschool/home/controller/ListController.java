@@ -592,14 +592,44 @@ public class ListController<T> {
 	* @return String    返回类型
 	* @throws
 	 */
-	@RequestMapping("/teachngResources")
-	public String teachingResources(int menuId,int classId,	String flag,ModelMap map){
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/teachingResources")
+	public String teachingResources(int menuId,int classId,	String flag,int p,ModelMap map){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//查看详细信息url
+		String durl="teachingResources";
 		
-		//根据
-		//
-		ArrayList<TeachingResourcesContent> discuss=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, flag, position, item_pre_page);
-		//
-		return "home/list/trendsList";
+		//当前的url
+		String url="./list/teachngResources?menuId='"+menuId+"'&classId='"+classId+"'&flag='"+flag+"'&p=";
+		//获取总记录量
+		int count=teachingResourcesService.findTeachingResourcesContentCount(menuId, classId, flag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		//根据flag获取name
+		String typeName=typeFlagToTypeNameService.findTeachingResourcesContentTypeNameByTypeFlag(flag);
+		
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+		
+        //根据类型与当前页码来获取记录量
+		ArrayList<TeachingResourcesContent> list=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, flag, position, item_pre_page);
+		//获取 对应的热门的记录
+		
+		ArrayList<TeachingResourcesContent> hotlist=(ArrayList<TeachingResourcesContent>) teachingResourcesService.findHotTeachingResourcesContent(menuId, classId, flag, position, item_pre_page);
+		
+		map.put("durl", durl);
+        map.put("toolBar", toolBar);
+        map.put("typeName", typeName);
+        map.put("typeFlag", flag);
+        map.put("item", list);
+        map.put("hotItem", hotlist);
+        map.put("menuId", menuId);
+        map.put("classId", classId);
+		return "home/list/teachingResourcesContentList";
 	}
 	
 }

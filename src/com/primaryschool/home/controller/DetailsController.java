@@ -324,6 +324,8 @@ public class DetailsController<T>{
 		
 		return "home/details/mainClass";
 	}
+    
+    
    @RequestMapping("/newsinfo")
    public String newsinfo(int id,int gradeFlag,String classFlag,int classId,ModelMap model){
 	   
@@ -333,6 +335,11 @@ public class DetailsController<T>{
 	   model.put("grade", gradeFlag);
 	   model.put("className", classFlag);
 	   return "home/details/classNewsDetail";
+   }
+   
+   @RequestMapping("/teachingResources")
+   public String TeachingResourcesContent(){
+	   return "home/details/teachingResourcesContentDetail";
    }
    
 }

@@ -104,7 +104,9 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 		return tt.getClassName();
 	}
 
-
+    /**
+     * 根据id查询教学资源的具体内容
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public T findTeachingResourcesContentById(int id) {
@@ -116,19 +118,57 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 	}
 
 
+	/**
+	 * 根据条件获取教学资源 的数量
+	 */
 	@Override
 	public int findTeachingResourcesContentCount(int menuId, int classId, String flag) {
 		// TODO Auto-generated method stub
 		BigInteger count;
 		int r;
 		//根据类型获取id
-		int id=typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
-		String sql="select count(CASE WHEN t.type_id=? and t.is_publish=1 THEN 1 ELSE NULL END) from ps_teaching_resources_content_type t";
+		int typeId=typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
+		String sql="select count(CASE WHEN t.menuId=? and classId=? and t.type_id=? and t.is_publish=1 THEN 1 ELSE NULL END) from ps_teaching_resources_content_type t";
 		Query query  = sessionFactory.getCurrentSession().createSQLQuery(sql); 
-		query.setInteger(0,id);
+		query.setInteger(0,menuId);
+		query.setInteger(1,classId);
+		query.setInteger(2,typeId);
 		count= (BigInteger) query.uniqueResult();
 		r=count.intValue();
 		return r;
+	}
+
+
+	/**
+	 * 根据id浏览量+1
+	 */
+	@Override
+	public boolean addViewCount(int tid) {
+		// TODO Auto-generated method stub
+		String hql="update TeachingResourcesContent t set t.viewCount=t.viewCount+1  where t.id=?";
+		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
+		query.setInteger(0,tid);
+		return (query.executeUpdate()>0);
+	}
+
+	/**
+	 * 获取热门信息
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findHotTeachingResourcesContent(int menuId, int classId, String flag, int position,
+			int item_per_page) {
+		// TODO Auto-generated method stub
+		int typeId=typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
+		
+		String hql="select new com.primaryschool.home.entity.TeachingResourcesContent(t.id,t.itemTitle,t.addTime,t.viewCount) from TeachingResourcesContent t where t.menuId=? and t.classId=? and t.typeId=? and t.isPublish=1 order by t.viewCount desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, menuId);
+		query.setInteger(1, classId);
+		query.setInteger(2, typeId);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
 	}
 
 }
