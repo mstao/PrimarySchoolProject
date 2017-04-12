@@ -593,8 +593,8 @@ public class ListController<T> {
 	* @throws
 	 */
 	@SuppressWarnings("unchecked")
-	@RequestMapping("/teachingResources")
-	public String teachingResources(int menuId,int classId,	String flag,int p,ModelMap map){
+	@RequestMapping("/teachingResourcesContent")
+	public String teachingResourcesContent(int menuId,int classId,	String flag,int p,ModelMap map){
 		String sp=p+"";
 		if(sp.equals("")){
 			p=1;

@@ -34,7 +34,7 @@
 		
 			
 			<div class="top-contaner-left">	
-			<!-- 校园动态-->
+			<!-- LIEBIAO -->
 			<div class="top-left">
 				<div class="top-left-bottom"><b>${menuName}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 				<ul>
@@ -74,7 +74,7 @@
 			</div>
 			<!--教学研讨-->
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>${TEACHER_RESOURCES_DISCUSS}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
+				<div class="top-left-bottom"><b>${TEACHER_RESOURCES_DISCUSS}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="${CTP}/list/teachingResourcesContent?menuId=${menuId}&classId=${classId}&flag=${discussFlag}&p=1">更多>></a></span></div>
 				<ul>
 				   <c:forEach items="${discuss}" var="discuss_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}"> ${discuss_list.itemTitle}</a><span>[${discuss_list.addTime}]</span></li>

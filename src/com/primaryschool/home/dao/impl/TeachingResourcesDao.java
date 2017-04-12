@@ -128,7 +128,7 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 		int r;
 		//根据类型获取id
 		int typeId=typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
-		String sql="select count(CASE WHEN t.menuId=? and classId=? and t.type_id=? and t.is_publish=1 THEN 1 ELSE NULL END) from ps_teaching_resources_content_type t";
+		String sql="select count(CASE WHEN t.menu_id=? and class_id=? and t.type_id=? and t.is_publish=1 THEN 1 ELSE NULL END) from ps_teaching_resources_content t";
 		Query query  = sessionFactory.getCurrentSession().createSQLQuery(sql); 
 		query.setInteger(0,menuId);
 		query.setInteger(1,classId);

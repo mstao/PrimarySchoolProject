@@ -79,6 +79,18 @@ public class TeachingResourcesContent implements Serializable{
 	
 
 
+	public TeachingResourcesContent(int id, String itemTitle, int menuId, String addTime, int viewCount, int classId) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.menuId = menuId;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.classId = classId;
+	}
+
+
+
 	public TeachingResourcesContent(int id, String itemTitle, String itemContent, String addTime, int viewCount,
 			String author, String resourcesName, String className, String itemTypeFlag, String itemTypeName) {
 		super();

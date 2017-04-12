@@ -236,12 +236,6 @@ public class DetailsController<T>{
 	   return "home/details/trendsDetails";
    }
    
-   @RequestMapping("/teachingResources")
-   public String  teachingResources(){
-	   
-	   return "home/details/trendsDetails";
-   }
-   
    
    //班级主页详细内容
    
@@ -337,9 +331,6 @@ public class DetailsController<T>{
 	   return "home/details/classNewsDetail";
    }
    
-   @RequestMapping("/teachingResources")
-   public String TeachingResourcesContent(){
-	   return "home/details/teachingResourcesContentDetail";
-   }
+
    
 }

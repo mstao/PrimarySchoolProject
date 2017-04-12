@@ -438,6 +438,9 @@ public class CategoryController<T> {
 		
 		map.put("className", className);
 		map.put("menuName", menuName);
+		
+		map.put("classId", classId);
+		map.put("menuId",menuId);
 		return "home/category/teachingResources";
 	}
 }
