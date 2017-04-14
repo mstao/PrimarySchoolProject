@@ -12,31 +12,156 @@
 		<link href="${CTP_ADMIN }/css/edit.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/js/extends/wangEditor/dist/css/wangEditor.min.css" rel="stylesheet" type="text/css"/>
-		
+		<link href="${CTP_ADMIN }/js/extends/uploadify/css/uploadify.css" rel="stylesheet" type="text/css"/>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/lib/jquery-1.8.3.js"></script>
 	    <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
-	
+	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/uploadify/js/jquery.uploadify.min.js" ></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/jquery.date_input.pack.js"></script> 
+	
 	<script type="text/javascript">
 	 var CTPPATH="${pageContext.request.contextPath}";
-	
-	function check(val,obj){
+	 var CTP_ADMIN=CTPPATH+"/resources/admin";
+	 
+	 function check(val,obj){
 		    obj.style.backgroundColor="#E9E9E6";
 			if(val=='f'){
-					f.style.display='block';
-					s.style.display='none';
+				    $('#f').css("visibility","visible");
+				    $('#s').css("visibility",'hidden')
 					sb.style.backgroundColor="#F6F6F3";
 		    }else if(val=='s'){
-		 	        s.style.display='block';
-					f.style.display='none';
+		    	    $('#f').css("visibility","hidden");
+				    $('#s').css("visibility",'visible')
 					fb.style.backgroundColor="#F6F6F3";
 		    }
-		    
 	}
 		
+$(function() {
+		
+		$("#uploadify").uploadify({
+			debug			: false, 
+
+			swf 			:  CTP_ADMIN+'/js/extends/uploadify/js/uploadify.swf',	//swf文件路径
+			method			: 'get',	// 提交方式
+			uploader		:  CTPPATH+'/admin/upload/uploadfile;jsessionid=${pageContext.session.id}', // 服务器端处理该上传请求的程序(controller)
+
+			preventCaching	: true,		// 加随机数到URL后,防止缓存
+
+			buttonCursor	: 'hand',	// 上传按钮Hover时的鼠标形状
+		//	buttonImage		: 'img/.....png',	// 按钮的背景图片,会覆盖文字
+			buttonText		: '选择文件'	, //按钮上显示的文字，默认”SELECTFILES”
+			height			: 30	, // 30 px
+			width			: 120	, // 120 px
+			
+			fileObjName		: 'filedata',	//文件对象名称, 即属性名
+			fileSizeLimit	: 100000	,		// 文件大小限制, 10000 KB
+			fileTypeDesc	: 'any'	,	//文件类型说明 any(*.*)
+			fileTypeExts	: '*.*;*.txt',		// 允许的文件类型,分号分隔
+			//formData		: {'id':'1', 'type':'myFile'} , //指定上传文件附带的其他数据。也动态设置。可通过getParameter()获取
+		
+			auto            : false,    //选择完文件是否自动上传
+			multi			: true ,	// 多文件上传
+			progressData	: 'speed,percentage',	// 进度显示, speed-上传速度,percentage-百分比	
+			queueID			: 'fileQueue',//上传队列的DOM元素的ID号
+			queueSizeLimit	: 99	,	// 队列长度
+			removeCompleted : false	,	// 上传完成后是否删除队列中的对应元素
+			removeTimeout	: 10	,	//上传完成后多少秒后删除队列中的进度条, 
+			requeueErrors	: true,	// 上传失败后重新加入队列
+			uploadLimit		: 10,	// 最多上传文件数量
+
+			successTimeout	: 30	,//表示文件上传完成后等待服务器响应的时间。超过该时间，那么将认为上传成功。
+			// 在文件被移除出队列时触发	
+			onCancel : function(file) { layer.msg(file.name + '从上传列队中移除!' ); },
+			
+			// 在调用cancel方法且传入参数’*’时触发
+			onClearQueue : function (queueItemCount) {
+					if(queueItemCount>0){
+					layer.msg(queueItemCount + ' 文件将从上传列队中移除'); 
+					}
+				},
+
+			// 打开文件对话框 关闭时触发
+			onDialogClose : function (queueData) {
+							/*	alert(
+									"文件对话窗口中选了几个文件:" + queueData.filesSelected + "---" +
+									"队列中加了几个文件:" + queueData.filesQueued + "---" +
+									"队列中被替换掉的文件数:" + queueData.filesReplaced + "---" +
+									"取消掉的文件数:" + queueData.filesCancelled + "---" + 
+									"上传出错的文件数:" + queueData.filesErrored
+								); */
+							},
+			
+			// 选择文件对话框打开时触发
+			onDialogOpen : function () { /*alert( 'please select files' ) */ },
+		
+			// 没有兼容的FLASH时触发
+			onFallback : function(){ alert( '您未安装FLASH控件,无法上传文件!请安装FLASH控件后再试。' ) },
+			
+			// 每次初始化一个队列时触发, 即浏览文件后, 加入一个队列
+			//onInit : function (instance) { alert( 'The queue ID is ' + instance.settings.queueID ) },
+		
+			// 上传文件处理完成后触发（每一个文件都触发一次）, 无论成功失败
+			//onUploadComplete : function(file){ alert( 'The file ' + file.name + ' uploaded finished!' ) },
+
+			// 上传文件失败触发
+			onUploadError : function(file, errorCode, errorMsg, errorString){ 
+                              
+				 layer.msg(file.name + ' 上传未完成！ ' );
+                        
+                               /*  alert(
+                                    file.name + ' upload failed! ' + 
+                                    'errorCode: ' + errorCode +
+                                    'errorMsg:' + errorMsg +
+                                    'errorString:' + errorString
+                                );*/
+							}, 
+            
+            // 在每一个文件上传成功后触发
+            onUploadSuccess : function(file, data, response) {
+                              
+            	layer.msg(  file.name + ' 上传成功！  ' +
+                        '  server-side returned data:' + data +
+                        '  response: ' + response,{icon: 1,time:3000});
+            	//window.location.href=CTPPATH+"/newslist.ado?type=${type}&p=1";
+                 },
+                 
+            //所有文件上传成功后触发
+            onQueueComplete : function(queueData) {
+                     //上传队列全部完成后执行的回调函数    
+                     alert(getQueueSize("uploadify"));
+                    if(queueData.uploadsErrored==0){
+                    	layer.msg("全部文件上传完成了",{icon: 1,time:3000});
+                    	//此时可以进行跳转页面
+                    }else{
+                    	layer.msg("文件上传成功的有"+queueData.uploadsSuccessful+"个-|-文件上传失败的有"+queueData.uploadsErrored+"个\n"+"请您点击开始上传按钮手动上传文件",{icon: 1,time:4000});
+                        
+                    	//显示手动上传按钮，将失败的重新上传
+                    	$(".start-upload").show();
+                    }
+                     
+                 }  
+                 
+
+		});
+		
+		
+	});
 	
-    </script>
-	</head>
+	//上传文件
+	function upload(id){
+		$("#" + id).uploadify("settings", "formData",{'item_id':"",'item_type':'fsg'});
+	    $("#" + id).uploadify("upload", "*");
+	}
+	
+	//清空列队
+    function clean(id){
+    	$("#" + id).uploadify('cancel', '*');
+    }
+	//获取上传文件总个数
+	function getQueueSize(id){
+		return $("#"+id).data('uploadify').queueData.queueLength; 
+	}
+</script>
+</head>
 	<body>
 	<!-- S header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
@@ -85,7 +210,13 @@
 		    </select>
 		</div>
 		<div class="draft-cheched-div" id="f">
-			<input type="file" name="add_file" class="add-file" value="添加附件"/>
+			<span class="draft-cheched-tag">*可以选择多个附件,选择完后随发布内容一起提交<br>*内容发布前附件可以撤销<br>*内容发布完后附件不可撤销<br>*清空列表将所有上传的文件清除上传列队<br>*如果进行多文件上传时如果文件上传失败，请点击"手动上传"手动上传</span>
+		    <span id="uploadify"></span>
+			<div id="fileQueue"></div>     
+			 <br>
+		    <a href="javascript:upload('uploadify')"  class="start-upload" >手动上传</a>&nbsp; 
+
+	       	<a href="javascript:clean('uploadify')" class="clean-queue">清空列表</a>
 		</div>
 	</div>
 	<!--E 附件选择区-->
