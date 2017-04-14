@@ -29,7 +29,7 @@
 			<span>${item.itemTypeName}</span>
 </div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${item.itemTypeName}</a> > <a href="javascript:void(0);">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="${CTP}/list/teachingResources">${SCHOOL_TEACHER_RESOURCES}</a> > <a href="${CTP}/list/teachingResourcesContent?menuId=${menuId}&classId=${classId}&flag=${item.itemTypeFlag}&p=1">${item.itemTypeName}</a> > <a href="${CTP}/category/teachingResources?classId=${classId}&menuId=${menuId}">${item.resourcesName}</a> > <a href="javascript:void(0);">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">

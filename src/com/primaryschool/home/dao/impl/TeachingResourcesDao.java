@@ -111,7 +111,7 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 	@Override
 	public T findTeachingResourcesContentById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.TeachingResourcesContent(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,t.author,tm.resourceName,tc.className,tct.itemTypeFlag,tct.itemTypeName) from TeachingResourcesContent t,TeachingResourcesMenu tm,TeachingResourcesContentType  tct,TeachingResourcesClass tc where t.menuId=tm.id and t.classId=tc.id and t.typeId=tct.id and t.isPublish=1 ";
+		String hql="select new com.primaryschool.home.entity.TeachingResourcesContent(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,t.author,tm.resourceName,tc.className,tct.itemTypeFlag,tct.itemTypeName) from TeachingResourcesContent t,TeachingResourcesMenu tm,TeachingResourcesContentType  tct,TeachingResourcesClass tc where t.menuId=tm.id and t.classId=tc.id and t.typeId=tct.id and t.isPublish=1 and t.id=? ";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T)query.uniqueResult();

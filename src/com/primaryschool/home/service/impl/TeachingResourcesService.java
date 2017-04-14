@@ -73,4 +73,11 @@ public class TeachingResourcesService<T> implements ITeachingResourcesService<T>
 		return teachingResourcesDao.findHotTeachingResourcesContent(menuId, classId, flag, position, item_per_page);
 	}
 
+	@Override
+	public List<T> findLatestTeachingResourcesContent(int menuId, int classId, String flag, int position,
+			int item_per_page) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findTeachingResourcesContent(menuId, classId, flag, position, item_per_page);
+	}
+
 }

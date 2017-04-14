@@ -20,7 +20,7 @@ public class LoginRegisterController {
 	/**
 	 * 
 	* @Title: showLogin
-	* @Description: TODO  学生报名登录
+	* @Description: TODO  学生报名登录 显示
 	* @param @return    设定文件
 	* @return String    返回类型
 	* @throws
@@ -36,7 +36,7 @@ public class LoginRegisterController {
 	/**
 	 * 
 	* @Title: showStudentRegister
-	* @Description: TODO 学生注册
+	* @Description: TODO 学生注册 显示
 	* @param @return    设定文件
 	* @return String    返回类型
 	* @throws
@@ -49,7 +49,7 @@ public class LoginRegisterController {
 	/**
 	 * 
 	* @Title: showTeacherLogin
-	* @Description: TODO 教师登录
+	* @Description: TODO 教师登录 显示
 	* @param @return    设定文件
 	* @return String    返回类型
 	* @throws
@@ -64,7 +64,7 @@ public class LoginRegisterController {
 	/**
 	 * 
 	* @Title: showTeacherRegister
-	* @Description: TODO 教师注册
+	* @Description: TODO 教师注册 显示
 	* @param @return    设定文件
 	* @return String    返回类型
 	* @throws
@@ -74,6 +74,8 @@ public class LoginRegisterController {
 	public String showTeacherRegister(){
 		return "admin/loginOrregister/teacher-register";
 	}
+	
+	
 	
 	
 }

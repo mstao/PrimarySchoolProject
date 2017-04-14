@@ -19,6 +19,7 @@ import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
+import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IClassHomePageService;
 import com.primaryschool.home.service.IClassSynopsisService;
@@ -29,6 +30,7 @@ import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
+import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITrendsService;
 
 /**
@@ -75,7 +77,8 @@ public class DetailsController<T>{
     @Autowired
    	private IClassSynopsisService<ClassSynopsis> classSynopsisService;
        
-    
+    @Autowired
+    private ITeachingResourcesService<T>  teachingResourcesService;
        
     int position=0;
 	int item_per_page=7;
@@ -331,6 +334,24 @@ public class DetailsController<T>{
 	   return "home/details/classNewsDetail";
    }
    
-
+   @SuppressWarnings("unchecked")
+   @RequestMapping("/teachingResources")
+   public String  teachingResourcesDetails(int menuId,int classId,int tid,String flag,ModelMap map){
+	  
+	  String url="teachingResources"; 
+	  //根据id获取具体内容
+	  TeachingResourcesContent content=(TeachingResourcesContent) teachingResourcesService.findTeachingResourcesContentById(tid);
+	   
+	  //获取该类型最近更新的信息
+	  
+	  ArrayList<TeachingResourcesContent> latest=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findLatestTeachingResourcesContent(menuId, classId, flag, 0, pageSize);
+	  
+	  map.put("item",content);
+	  map.put("latestItem", latest);
+	  map.put("url",url);
+	  map.put("menuId", menuId);
+	  map.put("classId", classId);
+	  return "home/details/teachingResourcesContentDetail";
+   }
    
 }

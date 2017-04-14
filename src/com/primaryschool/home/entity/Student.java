@@ -9,19 +9,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+/**
+ * 
+* @ClassName: Student
+* @Description: TODO 学生天地 -实体类
+* @author Mingshan
+* @date 2017年4月14日 上午11:16:39
+*
+ */
 
 @Entity
 @Table(name="ps_student")
 public class Student implements Serializable{
 	
-	/**  
-	* @Title: Student.java
-	* @Package com.primaryschool.home.entity
-	* @Description: TODO(用一句话描述该文件做什么)
-	* @author Mingshan  
-	* @date 2017年3月26日 下午3:40:10
-	* @version V1.0  
-	*/ 
+
 	private static final long serialVersionUID = 7043250238465698549L;
 
 	@Id
