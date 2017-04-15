@@ -1,9 +1,9 @@
 package com.primaryschool.admin.controller;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -11,15 +11,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+
+import com.primaryschool.admin.entity.FileBean;
+import com.primaryschool.admin.service.IFileService;
+import com.primaryschool.global.util.GetDateUtil;
 
 
 /**
@@ -33,8 +36,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 @Controller
 @RequestMapping("/admin/upload")
-public class AdminUploadController {
+public class AdminUploadController<T> {
 
+	@Autowired
+	private IFileService<FileBean> fileService;
 	/**
 	 * 
 	* @Title: uploadpic
@@ -85,13 +90,16 @@ public class AdminUploadController {
 	* @return void    返回类型
 	* @throws
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/uploadfile",method=RequestMethod.POST)
-	public void  uploadFile( HttpServletRequest request, HttpServletResponse response)
+	@ResponseBody
+	public void uploadFile( HttpServletRequest request, HttpServletResponse response)
 			 throws ServletException, IOException{
 		    // 从request中取时, 以UTF-8编码解析
 			request.setCharacterEncoding( "UTF-8" );
 			String fileName = null;
-	     
+		    int id = 0;
+		    String flag = null;
 	
 			// 获取上传文件存放的 目录 , 无则创建
 			String path = request.getServletContext().getRealPath( "/resources/Uploads/files" );
@@ -100,6 +108,20 @@ public class AdminUploadController {
 			new java.io.File( path ).mkdir();
 		
 	        MultipartHttpServletRequest multipartRequest =(MultipartHttpServletRequest) request;
+	        
+	        //获取参数列表
+	        //获取id
+	        String[] sid=multipartRequest.getParameterValues("item_id");
+	        //获取类型
+	        String[] type=multipartRequest.getParameterValues("item_type");
+	  
+	        if(!sid.equals("")){
+	        	id=Integer.parseInt(sid[0]);
+	        }
+	        if(!type.equals("")){
+	        	flag=type[0];
+	        }
+	        System.out.println("ID="+id+"flag="+flag);
 	        Map<String, MultipartFile> fileMap = multipartRequest.getFileMap(); 
 	        
 	        for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {    
@@ -121,11 +143,27 @@ public class AdminUploadController {
 	                    String filePath =path+newFileName;
 	                    System.out.println(filePath);
 	                    //将信息写到数据库
+	                    
+	                    //将数据整理一下
+	                    //获取当前时间
+	                    String date=GetDateUtil.getData();
+	                    //由typeFlag转化为id
+	                    int belongId=fileService.findBelongIdByTypeFlag(flag);
+	                    FileBean file=new FileBean();
+	                    file.setAddTime(date);
+	                    file.setFileName(fileName);
+	                    file.setRealName(newFileName);
+	                    file.setFileBlongId(belongId);
+	                    file.setItemId(id);
+	                    //将数据保存到数据库
+	                    fileService.addTrendsAttachment(file);
+	                    
 	            } catch (IOException e) {  
 	            	System.out.println("上传失败");
 	                e.printStackTrace();  
 	            }    
-            }   
+            }
+		   
 	       
 	}
 	

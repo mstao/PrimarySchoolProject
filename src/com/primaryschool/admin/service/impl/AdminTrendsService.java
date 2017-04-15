@@ -1,9 +1,9 @@
 package com.primaryschool.admin.service.impl;
 
-import java.math.BigInteger;
+
 import java.util.List;
 
-import org.hibernate.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,29 +42,30 @@ public class AdminTrendsService<T> implements IAdminTrendsService<T> {
 		return (T) trendsDao.findTrendsInfoById(id);
 	}
 
+
+
 	@Override
-	public boolean saveTrendsInfo(int id, String flag, String title, String content, String addTime, int isPublish,
-			int isImage) {
+	public int addTrendsInfo(T t) {
 		// TODO Auto-generated method stub
-		return false;
+		return trendsDao.addTrendsInfo(t);
 	}
 
 	@Override
-	public int addTrendsInfo(String flag, String title, String content, String addTime, int isPublish, int isImage) {
+	public void deleteTrendsById(List<?> ids) {
 		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean deleteTrendsById(String[] ids) {
-		// TODO Auto-generated method stub
-		return false;
+		trendsDao.deleteTrendsById(ids);
 	}
 
 	@Override
 	public int findTrendsCount(String flag) {
 		// TODO Auto-generated method stub
 		return trendsDao.findTrendsCount(flag);
+	}
+
+	@Override
+	public boolean updateTrendsInfo(T t) {
+		// TODO Auto-generated method stub
+		return trendsDao.updateTrendsInfo(t);
 	}
 
 }

@@ -1,14 +1,23 @@
 package com.primaryschool.admin.dao.impl;
 
+import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
+import javax.annotation.Resources;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.metadata.ClassMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IAdminTrendsDao;
+import com.primaryschool.global.util.GenericsUtils;
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 
 
@@ -26,11 +35,13 @@ import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 @Repository
 public class AdminTrendsDao<T> implements IAdminTrendsDao<T> {
 
+	
 	@Autowired
 	private SessionFactory  sessionFactory;
 	
 	@Autowired
 	private ITypeFlagToTypeIdDao  typeFlagToTypeIdDao;
+	
 	
 	
 	/**
@@ -43,7 +54,7 @@ public class AdminTrendsDao<T> implements IAdminTrendsDao<T> {
 		
 		//根据类型获取id
 		int id=typeFlagToTypeIdDao.findTrendsTypeIdByTypeFlag(flag);
-		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.addTime) from Trends t where t.typeId=?  order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.addTime,t.isPublish,t.author) from Trends t where t.typeId=?  order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);
@@ -59,29 +70,34 @@ public class AdminTrendsDao<T> implements IAdminTrendsDao<T> {
 	@Override
 	public T findTrendsInfoById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Trends t,TrendsType tt  where tt.id=t.typeId and t.id=?";
+		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.isPublish)from Trends t,TrendsType tt  where tt.id=t.typeId and t.id=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T) query.uniqueResult();
 	}
 
 	@Override
-	public boolean saveTrendsInfo(int id, String flag, String title, String content, String add_time, int is_publish,
-			int is_image) {
+	public boolean updateTrendsInfo(T t) {
 		// TODO Auto-generated method stub
-		return false;
+	    String hql="update Trends u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author  where u.id=:id";
+		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
+		query.setProperties(t);
+		return (query.executeUpdate()>0);
 	}
 
 	@Override
-	public int addTrendsInfo(String flag, String title, String content, String add_time, int is_publish, int is_image) {
+	public int addTrendsInfo(T t) {
 		// TODO Auto-generated method stub
-		return 0;
+		Serializable result =sessionFactory.getCurrentSession().save(t);
+		return (Integer)result;
 	}
 
 	@Override
-	public boolean deleteTrendsById(String[] ids) {
+	public void deleteTrendsById(List<?> ids) {
 		// TODO Auto-generated method stub
-		return false;
+		 String hql = "delete from Trends where id in (:ids)";
+		 Query query  =  sessionFactory.getCurrentSession().createQuery(hql);
+		 query.setParameterList("ids", ids).executeUpdate();
 	}
 
 	/**

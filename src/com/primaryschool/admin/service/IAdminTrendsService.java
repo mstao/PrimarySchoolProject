@@ -2,6 +2,8 @@ package com.primaryschool.admin.service;
 
 import java.util.List;
 
+import com.primaryschool.home.entity.Trends;
+
 /**
  * 
 * @ClassName: ITrendsService
@@ -19,9 +21,10 @@ public interface IAdminTrendsService<T> {
 	/**根据 类型获取统计总数**/ 
 	int findTrendsCount(String flag);  
     /**根据id修改信息**/
-    boolean saveTrendsInfo(int id,String flag,String title,String content,String addTime,int isPublish,int isImage);
+	 boolean updateTrendsInfo(T t);
     /**添加信息，返回值为该记录的主键值**/
-    int addTrendsInfo(String flag,String title,String content,String addTime,int isPublish,int isImage);
+    int addTrendsInfo(T t);
     /**删除信息**/
-    boolean deleteTrendsById(String[] ids);     
+    void deleteTrendsById(List<?> ids);
+	    
 }

@@ -1,7 +1,13 @@
 package com.primaryschool.admin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.ITypeFlagToTypeIdService;
 
 /**
  * 
@@ -14,6 +20,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/admin/add")
-public class AddInfoServlet {
-
+public class AddInfoServlet<T> {
+    @Autowired
+    private IAdminTrendsService<T> trendsService;
+	
+    @Autowired
+    private ITypeFlagToTypeIdService typeFlagToTypeIdService; 
+	/**
+	 * 
+	* @Title: addTrends
+	* @Description: TODO 添加 校园动态
+	* @param @param trends
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+    
+    @RequestMapping("/trends")
+    @ResponseBody
+	public  String addTrends(Trends trends){
+    	
+    	//由typeFlag获取typeid
+    	int typeId =typeFlagToTypeIdService.findTrendsTypeIdByTypeFlag(trends.getItemTypeFlag());
+		
+    	//赋值
+    	trends.setTypeId(typeId);
+    	
+    	int result= trendsService.addTrendsInfo((T)trends);
+		return result+"";
+	}
+	
 }

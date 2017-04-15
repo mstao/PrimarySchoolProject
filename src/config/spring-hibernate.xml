@@ -36,7 +36,7 @@
 	    </property>
 	    <property name="packagesToScan">
 	    	<list>
-	    		<value>com.primaryschool.home.entity</value>
+	    		<value>com.primaryschool.**.entity</value>
 	    	</list>
 	    </property>
 	    <property name="hibernateProperties">

@@ -1,5 +1,7 @@
 package com.primaryschool.admin.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -33,10 +35,11 @@ public class DistributeInfoController<T> {
 	* @throws
 	 */
 	@RequestMapping("/trends")
-	public String  trends(int id,ModelMap map){
+	public String  trends(int id,ModelMap map,HttpServletRequest request){
 		Trends trends=(Trends) trendsService.findTrendsInfoById(id);
-	    
-	    map.put("item", trends);
+		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_TRENDS");
+		map.put("item", trends);
+	    map.put("school_trends_c", SCHOOL_TRENDS);
 		return "admin/details/trendsDetail";
 	}
 }

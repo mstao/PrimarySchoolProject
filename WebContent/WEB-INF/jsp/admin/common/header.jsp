@@ -106,7 +106,7 @@
 						<a href="#" title="" class="home" >退出</a>                                       
 					</li>
 					<li>
-						<a href="../home/index.html" title="" class="home" >网站</a>                                       
+						<a href="${pageContext.request.contextPath}/main/index" title="" class="home" >网站</a>                                       
 					</li>
 				</ul>
 			</div>

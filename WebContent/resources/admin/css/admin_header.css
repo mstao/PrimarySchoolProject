@@ -80,13 +80,6 @@ body {
 	background-color: #202328;
 	
 }
-.dropdown-menu.categories a {
-	color: #000;
-}
-.dropdown-menu.categories a:hover {
-	color: #5bc4be;
-	margin-left: 10px;
-}
 
 .menu-function > li > a,.menu-share > li > a {
 	padding-left: 20px;
@@ -133,3 +126,5 @@ body {
 .clear{
 	clear: both;
 }
+
+

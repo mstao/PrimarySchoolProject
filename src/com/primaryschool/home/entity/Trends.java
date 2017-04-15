@@ -80,7 +80,7 @@ public class Trends implements Serializable{
 		this.viewCount =viewCount;
     }
     
-	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
+    public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
 			  String itemTypeName,String itemTypeFlag) {
 		super();
 		this.id = id;
@@ -90,7 +90,30 @@ public class Trends implements Serializable{
 		this.viewCount = viewCount;
 		this.itemTypeName = itemTypeName;
 		this.itemTypeFlag = itemTypeFlag;
-		
+	
+	}
+    
+	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
+			  String itemTypeName,String itemTypeFlag,int isPublish) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.itemTypeName = itemTypeName;
+		this.itemTypeFlag = itemTypeFlag;
+		this.isPublish = isPublish;
+	}
+
+	//后台列表要用
+	public Trends(int id, String itemTitle, String addTime, int isPublish,String author) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.addTime = addTime;
+		this.author = author;
+		this.isPublish = isPublish;
 	}
 
 	public int getId() {
