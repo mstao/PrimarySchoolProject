@@ -64,6 +64,7 @@ public class IndexController {
 	public String index(HttpServletRequest request){
 		int position=0;
 		int item_per_page=PageSizeConfig.HOME_INDEX_PAGESIZE;
+		int slidePageSize=PageSizeConfig.HOME_SLIDE_PAGESIZE;
 		//获取校园动态信息
 		
 		//获取校内新闻信息
@@ -98,6 +99,17 @@ public class IndexController {
 		String partyFlag="branch";
 		ArrayList<Party>  party=(ArrayList<Party>)partyService.findPartyInfo(partyFlag, position, item_per_page);
 		
+		
+		/*********图片轮播********/
+		
+		//获取校内新闻  图片轮播
+		ArrayList<Trends> sildeNews=(ArrayList<Trends>) trendsService.findSlideTrendsInfo(newsFlag, 0, slidePageSize);
+		
+		//获取阳光德育 图片轮播
+		ArrayList<Education>  sildeEdu=(ArrayList<Education>)educationService.findSlideTrendsInfo(educationFlag,  0, slidePageSize);
+		
+		
+		
 		request.setAttribute("news", news);
 		request.setAttribute("notice", notice);		
 		request.setAttribute("education", education);
@@ -106,7 +118,7 @@ public class IndexController {
 		request.setAttribute("manage", manage);
 		request.setAttribute("party", party);
 		
-		
+		request.setAttribute("sildeNews", sildeNews);
 	
 		request.setAttribute("newsFlag", newsFlag);
 		request.setAttribute("noticeFlag", noticeFlag);

@@ -38,8 +38,12 @@ public class DistributeInfoController<T> {
 	public String  trends(int id,ModelMap map,HttpServletRequest request){
 		Trends trends=(Trends) trendsService.findTrendsInfoById(id);
 		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_TRENDS");
+		String fileType="ftrends";
+		String durl="trends";
 		map.put("item", trends);
 	    map.put("school_trends_c", SCHOOL_TRENDS);
+	    map.put("fileType", fileType);
+	    map.put("durl", durl);
 		return "admin/details/trendsDetail";
 	}
 }

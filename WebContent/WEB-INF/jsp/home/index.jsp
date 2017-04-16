@@ -24,6 +24,7 @@
 
 var CTPPATH="${pageContext.request.contextPath}";
 var CTP_HOME=CTPPATH+"/resources/home";
+
 </script>
 </head>
 <body>
@@ -39,13 +40,13 @@ var CTP_HOME=CTPPATH+"/resources/home";
 		        <div class="slider-wrapper theme-default">
 		            <div id="slider" class="nivoSlider">
 		                <img src="${CTP_HOME}/slider/images/toystory.jpg" data-thumb="${CTP_HOME}/slider/images/toystory.jpg" alt="" />
-		                <a href="#"><img src="${CTP_HOME}/slider/images/up.jpg" data-thumb="${CTP_HOME}/slider/images/up.jpg" alt="" title="This is an example of a caption" /></a>
+		                <img src="${CTP_HOME}/slider/images/up.jpg" data-thumb="${CTP_HOME}/slider/images/up.jpg"  />
 		                <img src="${CTP_HOME}/slider/images/walle.jpg" data-thumb="${CTP_HOME}/slider/images/walle.jpg" alt="" data-transition="slideInLeft" />
 		                <img src="${CTP_HOME}/slider/images/nemo.jpg" data-thumb="${CTP_HOME}/slider/images/nemo.jpg" alt="" title="#htmlcaption" />
 		            </div>
-		            <div id="htmlcaption" class="nivo-html-caption">
+		          <!--   <div id="htmlcaption" class="nivo-html-caption">
 		                <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
-		            </div>
+		            </div> -->
 		        </div>
 
              </div>
@@ -60,12 +61,14 @@ var CTP_HOME=CTPPATH+"/resources/home";
 			     <!--S 校园动态内容-->
 			     <div class="campus-nav-tag"><span class="news-tag">校内新闻</span><span class="jiantou"><img src="${CTP_HOME}/img/jiantou.png"/></span> <span class="notice-tag">通知公告</span><span class="jiantou-notice"><img src="${CTP_HOME}/img/jiantou.png"/></span> </div>
 			        <!--S 轮播图-->
-					<div class="slider-news">
+					<div class="slider-news slide-s">
 					<ul>
-				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-				   	
+				    <c:forEach items="${sildeNews}" var="s_news_list">  
+						<li class="slider-li"><a href="" target="_blank" ><img src="" alt="${s_news_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_news_list.itemContent}</div></li>
+					</c:forEach>	
+				     <c:if test="${empty sildeNews}">
+				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+				     </c:if>
 					</ul>
 				    </div>
 				  
@@ -111,7 +114,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/sun.png"/> <span class="tag-ch">阳光德育</span><span class="tag-en">Sunshine moral education</span> <a class="link-tag" href="${CTP}/category/education">进入>></a></div>
 			  
 			    	 <!--S 轮播图-->
-					<div class="slider-sunshine">
+					<div class="slider-sunshine slide-s">
 					<ul>
 				     
 						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="zzz"  /></a></li>
@@ -172,7 +175,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 			<div class="trends-top student-trends-top"><img src="${CTP_HOME}/img/stu-site.png"/> <span class="tag-ch">学生天地</span><span class="tag-en">The world of students</span> <a class="link-tag" href="${CTP}/category/student">进入>></a></div>
 		
 					<!--S 轮播图-->
-					<div class="slider-sunshine">
+					<div class="slider-sunshine slide-s">
 					<ul>
 				     
 						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
@@ -235,7 +238,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				<div class="trends-top sunshine-trends-top"><img src="${CTP_HOME}/img/teacher.png"/> <span class="tag-ch">教师园地</span><span class="tag-en">The teachers' corner</span> <a class="link-tag" href="${CTP}/category/teacher">进入>></a></div>
 			  
 			    	 <!--S 轮播图-->
-					<div class="slider-sunshine">
+					<div class="slider-sunshine slide-s">
 					<ul>
 				     
 						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
@@ -410,6 +413,13 @@ $(window).load(function() {
 });
 
 $(function(){
+	//图片轮播 动态获取第一张图片
+	$('.slider-li').each(function(){
+		//获取内容的第一张图片url
+		var s_n_s=$(this).find('.hide-content-slider').find("img[src!='']:first").attr('src');
+		//将图片url添加到图片显示区域src
+		$(">a>img",this).attr('src',s_n_s);
+	});
 	
     $('.roll-new-info-list').liMarquee({
         direction: 'up',//向上滚动
@@ -434,6 +444,9 @@ $(function(){
 		direkey:false//是否开启左右箭头方向控制
 	});
 	$(".tab").tab();
+	
+
+
 });
 
 

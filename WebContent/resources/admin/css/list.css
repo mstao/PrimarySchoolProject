@@ -214,6 +214,7 @@
     border-radius: 5px;
     float: right;
     border: 1px solid;
+    cursor: pointer;
 }
 .new_button:hover{
 	 width: 50px;

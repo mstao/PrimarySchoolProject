@@ -90,7 +90,6 @@ public class AdminUploadController<T> {
 	* @return void    返回类型
 	* @throws
 	 */
-	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/uploadfile",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadFile( HttpServletRequest request, HttpServletResponse response)
@@ -167,6 +166,64 @@ public class AdminUploadController<T> {
 	       
 	}
 	
+	
+	/**
+	 * 
+	* @Title: uploadImage
+	* @Description: TODO  插件上传图片
+	* @param @return    设定文件
+	* @return String    图片url
+	* @throws
+	 */
+	
+	@RequestMapping(value="/uploadimage",method=RequestMethod.POST)
+	@ResponseBody
+	public  String uploadImage(HttpServletRequest request, HttpServletResponse response)
+			 throws ServletException, IOException{
+		 // 从request中取时, 以UTF-8编码解析
+		request.setCharacterEncoding( "UTF-8" );
+		String fileName = null;
+	    String filePath=null;
+		// 获取上传文件存放的 目录 , 无则创建
+		String path = request.getServletContext().getRealPath( "/resources/Uploads/images" );
+		System.out.println("path : " + path);
+
+		new java.io.File( path ).mkdir();
+	
+        MultipartHttpServletRequest multipartRequest =(MultipartHttpServletRequest) request;
+
+        Map<String, MultipartFile> fileMap = multipartRequest.getFileMap(); 
+        
+        for (Map.Entry<String, MultipartFile> entity : fileMap.entrySet()) {    
+            // 上传文件名    
+            System.out.println("key: " + entity.getKey());    
+            MultipartFile mf = entity.getValue();    
+            
+            //获取原始文件名
+            fileName = mf.getOriginalFilename();  
+            // 返回一个随机UUID
+            String uuid = UUID.randomUUID().toString().replaceAll("\\-", "");
+            String suffix = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf("."), fileName.length()) : null;
+            // 构成新文件名
+            String newFileName =uuid + (suffix!=null?suffix:"");
+            File uploadFile = new File(path, newFileName); 
+            
+            try {  
+                    FileCopyUtils.copy(mf.getBytes(), uploadFile); 
+                   
+                    String filep=request.getContextPath();
+                    filePath =filep+"/resources/Uploads/images/"+newFileName;
+                    System.out.println(filePath);
+   
+
+                    
+            } catch (IOException e) {  
+            	System.out.println("上传失败");
+                e.printStackTrace();  
+            }    
+        }
+		return filePath;
+	}
 	
 	
 }

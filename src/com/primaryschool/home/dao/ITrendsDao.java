@@ -21,4 +21,7 @@ public interface ITrendsDao<T> {
      /**获取近期热点**/
      List<T>  findHotTrendsInfo(String flag,int position,int item_per_page);
 
+     /**用于轮播图片**/
+     List<T> findSlideTrendsInfo(String flag,int position,int item_per_page);
+     
 }

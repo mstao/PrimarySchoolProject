@@ -56,4 +56,10 @@ public class TrendsService<T> implements  ITrendsService<T>{
 		return (List<T>)trendsDao.findHotTrendsInfo(flag, position, item_per_page);
 	}
 
+	@Override
+	public List<T> findSlideTrendsInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return trendsDao.findSlideTrendsInfo(flag, position, item_per_page);
+	}
+
 }

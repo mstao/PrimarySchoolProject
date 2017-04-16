@@ -49,6 +49,12 @@ public class EducationService<T> implements IEducationService<T> {
 		// TODO Auto-generated method stub
 		return (List<T>)educationDao.findHotEducationInfo(flag, position, item_per_page);
 	}
+
+	@Override
+	public List<T> findSlideTrendsInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return educationDao.findSlideEducationInfo(flag, position, item_per_page);
+	}
 	
 
 }

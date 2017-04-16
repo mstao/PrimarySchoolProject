@@ -15,4 +15,6 @@ public interface IEducationService<T> {
     int  findEducationCount(String flag);
     /**获取最近更新**/
     List<T>  findHotEducationInfo(String flag,int position,int item_per_page);
+    /**用于轮播图片**/
+    List<T> findSlideTrendsInfo(String flag,int position,int item_per_page);
 }

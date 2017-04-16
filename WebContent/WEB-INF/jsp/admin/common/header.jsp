@@ -15,7 +15,7 @@
                  	<ul class="dropdown-menu follow">
 							<li><a href="edit.html" >小学新闻</a></li>
 							<li><a href="edit.html" >公告通知</a></li>		
-			
+			                <li><a href="${pageContext.request.contextPath}/admin/write/indexImages" >首页轮播图</a></li>		
 					</ul>
                  </li>
                  <li><a href="#">管理</a>

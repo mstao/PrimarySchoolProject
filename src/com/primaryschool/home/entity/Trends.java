@@ -92,7 +92,8 @@ public class Trends implements Serializable{
 		this.itemTypeFlag = itemTypeFlag;
 	
 	}
-    
+   
+    //后台详细信息
 	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
 			  String itemTypeName,String itemTypeFlag,int isPublish) {
 		super();
@@ -114,6 +115,16 @@ public class Trends implements Serializable{
 		this.addTime = addTime;
 		this.author = author;
 		this.isPublish = isPublish;
+	}
+	
+	
+    //图片；轮播
+	public Trends(int id, String itemTitle, String itemContent, String addTime) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
 	}
 
 	public int getId() {

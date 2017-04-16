@@ -20,5 +20,6 @@ public interface IEducationDao<T> {
     int  findEducationCount(String flag);
     /**获取近期热点**/
     List<T>  findHotEducationInfo(String flag,int position,int item_per_page);
-
+    /**用于轮播图片**/
+    List<T> findSlideEducationInfo(String flag,int position,int item_per_page);
 }

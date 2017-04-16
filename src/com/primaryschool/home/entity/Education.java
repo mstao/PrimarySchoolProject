@@ -91,9 +91,19 @@ public class Education implements Serializable{
 		
 	}
     
+    //图片轮播
+	public Education(int id, String itemTitle, String itemContent, String addTime) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+	}  
+    
 	public int getId() {
 		return id;
 	}
+
 
 	public void setId(int id) {
 		this.id = id;

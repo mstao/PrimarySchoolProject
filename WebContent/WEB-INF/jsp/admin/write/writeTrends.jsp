@@ -43,7 +43,7 @@ $(function() {
 			debug			: false, 
 
 			swf 			:  CTP_ADMIN+'/js/extends/uploadify/js/uploadify.swf',	//swf文件路径
-			method			: 'get',	// 提交方式
+			method			: 'post',	// 提交方式
 			uploader		:  CTPPATH+'/admin/upload/uploadfile;jsessionid=${pageContext.session.id}', // 服务器端处理该上传请求的程序(controller)
 
 			preventCaching	: true,		// 加随机数到URL后,防止缓存
@@ -133,7 +133,7 @@ $(function() {
                     	layer.msg("全部文件上传完成了",{icon: 1,time:3000});
                     	//此时可以进行跳转页面
                     	//跳转界面
-						window.location.href=CTPPATH+"/admin/list/trends?flag=${typeFlag}&p=1";
+						window.location.href=CTPPATH+"/admin/list/${durl}?flag=${typeFlag}&p=1";
                     }else{
                     	layer.msg("文件上传成功的有"+queueData.uploadsSuccessful+"个-|-文件上传失败的有"+queueData.uploadsErrored+"个,请您点击开始上传按钮手动上传文件");
                         
@@ -313,7 +313,7 @@ $(function(){
   //创建编辑器
   editor.create();
   
-  /**************修改信息******************/
+  /**************发布信息******************/
 
   $('.publish-trends-btn').bind('click',function(){
 
@@ -344,7 +344,7 @@ $(function(){
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/trends',
+				url:CTPPATH+'/admin/add/${durl}',
 				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
 			
 				beforeSend:function(){
@@ -369,7 +369,7 @@ $(function(){
 							upload("uploadify");
 						}else{
 							//跳转界面
-							window.location.href=CTPPATH+"/admin/list/trends?flag=${typeFlag}&p=1";
+							window.location.href=CTPPATH+"/admin/list/${durl}?flag=${typeFlag}&p=1";
 						}
 
 					}else{
@@ -418,7 +418,7 @@ $(function(){
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/trends',
+				url:CTPPATH+'/admin/add/${durl}',
 				data:{"itemTitle":title,"itemContent":content,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
 			
 				beforeSend:function(){
@@ -442,7 +442,7 @@ $(function(){
 							upload("uploadify");
 						}else{
 							//跳转界面
-							window.location.href=CTPPATH+"/admin/list/trends?flag=${typeFlag}&p=1";
+							window.location.href=CTPPATH+"/admin/list/${durl}?flag=${typeFlag}&p=1";
 						}
 
 					}else{

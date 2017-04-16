@@ -14,6 +14,9 @@ public class PageSizeConfig {
     /**********前台Category显示示数量*************/
     public static int HOME_CATEGORY_PAGESIZE=5;
        
+    /**********前台轮播图片数目*************/
+    public static int HOME_SLIDE_PAGESIZE=5;
+    
     /************后台列表显示 记录数*************/
     public static int ADMIN_LIST_PAGESIZE=15;
 }
