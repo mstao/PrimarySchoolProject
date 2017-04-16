@@ -42,7 +42,7 @@
       				$.ajax({
 						type:'post',
 						dataType:'json',
-						url:CTPPATH+"/admin/delete/trends",
+						url:CTPPATH+"/admin/delete/${durl}",
 						data:{"ids":ids},
 					
 						beforeSend:function(){
@@ -58,7 +58,7 @@
 							
 							if(data==1){
 								layer.msg('删除成功', {icon: 1,time:2000});
-								window.location.href="${pageContext.request.contextPath}/admin/list/trends?flag=${typeFlag}&p=1";
+								window.location.href="${pageContext.request.contextPath}/admin/list/${durl}?flag=${typeFlag}&p=1";
 							
 							}else{
 								layer.msg("删除出错了", {icon: 2,time:2000});

@@ -5,7 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ITypeFlagToTypeIdService;
 
@@ -25,8 +27,12 @@ public class AddInfoServlet<T> {
     private IAdminTrendsService<T> trendsService;
 	
     @Autowired
+    private IAdminIndexImagesService<T> indexImagesService;
+    
+    @Autowired
     private ITypeFlagToTypeIdService typeFlagToTypeIdService; 
-	/**
+	
+    /**
 	 * 
 	* @Title: addTrends
 	* @Description: TODO 添加 校园动态
@@ -36,7 +42,8 @@ public class AddInfoServlet<T> {
 	* @throws
 	 */
     
-    @RequestMapping("/trends")
+    @SuppressWarnings("unchecked")
+	@RequestMapping("/trends")
     @ResponseBody
 	public  String addTrends(Trends trends){
     	
@@ -50,4 +57,23 @@ public class AddInfoServlet<T> {
 		return result+"";
 	}
 	
+    
+    /**
+     * 
+    * @Title: addIndexImages
+    * @Description: TODO(这里用一句话描述这个方法的作用)
+    * @param @param indexImages
+    * @param @return    设定文件
+    * @return String    返回类型
+    * @throws
+     */
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/indexImages")
+    @ResponseBody
+	public String addIndexImages(IndexImages indexImages){
+    	int result=indexImagesService.addImage((T)indexImages);
+
+    	return result+"";
+    	
+    }
 }
