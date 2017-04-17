@@ -7,23 +7,27 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IBaseDao;
-import com.primaryschool.global.util.GenericsUtils;
-import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 
-@Repository
-public class BaseDaoImpl<T> implements IBaseDao<T> {
+
+public class BaseDaoImpl<T>  implements IBaseDao<T> {
+
 
 	@Autowired
 	private SessionFactory  sessionFactory;
 	
-	@Autowired
-	private ITypeFlagToTypeIdDao  typeFlagToTypeIdDao;
 	
-	private static final long serialVersionUID = -2539079802815261559L;
-
+	@SuppressWarnings("rawtypes")
+	private final Class clazz;
+	
+	
+	@SuppressWarnings("unchecked")
+	public BaseDaoImpl(){
+		// 通过反射机制获取子类传递过来的实体类的类型信息
+        ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+        clazz = (Class<T>) type.getActualTypeArguments()[0];
+	}
 	
 	@Override
 	public boolean save(T t) {
@@ -31,13 +35,12 @@ public class BaseDaoImpl<T> implements IBaseDao<T> {
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public boolean update(T t) {
 		// TODO Auto-generated method stub
-		Class<T> entityClass = GenericsUtils.getSuperClassGenricType(BaseDaoImpl.class, 0);
+		
 		StringBuffer stringBuffer=new StringBuffer();
-		stringBuffer.append("update "+entityClass.getSimpleName());
+		stringBuffer.append("update "+this.clazz.getSimpleName());
 		stringBuffer.append(" u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author  where u.id=:id");
 		System.out.println(stringBuffer.toString()); 
 		Query query  = sessionFactory.getCurrentSession().createQuery(stringBuffer.toString()); 

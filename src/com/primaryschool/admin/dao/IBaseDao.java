@@ -3,7 +3,7 @@ package com.primaryschool.admin.dao;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseDao<T> extends Serializable {
+public interface IBaseDao<T>{
 	 /** 
      * 插入指定的持久化对象 
      * @param obj 

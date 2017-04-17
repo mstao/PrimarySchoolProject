@@ -39,10 +39,9 @@ var CTP_HOME=CTPPATH+"/resources/home";
 		
 		        <div class="slider-wrapper theme-default">
 		            <div id="slider" class="nivoSlider">
-		                <img src="${CTP_HOME}/slider/images/toystory.jpg" data-thumb="${CTP_HOME}/slider/images/toystory.jpg" alt="" />
-		                <img src="${CTP_HOME}/slider/images/up.jpg" data-thumb="${CTP_HOME}/slider/images/up.jpg"  />
-		                <img src="${CTP_HOME}/slider/images/walle.jpg" data-thumb="${CTP_HOME}/slider/images/walle.jpg" alt="" data-transition="slideInLeft" />
-		                <img src="${CTP_HOME}/slider/images/nemo.jpg" data-thumb="${CTP_HOME}/slider/images/nemo.jpg" alt="" title="#htmlcaption" />
+		            <c:forEach items="${indexImages}" var="indexImages"> 
+		                <img src="${indexImages.imgPath}" data-thumb="${indexImages.imgPath}" alt="" />
+		            </c:forEach>  
 		            </div>
 		          <!--   <div id="htmlcaption" class="nivo-html-caption">
 		                <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>. 
@@ -408,7 +407,8 @@ var CTP_HOME=CTPPATH+"/resources/home";
 <script type="text/javascript">
 $(window).load(function() {
     $('#slider').nivoSlider({
-    	'controlNav' :false
+    	'controlNav' :false,
+    	'effect':'slideInLeft'
     });
 });
 

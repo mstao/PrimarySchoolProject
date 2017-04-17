@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.service.IAdminService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.home.entity.Trends;
 
@@ -22,10 +23,14 @@ import com.primaryschool.home.entity.Trends;
 
 @Controller
 @RequestMapping("/admin/update")
-public class UpdateInfoServlet<T> {
+public class UpdateInfoServlet<T>{
 
 	@Autowired
     private IAdminTrendsService<T> trendsService;
+	
+	/*
+	@Autowired
+	private IAdminService<Trends> adminService;*/
 	
 	/**
 	 * 

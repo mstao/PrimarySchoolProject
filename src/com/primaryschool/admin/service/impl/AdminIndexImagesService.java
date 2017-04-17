@@ -1,5 +1,7 @@
 package com.primaryschool.admin.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +29,17 @@ public class AdminIndexImagesService<T> implements IAdminIndexImagesService<T> {
 	public int addImage(T t) {
 		// TODO Auto-generated method stub
 		return indexImagesDao.addImage(t);
+	}
+	@Override
+	public List<T> findImagesList() {
+		// TODO Auto-generated method stub
+		return indexImagesDao.findImagesList();
+	}
+	
+	@Override
+	public void deleteImage(int id) {
+		// TODO Auto-generated method stub
+		indexImagesDao.deleteImage(id);
 	}
 
 }

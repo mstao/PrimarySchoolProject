@@ -208,6 +208,7 @@
 	
 		</div>
 		<div class="draft-cheched-div" id="f">
+		<br>
 			<span class="draft-cheched-tag">*不支持附件上传</span>
 		    
 		</div>
@@ -229,23 +230,38 @@
 </html>
 <script type="text/javascript">
 $(function(){
+	/***日历***/
+	$('.date_picker').date_input();
+
 	$(".img-zz img").zoomify();
 	
+	var date = new Date();
+    var seperator1 = "-";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
 	
+    $(".date_picker").val(currentdate);
 	/****将图片信息保存到数据库***/
 	
 	$(".submit").bind("click",function(){
 		
 		var imgurl=$(".hidden-item-image").val();
-		
+		var date=$(".date_picker").val();
 		if(imgurl==""){
 			layer.msg("请选择图片上传！！");
 		}else{
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/trends',
-				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				url:CTPPATH+'/admin/add/indexImages',
+				data:{"imgPath":imgurl,"addTime":date},
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -257,7 +273,11 @@ $(function(){
 					setTimeout(function(){
 						  layer.closeAll('loading');
 					}, 1000);
-		
+		            if(data>0){
+		            	layer.msg("添加成功");
+		            }else{
+		            	layer.msg("添加失败")
+		            }
 					
 				},
 				error:function(){

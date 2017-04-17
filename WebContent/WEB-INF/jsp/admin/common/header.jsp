@@ -23,7 +23,7 @@
 							<li><a href="edit.html" >角色管理</a></li>
 							<li><a href="edit.html" >权限管理</a></li>
 							<li><a href="#">用户管理</a></li>
-			
+			                <li><a href="${pageContext.request.contextPath}/admin/list/indexImages">首页轮播图</a></li>
 					</ul>
                  </li>
                  <li><a href="#">设置</a>
@@ -106,7 +106,7 @@
 						<a href="#" title="" class="home" >退出</a>                                       
 					</li>
 					<li>
-						<a href="${pageContext.request.contextPath}/main/index" title="" class="home" >网站</a>                                       
+						<a href="${pageContext.request.contextPath}/main/index" title="" class="home" target="_blank" >网站</a>                                       
 					</li>
 				</ul>
 			</div>

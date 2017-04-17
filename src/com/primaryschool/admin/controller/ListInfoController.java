@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IPageHelperService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
@@ -31,6 +33,9 @@ public class ListInfoController<T> {
 	
     @Autowired
     private IPageHelperService pageHelperService;
+    
+    @Autowired
+    private IAdminIndexImagesService<T> indexImagesService;
     
     @Autowired
     private ITypeFlagToTypeNameService typeFlagToTypeNameService;
@@ -84,5 +89,23 @@ public class ListInfoController<T> {
        map.put("typeFlag", flag);
        map.put("item", trends);  
 	   return "admin/list/trendsList";
+   }
+   
+   /**
+    * 
+   * @Title: indexImages
+   * @Description: TODO 首页 大轮播图
+   * @param @return    设定文件
+   * @return String    返回类型
+   * @throws
+    */
+   @RequestMapping("/indexImages")
+   public  String indexImages(ModelMap map){
+	   
+	   //获取图片列表
+	   ArrayList<IndexImages> list=(ArrayList<IndexImages>) indexImagesService.findImagesList();
+	 
+	   map.put("list", list);
+	   return "admin/list/indexImagesList";
    }
 }

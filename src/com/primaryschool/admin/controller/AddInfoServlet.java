@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.global.util.GetDateUtil;
 import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ITypeFlagToTypeIdService;
@@ -71,6 +72,7 @@ public class AddInfoServlet<T> {
     @RequestMapping("/indexImages")
     @ResponseBody
 	public String addIndexImages(IndexImages indexImages){
+    	
     	int result=indexImagesService.addImage((T)indexImages);
 
     	return result+"";

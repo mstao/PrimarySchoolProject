@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.IIndexImagesService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
@@ -27,13 +29,14 @@ import com.primaryschool.home.service.ITrendsService;
 * @ClassName: IndexController
 * @Description: TODO(这里用一句话描述这个类的作用)
 * @author Mingshan
+ * @param <T>
 * @date 2017年3月26日 下午2:28:44
 *
  */
 
 @Controller
 @RequestMapping("/main")
-public class IndexController {
+public class IndexController<T> {
     @Autowired  
     private ITrendsService<Trends> trendsService;
    
@@ -52,6 +55,8 @@ public class IndexController {
     @Autowired
     private IPartyService<Party> partyService;
     
+    @Autowired
+    private IIndexImagesService<T> indexImagesService;
     /**
      * 
     * @Title: index
@@ -60,6 +65,7 @@ public class IndexController {
     * @return String    返回类型
     * @throws
      */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request){
 		int position=0;
@@ -99,6 +105,9 @@ public class IndexController {
 		String partyFlag="branch";
 		ArrayList<Party>  party=(ArrayList<Party>)partyService.findPartyInfo(partyFlag, position, item_per_page);
 		
+		//首页 大图片轮播
+		ArrayList<IndexImages> indexImages=(ArrayList<IndexImages>) indexImagesService.findIndexImages(0, 6);
+		
 		
 		/*********图片轮播********/
 		
@@ -118,6 +127,7 @@ public class IndexController {
 		request.setAttribute("manage", manage);
 		request.setAttribute("party", party);
 		
+		request.setAttribute("indexImages", indexImages);
 		request.setAttribute("sildeNews", sildeNews);
 	
 		request.setAttribute("newsFlag", newsFlag);

@@ -1,23 +1,21 @@
 package com.primaryschool.admin.dao.impl;
 
 import java.io.Serializable;
-import java.lang.reflect.ParameterizedType;
+
 import java.math.BigInteger;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
-import javax.annotation.Resources;
+
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
-import org.hibernate.metadata.ClassMetadata;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.HibernateTemplate;
+
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IAdminTrendsDao;
-import com.primaryschool.global.util.GenericsUtils;
+
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 
 

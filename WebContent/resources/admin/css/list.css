@@ -321,3 +321,39 @@
 	width:150px;
 	height:180px;
 }
+
+.main-div{
+   margin: 0 auto;
+   width:900px;
+   margin-top:40px;	
+}
+.main-div .index-image-div{
+	width:400px;
+	height:200px;
+	float:left;
+	margin-top:20px;
+}
+.main-div .index-image-div:NTH-CHILD(even){
+	margin-left:60px;
+}
+.main-div .index-image-div img{
+	width:400px;
+	height:200px;
+}
+.imgtext{
+    z-index:1;
+	margin-top:-32px;
+    width:400px;
+    height:auto;
+    background:#000; 
+    filter:alpha(opacity=80); /*IE*/
+    -moz-opacity:0.8; /*MOZ , FF*/
+    opacity:0.8; /*CSS3, FF1.5*/
+}
+.main-div .index-image-div button{
+	border:1px solid;
+	background: #FFFFFF;
+	color:#000000;
+	cursor: pointer;
+    margin:5px 10px;
+}

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 
 /**
@@ -27,6 +28,10 @@ public class DeleteInfoController<T> {
    
 	@Autowired
     private IAdminTrendsService<T> trendsService;
+	
+    @Autowired
+    private IAdminIndexImagesService<T> indexImagesService;
+    
 	
 	/**
 	 * 
@@ -59,5 +64,29 @@ public class DeleteInfoController<T> {
 			return "0";
 		}
         
+	}
+	
+	
+	/**
+	 * 
+	* @Title: deleteIndexImage
+	* @Description: TODO 删除   首页大轮播图
+	* @param @param id
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	
+	@RequestMapping("indexImage")
+	@ResponseBody
+	public String deleteIndexImage(int id){
+		
+		try{
+			indexImagesService.deleteImage(id);
+			return "1";
+		}catch(RuntimeException e){
+			return "0";
+
+		}
 	}
 }
