@@ -20,4 +20,7 @@ public interface IPartyDao<T> {
     int  findPartyCount(String flag);
     /**获取近期热点**/
     List<T>  findHotPartyInfo(String flag,int position,int item_per_page);
+    /**获取轮播图**/
+    List<T>  findSliderPartyInfo(String flag,int position,int item_per_page);
+    
 }

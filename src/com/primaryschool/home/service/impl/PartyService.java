@@ -49,4 +49,10 @@ public class PartyService<T> implements IPartyService<T>{
 		return partyDao.findHotPartyInfo(flag, position, item_per_page);
 	}
 
+	@Override
+	public List<T> findSliderPartyInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return partyDao.findSliderPartyInfo(flag, position, item_per_page);
+	}
+
 }

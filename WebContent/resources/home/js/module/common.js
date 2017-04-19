@@ -23,4 +23,41 @@ $(function(){
 	}).bind('blur',function(){
 		$(this).next().css('backgroundColor','#f4f4f4');
 	});
+	
+	/**
+	 * category模块 字符串截取
+	 */
+	
+	$(".sub-ul-category >li").each(function(){
+		var maxLen=20;
+		//获取原来字符串的长度
+		var len=$(">a",this).text().length;
+		if(len>maxLen){
+		  //此时需要截取
+			$(">a",this).text($(">a",this).text().substring(0,maxLen)+"...");
+		}
+		//将日期整理一下，不要年份
+		var _date=$("> span",this).text();
+		var _date_c=_date.substr(6,5);
+		
+		_date_c="["+_date_c+"]";
+		$("> span",this).text(_date_c);
+	});
+	
+	
+	//前台列表显示字数控制
+	$(".list-content >ul >li").each(function(){
+		//设置最大长度
+		var maxLen=40;
+		//获取当前字符串长度
+		var _str_len=$("> a",this).text().length;
+		if(_str_len>maxLen){
+			$(">a",this).text($(">a",this).text().substring(0,maxLen)+"...");
+		}
+		
+	});
+	
+
+	
+	
 });

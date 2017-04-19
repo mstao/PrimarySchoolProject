@@ -99,4 +99,21 @@ public class PartyDao<T> implements IPartyDao<T> {
 		return query.list();
 	}
 
+	/**
+	 * 获取轮播图
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findSliderPartyInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeIdDao.findPartyTypeIdByTypeFlag(flag);
+
+		String hql="select new com.primaryschool.home.entity.Party(t.id,t.itemTitle,t.itemContent,t.addTime) from Party t where t.typeId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
+
 }

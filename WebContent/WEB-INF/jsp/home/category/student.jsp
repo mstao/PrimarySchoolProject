@@ -28,7 +28,7 @@
 	<span>${SCHOOL_STUDENT}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_STUDENT}</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">${SCHOOL_STUDENT}</a></span>
 </div>
 <div class="content-bottom">
 
@@ -63,10 +63,12 @@
 		 <!--S 轮播图-->
 			<div class="slider-news">
 			<ul>
-		     
-				<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-			    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-		   	
+		        <c:forEach items="${sildeStudent}" var="s_list">  
+					<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=activity" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+				</c:forEach>	
+			     <c:if test="${empty sildeStudent}">
+			       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+			     </c:if>
 			</ul>
 		    </div>
 		  
@@ -75,7 +77,7 @@
 	<!--热门排行-->
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>${SCHOOL_STUDENT_BOOK}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		
 		  <c:forEach items="${book}" var="book_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${book_list.id}&flag=${bookFlag}"> ${book_list.itemTitle}</a><span>[${book_list.addTime}]</span></li>
@@ -90,7 +92,7 @@
 	<!--活动风采-->
 	<div class="float-div">
 		<div class="top-left-bottom"><b>${SCHOOL_STUDENT_ACTIVITY}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach  items="${activity}" var="activity_list">
 			<li><img src="${CTP}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${activity_list.id}&flag=${activityFlag}"> ${activity_list.itemTitle}</a><span>[${activity_list.addTime}]</span></li>
 		  </c:forEach>
@@ -102,7 +104,7 @@
 	
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>${SCHOOL_STUDENT_LAB}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${lab}" var="lab_list">
 			<li><img src="${CTP}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${lab_list.id}&flag=${labFlag}"> ${lab_list.itemTitle}</a><span>[${lab_list.addTime}]</span></li>
 		  </c:forEach>

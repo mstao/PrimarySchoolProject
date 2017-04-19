@@ -15,4 +15,6 @@ public interface IPartyService<T> {
     int  findPartyCount(String flag);
     /**获取最近更新**/
     List<T>  findHotPartyInfo(String flag,int position,int item_per_page);
+    /**获取轮播图**/
+    List<T>  findSliderPartyInfo(String flag,int position,int item_per_page);
 }

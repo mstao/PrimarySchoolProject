@@ -28,7 +28,7 @@
 	<span>${SCHOOL_PARTY}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_PARTY}</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">${SCHOOL_PARTY}</a></span>
 </div>
 <div class="content-bottom">
 	
@@ -60,9 +60,12 @@
 			<div class="slider-news">
 			<ul>
 		     
-				<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-			    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-		   	
+				<c:forEach items="${silderParty}" var="s_list">  
+					<li class="slider-li"><a href="${CTP}/details/party?id=${s_list.id}&flag=${branchFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+				</c:forEach>	
+			     <c:if test="${empty silderParty}">
+			       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+			     </c:if>
 			</ul>
 		    </div>
 		  
@@ -71,7 +74,7 @@
 	<!--热门排行-->
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${hotBranch}" var="branch_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${branch_list.id}&flag=${branchFlag}"> ${branch_list.itemTitle}</a><span>[${branch_list.addTime}]</span></li>
 		
@@ -86,7 +89,7 @@
 	<!--校内新闻-->
 	<div class="float-div">
 		<div class="top-left-bottom"><b>${SCHOOL_PARTY_BRANCH}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${branch}" var="branch_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${branch_list.id}&flag=${branchFlag}"> ${branch_list.itemTitle}</a><span>[${branch_list.addTime}]</span></li>
 		  </c:forEach>
@@ -98,7 +101,7 @@
 	
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>${SCHOOL_PARTY_TRADE_UNION}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${tradeUnion}" var="tradeUnion_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${tradeUnion_list.id}&flag=${tradeUnionFlag}"> ${tradeUnion_list.itemTitle}</a><span>[${tradeUnion_list.addTime}]</span></li>
           </c:forEach>

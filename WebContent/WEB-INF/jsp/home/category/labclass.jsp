@@ -27,7 +27,7 @@
 			<span>${labname.labName}</span>
 		</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="${CTP}/list/labclass">${SCHOOL_STUDENT_LAB}</a>  > <a href="javascript:void(0);">${labname.labName}</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="${CTP}/list/labclass">${SCHOOL_STUDENT_LAB}</a>  > <a href="javascript:void(0);">${labname.labName}</a></span>
 		</div>
 		<div class="content-bottom">
 			
@@ -86,7 +86,7 @@
 			
 			<div class="float-div">
 				<div class="top-left-bottom"><b>${LABCLASS_TOPIC}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/labClassMenu?id=${id}&flag=${topicFlag}&p=1">更多>></a></span></div>
-				<ul>
+				<ul class="sub-ul-category">
 				  <c:forEach items="${content}" var="content_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/labClassMenu?cid=${id}&id=${content_list.id}&flag=${topicFlag}"> ${content_list.itemTitle}</a><span>[${content_list.addTime}]</span></li>
 				  </c:forEach>
@@ -98,7 +98,7 @@
 			
 			<div class="float-div right">
 				<div class="top-left-bottom"><b>${LABCLASS_SHOW}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/labClassMenu?id=${id}&flag=${showFlag}&p=1">更多>></a></span></div>
-				<ul>
+				<ul class="sub-ul-category">
 				  <c:forEach items="${show}" var="show_list">
 					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/labClassMenu?cid=${id}&id=${show_list.id}&flag=${showFlag}"> ${show_list.itemTitle}</a><span>[${show_list.addTime}]</span></li>
 				  </c:forEach>

@@ -28,7 +28,7 @@
 	<span>${SCHOOL_CULTURE}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_CULTURE}</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">${SCHOOL_CULTURE}</a></span>
 </div>
 <div class="content-bottom">
 	
@@ -86,7 +86,7 @@
 <!---->
 	<div class="float-div">
 		<div class="top-left-bottom"><b>${SCHOOL_CULTURE_INTRODUCE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${introduceFlag}&p=1">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		
 			 <c:forEach items="${introduce}" var="introduce_list">
 				<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/culture?id=${introduce_list.id}&flag=${introduceFlag}"> ${introduce_list.itemTitle}</a><span>[${introduce_list.addTime}]</span></li>
@@ -100,7 +100,7 @@
 	
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>${SCHOOL_CULTURE_AFFAIRS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/culture?flag=${affairsFlag}&p=1">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${affairs}" var="affairs_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/culture?id=${affairs_list.id}&flag=${affairsFlag}"> ${affairs_list.itemTitle}</a><span>[${affairs_list.addTime}]</span></li>
 		  </c:forEach>

@@ -92,6 +92,10 @@
 	padding-left: 20px;
 	padding-bottom: 10px;
 }
+.float-div ul li >span{
+	position: relative;
+	top:0px;
+}
 /*标题栏加入边框*/
 .top-left-bottom{
 	padding-bottom:10px;

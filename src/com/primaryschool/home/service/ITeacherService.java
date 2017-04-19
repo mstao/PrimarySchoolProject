@@ -15,5 +15,6 @@ public interface ITeacherService<T> {
     int  findTeacherCount(String flag);
     /**获取最近更新**/
     List<T>  findHotTeacherInfo(String flag,int position,int item_per_page);
-    
+    /**获取轮播图信息**/
+    List<T>  findSliderTreacherInfo(String flag,int position,int item_per_page);
 }

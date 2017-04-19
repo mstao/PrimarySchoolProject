@@ -99,4 +99,17 @@ public class TeacherDao<T> implements ITeacherDao<T> {
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findSliderTreacherInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeIdDao.findTeacherTypeIdByTypeFlag(flag);
+		String hql="select new com.primaryschool.home.entity.Teacher(t.id,t.itemTitle,t.itemContent,t.addTime) from Teacher t where t.typeId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
+
 }

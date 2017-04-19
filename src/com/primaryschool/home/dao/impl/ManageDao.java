@@ -99,4 +99,18 @@ public class ManageDao<T> implements IManageDao<T> {
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findSliderManageInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeIdDao.findManageTypeIdByTypeFlag(flag);
+
+		String hql="select new com.primaryschool.home.entity.Manage(t.id,t.itemTitle,t.itemContent,t.addTime) from Manage t where t.typeId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
+
 }

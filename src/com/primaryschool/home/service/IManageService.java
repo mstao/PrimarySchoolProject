@@ -15,4 +15,6 @@ public interface IManageService<T> {
     int  findManageCount(String flag);
     /**获取最近更新**/
     List<T>  findHotManageInfo(String flag,int position,int item_per_page);
+    /**获取轮播图**/
+    List<T> findSliderManageInfo(String flag,int position,int item_per_page);
 }

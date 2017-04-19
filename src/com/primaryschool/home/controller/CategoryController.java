@@ -72,7 +72,7 @@ public class CategoryController<T> {
 	private ITeachingResourcesService<T> teachingResourcesService;
 	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
-	
+	int slidePageSize=PageSizeConfig.HOME_SLIDE_PAGESIZE;
 	
 	/**
 	 * 
@@ -99,12 +99,16 @@ public class CategoryController<T> {
 		String noticeFlag="notice";
 		ArrayList<Trends>  notice=(ArrayList<Trends>) trendsService.findTrendsInfo(noticeFlag, 0, pageSize);
 		
+		//获取轮播
+		//获取校内新闻  图片轮播   --新闻
+		ArrayList<Trends> sildeNews=(ArrayList<Trends>) trendsService.findSlideTrendsInfo(newsFlag, 0, slidePageSize);
 
 		model.put("hotTrends", hotTrends);
 		model.put("news", news);
 		model.put("notice", notice);
 		model.put("newsFlag", newsFlag);
 		model.put("noticeFlag", noticeFlag);
+		model.put("sildeNews", sildeNews);
 		
 		return "home/category/trends";
 	}
@@ -138,12 +142,15 @@ public class CategoryController<T> {
 		//获取心灵驿站
 		ArrayList<Education>  stagent=(ArrayList<Education>)educationService.findEducationInfo(stagentFlag, 0, pageSize);
 		
+		//获取阳光德育 图片轮播 --主题教育
+		ArrayList<Education>  sildeEdu=(ArrayList<Education>)educationService.findSlideTrendsInfo(educationFlag,  0, slidePageSize);
 		
 		model.put("education", education);
 		model.put("speak", speak);
 		model.put("active", active);
 		model.put("parents", parents);
 		model.put("stagent", stagent);
+		model.put("sildeEdu", sildeEdu);
 		
 		model.put("educationFlag", educationFlag);
 		model.put("activeFlag", activeFlag);
@@ -180,9 +187,13 @@ public class CategoryController<T> {
 		
 		ArrayList<Student> lab=(ArrayList<Student>)studentService.findStudentInfo(activityFlag, 0, pageSize);
 		
+		//获取学生天地轮播   --活动风采
+		ArrayList<Student>  sliderStudent=(ArrayList<Student>) studentService.findSliderStudentInfo("activity", 0, slidePageSize);
+		
 		map.put("bookFlag", bookFlag);
 		map.put("activityFlag", activityFlag);
 		map.put("labFlag", labFlag);
+		map.put("sliderStudent", sliderStudent);
 		
 		map.put("book", book);
 		map.put("activity", activity);
@@ -219,11 +230,16 @@ public class CategoryController<T> {
 		//获取获奖登记
 		ArrayList<Teacher> prize=(ArrayList<Teacher>)teacherService.findTeacherInfo(prizeFlag, 0, pageSize);
 						
+		//获取教师园地轮播图 --教师风采
+		ArrayList<Teacher>  sliderTeacher=(ArrayList<Teacher>) teacherService.findSliderTreacherInfo("teachers", 0, slidePageSize);
+		
 		
 		map.put("resourcesFlag", resourcesFlag);
 		map.put("teachersFlag", teachersFlag);
 		map.put("trainFlag", trainFlag);
 		map.put("prizeFlag", prizeFlag);
+		map.put("sliderTeacher", sliderTeacher);
+		
 		
 		map.put("resources", resources);
 		map.put("teachers", teachers);
@@ -256,13 +272,16 @@ public class CategoryController<T> {
 		//获取工会活动
 		ArrayList<Party>  tradeUnion=(ArrayList<Party>) partyService.findPartyInfo(tradeUnionFlag, 0, pageSize);
 	
-	    map.put("branchFlag", branchFlag);
+		//轮播 图  --支部活动
+		ArrayList<Party>  silderParty=(ArrayList<Party>) partyService.findSliderPartyInfo(branchFlag,  0, slidePageSize);
+	    
+		map.put("branchFlag", branchFlag);
 	    map.put("tradeUnionFlag", tradeUnionFlag);
 	    
 	    map.put("hotBranch", hotBranch);
 	    map.put("branch", branch);
 	    map.put("tradeUnion",tradeUnion);
-	    
+	    map.put("silderParty", silderParty);
 	    return "home/category/party";
 	}
 	
@@ -296,7 +315,10 @@ public class CategoryController<T> {
 		
 		ArrayList<Manage>  rules=(ArrayList<Manage>) manageService.findManageInfo(rulesFlag, 0, pageSize);
 	
-	    map.put("departmentFlag", departmentFlag);
+		//轮播
+		ArrayList<Manage> sliderManage= (ArrayList<Manage>) manageService.findSliderManageInfo(noticeFlag, 0, slidePageSize);
+	    
+		map.put("departmentFlag", departmentFlag);
 	    map.put("recommendationFlag",recommendationFlag);
 	    map.put("noticeFlag", noticeFlag);
 	    map.put("rulesFlag", rulesFlag);
@@ -305,6 +327,7 @@ public class CategoryController<T> {
 	    map.put("recommendation", recommendation);
 	    map.put("notice", notice);
 	    map.put("rules", rules);
+	    map.put("sliderManage", sliderManage);
 	    
 	    return "home/category/manage";
 	}

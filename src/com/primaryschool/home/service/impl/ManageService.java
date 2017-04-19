@@ -49,4 +49,10 @@ public class ManageService<T> implements IManageService<T>{
 		return manageDao.findManageInfo(flag, position, item_per_page);
 	}
 
+	@Override
+	public List<T> findSliderManageInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return manageDao.findSliderManageInfo(flag, position, item_per_page);
+	}
+
 }

@@ -19,4 +19,6 @@ public interface IManageDao<T> {
     int  findManageCount(String flag);
     /**获取近期热点**/
     List<T>  findHotManageInfo(String flag,int position,int item_per_page);
+    /**获取轮播图**/
+    List<T> findSliderManageInfo(String flag,int position,int item_per_page);
 }

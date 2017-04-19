@@ -49,4 +49,10 @@ public class StudentService<T> implements IStudentService<T> {
 		return (List<T>)studentDao.findHotStudentInfo(flag, position, item_per_page);
 	}
 
+	@Override
+	public List<T> findSliderStudentInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return studentDao.findSliderStudentInfo(flag, position, item_per_page);
+	}
+
 }

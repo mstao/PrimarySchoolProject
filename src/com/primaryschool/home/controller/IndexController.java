@@ -111,13 +111,18 @@ public class IndexController<T> {
 		
 		/*********图片轮播********/
 		
-		//获取校内新闻  图片轮播
+		//获取校内新闻  图片轮播   --新闻
 		ArrayList<Trends> sildeNews=(ArrayList<Trends>) trendsService.findSlideTrendsInfo(newsFlag, 0, slidePageSize);
 		
-		//获取阳光德育 图片轮播
+		//获取阳光德育 图片轮播 --主题教育
 		ArrayList<Education>  sildeEdu=(ArrayList<Education>)educationService.findSlideTrendsInfo(educationFlag,  0, slidePageSize);
 		
+		//获取学生天地轮播   --活动风采
+		ArrayList<Student>  sliderStudent=(ArrayList<Student>) studentService.findSliderStudentInfo("activity", 0, slidePageSize);
 		
+		//获取教师园地轮播图 --教师风采
+		ArrayList<Teacher>  sliderTeacher=(ArrayList<Teacher>) teacherService.findSliderTreacherInfo("teachers", 0, slidePageSize);
+ 		
 		
 		request.setAttribute("news", news);
 		request.setAttribute("notice", notice);		
@@ -129,7 +134,10 @@ public class IndexController<T> {
 		
 		request.setAttribute("indexImages", indexImages);
 		request.setAttribute("sildeNews", sildeNews);
-	
+	    request.setAttribute("sildeEdu", sildeEdu);
+	    request.setAttribute("sliderStudent", sliderStudent);
+	    request.setAttribute("sliderTeacher",sliderTeacher);
+	    
 		request.setAttribute("newsFlag", newsFlag);
 		request.setAttribute("noticeFlag", noticeFlag);
 		request.setAttribute("educationFlag", educationFlag);

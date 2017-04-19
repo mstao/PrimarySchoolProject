@@ -90,6 +90,16 @@ public class Teacher implements Serializable{
 		this.itemTypeFlag = itemTypeFlag;
 		
 	}
+    
+    //轮播  
+	public Teacher(int id, String itemTitle, String itemContent, String addTime) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+	}
+
 	
 	public int getId() {
 		return id;

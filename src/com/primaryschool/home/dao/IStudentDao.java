@@ -20,4 +20,7 @@ public interface IStudentDao<T> {
     int  findStudentCount(String flag);
     /**获取近期热点**/
     List<T>  findHotStudentInfo(String flag,int position,int item_per_page);
+    
+    /**获取轮播图信息**/
+    List<T>  findSliderStudentInfo(String flag,int position,int item_per_page);
 }

@@ -20,4 +20,8 @@ public interface ITeacherDao<T> {
     int  findTeacherCount(String flag);
     /**获取近期热点**/
     List<T>  findHotTeacherInfo(String flag,int position,int item_per_page);
+    
+    /**获取轮播图信息**/
+    List<T>  findSliderTreacherInfo(String flag,int position,int item_per_page);
+
 }

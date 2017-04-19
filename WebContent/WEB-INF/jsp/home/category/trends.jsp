@@ -27,7 +27,7 @@
 			<span>${SCHOOL_TRENDS}</span>
 		</div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_TRENDS}</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">${SCHOOL_TRENDS}</a></span>
 		</div>
 		<div class="content-bottom">
 			
@@ -60,9 +60,12 @@
 					<div class="slider-news">
 					<ul>
 				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-				   	
+					<c:forEach items="${sildeNews}" var="s_list">  
+						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${newsFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+					</c:forEach>	
+				     <c:if test="${empty sildeNews}">
+				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+				     </c:if>
 					</ul>
 				    </div>
 				  
@@ -70,10 +73,10 @@
 			</div>
 			<!--热门排行-->
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
-				<ul>
+				<div class="top-left-bottom"><b>热门排行</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="${CTP}/list/trends?flag=${newsFlag}&p=1">更多>></a></span></div>
+				<ul class="sub-ul-category">
 				  <c:forEach items="${hotTrends}" var="hotTrends">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${newsFlag}"> ${hotTrends.itemTitle}</a><span>[${hotTrends.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${hotTrends.id}&flag=${newsFlag}" title="${hotTrends.itemTitle}"> ${hotTrends.itemTitle}</a><span>[${hotTrends.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				<c:if test="${empty hotTrends}">
@@ -85,10 +88,10 @@
             <div class="clear"></div>
 			<!--校内新闻-->
 			<div class="float-div">
-				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NEWS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-				<ul>
+				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NEWS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/trends?flag=${newsFlag}&p=1">更多>></a></span></div>
+				<ul class="sub-ul-category">
 				  <c:forEach items="${news}" var="news_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}"> ${news_list.itemTitle}</a><span>[${news_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}" title="${news_list.itemTitle}"> ${news_list.itemTitle}</a><span>[${news_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				<c:if test="${empty news}">
@@ -97,10 +100,10 @@
 			</div>
 			
 			<div class="float-div right">
-				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NOTICE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-				<ul>
+				<div class="top-left-bottom"><b>${SCHOOL_TRENDS_NOTICE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${CTP}/list/trends?flag=${noticeFlag}&p=1">更多>></a></span></div>
+				<ul class="sub-ul-category">
 				  <c:forEach items="${notice}" var="notice_list">
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${notice_list.id}&flag=${noticeFlag}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>
+					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/trends?id=${notice_list.id}&flag=${noticeFlag}" title="${notice_list.itemTitle}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>
 				  </c:forEach>
 				</ul>
 				<c:if test="${empty notice}">

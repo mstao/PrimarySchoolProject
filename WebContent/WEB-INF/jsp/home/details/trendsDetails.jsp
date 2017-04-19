@@ -17,6 +17,29 @@
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.easing.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/history.js"></script>
+
+<script type="text/javascript">
+
+//将时间信息填充到具体显示区域中
+$(function(){
+	
+	$(".date").each(function(){
+		var _y_m_d=$("> .y-m-d",this).text();
+	
+		//将年份取出来
+		var _y=_y_m_d.substring(0,4);
+	    //将月份取出来
+	    var _m=_y_m_d.substring(5,7);
+        //将日期取出来
+        var _d=_y_m_d.substring(8,10);
+	    //将月份与日期拼接一下
+	    var _m_d=_m+_d;
+		$("> .year",this).text(_y);
+		$("> .md",this).text(_m_d);
+	});
+});
+
+</script>
 </head>
 <body>
 <%--引入header --%>
@@ -29,7 +52,7 @@
 			<span>${item.itemTypeName}</span>
 </div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${item.itemTypeName}</a> > <a href="javascript:void(0);">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="${CTP}/list/${url}?flag=${item.itemTypeFlag}&p=1">${item.itemTypeName}</a> > <a href="javascript:void(0);">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">
@@ -75,7 +98,7 @@
 								<div class="circlecontent">
 									<div class="timeblock">
 
-    									<span class="numf">2017</span>
+    									<span class="numf">${WEB_CURRENT_YEAR}</span>
 									</div>
 								<div class="timeyear">YEAR</div>
 							</div>
@@ -91,8 +114,10 @@
 				<div class="liwrap">
 					<div class="lileft">
 						<div class="date">
-							<span class="year">2013</span>
-							<span class="md">0809</span>
+							<span class="md"></span>
+							<span class="year"></span>
+							
+							<span class="y-m-d" style="display: none">${latestItem.addTime}</span>
 						</div>
 					</div>
 					

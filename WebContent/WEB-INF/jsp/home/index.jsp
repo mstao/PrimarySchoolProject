@@ -7,7 +7,7 @@
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>zhuye </title>
+<title>${WEBSITE_NAME} </title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/slider/themes/default/default.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="${CTP_HOME}/slider/themes/light/light.css" type="text/css" media="screen" />
@@ -24,6 +24,27 @@
 
 var CTPPATH="${pageContext.request.contextPath}";
 var CTP_HOME=CTPPATH+"/resources/home";
+
+
+$(function(){
+	
+	//新闻标题超出字数控制
+	$('.current-new-info').each(function(){
+		var maxwidth=21;
+        var text=$(this).find('a').text();
+		if(text.length>maxwidth){
+			$(this).find('a').text(text.substring(0,maxwidth)+'...');
+		}
+		//将日期整理一下，不要年份
+		var _date=$("> span",this).text();
+		var _date_c=_date.substr(6,5);
+		
+		_date_c="["+_date_c+"]";
+		$("> span",this).text(_date_c);	
+	});
+	
+
+});
 
 </script>
 </head>
@@ -62,8 +83,8 @@ var CTP_HOME=CTPPATH+"/resources/home";
 			        <!--S 轮播图-->
 					<div class="slider-news slide-s">
 					<ul>
-				    <c:forEach items="${sildeNews}" var="s_news_list">  
-						<li class="slider-li"><a href="" target="_blank" ><img src="" alt="${s_news_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_news_list.itemContent}</div></li>
+				    <c:forEach items="${sildeNews}" var="s_list">  
+						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${newsFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeNews}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -116,8 +137,12 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					<div class="slider-sunshine slide-s">
 					<ul>
 				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="zzz"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="dsdfa"  /></a></li>
+				     <c:forEach items="${sildeEdu}" var="s_list">  
+						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${educationFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+					</c:forEach>	
+				     <c:if test="${empty sildeEdu}">
+				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+				     </c:if>
 				   	
 					</ul>
 				    </div>
@@ -146,19 +171,16 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           </div>
 				         </dd>
 				         <dd class="tp" >
-				           <div>
-				           </div>
+				           <div></div>
 				         </dd>
 				         <dd class="tp">
 				              <div></div>       
 				         </dd>
 				         <dd class="tp">
-				           <div >
-				           </div>
+				           <div></div>
 				         </dd>
 				         <dd class="tp">
-				           <div >
-				           </div>
+				           <div></div>
 				         </dd>
 				       </dl>
 				  </div>
@@ -177,9 +199,12 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					<div class="slider-sunshine slide-s">
 					<ul>
 				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-				   	
+						<c:forEach items="${sildeStudent}" var="s_list">  
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=activity" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						</c:forEach>	
+					     <c:if test="${empty sildeStudent}">
+					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+					     </c:if>
 					</ul>
 				    </div>
 				  
@@ -208,16 +233,13 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				           </div>
 				         </dd>
 				         <dd class="tp" >
-				           <div>
-				           </div>
+				           <div></div>
 				         </dd>
 				         <dd class="tp">
-				              <div >
-				           </div>       
+				           <div></div>       
 				         </dd>
 				         <dd class="tp">
-				           <div >
-				           </div>
+				           <div></div>
 				         </dd>
 				         
 				       </dl>
@@ -240,9 +262,12 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					<div class="slider-sunshine slide-s">
 					<ul>
 				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-				   	
+						<c:forEach items="${sliderTeacher}" var="s_list">  
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/teacher?id=${s_list.id}&flag=teachers" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						</c:forEach>	
+					     <c:if test="${empty sliderTeacher}">
+					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+					     </c:if>
 					</ul>
 				    </div>
 				  
@@ -275,10 +300,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 				         </dd>
 				         <dd class="tp">
 				              <div >
-				             <p>标签三</p>
-				             <p>标签三</p>
-				             
-				           </div>       
+				              </div>       
 				         </dd>
 				         <dd class="tp">
 				           <div>

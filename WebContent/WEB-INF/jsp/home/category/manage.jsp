@@ -28,7 +28,7 @@
 	<span>${SCHOOL_MANAGE}</span>
 </div>
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">${SCHOOL_MANAGE}</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">${SCHOOL_MANAGE}</a></span>
 </div>
 <div class="content-bottom">
 
@@ -64,9 +64,12 @@
 			<div class="slider-news">
 			<ul>
 		     
-				<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-			    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-		   	
+				<c:forEach items="${sliderManage}" var="s_list">  
+					<li class="slider-li"><a href="${CTP}/details/party?details/manage?id=${s_list.id}&flag=${noticeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+				</c:forEach>	
+			     <c:if test="${empty sliderManage}">
+			       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+			     </c:if>
 			</ul>
 		    </div>
 		  
@@ -75,7 +78,7 @@
 	<!---->
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_DEPARTMENT}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${department}" var="department_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${department_list.id}&flag=${departmentFlag}"> ${department_list.itemTitle}</a><span>[${department_list.addTime}]</span></li>
 		  </c:forEach>
@@ -86,10 +89,10 @@
 	</div>
 	
           <div class="clear"></div>
-	<!--校内新闻-->
+	<!---->
 	<div class="float-div">
 		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_RECOMMENDATION}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		 <c:forEach items="${recommendation}" var="recommendation_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${recommendation_list.id}&flag=${recommendationFlag}"> ${recommendation_list.itemTitle}</a><span>[recommendation_list.addTime]</span></li>
 		 </c:forEach>
@@ -101,7 +104,7 @@
 	
 	<div class="float-div right">
 		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_NOTICE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${notice}" var="notice_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${notice_list.id}&flag=${noticeFlag}"> ${notice_list.itemTitle}</a><span>[${notice_list.addTime}]</span></li>
 		  </c:forEach>
@@ -115,7 +118,7 @@
 	<div class="clear"></div>
 	<div class="float-div ">
 		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_RULES}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
+		<ul class="sub-ul-category">
 		  <c:forEach items="${rules}" var="rules_list">
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${rules_list.id}&flag=${rulesFlag}"> ${rules_list.itemTitle}</a><span>[${rules_list.addTime}]</span></li>
 		  </c:forEach>
@@ -125,19 +128,7 @@
 		</c:if>
 		
 	</div>
-	<div class="float-div right">
-		<div class="top-left-bottom"><b>${SCHOOL_MANAGE_EMAIL}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
-		<ul>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-			<li><img src="../img/sjiantou.png"/><a href="#"> 今天发生了一件大事</a><span>[03-07]</span></li>
-		</ul>
-	</div>
+
 	
 	
       </div>

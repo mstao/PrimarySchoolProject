@@ -89,6 +89,16 @@ public class Party implements Serializable{
 		this.itemTypeFlag = itemTypeFlag;
 		
 	}
+    //轮播图
+    public Party(int id, String itemTitle, String itemContent, String addTime) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+	
+	}
+    
     
 	public int getId() {
 		return id;

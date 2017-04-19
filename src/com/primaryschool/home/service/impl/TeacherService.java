@@ -28,7 +28,6 @@ public class TeacherService<T> implements ITeacherService<T>{
 		return (List<T>)teacherDao.findTeacherInfo(flag, position, item_per_page);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public T findTeacherInfoById(int id) {
 		// TODO Auto-generated method stub
@@ -57,6 +56,12 @@ public class TeacherService<T> implements ITeacherService<T>{
 	public List<T> findHotTeacherInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		return teacherDao.findHotTeacherInfo(flag, position, item_per_page);
+	}
+
+	@Override
+	public List<T> findSliderTreacherInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return teacherDao.findSliderTreacherInfo(flag, position, item_per_page);
 	}
 
 }
