@@ -12,7 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.service.ICampusSceneryService;
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.Education;
@@ -94,6 +96,9 @@ public class ListController<T> {
 	
 	@Autowired
 	private ISclassService<Sclass> sclassService;
+	
+	@Autowired
+	private ICampusSceneryService<T> campusSceneryService;
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -400,9 +405,13 @@ public class ListController<T> {
 	* @return String    返回类型
 	* @throws
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/imglist")
 	public  String imglist(ModelMap map){
-		return "home/list/imageList";
+	    ArrayList<CampusScenery> campusScenery=(ArrayList<CampusScenery>) campusSceneryService.findCampusSceneryList();
+		
+	    map.put("list",campusScenery);
+	    return "home/list/imageList";
 	}
 	
 

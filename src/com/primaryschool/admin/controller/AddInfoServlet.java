@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
-import com.primaryschool.global.util.GetDateUtil;
+import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.ITypeFlagToTypeIdService;
@@ -29,6 +30,9 @@ public class AddInfoServlet<T> {
 	
     @Autowired
     private IAdminIndexImagesService<T> indexImagesService;
+    
+    @Autowired
+    private ICampusSceneryService<T> campusSceneryService;
     
     @Autowired
     private ITypeFlagToTypeIdService typeFlagToTypeIdService; 
@@ -77,5 +81,23 @@ public class AddInfoServlet<T> {
 
     	return result+"";
     	
+    }
+    
+    /**
+     * 
+    * @Title: addCampusScenery
+    * @Description: TODO 添加校园风光
+    * @param @param campusScenery
+    * @param @return    设定文件
+    * @return String    返回类型
+    * @throws
+     */
+    
+    @SuppressWarnings("unchecked")
+	@RequestMapping("/campusScenery")
+    @ResponseBody
+    public String addCampusScenery(CampusScenery campusScenery){
+    	int result =campusSceneryService.saveCampusScenery((T)campusScenery);
+    	return result+"";
     }
 }

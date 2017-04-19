@@ -30,22 +30,12 @@
 			<div class="list">
 				<div class="list-navi  img-navi"><span>校园风光<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
 				<div class="list-content img-content">
-					
-				<div class="img-list-div">
-				<img src="${CTP_HOME}/img/h.jpg">
-				</div>
-					
-				<div class="img-list-div">
-				<img src="${CTP_HOME}/img/h.jpg">
-				</div>
-					
-				<div class="img-list-div">
-				<img src="${CTP_HOME}/img/h.jpg">
-				</div>
-						
-						
-					
-					
+			
+			   	<c:forEach items="${list}" var="list">	
+					<div class="img-list-div">
+					<img src="${list.imgPath}"/>
+					</div>
+			    </c:forEach>
 				</div>
 				
 				

@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.admin.service.impl.CampusSceneryService;
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IPageHelperService;
@@ -40,7 +43,8 @@ public class ListInfoController<T> {
     @Autowired
     private ITypeFlagToTypeNameService typeFlagToTypeNameService;
     
-    
+    @Autowired
+    private ICampusSceneryService<T> campusSceneryService;
     
     private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
     
@@ -99,13 +103,42 @@ public class ListInfoController<T> {
    * @return String    返回类型
    * @throws
     */
+   @SuppressWarnings("unchecked")
    @RequestMapping("/indexImages")
    public  String indexImages(ModelMap map){
 	   
 	   //获取图片列表
 	   ArrayList<IndexImages> list=(ArrayList<IndexImages>) indexImagesService.findImagesList();
-	 
+	   String  title="首页大轮播图";
+	   String  url="indexImages";
+		
+	   map.put("title", title);
+	   map.put("url", url);
 	   map.put("list", list);
+	   return "admin/list/indexImagesList";
+   }
+   
+   
+   /**
+    * 
+   * @Title: campusScenery
+   * @Description: TODO 校园风光列表
+   * @param @param map
+   * @param @return    设定文件
+   * @return String    返回类型
+   * @throws
+    */
+   @SuppressWarnings("unchecked")
+   @RequestMapping("/campusScenery")
+   public String campusScenery(ModelMap map){
+	   ArrayList<CampusScenery> campusScenery=(ArrayList<CampusScenery>) campusSceneryService.findCampusSceneryList();
+	   
+	   String  title="校园风光";
+	   String  url="campusScenery";
+		
+	   map.put("title", title);
+	   map.put("url", url);
+	   map.put("list", campusScenery);
 	   return "admin/list/indexImagesList";
    }
 }

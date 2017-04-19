@@ -46,7 +46,34 @@ public class AdminShowWritePageController {
 	* @throws
 	 */
 	@RequestMapping("/indexImages")
-	public String IndexImages(){
+	public String IndexImages(ModelMap map){
+		
+		String  title="首页大轮播图";
+		String  url="indexImages";
+		
+		map.put("title", title);
+		map.put("url", url);
+		
+		return "admin/write/writeIndexImages";
+	}
+	
+	/**
+	 * 
+	* @Title: campusScenery
+	* @Description: TODO 校园风光  
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/campusScenery")
+	public String campusScenery(ModelMap map){
+		
+		String  title="校园风光";
+		String  url="campusScenery";
+			
+	    map.put("title", title);
+	    map.put("url", url);
 		return "admin/write/writeIndexImages";
 	}
 }

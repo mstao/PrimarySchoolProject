@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.admin.service.ICampusSceneryService;
 
 /**
  * 
@@ -32,6 +33,8 @@ public class DeleteInfoController<T> {
     @Autowired
     private IAdminIndexImagesService<T> indexImagesService;
     
+    @Autowired
+    private ICampusSceneryService<T> campusSceneryService;
 	
 	/**
 	 * 
@@ -77,7 +80,7 @@ public class DeleteInfoController<T> {
 	* @throws
 	 */
 	
-	@RequestMapping("indexImage")
+	@RequestMapping("indexImages")
 	@ResponseBody
 	public String deleteIndexImage(int id){
 		
@@ -88,5 +91,27 @@ public class DeleteInfoController<T> {
 			return "0";
 
 		}
+	}
+	
+	/**
+	 * 
+	* @Title: deleteCampusScenery
+	* @Description: TODO 删除  校园风光
+	* @param @param id
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/campusScenery")
+	@ResponseBody
+	public String deleteCampusScenery(int id){
+		try{
+		
+			campusSceneryService.deleteCampusScenery(id);
+			return "1";
+		}catch(RuntimeException e){
+			return "0";
+		}
+		
 	}
 }

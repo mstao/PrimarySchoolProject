@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Index;
 
@@ -34,7 +35,7 @@ public class SecurityUser implements Serializable{
 	
 	@Column(name="usrname")
 	@Index(name = "idx_sys_security_username")
-	private String username;
+	private String userName;
 	
 	@Column(name="password")
 	private String password;
@@ -47,18 +48,66 @@ public class SecurityUser implements Serializable{
 	@Column(name="status")
 	private int status;
 	
+	@Transient
+	private String roleName;
+	
+	@Transient
+	private String permissionName;
+	
+	public SecurityUser(){}
+	
+	
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: 用于获取角色</p>
+	* @param id
+	* @param username
+	* @param roleName
+	 */
+	public SecurityUser(int id, String userName, String roleName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.roleName = roleName;
+	}
+
+
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description: 用于获取permission </p>
+	* @param id
+	* @param username
+	* @param roleName
+	* @param permissionName
+	 */
+	public SecurityUser(int id, String userName, String roleName, String permissionName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.roleName = roleName;
+		this.permissionName = permissionName;
+	}
+
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+
+
 	public String getPassword() {
 		return password;
 	}
@@ -76,6 +125,18 @@ public class SecurityUser implements Serializable{
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getRoleName() {
+		return roleName;
+	}
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+	public String getPermissionName() {
+		return permissionName;
+	}
+	public void setPermissionName(String permissionName) {
+		this.permissionName = permissionName;
 	}
 	
 	

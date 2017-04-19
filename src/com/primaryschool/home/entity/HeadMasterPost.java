@@ -16,7 +16,7 @@ public class HeadMasterPost {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="psot_name")
+	@Column(name="post_name")
 	private String  postName;
 	
 	   

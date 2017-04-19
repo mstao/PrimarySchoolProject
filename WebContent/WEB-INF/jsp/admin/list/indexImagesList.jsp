@@ -5,7 +5,7 @@
 <html>
 	<head>
 		
-		<title></title>
+		<title>${title }</title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -47,7 +47,7 @@
       				$.ajax({
 						type:'post',
 						dataType:'json',
-						url:CTPPATH+"/admin/delete/indexImage",
+						url:CTPPATH+"/admin/delete/${url}",
 						data:{"id":id},
 					
 						beforeSend:function(){
@@ -63,7 +63,7 @@
 							
 							if(data==1){
 								layer.msg('删除成功', {icon: 1,time:2000});
-								window.location.href="${pageContext.request.contextPath}/admin/list/indexImages";
+								window.location.href="${pageContext.request.contextPath}/admin/list/${url}";
 							
 							}else{
 								layer.msg("删除出错了", {icon: 2,time:2000});
@@ -97,7 +97,7 @@
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
-            <div class="new_div1"><span class="new_div1_span">前台首页轮播图列表</span><a href="${CTP}/admin/write/indexImages" class="add_list">新增</a></div>
+            <div class="new_div1"><span class="new_div1_span">${title}列表</span><a href="${CTP}/admin/write/${url}" class="add_list">新增</a></div>
             <div class="main-div">
            
             <c:forEach items="${list}" var="list">

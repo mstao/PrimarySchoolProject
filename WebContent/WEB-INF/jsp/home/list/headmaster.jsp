@@ -31,8 +31,8 @@
 					<div  class="headmaster-info">
 					<img alt="" src="${headMasterInfo.avatar}">
 					<div class="headmaster-info-right">
-				     <div><span>职务:</span><span>${headMasterInfo.postName}</span></div>	
-				     <div><span>姓名:</span><span>${headMasterInfo.name}</span></div>
+				    
+				     <div>${headMasterInfo.name}&nbsp; ${headMasterInfo.postName}</div>
 				     <div><span>具体工作:</span><span>${headMasterInfo.work}</span></div>
 				     <div><a href="mailto:${headMasterInfo.email}" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
 					</div>

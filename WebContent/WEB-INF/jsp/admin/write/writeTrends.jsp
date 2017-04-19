@@ -216,7 +216,7 @@ $(function() {
 		    </select>
 		</div>
 		<div class="draft-cheched-div" id="f">
-			<span class="draft-cheched-tag">*可以选择多个附件,选择完后随发布内容一起提交<br>*内容发布前附件可以撤销<br>*内容发布完后附件不可撤销<br>*清空列表将所有上传的文件清除上传列队<br>*如果进行多文件上传时如果文件上传失败，请点击"手动上传"手动上传</span>
+			<span class="draft-cheched-tag">*可以选择多个附件,选择完后随发布内容一起提交<br>*内容发布前附件可以撤销<br>*内容发布完后附件不可撤销<br>*清空列表将所有上传的文件清除上传列队<br>*进行多文件上传时如果文件上传失败，请点击"手动上传"手动上传</span>
 		    <span id="uploadify"></span>
 			<div id="fileQueue"></div>     
 			 <br>

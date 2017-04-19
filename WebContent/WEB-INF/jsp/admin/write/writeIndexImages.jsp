@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>撰写首页图片展示</title>
+<title>撰写${title}</title>
         <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -168,7 +168,7 @@
 	<div class="edit-div"> 
 	<br><br><br>
        <center>
-		<span class="edit-span">上传首页展示图片</span>
+		<span class="edit-span">上传${title }</span>
 
 		<span class="content-span">选择将要上传的图片(一次上传一张)</span><br>
 	<!--图片上传和展示信息  -->
@@ -260,7 +260,7 @@ $(function(){
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/indexImages',
+				url:CTPPATH+'/admin/add/${url}',
 				data:{"imgPath":imgurl,"addTime":date},
 			
 				beforeSend:function(){
