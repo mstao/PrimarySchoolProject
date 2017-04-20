@@ -50,11 +50,11 @@
                  
                  <li><a href="${pageContext.request.contextPath}/category/education">${SCHOOL_EDUCATION}</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="#">${SCHOOL_EDUCATION_MAIN}</a></li>
-							<li><a href="#">${SCHOOL_EDUCATION_SPEAK}</a></li>
-							<li><a href="#">${SCHOOL_EDUCATION_ACTIVE}</a></li>
-							<li><a href="#">${SCHOOL_EDUCATION_PARENTS}</a></li>
-							<li><a href="#">${SCHOOL_EDUACTION_STAGENT}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=education&p=1">${SCHOOL_EDUCATION_MAIN}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=speak&p=1">${SCHOOL_EDUCATION_SPEAK}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=active&p=1">${SCHOOL_EDUCATION_ACTIVE}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=parents&p=1">${SCHOOL_EDUCATION_PARENTS}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/education?flag=stagent&p=1">${SCHOOL_EDUACTION_STAGENT}</a></li>
 							
 					</ul>
                  </li>

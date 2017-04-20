@@ -42,4 +42,7 @@ public interface ITeachingResourcesService<T> {
 	
 	/**获取最近更新**/
 	List<T> findLatestTeachingResourcesContent(int menuId,int classId,String flag,int position,int item_per_page);
+
+	/***首页的教学资源信息***/
+	List<T> findHomeTeachingResourcesContent(int position,int item_per_page);
 }

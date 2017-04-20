@@ -8,6 +8,16 @@ import org.springframework.stereotype.Service;
 import com.primaryschool.home.dao.ILabClassDao;
 import com.primaryschool.home.service.ILabClassService;
 
+/**
+ * 
+* @ClassName: LabClassService
+* @Description: TODO 综合实验课 Service
+* @author Mingshan
+* @date 2017年4月20日 下午5:38:50
+*
+* @param <T>
+ */
+
 @Service
 public class LabClassService<T> implements ILabClassService<T> {
 
@@ -60,6 +70,15 @@ public class LabClassService<T> implements ILabClassService<T> {
 	public T findLabClassContentById(int mid) {
 		// TODO Auto-generated method stub
 		return labClassDao.findLabClassContentById(mid);
+	}
+
+	/**
+	 * 轮播信息
+	 */
+	@Override
+	public List<T> findSliderLabClassContent(int id, String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return labClassDao.findSliderLabClassContent(id, flag, position, item_per_page);
 	}
 
 }

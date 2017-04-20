@@ -16,8 +16,10 @@ import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
+import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.service.IEducationService;
+import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
@@ -34,7 +36,7 @@ import com.primaryschool.home.service.ITeacherService;
 
 @Controller
 @RequestMapping("/tojson")
-public class ItemToJsonController {
+public class ItemToJsonController<T> {
     @Autowired
     private IEducationService<Education> educationService;
     
@@ -49,6 +51,9 @@ public class ItemToJsonController {
     
     @Autowired
     private IManageService<Manage> manageService;
+    
+	@Autowired
+	private ILabClassService<T> labClassService;
     
     int position=0;
 	int item_per_page=PageSizeConfig.HOME_INDEX_PAGESIZE;
@@ -153,6 +158,15 @@ public class ItemToJsonController {
 		}
 	}
 	
+	/**
+	 * 
+	* @Title: ManageToJson
+	* @Description: TODO 学校管理
+	* @param @param flag
+	* @param @param response    设定文件
+	* @return void    返回类型
+	* @throws
+	 */
 	@RequestMapping("/manage")
 	public void ManageToJson(String  flag,HttpServletResponse response){
 		response.setCharacterEncoding("UTF-8");  
@@ -175,5 +189,38 @@ public class ItemToJsonController {
 		}finally{
 			out.close();
 		}
+	}
+	
+	
+	/**
+	 * 
+	* @Title: labClassToJson
+	* @Description: TODO 综合实验课
+	* @param @param response    设定文件
+	* @return void    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/labclass")
+	public void labClassToJson(HttpServletResponse response){
+		
+		response.setCharacterEncoding("UTF-8");  
+		
+		PrintWriter out=null;
+		ArrayList<StudentLab> labClass=(ArrayList<StudentLab>) labClassService.findLabClassListInfo();
+		String json = JSON.toJSONString(labClass, true);
+		System.out.println(json);
+		response.setContentType("application/json");
+		try {
+			out=response.getWriter();
+			out.write(json);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+	
 	}
 }

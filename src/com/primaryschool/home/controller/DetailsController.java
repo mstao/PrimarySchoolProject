@@ -236,6 +236,7 @@ public class DetailsController<T>{
 	   request.setAttribute("latestItem", latestContent);
 	   request.setAttribute("url", url);
 	   request.setAttribute("cid", cid);
+	   request.setAttribute("id", id);
 	   return "home/details/trendsDetails";
    }
    

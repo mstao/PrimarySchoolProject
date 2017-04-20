@@ -106,11 +106,26 @@ public class TeachingResourcesContent implements Serializable{
 		this.itemTypeName = itemTypeName;
 	}
 
+	//首页显示
+	public TeachingResourcesContent(int id, String itemTitle, int menuId, String addTime, int classId, String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.menuId = menuId;
+		this.addTime = addTime;
+		this.classId = classId;
+		this.itemTypeFlag = itemTypeFlag;
+
+	}
 
 
 	public int getId() {
 		return id;
 	}
+
+	
+
+
 
 	public void setId(int id) {
 		this.id = id;

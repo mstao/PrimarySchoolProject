@@ -117,8 +117,9 @@ a:hover{
 	margin-top:20px;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	font-size:16px;
+	font-size:18px;
 	color: #444444;
+	line-height:30px;
 }
 
 /*时间轴*/
@@ -126,4 +127,16 @@ a:hover{
 	width:450px;
 	float:left;
 	height:600px;
+}
+
+/*分享按钮*/
+.jiathis_style_24x24{
+	margin-top:20px;
+	margin-bottom:40px;
+	background:#DCDCDC;
+	height:24px;
+}
+.jiathis_style_24x24 span{
+	float:left;
+	color:#444444;
 }

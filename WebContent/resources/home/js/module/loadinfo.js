@@ -100,7 +100,7 @@ $(function(){
 		   
 			  var checkdiv=mythis.parent().next(".tab-paper").children("dd").eq(index).children("div");
 			  //第一个选项不要加载信息
-			  if(index!=0){
+			  if(index!=0  && index==1){
 				  //调用ajax加载信息
 				  $.ajax({
 						type:'post',
@@ -132,6 +132,52 @@ $(function(){
 				        	
 				        	
 				        	xhtml+="</ul>";
+				        }else{
+				        	xhtml+="<div class='no-message'><img src='"+CTP_HOME+"/img/nomessage.png' /></div>";
+				        }
+				        
+						
+						checkdiv.html(xhtml);
+							
+						},
+						error:function(){
+			
+							//关闭正在加载
+							checkdiv.html('');
+							layer.msg("加载出错了", {icon: 2,time:2000});
+						}
+					});
+			  }else if(index==3){
+				  //此时加载 综合实验课信息
+				//调用ajax加载信息
+				  $.ajax({
+						type:'post',
+						dataType:'json',
+						url:CTPPATH+'/tojson/labclass',				
+						beforeSend:function(){
+							//显示正在加载
+							checkdiv.html('<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>');
+						},
+						success:function(data){
+			
+							//关闭正在加载
+							
+						//	checkdiv.html("zzzzz"+data);
+				       
+				        var xhtml="";
+				        if(data.length>0){
+				        	
+				        	xhtml+="<div class='lab-class-list'>";
+				        
+							
+				        		$.each(data,function(idx,item){ 
+				        			
+				        		//	xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/student?id="+item.id+"&flag="+flag+"'>"+item.itemTitle+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        			xhtml+="<span><img src='"+CTP_HOME+"/img/shetuan.png'/> <a href='"+CTPPATH+"/category/labclass?id="+item.id+"'>"+item.labName+"</a></span>";
+				        		}); 
+				        	
+				        	
+				        	xhtml+="</div>";
 				        }else{
 				        	xhtml+="<div class='no-message'><img src='"+CTP_HOME+"/img/nomessage.png' /></div>";
 				        }

@@ -289,7 +289,7 @@ $(function(){
 				           <div>
 				           	<ul>
 						       <c:forEach items="${teacher}" var ="teacher_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${teacher_list.id}&flag=${teacherFlag}">${teacher_list.itemTitle}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teachingResources?menuId=${teacher_list.menuId}&classId=${teacher_list.classId}&tid=${teacher_list.id}&flag=${teacher_list.itemTypeFlag}">${teacher_list.itemTitle}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
 							   </c:forEach>
 							</ul>
 				           </div>
@@ -329,7 +329,7 @@ $(function(){
 				         <li>评职评优</li>
 				         <li>教师会议</li>
 				         <li>规章制度</li>
-				         <li>校长信箱</li>
+				   
 				       </ul>
 				       <dl class="tab-paper">
 				         <dd class="tp" >
@@ -354,16 +354,7 @@ $(function(){
 				           <div >
 				           </div>
 				         </dd>
-				         <dd class="tp">
-				           <div >
-						          <ul>
-								
-										<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-										<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-										<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="">只是打打打啊倒是</a><span class="pub-data sub-time">[2017-01-01]</span></li>
-									</ul>
-				           </div>
-				         </dd>
+				      
 				       </dl>
 				  </div>
 				</div>
@@ -429,19 +420,13 @@ $(function(){
 <script type="text/javascript">
 $(window).load(function() {
     $('#slider').nivoSlider({
-    	'controlNav' :false,
-    	'effect':'slideInLeft'
+    	'controlNav' :false
+    	//'effect':'slideInLeft'
     });
 });
 
 $(function(){
-	//图片轮播 动态获取第一张图片
-	$('.slider-li').each(function(){
-		//获取内容的第一张图片url
-		var s_n_s=$(this).find('.hide-content-slider').find("img[src!='']:first").attr('src');
-		//将图片url添加到图片显示区域src
-		$(">a>img",this).attr('src',s_n_s);
-	});
+
 	
     $('.roll-new-info-list').liMarquee({
         direction: 'up',//向上滚动

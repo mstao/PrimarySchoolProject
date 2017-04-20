@@ -52,7 +52,18 @@ $(function(){
 			<span>${item.itemTypeName}</span>
 </div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="${CTP}/list/${url}?flag=${item.itemTypeFlag}&p=1">${item.itemTypeName}</a> > <a href="javascript:void(0);">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> 
+		> 
+		<c:choose>
+	       <c:when test="${empty cid}">
+	        <a href="${CTP}/list/${url}?flag=${item.itemTypeFlag}&p=1">${item.itemTypeName}</a>
+	       </c:when>
+		  <c:otherwise>
+		  <a href="${CTP}/list/${url}?id=${id}&flag=${item.itemTypeFlag}&p=1">${item.itemTypeName}</a>
+	      </c:otherwise>
+		</c:choose>
+		
+		 > <a href="javascript:void(0);">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">
@@ -79,6 +90,21 @@ $(function(){
 					<div class="new-details">
 						${item.itemContent}
 					</div>
+					
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+    <span>分享到:&nbsp;&nbsp;</span>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+	
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 				</div>
 				<!--描述：时间轴-->
            	<div class="container-bottom-right">
@@ -141,8 +167,9 @@ $(function(){
 			</li>
 			</c:forEach>
 			
-			
+
 		</ul>
+		
 	</div>
 </div>
 			

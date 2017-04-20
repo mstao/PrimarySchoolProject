@@ -15,6 +15,7 @@ import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
+import com.primaryschool.home.entity.TeachingResourcesClass;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IIndexImagesService;
@@ -22,6 +23,7 @@ import com.primaryschool.home.service.IManageService;
 import com.primaryschool.home.service.IPartyService;
 import com.primaryschool.home.service.IStudentService;
 import com.primaryschool.home.service.ITeacherService;
+import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITrendsService;
 
 /**
@@ -57,6 +59,9 @@ public class IndexController<T> {
     
     @Autowired
     private IIndexImagesService<T> indexImagesService;
+    
+    @Autowired
+    private ITeachingResourcesService<T> teachingResourcesService;
     /**
      * 
     * @Title: index
@@ -94,8 +99,10 @@ public class IndexController<T> {
 		ArrayList<Student>  student=(ArrayList<Student>)studentService.findStudentInfo(studentFlag, position, item_per_page);
 		
 		//获取教师园地 -教学资源
-		String  teacherFlag="resources";
+		/*String  teacherFlag="resources";
 		ArrayList<Teacher>  teacher=(ArrayList<Teacher>)teacherService.findTeacherInfo(teacherFlag, position, item_per_page);
+		*/
+		ArrayList<TeachingResourcesClass> teacherResources=(ArrayList<TeachingResourcesClass>) teachingResourcesService.findHomeTeachingResourcesContent(0, item_per_page);
 		
 		//获取学校管理 -部门链接
 		String  manageFlag="department";
@@ -128,7 +135,7 @@ public class IndexController<T> {
 		request.setAttribute("notice", notice);		
 		request.setAttribute("education", education);
 		request.setAttribute("student", student);
-		request.setAttribute("teacher", teacher);
+		request.setAttribute("teacher", teacherResources);
 		request.setAttribute("manage", manage);
 		request.setAttribute("party", party);
 		
@@ -142,7 +149,6 @@ public class IndexController<T> {
 		request.setAttribute("noticeFlag", noticeFlag);
 		request.setAttribute("educationFlag", educationFlag);
 		request.setAttribute("studentFlag", studentFlag);
-		request.setAttribute("teacherFlag", teacherFlag);
 		request.setAttribute("partyFlag", partyFlag);
 		return "home/index";
 	}

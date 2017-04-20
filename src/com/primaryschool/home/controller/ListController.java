@@ -448,6 +448,7 @@ public class ListController<T> {
 	* @return String    返回类型
 	* @throws
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/labclass")
 	public String labClassList(ModelMap map){
 		

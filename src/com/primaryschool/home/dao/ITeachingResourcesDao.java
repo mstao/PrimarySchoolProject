@@ -40,4 +40,6 @@ public interface ITeachingResourcesDao<T> {
 	/**获取人们教学资源**/
 	List<T> findHotTeachingResourcesContent(int menuId,int classId,String flag,int position,int item_per_page);
 
+	/***首页的教学资源信息***/
+	List<T> findHomeTeachingResourcesContent(int position,int item_per_page);
 }

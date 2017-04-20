@@ -26,6 +26,8 @@ public interface ILabClassService<T> {
     int  findLabClassContentCount(String flag);
     
     /**根据记录id获取记录的具体内容**/
-    
     T  findLabClassContentById(int mid);
+    
+    /**获取综合实验课的轮播图**/
+    List<T>  findSliderLabClassContent(int id, String flag,int position,int item_per_page);
 }

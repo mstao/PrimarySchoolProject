@@ -171,4 +171,19 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 		return query.list();
 	}
 
+
+	/**
+	 * 首页教学资源
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findHomeTeachingResourcesContent(int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.home.entity.TeachingResourcesContent(t.id,t.itemTitle,tm.id,t.addTime,tc.id,tct.itemTypeFlag) from TeachingResourcesContent t,TeachingResourcesMenu tm,TeachingResourcesContentType  tct,TeachingResourcesClass tc where t.menuId=tm.id and t.classId=tc.id and t.typeId=tct.id and t.isPublish=1 order by t.addTime desc ";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
+
 }

@@ -57,7 +57,13 @@ $(function(){
 		
 	});
 	
-
+	//图片轮播 动态获取第一张图片
+	$('.slider-li').each(function(){
+		//获取内容的第一张图片url
+		var s_n_s=$(this).find('.hide-content-slider').find("img[src!='']:first").attr('src');
+		//将图片url添加到图片显示区域src
+		$(">a>img",this).attr('src',s_n_s);
+	});
 	
 	
 });

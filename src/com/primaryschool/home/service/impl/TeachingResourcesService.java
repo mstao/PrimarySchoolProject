@@ -80,4 +80,13 @@ public class TeachingResourcesService<T> implements ITeachingResourcesService<T>
 		return teachingResourcesDao.findTeachingResourcesContent(menuId, classId, flag, position, item_per_page);
 	}
 
+	/**
+	 * 首页显示
+	 */
+	@Override
+	public List<T> findHomeTeachingResourcesContent(int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return teachingResourcesDao.findHomeTeachingResourcesContent(position, item_per_page);
+	}
+
 }

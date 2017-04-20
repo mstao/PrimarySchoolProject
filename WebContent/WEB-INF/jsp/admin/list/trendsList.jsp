@@ -132,10 +132,10 @@
                 </tr>
                 </c:forEach>
             </table>
-             
-        </div>
-        <div> <!-- 分页导航引入 -->
+              <!-- 分页导航引入 -->
 			    ${toolBar}
+        </div>
+        <div>
 </div>
 <!--E main-->
 

@@ -394,9 +394,13 @@ public class CategoryController<T> {
 		//根据id获取实验课名称
 		StudentLab labname=(StudentLab)labClassService.findLabClassNameById(id);
 		
+		//获取 轮播  --成果展示 
+		ArrayList<StudentLabMenuContent> silderContent=(ArrayList<StudentLabMenuContent>) labClassService.findSliderLabClassContent(id, showFlag, 0, slidePageSize);
+		
 		map.put("topicFlag", topicFlag);
 		map.put("showFlag", showFlag);
 		
+		map.put("silderContent", silderContent);
 		map.put("introduce", introduce);
 		map.put("content", content);
 		map.put("show", show);
