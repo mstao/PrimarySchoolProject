@@ -119,12 +119,13 @@ public class Trends implements Serializable{
 	
 	
     //图片；轮播
-	public Trends(int id, String itemTitle, String itemContent, String addTime) {
+	public Trends(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
 		this.itemContent = itemContent;
 		this.addTime = addTime;
+		this.itemTypeFlag = itemTypeFlag;
 	}
 
 	public int getId() {

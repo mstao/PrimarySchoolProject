@@ -39,20 +39,14 @@
 <div class="top-left">
 	<div class="top-left-bottom"><b>${SCHOOL_TEACHER}</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/list/teacher?flag=resources&p=1">${SCHOOL_TEACHER_RESOURCES}</a></li>
+		<li><a href="${pageContext.request.contextPath}/list/teachingResources">${SCHOOL_TEACHER_RESOURCES}</a></li>
         <li><a href="${pageContext.request.contextPath}/list/teacher?flag=teachers&p=1">${SCHOOL_TEACHER_TEACHERS}</a></li>
         <li><a href="${pageContext.request.contextPath}/list/teacher?flag=train&p=1">${SCHOOL_TEACHER_TRAIN}</a></li>
         <li><a href="${pageContext.request.contextPath}/list/teacher?flag=prize&p=1">${SCHOOL_TEACHER_PRIZE}</a></li>
 	</ul>
 </div>
-<!--作息表-->
-	<div class="bottom-left">
-		<div class="top-left-bottom"><b>万科小学作息时间表</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
-		<ul>
-			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> 春期作息时间表</a></li>
-			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> 秋期作息时间表</a></li>
-		</ul>
-	</div>
+<!--引入作息表-->
+<jsp:include page="../common/timetable.jsp"></jsp:include>
 		
  </div>	
 	
@@ -65,7 +59,7 @@
 		<ul>
 	     
 			<c:forEach items="${sliderTeacher}" var="s_list">  
-				<li class="slider-li"><a href="${CTP}/details/${CTP}/details/teacher?id=${s_list.id}&flag=teachers" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+				<li class="slider-li"><a href="${CTP}/details/teacher?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
 			</c:forEach>	
 		     <c:if test="${empty sliderTeacher}">
 		       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>

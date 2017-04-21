@@ -92,12 +92,13 @@ public class Student implements Serializable{
     
     //用于轮播 
     
-    public Student(int id, String itemTitle, String itemContent, String addTime) {
+    public Student(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
 		this.itemContent = itemContent;
 		this.addTime = addTime;
+		this.itemTypeFlag = itemTypeFlag;
 	}
     
     

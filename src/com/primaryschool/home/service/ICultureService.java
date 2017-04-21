@@ -16,4 +16,6 @@ public interface ICultureService<T> {
     int  findCultureCount(String flag);
     /**获取近期热点**/
     List<T>  findHotCultureInfo(String flag,int position,int item_per_page);
+    /**轮播**/
+    List<T> findSliderCultureInfo(String flag,int position,int item_per_page);
 }

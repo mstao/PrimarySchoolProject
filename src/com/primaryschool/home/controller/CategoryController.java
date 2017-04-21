@@ -71,8 +71,8 @@ public class CategoryController<T> {
 	@Autowired
 	private ITeachingResourcesService<T> teachingResourcesService;
 	
-	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
-	int slidePageSize=PageSizeConfig.HOME_SLIDE_PAGESIZE;
+	private int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
+	private int slidePageSize=PageSizeConfig.HOME_SLIDE_PAGESIZE;
 	
 	/**
 	 * 
@@ -356,12 +356,17 @@ public class CategoryController<T> {
 		//获取热门
 		ArrayList<Culture> hot=(ArrayList<Culture>) cultureService.findHotCultureInfo(introduceFlag, 0, pageSize);
 		
+		//轮播
+		ArrayList<Culture> sliderContent=(ArrayList<Culture>) cultureService.findSliderCultureInfo(introduceFlag, 0, slidePageSize);
+		
 		map.put("introduceFlag", introduceFlag);
 		map.put("affairsFlag", affairsFlag);
 		
 		map.put("introduce", introduce);
 		map.put("affairs", affairs);
 		map.put("hot", hot);
+		map.put("sliderContent",sliderContent);
+		
 		return "home/category/culture";
 	}
 	
@@ -444,6 +449,8 @@ public class CategoryController<T> {
 		//题库
 		ArrayList<TeachingResourcesContent> questionBank=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, questionBankFlag, 0, pageSize);
 		
+		//教学资源  轮播图 --教学研讨
+		ArrayList<TeachingResourcesContent>  sliderContent=(ArrayList<TeachingResourcesContent>) teachingResourcesService.findSliderTeachingResourcesContent(menuId, classId, discussFlag, 0, slidePageSize);
 		//年级名称
 		String className=teachingResourcesService.findTeachingResourcesClassNameByClassId(classId);
 		
@@ -462,6 +469,8 @@ public class CategoryController<T> {
 		map.put("courseware", courseware);
 		map.put("microlecture", microlecture);
 		map.put("questionBank", questionBank);
+		map.put("sliderContent", sliderContent);
+		
 		
 		map.put("className", className);
 		map.put("menuName", menuName);

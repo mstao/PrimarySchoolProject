@@ -42,14 +42,8 @@
 					
 				</ul>
 			</div>
-			<!--作息表-->
-			<div class="bottom-left">
-				<div class="top-left-bottom"><b>万科小学作息时间表</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
-				<ul>
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> 春期作息时间表</a></li>
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> 秋期作息时间表</a></li>
-				</ul>
-			</div>
+			<!--引入作息表-->
+			<jsp:include page="../common/timetable.jsp"></jsp:include>
 				
 		 </div>	
 			
@@ -62,7 +56,7 @@
 					<ul>
 				     
 						<c:forEach items="${sliderContent}" var="s_list">  
-							<li class="slider-li"><a href="${CTP}/details/labClassMenu?cid=${id}&id=${s_list.id}&flag=${showFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+							<li class="slider-li"><a href="${CTP}/details/labClassMenu?cid=${id}&id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
 						</c:forEach>	
 					     <c:if test="${empty sliderContent}">
 					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>

@@ -45,14 +45,8 @@
 					<li><a href="${CTP}/list/teachingResourcesContent?menuId=${menuId}&classId=${classId}&flag=${questionBankFlag}&p=1">${TEACHER_RESOURCES_QUESTION_BANK}</a></li>
 				</ul>
 			</div>
-			<!--作息表-->
-			<div class="bottom-left">
-				<div class="top-left-bottom"><b>万科小学作息时间表</b><img src="${CTP_HOME}/img/jiantou.png"/></div>
-				<ul>
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> 春期作息时间表</a></li>
-					<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="#"> 秋期作息时间表</a></li>
-				</ul>
-			</div>
+			<!--引入作息表-->
+			<jsp:include page="../common/timetable.jsp"></jsp:include>
 				
 		 </div>	
 			
@@ -63,10 +57,12 @@
 				 <!--S 轮播图-->
 					<div class="slider-news">
 					<ul>
-				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
-				   	
+				      <c:forEach items="${sildeContent}" var="s_list">  
+						<li class="slider-li"><a href="${CTP}/details/teachingResources?menuId=${menuId}&classId=${classId}&tid=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+					  </c:forEach>	
+				      <c:if test="${empty sildeContent}">
+				        <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+				      </c:if>
 					</ul>
 				    </div>
 				  

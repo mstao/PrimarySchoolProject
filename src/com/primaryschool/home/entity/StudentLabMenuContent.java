@@ -95,12 +95,13 @@ public class StudentLabMenuContent implements Serializable{
 
 	//轮播
 
-	public StudentLabMenuContent(int id, String itemTitle, String itemContent, String addTime) {
+	public StudentLabMenuContent(int id, String itemTitle, String itemContent, String addTime, String itemTypeName) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
 		this.itemContent = itemContent;
 		this.addTime = addTime;
+		this.itemTypeName = itemTypeName;
 	}
 
 

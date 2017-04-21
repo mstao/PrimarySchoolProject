@@ -22,4 +22,7 @@ public interface ITypeFlagToTypeIdDao {
     int findTeachingResourcesTypeFlag(String flag);
     //班级主页信息
     int findClasshomepageIdByTypeFlag(String flag);
+    //文件类型id
+    int findFileBelongIdByBelongFalg(String flag);
+    
 }

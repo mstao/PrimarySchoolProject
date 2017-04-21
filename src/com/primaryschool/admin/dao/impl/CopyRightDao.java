@@ -7,56 +7,44 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.primaryschool.admin.dao.IContactDao;
+import com.primaryschool.admin.dao.ICopyRightDao;
 
 /**
  * 
-* @ClassName: ContactDao
-* @Description: TODO 联系我们
+* @ClassName: CopyRightDao
+* @Description: TODO 版权声明
 * @author Mingshan
-* @date 2017年4月20日 下午10:25:26
+* @date 2017年4月21日 下午1:53:15
 *
 * @param <T>
  */
 
 @Repository
-public class ContactDao<T> implements IContactDao<T> {
+public class CopyRightDao<T> implements ICopyRightDao<T> {
 
 	@Autowired
-	private  SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 	
-	
-	/**
-	 * 获取联系我们信息
-	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public T findContactInfo() {
+	public T findCopyRightInfo() {
 		// TODO Auto-generated method stub
-		String hql="from Contact";
+		String hql="from CopyRight";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return (T) query.uniqueResult();
 	}
 
-
-	/**
-	 * 添加
-	 */
 	@Override
-	public int saveContactInfo(T t) {
+	public int saveCopyRightInfo(T t) {
 		// TODO Auto-generated method stub
 		Serializable result =sessionFactory.getCurrentSession().save(t);
 		return (Integer)result;
 	}
 
-
-	/**
-	 * 更新
-	 */
 	@Override
-	public boolean updateContactInfo(T t) {
+	public boolean updateCopyRightInfo(T t) {
 		// TODO Auto-generated method stub
-		String hql="update Contact c set c.content=:content, c.addTime=:addTime,c.author=:author,c.isPublish=:isPublish  where c.id=:id";
+		String hql="update CopyRight c set c.content=:content, c.addTime=:addTime,c.author=:author,c.isPublish=:isPublish  where c.id=:id";
 		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
 		query.setProperties(t);
 		return (query.executeUpdate()>0);

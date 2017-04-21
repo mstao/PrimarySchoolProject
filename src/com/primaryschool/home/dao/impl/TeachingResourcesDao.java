@@ -186,4 +186,21 @@ public class TeachingResourcesDao<T> implements ITeachingResourcesDao<T> {
 		return query.list();
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findSliderTeachingResourcesContent(int menuId, int classId, String flag, int position,
+			int item_per_page) {
+		// TODO Auto-generated method stub
+		int typeId=typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
+		String hql="select new com.primaryschool.home.entity.TeachingResourcesContent(t.id,t.itemTitle,t.itemContent,tct.itemTypeFlag) from TeachingResourcesContent t,TeachingResourcesContentType  tct  where t.menuId=? and t.classId=? and t.typeId=? and t.typeId=tct.id and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, menuId);
+		query.setInteger(1, classId);
+		query.setInteger(2, typeId);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
+
 }

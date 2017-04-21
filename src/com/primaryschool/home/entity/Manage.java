@@ -92,12 +92,13 @@ public class Manage implements Serializable{
 	}
     
     //轮播
-    public Manage(int id, String itemTitle, String itemContent, String addTime) {
+    public Manage(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
 		this.itemContent = itemContent;
 		this.addTime = addTime;
+		this.itemTypeFlag = itemTypeFlag;
 	}
     
 	public int getId() {

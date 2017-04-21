@@ -90,13 +90,13 @@ public class Party implements Serializable{
 		
 	}
     //轮播图
-    public Party(int id, String itemTitle, String itemContent, String addTime) {
+    public Party(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
 		this.itemContent = itemContent;
 		this.addTime = addTime;
-	
+		this.itemTypeFlag = itemTypeFlag;
 	}
     
     

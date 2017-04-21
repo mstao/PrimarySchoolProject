@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.primaryschool.admin.entity.FileBelong;
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 import com.primaryschool.home.entity.ClassHomePageType;
 import com.primaryschool.home.entity.CultureType;
@@ -155,6 +156,20 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 		query.setString(0, flag);	//?设值
 		
 		ClassHomePageType tt=(ClassHomePageType)query.uniqueResult();
+		return tt.getId();
+	}
+
+	/**
+	 * 获取文件类型id
+	 */
+	@Override
+	public int findFileBelongIdByBelongFalg(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from FileBelong tt where tt.typeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		FileBelong tt=(FileBelong)query.uniqueResult();
 		return tt.getId();
 	}
 

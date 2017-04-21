@@ -105,7 +105,7 @@ public class ManageDao<T> implements IManageDao<T> {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeIdDao.findManageTypeIdByTypeFlag(flag);
 
-		String hql="select new com.primaryschool.home.entity.Manage(t.id,t.itemTitle,t.itemContent,t.addTime) from Manage t where t.typeId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Manage(t.id,t.itemTitle,t.itemContent,t.addTime,tt.itemTypeId) from Manage t,ManageType tt  where t.typeId=? and t.typeId=tt.id and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

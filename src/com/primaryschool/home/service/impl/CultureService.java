@@ -12,16 +12,15 @@ import com.primaryschool.home.service.ICultureService;
 public class CultureService<T> implements ICultureService<T> {
     
 	@Autowired
-	private ICultureDao cultureDao;
+	private ICultureDao<T> cultureDao;
 	
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public List<T> findCultureInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		return (List<T>)cultureDao.findCultureInfo(flag, position, item_per_page);
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public T findCultureInfoById(int id) {
 		// TODO Auto-generated method stub
@@ -40,18 +39,24 @@ public class CultureService<T> implements ICultureService<T> {
 		return cultureDao.findCultureCount(flag);
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public List<T> findHotCultureInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		return (List<T>)cultureDao.findHotCultureInfo(flag, position, item_per_page);
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public List<T> findLatestCultureInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		return (List<T>)cultureDao.findCultureInfo(flag, position, item_per_page);
+	}
+
+	@Override
+	public List<T> findSliderCultureInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return cultureDao.findSliderCultureInfo(flag, position, item_per_page);
 	}
 
 }

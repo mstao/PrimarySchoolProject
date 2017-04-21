@@ -45,7 +45,7 @@
 			</div>
 			<!--右  -->
 			<div class="contact-copyright-right">
-			qweqweweeq
+			${contact.content}
 			</div>
 			
 		</div>

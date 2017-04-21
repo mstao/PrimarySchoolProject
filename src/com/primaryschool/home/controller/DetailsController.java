@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.entity.FileBean;
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.ClassSynopsis;
@@ -21,6 +22,7 @@ import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.IBaseFileService;
 import com.primaryschool.home.service.IClassHomePageService;
 import com.primaryschool.home.service.IClassSynopsisService;
 import com.primaryschool.home.service.ICultureService;
@@ -79,13 +81,17 @@ public class DetailsController<T>{
        
     @Autowired
     private ITeachingResourcesService<T>  teachingResourcesService;
-       
+  
+    @Autowired
+    private IBaseFileService<T> baseFileServcie;
+    
     int position=0;
 	int item_per_page=7;
 	
 	int pageSize=PageSizeConfig.HOME_CATEGORY_PAGESIZE;
 	
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/trends")
 	public String trends(int id,String flag,HttpServletRequest request){	
 		String url="trends";
@@ -97,7 +103,14 @@ public class DetailsController<T>{
         
         //获取该类型的最近更新
         ArrayList<Trends> latestTrends=(ArrayList<Trends>)trendsService.findLatestTrendsInfo(flag, position, item_per_page);
-	    request.setAttribute("item", trends);
+	    
+        //文件类型
+        String belongType="ftrends";
+        //获取文件列表
+        ArrayList<FileBean> filelist=(ArrayList<FileBean>) baseFileServcie.findFile(belongType);
+        
+        request.setAttribute("filelist", filelist);
+        request.setAttribute("item", trends);
 	    request.setAttribute("latestItem", latestTrends);
 	    request.setAttribute("url", url);
 		return "home/details/trendsDetails";

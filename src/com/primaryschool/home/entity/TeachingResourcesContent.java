@@ -118,14 +118,19 @@ public class TeachingResourcesContent implements Serializable{
 
 	}
 
+	//轮播
+	
+	public TeachingResourcesContent(int id, String itemTitle, String itemContent,String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.itemTypeFlag = itemTypeFlag;
+	}
 
 	public int getId() {
 		return id;
 	}
-
-	
-
-
 
 	public void setId(int id) {
 		this.id = id;

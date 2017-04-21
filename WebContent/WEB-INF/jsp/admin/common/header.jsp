@@ -24,8 +24,8 @@
 							<li><a href="edit.html" >权限管理</a></li>
 							<li><a href="#">用户管理</a></li>
 			                <li><a href="${pageContext.request.contextPath}/admin/list/indexImages">首页轮播图</a></li>
-					        <li><a href="" >联系我们</a></li>
-							<li><a href="#">版权声明</a></li>
+					        <li><a href="${pageContext.request.contextPath}/admin/contact" >联系我们</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/copyright">版权声明</a></li>
 					</ul>
                  </li>
                  <li><a href="#">设置</a>

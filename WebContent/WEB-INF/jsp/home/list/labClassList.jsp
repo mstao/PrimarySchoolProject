@@ -32,7 +32,7 @@
 </div>
 
 <div class="content">
-	<div class="trends-top"><img src="${CTP_HOME}/img/lab-class.png"/> <span class="tag-ch">实验课列表</span> </div>
+	<div class="trends-top"><img src="${CTP_HOME}/img/lab-class.png"/> <span class="tag-ch">校本课程</span> </div>
     
     <!--S CONETNT-->
     <div class="content">

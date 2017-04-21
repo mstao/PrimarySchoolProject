@@ -91,6 +91,16 @@ public class Culture implements Serializable{
 		
 	}
     
+    //轮播
+    
+	public Culture(int id, String itemTitle, String itemContent, String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.itemTypeFlag = itemTypeFlag;
+	}
+	
 	public int getId() {
 		return id;
 	}

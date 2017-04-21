@@ -24,7 +24,7 @@ import com.primaryschool.home.service.ITypeFlagToTypeIdService;
 
 @Controller
 @RequestMapping("/admin/add")
-public class AddInfoServlet<T> {
+public class AddInfoController<T> {
     @Autowired
     private IAdminTrendsService<T> trendsService;
 	

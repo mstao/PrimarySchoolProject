@@ -133,6 +133,9 @@ public class LabClassDao<T> implements ILabClassDao<T> {
 		return (T) query.uniqueResult();
 	}
 
+	/**
+	 * 轮播
+	 */
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -140,7 +143,7 @@ public class LabClassDao<T> implements ILabClassDao<T> {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeIdDao.findLabClassTypeIdByTypeFlag(flag);
 
-		String hql="select new com.primaryschool.home.entity.StudentLabMenuContent(t.id,t.itemTitle,t.itemContent,t.addTime) from StudentLabMenuContent t where t.menuId=? and t.labId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.StudentLabMenuContent(t.id,t.itemTitle,t.itemContent,t.addTime,tt.itemTypeFlag) from StudentLabMenuContent t,StudentLabMenuType tt where t.menuId=? and tt.id=t.menuId and t.labId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setInteger(1, lid);

@@ -103,6 +103,25 @@ public class CultrueDao<T> implements ICultureDao<T> {
 		query.setMaxResults(item_per_page);
 		return query.list();
 	}
+
+	/**
+	 * 轮播
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findSliderCultureInfo(String flag, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		//根据类型获取id
+		
+		int id=typeFlagToTypeId.findCultureTypeIdByTypeFlag(flag);
+
+		String hql="select new com.primaryschool.home.entity.Culture(t.id,t.itemTitle,t.itemContent,tt.itemTypeFlag) from Culture t,CultureType tt  where t.typeId=? and t.typeId=tt.id and t.isPublish=1 and isImage=1 order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
 	
 	
 }

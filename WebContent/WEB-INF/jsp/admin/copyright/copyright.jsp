@@ -5,7 +5,7 @@
 <html>
 	<head>
 		
-		<title>联系我们</title>
+		<title>版权说明</title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,21 +20,22 @@
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
-			<div id="location">您现在的位置: 后台管理 ><span>联系我们</span></div>
-            <div class="new_div1"><span class="new_div1_span">联系我们</span><a href="${CTP}/admin/editContact" class="add_list">
+			<div id="location">您现在的位置: 后台管理 ><span>版权说明</span></div>
+            <div class="new_div1"><span class="new_div1_span">版权说明</span><a href="${CTP}/admin/editCopyRight" class="add_list">
             <c:choose>
-                <c:when test="${empty contact}">新增</c:when>
+                <c:when test="${empty copyRight}">新增</c:when>
                 <c:otherwise>修改</c:otherwise>
             </c:choose> 
-                  
+                 
             </a>
-            <c:if test="${contact.isPublish eq 0}">
+            
+              <c:if test="${copyRight.isPublish eq 0}">
             <b>草稿</b>
-            </c:if>    
+            </c:if>   
             </div>
             <div class="new_div2">
             	
-                ${contact.content}
+                ${copyRight.content}
             </div>
        
         <div> 

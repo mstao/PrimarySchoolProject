@@ -84,7 +84,7 @@ $(function(){
 					<div class="slider-news slide-s">
 					<ul>
 				    <c:forEach items="${sildeNews}" var="s_list">  
-						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${newsFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeNews}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -138,7 +138,7 @@ $(function(){
 					<ul>
 				     
 				     <c:forEach items="${sildeEdu}" var="s_list">  
-						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${educationFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeEdu}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -200,7 +200,7 @@ $(function(){
 					<ul>
 				     
 						<c:forEach items="${sildeStudent}" var="s_list">  
-							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=activity" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
 						</c:forEach>	
 					     <c:if test="${empty sildeStudent}">
 					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>

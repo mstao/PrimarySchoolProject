@@ -92,12 +92,13 @@ public class Teacher implements Serializable{
 	}
     
     //轮播  
-	public Teacher(int id, String itemTitle, String itemContent, String addTime) {
+	public Teacher(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
 		this.itemContent = itemContent;
 		this.addTime = addTime;
+		this.itemTypeFlag = itemTypeFlag;
 	}
 
 	

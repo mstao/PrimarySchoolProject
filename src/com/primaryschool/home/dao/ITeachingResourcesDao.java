@@ -42,4 +42,7 @@ public interface ITeachingResourcesDao<T> {
 
 	/***首页的教学资源信息***/
 	List<T> findHomeTeachingResourcesContent(int position,int item_per_page);
+	
+	/**教学资源轮播图**/
+	List<T> findSliderTeachingResourcesContent(int menuId,int classId,String flag,int position,int item_per_page);
 }

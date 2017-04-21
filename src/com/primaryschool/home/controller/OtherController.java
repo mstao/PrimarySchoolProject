@@ -1,8 +1,12 @@
 package com.primaryschool.home.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.primaryschool.admin.service.IContactService;
+import com.primaryschool.home.entity.Contact;
 
 /**
  * 
@@ -13,8 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 *
  */
 @Controller
-public class OtherController {
-
+public class OtherController<T> {
+	@Autowired
+	private IContactService<T> contactServcie;
 	/**
 	 * 
 	* @Title: contact
@@ -26,6 +31,9 @@ public class OtherController {
 	 */
 	@RequestMapping("/contact")
 	public String contact(ModelMap map){
+        Contact contact=(Contact) contactServcie.findContactInfo();
+		
+		map.put("contact", contact);
 		return "home/contact/contact";
 		
 	}
