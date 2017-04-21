@@ -107,7 +107,7 @@ public class DetailsController<T>{
         //文件类型
         String belongType="ftrends";
         //获取文件列表
-        ArrayList<FileBean> filelist=(ArrayList<FileBean>) baseFileServcie.findFile(belongType);
+        ArrayList<FileBean> filelist=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,id);
         
         request.setAttribute("filelist", filelist);
         request.setAttribute("item", trends);

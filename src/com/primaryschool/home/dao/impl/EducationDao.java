@@ -41,7 +41,7 @@ public class EducationDao<T> implements IEducationDao<T> {
 	@Override
 	public T findEducationInfoById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Education(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Education t,EducationType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
+		String hql="select new com.primaryschool.home.entity.Education(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.author)from Education t,EducationType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T) query.uniqueResult();

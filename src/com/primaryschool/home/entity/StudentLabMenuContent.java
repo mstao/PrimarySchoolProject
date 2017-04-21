@@ -91,6 +91,7 @@ public class StudentLabMenuContent implements Serializable{
 		this.viewCount = viewCount;
 		this.itemTypeFlag = itemTypeFlag;
 		this.itemTypeName = itemTypeName;
+		
 	}
 
 	//轮播

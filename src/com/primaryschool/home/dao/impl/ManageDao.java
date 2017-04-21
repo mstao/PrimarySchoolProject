@@ -36,7 +36,7 @@ public class ManageDao<T> implements IManageDao<T> {
 	@Override
 	public T findManageInfoById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Manage(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Manage t,ManageType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
+		String hql="select new com.primaryschool.home.entity.Manage(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.author)from Manage t,ManageType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T) query.uniqueResult();

@@ -12,11 +12,13 @@
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/detailstype.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/time-axis.css" />
+<link rel="stylesheet" href="${CTP_HOME}/js/extends/zoomify/zoomify.min.css"/>
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.easing.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/history.js"></script>
+<script type="text/javascript" src="${CTP_HOME}/js/extends/zoomify/zoomify.min.js" ></script>
 
 <script type="text/javascript">
 
@@ -37,6 +39,8 @@ $(function(){
 		$("> .year",this).text(_y);
 		$("> .md",this).text(_m_d);
 	});
+	
+	$(".new-details img").zoomify();
 });
 
 </script>
@@ -80,7 +84,7 @@ $(function(){
 					<!--描述：新闻作者，发布时间 -->
 					<div class="new-attribute">
 						<span class="new-attribute-span">作者：</span>
-						<span class="new-attribute-name">小学网站</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="new-attribute-name">${item.author}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span class="new-attribute-span">发布时间：</span>
 						<span class="new-attribute-time">${item.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span class="new-attribute-span">浏览次数：</span>
@@ -90,6 +94,24 @@ $(function(){
 					<div class="new-details">
 						${item.itemContent}
 					</div>
+<c:if test="${not empty filelist}">				
+<!-- S 文件列表域  -->
+<div class="file-textarea">
+<span><b>附件：</b></span><br>
+<ul>
+  <c:forEach items="${filelist}" var="file_list">
+     <li>
+     <img src="${CTP_HOME}/img/j_do.png" class="dot"/> 
+	 <a href="javascript:location.href='${CTP}/download/file?realName='+encodeURIComponent('${file_list.realName}')+'&fileName='+encodeURIComponent('${file_list.fileName}');" class="file-name">${file_list.fileName}</a>
+     </li>
+  </c:forEach>
+</ul>
+
+</div>
+<!-- E 文件列表域 -->
+</c:if>	
+
+					
 					
 <!-- JiaThis Button BEGIN -->
 <div class="jiathis_style_24x24">
@@ -188,3 +210,4 @@ $(function(){
 <jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
 </html>
+

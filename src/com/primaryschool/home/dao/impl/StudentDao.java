@@ -41,7 +41,7 @@ public class StudentDao<T> implements IStudentDao<T> {
 	@Override
 	public T findStudentInfoById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Student(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag)from Student t,StudentType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
+		String hql="select new com.primaryschool.home.entity.Student(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.author)from Student t,StudentType tt  where tt.id=t.typeId and t.id=? and t.isPublish=1";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T) query.uniqueResult();

@@ -22,9 +22,9 @@ public class BaseFileService<T> implements IBaseFileService<T> {
 	@Autowired
 	private  IBaseFileDao<T> baseFileDao;
 	@Override
-	public List<T> findFile(String belongType) {
+	public List<T> findFile(String belongType,int itemId) {
 		// TODO Auto-generated method stub
-		return baseFileDao.findFile(belongType);
+		return baseFileDao.findFile(belongType,itemId);
 	}
 
 }

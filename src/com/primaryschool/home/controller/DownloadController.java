@@ -44,12 +44,12 @@ public class DownloadController {
 		System.out.println(fileName);
 		//上传的文件都是保存在/Uploads/files
 		String fileSaveRootPath=request.getServletContext().getRealPath( "/resources/Uploads/files" );
-
+        System.out.println(fileSaveRootPath);
 		//得到要下载的文件
 		File file = new File(fileSaveRootPath +"/"+ realName);
 		//如果文件不存在
 		if(!file.exists()){
-			//request.setAttribute("message", "您要下载的资源已被删除！！");
+			
 			System.out.println("文件找不到");
 			return;
 		}

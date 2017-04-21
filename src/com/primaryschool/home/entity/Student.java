@@ -78,7 +78,7 @@ public class Student implements Serializable{
     }
     
     public Student(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
-			  String itemTypeName,String itemTypeFlag) {
+			  String itemTypeName,String itemTypeFlag,String author) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
@@ -87,7 +87,7 @@ public class Student implements Serializable{
 		this.viewCount = viewCount;
 		this.itemTypeName = itemTypeName;
 		this.itemTypeFlag = itemTypeFlag;
-		
+		this.author=author;
 	}
     
     //用于轮播 

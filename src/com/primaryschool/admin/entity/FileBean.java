@@ -43,6 +43,17 @@ public class FileBean implements Serializable{
 	private int itemId;
 	
 	
+	public FileBean(){}
+	
+	
+	public FileBean(int id, String fileName, String realName) {
+		super();
+		this.id = id;
+		this.fileName = fileName;
+		this.realName = realName;
+	}
+
+
 	public int getId() {
 		return id;
 	}

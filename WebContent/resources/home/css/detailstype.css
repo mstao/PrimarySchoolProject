@@ -133,10 +133,30 @@ a:hover{
 .jiathis_style_24x24{
 	margin-top:20px;
 	margin-bottom:40px;
-	background:#DCDCDC;
+	background:#F6F6F3;
 	height:24px;
 }
 .jiathis_style_24x24 span{
 	float:left;
 	color:#444444;
+}
+
+/*文件下载区域*/
+.file-textarea{
+	margin-top:20px;
+	background-color: #F6F6F3;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+
+.file-textarea a{
+	color:#444444;
+	text-decoration: none;
+}
+.file-textarea a:hover{
+	color:#EF9722;
+	text-decoration: underline;
+}
+.file-textarea ul li{
+	margin-top:5px;
 }
