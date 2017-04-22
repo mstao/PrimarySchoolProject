@@ -24,4 +24,12 @@ public interface IUserDao<T> {
 	
 	/**获取权限资源**/	
 	List<T> findResources();
+	/**添加用户**/
+	void saveUser(T t);
+	
+	/**验证用户是否被注册**/
+	T findUserByUserName(String userName);
+	
+	/**验证邮箱是否已被使用**/
+	T findUserByEmail(String email);
 }

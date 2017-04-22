@@ -33,8 +33,8 @@
 			<img src="${pageContext.request.contextPath}/resources/home/img/weixin.png" title="微信"/>	<img src="${pageContext.request.contextPath}/resources/home/img/weibo.png" title="微博"/>
 			</div>
 			<div class="fixed-login-input">
-				<input type="text" placeholder="用户名" class="input-username"/>
-				<input type="password" placeholder="密码" class="input-password"/>
+				<input type="text" placeholder="用户名" autocomplete="off" class="input-username"/>
+				<input type="password" placeholder="密码" autocomplete="off" class="input-password"/>
 				
 				<button class="input-submit">登录</button>
 			</div>

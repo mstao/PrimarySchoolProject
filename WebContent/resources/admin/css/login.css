@@ -210,7 +210,10 @@ form:after {
 	background: #F3F3F4 url(../img/password.png) no-repeat;
 	background-position: 5px 5px !important;
 }
-
+#email{
+	background: #F3F3F4 url(../img/inner-email.png) no-repeat;
+	background-position: 5px 5px !important;
+}
 #content div input[type="text"][id="number"]{
 	background:#F3F3F4  url(../img/number.png) no-repeat;
 	background-position: 5px 5px !important;
@@ -324,7 +327,9 @@ form:after {
 
 
 .footer-bg{
-	position:absolute;left;0;bottom:0;
+	position:fixed;
+	left:0;
+	bottom:0;
 	background: #EFF4FA;
 	width: 100%;
 	height: 40px;

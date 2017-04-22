@@ -9,9 +9,9 @@ public class CrypographyUtil {
 
 	
 	public static void main(String[] args){
-		System.out.println(MD5("java123","123456"));
+		/*System.out.println(MD5("java123","123456"));
 		System.out.println(MD5("jack","123456"));
-		System.out.println(MD5("marry","123456"));
+		System.out.println(MD5("marry","123456"));*/
 	}
 	
 	/**
@@ -30,13 +30,14 @@ public class CrypographyUtil {
 	 * Md5加密
 	 */
 	
-	public static  Object MD5(String username,String password){
+	public static  Object MD5(String username,String password,String saltz){
 	   // return new Md5Hash(s,salt).toString();
 	    
 	    //hashIterations加密的次数1024
 		String hashAlgorithmName = "MD5";
 		Object credentials = (Object)password;
-		Object salt = ByteSource.Util.bytes(username);
+		//加点盐
+		Object salt = ByteSource.Util.bytes(saltz);
 		int hashIterations = 1024;
 		
 		Object result = new SimpleHash(hashAlgorithmName, credentials, salt, hashIterations);

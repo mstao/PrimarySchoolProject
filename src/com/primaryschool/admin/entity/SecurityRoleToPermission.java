@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name="ps_security_role_permission")
+@Table(name="ps_security_role_to_permission")
 public class SecurityRoleToPermission implements Serializable{
 
 

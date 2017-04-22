@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>登录-后台管理系统</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 
@@ -32,10 +32,10 @@
 				<form action="">
 					<h1>登录</h1>
 					<div>
-						<input type="text" placeholder="用户账户" required="" id="username" />
+						<input type="text" placeholder="用户名" autocomplete="off" id="username" />
 					</div>
 					<div>
-						<input type="password" placeholder="用户密码" required="" id="password" />
+						<input type="password" placeholder="用户密码" autocomplete="off" id="password" />
 					</div>
 					<div>
 						<input type="submit" value="登录" />

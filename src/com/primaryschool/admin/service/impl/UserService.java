@@ -47,4 +47,22 @@ public class UserService<T> implements IUserService<T> {
 		return userDao.findResources();
 	}
 
+	@Override
+	public void saveUser(T t) {
+		// TODO Auto-generated method stub
+		userDao.saveUser(t);
+	}
+
+	@Override
+	public T findUserByUserName(String userName) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByUserName(userName);
+	}
+
+	@Override
+	public T findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByEmail(email);
+	}
+
 }

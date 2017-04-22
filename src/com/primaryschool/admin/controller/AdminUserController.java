@@ -5,100 +5,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 import com.primaryschool.admin.entity.SecurityUser;
 import com.primaryschool.admin.service.IUserService;
 import com.primaryschool.global.util.CrypographyUtil;
 import com.primaryschool.global.util.GetDateUtil;
 
+
 /**
  * 
-* @ClassName: LoginRegisterController
-* @Description: TODO  后台登录注册控制器
+* @ClassName: AdminUserController
+* @Description: TODO 后台用户控制器
 * @author Mingshan
-* @date 2017年4月6日 下午2:02:51
+* @date 2017年4月21日 下午9:45:57
 *
  */
-
-
 @Controller
-@RequestMapping("/admin/loginRegister")
-public class LoginRegisterController<T> {
+@RequestMapping("/admin/user")
+public class AdminUserController<T> {
 
 	@Autowired
 	private IUserService<T> userService;
-	
-	
-	/**
-	 * 
-	* @Title: showLogin
-	* @Description: TODO  学生报名登录 显示
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	@RequestMapping("/showStuLogin")
-	public String showStudentLogin(){
-		
-		
-		return "admin/loginOrregister/student-login";
-	}
-	
-	
-	/**
-	 * 
-	* @Title: showStudentRegister
-	* @Description: TODO 学生注册 显示
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	@RequestMapping("/showStuRegister")
-	public String showStudentRegister(){
-		return "admin/loginOrregister/student-register";
-	}
-	
-	/**
-	 * 
-	* @Title: showTeacherLogin
-	* @Description: TODO 教师登录 显示
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	
-	@RequestMapping("/showTeaLogin")
-	public String showTeacherLogin(){
-		
-		return "admin/loginOrregister/teacher-login";
-	}
-	
-	/**
-	 * 
-	* @Title: showTeacherRegister
-	* @Description: TODO 教师注册 显示
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	
-	@RequestMapping("/showTeaRegister")
-	public String showTeacherRegister(){
-		return "admin/loginOrregister/teacher-register";
-	}
-	
-	/**
-	 * 
-	* @Title: unauthorized
-	* @Description: TODO 认证未通过，权限不足
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	@RequestMapping("/unauthorized")
-	public  String unauthorized(){
-		return "admin/loginOrregister/unauthorized";
-	}
-	
 	
 	/**
 	 * 
@@ -182,5 +109,4 @@ public class LoginRegisterController<T> {
         }
 		return result;
 	}
-	
 }

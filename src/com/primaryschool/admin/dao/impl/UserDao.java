@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IUserDao;
 import com.primaryschool.admin.entity.SecurityUser;
+import com.primaryschool.home.entity.TrendsType;
 
 /**
  * 
@@ -95,5 +96,44 @@ public class UserDao<T> implements IUserDao<T> {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		return query.list();
 	}
+
+	/**
+	 * 添加用户
+	 */
+	@Override
+	public void saveUser(T t) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(t);
+	}
+
+	/**
+	 * 验证用户名是否已被注册
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findUserByUserName(String userName) {
+		// TODO Auto-generated method stub
+		String hql="from SecurityUser u where u.userName=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, userName);
+		
+		return (T) query.uniqueResult();
+	}
+
+	/**
+	 * 验证邮箱是否被使用
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		String hql="from SecurityUser u where u.email=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, email);
+		
+		return (T) query.uniqueResult();
+	}
+	
+	
 
 }

@@ -5,11 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>注册-后台管理系统</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 
 <link rel="stylesheet" type="text/css" href="${CTP_ADMIN}/css/login.css" />
+<script type="text/javascript" src="${CTP_ADMIN }/js/lib/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
+
+<script type="text/javascript" src="${CTP_ADMIN }/js/module/form.js"></script>
+<script type="text/javascript">
+var CTPPATH="${pageContext.request.contextPath}";
+
+</script>
+
 </head>
 <body>
 <!-- 引入header -->
@@ -32,16 +41,19 @@
 				<form action="">
 					<h1>注册</h1>
 				<div>
-					<input type="text" placeholder="请输入教师真实姓名" required="" id="username" />
+					<input type="text" placeholder="请输入用户名"   autocomplete="off" id="username" />
 				</div>
 				<div>
-					<input type="text" placeholder="请输入教师工号" required="" id="number" />
+					<input type="text" placeholder="请输入教师工号"  autocomplete="off"  id="number" />
 				</div>
 				<div>
-					<input type="password" placeholder="请输入密码" required="" id="password" />
+					<input type="text" placeholder="请输入邮箱"   autocomplete="off" id="email" />
 				</div>
 				<div>
-					<input type="password" placeholder="请再次输入密码" required="" id="passwords" />
+					<input type="password" placeholder="请输入密码"  autocomplete="off"  id="password" />
+				</div>
+				<div>
+					<input type="password" placeholder="请再次输入密码" autocomplete="off" id="passwords" />
 				</div>
 					<div>
 						<input type="submit" value="注册" />
@@ -50,7 +62,7 @@
 					</div>
 				</form><!-- form -->
 				<div class="button">
-					<a href="#">返回主页</a>
+					<a href="${CTP}/main/index">返回主页</a>
 				</div><!-- button -->
 			</section><!-- content -->
 		</div><!-- container -->

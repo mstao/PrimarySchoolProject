@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * 
 * @ClassName: IUserService
-* @Description: TODO 用户   service
+* @Description: TODO 后台管理用户   service
 * @author Mingshan
 * @date 2017年4月18日 下午6:35:42
 *
@@ -23,4 +23,13 @@ public interface IUserService<T> {
 	
 	/**获取权限资源**/	
 	List<T> findResources();
+	
+	/**注册用户**/
+	void saveUser(T t);
+	
+	/**验证用户是否被注册**/
+	T findUserByUserName(String userName);
+	
+	/**验证邮箱是否已被使用**/
+	T findUserByEmail(String email);
 }

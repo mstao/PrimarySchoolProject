@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.Index;
 
@@ -22,7 +23,7 @@ import org.hibernate.annotations.Index;
  */
 
 @Entity
-@Table(name="ps_security_user")
+@Table(name="ps_security_user",uniqueConstraints = {@UniqueConstraint(columnNames={"username","email","number"})})
 public class SecurityUser implements Serializable{
 
 	
@@ -33,7 +34,7 @@ public class SecurityUser implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="usrname")
+	@Column(name="username")
 	@Index(name = "idx_sys_security_username")
 	private String userName;
 	
@@ -47,6 +48,20 @@ public class SecurityUser implements Serializable{
 	//用户状态
 	@Column(name="status")
 	private int status;
+	
+	//用户邮箱
+	@Column(name="email")
+	@Index(name = "idx_sys_security_email")
+	private String email;
+	
+	//工号
+	@Column(name="number")
+	@Index(name = "idx_sys_security_number")
+	private String number;
+	
+	//注册时间
+	@Column(name="add_time")
+	private String addTime;
 	
 	@Transient
 	private String roleName;
@@ -137,6 +152,36 @@ public class SecurityUser implements Serializable{
 	}
 	public void setPermissionName(String permissionName) {
 		this.permissionName = permissionName;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getNumber() {
+		return number;
+	}
+
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+
+	public String getAddTime() {
+		return addTime;
+	}
+
+
+	public void setAddTime(String addTime) {
+		this.addTime = addTime;
 	}
 	
 	
