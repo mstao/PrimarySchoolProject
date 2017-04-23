@@ -101,6 +101,47 @@ public class Education implements Serializable{
 		this.itemTypeFlag = itemTypeFlag;
 	}  
     
+	
+
+		public Education(int id,String itemTitle,String addTime,int isPublish,String author){
+	    	super();
+	    	this.id = id;
+			this.itemTitle = itemTitle;
+			this.addTime = addTime;
+			this.isPublish=isPublish;
+			this.author=author;
+	    }
+			
+
+	    
+	    public Education(int id, String itemTitle, String itemContent, String addTime, int viewCount, String itemTypeName,
+				String itemTypeFlag) {
+			super();
+			this.id = id;
+			this.itemTitle = itemTitle;
+			this.itemContent = itemContent;
+			this.addTime = addTime;
+			this.viewCount = viewCount;
+			this.itemTypeFlag = itemTypeFlag;
+			this.itemTypeName = itemTypeName;
+		}
+
+
+		public Education(int id,String author, String itemTitle, String itemContent, String addTime, int viewCount, 
+				  String itemTypeName,String itemTypeFlag,int isPublish) {
+			super();
+			this.id = id;
+			this.author=author;
+			this.itemTitle = itemTitle;
+			this.itemContent = itemContent;
+			this.addTime = addTime;
+			this.viewCount = viewCount;
+			this.itemTypeName = itemTypeName;
+			this.itemTypeFlag = itemTypeFlag;
+			this.isPublish=isPublish;
+			
+		}
+	    
 	public int getId() {
 		return id;
 	}

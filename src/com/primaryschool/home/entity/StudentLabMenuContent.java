@@ -105,6 +105,38 @@ public class StudentLabMenuContent implements Serializable{
 		this.itemTypeName = itemTypeName;
 	}
 
+	/////
+	
+	/*
+	 * 后台管理列表页面获取内容
+	 */
+	public StudentLabMenuContent(int id, String itemTitle, String addTime, int menuId, String author, int isPublish) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.author = author;
+		this.menuId = menuId;
+		this.addTime = addTime;
+		this.isPublish = isPublish;
+	}
+	/*
+	 * 后台管理根据ID获取详细信息
+	 */
+	public StudentLabMenuContent(int id,String author, String itemTitle, String itemContent, String addTime,
+			String itemTypeFlag, String itemTypeName,int isPublish) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.author = author;
+		this.addTime = addTime;
+		this.itemTypeFlag = itemTypeFlag;
+		this.itemTypeName = itemTypeName;
+		this.isPublish=isPublish;
+	}
+	
+
+
 
 	public int getId() {
 		return id;

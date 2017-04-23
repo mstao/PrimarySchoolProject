@@ -96,6 +96,35 @@ public class ClassHomePage implements Serializable{
 			this.itemTypeFlag = itemTypeFlag;
 		}
 	    
+	        //后台根据Id获取单个信息的详细内容，用于修改
+	  		public ClassHomePage(int id, String itemAuthor,int classId,String itemTitle, String itemContent, 
+	  				String addTime, String itemTypeName, String itemTypeFlag,int isPublish) {
+	  			super();
+	  			this.id = id;
+	  			this.itemTitle = itemTitle;
+	  			this.classId=classId;
+	  			this.itemContent = itemContent;
+	  			this.itemAuthor = itemAuthor;
+	  			this.addTime = addTime;
+	  			this.isPublish = isPublish;
+	  			this.itemTypeFlag = itemTypeFlag;
+	  			this.itemTypeName = itemTypeName;
+	  		}
+
+	  		//后台根据classId获取主页信息
+	  	    public ClassHomePage(int id, String itemTitle, String itemContent, String itemAuthor, int typeId,
+	  				String addTime,int isPublish) {
+	  			super();
+	  			this.id = id;
+	  			this.itemTitle = itemTitle;
+	  			this.itemContent = itemContent;
+	  			this.itemAuthor = itemAuthor;
+	  			this.typeId = typeId;
+	  			this.addTime = addTime;
+	  			this.isPublish=isPublish;
+	  		}
+
+	  	    
 		public int getId() {
 			return id;
 		}

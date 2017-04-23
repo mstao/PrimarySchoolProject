@@ -35,7 +35,15 @@ public class StudentLabMenuIntroduce implements Serializable{
 	  
 	  @Column(name="menu_id")
 	  private int menuId;
-
+	  
+	  
+	//根据LabId(menuId)获取intro信息
+		public StudentLabMenuIntroduce(int id, String introduce) {
+			super();
+			this.id = id;
+			this.introduce = introduce;
+		}
+		  
 	public int getId() {
 		return id;
 	}

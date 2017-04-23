@@ -22,4 +22,10 @@ public interface ITypeFlagToTypeIdService {
     int findTeachingResourcesTypeFlag(String flag);
     //班级主页信息
     int findClasshomepageIdByTypeFlag(String flag);
+    
+    //教学资源类型
+  	int findTeachingResourcesTypeIdByTypeFlag(String flag);
+  	//社团资源类型
+  	int findLabClassMenuIdByTypeFlag(String flag);
+  	
 }

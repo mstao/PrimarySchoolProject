@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<title>撰写${typeName}</title>
+	<title></title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,13 +37,11 @@
 		
 $(function() {
 		
-	
-	
 		$("#uploadify").uploadify({
 			debug			: false, 
 
 			swf 			:  CTP_ADMIN+'/js/extends/uploadify/js/uploadify.swf',	//swf文件路径
-			method			: 'post',	// 提交方式
+			method			: 'get',	// 提交方式
 			uploader		:  CTPPATH+'/admin/upload/uploadfile;jsessionid=${pageContext.session.id}', // 服务器端处理该上传请求的程序(controller)
 
 			preventCaching	: true,		// 加随机数到URL后,防止缓存
@@ -133,7 +131,7 @@ $(function() {
                     	layer.msg("全部文件上传完成了",{icon: 1,time:3000});
                     	//此时可以进行跳转页面
                     	//跳转界面
-						window.location.href=CTPPATH+"/admin/list/${durl}?flag=${typeFlag}&p=1";
+						window.location.href=CTPPATH+"/admin/list/${durl}?deptId=${deptId}&p=1";
                     }else{
                     	layer.msg("文件上传成功的有"+queueData.uploadsSuccessful+"个-|-文件上传失败的有"+queueData.uploadsErrored+"个,请您点击开始上传按钮手动上传文件");
                         
@@ -174,16 +172,18 @@ $(function() {
 
 	<!--S 编辑区域-->
 	<div class="edit-div"> 
-		<span class="edit-span">撰写${typeName}</span>
+		<span class="edit-span">修改${deptName}
+		<c:if test="${item.isPublish eq 0}"><b>草稿</b></c:if>
+		</span>
 		<span class="title-span">标题</span>
-		<input type="text" name="eidt_title" class="edit-title" placeholder="标题" >
-		<span class="content-span">${typeName}内容</span><br>
+		<input type="text" name="eidt_title" class="edit-title" placeholder="标题" value="${item.itemTitle}">
+		<span class="content-span">${deptName}内容</span><br>
 		 <!--S 编辑器 -->              
-              <div id="editor-container" class="answercontainer"><div id="editor-trigger"></div></div>
+              <div id="editor-container" class="answercontainer"><div id="editor-trigger">${item.itemContent}</div></div>
           <!--E 编辑器  -->
           
         <%--隐藏id  供上传文件用 --%>
-        <input type="hidden" name="hidden-item-id" class="hidden-item-id" value="">
+        <input type="hidden" name="hidden-item-id" class="hidden-item-id" value="${item.id}">
         <div class="edit-submit">
         	<a href="javascript:void(0);" class="draft-btn draft-trends-btn" onClick="ChangeState();">保存草稿</a><a href="javascript:void(0);" class="publish-btn publish-trends-btn" onClick="ChangeState();">发布内容</a>
         </div>
@@ -203,20 +203,30 @@ $(function() {
 		<!--clear-->
 		<div class="options-checked-div" id="s">
 			<span class="publish-dept-span">发布者</span>
-			<input type="text" name="publish_dept" class="publish-dept" value="万科小学">
+			<input type="text" name="publish_dept" class="publish-dept" value="${item.itemAuthor }">
 		    <br>
-		    <span class="publish-dept-span">发布时间</span>
+		    <span class="publish-dept-span">发布时间</span> 
 		    <div id="date-div">
-		    <input type="text"  class="date_picker" value="">
+		    <input type="text"  class="date_picker" value="${item.addTime}">
 		    </div>
-		     <span class="publish-dept-span">分类</span>
+		     <span class="publish-dept-span">分类(${school_trends_c})</span>
 		    <select name="publish_style" id="publish-style">
-		    	<option value="${typeFlag}" selected="true">${typeName}</option>
 		    
+		     <c:forEach var="type" items="${resouceType }">
+		     <c:choose>
+		     	<c:when test="${type.itemTypeName==typeName }">
+		     		<option value="${type.itemTypeFlag}" selected="selected">${type.itemTypeName}</option>
+		     	</c:when>
+		     	<c:otherwise>
+		     		 <option value="${type.itemTypeFlag}">${type.itemTypeName}</option>
+		     	</c:otherwise>
+		     </c:choose>
+		
+		    </c:forEach>
 		    </select>
 		</div>
 		<div class="draft-cheched-div" id="f">
-			<span class="draft-cheched-tag">*可以选择多个附件,选择完后随发布内容一起提交<br>*内容发布前附件可以撤销<br>*内容发布完后附件不可撤销<br>*清空列表将所有上传的文件清除上传列队<br>*进行多文件上传时如果文件上传失败，请点击"手动上传"手动上传</span>
+			<span class="draft-cheched-tag">*可以选择多个附件,选择完后随发布内容一起提交<br>*内容发布前附件可以撤销<br>*内容发布完后附件不可撤销<br>*清空列表将所有上传的文件清除上传列队<br>*如果进行多文件上传时如果文件上传失败，请点击"手动上传"手动上传</span>
 		    <span id="uploadify"></span>
 			<div id="fileQueue"></div>     
 			 <br>
@@ -247,23 +257,9 @@ $(function() {
 $('.date_picker').date_input();
 
 
-
 //获得信息
 $(function(){
 	
-	var date = new Date();
-    var seperator1 = "-";
-    var month = date.getMonth() + 1;
-    var strDate = date.getDate();
-    if (month >= 1 && month <= 9) {
-        month = "0" + month;
-    }
-    if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-    }
-    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
-    $('.date_picker').val(currentdate);
-    
 	// 阻止输出log
   // wangEditor.config.printLog = false;
 
@@ -313,10 +309,11 @@ $(function(){
   //创建编辑器
   editor.create();
   
-  /**************发布信息******************/
+  /**************修改信息******************/
 
   $('.publish-trends-btn').bind('click',function(){
-
+		//获取id
+		var nid=$('.hidden-item-id').val();
 		//获取发表类型
 		var type=$('#publish-style').val();
 		//获取标题
@@ -326,7 +323,7 @@ $(function(){
 		//获取发布部门
 		var publish_dept=$('.publish-dept').val();
 		//获取发布时间
-		var date_picker=$('.date_picker').val(); 
+		var date_picker=$('.date_picker').val();
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
 		//判断标题和内容是否为空
@@ -344,8 +341,8 @@ $(function(){
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/${durl}',
-				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				url:CTPPATH+'/admin/update/${durl }',
+				data:{"id":nid,"itemTitle":title,"itemContent":content,"departmentId":"${deptId}","typeFlag":type,"itemAuthor":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -358,22 +355,20 @@ $(function(){
 						  layer.closeAll('loading');
 					}, 1000);
 		
-					 if(data>0){
-						layer.msg('发布成功，您可以在列表中查看', {icon: 1,time:2000});
+					 if(data==true){
+						layer.msg('修改成功，您可以在列表中查看', {icon: 1,time:2000});
 					
-					    //将id写入到隐藏域,供上传文件使用
-					    $('.hidden-item-id').val(data);
 						//判断有无上传文件列队
 						if(getQueueSize("uploadify")>0){
 							//此时开始上传文件 ，前提是有文件  这时在文件处理那块将id值写到隐藏域
 							upload("uploadify");
 						}else{
 							//跳转界面
-							window.location.href=CTPPATH+"/admin/list/${durl}?flag=${typeFlag}&p=1";
+							window.location.href=CTPPATH+"/admin/list/${durl}?deptId=${deptId}&p=1";
 						}
 
 					}else{
-						layer.msg("发布出错了", {icon: 2,time:2000});
+						layer.msg("修改出错了", {icon: 2,time:2000});
 					} 
 				},
 				error:function(){
@@ -418,8 +413,8 @@ $(function(){
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/${durl}',
-				data:{"itemTitle":title,"itemContent":content,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				url:CTPPATH+'/admin/update/${durl }',
+				data:{"id":nid,"itemTitle":title,"itemContent":content,"departmentId":"${deptId}","typeFlag":type,"itemAuthor":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -432,17 +427,16 @@ $(function(){
 						  layer.closeAll('loading');
 					}, 1000);
 		
-					 if(data>0){
+					 if(data==true){
 						layer.msg('保存草稿成功，您可以在列表中查看', {icon: 1,time:2000});
-						//将id写入到隐藏域,供上传文件使用
-					    $('.hidden-item-id').val(data);
+					
 						//判断有无上传文件列队
 						if(getQueueSize("uploadify")>0){
 							//此时开始上传文件 ，前提是有文件  这时在文件处理那块将id值写到隐藏域
 							upload("uploadify");
 						}else{
 							//跳转界面
-							window.location.href=CTPPATH+"/admin/list/${durl}?flag=${typeFlag}&p=1";
+							window.location.href=CTPPATH+"/admin/list/${durl}?deptId=${deptId}&p=1";
 						}
 
 					}else{

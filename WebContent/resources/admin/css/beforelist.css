@@ -1,0 +1,144 @@
+@CHARSET "UTF-8";
+#location{
+	 margin: 80px auto 10px;
+     width: 70%;
+}
+#location a{
+	text-decoration: none;
+}
+#location a:hover{
+	color:#EE9621;
+	text-decoration: underline;
+}
+.operation{
+	width:870px;
+	margin:10px  auto;
+}
+.operation_input{
+    margin-top: 10px;
+    float: left;
+}
+.operation ul{
+    padding: 0;
+    list-style-type: none;
+}
+.operation ul li{
+    float: left;
+    position: relative;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.operation ul li a, .operation ul li a:visited{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    width: 60px;height: 25px;
+    border-radius: 3px;
+    line-height: 25px;
+    background-color: #D6D6D6;
+    font-size: 14px;
+    color: #000000;
+}
+.operation ul li ul{
+    display: none;
+    margin-top: -7px;
+    margin-left: -5px;
+}
+.operation ul li:hover ul{
+    display: block;
+    position: absolute;
+    top: 31px;
+    left: 0px
+}
+.operation ul li:hover ul li a{
+    display: block;
+    background-color: gainsboro;
+    color: #000;
+}
+.operation ul li:hover ul li a:hover{
+    background: #dfc184;
+    color: #000;
+}
+
+.new_button{
+    width: 50px;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: #467B96;
+    border-radius: 5px;
+    float: right;
+    border: 1px solid;
+    cursor: pointer;
+}
+.new_text{
+    width: 200px;height: 25px;
+    float: right;
+    border: 1px solid #D9D9D6;
+    padding-left: 5px;
+}
+/**contents**/
+.contents{
+	width:870px;
+	margin:10px  auto;
+	
+}
+/**综合实验课**/
+.contents .class-list{
+	margin-top:40px;
+	padding:10px;
+	width:850px;
+	outline: 2px dashed #CCCCCC;
+	outline-offset: -8px;
+	
+}
+.contents .class-list > span{
+	display:inline-block;
+	margin-top:20px;
+}
+.contents .class-list > span:not(even){
+	margin-left:30px;
+}
+.contents .class-list > span >a{
+	color:#666666;
+	text-decoration:none;
+    font-size:18px;
+}
+.contents .class-list > span >a:hover{
+	color:#EE9621;
+	text-decoration: underline;
+}
+/**教学资源**/
+.teachingresource , .tresource{
+	width:870px;
+	margin:50px  auto;
+}
+.teachingresource{
+	padding:25px;
+	min-height:150px;
+	outline: 2px dashed #CCCCCC;
+	outline-offset: -8px;
+}
+.teachingresource >span{
+   margin-left:10px;
+   margin-top:10px;
+   display: inline-table;
+}
+.teachingresource >span >a{
+	color:#444444;
+	text-decoration: none;
+}
+.teachingresource >span >a:hover{
+	color:#EE9620;
+	text-decoration: underline;
+}
+/**班级主页**/
+.scontent{
+	width:870px;
+	margin:50px  auto;
+}
+#select-grade{
+    width: 100px;height: 25px;
+    float: right;
+    border: 1px solid #D9D9D6;
+    margin:0 5px;
+}

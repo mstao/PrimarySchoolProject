@@ -128,6 +128,38 @@ public class Trends implements Serializable{
 		this.itemTypeFlag = itemTypeFlag;
 	}
 
+
+    
+
+    public Trends(int id,String itemTitle, String itemContent, String addTime, int viewCount, 
+			  String itemTypeName,String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.itemTypeName = itemTypeName;
+		this.itemTypeFlag = itemTypeFlag;
+	
+	}
+    
+	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount,String author, 
+			  String itemTypeName,String itemTypeFlag,int isPublish) {
+		super();
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.itemContent = itemContent;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.author=author;
+		this.itemTypeName = itemTypeName;
+		this.itemTypeFlag = itemTypeFlag;
+		this.isPublish = isPublish;
+	}
+
+	
+	
 	public int getId() {
 		return id;
 	}

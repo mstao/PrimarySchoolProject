@@ -35,6 +35,15 @@ public class StudentLabMenuType implements Serializable{
 	@Column(name="item_type_flag")
 	private  String itemTypeFlag;
 
+	
+	public StudentLabMenuType(int id, String itemTypeName, String itemTypeFlag) {
+		super();
+		this.id = id;
+		this.itemTypeName = itemTypeName;
+		this.itemTypeFlag = itemTypeFlag;
+	}
+
+	
 	public int getId() {
 		return id;
 	}

@@ -57,7 +57,7 @@ $(function(){
                  	<ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=introduce&p=1">${SCHOOL_CULTURE_INTRODUCE}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=affairs&p=1">${SCHOOL_CULTURE_AFFAIRS}</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/list/campusScenery">${SCHOOL_CULTURE_SIGHT}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=sight&p=1">${SCHOOL_CULTURE_SIGHT}</a></li>
 					</ul>
                  	
                  </li>
@@ -71,47 +71,47 @@ $(function(){
                  
                  <li><a href="#">${SCHOOL_EDUCATION}</a>
                  	  <ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/adminlist/education?flag=education&p=1">${SCHOOL_EDUCATION_MAIN}</a></li>
-							<li><a href="${pageContext.request.contextPath}/adminlist/education?flag=speak&p=1">${SCHOOL_EDUCATION_SPEAK}</a></li>
-							<li><a href="${pageContext.request.contextPath}/adminlist/education?flag=active&p=1">${SCHOOL_EDUCATION_ACTIVE}</a></li>
-							<li><a href="${pageContext.request.contextPath}/adminlist/education?flag=parents&p=1#">${SCHOOL_EDUCATION_PARENTS}</a></li>
-							<li><a href="${pageContext.request.contextPath}/adminlist/education?flag=stagent&p=1">${SCHOOL_EDUACTION_STAGENT}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=education&p=1">${SCHOOL_EDUCATION_MAIN}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=speak&p=1">${SCHOOL_EDUCATION_SPEAK}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=active&p=1">${SCHOOL_EDUCATION_ACTIVE}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=parents&p=1#">${SCHOOL_EDUCATION_PARENTS}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=stagent&p=1">${SCHOOL_EDUACTION_STAGENT}</a></li>
 					</ul>
                  </li>
                  
                  <li><a href="#">${SCHOOL_STUDENT}</a>
                  	 <ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/adminlist/student?flag=book&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
-							<li><a href="${pageContext.request.contextPath}/adminlist/student?flag=activity&p=1">${SCHOOL_STUDENT_ACTIVITY}</a></li>
-							<li><a href="#">${SCHOLL_STUDENT_CLASS}</a></li>
-							<li><a href="#">${SCHOOL_STUDENT_LAB}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/student?flag=book&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/student?flag=activity&p=1">${SCHOOL_STUDENT_ACTIVITY}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/sclass">${SCHOLL_STUDENT_CLASS}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/labclass">${SCHOOL_STUDENT_LAB}</a></li>
 					</ul>
                  	
                  </li>
                  
                  <li><a href="#">${SCHOOL_TEACHER}</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/adminlist/teacher?flag=resources&p=1">${SCHOOL_TEACHER_RESOURCES}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/teacher?flag=teachers&p=1">${SCHOOL_TEACHER_TEACHERS}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/teacher?flag=train&p=1">${SCHOOL_TEACHER_TRAIN}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/teacher?flag=prize&p=1">${SCHOOL_TEACHER_PRIZE}</a></li>	
+							<li><a href="${pageContext.request.contextPath}/admin/list/teachingResource">${SCHOOL_TEACHER_RESOURCES}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/teacher?flag=teachers&p=1">${SCHOOL_TEACHER_TEACHERS}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/teacher?flag=train&p=1">${SCHOOL_TEACHER_TRAIN}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/teacher?flag=prize&p=1">${SCHOOL_TEACHER_PRIZE}</a></li>	
 					</ul>
                  </li>
                  
                  
                  <li><a href="#">${SCHOOL_PARTY}</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/adminlist/party?flag=branch&p=1">${SCHOOL_PARTY_BRANCH}</a></li>
-							<li><a href="${pageContext.request.contextPath}/adminlist/party?flag=trade_union&p=1">${SCHOOL_PARTY_TRADE_UNION}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/party?flag=branch&p=1">${SCHOOL_PARTY_BRANCH}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/party?flag=trade_union&p=1">${SCHOOL_PARTY_TRADE_UNION}</a></li>
 					</ul>
                  </li>
                  <li><a href="#">${SCHOOL_MANAGE}</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/adminlist/manage?flag=department&p=1">${SCHOOL_MANAGE_DEPARTMENT}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/manage?flag=recommendation&p=1">${SCHOOL_MANAGE_RECOMMENDATION}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/manage?flag=notice&p=1">${SCHOOL_MANAGE_NOTICE}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/manage?flag=rules&p=1">${SCHOOL_MANAGE_RULES}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/adminlist/manage?flag=email&p=1">${SCHOOL_MANAGE_EMAIL}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/manageDepartment">${SCHOOL_MANAGE_DEPARTMENT}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=recommendation&p=1">${SCHOOL_MANAGE_RECOMMENDATION}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=notice&p=1">${SCHOOL_MANAGE_NOTICE}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=rules&p=1">${SCHOOL_MANAGE_RULES}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=email&p=1">${SCHOOL_MANAGE_EMAIL}</a></li>
 					</ul>
                  </li>
                  

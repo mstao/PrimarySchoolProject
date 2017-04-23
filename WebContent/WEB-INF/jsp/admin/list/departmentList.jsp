@@ -17,9 +17,9 @@
 		<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 		
 <script type="text/javascript">
+var CTPPATH="${pageContext.request.contextPath}";
 	$(function(){
-		var CTPPATH="${pageContext.request.contextPath}";
-	   
+		
 	   //批量删除信息
        $('.deleteInfo-btn').bind('click',function(){
        	var t=document.getElementsByName("info_id");
@@ -42,7 +42,7 @@
       				$.ajax({
 						type:'post',
 						dataType:'json',
-						url:CTPPATH+"/admin/delete/${durl}",
+						url:CTPPATH+"/admin/delete/${durl }",
 						data:{"ids":ids},
 					
 						beforeSend:function(){
@@ -58,8 +58,9 @@
 							
 							if(data==1){
 								layer.msg('删除成功', {icon: 1,time:2000});
-								window.location.href="${pageContext.request.contextPath}/admin/list/${durl}?flag=${typeFlag}&p=1";
-							
+										 //跳转界面
+		                        		window.location.href="${pageContext.request.contextPath}/admin/list/${durl}?deptId=${deptId}&p=1";
+		                            	
 							}else{
 								layer.msg("删除出错了", {icon: 2,time:2000});
 							}
@@ -90,8 +91,10 @@
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
-			<div id="location">您现在的位置: 后台管理 ><span>${typeName }</span></div>
-            <div class="new_div1"><span class="new_div1_span">${typeName }列表</span><a href="${CTP }/admin/write/page?typeName=${typeName}&typeFlag=${typeFlag}&fileType=ftrends" class="add_list">新增</a></div>
+		
+			<div id="location">您现在的位置: 后台管理 ><span>${menuName }</span></div>
+			<div class="new_div1"><span class="new_div1_span">${menuName }列表</span><a href="${CTP }/admin/write/${durl }?deptId=${deptId }&fileType=${fileType}" class="add_list">新增</a></div>
+				
             <div class="new_div2">
             	
                 <input type="checkbox" class="new_div2_input"/>
@@ -118,16 +121,17 @@
                     <th>类别</th>
                     <th>发布日期</th>
                 </tr>
-                <c:forEach var="list" items="${item }">
+                <c:forEach var="list" items="${item}">
                 <tr>
                     <td width="5%" align="center"><input type="checkbox" name="info_id" value="${list.id}"/></td>
-                    <td width="35%"><a href="${CTP}/admin/distribute/trends?id=${list.id}" class="item_title">${list.itemTitle }</a>
+                    <td width="35%">
+                     <a href="${CTP}/admin/distribute/${durl }?id=${list.id}&deptId=${deptId}&typeId=${list.typeId}" class="item_title">${list.itemTitle }</a>
                      <c:if test="${list.isPublish eq 0}">
 		              <span class="draft-span">草稿</span>
 		             </c:if>
                     </td>
-                    <td width="20%"><a href="">${list.author }</a></td>
-                    <td width="20%"><a href="">${typeName }</a></td>
+                    <td width="20%"><a href="">${list.itemAuthor }</a></td>
+                    <td width="20%"><a href="">${menuName }</a></td>
                     <td width="20%">${list.addTime }</td>
                 </tr>
                 </c:forEach>
@@ -135,7 +139,7 @@
               <!-- 分页导航引入 -->
 			    ${toolBar}
         </div>
-        <div>
+        <div> 
 </div>
 <!--E main-->
 

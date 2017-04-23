@@ -100,7 +100,47 @@ public class Student implements Serializable{
 		this.addTime = addTime;
 		this.itemTypeFlag = itemTypeFlag;
 	}
-    
+    /////    
+
+
+public Student(int id, String itemTitle,String addTime, int isPublish, String author) {
+	super();
+	this.id = id;
+	this.itemTitle = itemTitle;
+	this.addTime=addTime;
+	this.isPublish = isPublish;
+	this.author = author;
+}
+
+
+
+public Student(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
+		  String itemTypeName,String itemTypeFlag) {
+	super();
+	this.id = id;
+	this.itemTitle = itemTitle;
+	this.itemContent = itemContent;
+	this.addTime = addTime;
+	this.viewCount = viewCount;
+	this.itemTypeName = itemTypeName;
+	this.itemTypeFlag = itemTypeFlag;
+	
+}
+
+public Student(int id,String author, String itemTitle, String itemContent,String addTime, int viewCount,
+		String itemTypeName,String itemTypeFlag,int isPublish) {
+	super();
+	this.id = id;
+	this.itemTitle = itemTitle;
+	this.itemContent = itemContent;
+	this.addTime = addTime;
+	this.viewCount = viewCount;
+	this.isPublish = isPublish;
+	this.author = author;
+	this.itemTypeFlag = itemTypeFlag;
+	this.itemTypeName = itemTypeName;
+}
+
     
 	public int getId() {
 		return id;

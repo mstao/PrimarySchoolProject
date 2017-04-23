@@ -113,7 +113,7 @@ public class ListController<T> {
 		String durl="trends";
 		
 		//当前的url
-		String url="./list/trends?flag='"+flag+"'&p=";
+		String url="./trends?flag='"+flag+"'&p=";
 		
 		//获取总记录量
 		int count=trendsService.findTrendsCount(flag);
@@ -151,7 +151,7 @@ public class ListController<T> {
 		String durl="education";
 		
 		//当前的url
-		String url="./list/enducation?flag='"+flag+"'&p=";
+		String url="./enducation?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=educationService.findEducationCount(flag);
 		
@@ -192,7 +192,7 @@ public class ListController<T> {
 		String durl="student";
 		
 		//当前的url
-		String url="./list/student?flag='"+flag+"'&p=";
+		String url="./student?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=studentService.findStudentCount(flag);
 
@@ -232,7 +232,7 @@ public class ListController<T> {
 		String durl="teacher";
 		
 		//当前的url
-		String url="./list/teacher?flag='"+flag+"'&p=";
+		String url="./teacher?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=teacherService.findTeacherCount(flag);
 
@@ -271,7 +271,7 @@ public class ListController<T> {
 		String durl="party";
 		
 		//当前的url
-		String url="./list/party?flag='"+flag+"'&p=";
+		String url="./party?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=partyService.findPartyCount(flag);
 
@@ -310,7 +310,7 @@ public class ListController<T> {
 		String durl="manage";
 		
 		//当前的url
-		String url="./list/manage?flag='"+flag+"'&p=";
+		String url="./manage?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=manageService.findManageCount(flag);
 
@@ -367,7 +367,7 @@ public class ListController<T> {
 		String durl="culture";
 		
 		//当前的url
-		String url="./list/culture?flag='"+flag+"'&p=";
+		String url="./culture?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=cultureService.findCultureCount(flag);
 
@@ -484,7 +484,7 @@ public class ListController<T> {
 		String durl="labClassMenu";
 		
 		//当前的url
-		String url="./list/labClassMenu?flag='"+flag+"'&p=";
+		String url="./labClassMenu?flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=labClassService.findLabClassContentCount(flag);
 
@@ -561,7 +561,7 @@ public class ListController<T> {
 		String durl="mainClass";
 		
 		//当前的url
-		String url="./list/mainclass?classId='"+classId+"'&gradeFlag='"+gradeFlag+"'&classFlag='"+classFlag+"'&flag='"+flag+"'&p=";
+		String url="./mainclass?classId='"+classId+"'&gradeFlag='"+gradeFlag+"'&classFlag='"+classFlag+"'&flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=classHomePageService.findClassHomePageCount(flag);
 
@@ -613,7 +613,7 @@ public class ListController<T> {
 		String durl="teachingResources";
 		
 		//当前的url
-		String url="./list/teachngResources?menuId='"+menuId+"'&classId='"+classId+"'&flag='"+flag+"'&p=";
+		String url="./teachngResources?menuId='"+menuId+"'&classId='"+classId+"'&flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=teachingResourcesService.findTeachingResourcesContentCount(menuId, classId, flag);
 

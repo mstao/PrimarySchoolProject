@@ -70,5 +70,17 @@ public class TypeFlagToTypeIdService implements ITypeFlagToTypeIdService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	
+	@Override
+	public int findTeachingResourcesTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
+	}
 
+	@Override
+	public int findLabClassMenuIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeIdDao.findLabClassMenuIdByTypeFlag(flag);
+	}
 }

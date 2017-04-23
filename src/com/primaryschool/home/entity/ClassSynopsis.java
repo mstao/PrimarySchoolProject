@@ -40,7 +40,7 @@ public class ClassSynopsis implements Serializable{
 		
 		@Column(name = "class_id")
 		@Index(name = "idx_sys_class_class_id")
-	    private String classId;
+	    private int classId;
 		
 		@Column(name = "class_synopsis")
 		@Index(name = "idx_sys_class_class_synopsis")
@@ -65,13 +65,18 @@ public class ClassSynopsis implements Serializable{
 			this.id = id;
 		}
 
-		public String getClassId() {
+	
+		public int getClassId() {
 			return classId;
 		}
 
-		public void setClassId(String classId) {
+
+
+		public void setClassId(int classId) {
 			this.classId = classId;
 		}
+
+
 
 		public String getClassSynopsis() {
 			return classSynopsis;

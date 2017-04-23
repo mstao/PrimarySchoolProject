@@ -172,5 +172,26 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 		FileBelong tt=(FileBelong)query.uniqueResult();
 		return tt.getId();
 	}
+	
+	@Override
+	public int findTeachingResourcesTypeIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from TeachingResourcesContentType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		TeachingResourcesContentType tt=(TeachingResourcesContentType)query.uniqueResult();
+		return tt.getId();
+	}
+
+	@Override
+	public int findLabClassMenuIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from StudentLabMenuType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		StudentLabMenuType tt=(StudentLabMenuType)query.uniqueResult();
+		return tt.getId();
+	}
 
 }

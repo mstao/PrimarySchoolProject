@@ -64,5 +64,8 @@ public class Sclass implements Serializable{
 		this.gradeId = gradeId;
 		this.gradeCode = gradeCode;
 	}
+	public Sclass() {
+		super();
+	}
 	
 }
