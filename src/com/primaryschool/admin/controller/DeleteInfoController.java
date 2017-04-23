@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.admin.service.IAuthorityService;
 import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.admin.service.IUserService;
 
 /**
  * 
@@ -36,6 +38,11 @@ public class DeleteInfoController<T> {
     @Autowired
     private ICampusSceneryService<T> campusSceneryService;
 	
+    @Autowired
+    private IAuthorityService<T> authorityService;
+    
+    @Autowired
+    private IUserService<T> userService;
 	/**
 	 * 
 	* @Title: trends
@@ -46,7 +53,7 @@ public class DeleteInfoController<T> {
 	* @return String    返回类型
 	* @throws
 	 */
-	@RequestMapping("trends")
+	@RequestMapping("/trends")
 	@ResponseBody
 	public  String  trends(String ids){
 		try{
@@ -64,6 +71,7 @@ public class DeleteInfoController<T> {
 	        trendsService.deleteTrendsById(idList);
 	        return "1";
 		}catch(RuntimeException e){
+			e.printStackTrace();
 			return "0";
 		}
         
@@ -80,7 +88,7 @@ public class DeleteInfoController<T> {
 	* @throws
 	 */
 	
-	@RequestMapping("indexImages")
+	@RequestMapping("/indexImages")
 	@ResponseBody
 	public String deleteIndexImage(int id){
 		
@@ -88,6 +96,7 @@ public class DeleteInfoController<T> {
 			indexImagesService.deleteImage(id);
 			return "1";
 		}catch(RuntimeException e){
+			e.printStackTrace();
 			return "0";
 
 		}
@@ -110,8 +119,73 @@ public class DeleteInfoController<T> {
 			campusSceneryService.deleteCampusScenery(id);
 			return "1";
 		}catch(RuntimeException e){
+			e.printStackTrace();
 			return "0";
 		}
 		
+	}
+	
+	/**
+	 * 
+	* @Title: deleteRole
+	* @Description: TODO 删除角色
+	* @param @param ids
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/role")
+	@ResponseBody
+	public String deleteRole(String ids){
+		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        authorityService.deleteRoleById(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+		}
+	}
+	
+	/**
+	 * 
+	* @Title: deleteUser
+	* @Description: TODO 删除用户
+	* @param @param ids
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/user")
+	@ResponseBody
+	public String deleteUser(String ids){
+		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        userService.deleteUserById(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+		}
 	}
 }

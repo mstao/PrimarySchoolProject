@@ -1,5 +1,6 @@
 package com.primaryschool.admin.dao.impl;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -101,9 +102,10 @@ public class UserDao<T> implements IUserDao<T> {
 	 * 添加用户
 	 */
 	@Override
-	public void saveUser(T t) {
+	public int saveUser(T t) {
 		// TODO Auto-generated method stub
-		sessionFactory.getCurrentSession().save(t);
+		Serializable res=sessionFactory.getCurrentSession().save(t);
+		return (int) res;
 	}
 
 	/**
@@ -134,6 +136,28 @@ public class UserDao<T> implements IUserDao<T> {
 		return (T) query.uniqueResult();
 	}
 	
+	/**
+	 * 注册将用户角色 置为游客
+	 */
+	@Override
+	public void saveUserRole(T t) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(t);
+	}
+
+	
+	/**
+	 * 删除用户
+	 */
+	@Override
+	public void deleteUserById(List<?> ids) {
+		// TODO Auto-generated method stub
+		String hql = "delete from SecurityUser where id in (:ids)";
+		Query query  =  sessionFactory.getCurrentSession().createQuery(hql);
+		query.setParameterList("ids", ids).executeUpdate();
+	}
+
+		
 	
 
 }

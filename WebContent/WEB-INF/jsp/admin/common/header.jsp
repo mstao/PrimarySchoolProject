@@ -38,8 +38,8 @@ $(function(){
                  </li>
                  <li><a href="#">管理</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="edit.html" >角色管理</a></li>
-							<li><a href="edit.html" >权限管理</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" >角色管理</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1" >角色分配</a></li>
 							<li><a href="#">用户管理</a></li>
 			                <li><a href="${pageContext.request.contextPath}/admin/list/indexImages">首页轮播图</a></li>
 					        <li><a href="${pageContext.request.contextPath}/admin/contact" >联系我们</a></li>

@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.entity.SecurityRole;
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminTrendsService;
+import com.primaryschool.admin.service.IAuthorityService;
 import com.primaryschool.admin.service.ICampusSceneryService;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.IndexImages;
@@ -37,6 +39,9 @@ public class AddInfoController<T> {
     @Autowired
     private ITypeFlagToTypeIdService typeFlagToTypeIdService; 
 	
+    @Autowired
+    private IAuthorityService<T> authorityService;
+    
     /**
 	 * 
 	* @Title: addTrends
@@ -98,6 +103,23 @@ public class AddInfoController<T> {
     @ResponseBody
     public String addCampusScenery(CampusScenery campusScenery){
     	int result =campusSceneryService.saveCampusScenery((T)campusScenery);
+    	return result+"";
+    }
+    
+    /**
+     * 
+    * @Title: saveRole
+    * @Description: TODO 添加角色
+    * @param @param role
+    * @param @return    设定文件
+    * @return String    返回类型
+    * @throws
+     */
+    @SuppressWarnings("unchecked")
+  	@RequestMapping("/role")
+    @ResponseBody
+    public String saveRole(SecurityRole role){
+    	int result =authorityService.saveRole((T) role);
     	return result+"";
     }
 }

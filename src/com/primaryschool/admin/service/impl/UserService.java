@@ -48,9 +48,9 @@ public class UserService<T> implements IUserService<T> {
 	}
 
 	@Override
-	public void saveUser(T t) {
+	public int saveUser(T t) {
 		// TODO Auto-generated method stub
-		userDao.saveUser(t);
+		return userDao.saveUser(t);
 	}
 
 	@Override
@@ -63,6 +63,18 @@ public class UserService<T> implements IUserService<T> {
 	public T findUserByEmail(String email) {
 		// TODO Auto-generated method stub
 		return userDao.findUserByEmail(email);
+	}
+
+	@Override
+	public void saveUserRole(T t) {
+		// TODO Auto-generated method stub
+		userDao.saveUserRole(t);
+	}
+
+	@Override
+	public void deleteUserById(List<?> ids) {
+		// TODO Auto-generated method stub
+		userDao.deleteUserById(ids);
 	}
 
 }

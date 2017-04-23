@@ -105,6 +105,30 @@ public class SecurityUser implements Serializable{
 		this.permissionName = permissionName;
 	}
 
+	
+	
+
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description:用户分配角色 </p>
+	* @param id
+	* @param userName
+	* @param status
+	* @param email
+	* @param number
+	* @param roleName
+	 */
+	public SecurityUser(int id, String userName, int status, String email, String number, String roleName) {
+		super();
+		this.id = id;
+		this.userName = userName;
+		this.status = status;
+		this.email = email;
+		this.number = number;
+		this.roleName = roleName;
+	}
+
 
 	public int getId() {
 		return id;

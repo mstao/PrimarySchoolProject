@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.primaryschool.admin.entity.SecurityUser;
+import com.primaryschool.admin.entity.SecurityUserToRole;
 import com.primaryschool.admin.service.IUserService;
 import com.primaryschool.global.util.CrypographyUtil;
 import com.primaryschool.global.util.GetDateUtil;
@@ -138,7 +139,14 @@ public class LoginRegisterController<T> {
 			user.setPassword(object.toString());
 			//将用户状态置为1
 			user.setStatus(1);
-			userService.saveUser((T) user);
+			int uid=userService.saveUser((T) user);
+			
+			//将用户的角色置为游客
+			SecurityUserToRole userToRole=new SecurityUserToRole();
+			userToRole.setRoleId(2);
+			userToRole.setUserId(uid);
+			userService.saveUserRole((T) userToRole);
+			
 			return "1";
 		}catch(RuntimeException e){
 			e.printStackTrace();

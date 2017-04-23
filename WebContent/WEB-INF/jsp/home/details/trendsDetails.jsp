@@ -94,6 +94,7 @@ $(function(){
 					<div class="new-details">
 						${item.itemContent}
 					</div>
+					
 <c:if test="${not empty filelist}">				
 <!-- S 文件列表域  -->
 <div class="file-textarea">

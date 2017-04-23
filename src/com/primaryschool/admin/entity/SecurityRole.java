@@ -33,6 +33,10 @@ public class SecurityRole implements Serializable{
 	@Index(name = "idx_sys_security_role_name")
 	private String roleName;
 
+	@Column(name="role_code")
+	@Index(name = "idx_sys_security_role_code")
+	private String roleCode;
+	
 	public int getId() {
 		return id;
 	}
@@ -47,6 +51,14 @@ public class SecurityRole implements Serializable{
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public String getRoleCode() {
+		return roleCode;
+	}
+
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
 	}
 	
 	
