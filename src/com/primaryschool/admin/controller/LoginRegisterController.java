@@ -1,7 +1,17 @@
 package com.primaryschool.admin.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -183,4 +193,100 @@ public class LoginRegisterController<T> {
 		return result;
 	}
 	
+	/**
+	 * 
+	* @Title: login
+	* @Description: TODO 执行登录
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/login")
+	public String login(String userName,String password,ModelMap map){
+		Subject currentUser = SecurityUtils.getSubject();
+		if (!currentUser.isAuthenticated()) {
+        	// 把用户名和密码封装为 UsernamePasswordToken 对象
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+            // rememberme
+            //token.setRememberMe(true);
+            try {
+            	System.out.println("1. " + token.hashCode());
+            	// 执行登录. 
+                currentUser.login(token);
+            } 
+            // 所有认证时异常的父类. 
+            catch (AuthenticationException ae) {
+                //unexpected condition?  error?
+            	System.out.println("登录失败: " + ae.getMessage());
+            	map.put("error", "用户名或密码错误");
+            	return "admin/loginOrregister/teacher-login";
+            }
+        }
+		
+		
+		return "redirect:/admin/index";
+	}
+	
+	/**
+	 * 
+	* @Title: ajaxLogin
+	* @Description: TODO ajax登录后台
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/ajaxLogin")
+	public void ajaxLogin(String userName,String password,HttpServletResponse response){
+		response.setCharacterEncoding("UTF-8");  
+		response.setContentType("application/json");
+		PrintWriter out=null;
+		String flag="1";
+		Subject currentUser = SecurityUtils.getSubject();
+		if (!currentUser.isAuthenticated()) {
+        	// 把用户名和密码封装为 UsernamePasswordToken 对象
+            UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
+            // rememberme
+            //token.setRememberMe(true);
+            try {
+            	System.out.println("1. " + token.hashCode());
+            	// 执行登录. 
+                currentUser.login(token);
+            } 
+            // 所有认证时异常的父类. 
+            catch (AuthenticationException ae) {
+                //unexpected condition?  error?
+            	System.out.println("登录失败: " + ae.getMessage());
+            	flag="0";
+        		
+            }
+        }
+		
+		
+		try {
+			out=response.getWriter();
+			out.write(flag);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+	
+	}
+	
+	/**
+	 * 
+	* @Title: logout
+	* @Description: TODO 登出
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/logout")
+	public String logout(){
+		Subject currentUser = SecurityUtils.getSubject();
+		currentUser.logout();
+		return "redirect:showTeaLogin";
+	}
 }

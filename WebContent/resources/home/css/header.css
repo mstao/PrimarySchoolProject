@@ -273,6 +273,13 @@ body {
   }
 }
 
+.login-loading{
+	position: fixed;
+	right:0px;
+	bottom:opx;
+
+    transform: translateY(50%);
+}
 /****/
 .no-message{
 	width:150px;

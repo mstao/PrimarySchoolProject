@@ -1,5 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %> 
+<script type="text/javascript">
+
+$(function(){
+	//退出系统处理
+	$('.logout').bind('click',function(){
+		layer.confirm('是否退出后台管理？', {
+			  btn: ['退出','取消'] 
+			}, function(){
+				window.location.href="${pageContext.request.contextPath}/admin/loginRegister/logout";
+			}, function(){
+			  
+			});
+	});
+});
+
+</script>
 <!--S header-->
 		<div class="header">
 			
@@ -102,10 +120,10 @@
 				
 				<ul class="menu-function user">
 					<li>
-						<a href="#" title="" class="home" >管理员</a>                                       
+						<a href="${pageContext.request.contextPath}/admin/user/showUpdatePassword" title="点击修改密码" class="home" >${sessionScope.role}<shiro:principal/></a>                                       
 					</li>
 					<li>
-						<a href="#" title="" class="home" >退出</a>                                       
+						<a href="javascript:void(0);" title="" class="logout" class="home" >退出</a>                                       
 					</li>
 					<li>
 						<a href="${pageContext.request.contextPath}/main/index" title="" class="home" target="_blank" >网站</a>                                       

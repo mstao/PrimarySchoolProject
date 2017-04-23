@@ -201,8 +201,11 @@ form:after {
 	padding: 15px 10px 15px 40px;
 	width: 80%;
 }
-
 #username {
+	background: #F3F3F4 url(../img/user.png) no-repeat;
+	background-position: 5px 5px !important;
+}
+#userName {
 	background: #F3F3F4 url(../img/user.png) no-repeat;
 	background-position: 5px 5px !important;
 }

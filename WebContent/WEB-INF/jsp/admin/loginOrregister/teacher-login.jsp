@@ -10,6 +10,10 @@
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 
 <link rel="stylesheet" type="text/css" href="${CTP_ADMIN}/css/login.css" />
+<script type="text/javascript" src="${CTP_ADMIN }/js/lib/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
+
+<script type="text/javascript" src="${CTP_ADMIN }/js/module/loginVa.js"></script>
 </head>
 <body>
 <!-- 引入header -->
@@ -29,20 +33,22 @@
 
 			<div class="container">
 			<section id="content">
-				<form action="">
+				<form action="${CTP}/admin/loginRegister/login" method="post">
 					<h1>登录</h1>
 					<div>
-						<input type="text" placeholder="用户名" autocomplete="off" id="username" />
+						<input type="text" placeholder="用户名" autocomplete="off" name="userName" id="userName" />
 					</div>
 					<div>
-						<input type="password" placeholder="用户密码" autocomplete="off" id="password" />
+						<input type="password" placeholder="用户密码" autocomplete="off" name="password" id="password" />
 					</div>
 					<div>
 						<input type="submit" value="登录" />
 						<a href="#">忘记密码?</a>
 						<a href="${CTP}/admin/loginRegister/showTeaRegister">注册</a>
 					</div>
+					
 				</form><!-- form -->
+				<span style="color:#EF9722;">${error}</span>
 				<div class="button">
 					<a href="${CTP}/main/index">返回主页</a>
 				</div><!-- button -->
