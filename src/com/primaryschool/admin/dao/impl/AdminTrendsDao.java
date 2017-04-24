@@ -68,7 +68,7 @@ public class AdminTrendsDao<T> implements IAdminTrendsDao<T> {
 	@Override
 	public T findTrendsInfoById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.isPublish)from Trends t,TrendsType tt  where tt.id=t.typeId and t.id=?";
+		String hql="select new com.primaryschool.home.entity.Trends(t.id,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.isPublish,t.author)from Trends t,TrendsType tt  where tt.id=t.typeId and t.id=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T) query.uniqueResult();

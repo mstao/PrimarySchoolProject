@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<title>撰写${typeName}</title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<jsp:include page="../common/meta.jsp" flush="true"/>	
 		<link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/edit.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />
@@ -37,7 +39,16 @@
 		
 $(function() {
 		
+		  /*************setting***************/  
+	    var definedData = [];  
+	    definedData.fileSizeLimit = "10MB";  //上传大小  
+	    definedData.queueSizeLimit = 5;      //允许上传个数文件  
 	
+	    var errorData = [];  
+	    errorData.err100 = "文件个数超出系统限制，只允许上传" + definedData.queueSizeLimit + "个文件！";  
+	    errorData.err110 = "文件超出系统限制的大小，限制文件大小" + definedData.fileSizeLimit + "！";  
+	    errorData.err120 = "文件大小异常！";  
+
 	
 		$("#uploadify").uploadify({
 			debug			: false, 
@@ -55,7 +66,7 @@ $(function() {
 			width			: 120	, // 120 px
 			
 			fileObjName		: 'filedata',	//文件对象名称, 即属性名
-			fileSizeLimit	: 100000	,		// 文件大小限制, 10000 KB
+			fileSizeLimit	: '10MB'	,		// 文件大小限制, 10MB
 			fileTypeDesc	: 'any'	,	//文件类型说明 any(*.*)
 			fileTypeExts	: '*.*;*.txt',		// 允许的文件类型,分号分隔
 			//formData		: {'id':'1', 'type':'myFile'} , //指定上传文件附带的其他数据。也动态设置。可通过getParameter()获取
@@ -115,7 +126,8 @@ $(function() {
                                     'errorMsg:' + errorMsg +
                                     'errorString:' + errorString
                                 );*/
-							}, 
+
+			}, 
             
             // 在每一个文件上传成功后触发
             onUploadSuccess : function(file, data, response) {
@@ -141,7 +153,22 @@ $(function() {
                     	$(".start-upload").show();
                     }
                      
-                 }  
+                 },  
+	        //返回一个错误，选择文件的时候触发  
+	          'onSelectError': function (file, errorCode, errorMsg) {  
+	              switch (errorCode) {  
+	                  case -100:  
+	                      alert(errorData.err100);  
+	                      break;  
+	                  case -110:  
+	                      alert(errorData.err110);  
+	                      break;  
+	                  case -120:  
+	                      alert(errorData.err120);  
+	                      break;  
+	              
+	              }  
+	          }
                  
 
 		});

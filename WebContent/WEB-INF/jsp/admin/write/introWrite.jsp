@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<title>撰写${labName}</title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<jsp:include page="../common/meta.jsp" flush="true"/>	
+		
 		<link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/edit.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />

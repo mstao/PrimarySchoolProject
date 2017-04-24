@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="../common/meta.jsp" flush="true"/>	
 <title>注册-后台管理系统</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>

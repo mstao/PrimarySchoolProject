@@ -8,6 +8,7 @@
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="common/meta.jsp" flush="true"/>
 <title>${WEBSITE_NAME} </title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/slider/themes/default/default.css" type="text/css" media="screen" />
@@ -27,26 +28,19 @@ var CTPPATH="${pageContext.request.contextPath}";
 var CTP_HOME=CTPPATH+"/resources/home";
 
 
-$(function(){
-	
-	//新闻标题超出字数控制
-	$('.current-new-info').each(function(){
-		var maxwidth=21;
-        var text=$(this).find('a').text();
-		if(text.length>maxwidth){
-			$(this).find('a').text(text.substring(0,maxwidth)+'...');
+$(function() {
+	$('.current-new-info').each(function() {
+		var a = 21;
+		var b = $(this).find('a').text();
+		if (b.length > a) {
+			$(this).find('a').text(b.substring(0, a) + '...')
 		}
-		//将日期整理一下，不要年份
-		var _date=$("> span",this).text();
-		var _date_c=_date.substr(6,5);
-		
-		_date_c="["+_date_c+"]";
-		$("> span",this).text(_date_c);	
-	});
-	
-
+		var c = $("> span", this).text();
+		var d = c.substr(6, 5);
+		d = "[" + d + "]";
+		$("> span", this).text(d)
+	})
 });
-
 </script>
 </head>
 <body>
@@ -419,43 +413,7 @@ $(function(){
 <script type="text/javascript" src="//cdn.gbtags.com/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/tab.js" ></script>
 <script type="text/javascript">
-$(window).load(function() {
-    $('#slider').nivoSlider({
-    	'controlNav' :false
-    	//'effect':'slideInLeft'
-    });
-});
-
-$(function(){
-
-	
-    $('.roll-new-info-list').liMarquee({
-        direction: 'up',//向上滚动
-        scrollamount: 30//滚动速度
-    });
-    
-    //新闻轮播
-    $(".slider-news").YuxiSlider({
-		width:420, //容器宽度
-		height:300, //容器高度
-		during:3000, //间隔3秒自动滑动
-		speed:800, //移动速度0.8秒
-		mousewheel:true, //是否开启鼠标滚轮控制
-		direkey:false//是否开启左右箭头方向控制
-	});
-	$(".slider-sunshine").YuxiSlider({
-		width:420, //容器宽度
-		height:300, //容器高度
-		during:4000, //间隔3秒自动滑动
-		speed:800, //移动速度0.8秒
-		mousewheel:true, //是否开启鼠标滚轮控制
-		direkey:false//是否开启左右箭头方向控制
-	});
-	$(".tab").tab();
-	
-
-    
-});
+eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(j).g(7(){$(\'#0\').h({\'i\':1})});$(7(){$(\'.k-l-m-o\').p({q:\'r\',s:f});$(".0-v").4({5:6,2:8,9:n,a:b,c:d,e:1});$(".0-t").4({5:6,2:8,9:u,a:b,c:d,e:1});$(".3").3()});',32,32,'slider|false|height|tab|YuxiSlider|width|420|function|300|during|speed|800|mousewheel|true|direkey|30|load|nivoSlider|controlNav|window|roll|new|info|3000|list|liMarquee|direction|up|scrollamount|sunshine|4000|news'.split('|'),0,{}))
 
 
 </script>

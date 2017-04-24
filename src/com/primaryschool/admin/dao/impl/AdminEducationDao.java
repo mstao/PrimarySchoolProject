@@ -40,7 +40,7 @@ public class AdminEducationDao<T> implements IAdminEducationDao<T> {
 	@Override
 	public T findEducationInfoById(int id) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.Culture(t.id,t.author,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.isPublish)from Culture t,CultureType tt  where tt.id=t.typeId and t.id=?";
+		String hql="select new com.primaryschool.home.entity.Education(t.id,t.author,t.itemTitle,t.itemContent,t.addTime,t.viewCount,tt.itemTypeName,tt.itemTypeFlag,t.isPublish)from Education t,EducationType tt  where tt.id=t.typeId and t.id=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		return (T) query.uniqueResult();

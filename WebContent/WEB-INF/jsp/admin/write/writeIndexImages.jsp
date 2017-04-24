@@ -9,6 +9,8 @@
         <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<jsp:include page="../common/meta.jsp" flush="true"/>	
+		
 		<link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/edit.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />
@@ -42,10 +44,17 @@
 		
 	
 	$(function() {
+		 /*************setting***************/  
+        var definedData = [];   
+        definedData.fileSizeLimit = "10MB";  //上传大小  
+        definedData.queueSizeLimit = 5;      //允许上传个数文件  
 		
+		 var errorData = [];  
+         errorData.err100 = "文件个数超出系统限制，只允许上传" + definedData.queueSizeLimit + "个文件！";  
+         errorData.err110 = "文件超出系统限制的大小，限制文件大小" + definedData.fileSizeLimit + "！";  
+         errorData.err120 = "文件大小异常！";    
 		
-		
-		//start uplaoding
+         //start uplaoding
 		$("#uploadify").uploadify({
 			debug			: false, 
 
@@ -62,7 +71,7 @@
 			width			: 120	, // 120 px
 			
 			fileObjName		: 'filedata',	//文件对象名称, 即属性名
-			fileSizeLimit	: 5120000	,		// 文件大小限制, 5M
+			fileSizeLimit	: '10MB'	,		// 文件大小限制, 10M
 			fileTypeDesc	: '图片类型(.JPG,.GIF,.PNG)'	,	//文件类型说明 any(*.*)
 			fileTypeExts	: '*.jpg;*.png;.gif',		// 允许的文件类型,分号分隔
 			//formData		: {'id':'1', 'type':'myFile'} , //指定上传文件附带的其他数据。也动态设置。可通过getParameter()获取
@@ -75,7 +84,7 @@
 			removeCompleted : true	,	// 上传完成后是否删除队列中的对应元素
 			removeTimeout	: 5	,	//上传完成后多少秒后删除队列中的进度条, 
 			requeueErrors	: true,	// 上传失败后重新加入队列
-			uploadLimit		: 5,	// 最多上传文件数量
+			uploadLimit		: definedData.queueSizeLimit,	// 最多上传文件数量
 
 			successTimeout	: 30	,//表示文件上传完成后等待服务器响应的时间。超过该时间，那么将认为上传成功。
 			// 在文件被移除出队列时触发	
@@ -137,6 +146,22 @@
             	//将图片路径写入隐藏域，后面还用
             	$('.hidden-item-image').val(data);
             	
+            },
+            
+            //返回一个错误，选择文件的时候触发  
+            'onSelectError': function (file, errorCode, errorMsg) {  
+                switch (errorCode) {  
+                    case -100:  
+                        alert(errorData.err100);  
+                        break;  
+                    case -110:  
+                        alert(errorData.err110);  
+                        break;  
+                    case -120:  
+                        alert(errorData.err120);  
+                        break;  
+                
+                }  
             }
 
 		});

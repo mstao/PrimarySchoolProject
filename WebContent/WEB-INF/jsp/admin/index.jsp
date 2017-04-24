@@ -8,6 +8,7 @@
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="common/meta.jsp" flush="true"/>	
 <title>后台主页</title>
 <link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 <link href="${CTP_ADMIN }/css/main.css" rel="stylesheet" type="text/css" />

@@ -95,7 +95,7 @@ public class Trends implements Serializable{
    
     //后台详细信息
 	public Trends(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
-			  String itemTypeName,String itemTypeFlag,int isPublish) {
+			  String itemTypeName,String itemTypeFlag,int isPublish,String author) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
@@ -105,6 +105,7 @@ public class Trends implements Serializable{
 		this.itemTypeName = itemTypeName;
 		this.itemTypeFlag = itemTypeFlag;
 		this.isPublish = isPublish;
+		this.author=author;
 	}
 
 	//后台列表要用

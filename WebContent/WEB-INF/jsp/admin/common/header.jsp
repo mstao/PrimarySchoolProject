@@ -57,7 +57,7 @@ $(function(){
                  	<ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=introduce&p=1">${SCHOOL_CULTURE_INTRODUCE}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=affairs&p=1">${SCHOOL_CULTURE_AFFAIRS}</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=sight&p=1">${SCHOOL_CULTURE_SIGHT}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/campusScenery">${SCHOOL_CULTURE_SIGHT}</a></li>
 					</ul>
                  	
                  </li>

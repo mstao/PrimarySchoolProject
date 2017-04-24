@@ -9,6 +9,7 @@
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<jsp:include page="../common/meta.jsp" flush="true"/>	
 		<link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/list.css" rel="stylesheet" type="text/css" />
 		<script type="text/javascript" src="${CTP_ADMIN }/js/extends/wangEditor/dist/js/lib/jquery-1.10.2.min.js"></script>

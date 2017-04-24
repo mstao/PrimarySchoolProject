@@ -159,7 +159,8 @@ public class AdminUploadController<T> {
 	                    
 	            } catch (IOException e) {  
 	            	System.out.println("上传失败");
-	                e.printStackTrace();  
+	                break;  
+	                
 	            }    
             }
 		   
@@ -218,8 +219,11 @@ public class AdminUploadController<T> {
 
                     
             } catch (IOException e) {  
+            	
             	System.out.println("上传失败");
-                e.printStackTrace();  
+            	break;
+            	
+                
             }    
         }
 		return filePath;

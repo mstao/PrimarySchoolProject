@@ -46,8 +46,8 @@
 		
 	</div>
 <!-- E footer -->
-   <script type="text/javascript">
- 
+<script type="text/javascript">
+var CTPPATH="${pageContext.request.contextPath}";
    //添加收藏
    function AddFavorite(sURL, sTitle)
    {
