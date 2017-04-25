@@ -71,5 +71,10 @@ public class TypeFlagToTypeNameService implements ITypeFlagToTypeNameService {
 		// TODO Auto-generated method stub
 		return typeFlagToTypeNameDao.findTeachingResourcesContentTypeNameByTypeFlag(flag);
 	}
+	@Override
+	public String findDepartmentLinkContentTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeNameDao.findDepartmentLinkContentTypeNameByTypeFlag(flag);
+	}
 
 }

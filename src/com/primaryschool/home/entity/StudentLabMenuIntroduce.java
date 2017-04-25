@@ -37,7 +37,11 @@ public class StudentLabMenuIntroduce implements Serializable{
 	  private int menuId;
 	  
 	  
-	//根据LabId(menuId)获取intro信息
+	public StudentLabMenuIntroduce() {
+		super();
+	}
+
+		//根据LabId(menuId)获取intro信息
 		public StudentLabMenuIntroduce(int id, String introduce) {
 			super();
 			this.id = id;

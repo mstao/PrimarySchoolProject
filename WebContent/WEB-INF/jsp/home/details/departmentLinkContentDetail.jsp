@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<jsp:include page="../common/meta.jsp" flush="true"/>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <title>${item.itemTitle}</title>
@@ -18,7 +17,6 @@
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.easing.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/history.js"></script>
-
 <script type="text/javascript">
 
 //将时间信息填充到具体显示区域中
@@ -56,7 +54,7 @@ $(function(){
 			<span>${item.itemTypeName}</span>
 </div>
 		<div class="content-location">
-		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="${CTP}/list/teachingResources">${SCHOOL_TEACHER_RESOURCES}</a> > <a href="${CTP}/list/teachingResourcesContent?menuId=${menuId}&classId=${classId}&flag=${item.itemTypeFlag}&p=1">${item.itemTypeName}</a> > <a href="${CTP}/category/teachingResources?classId=${classId}&menuId=${menuId}">${item.resourcesName}</a> > <a href="javascript:void(0);">详细内容</a></span>
+		<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="${CTP}/list/departmentLink?departmentId=1">部门链接</a>><a href="#">详细内容</a></span>
 		</div>
 		<!--描述：此div包含新闻页面位置导航，新闻详细内容和新闻时间轴 -->
 		<div class="container-bottom">
@@ -83,43 +81,6 @@ $(function(){
 					<div class="new-details">
 						${item.itemContent}
 					</div>
-					
-					
-<c:if test="${not empty filelist}">				
-<!-- S 文件列表域  -->
-<div class="file-textarea">
-<span><b>附件：</b></span><br>
-<ul>
-  <c:forEach items="${filelist}" var="file_list">
-     <li>
-     <img src="${CTP_HOME}/img/j_do.png" class="dot"/> 
-	 <a href="javascript:location.href='${CTP}/download/file?realName='+encodeURIComponent('${file_list.realName}')+'&fileName='+encodeURIComponent('${file_list.fileName}');" class="file-name">${file_list.fileName}</a>
-     </li>
-  </c:forEach>
-</ul>
-
-</div>
-<!-- E 文件列表域 -->
-</c:if>	
-
-					
-					
-<!-- JiaThis Button BEGIN -->
-<div class="jiathis_style_24x24">
-    <span>分享到:&nbsp;&nbsp;</span>
-	<a class="jiathis_button_qzone"></a>
-	<a class="jiathis_button_tsina"></a>
-	<a class="jiathis_button_tqq"></a>
-	<a class="jiathis_button_weixin"></a>
-	<a class="jiathis_button_renren"></a>
-	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-	<a class="jiathis_counter_style"></a>
-	
-</div>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-					
-					
 				</div>
 				<!--描述：时间轴-->
            	<div class="container-bottom-right">
@@ -166,7 +127,7 @@ $(function(){
 					
 					<div class="liright">
 					   			
-					     	 <div class="histt"><a href="${CTP}/details/${url}?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+					     	 <div class="histt"><a href="${CTP}/details/${url}?contentId=${latestItem.id}&contentFlag=${latestItem.typeId}&departmentId=${latestItem.departmentId}">${latestItem.itemTitle}</a></div>
 					
 						<div class="hisct">${latestItem.itemContent}</div>
 					</div>

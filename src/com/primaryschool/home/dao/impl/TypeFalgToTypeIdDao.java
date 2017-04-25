@@ -11,6 +11,8 @@ import com.primaryschool.admin.entity.FileBelong;
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
 import com.primaryschool.home.entity.ClassHomePageType;
 import com.primaryschool.home.entity.CultureType;
+import com.primaryschool.home.entity.DepartmentLinkContentType;
+import com.primaryschool.home.entity.DepartmentLinkNameList;
 import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
 import com.primaryschool.home.entity.PartyType;
@@ -191,6 +193,30 @@ public class TypeFalgToTypeIdDao implements ITypeFlagToTypeIdDao{
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
 		query.setString(0, flag);	//?设值
 		StudentLabMenuType tt=(StudentLabMenuType)query.uniqueResult();
+		return tt.getId();
+	}
+	
+	
+	@Override
+	public int findDepartmentLinkIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from DepartmentLinkContentType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		DepartmentLinkContentType tt=(DepartmentLinkContentType)query.uniqueResult();
+		return tt.getId();
+	}
+	
+	
+	@Override
+	public int findDepartmentNameIdByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from DepartmentLinkNameList tt where tt.departmentType=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);	//?设值
+		
+		DepartmentLinkNameList tt=(DepartmentLinkNameList)query.uniqueResult();
 		return tt.getId();
 	}
 

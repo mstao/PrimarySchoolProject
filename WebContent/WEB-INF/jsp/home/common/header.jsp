@@ -89,7 +89,7 @@
                   <li><a href="${pageContext.request.contextPath}/category/manage">${SCHOOL_MANAGE}</a>
                  	<ul class="dropdown-menu follow">
 							
-	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=department&p=1">${SCHOOL_MANAGE_DEPARTMENT}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/list/departmentLink?departmentId=1">${SCHOOL_MANAGE_DEPARTMENT}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=recommendation&p=1">${SCHOOL_MANAGE_RECOMMENDATION}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=notice&p=1">${SCHOOL_MANAGE_NOTICE}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/list/manage?flag=rules&p=1">${SCHOOL_MANAGE_RULES}</a></li>

@@ -17,6 +17,7 @@ import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.Culture;
+import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Grade;
 import com.primaryschool.home.entity.HeadMaster;
@@ -33,6 +34,7 @@ import com.primaryschool.home.entity.TeachingResourcesMenu;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IClassHomePageService;
 import com.primaryschool.home.service.ICultureService;
+import com.primaryschool.home.service.IDepartmentLinkService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IGradeService;
 import com.primaryschool.home.service.IHeadMasterInfoService;
@@ -99,6 +101,10 @@ public class ListController<T> {
 	
 	@Autowired
 	private ICampusSceneryService<T> campusSceneryService;
+	
+	@Autowired
+	private IDepartmentLinkService<DepartmentLinkContent> departmentLinkService;
+	
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -642,4 +648,87 @@ public class ListController<T> {
 		return "home/list/teachingResourcesContentList";
 	}
 	
+	
+	
+	/**
+	 * 
+	* @Title: teachingResources
+	* @Description: TODO 部门链接列表
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	
+	@RequestMapping("/departmentLink")
+	public String departmentLink(int departmentId,ModelMap map){
+		
+		String StaffFlag="staff";
+		String JobFlag="job";
+		int position=0;
+		int item_per_page=PageSizeConfig.HOME_INDEX_PAGESIZE;
+		//获取部门列表
+		List<DepartmentLinkContent> departmentName= departmentLinkService.findDepartmentNameInfo();
+		
+		//获取人员设置列表
+		ArrayList<DepartmentLinkContent>   departmentLinkStaff=(ArrayList<DepartmentLinkContent>) departmentLinkService.findDepartmentLinkInfo(departmentId, StaffFlag, position, item_per_page);
+		
+		//获取工作安排列表
+		ArrayList<DepartmentLinkContent>   departmentLinkJob=(ArrayList<DepartmentLinkContent>) departmentLinkService.findDepartmentLinkInfo(departmentId, JobFlag, position, item_per_page);
+		
+		map.put("departmentName", departmentName);
+		map.put("departmentLinkStaff", departmentLinkStaff);
+		map.put("departmentLinkJob", departmentLinkJob);
+		map.put("departmentId", departmentId);
+		map.put("staffFlag", StaffFlag);
+		map.put("jobFlag", JobFlag);
+		return "home/list/departmentlink";
+	}
+	
+	/**
+	 * 
+	* @Title: teachingResources
+	* @Description: TODO 部门链接 - 子目录 -列表
+	* @param @param menuId
+	* @param @param classId
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/departmentLinkContent")
+	public String departmentLinkContent(int departmentId,String contentFlag,int p,ModelMap map){
+		String sp=p+"";
+		if(sp.equals("")){
+			p=1;
+		}
+		//查看详细信息url
+		String durl="departmentLink";
+		//当前的url
+		String url="./departmentLinkContent?departmentId='"+departmentId+"'&contentFlag='"+contentFlag+"'&p=";
+		//获取总记录量
+		int count=departmentLinkService.findDepartmentLinkContentCount(departmentId, contentFlag);
+
+		//计算偏移量
+		int position=(p-1)*item_pre_page;
+		//根据flag获取name
+		String typeName=typeFlagToTypeNameService.findDepartmentLinkContentTypeNameByTypeFlag(contentFlag);
+		
+		//获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+		
+        //根据类型与当前页码来获取记录量
+		ArrayList<DepartmentLinkContent> list=(ArrayList<DepartmentLinkContent>) departmentLinkService.findDepartmentLinkInfo(departmentId, contentFlag, position, item_pre_page);
+		//获取 对应的热门的记录
+		
+		ArrayList<DepartmentLinkContent> hotlist= (ArrayList<DepartmentLinkContent>) departmentLinkService.findHotDepartmentLinkInfo(departmentId, contentFlag, position, item_pre_page);
+	
+		map.put("durl", durl);
+        map.put("toolBar", toolBar);
+        map.put("typeName", typeName);
+        map.put("typeFlag", contentFlag);
+        map.put("item", list);
+        map.put("hotItem", hotlist);
+        map.put("departmentId", departmentId);
+		return "home/list/departmentLinkContentList";
+	}
 }

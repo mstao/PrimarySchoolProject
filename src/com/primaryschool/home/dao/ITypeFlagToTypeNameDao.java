@@ -30,4 +30,6 @@ public interface ITypeFlagToTypeNameDao {
 	String findClassTypeNameByTypeFlag(String flag);
 	
 	String findTeachingResourcesContentTypeNameByTypeFlag(String flag);
+	
+	String findDepartmentLinkContentTypeNameByTypeFlag(String flag);
 }

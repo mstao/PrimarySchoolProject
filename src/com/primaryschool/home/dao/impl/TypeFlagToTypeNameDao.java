@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.primaryschool.home.dao.ITypeFlagToTypeNameDao;
 import com.primaryschool.home.entity.ClassHomePageType;
 import com.primaryschool.home.entity.CultureType;
+import com.primaryschool.home.entity.DepartmentLinkContentType;
 import com.primaryschool.home.entity.EducationType;
 import com.primaryschool.home.entity.ManageType;
 import com.primaryschool.home.entity.PartyType;
@@ -149,5 +150,18 @@ public class TypeFlagToTypeNameDao implements ITypeFlagToTypeNameDao {
 		return tt.getItemTypeName();
 	}
 	
+	/**
+	 * 获取部门链接 消息类型名称
+	 */
+	@Override
+	public String findDepartmentLinkContentTypeNameByTypeFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="from DepartmentLinkContentType tt where tt.itemTypeFlag=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);		
+		query.setString(0, flag);
+		
+		DepartmentLinkContentType tt=(DepartmentLinkContentType)query.uniqueResult();
+		return tt.getItemTypeName();
+	}
 	
 }

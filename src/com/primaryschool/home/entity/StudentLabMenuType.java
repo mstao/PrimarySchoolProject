@@ -36,6 +36,11 @@ public class StudentLabMenuType implements Serializable{
 	private  String itemTypeFlag;
 
 	
+	public StudentLabMenuType() {
+		super();
+	}
+
+
 	public StudentLabMenuType(int id, String itemTypeName, String itemTypeFlag) {
 		super();
 		this.id = id;

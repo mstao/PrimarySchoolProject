@@ -78,13 +78,34 @@
     top: 50%;
     transform: translateY(-50%);
 }
-.fixed-login-imag img{
+.fixed-login-imag .static-img{
 	cursor: pointer;
 	position: relative;
 	
+	
 }
-.fixed-login-content img:not(:first-child){
+.fixed-login-content .static-img:not(:first-child){
 	margin-left: 5px;
+}
+
+/**微信  **/
+.fixed-login-content .q-code {
+    position: fixed;
+    bottom:50px;
+    left:-10px;
+    z-index: 99;
+    width: 7.5rem;
+    height: 7.5rem;
+    border: 0.3125rem solid #0085ba;
+    border-radius: 0.25rem;
+
+max-width: none;
+    opacity:0;
+}
+ 
+.weixin-a:hover .q-code {
+    transform: scale(1);
+    opacity: 1;
 }
 .fixed-login-content .fixed-login-input{
 	display: inline-block;

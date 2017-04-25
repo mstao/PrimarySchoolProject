@@ -415,5 +415,4 @@ $(function() {
 <script type="text/javascript">
 eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(j).g(7(){$(\'#0\').h({\'i\':1})});$(7(){$(\'.k-l-m-o\').p({q:\'r\',s:f});$(".0-v").4({5:6,2:8,9:n,a:b,c:d,e:1});$(".0-t").4({5:6,2:8,9:u,a:b,c:d,e:1});$(".3").3()});',32,32,'slider|false|height|tab|YuxiSlider|width|420|function|300|during|speed|800|mousewheel|true|direkey|30|load|nivoSlider|controlNav|window|roll|new|info|3000|list|liMarquee|direction|up|scrollamount|sunshine|4000|news'.split('|'),0,{}))
 
-
 </script>

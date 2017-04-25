@@ -29,4 +29,9 @@ public interface ITypeFlagToTypeIdDao {
   	int findTeachingResourcesTypeIdByTypeFlag(String flag);
     //社团资源类型
   	int findLabClassMenuIdByTypeFlag(String flag);
+  	
+    //部门链接中通过信息类型获取该信息id
+    int findDepartmentLinkIdByTypeFlag(String flag);
+    //部门链接中通过部门名字的类型获取该部门id
+    int findDepartmentNameIdByTypeFlag(String flag);
 }

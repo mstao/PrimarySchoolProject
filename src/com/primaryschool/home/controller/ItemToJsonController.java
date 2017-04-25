@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.alibaba.fastjson.JSON;
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.Teacher;
+import com.primaryschool.home.service.IDepartmentLinkService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
@@ -55,6 +57,10 @@ public class ItemToJsonController<T> {
 	@Autowired
 	private ILabClassService<T> labClassService;
     
+	@Autowired
+	private IDepartmentLinkService<DepartmentLinkContent> departmentLinkService;
+	    
+	
     int position=0;
 	int item_per_page=PageSizeConfig.HOME_INDEX_PAGESIZE;
 	
@@ -222,5 +228,41 @@ public class ItemToJsonController<T> {
 			out.close();
 		}
 	
+	}
+	
+	
+	
+	
+	/**
+	 * 
+	* @Title: JobPlacementToJSON
+	* @Description: TODO  部门链接各部门信息加载
+	* @param @param departmentNameType
+	* @param @param flag
+	* @param @param response    设定文件
+	* @return void    返回类型
+	* @throws
+	 */
+	@RequestMapping("/departmentLink")
+    public void JobPlacementToJSON(int departmentId,String  flag,HttpServletResponse response){
+		response.setCharacterEncoding("UTF-8");  
+		PrintWriter out=null;
+		
+		System.out.println(flag);
+		//根据类型id获取信息
+		ArrayList<DepartmentLinkContent>  departmentlinkStaff=(ArrayList<DepartmentLinkContent>)departmentLinkService.findDepartmentLinkInfo(departmentId,flag, position, item_per_page);
+        //调用fastjson生成json信息
+		String json = JSON.toJSONString(departmentlinkStaff, true);
+		System.out.println("下面开始打印json了========"+json);
+		response.setContentType("application/json");
+		try {
+			out=response.getWriter();
+			out.write(json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
 	}
 }

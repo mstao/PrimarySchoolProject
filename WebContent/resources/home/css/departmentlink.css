@@ -1,0 +1,174 @@
+@CHARSET "UTF-8";
+body {
+    font-family: "Microsoft YaHei" ! important;
+}
+
+.content-wrapper{
+	
+	margin:0 auto;
+	width:1170px;
+	height: 200px;
+	position: relative;
+}
+.content-wrapper span{
+	background-color: #006269;
+	color: white;
+	font-size:30px;
+	height: 50px;
+	min-width:128px;
+	padding-left: 10px;
+	padding-top: 10px;
+	padding-right: 5px;
+	left:0;
+	bottom:0;
+	position:absolute;
+	opacity: 0.8;
+}
+/*位置导航*/
+.content-location{
+	margin:30px auto;
+	width:1170px;
+}
+.content-location a{
+	color:#444444;
+	text-decoration: none;
+}
+.content-location span{
+	color:#444444;
+	bottom: 10px;
+	position: relative;
+}
+.content-location span a:hover{
+	color: #EF9722;
+	text-decoration: underline;
+}
+.departmentlink-top{
+	border-top:1px dashed #CCCCCC;
+	border-bottom: 1px dashed #CCCCCC;
+	padding-bottom: 5px;
+	
+}
+.departmentlink-top > span{
+	color:#006372;
+	font-size: 27px;
+	margin-left: 5px;
+}
+.departmentlink-top img{
+	position: relative;
+	top:5px;
+}
+
+
+/*部门链接的主体部分*/
+.departmentlink-mainbody{
+	margin-left: 200px;
+	width: 1170px;
+	height: 600px;
+	
+}
+/*部门链接页面的左边部分，用于显示各个部门名称*/
+.departmentlink-departmentNameList{
+	float: left;
+	margin-top: 10px;
+	width:160px;
+	height: 500px;
+	
+}
+.departmentlink-departmentNameList > ul{
+	margin: 0px;
+	padding: 0px;
+}
+.departmentlink-departmentNameList >ul >li{
+	cursor:pointer;
+	width:160px;
+	height: 40px;
+	margin-top: 30px;
+	padding-top: 15px;
+	list-style: none;
+	text-align: center;
+	background-color:#F1F1F1;
+	
+}
+/*部门链接的右边部分，包括人员设置和工作安排两个部分*/
+.departmentlink-mainbody-right{
+	float: left;
+	margin-top: 40px;
+	width:630px;
+	height: 450px;
+	margin-left: 70px;
+	color:#666666;
+}
+.departmentlink-mainbody-right ul,li{
+	list-style:none;
+}
+.departmentlink-mainbody-right a{
+	color:#666666;
+	text-decoration:none;
+}
+.departmentlink-mainbody-right a:hover{
+	color: #EF9722;
+}
+/*部门链接主体的右边部分，人员安排*/
+.departmentlink-sp{
+	float: left;
+	width:600px;
+	height: 200px;
+	overflow:hidden;
+	line-height: 31px;
+	background-color: #F1F1F1;
+}
+/*人员安排标题设置*/
+.departmentlink-sp-top{
+	padding-bottom:10px;
+	color: #006269;
+	border-bottom: #CCCCCC solid 1px;
+	
+}
+.departmentlink-sp-top img{
+	bottom: -4px;
+	position: relative;
+}
+.departmentlink-sp-top span{
+	float:right;
+	padding-top:5px;
+}
+/*设置新闻时间位置*/
+.departmentlink-sp-bottom span{
+	float:right;
+}
+/*部门链接主体的右边，工作安排*/
+.departmentlink-jp{
+	float:left;
+	margin-top: 30px;
+	width:600px;
+	height:200px;
+	overflow: hidden;
+	line-height: 31px;
+	background-color: #F1F1F1;
+}
+.departmentlink-jp-top{
+	padding-bottom:10px;
+	color: #006269;
+	border-bottom: #CCCCCC solid 1px;
+	
+}
+.departmentlink-jp-top img{
+	bottom: -4px;
+	position: relative;
+}
+.departmentlink-jp-top span{
+	float:right;
+	padding-top:5px;
+}
+.departmentlink-jp-bottom span{
+	float:right;
+}
+/*部门名称列表被点击后的css*/
+.js-load-a{
+	color: #FFFFFF !important;
+	background: #006372 !important; 
+	width: 160px !important;
+	height: 10px;
+    border-left: 5px solid #ff6600;
+    
+}

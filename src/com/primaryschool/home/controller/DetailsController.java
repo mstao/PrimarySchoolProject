@@ -14,6 +14,7 @@ import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.ClassSynopsis;
 import com.primaryschool.home.entity.Culture;
+import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
@@ -26,6 +27,7 @@ import com.primaryschool.home.service.IBaseFileService;
 import com.primaryschool.home.service.IClassHomePageService;
 import com.primaryschool.home.service.IClassSynopsisService;
 import com.primaryschool.home.service.ICultureService;
+import com.primaryschool.home.service.IDepartmentLinkService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IManageService;
@@ -84,6 +86,10 @@ public class DetailsController<T>{
   
     @Autowired
     private IBaseFileService<T> baseFileServcie;
+    
+    @Autowired
+    private IDepartmentLinkService<T> departmentLinkService;
+       
     
     int position=0;
 	int item_per_page=7;
@@ -359,6 +365,13 @@ public class DetailsController<T>{
 	  //获取该类型最近更新的信息
 	  
 	  ArrayList<TeachingResourcesContent> latest=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findLatestTeachingResourcesContent(menuId, classId, flag, 0, pageSize);
+	 
+	  String belongType="fteacher";
+	  
+	  //获取文件列表
+      ArrayList<FileBean> filelist=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,tid);
+      
+      map.put("filelist", filelist);
 	  
 	  map.put("item",content);
 	  map.put("latestItem", latest);
@@ -367,5 +380,23 @@ public class DetailsController<T>{
 	  map.put("classId", classId);
 	  return "home/details/teachingResourcesContentDetail";
    }
+   
+   
+   @SuppressWarnings("unchecked")
+   @RequestMapping("/departmentLink")
+      public String  departmentLink(int contentId,int departmentId,int contentFlag,ModelMap map){
+   	  
+   	  String url="departmentLink"; 
+   	  //根据id获取具体内容
+   	  DepartmentLinkContent content=(DepartmentLinkContent) departmentLinkService.findDepartmentLinkInfoById(contentId);
+   	  //获取该类型最近更新的信息
+   	  ArrayList<DepartmentLinkContent> latest=(ArrayList<DepartmentLinkContent>) departmentLinkService.findLatestDepartmentLinkInfo(departmentId, contentFlag, 0, pageSize);
+   	  
+   	  map.put("item",content);
+   	  map.put("latestItem", latest);
+   	  map.put("url",url);
+   	  return "home/details/departmentLinkContentDetail";
+   }
+      
    
 }
