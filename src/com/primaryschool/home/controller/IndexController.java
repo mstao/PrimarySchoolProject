@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Manage;
@@ -17,6 +18,7 @@ import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.TeachingResourcesClass;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.IDepartmentLinkService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.IIndexImagesService;
 import com.primaryschool.home.service.IManageService;
@@ -27,11 +29,11 @@ import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITrendsService;
 
 /**
- * 主页控制器
+ * 
 * @ClassName: IndexController
-* @Description: TODO(这里用一句话描述这个类的作用)
+* @Description: TODO 主页控制器
 * @author Mingshan
- * @param <T>
+* @param <T>
 * @date 2017年3月26日 下午2:28:44
 *
  */
@@ -62,6 +64,9 @@ public class IndexController<T> {
     
     @Autowired
     private ITeachingResourcesService<T> teachingResourcesService;
+    
+    @Autowired
+    private IDepartmentLinkService<T> departmentLinkService;
     /**
      * 
     * @Title: index
@@ -116,6 +121,10 @@ public class IndexController<T> {
 		ArrayList<IndexImages> indexImages=(ArrayList<IndexImages>) indexImagesService.findIndexImages(0, 6);
 		
 		
+		//获取部门链接内容
+		
+		ArrayList<DepartmentLinkContent> deptContent=(ArrayList<DepartmentLinkContent>) departmentLinkService.findIndexDepartmentLinkInfo(0, item_per_page);
+		
 		/*********图片轮播********/
 		
 		//获取校内新闻  图片轮播   --新闻
@@ -138,6 +147,8 @@ public class IndexController<T> {
 		request.setAttribute("teacher", teacherResources);
 		request.setAttribute("manage", manage);
 		request.setAttribute("party", party);
+		
+		request.setAttribute("deptContent", deptContent);
 		
 		request.setAttribute("indexImages", indexImages);
 		request.setAttribute("sildeNews", sildeNews);

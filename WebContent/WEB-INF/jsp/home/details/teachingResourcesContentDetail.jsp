@@ -34,7 +34,7 @@ $(function(){
         //将日期取出来
         var _d=_y_m_d.substring(8,10);
 	    //将月份与日期拼接一下
-	    var _m_d=_m+_d;
+	    var _m_d=_m+"/"+_d;
 		$("> .year",this).text(_y);
 		$("> .md",this).text(_m_d);
 	});
@@ -166,7 +166,7 @@ $(function(){
 					
 					<div class="liright">
 					   			
-					     	 <div class="histt"><a href="${CTP}/details/${url}?id=${latestItem.id}&flag=${item.itemTypeFlag}">${latestItem.itemTitle}</a></div>
+					     	 <div class="histt"><a href="${CTP}/details/${url}?menuId=${menuId}&classId=${classId}&tid=${latestItem.id}&flag=${flag}">${latestItem.itemTitle}</a></div>
 					
 						<div class="hisct">${latestItem.itemContent}</div>
 					</div>

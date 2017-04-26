@@ -65,5 +65,6 @@ $(function(){
 		$(">a>img",this).attr('src',s_n_s);
 	});
 	
+	//首页 学校管理和党务工会  
 	
 });

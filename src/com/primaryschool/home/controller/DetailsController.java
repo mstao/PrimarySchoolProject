@@ -378,6 +378,7 @@ public class DetailsController<T>{
 	  map.put("url",url);
 	  map.put("menuId", menuId);
 	  map.put("classId", classId);
+	  map.put("flag", flag);
 	  return "home/details/teachingResourcesContentDetail";
    }
    

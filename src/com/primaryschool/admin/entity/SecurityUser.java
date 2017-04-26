@@ -67,6 +67,9 @@ public class SecurityUser implements Serializable{
 	private String roleName;
 	
 	@Transient
+	private String roleCode;
+	
+	@Transient
 	private String permissionName;
 	
 	public SecurityUser(){}
@@ -80,11 +83,12 @@ public class SecurityUser implements Serializable{
 	* @param username
 	* @param roleName
 	 */
-	public SecurityUser(int id, String userName, String roleName) {
+	public SecurityUser(int id, String userName, String roleName,String roleCode) {
 		super();
 		this.id = id;
 		this.userName = userName;
 		this.roleName = roleName;
+		this.roleCode = roleCode;
 	}
 
 
@@ -97,11 +101,10 @@ public class SecurityUser implements Serializable{
 	* @param roleName
 	* @param permissionName
 	 */
-	public SecurityUser(int id, String userName, String roleName, String permissionName) {
+	public SecurityUser(int id, String userName, String permissionName) {
 		super();
 		this.id = id;
 		this.userName = userName;
-		this.roleName = roleName;
 		this.permissionName = permissionName;
 	}
 
@@ -207,6 +210,18 @@ public class SecurityUser implements Serializable{
 	public void setAddTime(String addTime) {
 		this.addTime = addTime;
 	}
+
+
+	public String getRoleCode() {
+		return roleCode;
+	}
+
+
+	public void setRoleCode(String roleCode) {
+		this.roleCode = roleCode;
+	}
+
+
 	
 	
 }

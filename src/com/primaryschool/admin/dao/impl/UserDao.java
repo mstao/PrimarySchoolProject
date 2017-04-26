@@ -51,13 +51,12 @@ public class UserDao<T> implements IUserDao<T> {
 	public Set<String> getRoles(String userName) {
 		// TODO Auto-generated method stub
 		Set<String>  roles =new HashSet<String>();
-		String hql="select new com.primaryschool.admin.entity.SecurityUser(u.id,u.userName,r.roleName) from SecurityUser u,SecurityRole r,SecurityUserToRole ur where u.id=ur.userId and r.id=ur.roleId  and u.userName=?";
+		String hql="select new com.primaryschool.admin.entity.SecurityUser(u.id,u.userName,r.roleName,r.roleCode) from SecurityUser u,SecurityRole r,SecurityUserToRole ur where u.id=ur.userId and r.id=ur.roleId  and u.userName=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		SecurityUser  u=(SecurityUser)query.uniqueResult();	
-       
-		
-		roles.add(u.getRoleName());
+      		
+		roles.add(u.getRoleCode());
 		
 		return roles;
 	}
@@ -71,7 +70,7 @@ public class UserDao<T> implements IUserDao<T> {
 		// TODO Auto-generated method stub
         Set<String>  permissions =new HashSet<String>();
 		
-		String hql="select new com.primaryschool.admin.entity.SecurityUser(u.id,u.userName,r.roleName,p.permissionName) from SecurityUser u,SecurityRole r,SecurityPermission p,SecurityUserToRole ur,SecurityRoleToPermission rp where u.id=ur.userId and r.id=ur.roleId and p.id=rp.permissionId and r.id=rp.roleId  and u.userName=?";
+		String hql="select new com.primaryschool.admin.entity.SecurityUser(u.id,u.userName,p.permissionName) from SecurityUser u,SecurityRole r,SecurityPermission p,SecurityUserToRole ur,SecurityRoleToPermission rp where u.id=ur.userId and r.id=ur.roleId and p.id=rp.permissionId and r.id=rp.roleId  and u.userName=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString(0, userName);
 		List<SecurityUser> list=(List<SecurityUser>)query.list();

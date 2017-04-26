@@ -158,5 +158,17 @@ public class DepartmentLinkDao<T> implements IDepartmentLinkDao<T> {
 		return null;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findIndexDepartmentLinkInfo(int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.home.entity.DepartmentLinkContent(t.id,t.itemTitle,t.addTime,t.typeId,t.departmentId) from DepartmentLinkContent t where  t.isPublish=1 order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
+		return query.list();
+	}
+
 	
 }

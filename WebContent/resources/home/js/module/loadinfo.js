@@ -1,5 +1,15 @@
 $(function(){
 	
+	var sub=function(str,Len){
+		var maxLen=Len;
+		var len=str.length;
+		if(len>maxLen){
+		    //此时需要截取
+			return str.substring(0,maxLen)+"...";
+		}else{
+			return str;
+		}
+	}
 	
 	/**阳光德育加载**/
 	$('.tab-card-education >li').bind('click',function(){
@@ -52,8 +62,8 @@ $(function(){
 					
 		        		$.each(data,function(idx,item){ 
 		        			
-		        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/education?id="+item.id+"&flag="+flag+"'>"+item.itemTitle+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
-		        		   
+		        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/education?id="+item.id+"&flag="+flag+"'>"+sub(item.itemTitle,35)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+		        		    
 		        		}); 
 		        	
 		        	
@@ -126,7 +136,7 @@ $(function(){
 							
 				        		$.each(data,function(idx,item){ 
 				        			
-				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/student?id="+item.id+"&flag="+flag+"'>"+item.itemTitle+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/student?id="+item.id+"&flag="+flag+"'>"+sub(item.itemTitle,35)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
 				        		   
 				        		}); 
 				        	
@@ -246,7 +256,7 @@ $(function(){
 							
 				        		$.each(data,function(idx,item){ 
 				        			
-				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/teacher?id="+item.id+"&flag="+flag+"'>"+item.itemTitle+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/teacher?id="+item.id+"&flag="+flag+"'>"+sub(item.itemTitle,35)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
 				        		   
 				        		}); 
 				        	
@@ -315,7 +325,7 @@ $(function(){
 							
 				        		$.each(data,function(idx,item){ 
 				        			
-				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/party?id="+item.id+"&flag="+flag+"'>"+item.itemTitle+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/party?id="+item.id+"&flag="+flag+"'>"+sub(item.itemTitle,27)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
 				        		   
 				        		}); 
 				        	
@@ -390,7 +400,7 @@ $(function(){
 							
 				        		$.each(data,function(idx,item){ 
 				        			
-				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/manage?id="+item.id+"&flag="+flag+"'>"+item.itemTitle+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/manage?id="+item.id+"&flag="+flag+"'>"+sub(item.itemTitle,27)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
 				        		   
 				        		}); 
 				        	

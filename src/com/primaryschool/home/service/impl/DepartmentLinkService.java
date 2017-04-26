@@ -80,6 +80,13 @@ public class DepartmentLinkService<T> implements IDepartmentLinkService<T> {
 		// TODO Auto-generated method stub
 		return departmentLinkDao.findSlideJobPlacementInfo(contentFlag, position, item_per_page);
 	}
+	
+	
+	@Override
+	public List<T> findIndexDepartmentLinkInfo(int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return departmentLinkDao.findIndexDepartmentLinkInfo(position, item_per_page);
+	}
 
 	
 

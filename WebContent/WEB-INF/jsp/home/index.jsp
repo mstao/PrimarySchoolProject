@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -160,7 +160,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						        <c:forEach items="${education}"  var="education_list">
-									<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}">${education_list.itemTitle}</a><span class="pub-data sub-time">[${education_list.addTime}]</span></li>
+									<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}">${myTag:substr(education_list.itemTitle,0,35)}</a><span class="pub-data sub-time">[${education_list.addTime}]</span></li>
 								</c:forEach>
 							</ul>
 				           </div>
@@ -222,7 +222,7 @@ $(function() {
 				           	<ul>
 						        
 						      <c:forEach items="${student}" var="student_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${student_list.id}&flag=${studentFlag}">${student_list.itemTitle}</a><span class="pub-data sub-time">[${student_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${student_list.id}&flag=${studentFlag}">${myTag:substr(student_list.itemTitle,0,35)}</a><span class="pub-data sub-time">[${student_list.addTime}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>
@@ -284,7 +284,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						       <c:forEach items="${teacher}" var ="teacher_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teachingResources?menuId=${teacher_list.menuId}&classId=${teacher_list.classId}&tid=${teacher_list.id}&flag=${teacher_list.itemTypeFlag}">${teacher_list.itemTitle}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teachingResources?menuId=${teacher_list.menuId}&classId=${teacher_list.classId}&tid=${teacher_list.id}&flag=${teacher_list.itemTypeFlag}">${myTag:substr(teacher_list.itemTitle,0,35)}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
 							   </c:forEach>
 							</ul>
 				           </div>
@@ -326,12 +326,12 @@ $(function() {
 				         <li>规章制度</li>
 				   
 				       </ul>
-				       <dl class="tab-paper">
+				       <dl class="tab-paper short-papaer">
 				         <dd class="tp" >
 				           <div>
 				           	<ul>
-						      <c:forEach items="${manage}" var="manage_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/manage?id=${manage_list.id}&flag=${manageFlag}">${manage_list.itemTitle}</a><span class="pub-data sub-time">[${manage_list.addTime}]</span></li>
+						      <c:forEach items="${deptContent}" var="deptContent">
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${deptContent.id}&departmentId=${deptContent.departmentId}&contentFlag=${deptContent.typeId}">${myTag:substr(deptContent.itemTitle,0,27)}</a><span class="pub-data sub-time">[${myTag:datesub(deptContent.addTime)}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>
@@ -369,12 +369,12 @@ $(function() {
 				         <li>工会活动</li>
 				        
 				       </ul>
-				       <dl class="tab-paper">
+				       <dl class="tab-paper short-papaer">
 				         <dd class="tp" >
 				           <div>
 				           	<ul>
 						      <c:forEach items="${party}" var="party_list"> 
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}">${party_list.itemTitle}</a><span class="pub-data sub-time">[${party_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}">${myTag:substr(party_list.itemTitle,0,32)}</a><span class="pub-data sub-time">[${party_list.addTime}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>

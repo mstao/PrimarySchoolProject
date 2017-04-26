@@ -28,5 +28,6 @@ public interface IDepartmentLinkService<T> {
     List<T>  findHotDepartmentLinkInfo(int departmentId,String contentFlag,int position,int item_per_page);
     /**用于轮播图片**/
     List<T> findSlideTrendsInfo(String contentFlag,int position,int item_per_page);
-	
+    /**用于首页显示**/
+    List<T> findIndexDepartmentLinkInfo(int position,int item_per_page);
 }
