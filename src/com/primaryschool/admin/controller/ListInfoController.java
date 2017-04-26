@@ -141,6 +141,7 @@ public class ListInfoController<T> {
    @RequestMapping("/trends")	
    public  String trends(String flag,int p,ModelMap map){
 	   
+	   String fileType="ftrends";
 	   
 	   String sp=p+"";
 	   if(sp.equals("")){
@@ -172,6 +173,7 @@ public class ListInfoController<T> {
        map.put("typeName", typeName);
        map.put("typeFlag", flag);
        map.put("item", trends);  
+       map.put("fileType", fileType);
 	   return "admin/list/list";
    }
    

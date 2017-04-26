@@ -3,6 +3,8 @@ package com.primaryschool.admin.dao;
 import java.util.List;
 import java.util.Set;
 
+import com.primaryschool.admin.entity.SecurityUser;
+
 /**
  * 
 * @ClassName: IUserDao
@@ -38,4 +40,11 @@ public interface IUserDao<T> {
 	
 	/**删除用户**/
     void deleteUserById(List<?> ids);     
+    
+    /**根据用户id修改密码**/ 
+    void updateUserPassword(int uid,String userName,String password);
+    
+    /**获取原密码**/    
+    T  findUserByUid(int uid);
+    
 }

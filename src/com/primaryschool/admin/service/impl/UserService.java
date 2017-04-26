@@ -77,4 +77,16 @@ public class UserService<T> implements IUserService<T> {
 		userDao.deleteUserById(ids);
 	}
 
+	@Override
+	public void updateUserPassword(int uid,String userName, String password) {
+		// TODO Auto-generated method stub
+		userDao.updateUserPassword(uid,userName, password);
+	}
+
+	@Override
+	public T findUserByUid(int uid) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByUid(uid);
+	}
+
 }

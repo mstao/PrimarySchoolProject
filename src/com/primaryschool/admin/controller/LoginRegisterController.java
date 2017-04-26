@@ -2,8 +2,11 @@ package com.primaryschool.admin.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -210,7 +213,7 @@ public class LoginRegisterController<T> {
 	* @throws
 	 */
 	@RequestMapping("/login")
-	public String login(String userName,String password,ModelMap map){
+	public String login(String userName,String password,HttpServletRequest request){
 		Subject currentUser = SecurityUtils.getSubject();
 		if (!currentUser.isAuthenticated()) {
         	// 把用户名和密码封装为 UsernamePasswordToken 对象
@@ -221,12 +224,22 @@ public class LoginRegisterController<T> {
             	System.out.println("1. " + token.hashCode());
             	// 执行登录. 
                 currentUser.login(token);
+               
+        		Set<String> role= userService.getRoles(userName);
+        		
+        		SecurityUser user=(SecurityUser) userService.getByUerName(userName);
+        		//获取uid
+        		int uid=user.getId();
+        		HttpSession session =request.getSession();
+        		//将用户信息保存到session 中
+                session.setAttribute("role", role);
+                session.setAttribute("uid", uid);
             } 
             // 所有认证时异常的父类. 
             catch (AuthenticationException ae) {
                 //unexpected condition?  error?
             	System.out.println("登录失败: " + ae.getMessage());
-            	map.put("error", "用户名或密码错误");
+            	request.setAttribute("error", "用户名或密码错误");
             	return "admin/loginOrregister/teacher-login";
             }
         }

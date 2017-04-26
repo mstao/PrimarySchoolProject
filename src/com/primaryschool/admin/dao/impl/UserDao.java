@@ -156,6 +156,37 @@ public class UserDao<T> implements IUserDao<T> {
 		query.setParameterList("ids", ids).executeUpdate();
 	}
 
+	/**
+	 * 修改密码
+	 */
+	@Override
+	public void updateUserPassword(int uid,String userName, String password) {
+		// TODO Auto-generated method stub
+		
+		String hql="update SecurityUser u set u.password=?,u.userName=? where u.id=?";
+		
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, password);
+		query.setString(1, userName);
+		query.setInteger(2, uid);
+		query.executeUpdate();
+	}
+
+	
+	/**
+	 *  根据用户id和旧密码来判断旧密码是否正确  （旧密码已经加密）
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findUserByUid(int uid) {
+		// TODO Auto-generated method stub
+		String hql="from SecurityUser u where u.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, uid);
+	
+		return (T) query.uniqueResult();
+	}
+
 		
 	
 

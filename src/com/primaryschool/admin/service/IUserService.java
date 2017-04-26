@@ -37,5 +37,11 @@ public interface IUserService<T> {
 	void saveUserRole(T t);
 	
 	/**删除用户**/
-    void deleteUserById(List<?> ids);     
+    void deleteUserById(List<?> ids);    
+    
+    /**根据用户名修改密码**/ 
+    void updateUserPassword(int uid,String userName,String password);
+    
+    /**获取原密码**/    
+    T  findUserByUid(int uid);
 }

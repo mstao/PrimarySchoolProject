@@ -24,6 +24,8 @@ var CTPPATH="${pageContext.request.contextPath}";
 	<jsp:include page="common/header.jsp"></jsp:include>
 	<!--S main-->
 <div class="main">
+<%--只有管理可见  --%>   
+  <shiro:hasRole name="superadmin">
 	<span class="web_summary_span">网站概要</span>
 	<div class="web_summary_content">
 		<span class="current_tag">目前网站有</span>
@@ -40,20 +42,31 @@ var CTPPATH="${pageContext.request.contextPath}";
 			</tr>
 
 		</table>
+		
 		<span class="link_operation_span">点击下面的链接快速操作</span>
 		<div class="operate_div">
-		<a href="edit.html">撰写新闻</a><a href="edit.html">撰写公告通知</a><a href="edit.html">撰写在研项目</a><a href="list.html">查看文档</a>
+		
+		
+        
+        
+		<a href="${CTP}/admin/write/trends?typeName=校内新闻&typeFlag=news&fileType=ftrends">撰写新闻</a>
+		<a href="${CTP}/admin/write/trends?typeName=通知公告&typeFlag=notice&fileType=ftrends">撰写通知公告</a>
+		<a href="${CTP}/admin/write/culture?typeName=校务公开&typeFlag=affairs&fileType=fculture">撰写校务公开</a>
+		
+		<a href="${CTP}/admin/authority/allocation?p=1">角色分配</a>
+		
 		</div>
 		<br><br><hr style="color:#CCCCCC;border:0.5px solid #CCCCCC" >
 	    
 	    <!--S 最近更新-->
 	    <div class="last-update"> 
 	    	<div class="last-update-news">
-	    		<span class="last-update-span">最近更新中心新闻：</span>
+	    		<span class="last-update-span">最近更新学校新闻：</span>
 	    		<div class="last-update-content">
 	    			<ul>
-	    				<li><span>12.5</span><a href="edit_details.html">国家重大科研仪器设备研制项目《新一代高衬度低剂量X射线相位衬度CT装置》项目研讨会成功召开</a></li>
-	    				<li><span>12.5</span><a href="edit_details.html">国家重大科研仪器设备研制项目《新一代高衬度低剂量X射线相位衬度CT装置》项目研讨会成功召开</a></li>
+	    			  <c:forEach items="${news}" var="news_list">
+	    				<li><span>${news_list.addTime}</span><a href="${CTP}/admin/distribute/trends?id=${news_list.id}">${news_list.itemTitle}</a></li>
+	    			  </c:forEach>
 	    			</ul>
 	    		</div>
 	    	</div>
@@ -61,32 +74,46 @@ var CTPPATH="${pageContext.request.contextPath}";
 	    		<span class="last-update-span">最近更新公告通知：</span>
 	    		<div class="last-update-content">
 	    			<ul>
-	    				<li><span>12.5</span><a href="edit_details.html">国家重大科研仪器设备研制项目《新一代高衬度低剂量X射线相位衬度CT装置》项目研讨会成功召开</a></li>
-	    				<li><span>12.5</span><a href="edit_details.html">国家重大科研仪器设备研制项目《新一代高衬度低剂量X射线相位衬度CT装置》项目研讨会成功召开</a></li>
+	    			  <c:forEach items="${notice}" var="notice_list">
+	    				<li><span>${notice_list.addTime}</span><a href="${CTP}/admin/distribute/trends?id=${notice_list.id}">${notice_list.itemTitle}</a></li>
+	    			  </c:forEach>
 	    			</ul>
 	    		</div>
 	    	</div>
 	    	<div class="last-update-research">
-	    		<span class="last-update-span">最近的研究亮点：</span>
+	    		<span class="last-update-span">最近更新校务公开：</span>
 	    		<div class="last-update-content">
 	    			<ul>
-	    				<li><span>12.5</span><a href="edit_details.html">国家重大科研仪器设备研制项目《新一代高衬度低剂量X射线相位衬度CT装置》项目研讨会成功召开</a></li>
-	    				<li><span>12.5</span><a href="edit_details.html">国家重大科研仪器设备研制项目《新一代高衬度低剂量X射线相位衬度CT装置》项目研讨会成功召开</a></li>
+	    			
+	    			<c:forEach  items="${affairs}" var="affairs_list">
+	    				<li><span>${affairs_list.addTime}</span><a href="${CTP}/admin/distribute/culture?id=${affairs_list.id}">${affairs_list.itemTitle}</a></li>
+	    			</c:forEach>
 	    			</ul>
 	    		</div>
 	    	</div>
 	    </div>
 	    <!--E 最近更新-->
+	    
+	   
+	    
 	</div>
 	
+</shiro:hasRole>
 </div>
+ 
 <!--E main-->
+	<shiro:hasRole name="guest">
+	<div class="guest-tip">
+	<img alt="" src="${CTP_ADMIN}/img/tip.png"><br>
+	<span>
+	
+	欢迎您访问后台管理系统，您目前的角色是游客，后台功能对您不可用，请联系超级管理员为您分配角色。
+	</span>
+	
+	</div>
+	</shiro:hasRole>
+<!-- 引入footer -->
+<jsp:include page="common/footer.jsp"></jsp:include>
 
-<!--S footer-->
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
-<!--E footer-->
 	</body>
 </html>

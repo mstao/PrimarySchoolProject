@@ -1,5 +1,6 @@
 package com.primaryschool.admin.controller;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,11 +10,14 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.admin.entity.SecurityUser;
+import com.primaryschool.admin.service.IAdminCultureService;
+import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.admin.service.IUserService;
+import com.primaryschool.home.entity.Culture;
+import com.primaryschool.home.entity.Trends;
 
 /**
  * 
@@ -27,10 +31,16 @@ import com.primaryschool.admin.service.IUserService;
 
 @Controller
 @RequestMapping("/admin")
-public class AdminIndexController {
+public class AdminIndexController<T> {
 
 	@Autowired
 	private IUserService<SecurityUser> userService;
+	
+	@Autowired
+    private  IAdminTrendsService<T> trendsService;
+	
+	@Autowired
+	private IAdminCultureService<T> cultureService;
 	/**
 	 * 
 	* @Title: index
@@ -39,18 +49,25 @@ public class AdminIndexController {
 	* @return String    返回类型
 	* @throws
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/index")
 	public String index(HttpServletRequest request){
-		//获取当前用户所拥有的角色
+	
 		
-		Subject currentUser = SecurityUtils.getSubject();
-		String userName=currentUser.getPrincipal().toString();
-		Set<String> role= userService.getRoles(userName);
-		//获取SESSION对象
-	    HttpSession session=request.getSession();
-	    //将用户信息保存到session中
-		session.setAttribute("role", role);
-		System.out.println(role);
+		//获取最近新闻
+		ArrayList<Trends> news=(ArrayList<Trends>) trendsService.findTrendsInfo("news", 0, 8);
+		
+		//获取最近公告
+		ArrayList<Trends> notice=(ArrayList<Trends>) trendsService.findTrendsInfo("notice", 0, 8);
+		
+		//获取校务公开
+		ArrayList<Culture> affairs=(ArrayList<Culture>) cultureService.findCultureInfo("affairs", 0, 8);
+		
+		
+		request.setAttribute("news", news);
+		request.setAttribute("notice", notice);
+		request.setAttribute("affairs", affairs);
+		
 		return "admin/index";
 	}
 	

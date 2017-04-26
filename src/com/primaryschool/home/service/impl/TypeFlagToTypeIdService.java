@@ -14,7 +14,7 @@ public class TypeFlagToTypeIdService implements ITypeFlagToTypeIdService {
 	@Override
 	public int findCultureTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findCultureTypeIdByTypeFlag(flag);
 	}
 
 	@Override
@@ -26,49 +26,49 @@ public class TypeFlagToTypeIdService implements ITypeFlagToTypeIdService {
 	@Override
 	public int findEducationTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findEducationTypeIdByTypeFlag(flag);
 	}
 
 	@Override
 	public int findStudentTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findStudentTypeIdByTypeFlag(flag);
 	}
 
 	@Override
 	public int findTeacherTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findTeacherTypeIdByTypeFlag(flag);
 	}
 
 	@Override
 	public int findManageTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findManageTypeIdByTypeFlag(flag);
 	}
 
 	@Override
 	public int findPartyTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findPartyTypeIdByTypeFlag(flag);
 	}
 
 	@Override
 	public int findLabClassTypeIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findLabClassTypeIdByTypeFlag(flag);
 	}
 
 	@Override
 	public int findTeachingResourcesTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findTeachingResourcesTypeFlag(flag);
 	}
 
 	@Override
 	public int findClasshomepageIdByTypeFlag(String flag) {
 		// TODO Auto-generated method stub
-		return 0;
+		return typeFlagToTypeIdDao.findClasshomepageIdByTypeFlag(flag);
 	}
 	
 	

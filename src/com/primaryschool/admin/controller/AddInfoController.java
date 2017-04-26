@@ -168,10 +168,13 @@ public class AddInfoController<T> {
    	* @throws
    	 */
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/culture")
-       @ResponseBody
+    @ResponseBody
    	public  String addCulture(Culture culture){
+    	   
+    	System.out.println("---Type---"+culture.getItemTypeFlag());
+    	   
        	//由typeFlag获取typeid
        	int typeId=typeFlagToTypeIdService.findCultureTypeIdByTypeFlag(culture.getItemTypeFlag());
        	//赋值
