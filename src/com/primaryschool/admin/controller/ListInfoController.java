@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
+import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
@@ -124,6 +125,9 @@ public class ListInfoController<T> {
     //获取所有的lab类型
     @Autowired
 	private ILabClassService<T> labService;
+    
+    @Autowired
+    private IAdminHeaderMasterService<T> headerMasterService;
     
     
     private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
@@ -754,4 +758,26 @@ public class ListInfoController<T> {
         map.put("item", studentLabMenuContent);  
  	   return "admin/list/labClassList";
     }
+   	
+   	@RequestMapping("/headerMaster")
+   	public String HeaderMasterInfo(int p){
+   	   String sp=p+"";
+	   if(sp.equals("")){
+			p=1;
+	   }
+	   //查看详细信息url
+	   String durl="department";
+		
+	   //当前的url
+	   String url="./department?deptId='"+deptId+"'&p=";
+	   
+	   //文件上传类型
+	   String fileType="fmanage";
+		
+	   //获取总记录量
+	   int count=departmentService.findDepartmentContentCount(deptId);
+	   //计算偏移量
+	   int position=(p-1)*pageSize;
+   		ArrayList<> headerMaster=headerMasterService.findHeaderMasterInfo(position, item_per_page);
+   	}
 }

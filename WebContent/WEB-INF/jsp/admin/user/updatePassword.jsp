@@ -66,7 +66,7 @@ $(function(){
 				
 					beforeSend:function(){
 						//显示正在加载
-						layer.load(2,{offset: 400,time:2000});
+						layer.load(2,{offset: 60,time:2000});
 					},
 					success:function(data){
 	
