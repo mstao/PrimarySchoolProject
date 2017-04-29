@@ -71,6 +71,20 @@ public class DepartmentLinkContent implements Serializable{
 		this.addTime = addTime;
     }
     
+    
+    /**前台列表**/
+    public DepartmentLinkContent(int id, String itemTitle,String addTime,int viewCount, int typeId,  
+			int departmentId) {
+
+		this.id = id;
+		this.itemTitle = itemTitle;
+		this.typeId = typeId;
+		this.addTime = addTime;
+		this.viewCount = viewCount;
+		this.departmentId = departmentId;
+	}
+
+    
     /**后台list页面显示当前分类的信息BydeptId**/
     public DepartmentLinkContent(int id, String itemTitle, int typeId, String addTime, int isPublish, String itemAuthor) {
 		super();
@@ -83,6 +97,8 @@ public class DepartmentLinkContent implements Serializable{
 		
 	}
     
+	
+
 	public DepartmentLinkContent(int id,String itemTitle,String addTime,int typeId,int departmentId){
     	super();
     	this.id = id;

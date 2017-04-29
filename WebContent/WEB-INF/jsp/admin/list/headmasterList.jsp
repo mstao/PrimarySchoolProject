@@ -123,7 +123,7 @@
                 <c:forEach var="list" items="${headMaster }">
                 <tr id="bubblemenu">
                     <td width="5%" align="center"><input type="checkbox" name="info_id" value="${list.id}"/></td>
-                    <td width="20%"><a href="${CTP}/admin/distribute/${durl }?id=${list.id}" class="item_title">${list.name }</a>
+                    <td width="20%"><a href="${CTP}/admin/distribute/headMaster?id=${list.id}" class="item_title">${list.name }</a>
                      <c:if test="${list.isPublish eq 0}">
 		              <span class="draft-span">草稿</span>
 		             </c:if>

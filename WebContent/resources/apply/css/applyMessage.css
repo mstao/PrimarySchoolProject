@@ -1,0 +1,288 @@
+/*表头*/
+
+/*报名内容，包括学生基本信息和监护人基本信息*/
+.applybody-content-tab{
+	margin: 0 auto;
+	width:1170px;
+	height:600px;
+	margin-top:30px;
+	border: solid #006666 8px;
+	margin-bottom:100px;
+}
+
+.applybody-content-tab a{
+	text-decoration: none;
+	color:#666666;
+}
+
+.applybody-content-tab a:hover{
+	cursor:pointer;
+	color:#EF9722;
+}
+.applybody-content-tab input[type=text]{
+	width:300px;
+	display: block;
+	height:25px;
+	margin-top: 20px;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	height:30px;
+	padding-left:5px;
+}
+.applybody-content-tab input:focus{
+	border:1px solid #2188FF;
+	-webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+}
+
+/*招生信息表表头*/
+.applybody-content-tab-top{
+	display: block;
+	height:40px;
+	font-size: 32px;
+	text-align: center;
+	padding-bottom: 10px;
+	background-color: #006666;
+	color:#FFFFFF;
+}
+/*报名内容中的学生基本信息部分*/
+.applybody-content-tab-basicMes{
+	float: left;
+	height:450px;
+	width:550px;
+	margin-left: 10px;
+	border-right: solid #0066661px;
+	
+}
+/*将学生基本信息部分的span变为块级元素*/
+.applybody-content-tab-basicMes span{
+	display: block;
+	margin-top: 25px;
+	text-align: right;
+}
+.applybody-content-tab-basicMes span > img{
+	margin-right: 5px;
+}
+
+/*学生基本信息头部*/
+.tab-basicMes-top{
+	padding-right: 200px;
+	color:#34A9B1;
+	font-size: 23px;
+}
+/*学生姓名*/
+.tab-basicMes-stuname{
+	width:100px;
+	float: left;
+}
+.tab-basicMes-stuname-input{
+	float: left;
+	margin-left: 30px;
+	
+}
+/*学生性别*/
+.tab-basicMes-stusex{
+	clear: left;
+	float: left;
+	width:100px;
+}
+.tab-basicMes-stusex-input1{
+	float: left;
+	outline: none;
+	margin-top: 25px;
+	margin-left: 30px;
+	
+}
+.tab-basicMes-stusex-men{
+	float: left;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+.tab-basicMes-stusex-input2{
+	float: left;
+	outline: none;
+	margin-top: 25px;
+	margin-left: 15px;
+	
+}
+.tab-basicMes-stusex-women{
+	float: left;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+/*民族*/
+.tab-basicMes-nation{
+	clear: left;
+	float: left;
+	width: 100px;
+}
+.tab-basicMes-nation-input{
+	float: left;
+	margin-left: 30px;
+}
+/*身份证*/
+.tab-basicMes-idnum{
+	clear: left;
+	float: left;
+	width: 100px;
+}
+.tab-basicMes-idnum-input{
+	float: left;
+	margin-left: 30px;
+}
+/*原学校*/
+.tab-basicMes-originalsch{
+	clear: left;
+	float: left;
+	width:100px;
+}
+.tab-basicMes-originalsch-input{
+	float: left;
+	margin-left: 30px;
+}
+/*现住址*/
+.tab-basicMes-address{
+	clear: left;
+	float: left;
+	width: 100px;
+
+}
+.tab-basicMes-address-input{
+	float: left;
+	margin-left: 30px;
+}
+/*户籍所在地*/
+.tab-basicMes-register{
+	clear: left;
+	float: left;
+	width: 100px;
+}
+.tab-basicMes-register-input{
+	float: left;
+	margin-left: 30px;
+}
+/*报名内容中的监护人信息部分*/
+.applybody-contentn-tab-guardianMes{
+	
+	float:left;
+	margin-left: 25px;
+	height:450px;
+	width: 550px;
+	border-left: solid #006666 1px;
+}
+/*将监护人信息部分变为块级元素*/
+.applybody-contentn-tab-guardianMes span{
+	display: block;
+	text-align: right;
+	margin-top:25px;
+	margin-left:40px;
+}
+.applybody-contentn-tab-guardianMes span>img{
+	margin-right: 5px;
+}
+.applybody-contentn-tab-guardianMes input{
+	display: block;
+	margin-top:20px;
+}
+/*监护人信息部分头部*/
+.tab-guardianMes-top{
+	padding-right: 170px;
+	text-align: center;
+	color:#34A9B1;
+	font-size: 23px;
+	
+}
+/*父亲姓名*/
+.tab-guardianMes-father-name{
+	float: left;
+	width:110px;
+}
+.tab-guardianMes-father-name-input{
+	float: left;
+	margin-left: 30px;
+}
+/*父亲身份证*/
+.tab-guardianMes-father-idnum{
+	clear: left;
+	float: left;
+	width: 110px;
+}
+.tab-guardianMes-father-idnum-input{
+	float: left;
+	margin-left: 30px;
+}
+/*父亲联系方式*/
+.tab-guardianMes-father-phonenum{
+	clear: left;
+	float: left;
+	width: 110px;
+}
+.tab-guardianMes-father-phonenum-input{
+	float: left;
+	margin-left: 30px;
+	
+}
+/*母亲姓名*/
+.tab-guardianMes-mother-name{
+	clear: left;
+	float: left;
+	width:110px;
+}
+.tab-guardianMes-mother-name-input{
+	float: left;
+	margin-left: 30px;
+}
+/*母亲身份证*/
+.tab-guardianMes-mother-idnum{
+		clear: left;
+		float: left;
+		width:110px;
+}
+.tab-guardianMes-mother-idnum-input{
+	float: left;
+	margin-left: 30px;
+}
+/*母亲联系方式*/
+.tab-guardianMes-mother-phonenum{
+		clear: left;
+		float: left;
+		width: 110px;
+}
+.tab-guardianMes-mother-phonenum-input{
+	float: left;
+	margin-left: 30px;
+}
+/*报名表底部提示部分*/
+.tab-message{
+	float: left;
+	width:1170px;
+	height: 35px;
+	padding-top: 9px;
+	text-align: center;
+	border-top: double #006666;
+	border-width: 7px;
+}
+
+/*提交部分样式*/
+.applybody-content-tab-submit{
+	float: left;
+	width: 1170px;
+
+	padding-top: 7px;
+	text-align: center;
+	border-top: double #006666;
+	border-width: 6px;
+}
+.applybody-content-tab-submit > a{
+	display: block;
+	color:#FFFFFF;
+	width:100px;
+    height:25px;
+	margin:0 auto;
+    padding-top:3px;
+    padding-bottom:3px;
+	background-color: #006666;
+    border-radius: 3px;
+}

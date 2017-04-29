@@ -1,0 +1,202 @@
+
+/*主体div的设置*/
+.apply-status-content{
+	width:1170px;
+	
+	margin:0 auto;
+	margin-bottom:600px;
+}
+/*报名进度显示*/
+.apply-status-show{
+	margin-top: 40px;
+	width:1170px;
+	height: 100px;
+	border-top: solid #006666 1px;
+	border-bottom: solid #006666 1px;
+}
+/*显示状态中的箭头*/
+.status-show-arrows{
+	float: left;
+	margin-left:100px;
+	margin-top:30px;
+}
+/*显示报名信息是否提交*/
+.status-submit-show{
+	float: left;
+	margin-left: 120px;
+	margin-top:30px;
+	width:150px;
+	height:35px;
+	color:#5A9EE4;
+}
+.status-submit-show >img{
+	float: left;
+}
+/*报名信息是否提交的文字提示*/
+.status-submit-show-hint{
+	float: left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+/*显示报名信息是否在审核*/
+.status-checking-show{
+	float: left;
+	margin-left: 100px;
+	margin-top:30px;
+	width:150px;
+	height:35px;
+	color:#5A9EE4;
+}
+.status-checking-show >img{
+	float:left;
+}
+/*报名信息状态文字提示*/
+.status-checking-show-hint{
+	float: left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+/*显示报名信息是否审核通过*/
+.status-checked-show{
+	float: left;
+	margin-left: 100px;
+	margin-top:30px;
+	width:150px;
+	height:35px;
+	color:#5A9EE4;
+}
+.status-checked-show > img{
+	float:left;
+}
+/*显示报名信息审核结果的文字描述*/
+.status-checked-show-hint{
+	float: left;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+.apply-info-tips{
+	width:1170px;
+	height:40px;
+	margin: 0 auto;
+	margin-top:10px;
+	background:#34A9B1;
+	border-radius: 3px;
+	border:1px solid #006666; 
+	filter:alpha(opacity=80);  
+    -moz-opacity:0.8;  
+    -khtml-opacity: 0.8;  
+    opacity: 0.8;  
+
+
+	
+}
+.apply-info-tips span{
+	position:relative;
+	color:#FFFFFF;
+	line-height: 40px;
+	margin-left:5px;
+}
+.apply-info-tips span >img{
+	position: relative;
+	top:7px;
+	margin-right:5px;
+}
+.student-info{
+	width:1170px;
+	width:0 auto;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.stu-info-left{
+	margin-top:20px;
+	float:left;
+}
+.stu-info-left .stu-info-ren{
+	position: relative;
+	left:-105px;
+	top:30px;
+}
+.stu-info-left .notice{
+	border:1px dashed #CCCCCC;
+	display:block;
+	margin-top:50px;
+	width:550px;
+	padding-left:10px;
+}
+.stu-info-left .notice img{
+	width:20px;
+	height:20px;
+    position: relative;
+	top:3px;
+}
+.stu-info-left .reason{
+	border:1px dashed #CCCCCC;
+	display:block;
+
+    margin-top:40px;
+	min-height:50px;
+	width:557px;
+}
+.stu-info-left .reason .reason-navi{
+	display:block;
+	border-bottom: 1px dashed #CCCCCC;
+	padding-bottom:5px;
+	width:100%;
+}
+.stu-info-left .reason .reason-navi img{
+	position: relative;
+	top:5px;
+}
+.stu-info-left .reason .info{
+	line-height:30px;
+	padding:10px;
+}
+.stu-info-right{
+	width:570px;
+	float:right;
+	border-left:1px solid #CCCCCC;
+	min-height:400px;
+}
+
+.stu-info-right .no-message{
+	margin-top:20px;
+	color:#444444;
+
+}
+.stu-info-right .no-message span{
+    display:block;
+	margin-left:30px;
+	width:200px;
+}
+.stu-info-display{
+	color:#73777B;
+	margin-left:90px;
+    
+}
+.stu-info-display .tips{
+	display:block;
+	padding-left:130px;
+	color:#666666;
+	width:280px;
+	border-bottom: 1px dashed #cccccc; 
+	padding-bottom:10px;
+}
+
+.stu-info-display>div{
+	margin-top:-5px;
+}
+
+.stu-info-display>div>span:FIRST-CHILD {
+	
+	float:right;
+
+	margin-right:300px;
+	
+}
+.stu-info-display>div>span:LAST-CHILD {
+	position:relative;
+	margin-left:190px;
+    top:-22px;  
+	color:#000000;
+
+}

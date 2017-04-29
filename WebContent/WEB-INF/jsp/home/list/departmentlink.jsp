@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,6 +20,8 @@
 
 var CTPPATH="${pageContext.request.contextPath}";
 var CTP_HOME=CTPPATH+"/resources/home";
+
+
 
 </script>
 <title>部门链接主页</title>
@@ -61,7 +64,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					</div>
 					<div class="departmentlink-sp-bottom">
 						<c:forEach items="${departmentLinkStaff}"  var="departmentLink_Staff">
-							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Staff.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Staff.typeId}">${departmentLink_Staff.itemTitle}</a><span >[${departmentLink_Staff.addTime}]</span></li>
+							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Staff.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Staff.typeId}">${myTag:substr(departmentLink_Staff.itemTitle,0,40)}   </a><span >[${departmentLink_Staff.addTime}]</span></li>
 						</c:forEach>
 					</div>
 				</div>
@@ -74,7 +77,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					</div>
 					<div class="departmentlink-jp-bottom">
 							<c:forEach items="${departmentLinkJob}"  var="departmentLink_Job">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Job.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Job.typeId}">${departmentLink_Job.itemTitle}</a><span >[${departmentLink_Job.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Job.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Job.typeId}">${myTag:substr(departmentLink_Job.itemTitle,0,40)}</a><span >[${departmentLink_Job.addTime}]</span></li>
 							</c:forEach>
 					</div>
 				</div>

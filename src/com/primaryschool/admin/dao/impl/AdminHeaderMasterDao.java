@@ -1,5 +1,6 @@
 package com.primaryschool.admin.dao.impl;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IAdminHeaderMasterDao;
+import com.primaryschool.home.entity.HeadMaster;
 
 /**
  * 
@@ -28,9 +30,9 @@ public class AdminHeaderMasterDao<T> implements IAdminHeaderMasterDao<T> {
 	@Override
 	public List<T> findHeaderMasterInfo(int position, int item_per_page) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.HeadMaster(hm.id,hm.name,hm.work,hm.email,hm.avatar,hmp.postName,hm.isPublish) from HeadMaster hm,HeadMasterPost hmp where hm.postId=hmp.id order by hm.postId asc";
+		String hql="select new com.primaryschool.home.entity.HeadMaster(hm.id,hm.name,hm.work,hm.email,hm.avatar,hm.postId,hmp.postName,hm.isPublish) from HeadMaster hm,HeadMasterPost hmp where hm.postId=hmp.id order by hm.postId asc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		
+
 		query.setFirstResult(position);
 		query.setMaxResults(item_per_page);
 		
@@ -81,9 +83,41 @@ public class AdminHeaderMasterDao<T> implements IAdminHeaderMasterDao<T> {
 	@Override
 	public int saveHeadMaster(T t) {
 		// TODO Auto-generated method stub
-		return 0;
+		Serializable result =sessionFactory.getCurrentSession().save(t);
+		return (Integer)result;
 	}
 
+	@Override
+	public int findPostIdByPostName(String name) {
+		// TODO Auto-generated method stub
+		String hql="from headMasterPost where postName=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, name);
+		HeadMaster h=(HeadMaster) query.uniqueResult();
+		int id=h.getId();
+		return id;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findHeadMasterById(int id) {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.home.entity.HeadMaster(hm.id,hm.name,hm.work,hm.email,hm.avatar,hm.postId,hmp.postName,hm.isPublish) from HeadMaster hm,HeadMasterPost hmp where hm.postId=hmp.id  and hm.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		return (T) query.uniqueResult();
+	}
+
+	@Override
+	public boolean updateHeadMasterInfo(T t) {
+		// TODO Auto-generated method stub
+		String hql="update HeadMaster u set u.name=:name ,u.avatar=:avatar,u.postId=:postId,u.work=:work,u.isPublish=:isPublish,u.addTime=:addTime  where u.id=:id";
+		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
+		query.setProperties(t);
+		return (query.executeUpdate()>0);
+	}
+
+	
 	
 
 	

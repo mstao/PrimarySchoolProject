@@ -64,7 +64,7 @@ body {
 	margin-left: 200px;
 	width: 1170px;
 	height: 600px;
-	
+	margin-bottom:200px;
 }
 /*部门链接页面的左边部分，用于显示各个部门名称*/
 .departmentlink-departmentNameList{
@@ -111,19 +111,21 @@ body {
 /*部门链接主体的右边部分，人员安排*/
 .departmentlink-sp{
 	float: left;
-	width:600px;
-	height: 200px;
+	width:800px;
+	height: 300px;
 	overflow:hidden;
 	line-height: 31px;
 	background-color: #F1F1F1;
+	border-radius: 3px;
 }
 /*人员安排标题设置*/
 .departmentlink-sp-top{
 	padding-bottom:10px;
 	color: #006269;
 	border-bottom: #CCCCCC solid 1px;
-	
+    
 }
+
 .departmentlink-sp-top img{
 	bottom: -4px;
 	position: relative;
@@ -140,8 +142,8 @@ body {
 .departmentlink-jp{
 	float:left;
 	margin-top: 30px;
-	width:600px;
-	height:200px;
+	width:800px;
+	height:300px;
 	overflow: hidden;
 	line-height: 31px;
 	background-color: #F1F1F1;

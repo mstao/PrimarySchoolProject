@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
+import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
@@ -27,6 +28,8 @@ import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.DepartmentLinkContentType;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.HeadMaster;
+import com.primaryschool.home.entity.HeadMasterPost;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
@@ -83,6 +86,9 @@ public class DistributeInfoController<T> {
     
     @Autowired
 	private IAdminDepartmentService<T> departmentService;
+    
+    @Autowired
+    private IAdminHeaderMasterService<T> headMasterService;
 	/**
 	 * 
 	* @Title: culture
@@ -355,5 +361,19 @@ public class DistributeInfoController<T> {
 			map.put("introduce", classSynopsis);
 			map.put("durl",durl);
 			return "admin/details/introDetail";
+		}
+		
+		/**
+		 *校长信息
+		 */
+		@SuppressWarnings("unchecked")
+		@RequestMapping("/headMaster")
+		public String headMaster(int id,ModelMap map){
+			HeadMaster h=(HeadMaster) headMasterService.findHeadMasterById(id);
+			ArrayList<HeadMasterPost> post=(ArrayList<HeadMasterPost>) headMasterService.findHeadMasterPost();
+			
+			map.put("post", post);
+			map.put("headMaster", h);
+			return "admin/details/headMaster";
 		}
 }

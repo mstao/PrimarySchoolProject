@@ -9,6 +9,7 @@ import com.primaryschool.admin.entity.SecurityRole;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
+import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
@@ -27,6 +28,7 @@ import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.DepartmentLinkNameList;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.HeadMaster;
 import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
@@ -101,6 +103,8 @@ public class AddInfoController<T> {
    @Autowired
    private ITypeFlagToTypeIdService typeFlagToTypeIdService; 
     
+   @Autowired 
+   private IAdminHeaderMasterService<T> headMasterService;
     
     /**
      * 
@@ -396,10 +400,10 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       //添加班级
-       @SuppressWarnings("unchecked")
+    //添加班级
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/manageSclass")
-       @ResponseBody
+    @ResponseBody
    	public  String manageSclass(int gradeCode,Sclass sclass){
        	sclassService.addGradeInfo();
        	//根据gradeCode获取id
@@ -409,4 +413,23 @@ public class AddInfoController<T> {
        	int result= sclassService.addSclass((T)sclass);
    		return result+"";
    	}
+    
+    /**
+     * 
+    * @Title: headMaster
+    * @Description: TODO 添加校长信息
+    * @param @param headMaster
+    * @param @return    设定文件
+    * @return String    返回类型
+    * @throws
+     */
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/headMaster")
+    @ResponseBody
+	public String headMaster(HeadMaster headMaster){
+    
+    	int result=headMasterService.saveHeadMaster((T) headMaster);
+    	return result+"";
+    }
+    
 }

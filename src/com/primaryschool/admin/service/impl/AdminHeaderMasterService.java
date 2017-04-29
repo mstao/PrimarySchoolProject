@@ -47,4 +47,28 @@ public class AdminHeaderMasterService<T> implements IAdminHeaderMasterService<T>
 		return headerMasterDao.findHeadMasterPost();
 	}
 
+	@Override
+	public int saveHeadMaster(T t) {
+		// TODO Auto-generated method stub
+		return headerMasterDao.saveHeadMaster(t);
+	}
+
+	@Override
+	public int findPostIdByPostName(String name) {
+		// TODO Auto-generated method stub
+		return headerMasterDao.findPostIdByPostName(name);
+	}
+
+	@Override
+	public T findHeadMasterById(int id) {
+		// TODO Auto-generated method stub
+		return headerMasterDao.findHeadMasterById(id);
+	}
+
+	@Override
+	public boolean updateHeadMasterInfo(T t) {
+		// TODO Auto-generated method stub
+		return headerMasterDao.updateHeadMasterInfo(t);
+	}
+
 }

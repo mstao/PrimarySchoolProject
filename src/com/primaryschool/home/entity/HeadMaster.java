@@ -45,7 +45,7 @@ public class HeadMaster implements Serializable{
 	private String avatar;
     
 	@Column(name="post_id")
-	private String postId;
+	private int postId;
 
 	@Column(name="is_publish")
 	private int isPublish;
@@ -57,17 +57,29 @@ public class HeadMaster implements Serializable{
 	private String postName;
 	
 	public HeadMaster(){}
-	public HeadMaster(int id,String name,String work,String email,String avatar,String postName,int isPublish){
+	public HeadMaster(int id,String name,String work,String email,String avatar,int postId,String postName,int isPublish){
 		super();
 		this.id=id;
 		this.name=name;
 		this.work=work;
 		this.email=email;
 		this.avatar=avatar;
+		this.postId=postId;
 		this.postName=postName;
 		this.isPublish=isPublish;
 	}
 	
+	
+	
+	public HeadMaster(int id, String name, String work, String email, String avatar, String postName) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.work = work;
+		this.email = email;
+		this.avatar = avatar;
+		this.postName = postName;
+	}
 	public int getId() {
 		return id;
 	}
@@ -111,15 +123,14 @@ public class HeadMaster implements Serializable{
 
 	
 	
-	public String getPostId() {
-		return postId;
-	}
-
-	public void setPostId(String postId) {
-		this.postId = postId;
-	}
 
 	
+	public int getPostId() {
+		return postId;
+	}
+	public void setPostId(int postId) {
+		this.postId = postId;
+	}
 	public String getPostName() {
 		return postName;
 	}

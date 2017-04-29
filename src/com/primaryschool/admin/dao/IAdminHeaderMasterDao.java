@@ -26,4 +26,14 @@ public interface IAdminHeaderMasterDao<T> {
 	
 	/**保存**/
 	int  saveHeadMaster(T t);
+	
+	/**由职位获取职位id**/
+	
+	int findPostIdByPostName(String name);
+	
+	/**由id获取内容**/
+	T findHeadMasterById(int id);
+	
+	/**根据id修改信息**/
+	boolean updateHeadMasterInfo(T t);
 }

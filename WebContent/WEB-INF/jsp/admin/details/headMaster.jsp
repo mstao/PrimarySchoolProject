@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>撰写${typeName}</title>
+	<title>修改校长信息</title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -184,30 +184,31 @@
 
 	<!--S 编辑区域-->
 	<div class="edit-div"> 
-		<span class="edit-span">撰写校长信息</span><br><br>
+		<span class="edit-span">修改校长信息</span><br><br>
 		<label>姓名：</label>
-		<input type="text"  class="edit-input edit-com-name" placeholder="姓名">
+		<input type="text"  class="edit-input edit-com-name" placeholder="姓名" value="${headMaster.name}">
 		<br>
 		<label>邮箱：</label>
-		<input type="text" class="edit-input edit-com-email" placeholder="邮箱(保证可用)">
+		<input type="text" class="edit-input edit-com-email" placeholder="邮箱(保证可用)" value="${headMaster.email}">
 		<span class="content-span">上传照片</span><br>
 		<!--图片上传和展示信息  -->
 		<div class="image-div">
 		<span id="uploadify"></span>
 		<div id="fileQueue"></div> 
-		 <img alt="" src="" class="person-image" > 
+		 <img alt="" src="${headMaster.avatar}" class="person-image" > 
 		</div>
 		<br>
 		<label>职务：</label>
 		<select name="publish_style" id="post-check">
 		<c:forEach items="${post}" var="post_list">
-		    	<option value="${post_list.id}">${post_list.postName}</option>
+		    	
+		    	<option value="${post_list.id}" <c:if test="${post_list.id eq headMaster.postId}"> selected="true"</c:if> >${post_list.postName}</option>
 		    	
 		 </c:forEach>	
 		 </select><br><br>
         
         <label>具体工作：</label>
-		<input type="text" class="edit-input edit-com-work" placeholder="具体工作">
+		<input type="text" class="edit-input edit-com-work" placeholder="具体工作" value="${headMaster.work}">
 		
 	    <br>
 	    
@@ -215,7 +216,7 @@
 	    <input type="hidden" class="hidden-item-image" value="">
 	    
         <div class="edit-submit">
-        	<a href="javascript:void(0);" class="draft-btn draft-h-btn" onClick="ChangeState();">保存草稿</a><a href="javascript:void(0);" class="publish-btn publish-h-btn" onClick="ChangeState();">发布内容</a>
+        	<a href="javascript:void(0);" class="draft-btn draft-h-btn" >保存草稿</a><a href="javascript:void(0);" class="publish-btn publish-h-btn" >修改内容</a>
         </div>
 	</div>
 	<!--S 编辑区域-->
@@ -237,7 +238,7 @@
 		    <br>
 		    <span class="publish-dept-span">发布时间</span>
 		    <div id="date-div">
-		    <input type="text"  class="date_picker" value="">
+		    <input type="text"  class="date_picker" value="${headMaster.addTime}">
 		    </div>
 		     <span class="publish-dept-span">分类</span>
 		    <select name="publish_style" id="publish-style">
@@ -283,17 +284,23 @@ $(function(){
     $('.date_picker').val(currentdate);
     
     var ok_email=false;
+    var filter_email  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var email_str=$(".edit-com-email").val();
+    if(filter_email.test(email_str )){
+		ok_email=true;
+	}
     
     //验证邮箱
     $(".edit-com-email").bind("blur",function(){
-    	var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    	var str = $(this).val();
+    //	var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+    var str = $(this).val();
 		str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('邮箱不能为空', '.edit-com-email');
     		$(this).focus();
 		}else{
-			if(filter.test( $(this).val() )){
+			if(filter_email.test( $(this).val() )){
 				ok_email=true;
 			}else{
 				layer.tips('邮箱格式不正确', '.edit-com-email');
@@ -304,13 +311,14 @@ $(function(){
     
     /**********发布 **********/
     $(".publish-h-btn").bind("click",function(){
-    	
+   
     	var name=$(".edit-com-name").val();
     	var email=$(".edit-com-email").val();
-    	var avatar=$(".hidden-item-image").val();
+    	var avatar=$(".person-image").attr("src");
     	var post=$("#post-check").val();
     	var work=$(".edit-com-work").val();
     	var add_time=$(".date_picker").val();
+
     	var is_publish=1;
     	if(name.replace(/\s/g , '') !="" && ok_email==true && avatar!="" && post!="" && work.replace(/\s/g , '') !=""){
     	
@@ -318,8 +326,8 @@ $(function(){
     		$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/headMaster',
-				data:{"name":name,"email":email,"avatar":avatar,"postId":post,"work":work,"addTime":add_time,"isPublish":is_publish},
+				url:CTPPATH+'/admin/update/headMaster',
+				data:{"id":${headMaster.id},"name":name,"email":email,"avatar":avatar,"postId":post,"work":work,"addTime":add_time,"isPublish":is_publish},
 				beforeSend:function(){
 					//显示正在加载
 					layer.load(2);
@@ -355,62 +363,6 @@ $(function(){
     	
     	
     });
-    
-    
-    /************保存为草稿***********/
- $(".draft-h-btn").bind("click",function(){
-    	
-    	var name=$(".edit-com-name").val();
-    	var email=$(".edit-com-email").val();
-    	var avatar=$(".hidden-item-image").val();
-    	var post=$("#post-check").val();
-    	var work=$(".edit-com-work").val();
-    	var add_time=$(".date_picker").val();
-    	var is_publish=0;
-    	if(name.replace(/\s/g , '') !="" && ok_email==true && avatar!="" && post!="" && work.replace(/\s/g , '') !=""){
-    	
-    		
-    		$.ajax({
-				type:'post',
-				dataType:'text',
-				url:CTPPATH+'/admin/add/headMaster',
-				data:{"name":name,"email":email,"avatar":avatar,"postId":post,"work":work,"addTime":add_time,"isPublish":is_publish},
-				beforeSend:function(){
-					//显示正在加载
-					layer.load(2);
-				},
-				success:function(data){
-
-					//关闭正在加载
-					setTimeout(function(){
-						  layer.closeAll('loading');
-					}, 1000);
-		
-					 if(data>0){
-						layer.msg('保存草稿成功了', {icon: 1,time:2000});
-					
-						window.location.href=CTPPATH+"/admin/list/headMaster?p=1";
-
-					}else{
-						layer.msg("保存草稿出错了", {icon: 2,time:2000});
-					} 
-				},
-				error:function(){
-
-					//关闭正在加载
-					setTimeout(function(){
-						  layer.closeAll('loading');
-					}, 1000);
-					layer.msg("出错了", {icon: 2,time:2000});
-				}
-			});
-    	}else{
-    		layer.msg("内容未填写完成，请仔细核对信息再进行提交！");
-    	}
-    	
-    	
-    });
-    
     
 });
 

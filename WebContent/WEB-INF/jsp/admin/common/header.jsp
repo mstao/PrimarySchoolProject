@@ -37,31 +37,30 @@ $(function(){
                 
                <%--撰写，管理，设置，校园文化，校园动态只有管理可见  --%>   
                <shiro:hasRole name="superadmin">
-                 <li><a href="#">撰写</a>
+                 <li><a href="javascript:void(0);">撰写</a>
                  	<ul class="dropdown-menu follow">
 							<li><a href="edit.html" >小学新闻</a></li>
 							<li><a href="edit.html" >公告通知</a></li>		
 			                <li><a href="${pageContext.request.contextPath}/admin/write/indexImages" >首页轮播图</a></li>		
 					</ul>
                  </li>
-                 <li><a href="#">管理</a>
+                 <li><a href="javascript:void(0);">管理</a>
                  	<ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" >角色管理</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1" >角色分配</a></li>
 							<li><a href="#">用户管理</a></li>
-			                <li><a href="${pageContext.request.contextPath}/admin/list/indexImages">首页轮播图</a></li>
-					        <li><a href="${pageContext.request.contextPath}/admin/contact" >联系我们</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/copyright">版权声明</a></li>
+			                
 					</ul>
                  </li>
-                 <li><a href="#">设置</a>
+                 <li><a href="javascript:void(0);">设置</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/admin/list/trends?flag=news&p=1" >小学新闻</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/list/trends?flag=notice&p=1" >公告通知</a></li>		
+							<li><a href="${pageContext.request.contextPath}/admin/list/indexImages">首页轮播图</a></li>
+					        <li><a href="${pageContext.request.contextPath}/admin/contact" >联系我们</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/copyright">版权声明</a></li>
 			
 					</ul>
                  </li>
-                 <li><a href="#">${SCHOOL_CULTURE}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_CULTURE}</a>
                  	<ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=introduce&p=1">${SCHOOL_CULTURE_INTRODUCE}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/culture?flag=affairs&p=1">${SCHOOL_CULTURE_AFFAIRS}</a></li>
@@ -70,7 +69,7 @@ $(function(){
                  	
                  </li>
                  
-                 <li><a href="#">${SCHOOL_TRENDS}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_TRENDS}</a>
                  	<ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/list/trends?flag=news&p=1">${SCHOOL_TRENDS_NEWS}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/trends?flag=notice&p=1">${SCHOOL_TRENDS_NOTICE}</a></li>
@@ -80,7 +79,7 @@ $(function(){
           
            <%--阳光德育 只有  管理员  ，德育处可见  --%>  
            <shiro:hasAnyRoles name="superadmin,education">
-                 <li><a href="#">${SCHOOL_EDUCATION}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_EDUCATION}</a>
                  	  <ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=education&p=1">${SCHOOL_EDUCATION_MAIN}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/education?flag=speak&p=1">${SCHOOL_EDUCATION_SPEAK}</a></li>
@@ -91,7 +90,7 @@ $(function(){
                  </li>
            </shiro:hasAnyRoles>       
             <shiro:hasAnyRoles name="superadmin,education">
-                 <li><a href="#">${SCHOOL_STUDENT}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_STUDENT}</a>
                  	 <ul class="dropdown-menu follow">
 						
 						<%--学生天地中的  沐浴书香 ，活动风采 只有  管理员  ，德育处可见  --%>  	
@@ -110,7 +109,7 @@ $(function(){
             
             <%--教师园地  只有  管理员  ，教研组长，教导处  可见  --%>  
             <shiro:hasAnyRoles name="superadmin,supervisor,deanoffice">  
-                 <li><a href="#">${SCHOOL_TEACHER}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_TEACHER}</a>
                  	<ul class="dropdown-menu follow">
                  	   
                  	   <%--教学资源 只有  管理员  ，教研组长  可见  --%> 
@@ -130,7 +129,7 @@ $(function(){
               
              <%--党务工会 只有  管理员  可见  --%> 
              <shiro:hasRole name="superadmin">   
-                 <li><a href="#">${SCHOOL_PARTY}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_PARTY}</a>
                  	<ul class="dropdown-menu follow">
 							<li><a href="${pageContext.request.contextPath}/admin/list/party?flag=branch&p=1">${SCHOOL_PARTY_BRANCH}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/party?flag=trade_union&p=1">${SCHOOL_PARTY_TRADE_UNION}</a></li>
@@ -140,7 +139,7 @@ $(function(){
              
              <%--学校管理 只有  管理员 ，教导处，办公室  可见  --%> 
               <shiro:hasAnyRoles name="superadmin,deanoffice,office">   
-                 <li><a href="#">${SCHOOL_MANAGE}</a>
+                 <li><a href="javascript:void(0);">${SCHOOL_MANAGE}</a>
                  	<ul class="dropdown-menu follow">
                  	
                  	 <%--学校管理 只有  管理员 ，教导处 可见  --%> 

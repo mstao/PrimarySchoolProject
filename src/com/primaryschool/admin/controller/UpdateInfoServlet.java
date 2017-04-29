@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
+import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
@@ -25,6 +26,7 @@ import com.primaryschool.home.entity.ClassSynopsis;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.entity.HeadMaster;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
 import com.primaryschool.home.entity.Student;
@@ -83,6 +85,9 @@ public class UpdateInfoServlet<T> {
     
     @Autowired
     private ITypeFlagToTypeIdService typeFlagToTypeIdService; 
+    
+    @Autowired
+    private IAdminHeaderMasterService<T> headMasterService;
 	/**
 	 * @Title: updateCulture
 	 * @Description: TODO 更新校园文化数据
@@ -344,5 +349,29 @@ public class UpdateInfoServlet<T> {
 		}
 		return r+"";
 		
+	}
+	
+	/**
+	 * 
+	* @Title: headMaster
+	* @Description: TODO 校长
+	* @param @param headMaster
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/headMaster")
+	@ResponseBody
+	public String headMaster(HeadMaster headMaster){
+		int r;
+		boolean result=headMasterService.updateHeadMasterInfo((T) headMaster);
+		//返回结果
+		if(result==true){
+			r=1;
+		}else{
+			r=0;
+		}
+		return r+"";
 	}
 }
