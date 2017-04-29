@@ -257,7 +257,7 @@ public class LoginRegisterController<T> {
 	* @throws
 	 */
 	@RequestMapping("/ajaxLogin")
-	public void ajaxLogin(String userName,String password,HttpServletResponse response){
+	public void ajaxLogin(String userName,String password,HttpServletRequest request,HttpServletResponse response){
 		response.setCharacterEncoding("UTF-8");  
 		response.setContentType("application/json");
 		PrintWriter out=null;
@@ -272,6 +272,16 @@ public class LoginRegisterController<T> {
             	System.out.println("1. " + token.hashCode());
             	// 执行登录. 
                 currentUser.login(token);
+                
+        		Set<String> role= userService.getRoles(userName);
+        		
+                SecurityUser user=(SecurityUser) userService.getByUerName(userName);
+        		//获取uid
+        		int uid=user.getId();
+        		HttpSession session =request.getSession();
+        		//将用户信息保存到session 中
+                session.setAttribute("role", role);
+                session.setAttribute("uid", uid);
             } 
             // 所有认证时异常的父类. 
             catch (AuthenticationException ae) {

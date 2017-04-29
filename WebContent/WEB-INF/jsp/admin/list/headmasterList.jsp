@@ -44,7 +44,7 @@
       				$.ajax({
 						type:'post',
 						dataType:'json',
-						url:CTPPATH+"/admin/delete/${durl }",
+						url:CTPPATH+"/admin/delete/headMaster",
 						data:{"ids":ids},
 					
 						beforeSend:function(){
@@ -60,7 +60,7 @@
 							
 							if(data==1){
 								layer.msg('删除成功', {icon: 1,time:2000});
-								window.location.href="${pageContext.request.contextPath}/admin/list/${durl }?flag=${typeFlag}&p=1";
+								window.location.href="${pageContext.request.contextPath}/admin/list/headMaster?p=1";
 							
 							}else{
 								layer.msg("删除出错了", {icon: 2,time:2000});
@@ -93,7 +93,7 @@
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
 			<div id="location">您现在的位置: 后台管理 ><span>${typeName }</span></div>
-            <div class="new_div1"><span class="new_div1_span">${typeName }列表</span><a href="${CTP }/admin/write/${durl }?typeName=${typeName}&typeFlag=${typeFlag}&fileType=${fileType}" class="add_list">新增</a></div>
+            <div class="new_div1"><span class="new_div1_span">校长列表</span><a href="${CTP }/admin/write/headMaster" class="add_list">新增</a></div>
             <div class="new_div2">
             	
                 <input type="checkbox" class="new_div2_input"/>
@@ -118,19 +118,32 @@
                     <th>名称</th>
                     <th>职位</th>
                     <th>具体工作</th>
-                    <th>发布日期</th>
+              
                 </tr>
-                <c:forEach var="list" items="${item }">
-                <tr>
+                <c:forEach var="list" items="${headMaster }">
+                <tr id="bubblemenu">
                     <td width="5%" align="center"><input type="checkbox" name="info_id" value="${list.id}"/></td>
-                    <td width="20%"><a href="${CTP}/admin/distribute/${durl }?id=${list.id}" class="item_title">${list.itemTitle }</a>
+                    <td width="20%"><a href="${CTP}/admin/distribute/${durl }?id=${list.id}" class="item_title">${list.name }</a>
                      <c:if test="${list.isPublish eq 0}">
 		              <span class="draft-span">草稿</span>
 		             </c:if>
+		              <!--气泡悬浮显示图片信息  -->
+			           <span class="bubb-image">
+			            <c:choose>
+						 	<c:when test="${empty list.avatar}">
+						 	暂无图片信息
+						 	</c:when>
+						 	<c:otherwise>
+						 	<img title="${list.name}" src="${list.avatar}"/>
+						 	</c:otherwise>
+						 </c:choose>
+			           
+			           </span>
+		             
                     </td>
-                    <td width="20%"><a href="">${list.author }</a></td>
-                    <td width="35%"><a href="">${typeName }</a></td>
-                    <td width="20%">${list.addTime }</td>
+                    <td width="20%"><a href="">${list.postName }</a></td>
+                    <td width="35%"><a href="">${list.work }</a></td>
+                    
                 </tr>
                 </c:forEach>
             </table>

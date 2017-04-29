@@ -1,34 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>撰写${title}</title>
-        <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
+	<title>撰写${typeName}</title>
+		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<jsp:include page="../common/meta.jsp" flush="true"/>	
 		
+		<jsp:include page="../common/meta.jsp" flush="true"/>	
 		<link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/edit.css" rel="stylesheet" type="text/css" />
 		<link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />
+		
 		<link href="${CTP_ADMIN }/js/extends/uploadify/css/uploadify.css" rel="stylesheet" type="text/css"/>
-	    <link rel="stylesheet" href="${CTP}/resources/home/js/extends/zoomify/zoomify.min.css"/>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/lib/jquery-1.8.3.js"></script>
 	    <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/uploadify/js/jquery.uploadify.min.js" ></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/jquery.date_input.pack.js"></script> 
-	    <script type="text/javascript" src="${CTP}/resources/home/js/extends/zoomify/zoomify.min.js" ></script>
-	
 	
 <script type="text/javascript">
-
-    var CTPPATH="${pageContext.request.contextPath}";
-    var CTP_ADMIN=CTPPATH+"/resources/admin";
-    
-	function check(val,obj){
+	 var CTPPATH="${pageContext.request.contextPath}";
+	 var CTP_ADMIN=CTPPATH+"/resources/admin";
+	 
+	 function check(val,obj){
 		    obj.style.backgroundColor="#E9E9E6";
 			if(val=='f'){
 				    $('#f').css("visibility","visible");
@@ -40,10 +36,8 @@
 					fb.style.backgroundColor="#F6F6F3";
 		    }
 	}
-
 		
-	
-	$(function() {
+	 $(function() {
 		 /*************setting***************/  
         var definedData = [];   
         definedData.fileSizeLimit = "20MB";  //上传大小  
@@ -141,8 +135,9 @@
             	layer.msg(  file.name + ' 上传成功！  ' +
                         '  --data:' + data +
                         '  --response: ' + response,{icon: 1,time:5000});
+         
             	//将 图片信息写到图片展示 
-                $('.image-show').attr("src",data);
+                $('.person-image').attr("src",data);
             	//将图片路径写入隐藏域，后面还用
             	$('.hidden-item-image').val(data);
             	
@@ -178,12 +173,10 @@
     function clean(id){
     	$("#" + id).uploadify('cancel', '*');
     }
-	
 </script>
-	
 </head>
-<body>
-<!-- S header -->
+	<body>
+	<!-- S header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	
 	<!-- S body -->
@@ -191,23 +184,39 @@
 
 	<!--S 编辑区域-->
 	<div class="edit-div"> 
-	<br><br><br>
-       <center>
-		<span class="edit-span">上传${title }</span>
-
-		<span class="content-span">选择将要上传的图片(一次上传一张)</span><br>
-	<!--图片上传和展示信息  -->
+		<span class="edit-span">撰写校长信息</span><br><br>
+		<label>姓名：</label>
+		<input type="text"  class="edit-input edit-com-name" placeholder="姓名">
+		<br>
+		<label>邮箱：</label>
+		<input type="text" class="edit-input edit-com-email" placeholder="邮箱(保证可用)">
+		<span class="content-span">上传照片</span><br>
+		<!--图片上传和展示信息  -->
 		<div class="image-div">
 		<span id="uploadify"></span>
 		<div id="fileQueue"></div> 
-		<div class="img-zz">
-		 <img src="${CTP}/resources/home/img/noimage.gif" class="image-show"/> 
+		 <img alt="" src="" class="person-image" > 
 		</div>
-		</div>
-          
-       <input type="hidden"  class="hidden-item-image" value=""/>
-        <button class="submit">提交</button>
-       </center>
+		<br>
+		<label>职务：</label>
+		<select name="publish_style" id="post-check">
+		<c:forEach items="${post}" var="post_list">
+		    	<option value="${post_list.id}">${post_list.postName}</option>
+		    	
+		 </c:forEach>	
+		 </select><br><br>
+        
+        <label>具体工作：</label>
+		<input type="text" class="edit-input edit-com-work" placeholder="具体工作">
+		
+	    <br>
+	    
+	    <!-- 图片地址异常域 -->
+	    <input type="hidden" class="hidden-item-image" value="">
+	    
+        <div class="edit-submit">
+        	<a href="javascript:void(0);" class="draft-btn draft-h-btn" onClick="ChangeState();">保存草稿</a><a href="javascript:void(0);" class="publish-btn publish-h-btn" onClick="ChangeState();">发布内容</a>
+        </div>
 	</div>
 	<!--S 编辑区域-->
 	
@@ -230,11 +239,15 @@
 		    <div id="date-div">
 		    <input type="text"  class="date_picker" value="">
 		    </div>
-	
+		     <span class="publish-dept-span">分类</span>
+		    <select name="publish_style" id="publish-style">
+		    	<option >校长信息</option>
+		    
+		    </select>
 		</div>
 		<div class="draft-cheched-div" id="f">
-		<br>
 			<span class="draft-cheched-tag">*不支持附件上传</span>
+		 
 		    
 		</div>
 	</div>
@@ -246,19 +259,15 @@
 </div>
 <!--E main-->
 <!--S footer-->
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp"></jsp:include>
 <!--E footer-->
-</body>
+	</body>
 </html>
-<script type="text/javascript">
-$(function(){
-	/***日历***/
-	$('.date_picker').date_input();
 
-	$(".img-zz img").zoomify();
+<script type="text/javascript">
+
+$('.date_picker').date_input();
+$(function(){
 	
 	var date = new Date();
     var seperator1 = "-";
@@ -271,52 +280,50 @@ $(function(){
         strDate = "0" + strDate;
     }
     var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
-	
-    $(".date_picker").val(currentdate);
-	/****将图片信息保存到数据库***/
-	
-	$(".submit").bind("click",function(){
-		
-		var imgurl=$(".hidden-item-image").val();
-		var date=$(".date_picker").val();
-		if(imgurl==""){
-			layer.msg("请选择图片上传！！");
+    $('.date_picker').val(currentdate);
+    
+    var ok_email=false;
+    
+    //验证邮箱
+    $(".edit-com-email").bind("blur",function(){
+    	var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    	var str = $(this).val();
+		str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+		if( $(this).val() == "" || $(this).val==null ){
+			layer.tips('邮箱不能为空', '.edit-com-email');
+    		$(this).focus();
 		}else{
-			$.ajax({
-				type:'post',
-				dataType:'text',
-				url:CTPPATH+'/admin/add/${url}',
-				data:{"imgPath":imgurl,"addTime":date},
+			if(filter.test( $(this).val() )){
+				ok_email=true;
+			}else{
+				layer.tips('邮箱格式不正确', '.edit-com-email');
+			}
 			
-				beforeSend:function(){
-					//显示正在加载
-					layer.load(2);
-				},
-				success:function(data){
-
-					//关闭正在加载
-					setTimeout(function(){
-						  layer.closeAll('loading');
-					}, 1000);
-		            if(data>0){
-		            	layer.msg("添加成功");
-		            }else{
-		            	layer.msg("添加失败")
-		            }
-					
-				},
-				error:function(){
-
-					//关闭正在加载
-					setTimeout(function(){
-						  layer.closeAll('loading');
-					}, 1000);
-					layer.msg("出错了", {icon: 2,time:2000});
-				}
-			});
 		}
-		
-	});
-	
-})
+    });
+    
+    /**********发布 **********/
+    $(".publish-h-btn").bind("click",function(){
+    	
+    	var name=$(".edit-com-name").val();
+    	var email=$(".edit-com-email").val();
+    	var avatar=$(".hidden-item-image").val();
+    	var post=$(".post-check").val();
+    	var work=$(".edit-com-work").val();
+    	
+    	if(name.replace(/\s/g , '') !="" && ok_email==true && avatar!="" && post!="" && work.replace(/\s/g , '') !=""){
+    	
+    		$.ajax({
+        		
+        		
+        	});
+    	}else{
+    		layer.msg("内容未填写完成，请仔细核对信息再进行提交！");
+    	}
+    	
+    	
+    });
+    
+});
+
 </script>

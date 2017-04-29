@@ -8,11 +8,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.primaryschool.admin.service.IAdminDepartmentService;
+import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminSclassService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
 import com.primaryschool.home.entity.ClassHomePageType;
 import com.primaryschool.home.entity.DepartmentLinkContentType;
+import com.primaryschool.home.entity.HeadMasterPost;
 import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.TeachingResourcesContentType;
 
@@ -41,7 +43,8 @@ public class AdminShowWritePageController<T> {
 	@Autowired
 	private IAdminDepartmentService<T> departmentService;
 	
-
+	@Autowired
+	private IAdminHeaderMasterService<T> headMasterService;
 	
 	/**
 	 * 
@@ -277,5 +280,24 @@ public class AdminShowWritePageController<T> {
 		map.put("labId", classId);
 		map.put("className", className);
 		return "admin/write/labClassWrite";
+	}
+	
+	/**
+	 * 
+	* @Title: headMaster
+	* @Description: TODO 获取校长职位
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/headMaster")
+	public String headMaster(ModelMap map){
+		
+		ArrayList<HeadMasterPost> post=(ArrayList<HeadMasterPost>) headMasterService.findHeadMasterPost();
+		
+		map.put("post", post);
+		return "admin/write/headMaster";
 	}
 }

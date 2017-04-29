@@ -153,7 +153,7 @@ $(function(){
 	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=recommendation&p=1">${SCHOOL_MANAGE_RECOMMENDATION}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=notice&p=1">${SCHOOL_MANAGE_NOTICE}</a></li>
 	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=rules&p=1">${SCHOOL_MANAGE_RULES}</a></li>
-	                        <li><a href="${pageContext.request.contextPath}/admin/list/manage?flag=email&p=1">${SCHOOL_MANAGE_EMAIL}</a></li>
+	                        <li><a href="${pageContext.request.contextPath}/admin/list/headMaster?p=1">${SCHOOL_MANAGE_EMAIL}</a></li>
 					  </shiro:hasAnyRoles>
 					</ul>
                  </li>

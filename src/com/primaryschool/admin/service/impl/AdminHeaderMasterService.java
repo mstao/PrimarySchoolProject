@@ -29,4 +29,22 @@ public class AdminHeaderMasterService<T> implements IAdminHeaderMasterService<T>
 		return headerMasterDao.findHeaderMasterInfo(position, item_per_page);
 	}
 
+	@Override
+	public int findHeadMasterCount() {
+		// TODO Auto-generated method stub
+		return headerMasterDao.findHeadMasterCount();
+	}
+
+	@Override
+	public void deleteHeadMasterById(List<?> ids) {
+		// TODO Auto-generated method stub
+		headerMasterDao.deleteHeadMasterById(ids);
+	}
+
+	@Override
+	public List<T> findHeadMasterPost() {
+		// TODO Auto-generated method stub
+		return headerMasterDao.findHeadMasterPost();
+	}
+
 }

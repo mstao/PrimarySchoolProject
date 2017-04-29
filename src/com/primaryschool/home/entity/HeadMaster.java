@@ -1,5 +1,7 @@
 package com.primaryschool.home.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,10 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name="ps_headmaster")
-public class HeadMaster {
+public class HeadMaster implements Serializable{
+
+
+	private static final long serialVersionUID = -1068706922180452937L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,11 +47,17 @@ public class HeadMaster {
 	@Column(name="post_id")
 	private String postId;
 
+	@Column(name="is_publish")
+	private int isPublish;
+	
+	@Column(name="addTime")
+	private String addTime;
+	
 	@Transient
 	private String postName;
 	
 	public HeadMaster(){}
-	public HeadMaster(int id,String name,String work,String email,String avatar,String postName){
+	public HeadMaster(int id,String name,String work,String email,String avatar,String postName,int isPublish){
 		super();
 		this.id=id;
 		this.name=name;
@@ -54,6 +65,7 @@ public class HeadMaster {
 		this.email=email;
 		this.avatar=avatar;
 		this.postName=postName;
+		this.isPublish=isPublish;
 	}
 	
 	public int getId() {
@@ -114,6 +126,19 @@ public class HeadMaster {
 
 	public void setPostName(String postName) {
 		this.postName = postName;
+	}
+	
+	public int getIsPublish() {
+		return isPublish;
+	}
+	public void setIsPublish(int isPublish) {
+		this.isPublish = isPublish;
+	}
+	public String getAddTime() {
+		return addTime;
+	}
+	public void setAddTime(String addTime) {
+		this.addTime = addTime;
 	}
 
 

@@ -81,7 +81,7 @@ $(function(){
     	var str = $(this).val();
 		str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
 		if( $(this).val() == "" || $(this).val==null ){
-			layer.tips('用户名不能为空', '#email');
+			layer.tips('邮箱不能为空', '#email');
     		$(this).focus();
 		}else{
 			if(filter.test( $(this).val() )){

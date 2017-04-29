@@ -32,6 +32,7 @@ import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.DepartmentLinkNameList;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Grade;
+import com.primaryschool.home.entity.HeadMaster;
 import com.primaryschool.home.entity.IndexImages;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
@@ -759,25 +760,27 @@ public class ListInfoController<T> {
  	   return "admin/list/labClassList";
     }
    	
-   	@RequestMapping("/headerMaster")
-   	public String HeaderMasterInfo(int p){
+   	@SuppressWarnings("unchecked")
+	@RequestMapping("/headMaster")
+   	public String HeaderMasterInfo(int p,ModelMap map){
    	   String sp=p+"";
 	   if(sp.equals("")){
 			p=1;
 	   }
-	   //查看详细信息url
-	   String durl="department";
-		
-	   //当前的url
-	   String url="./department?deptId='"+deptId+"'&p=";
 	   
-	   //文件上传类型
-	   String fileType="fmanage";
-		
+	   //当前的url
+	   String url="./department?p=";
+	   		
 	   //获取总记录量
-	   int count=departmentService.findDepartmentContentCount(deptId);
+	   int count=headerMasterService.findHeadMasterCount();
 	   //计算偏移量
 	   int position=(p-1)*pageSize;
-   		ArrayList<> headerMaster=headerMasterService.findHeaderMasterInfo(position, item_per_page);
+   	   ArrayList<HeadMaster> headMaster=(ArrayList<HeadMaster>) headerMasterService.findHeaderMasterInfo(position, pageSize);
+       //获取封装好的分页导航数据
+       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);	
+   	   map.put("headMaster", headMaster);
+   	   map.put("toolBar", toolBar);
+   	   return "admin/list/headmasterList";
+   	   
    	}
 }

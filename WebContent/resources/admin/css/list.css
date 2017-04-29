@@ -357,3 +357,58 @@
 	cursor: pointer;
     margin:5px 10px;
 }
+
+/* 气泡 */
+#bubblemenu td{
+	cursor:pointer;
+}			            
+#bubblemenu td > .bubb-image {
+    width: 150px;
+    white-space:normal;
+    min-height: 100px;
+	position: absolute;
+    display: inline;
+    margin-left: 50px; 
+    padding: 5px;
+	visibility:hidden;
+    opacity: 0;
+    margin-top: -125px;
+	background: #ffffff;
+	font-size:1em;
+				
+	/* Setting the border-radius property for all Browsers */
+    -moz-border-radius: 5px; /* Firefox */
+    -webkit-border-radius: 5px; /* Safari and Chrome */
+    border-radius: 5px; /* Browsers that Support it like Opera */
+				
+	/* Setting the box-shadow property for all Browsers */
+    -moz-box-shadow: 0 0 8px gray; /* Firefox */
+    -webkit-box-shadow: 0 0 8px gray; /* Safari and Chrome */
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#272229', Direction=135, Strength=3); /* IE */
+    box-shadow: 0 0 8px gray; /* Browsers that Support it like Opera */
+
+	/* Setting the transition property for all Browsers */
+	-moz-transition: all 0.5s ease-in-out; /* Firefox */
+    -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+    -o-transition: all 0.5s ease-in-out; /* Opera */
+    transition: all 0.5s ease-in-out; /* Browsers that Support it */
+
+				
+}          			
+#bubblemenu td:hover > .bubb-image{
+	white-space:normal;
+	visibility:visible;
+	/* ��͸���� */
+    opacity: 1;
+    margin-top: -120px;				
+	/* Setting the transition property for all Browsers */
+	-moz-transition: all 0.5s ease-in-out; /* Firefox */
+    -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
+    -o-transition: all 0.5s ease-in-out;  /* Opera */
+    transition: all 0.5s ease-in-out; /* Browsers that Support it */
+    
+}
+.bubb-image img{
+	width:150px;
+	height:180px;
+}

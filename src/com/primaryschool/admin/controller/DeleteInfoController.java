@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
+import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminIndexImagesService;
 import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
@@ -85,6 +86,8 @@ public class DeleteInfoController<T> {
     @Autowired
     private IAdminSclassService<T> sclassService;
     
+    @Autowired
+    private IAdminHeaderMasterService<T> headMasterService;
 	
 	/**
 	 * 
@@ -562,6 +565,28 @@ public class DeleteInfoController<T> {
 			return "0";
 		}
         
+	}
+	
+	@RequestMapping("/headMaster")
+	@ResponseBody
+	public String headMaster(String ids){
+		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        headMasterService.deleteHeadMasterById(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			return "0";
+		}
 	}
 	
 }

@@ -16,5 +16,14 @@ public interface IAdminHeaderMasterDao<T> {
     List<T> findHeaderMasterInfo(int position,int item_per_page);
     
     /**获取统计总数**/ 
-	int findPartyCount();  
+	int findHeadMasterCount();  
+	
+	/**删除信息**/
+	void deleteHeadMasterById(List<?> ids);
+
+	/**获取职位**/
+	List<T> findHeadMasterPost();
+	
+	/**保存**/
+	int  saveHeadMaster(T t);
 }
