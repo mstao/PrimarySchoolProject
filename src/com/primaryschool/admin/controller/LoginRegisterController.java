@@ -42,34 +42,7 @@ public class LoginRegisterController<T> {
 	private IUserService<T> userService;
 	
 	
-	/**
-	 * 
-	* @Title: showLogin
-	* @Description: TODO  学生报名登录 显示
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	@RequestMapping("/showStuLogin")
-	public String showStudentLogin(){
-		
-		
-		return "admin/loginOrregister/student-login";
-	}
 	
-	
-	/**
-	 * 
-	* @Title: showStudentRegister
-	* @Description: TODO 学生注册 显示
-	* @param @return    设定文件
-	* @return String    返回类型
-	* @throws
-	 */
-	@RequestMapping("/showStuRegister")
-	public String showStudentRegister(){
-		return "admin/loginOrregister/student-register";
-	}
 	
 	/**
 	 * 

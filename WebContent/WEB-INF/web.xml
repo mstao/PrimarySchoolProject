@@ -140,4 +140,27 @@
 	    <error-code>404</error-code>
 	    <location>/resources/view/404.jsp</location>
     </error-page>
+    
+    <!-- 报名过滤器 -->
+     <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>com.primaryschool.apply.filter.LoginFilter</filter-class>
+    <init-param>
+      <param-name>LOGIN_CARD_CODE</param-name>
+      <param-value>cardCode</param-value>
+    </init-param>
+    <init-param>
+      <param-name>SHOW_LOGIN_PATH</param-name>
+      <param-value>/apply/show/stuLogin</param-value>
+    </init-param>
+  
+  </filter>
+
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/apply/index/*</url-pattern>
+  </filter-mapping>
+
+  
+  
 </web-app>
