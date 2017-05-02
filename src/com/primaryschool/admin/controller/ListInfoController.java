@@ -760,6 +760,16 @@ public class ListInfoController<T> {
  	   return "admin/list/labClassList";
     }
    	
+   	/**
+   	 * 
+   	* @Title: HeaderMasterInfo
+   	* @Description: TODO 校长列表
+   	* @param @param p
+   	* @param @param map
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/headMaster")
    	public String HeaderMasterInfo(int p,ModelMap map){
@@ -783,4 +793,18 @@ public class ListInfoController<T> {
    	   return "admin/list/headmasterList";
    	   
    	}
+   	
+   	/**
+   	 * 
+   	* @Title: applyList
+   	* @Description: TODO 报名列表
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
+   	
+   	@RequestMapping("/apply")
+    public String applyList(){
+    	return "admin/list/applyList";
+    }
 }
