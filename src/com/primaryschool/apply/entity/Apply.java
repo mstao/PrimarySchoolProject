@@ -63,12 +63,31 @@ public class Apply implements Serializable{
 	private String motherPhone;
 	
 	@Column(name="status")
-	private String status;
+	private int status;
 
 	@Column(name="uid")
 	@Index(name = "idx_sys_apply_uid")
 	private int uid;
 	
+	@Column(name="add_time")
+	private String addTime;
+	
+	@Column(name="reason")
+	private String reason;
+	
+	@Column(name="date_id")
+	private int dateId;
+	
+	public Apply() {
+		super();
+	}
+
+	public Apply(int id,String stuIdNum) {
+		super();
+		this.id=id;
+		this.stuIdNum = stuIdNum;
+	}
+
 	public String getStuName() {
 		return stuName;
 	}
@@ -173,11 +192,11 @@ public class Apply implements Serializable{
 		this.motherPhone = motherPhone;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
@@ -196,6 +215,32 @@ public class Apply implements Serializable{
 	public void setUid(int uid) {
 		this.uid = uid;
 	}
+
+	public String getAddTime() {
+		return addTime;
+	}
+
+	public void setAddTime(String addTime) {
+		this.addTime = addTime;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public int getDateId() {
+		return dateId;
+	}
+
+	public void setDateId(int dateId) {
+		this.dateId = dateId;
+	}
+
+
 	
 	
 	

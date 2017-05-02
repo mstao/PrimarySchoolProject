@@ -20,12 +20,17 @@
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
 <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
+<script type="text/javascript">
+var CTPPATH="${pageContext.request.contextPath}";
+
+</script>
 
 <script type="text/javascript">
 $(function(){
 	/****校验学生信息***/
 	var ok_stu_name=false;
 	var ok_stu_nation=false;
+	var ok_stu_sex=false;
 	var ok_stu_card=false;
 	var ok_stu_address=false;
 	var ok_stu_register=false;
@@ -99,6 +104,8 @@ $(function(){
 	
    //校验身份证
    $(".tab-basicMes-idnum-input").bind("blur",function(){
+	  
+	   var mythis=$(this);
 	   var str = $(this).val();
 		str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
 	   	if( str ==""|| str==null ){
@@ -107,9 +114,50 @@ $(function(){
 				
 		}else{
 			layer.tips(CheckIdCard(str), $(this));
-			if(!CheckIdCard(str).match("Error")){
-				ok_stu_card=true;
-			}
+			if(CheckIdCard(str).match("Error") ==null){
+ 				
+ 				//ok_card=true;
+ 				//检测身份证是否被注册
+ 				//start
+				$.ajax({
+					type:'post',
+					dataType:'json',
+					url:CTPPATH+"/apply/index/checkCard",
+					data:{"card":str},
+				
+					beforeSend:function(){
+						//显示正在加载
+						layer.load(1,{offset: 0,time:2000});
+					},
+					success:function(data){
+	
+						//关闭正在加载
+						setTimeout(function(){
+							  layer.closeAll('loading');
+						}, 1000);
+						
+						//代表用户名可用
+						if(data==1){
+							layer.tips('恭喜！身份证可以被注册', mythis);
+							ok_stu_card=true;
+						}else if(data==0){
+							//代表用户名不可用
+							layer.tips('*抱歉，身份证已被使用', mythis);
+							$(this).focus();
+						}
+					},
+					error:function(){
+	
+						//关闭正在加载
+						setTimeout(function(){
+							  layer.closeAll('loading');
+						}, 1000);
+						layer.msg("出错了", {icon: 2,time:2000});
+					}
+				});
+				
+				//end
+ 			}
 		}
    });
    
@@ -188,20 +236,110 @@ $(function(){
 				}
 			}
 	});
+	
+	$(".submit-btn").bind("click",function(){
+		var stu_name=$(".tab-basicMes-stuname-input").val();
+		var stu_nation=$(".tab-basicMes-nation-input").val();
+		var stu_sex=$("input[type='radio']:checked").val();
+		var stu_card=$(".tab-basicMes-idnum-input").val();
+		var original_school=$(".tab-basicMes-originalsch-input").val();
+		var stu_address=$(".tab-basicMes-address-input").val();
+		var stu_register=$(".tab-basicMes-register-input").val();
+		
+		//监护人
+		var father_name=$(".tab-guardianMes-father-name-input").val();
+		var father_card=$(".tab-guardianMes-father-idnum-input").val();
+		var father_phone=$(".tab-guardianMes-father-phonenum-input").val();
+		
+		var mother_name=$(".tab-guardianMes-mother-name-input").val();
+		var mother_card=$(".tab-guardianMes-mother-idnum-input").val();
+		var mother_phone=$(".tab-guardianMes-mother-phonenum-input").val();
+		
+		if(stu_sex!=null){
+			ok_stu_sex=true;
+		}
+        
+		
+		if(ok_stu_name==true && ok_stu_nation==true && ok_stu_sex==true && ok_stu_card==true && ok_stu_address==true && ok_stu_register==true && ok_father_name==true && ok_father_card==true && ok_mother_name==true && ok_mother_card==true){
+			
+			//注册
+			//start
+			 //注册
+    		$.ajax({
+				type:'post',
+				dataType:'json',
+				url:CTPPATH+"/apply/index/saveApplyInfo",
+				data:{"uid":"${uid}","stuName":stu_name,"stuNation":stu_nation,"stuSex":stu_sex,"stuIdNum":stu_card,"originalSchool":original_school,"address":stu_address,"register":stu_register,"fatherName":father_name,"fatherIdNum":father_card,"fatherPhone":father_phone,"motherName":mother_name,"motherIdNum":mother_card,"motherPhone":mother_phone},
+			
+				beforeSend:function(){
+					//显示正在加载
+					layer.msg('正在报名',{offset: 0,time:2000});
+				},
+				success:function(data){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000);
+					
+					//代表用户名可用
+					if(data>0){
+						layer.msg('恭喜！登录成功',{time:4000});
+						window.location.href=CTPPATH+"/apply/index/status?id="+data;
+					}else if(data==0){
+						//代表用户名不可用
+						layer.msg('*抱歉，登录失败，用户名或者密码错误！',{time:4000});
+						
+					}
+				},
+				error:function(){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000);
+					layer.msg("出错了", {icon: 2,time:2000});
+				}
+			});
+			
+        }else{
+        	layer.msg("*用户信息验证失败，请仔细核对无误后进行提交！");
+        }
+    	
+    });
+			
+			
+
 });
 </script>
 
 </head>
 <body>
 <%--引入header --%>
-
+<script type="text/javascript">
+<!--
+$(function(){
+	//退出系统处理
+	$('.logout').bind('click',function(){
+		layer.confirm('是否退出报名系统？', {
+			  btn: ['退出','取消'] 
+			}, function(){
+				window.location.href="${pageContext.request.contextPath}/apply/show/stuLogin";
+			}, function(){
+			  
+			});
+	});
+});
+//-->
+</script>
 <jsp:include page="../home/common/header.jsp"></jsp:include>
 
 <!-- 主体 -->
 <div class="navi-info">
 <img alt="" src="${CTP_APPLY}/img/navi.png">
 <a href="${CTP}/apply/index/message">新生报名</a>
-<a href="${CTP}/apply/index/status">报名进度</a>
+<span class="time">报名时间:<b>2016年  9月2日-2016年 9月30日</b></span>
+<a href="javascript:void(0);" class="logout">退出报名</a>
 </div>
 <!--描述：需要填写的报名内容主要包括学生基本信息，监护人基本信息-->
 		<div class="applybody-content-tab">
@@ -258,7 +396,7 @@ $(function(){
 			</div>
 			<div class="tab-message">填写注意：带<img src="${CTP_APPLY}/img/RequireField.png"/>为必填选项，请认真填写，检查无误后再提交，一经提交无法修改。</div>
 			<div class="applybody-content-tab-submit">
-				<a href="javascript:void(0);">提交报名</a>
+				<a href="javascript:void(0);" class="submit-btn">提交报名</a>
 			</div>
 	</div>
 

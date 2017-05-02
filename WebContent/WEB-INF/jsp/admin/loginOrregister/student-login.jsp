@@ -193,14 +193,20 @@ $(function(){
 							  layer.closeAll('loading');
 						}, 1000);
 						
-						//代表用户名可用
-						if(data==1){
-							layer.msg('恭喜！登录成功',{time:4000});
-							window.location.href=CTPPATH+"/apply/index/message";
-						}else if(data==0){
-							//代表用户名不可用
+						//代表用户名不可用
+						 if(data==0){
+							
 							layer.msg('*抱歉，登录失败，用户名或者密码错误！',{time:4000});
 							
+						}else{
+							//代表用户名可用
+							layer.msg('恭喜！登录成功',{time:4000});
+							if(data==1){
+								window.location.href=CTPPATH+"/apply/index/message?uid="+data;
+							}else{
+								var id=data.substring(1);
+								window.location.href=CTPPATH+"/apply/index/status?id="+id;
+							}
 						}
 					},
 					error:function(){

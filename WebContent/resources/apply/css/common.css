@@ -21,3 +21,13 @@
 	border-radius: 3px;
 	margin-left:10px;
 }
+.navi-info .time{
+	display:inline-block;
+	color:#444444;
+    margin-left:300px;
+}
+.logout{
+	float:right;
+	position: relative;
+	top:10px;
+}

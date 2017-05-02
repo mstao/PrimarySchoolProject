@@ -1,5 +1,6 @@
 package com.primaryschool.apply.controller;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -8,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.apply.entity.Apply;
 import com.primaryschool.apply.entity.ApplyUser;
+import com.primaryschool.apply.service.IApplyService;
 import com.primaryschool.apply.service.IApplyUserService;
 import com.primaryschool.global.util.CrypographyUtil;
 import com.primaryschool.global.util.GetDateUtil;
@@ -29,6 +32,8 @@ public class ApplyLoginReigsterController<T> {
 	@Autowired
 	private IApplyUserService<T> userService;
 	
+	@Autowired
+	private IApplyService<T> applyService;
 	/**
 	 * 
 	* @Title: checkUser
@@ -61,6 +66,7 @@ public class ApplyLoginReigsterController<T> {
 	@RequestMapping("/saveUser")
 	@ResponseBody
 	public String saveUser(ApplyUser user){
+		int uid=0;
 		try{
 			//获取当前时间
 			String c_data=GetDateUtil.getData();
@@ -75,9 +81,9 @@ public class ApplyLoginReigsterController<T> {
 			
 			user.setPassword(object.toString());
 
-			userService.saveUser((T) user);
+			uid=userService.saveUser((T) user);
 			
-			return "1";
+			return uid+"";
 		}catch(RuntimeException e){
 			e.printStackTrace();
 			return "0";
@@ -97,23 +103,42 @@ public class ApplyLoginReigsterController<T> {
 	@RequestMapping("/login")
 	@ResponseBody
 	public  String login(String userName,String cardCode,String password,HttpServletRequest request){
-		String MD5Pw="";	
+		String MD5Pw="";
+		String result="";
 		Object object=CrypographyUtil.MD5(userName, password, userName);
 		MD5Pw=object.toString();
 		System.out.println("pw--"+MD5Pw);
 		ApplyUser user=(ApplyUser) userService.findUserByCardPassword(cardCode, MD5Pw);
 		
 		if(user==null){
-			return "0";
+			result="0";
 		}else{
 			//保存session
 			HttpSession session=request.getSession();
 			session.setAttribute("cardCode", cardCode);
 			//设置最大session保存时间，时间为秒
   		    session.setMaxInactiveInterval(60*60*24*1);//一天
-			return "1";
-		}
+  		    //判断用户状态
+  		    Apply apply=(Apply) applyService.findApplyCardCodeByUserCardCode(cardCode);
 			
+			int uid=user.getId();
+  		    if(apply==null){
+  		    	result=uid+"";
+  		    }else{
+  		    	int id=apply.getId();
+  		    	System.out.println("id"+id);
+  		    	result="i"+id;
+  		    }
+		}
+		return result;	
 		
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpServletRequest request){
+		//进入登录页面，即将session信息清空
+		HttpSession session=request.getSession();
+		session.removeAttribute("cardCode");
+		return "redirect:/main/index";
 	}
 }
