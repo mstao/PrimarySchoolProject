@@ -82,12 +82,38 @@ public class Apply implements Serializable{
 		super();
 	}
 
+	/**通过id找身份证号**/
 	public Apply(int id,String stuIdNum) {
 		super();
 		this.id=id;
 		this.stuIdNum = stuIdNum;
 	}
 
+	/**后台获取列表**/
+	/**
+	 * 
+	* <p>Title: </p>
+	* <p>Description:  </p>
+	* @param id
+	* @param stuName
+	* @param stuSex
+	* @param stuNation
+	* @param stuIdNum
+	* @param addTime
+	* @param status
+	 */
+	public Apply(int id, String stuName, String stuSex, String stuNation, String stuIdNum, String addTime,int status) {
+		super();
+		this.id = id;
+		this.stuName = stuName;
+		this.stuSex = stuSex;
+		this.stuNation = stuNation;
+		this.stuIdNum = stuIdNum;
+		this.addTime = addTime;
+		this.status=status;
+	}
+	
+	
 	public String getStuName() {
 		return stuName;
 	}

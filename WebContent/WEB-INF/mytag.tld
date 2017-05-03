@@ -11,7 +11,7 @@
          <name>substr</name>     
          <function-class>com.primaryschool.global.util.UFunction</function-class>     
          <function-signature>     
-             java.lang.String substr(java.lang.String,int,int)     
+             java.lang.String substr(java.lang.String,int,int,boolean)     
          </function-signature>     
      </function>     
     
@@ -24,4 +24,13 @@
          </function-signature>     
      </function>    
    
+     <function>
+         <description>dateToString</description>     
+         <name>dateToString</name>     
+         <function-class>com.primaryschool.global.util.UFunction</function-class>     
+         <function-signature>     
+             java.lang.String dateToString(java.lang.String)     
+         </function-signature>   
+     
+     </function>
 </taglib>   

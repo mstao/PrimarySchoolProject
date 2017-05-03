@@ -1,5 +1,7 @@
 package com.primaryschool.apply.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,6 +51,30 @@ public class ApplyService<T> implements IApplyService<T> {
 	public int findDateIdByYear(int year) {
 		// TODO Auto-generated method stub
 		return applyDao.findDateIdByYear(year);
+	}
+
+	@Override
+	public T findDateInfoByYear(int year) {
+		// TODO Auto-generated method stub
+		return applyDao.findDateInfoByYear(year);
+	}
+
+	@Override
+	public int findApplyCountByYear(int year) {
+		// TODO Auto-generated method stub
+		return applyDao.findApplyCountByYear(year);
+	}
+
+	@Override
+	public List<T> findApplyInfoByYear(int year, int position, int item_per_page) {
+		// TODO Auto-generated method stub
+		return applyDao.findApplyInfoByYear(year, position, item_per_page);
+	}
+
+	@Override
+	public boolean updateApplyStatus(int id, int statusValue) {
+		// TODO Auto-generated method stub
+		return applyDao.updateApplyStatus(id, statusValue);
 	}
 
 	

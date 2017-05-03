@@ -1,6 +1,8 @@
 package com.primaryschool.apply.dao.impl;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -73,6 +75,54 @@ public class ApplyDao<T> implements IApplyDao<T> {
 		query.setInteger(0, year);
 		ApplyDate date= (ApplyDate) query.uniqueResult();
 		return date.getId();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findDateInfoByYear(int year) {
+		// TODO Auto-generated method stub
+		String hql="from ApplyDate where year=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, year);
+		return (T) query.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findApplyInfoByYear(int year,int position,int item_per_page) {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, year);
+		return query.list();
+	}
+
+	@Override
+	public int findApplyCountByYear(int year) {
+		// TODO Auto-generated method stub
+		BigInteger count;
+		int r;
+		//将年份换成id
+		int dateId=this.findDateIdByYear(year);
+		String sql="select count(CASE WHEN t.date_id=?  THEN 1 ELSE NULL END) from ps_apply t";
+		Query query  = sessionFactory.getCurrentSession().createSQLQuery(sql); 
+		query.setInteger(0,dateId);
+		count= (BigInteger) query.uniqueResult();
+		r=count.intValue();
+		return r;
+	}
+
+	/**
+	 * 根据id更改状态值
+	 */
+	@Override
+	public boolean updateApplyStatus(int id,int statusValue) {
+		// TODO Auto-generated method stub
+		String hql="update Apply a set a.status=? where a.id=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, statusValue);
+		query.setInteger(1, id);
+		return query.executeUpdate()>0;
 	}
 
 }

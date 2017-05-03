@@ -1,0 +1,142 @@
+package com.primaryschool.admin.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSON;
+import com.primaryschool.apply.entity.Apply;
+import com.primaryschool.apply.entity.ApplyDate;
+import com.primaryschool.apply.service.IApplyService;
+import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.global.util.GetDateUtil;
+import com.primaryschool.home.entity.Education;
+import com.primaryschool.home.service.IPageHelperService;
+
+/**
+ * 
+* @ClassName: AdminApplyController
+* @Description: TODO 报名后台处理   ---独立出来
+* @author Mingshan
+* @date 2017年5月3日 下午5:19:49
+*
+ */
+
+@Controller
+@RequestMapping("/admin/apply")
+public class AdminApplyController<T> {
+
+	 //在线报名
+    @Autowired
+    private IApplyService<T> applyService;
+    
+    @Autowired
+    private IPageHelperService pageHelperService;
+    
+    private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
+    
+ 	/**
+   	 * 
+   	* @Title: applyList
+   	* @Description: TODO 报名列表
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
+   	
+   	@SuppressWarnings("unchecked")
+	@RequestMapping("/listAll")
+    public String applyList(int p,ModelMap map){
+   		//获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
+		
+		//根据年份找到报名日期信息		
+		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
+		
+		String sp=p+"";
+	    if(sp.equals("")){
+			p=1;
+	    }
+	   
+	    //当前的url
+	    String url="./apply?p=";
+		
+	    //获取总记录量
+		int count=applyService.findApplyCountByYear(year);
+		//计算偏移量
+		int position=(p-1)*pageSize;
+		//根据年份获取所有的报名信息
+		ArrayList<Apply> apply=(ArrayList<Apply>) applyService.findApplyInfoByYear(year, position, pageSize);
+		
+	    //获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);	
+   	    map.put("apply", apply);
+   	    map.put("toolBar", toolBar);
+		map.put("dateInfo", dateInfo);
+    	return "admin/list/applyList";
+    }
+   	
+   	/**
+   	 * 
+   	* @Title: loadApplyInfo
+   	* @Description: TODO 根据id  ajax加载数据
+   	* @param @param id    设定文件
+   	* @return void    返回类型
+   	* @throws
+   	 */
+   	@RequestMapping("/loadinfo")
+   	public void  loadApplyInfo(int id,HttpServletResponse response){
+   		   	
+   		response.setCharacterEncoding("UTF-8");  
+		PrintWriter out=null;
+		Apply apply=(Apply) applyService.findApplyInfo(id);	
+        //调用fastjson生成json信息
+		String json = JSON.toJSONString(apply, true);
+		System.out.println(json);
+		response.setContentType("application/json");
+		try {
+			out=response.getWriter();
+			out.write(json);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+   	}
+   	
+   	/**
+   	 * 
+   	* @Title: updateApplyStatusById
+   	* @Description: TODO 根据id 更新状态值
+   	* @param @param id
+   	* @param @param statusValue
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
+   	@RequestMapping("/updateStatus")
+   	@ResponseBody
+   	public String updateApplyStatusById(int id,int statusValue){
+   		int r;
+		//更新数据
+		boolean result= applyService.updateApplyStatus(id, statusValue);
+		//返回结果
+		if(result==true){
+			r=1;
+		}else{
+			r=0;
+		}
+		return r+"";
+   	}
+}

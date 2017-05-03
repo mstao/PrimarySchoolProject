@@ -267,16 +267,16 @@
 	border:skyblue solid 1px; 	
 }
 
-/*����������ʾ����ͼƬ��Ϣ*/
-#bubblemenu td{
+/*气泡*/
+.bubblemenu td{
 	cursor:pointer;
 }			            
-#bubblemenu td > .bubb-image {
-    width: 150px;
+.bubblemenu td > .bubb-image {
+    min-width: 150px;
     white-space:normal;
     min-height: 100px;
 	position: absolute;
-    display: inline;
+    display: block;
     margin-left: 50px; 
     padding: 5px;
 	visibility:hidden;
@@ -304,7 +304,7 @@
 
 				
 }          			
-#bubblemenu td:hover > .bubb-image{
+.bubblemenu td:hover > .bubb-image{
 	white-space:normal;
 	visibility:visible;
 	/* ��͸���� */
@@ -358,60 +358,7 @@
     margin:5px 10px;
 }
 
-/* 气泡 */
-#bubblemenu td{
-	cursor:pointer;
-}			            
-#bubblemenu td > .bubb-image {
-    width: 150px;
-    white-space:normal;
-    min-height: 100px;
-	position: absolute;
-    display: inline;
-    margin-left: 50px; 
-    padding: 5px;
-	visibility:hidden;
-    opacity: 0;
-    margin-top: -125px;
-	background: #ffffff;
-	font-size:1em;
-				
-	/* Setting the border-radius property for all Browsers */
-    -moz-border-radius: 5px; /* Firefox */
-    -webkit-border-radius: 5px; /* Safari and Chrome */
-    border-radius: 5px; /* Browsers that Support it like Opera */
-				
-	/* Setting the box-shadow property for all Browsers */
-    -moz-box-shadow: 0 0 8px gray; /* Firefox */
-    -webkit-box-shadow: 0 0 8px gray; /* Safari and Chrome */
-	filter: progid:DXImageTransform.Microsoft.Shadow(color='#272229', Direction=135, Strength=3); /* IE */
-    box-shadow: 0 0 8px gray; /* Browsers that Support it like Opera */
 
-	/* Setting the transition property for all Browsers */
-	-moz-transition: all 0.5s ease-in-out; /* Firefox */
-    -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
-    -o-transition: all 0.5s ease-in-out; /* Opera */
-    transition: all 0.5s ease-in-out; /* Browsers that Support it */
-
-				
-}          			
-#bubblemenu td:hover > .bubb-image{
-	white-space:normal;
-	visibility:visible;
-	/* ��͸���� */
-    opacity: 1;
-    margin-top: -120px;				
-	/* Setting the transition property for all Browsers */
-	-moz-transition: all 0.5s ease-in-out; /* Firefox */
-    -webkit-transition: all 0.5s ease-in-out; /* Safari and Chrome */
-    -o-transition: all 0.5s ease-in-out;  /* Opera */
-    transition: all 0.5s ease-in-out; /* Browsers that Support it */
-    
-}
-.bubb-image img{
-	width:150px;
-	height:180px;
-}
 
 .apply-info{
 	 margin: auto;
@@ -490,4 +437,162 @@
 .date-div{
 	width:260px;
 	font-size:12px;
+}
+/**学生  气泡信息**/
+ .tips{
+	font-weight: bold;
+	color:#444444;
+	border-bottom: 1px dashed #CCCCCC;
+
+	padding-bottom:5px;
+}
+
+.stu-info-display-left{
+	
+	color:#467BA2;
+	float:left;
+	border-right:1px dashed #CCCCCC; 
+	padding-right:10px;
+	width:200px;
+}
+
+.stu-info-display-right{
+   color:#467BA2;
+   margin-left:20px;
+   float:left;
+   width:200px;
+ 
+}
+.stu-info-display-left >div>span:FIRST-CHILD{
+	color: #666666;
+	white-space :nowrap;
+}
+.stu-info-display-left >div>span:NTH-CHILD(2){
+	word-wrap:break-word;
+
+}
+.stu-info-display-right >div>span:FIRST-CHILD{
+	color: #666666;
+	white-space :nowrap;
+}
+.stu-info-display-right >div>span:NTH-CHILD(2){
+	word-wrap:break-word;
+
+}
+/*弹窗*/
+.mark{
+    width:100%;
+    height:100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: .4;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    z-index: 2222;
+    display:none;
+}
+.dialog{
+	display:none;
+	border-radius:6px;
+    position: fixed;
+    left: 55%;
+    top: 40%;
+    width: 400px;
+    margin:-135px 0 0 -250px;
+    background: #fff;
+    z-index: 2223;
+}
+.dialog .dialog-close{
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    cursor: pointer;
+    background: url("../img/close.png") no-repeat;
+}
+.dialog .dialog-title{
+    height: 45px;
+	color:#fff;
+	border-radius:6px 6px 0px 0px;
+    line-height: 45px;
+    text-indent: 15px;
+    background: #0F88EB;
+}
+.dialog .dialog-content{
+    padding:38px 20px;
+    font-size: 14px;
+    min-height:100px;
+}
+.dialog-content .fail-reason{
+	margin-top:10px;
+	display: none;
+}
+.dialog-content .fail-reason >textarea{
+	width:360px;
+	border: 1px solid #CCCCCC;
+	border-radius: 3px;
+	font-family: yahei;
+	padding-top:5px;
+	padding-left:5px;
+	resize: none;
+	
+	
+}
+.dialog-content .fail-reason >textarea:FOCUS{
+	border:1px solid #2188FF;
+	-webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    box-shadow:0 0 10px rgba(0, 204, 204, .5); 
+}
+.opt-div{
+	margin-bottom:20px;
+}
+.opt{
+	margin-top:10px;
+}
+.active{
+border-top:1px solid #E5E5E5;
+
+}
+.active button{
+    border: 1px solid #FFFFFF;
+	min-width: 50px;
+	height: 30px;	
+	border-radius: 5px;
+	margin-left: 10px;
+	color: #FFFFFF;
+	cursor: pointer;
+	float:right;
+	margin-top:15px;
+}
+.close{
+color:#444444 !important;
+
+}
+.save{
+
+background:#0088CC;
+}
+.status-tips{
+	
+	float:right;
+	margin-right:440px;
+	margin-top:-25px;
+}
+.status-tips >div{
+	display: inline-block;
+}
+.status-tips >div>span:FIRST-CHILD {
+	display:inline-block;
+	width:15px;
+	height:15px;
+	position: relative;
+	top:2px;
+}
+.status-tips >div>span:LAST-CHILD {
+	margin-right:5px;
 }

@@ -49,7 +49,7 @@ $(function(){
 							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" >角色管理</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1" >角色分配</a></li>
 							<li><a href="#">用户管理</a></li>
-			                <li><a href="${pageContext.request.contextPath}/admin/list/apply">报名管理</a></li>
+			                <li><a href="${pageContext.request.contextPath}/admin/apply/listAll?p=1">报名管理</a></li>
 					</ul>
                  </li>
                  <li><a href="javascript:void(0);">设置</a>

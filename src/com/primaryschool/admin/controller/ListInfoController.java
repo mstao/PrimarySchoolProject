@@ -23,7 +23,11 @@ import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.apply.entity.Apply;
+import com.primaryschool.apply.entity.ApplyDate;
+import com.primaryschool.apply.service.IApplyService;
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.global.util.GetDateUtil;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.ClassSynopsis;
@@ -130,6 +134,9 @@ public class ListInfoController<T> {
     @Autowired
     private IAdminHeaderMasterService<T> headerMasterService;
     
+    //在线报名
+    @Autowired
+    private IApplyService<T> applyService;
     
     private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
     
@@ -793,18 +800,5 @@ public class ListInfoController<T> {
    	   return "admin/list/headmasterList";
    	   
    	}
-   	
-   	/**
-   	 * 
-   	* @Title: applyList
-   	* @Description: TODO 报名列表
-   	* @param @return    设定文件
-   	* @return String    返回类型
-   	* @throws
-   	 */
-   	
-   	@RequestMapping("/apply")
-    public String applyList(){
-    	return "admin/list/applyList";
-    }
+  
 }

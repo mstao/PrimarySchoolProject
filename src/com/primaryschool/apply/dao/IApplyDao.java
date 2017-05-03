@@ -1,5 +1,7 @@
 package com.primaryschool.apply.dao;
 
+import java.util.List;
+
 /**
  * 
 * @ClassName: IApplyDao
@@ -25,4 +27,16 @@ public interface IApplyDao<T> {
 	
 	/**根据当前年份找 date ID**/
 	int findDateIdByYear(int year);
+	
+	/**根据当前年份获取报名时间信息**/
+	T findDateInfoByYear(int year);
+	
+	/**根据当前年份获取报名的信息**/	
+	List<T> findApplyInfoByYear(int year,int position,int item_per_page);
+	
+	/**获取总记录量**/
+	int findApplyCountByYear(int year);
+
+	/**更改当前用户的报名状态**/
+	boolean  updateApplyStatus(int id,int statusValue);
 }
