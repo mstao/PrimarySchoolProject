@@ -72,9 +72,27 @@ public class ApplyService<T> implements IApplyService<T> {
 	}
 
 	@Override
-	public boolean updateApplyStatus(int id, int statusValue) {
+	public boolean updateApplyStatus(int id, int statusValue,String reason) {
 		// TODO Auto-generated method stub
-		return applyDao.updateApplyStatus(id, statusValue);
+		return applyDao.updateApplyStatus(id, statusValue,reason);
+	}
+
+	@Override
+	public void saveApplyDate(T t) {
+		// TODO Auto-generated method stub
+		applyDao.saveApplyDate(t);
+	}
+
+	@Override
+	public void updateApplyDate(T t) {
+		// TODO Auto-generated method stub
+		applyDao.updateApplyDate(t);
+	}
+
+	@Override
+	public List<T> findApplyInfoByToken(String token, int status, int year) {
+		// TODO Auto-generated method stub
+		return applyDao.findApplyInfoByToken(token, status, year);
 	}
 
 	

@@ -95,10 +95,10 @@ public class AddInfoController<T> {
    private IAdminDepartmentService<T> departmentService;
    
    @Autowired
- 	private IAdminTeachingResourceService<T> teachingResourcesService;
+   private IAdminTeachingResourceService<T> teachingResourcesService;
    
    @Autowired
- 	private IAdminLabClassService<T> labClassService;
+   private IAdminLabClassService<T> labClassService;
 	
    @Autowired
    private ITypeFlagToTypeIdService typeFlagToTypeIdService; 

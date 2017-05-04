@@ -25,7 +25,8 @@ $(function(){
 	var CTP_HOME=CTPPATH+"/resources/admin";
 			
 
-	$(".only-select").bind("click",function(){
+	$(document).on("click",".only-select",function(){
+
 		
 		$(".mark").show();
 		$(".dialog").show();
@@ -153,7 +154,8 @@ $(function(){
 	
 	//删除用户
 	//批量删除
-	$(".delete").bind("click",function(){
+	
+	$(document).on("click",".delete",function(){
 		var t=document.getElementsByName("info_id");
 		var ids = "";
         for (var i = 0; i < t.length; i++) {

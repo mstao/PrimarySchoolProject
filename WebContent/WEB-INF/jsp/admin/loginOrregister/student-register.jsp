@@ -276,7 +276,7 @@ $(function(){
 					}, 1000);
 					
 					//代表用户名可用
-					if(data==1){
+					if(data>0){
 						layer.msg('恭喜！用户注册成功',{time:4000});
 						
 					}else if(data==0){

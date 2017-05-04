@@ -337,7 +337,7 @@ $(function(){
 <!-- 主体 -->
 <div class="navi-info">
 <img alt="" src="${CTP_APPLY}/img/navi.png">
-<a href="${CTP}/apply/index/message">新生报名</a>
+<a href="javascript:void(0);">新生报名</a>
 <span class="time">报名时间:<b>2016年  9月2日-2016年 9月30日</b></span>
 <a href="javascript:void(0);" class="logout">退出报名</a>
 </div>

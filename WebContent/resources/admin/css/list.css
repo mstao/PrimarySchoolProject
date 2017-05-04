@@ -198,7 +198,15 @@
     width: 200px;height: 25px;
     float: right;
     border: 1px solid #D9D9D6;
-    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 3px;
+    margin-left:5px;
+}
+.new_text:focus{
+	border:1px solid #2188FF;
+	-webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    box-shadow:0 0 10px rgba(0, 204, 204, .5); 
 }
 .new_select{
     width: 80px;height: 30px;
@@ -596,3 +604,4 @@ background:#0088CC;
 .status-tips >div>span:LAST-CHILD {
 	margin-right:5px;
 }
+

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
@@ -121,16 +122,19 @@ public class AdminApplyController<T> {
    	* @Description: TODO 根据id 更新状态值
    	* @param @param id
    	* @param @param statusValue
+   	* @param @param reason
    	* @param @return    设定文件
    	* @return String    返回类型
    	* @throws
    	 */
    	@RequestMapping("/updateStatus")
    	@ResponseBody
-   	public String updateApplyStatusById(int id,int statusValue){
+   	public String updateApplyStatusById(int id,int statusValue,@RequestParam(required=false) String reason){
+ 
    		int r;
+   		
 		//更新数据
-		boolean result= applyService.updateApplyStatus(id, statusValue);
+		boolean result= applyService.updateApplyStatus(id, statusValue,reason);
 		//返回结果
 		if(result==true){
 			r=1;
@@ -139,4 +143,68 @@ public class AdminApplyController<T> {
 		}
 		return r+"";
    	}
+   
+   	
+   	/**
+   	 * 
+   	* @Title: dealApplyDate
+   	* @Description: TODO 对报名日期进行处理 ，包括修改和增加
+   	* @param @param flag
+   	* @param @param date
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
+   	@SuppressWarnings("unchecked")
+   	@RequestMapping("/dealApplyDate")
+   	@ResponseBody
+   	public String dealApplyDate(int flag,@RequestParam(required=false) Integer  id, ApplyDate date){
+   		String result="";
+   		//flag等于1，代表此时已有记录，将要进行修改操作
+   		if(flag==1){
+   			try{
+   	   			applyService.updateApplyDate((T) date);
+   	   		    result= "1";
+   	   		}catch(RuntimeException e){
+   	   			e.printStackTrace();
+   	   		    result= "0";
+   	   		}
+   		}else if(flag==0){
+   			//代表此时无记录，将要进行新增操作
+   			try{
+   	   			applyService.saveApplyDate((T) date);
+   	   			result= "1";
+   	   		}catch(RuntimeException e){
+   	   		    e.printStackTrace();
+   	   		    result= "0";
+   	   		}
+   		}
+   		return result;
+   	}
+   	
+   	@SuppressWarnings("unchecked")
+	@RequestMapping("/findApplyInfoByToken")
+   	public void findApplyInfoByToken(String token,int status,HttpServletResponse response){
+   		response.setCharacterEncoding("UTF-8");  
+		PrintWriter out=null;
+   	    //获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
+		ArrayList<Apply> apply=(ArrayList<Apply>) applyService.findApplyInfoByToken(token, status, year);
+		 //调用fastjson生成json信息
+		String json = JSON.toJSONString(apply, true);
+		System.out.println("下面开始打印json了----"+json);
+		response.setContentType("application/json");
+		try {
+			out=response.getWriter();
+			out.write(json);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+   	
+   	}
+   	
 }

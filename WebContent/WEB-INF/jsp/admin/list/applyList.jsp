@@ -15,15 +15,21 @@
 
 <link href="${CTP_ADMIN }/css/admin_header.css" rel="stylesheet" type="text/css" />
 <link href="${CTP_ADMIN }/css/list.css" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
+<link href="${CTP}/resources/common/css/page.css"  rel="stylesheet" />
 <link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />
 <link href="${CTP_ADMIN }/css/magic-check.css" rel="stylesheet" type="text/css" />
+<link href="${CTP}/resources/common/select-tether/dist/css/select-theme-dark.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="${CTP_ADMIN }/js/lib/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${CTP_ADMIN }/js/module/common.js"></script>
 <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 <script type="text/javascript" src="${CTP_ADMIN }/js/extends/jquery.date_input.pack.js"></script> 
+
+<script type="text/javascript" src="${CTP}/resources/common/select-tether/js/tether.js"></script>
+<script src="${CTP}/resources/common/select-tether/dist/js/select.min.js"></script>
+
 <script type="text/javascript">
 var CTPPATH="${pageContext.request.contextPath}";
+var CTP_ADMIN=CTPPATH+"/resources/admin";
 </script>
 
 <script type="text/javascript">
@@ -55,29 +61,39 @@ $(function(){
 		
 	});
 	
-	/**验证年份**/
-	$(".a-year").bind("blur",function(){
-		var filter=/^[1-9]+\d{3}$/;
-		var str=$(this).val();
+	
+	//验证年份
+	
+	function  checkYear(className){
+		var _year_filter=/^[1-9]+\d{3}$/;
 		
-		str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
-	   	if( str ==""|| str==null ){
-	   		layer.tips('*年份不能为空', $(this));
-	   		$(this).focus();
-				
+		var _year_str=$(className).val();
+		_year_str=_year_str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+		if( _year_str ==""|| _year_str==null ){
+	   		layer.tips('*年份不能为空',  $(className));
+	   		$(className).focus();
+	   		ok_year=false;	
 		}else{
-			if(filter.test(str)){
+			if(_year_filter.test(_year_str)){
 				ok_year=true;
-			}else{
-				layer.tips('*请输入4位年份', $(this));
-		   		$(this).focus();
 					
+			}else{
+				layer.tips('*请输入4位年份', $(className));
+		   		$(className).focus();
+		   		ok_year=false;
 			}
 		}
+	}
+	
+	//加载页面执行
+	checkYear(".a-year");
+	
+	/**验证年份**/
+	$(".a-year").bind("blur",function(){
+		checkYear($(this));
 	});	
 	
 	//检验年份
-	
 	function checkDate(str,className){
 		var filter=/^((?:19|20)\d\d)-(0?[1-9]|1[012])-(0?[1-9]|[12][0-9]|3[01])$/;
 		
@@ -136,15 +152,87 @@ $(function(){
 		}
 	});
 	
+	//自动执行
+	var  _start_date=$(".a-start-date").val();
+	if(checkDate(_start_date,$(".a-start-date"))){
+		ok_start_date=true;
+	}
+	
+	var _end_date=$(".a-end-date").val();
+	if(checkDate(_end_date,$(".a-end-date"))){
+		ok_end_date=true;
+	}
+	
 	$(".submit").bind("click",function(){
 		var start_date = $(".a-start-date").val();
 		var end_date = $(".a-end-date").val();
 		var timeslong = getDate(end_date).getTime()-getDate(start_date).getTime();
 	    var sub_date = timeslong/(1000*60*60*24);
+	    var _year=$(".a-year").val();
+	    var date_status=$(".hide-date-status").val();
+	    var id="${dateInfo.id}";
+	    var datajson="";
 	    
-	    
-	    
+	    if(id==""){
+	    	datajson={"flag":date_status,"year":_year,"startDate":start_date,"endDate":end_date};
+	    }else{
+	    	datajson={"flag":date_status,"id":"${dateInfo.id}","year":_year,"startDate":start_date,"endDate":end_date};
+	    }
 	    if(sub_date>=0){
+	    	if(ok_start_date == true && ok_end_date == true && ok_year == true){
+	    		
+	        //start
+	    		
+        	$.ajax({
+				type:'post',
+				dataType:'text',
+				url:CTPPATH+"/admin/apply/dealApplyDate",
+				data:datajson,		
+				beforeSend:function(){
+					//显示正在加载
+					layer.load(2);
+					
+				},
+				success:function(data){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000); 
+					
+					//根据 date_status 进行相应的提示
+					if(data==1){
+						if(date_status==0){
+							layer.msg("报名时间新增成功",{icon: 1,time:2000});
+						
+						    $(".apply-time  > b").html(start_date+" ~ "+end_date);
+						}else if(date_status==1){
+							layer.msg("报名时间修改成功",{icon: 1,time:2000});
+							
+							 $(".apply-time  > b").html(start_date+" ~ "+end_date);
+						}
+						 
+					}else if(data==0){
+						if(date_status==0){
+							layer.msg("报名时间新增失败",{icon: 2,time:2000});
+						}else if(date_status==1){
+							layer.msg("报名时间修改失败",{icon: 2,time:2000});
+						}
+					}
+				},
+				error:function(){
+				
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000); 
+					layer.msg("出错了", {icon: 2,time:2000});
+				}
+			});
+	    	//end
+	    	}else{
+	    		layer.msg("输入校验失败，请仔细检查后提交！");
+	    	}
 	    	
 	    }else{
 	    	layer.msg("结束时间与开始时间设置不合理，请重新设置！");
@@ -153,6 +241,9 @@ $(function(){
 });
 
 </script>
+
+
+
 
 </head>
 <body>
@@ -169,17 +260,36 @@ $(function(){
 </c:if>
 <b>
 ${dateInfo.startDate}
- - 
+ ~ 
 ${dateInfo.endDate}
 </b>
-<a href="javascript:void(0);" class="set-time-btn">设置报名时间</a>
+
+<!-- 设置报名时间隐藏域，用于 处理报名时间标志 -->
+
+<a href="javascript:void(0);" class="set-time-btn">
+
+<c:choose>
+
+<c:when test="${empty dateInfo}">
+设置报名时间
+<input type="hidden" class="hide-date-status" value="0">
+</c:when>
+
+<c:otherwise>
+<input type="hidden" class="hide-date-status" value="1">
+修改报名时间
+</c:otherwise>
+
+</c:choose>
+
+</a>
 </span>
 
 <!-- 设置报名时间  隐藏区域-->
 <div class="set-apply-time" >
 
-<label>报名年份</label>
-<input type="text"  placeholder="填写报名年份" class="a-year">
+<label>报名年份(系统自动计算)</label>
+<input type="text"  placeholder="填写报名年份" class="a-year" disabled="disabled">
 
 <label>报名开始时间</label>
 <div class="date-div">
@@ -198,7 +308,11 @@ ${dateInfo.endDate}
 
 </div>
 
-  <div class="new_div1"><span class="new_div1_span">今年报名全部列表</span>
+<div class="census-div">
+
+</div>
+
+<div class="new_div1"><span class="new_div1_span">今年报名全部列表</span>
 <select class="status-select">
   <option>请选择报名状态<option>
   <option value="wait">等待审核<option>
@@ -220,7 +334,7 @@ ${dateInfo.endDate}
                 </ul>
                 
                 <input type="button" class="new_button" value="筛选"/>
-                <input type="text" class="new_text" placeholder="请输入关键字" value="" name="keywords" />  
+                <input type="text" class="new_text" placeholder="请输入关键字" value="" name="keywords" />&nbsp;  
                 
                 
                 <div class="clear"></div>
@@ -241,8 +355,9 @@ ${dateInfo.endDate}
 	                </div>
                 </div>
             </div>
+        <input type="hidden" class="hide-apply-id" value="">      
         <div class="new_div3">
-         <input type="hidden" class="hide-apply-id" value="">            
+               
             <table>
                 <tr>
                     <th></th>
@@ -252,6 +367,7 @@ ${dateInfo.endDate}
                     <th>民族</th>
                     <th>报名时间</th>
                     <th>报名状态</th>
+                    <th>报名失败原因</th>
                     <th>操作</th>
                 </tr>
                 <c:forEach  items="${apply}" var="list">
@@ -268,13 +384,14 @@ ${dateInfo.endDate}
                     <td >${list.stuSex }</td>
                     <td >${list.stuNation }</td>
                     <td >${myTag:substr(list.addTime,0,10,false)}</td>
-                    <td>
+                    <td class="s${list.id}">
                     <c:choose>
                        <c:when test="${list.status eq 0}"><font color="#444444">等待审核</font></c:when>
                        <c:when test="${list.status eq 1}"><font color="#467B96">审核通过</font></c:when>
                        <c:when test="${list.status eq 2}"><font color="red">审核失败</font></c:when>
                     </c:choose>
                     </td>
+                    <td class="r${list.id}" title="${list.reason}">${myTag:substr(list.reason,0,10,true)}</td>
                     <td><img src="${CTP_ADMIN }/img/assign.png"/><a href="javascript:void(0);" class="update-status" data-id="${list.id}">更改报名状态</a></td>
                 </tr>
                 </c:forEach>
@@ -302,17 +419,17 @@ ${dateInfo.endDate}
 			
 			
 			<div class="opt">
-				<input class="magic-radio" type="radio" name="radio" id="rr1" value="1">
+				<input class="magic-radio" type="radio" name="radio" id="rr1" value="0" checked>
 				<label for="rr1">等待审核</label>
 			</div>
 	     	
 	     	<div class="opt">
-				<input class="magic-radio" type="radio" name="radio" id="rr2" value="2">
+				<input class="magic-radio" type="radio" name="radio" id="rr2" value="1">
 				<label for="rr2">审核通过</label>
 			</div>
 			
 			<div class="opt">
-				<input class="magic-radio" type="radio" name="radio" id="rr3" value="3">
+				<input class="magic-radio" type="radio" name="radio" id="rr3" value="2">
 				<label for="rr3">审核失败</label>
 			</div>
 	     	
@@ -339,7 +456,21 @@ ${dateInfo.endDate}
 
 <script type="text/javascript">
 
+function  substrzzz(maxLen,str,isDot){
+	if(str.length>maxLen){
+		if(isDot==true){
+		    str=str.substring(0,maxLen)+"...";
+		}else{
+			str=str.substring(0,maxLen);
+		}
+	}
+	return str;
+}
+
 $(function(){
+	
+	
+	
 	
 	//动态加载报名用户的具体信息
 
@@ -406,8 +537,7 @@ $(function(){
 	
 	
 	//点击弹出弹出框，并且将id写入隐藏域
-	
-    $(".update-status").bind("click",function(){
+	$(document).on("click",".update-status",function(){
     	
     	$(".mark").show();
 		$(".dialog").show();
@@ -424,16 +554,177 @@ $(function(){
 		 
        if($(this).attr("id")=="rr3"){
     	   $(".fail-reason").slideDown();
+    	   //
+    	   var id=$(".hide-apply-id").val();
+	       //获取该项报名失败原因
+	   	   var reason=$(".r"+id).html();
+	   
+	       if(reason!=""){
+	       		$(".reason-content").val(reason);
+	       }
        }else{
     	   $(".fail-reason").slideUp();
+    	   $(".reason-content").val("");
        } 
      });
 	
+	//点击保存对用户报名状态进行更改
 	$(".save").bind("click",function(){
-		alert("zz");
+		//获取单选按钮的值
+		var value=$("input[type='radio']:checked").val();
+		
+		//获取报名失败原因
+		var reason=$(".reason-content").val();
+		
+		//获取隐藏id
+		var id=$(".hide-apply-id").val();
+	    if(value!=""){
+	    	//调用ajax更改信息
+	    	
+	    	//start
+	    	
+        	$.ajax({
+				type:'post',
+				dataType:'text',
+				url:CTPPATH+"/admin/apply/updateStatus",
+				data:{"id":id,"statusValue":value,"reason":reason},
+			
+				beforeSend:function(){
+					//显示正在加载
+					layer.load(2);
+					
+				},
+				success:function(data){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000); 
+					if(data==1){
+						layer.msg("更改状态成功", {icon: 1,time:2000});
+						//此时对文字进行处理
+						if(value==0){
+							//此时需要对点击该项的class进行寻找
+							$(".s"+id).html("<font color='#444444'>等待审核</font>");
+							$(".r"+id).html("");
+						}else if(value==1){
+							$(".s"+id).html("<font color='#467B96'>审核通过</font>");
+							$(".r"+id).html("");
+						}else if(value==2){
+							$(".s"+id).html("<font color='red'>审核失败</font>");
+							//截取下字符串
+							var maxLen=10;
+					
+							if(reason.length>maxLen){
+								reason=reason.substring(0,maxLen)+"...";
+							}
+							$(".r"+id).html(reason);
+						}
+						
+						
+					}else{
+						layer.msg("修改状态失败！");
+					}
+					
+					
+				},
+				error:function(){
+				
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000); 
+					layer.msg("出错了", {icon: 2,time:2000});
+				}
+			});
+	    	//end
+	    }else{
+	    	layer.msg("请选择状态！");
+	    }
 	});
+	
+	
+	//搜素加载信息
+	$(".new_button").bind("click",function(){
+		var token=$(".new_text").val();
+		token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+		var status=3;//代表全部
+		if(token=="" || token==null){
+			layer.msg("请输入搜素内容哦！");
+		}else{
+			//start
+			$.ajax({
+				type:'post',
+				dataType:'json',
+				url:CTPPATH+"/admin/apply/findApplyInfoByToken",
+				data:{"token":token,"status":status},
+			
+				beforeSend:function(){
+					//显示正在加载
+					layer.load(2);
+					
+				},
+				success:function(data){
+
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000); 
+					
+					var xhtml="<table><tr><th></th><th>学生姓名</th><th>学生身份证号</th><th>性别</th><th>民族</th><th>报名时间</th><th>报名状态</th><th>报名失败原因</th><th>操作</th></tr>";
+					if(data.length>0){
+				
+						$.each(data,function(idx,item){ 
+						    xhtml+="<tr class='bubblemenu'><td align='center'><input type='checkbox' name='info_id' value='"+item.id+"'/></td>";
+						    xhtml+="<td><a href='javascript:void(0);' class='item_title' data-id='"+item.id+"'>"+item.stuName+"</a><div class='bubb-image'></div></td>";
+						    xhtml+="<td>"+item.stuIdNum+"</td><td >"+item.stuSex+"</td><td >"+item.stuNation+"</td>";
+						    xhtml+="<td>"+substrzzz(10,item.addTime,false)+"</td>";
+						    xhtml+="<td class='s"+item.id+"'>";
+						    
+						    if(item.status==0){
+						    	xhtml+="<font color='#444444'>等待审核</font>";
+						    }else if(item.status==1){
+						    	xhtml+="<font color='#467B96'>审核通过</font>";
+						    }else if(item.status==2){
+						    	xhtml+="<font color='red'>审核失败</font>";
+						    }
+						    xhtml+"</td>";
+						    xhtml+="<td class='r"+item.id+"' title='"+item.reason+"'>"+substrzzz(10,item.reason,true)+"</td><td><img src='"+CTP_ADMIN+"/img/assign.png'/><a href='javascript:void(0);' class='update-status' data-id='"+item.id+"'>更改报名状态</a></td>";
+						    xhtml+="</tr>";
+						});
+					}else{
+						xhtml+="<tr><td colspan='9' style='background:#F2DEDE; color:#444444;text-align:center;'>没有找到信息</td></tr>";
+					}
+					xhtml+="</table>";
+				   $(".new_div3").html(xhtml);
+				},
+				error:function(){
+				
+					//关闭正在加载
+					setTimeout(function(){
+						  layer.closeAll('loading');
+					}, 1000); 
+					layer.msg("出错了", {icon: 2,time:2000});
+				}
+			});
+			//end
+		}
+	});
+	
 	
 	
 
 });
+</script>
+
+
+
+<script type="text/javascript">
+		$('select.status-select').each(function(){
+			new Select({
+				el: this,
+				selectLikeAlignment: $(this).attr('data-select-like-alignement') || 'auto',
+				className: 'select-theme-dark'
+			});
+		});
 </script>

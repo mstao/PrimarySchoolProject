@@ -25,5 +25,12 @@ public interface IApplyService<T> {
 	/**获取总记录量**/
 	int findApplyCountByYear(int year);
 	/**更改当前用户的报名状态**/
-	boolean  updateApplyStatus(int id,int statusValue);
+	boolean  updateApplyStatus(int id,int statusValue,String reason);
+	/**添加报名日期**/
+	void saveApplyDate(T t);
+	
+	/**修改报名日期**/
+	void updateApplyDate(T t);
+	/**根据状态进行模糊查询信息**/
+	List<T> findApplyInfoByToken(String token,int status,int year);
 }

@@ -91,7 +91,7 @@ public class ApplyDao<T> implements IApplyDao<T> {
 	@Override
 	public List<T> findApplyInfoByYear(int year,int position,int item_per_page) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
+		String hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, year);
 		return query.list();
@@ -103,10 +103,10 @@ public class ApplyDao<T> implements IApplyDao<T> {
 		BigInteger count;
 		int r;
 		//将年份换成id
-		int dateId=this.findDateIdByYear(year);
-		String sql="select count(CASE WHEN t.date_id=?  THEN 1 ELSE NULL END) from ps_apply t";
+		//int dateId=this.findDateIdByYear(year);
+		String sql="select count(CASE WHEN t.date_id=pa.id and pa.year=?   THEN 1 ELSE NULL END) from ps_apply t,ps_apply_date pa";
 		Query query  = sessionFactory.getCurrentSession().createSQLQuery(sql); 
-		query.setInteger(0,dateId);
+		query.setInteger(0,year);
 		count= (BigInteger) query.uniqueResult();
 		r=count.intValue();
 		return r;
@@ -116,13 +116,52 @@ public class ApplyDao<T> implements IApplyDao<T> {
 	 * 根据id更改状态值
 	 */
 	@Override
-	public boolean updateApplyStatus(int id,int statusValue) {
+	public boolean updateApplyStatus(int id,int statusValue,String reason) {
 		// TODO Auto-generated method stub
-		String hql="update Apply a set a.status=? where a.id=?";
+		String hql="update Apply a set a.status=?,a.reason=? where a.id=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, statusValue);
-		query.setInteger(1, id);
+		query.setString(1, reason);
+		query.setInteger(2, id);
 		return query.executeUpdate()>0;
+	}
+
+	@Override
+	public void saveApplyDate(T t) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().save(t);
+	}
+
+	@Override
+	public void updateApplyDate(T t) {
+		// TODO Auto-generated method stub
+		String hql="update ApplyDate a set a.year=:year,a.startDate=:startDate,a.endDate=:endDate where a.id=:id";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setProperties(t);
+		query.executeUpdate();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findApplyInfoByToken(String token, int status,int year) {
+		// TODO Auto-generated method stub
+		//status 有三种码  0,1,2  3代表模糊查询全部
+		String hql="";
+		if(status==3){
+			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ad where a.dateId=ad.id and ad.year=:year and (a.stuName like:token or a.stuIdNum like:token)";	
+		}else{
+			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ad where a.status=:status and a.dateId=ad.id and ad.year=:year and (a.stuName like:token or a.stuIdNum like:token)";	
+		}
+		
+		
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);     
+		if(status!=3){
+			query.setInteger("status", status);	
+		}	
+		query.setInteger("year", year);
+		query.setString("token", "%"+token+"%");  
+		
+		return query.list();
 	}
 
 }

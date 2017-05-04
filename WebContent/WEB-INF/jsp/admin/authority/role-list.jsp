@@ -88,8 +88,7 @@ $(function(){
 			
 			
 			//单项删除
-			
-			$(".only-delete").bind("click",function(){
+			$(document).on("click",".only-delete",function(){
 				//获取id的值
 				var id=$(this).parent().parent().children().eq(0).find("input").val();
 				if(id==""){

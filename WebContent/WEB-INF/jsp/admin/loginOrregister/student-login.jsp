@@ -169,7 +169,7 @@ $(function(){
 	    	
 	    	//阻止自动提交
 	    	e.preventDefault();
-	    	
+	    	var filter=/^[1-9]+[0-9]*]*$/;
 	    	if(ok_username==true && ok_card==true   && ok_password==true ){
 	        	var userName=$("#username").val();
 	        	var number=$("#number").val();
@@ -201,7 +201,7 @@ $(function(){
 						}else{
 							//代表用户名可用
 							layer.msg('恭喜！登录成功',{time:4000});
-							if(data==1){
+							if(filter.test(data) && data!=0){
 								window.location.href=CTPPATH+"/apply/index/message?uid="+data;
 							}else{
 								var id=data.substring(1);

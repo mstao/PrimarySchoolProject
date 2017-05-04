@@ -102,7 +102,8 @@ public class Apply implements Serializable{
 	* @param addTime
 	* @param status
 	 */
-	public Apply(int id, String stuName, String stuSex, String stuNation, String stuIdNum, String addTime,int status) {
+	public Apply(int id, String stuName, String stuSex, String stuNation, String stuIdNum, String addTime,int status
+			,String reason) {
 		super();
 		this.id = id;
 		this.stuName = stuName;
@@ -111,6 +112,7 @@ public class Apply implements Serializable{
 		this.stuIdNum = stuIdNum;
 		this.addTime = addTime;
 		this.status=status;
+		this.reason=reason;
 	}
 	
 	
