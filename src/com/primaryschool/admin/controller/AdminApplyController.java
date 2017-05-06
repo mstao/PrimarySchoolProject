@@ -3,6 +3,8 @@ package com.primaryschool.admin.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -55,7 +57,7 @@ public class AdminApplyController<T> {
    	
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/listAll")
-    public String applyList(int p,ModelMap map){
+    public String applyList(int status,int p,ModelMap map){
    		//获取当前年份
 		String s_year=GetDateUtil.getYear();
 		int year=Integer.parseInt(s_year);
@@ -69,20 +71,45 @@ public class AdminApplyController<T> {
 	    }
 	   
 	    //当前的url
-	    String url="./apply?p=";
+	    String url="./listAll?status='"+status+"'&p=";
 		
 	    //获取总记录量
-		int count=applyService.findApplyCountByYear(year);
+		int count=applyService.findApplyCountByStatusYear(status, year);
 		//计算偏移量
 		int position=(p-1)*pageSize;
 		//根据年份获取所有的报名信息
-		ArrayList<Apply> apply=(ArrayList<Apply>) applyService.findApplyInfoByYear(year, position, pageSize);
+		ArrayList<Apply> apply=(ArrayList<Apply>) applyService.findApplyInfoByYear(year,status, position, pageSize);
 		
 	    //获取封装好的分页导航数据
         String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);	
-   	    map.put("apply", apply);
+   	    
+        /**
+         * 获取统计数据
+         */
+        
+        //获取全部统计数
+        int zstatus=3;
+        int allCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        //报名成功 
+        zstatus=1;
+        System.out.println("zz"+status);
+        int completeCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        //报名失败
+        zstatus=2;
+        int failCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        //等待审核
+        zstatus=0;
+        int waitCount=applyService.findApplyCountByStatusYear(zstatus, year);
+       
+        map.put("apply", apply);
    	    map.put("toolBar", toolBar);
 		map.put("dateInfo", dateInfo);
+		
+		map.put("allCount", allCount);
+		map.put("completeCount", completeCount);
+		map.put("failCount", failCount);
+		map.put("waitCount", waitCount);
+		map.put("status", status);
     	return "admin/list/applyList";
     }
    	
@@ -207,4 +234,35 @@ public class AdminApplyController<T> {
    	
    	}
    	
+   	/**
+   	 * 
+   	* @Title: deleteApplyInfo
+   	* @Description: TODO 删除
+   	* @param @param ids
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
+   	@RequestMapping("/delete")
+   	@ResponseBody
+   	public String deleteApplyInfo(String ids){
+   		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        applyService.deleteApplyInfoById(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+		}
+   	}
 }

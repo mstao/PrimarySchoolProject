@@ -41,6 +41,10 @@ public class ApplyDate implements Serializable{
 	@Column(name="end_date")
 	private String endDate;
 	
+	@Column(name="begin_apply")
+	private int beginApply;
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -64,6 +68,12 @@ public class ApplyDate implements Serializable{
 	}
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+	public int getBeginApply() {
+		return beginApply;
+	}
+	public void setBeginApply(int beginApply) {
+		this.beginApply = beginApply;
 	}
 	
 	

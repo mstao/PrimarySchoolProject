@@ -89,11 +89,20 @@ public class ApplyDao<T> implements IApplyDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findApplyInfoByYear(int year,int position,int item_per_page) {
+	public List<T> findApplyInfoByYear(int year,int status,int position,int item_per_page) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
+		String hql="";
+		if(status==3){
+			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
+		}else{
+			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=? and a.status=?";
+		}
+
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, year);
+		if(status!=3){
+			query.setInteger(1, status);
+		}
 		return query.list();
 	}
 
@@ -145,7 +154,7 @@ public class ApplyDao<T> implements IApplyDao<T> {
 	@Override
 	public List<T> findApplyInfoByToken(String token, int status,int year) {
 		// TODO Auto-generated method stub
-		//status 有三种码  0,1,2  3代表模糊查询全部
+		//status 有4种码  0,1,2  3代表模糊查询全部
 		String hql="";
 		if(status==3){
 			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ad where a.dateId=ad.id and ad.year=:year and (a.stuName like:token or a.stuIdNum like:token)";	
@@ -162,6 +171,41 @@ public class ApplyDao<T> implements IApplyDao<T> {
 		query.setString("token", "%"+token+"%");  
 		
 		return query.list();
+	}
+
+	@Override
+	public int findApplyCountByStatusYear(int status, int year) {
+		// TODO Auto-generated method stub
+		
+		//status 有4种码  0,1,2  3代表查询全部
+		
+		BigInteger count;
+		int r;
+		String sql="";
+		if(status==3){
+			sql="select count(CASE WHEN pa.date_id=pad.id and pad.year=? THEN 1 ELSE NULL END) from ps_apply pa,ps_apply_date pad";
+		}else{
+			sql="select count(CASE WHEN pa.date_id=pad.id and pad.year=? and pa.status=? THEN 1 ELSE NULL END) from ps_apply pa,ps_apply_date pad";
+		}
+		
+		Query query  = sessionFactory.getCurrentSession().createSQLQuery(sql); 
+		query.setInteger(0,year);
+		if(status!=3){
+			query.setInteger(1, status);	
+		}
+	    
+		count= (BigInteger) query.uniqueResult();
+		r=count.intValue();
+		return r;
+
+	}
+
+	@Override
+	public void deleteApplyInfoById(List<?> ids) {
+		// TODO Auto-generated method stub
+		 String hql = "delete from Apply where id in (:ids)";
+		 Query query  =  sessionFactory.getCurrentSession().createQuery(hql);
+		 query.setParameterList("ids", ids).executeUpdate();
 	}
 
 }

@@ -15,15 +15,15 @@
   	margin-left: 10px;
   	display:inline-block ;
   	width: 35px;
-      height: 25px;
-      line-height: 25px;
-      padding-left: 5px;
-      color: #FFFFFF;
-      font-size: 14px;
-      background-color: #467B96;
-      border-radius: 5px;
-      border: 1px solid;
-      text-decoration: none;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 5px;
+    color: #FFFFFF;
+    font-size: 14px;
+    background-color: #467B96;
+    border-radius: 5px;
+    border: 1px solid;
+    text-decoration: none;
   }
   .new_div2 p{
   text-indent: 2em;
@@ -604,4 +604,36 @@ background:#0088CC;
 .status-tips >div>span:LAST-CHILD {
 	margin-right:5px;
 }
+/**统计**/
+.census-div{
+	border:1px dashed #CCCCCC;
+	width:200px;
+	float:right;
+	padding-top:5px;
+	padding-left:10px;
+	padding-bottom:5px;
+	margin-top:-30px;
+}
 
+.census-div > div >span:FIRST-CHILD{
+	color:#666666;
+}
+.census-div > div >span:LAST-CHILD{
+	color:#444444;
+	font-weight: bold;
+	margin-left:5px;
+}
+.begin-apply-btn{
+	border: 1px solid #FFFFFF;
+	min-width: 50px;
+	height: 30px;	
+	border-radius: 5px;
+	margin-left: 10px;
+	color: #FFFFFF;
+	cursor: pointer;
+    background:#467B96;
+	padding:4px;
+}
+.begin-apply-btn:hover{
+	 background:#1A5D7E;
+}

@@ -32,7 +32,7 @@ public interface IApplyDao<T> {
 	T findDateInfoByYear(int year);
 	
 	/**根据当前年份获取报名的信息**/	
-	List<T> findApplyInfoByYear(int year,int position,int item_per_page);
+	List<T> findApplyInfoByYear(int year,int status,int position,int item_per_page);
 	
 	/**获取总记录量**/
 	int findApplyCountByYear(int year);
@@ -49,5 +49,9 @@ public interface IApplyDao<T> {
 	/**根据状态进行模糊查询信息**/
 	List<T> findApplyInfoByToken(String token,int status,int year);
 		
+	/**根据条件统计报名人数**/
+	int findApplyCountByStatusYear(int status,int year);
 	
+	/**删除**/
+	void  deleteApplyInfoById(List<?> ids);    
 }

@@ -66,9 +66,9 @@ public class ApplyService<T> implements IApplyService<T> {
 	}
 
 	@Override
-	public List<T> findApplyInfoByYear(int year, int position, int item_per_page) {
+	public List<T> findApplyInfoByYear(int year,int status, int position, int item_per_page) {
 		// TODO Auto-generated method stub
-		return applyDao.findApplyInfoByYear(year, position, item_per_page);
+		return applyDao.findApplyInfoByYear(year,status, position, item_per_page);
 	}
 
 	@Override
@@ -93,6 +93,18 @@ public class ApplyService<T> implements IApplyService<T> {
 	public List<T> findApplyInfoByToken(String token, int status, int year) {
 		// TODO Auto-generated method stub
 		return applyDao.findApplyInfoByToken(token, status, year);
+	}
+
+	@Override
+	public int findApplyCountByStatusYear(int status, int year) {
+		// TODO Auto-generated method stub
+		return applyDao.findApplyCountByStatusYear(status, year);
+	}
+
+	@Override
+	public void deleteApplyInfoById(List<?> ids) {
+		// TODO Auto-generated method stub
+		applyDao.deleteApplyInfoById(ids);
 	}
 
 	

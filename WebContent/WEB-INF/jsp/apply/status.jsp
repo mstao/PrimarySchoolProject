@@ -46,7 +46,7 @@ $(function(){
 
 <a href="${CTP}/apply/index/status?id=${id}">报名进度</a>
 
-<span class="time">报名时间:<b>2016年  9月2日-2016年 9月30日</b></span>
+<span class="time">报名时间:<b>2017年  8月2日-2017年8月30日</b></span>
 
 <a href="javascript:void(0);" class="logout">退出报名</a>
 </div>

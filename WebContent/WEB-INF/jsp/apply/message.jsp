@@ -338,7 +338,7 @@ $(function(){
 <div class="navi-info">
 <img alt="" src="${CTP_APPLY}/img/navi.png">
 <a href="javascript:void(0);">新生报名</a>
-<span class="time">报名时间:<b>2016年  9月2日-2016年 9月30日</b></span>
+<span class="time">报名时间:<b>2017年  8月2日-2017年8月30日</b></span>
 <a href="javascript:void(0);" class="logout">退出报名</a>
 </div>
 <!--描述：需要填写的报名内容主要包括学生基本信息，监护人基本信息-->

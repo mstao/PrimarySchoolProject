@@ -30,6 +30,7 @@
 <script type="text/javascript">
 var CTPPATH="${pageContext.request.contextPath}";
 var CTP_ADMIN=CTPPATH+"/resources/admin";
+var _status="${status}";
 </script>
 
 <script type="text/javascript">
@@ -238,6 +239,104 @@ $(function(){
 	    	layer.msg("结束时间与开始时间设置不合理，请重新设置！");
 	    }
 	});
+	
+	
+	//设置开启报名功能
+	$(".begin-apply-btn").bind("click",function(){
+		layer.confirm('确定操作？', {
+			  btn: ['确定','取消'] 
+			}, function(){
+				alert("zzz");
+			}, function(){
+  			    //取消操作 ，这里可以为空
+  			});
+	});
+	
+	//检测查看的报名状态
+	$(".status-select").change(function(){
+		var value=$(this).val();
+		//进行判断
+		if(value=="all"){
+			$(".new_div1_span").html("今年报名全部列表");
+			
+			window.location.href=CTPPATH+"/admin/apply/listAll?status=3&p=1";
+		}else if(value=="complete"){
+			$(".new_div1_span").html("审核通过列表");
+			window.location.href=CTPPATH+"/admin/apply/listAll?status=1&p=1";
+		}else if(value=="wait"){
+			$(".new_div1_span").html("等待审核列表");
+			window.location.href=CTPPATH+"/admin/apply/listAll?status=0&p=1";
+		}else if(value=="fail"){
+			$(".new_div1_span").html("审核失败列表");
+			window.location.href=CTPPATH+"/admin/apply/listAll?status=2&p=1";
+		}
+	});
+	
+	
+	//删除
+	 //批量删除信息
+    $('.deleteInfo-btn').bind('click',function(){
+    	var t=document.getElementsByName("info_id");
+ 		var ids = "";
+         for (var i = 0; i < t.length; i++) {
+             if (t[i].checked) {
+             	ids +=t[i].value+',';
+             }
+         }
+         ids = ids.substring(0, ids.length - 1);
+         if(ids==""){
+        	 layer.msg("请选择您要删除的选项");
+         }else{
+           layer.confirm('确定删除所选择的记录？', {
+   			  btn: ['确定','取消'] 
+   			}, function(){
+   				//已选定，可以进行批量删除操作
+   				//调用Ajax向后台发送请求 ，删除所选项
+   				
+   				$.ajax({
+						type:'post',
+						dataType:'json',
+						url:CTPPATH+"/admin/apply/delete",
+						data:{"ids":ids},
+					
+						beforeSend:function(){
+							//显示正在加载
+							layer.load(2);
+						},
+						success:function(data){
+		
+							//关闭正在加载
+							setTimeout(function(){
+								  layer.closeAll('loading');
+							}, 1000);
+							
+							if(data==1){
+								layer.msg('删除成功', {icon: 1,time:2000});
+								window.location.href="${pageContext.request.contextPath}/admin/apply/listAll?status="+_status+"&p=1";
+							
+							}else{
+								layer.msg("删除出错了", {icon: 2,time:2000});
+							}
+						},
+						error:function(){
+		
+							//关闭正在加载
+							setTimeout(function(){
+								  layer.closeAll('loading');
+							}, 1000);
+							layer.msg("出错了", {icon: 2,time:2000});
+						}
+					});
+   				
+   			   //end
+   			}, function(){
+   			    //取消操作 ，这里可以为空
+   			});
+        	
+         }
+    });
+	   
+	
 });
 
 </script>
@@ -252,7 +351,24 @@ $(function(){
 
 
 <div class="apply-info">
-<span>报名管理</span>
+
+<span style="font-weight: bold;">报名管理</span>
+<!-- 开始报名按钮 -->
+<button  class="begin-apply-btn"  <c:if test="${empty dateInfo}">disabled="disabled"  style="color:#666666;background:#CCCCCC;cursor:not-allowed;"</c:if> >
+<c:choose>
+<c:when test="${dateInfo.beginApply eq 0}">
+开启报名
+</c:when>
+
+<c:when test="${dateInfo.beginApply eq 1}">
+结束报名
+</c:when>
+
+<c:otherwise>报名未开始</c:otherwise>
+</c:choose>
+
+</button>
+
 <br>
 <span class="apply-time">当前报名时间:
 <c:if test="${empty dateInfo}">
@@ -306,18 +422,44 @@ ${dateInfo.endDate}
 </div>
 
 
-</div>
-
 <div class="census-div">
+    <img src="${CTP_ADMIN }/img/统计.png">
+    <div><span>总报名人数:</span><span>${allCount}</span></div>
+    <div><span>等待审核人数:</span><span>${waitCount}</span></div>
+    <div><span>审核通过人数:</span><span>${completeCount}</span></div>
+    <div><span>审核失败人数:</span><span>${failCount}</span></div>
+</div>
+
 
 </div>
 
-<div class="new_div1"><span class="new_div1_span">今年报名全部列表</span>
+
+<div class="new_div1"><span class="new_div1_span">
+<c:choose>
+
+<c:when test="${status eq 3 }">
+今年报名全部列表
+</c:when>
+<c:when test="${status eq 0 }">
+等待审核列表
+</c:when>
+<c:when test="${status eq 1 }">
+审核通过列表
+</c:when>
+<c:when test="${status eq 2 }">
+审核失败列表
+</c:when>
+
+</c:choose>
+
+
+</span>
 <select class="status-select">
-  <option>请选择报名状态<option>
-  <option value="wait">等待审核<option>
-  <option value="complete">审核通过<option>
-  <option value="fail">审核失败<option>
+  <option value="">--请选择报名状态--</option>
+  <option value="all">全部名单</option>
+  <option value="wait">等待审核</option>
+  <option value="complete">审核通过</option>
+  <option value="fail">审核失败</option>
 </select>
 </div>
 
@@ -648,7 +790,7 @@ $(function(){
 	$(".new_button").bind("click",function(){
 		var token=$(".new_text").val();
 		token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
-		var status=3;//代表全部
+		var status=_status;//根据状态条件
 		if(token=="" || token==null){
 			layer.msg("请输入搜素内容哦！");
 		}else{
