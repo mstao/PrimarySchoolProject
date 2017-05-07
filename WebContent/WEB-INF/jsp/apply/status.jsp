@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
+<%@ page import="java.util.Date"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,10 +48,49 @@ $(function(){
 
 <a href="${CTP}/apply/index/status?id=${id}">报名进度</a>
 
-<span class="time">报名时间:<b>2017年  8月2日-2017年8月30日</b></span>
+<span class="time">报名时间:<b><fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/> ~ <fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd"/></b></span>
 
 <a href="javascript:void(0);" class="logout">退出报名</a>
 </div>
+
+<%--S 设置时间 --%>
+<c:set var="nowDate">  
+    <fmt:formatDate value="<%=new Date()%>" pattern="yyyy-MM-dd" type="date"/>  
+</c:set>  
+<c:set var="XstartDate">  
+    <fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd" type="date"/>  
+</c:set>  
+<c:set var="XendDate">  
+    <fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd " type="date"/>  
+</c:set>
+  
+
+<%--e 设置时间 --%>
+
+
+
+
+<c:choose>
+
+<%-- 后台不开启报名  ，页面提示报名未开始  --%>
+<c:when test="${dateInfo.beginApply eq 0 || empty dateInfo}">
+<div class="no-begin-apply">
+
+<img alt="" src="${CTP_APPLY}/img/end.png">
+<span class="no-begin-tips">暂未开始报名，请在开始时间之后开始报名</span>
+</div>
+
+</c:when>
+
+
+<%-- 后台不开启报名  ，页面禁止显示渲染 --%>
+<c:when test="${dateInfo.beginApply eq 1}">
+
+<!-- S 时间段判断  -->
+<c:choose>
+<c:when test="${nowDate >= XstartDate && nowDate <= XendDate }">
+
+
 <div class="apply-status-content">
 			<!--
             	作者：offline
@@ -181,7 +222,23 @@ $(function(){
 			</div>
 			</div>
 </div>
+</c:when>
 
+<c:otherwise>
+<div class="no-begin-apply">
+
+<img alt="" src="${CTP_APPLY}/img/sys-close.png">
+<span class="no-begin-tips">不在报名时间段，系统暂不开放</span>
+</div>
+
+</c:otherwise>
+</c:choose>
+
+<!--E 时间段判断   -->
+
+
+</c:when>
+</c:choose>
 <div class="clear"></div>
 
 <%--E 主体 --%>

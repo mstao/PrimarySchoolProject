@@ -31,3 +31,20 @@
 	position: relative;
 	top:10px;
 }
+.no-begin-apply{
+	width:500px;
+	margin: 0 auto;
+	border:1px dashed #CCCCCC;
+	margin-top:60px;
+	margin-bottom:300px;
+}
+.no-begin-apply img{
+	 margin-left:180px;
+}
+.no-begin-apply >span{
+	margin-top:20px;
+	margin-bottom:20px;
+    display: block;
+    text-align: center;
+    color:#444444;
+}

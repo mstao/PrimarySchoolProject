@@ -363,3 +363,24 @@ form:after {
 	color: #EF9722;
 	text-decoration: underline;
 }
+.no-begin-apply{
+	padding:5px;
+	width:430px;
+	height: 400px;
+	margin-left:80px;
+	margin-top:60px;
+	border:1px dashed #cccccc; 
+}
+.no-begin-apply >img{
+	margin-top:40px;
+	margin-left:150px;
+}
+
+.no-begin-apply >span{
+	display:block;
+	text-align: center;
+}
+.no-begin-apply >span:LAST-CHILD {
+	margin-top:10px;
+	color:black;
+}

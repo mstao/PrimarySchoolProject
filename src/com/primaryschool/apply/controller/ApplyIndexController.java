@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.primaryschool.apply.entity.Apply;
+import com.primaryschool.apply.entity.ApplyDate;
 import com.primaryschool.apply.service.IApplyService;
 import com.primaryschool.global.util.GetDateUtil;
 
@@ -29,7 +30,15 @@ public class ApplyIndexController<T> {
 	
 	@RequestMapping("/message")
 	public String index(int uid,ModelMap map){
+	
+		//获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
+		//根据年份找到报名日期信息		
+		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
+		
 		map.put("uid", uid);
+		map.put("dateInfo", dateInfo);
 		return "apply/message";
 	}
 	
@@ -43,9 +52,17 @@ public class ApplyIndexController<T> {
 	 */
 	@RequestMapping("/status")
 	public String status(int id,ModelMap map){
+		//获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
+		//根据年份找到报名日期信息		
+		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
+		
+
 		Apply apply=(Apply) applyService.findApplyInfo(id);
 		map.put("apply", apply);
 		map.put("id", id);
+		map.put("dateInfo",dateInfo);
 		return "apply/status";
 	}
 	

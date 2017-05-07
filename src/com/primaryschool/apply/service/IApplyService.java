@@ -37,5 +37,7 @@ public interface IApplyService<T> {
 	int findApplyCountByStatusYear(int status,int year);
 	
 	/**删除**/
-	void  deleteApplyInfoById(List<?> ids);    
+	void  deleteApplyInfoById(List<?> ids);  
+	/**开启，关闭报名**/
+	void  updateBeginStatus(int year,int beginApply);
 }

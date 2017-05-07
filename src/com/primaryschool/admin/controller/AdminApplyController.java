@@ -199,6 +199,8 @@ public class AdminApplyController<T> {
    		}else if(flag==0){
    			//代表此时无记录，将要进行新增操作
    			try{
+   				//设置暂未开始报名
+   				date.setBeginApply(0);
    	   			applyService.saveApplyDate((T) date);
    	   			result= "1";
    	   		}catch(RuntimeException e){
@@ -209,6 +211,16 @@ public class AdminApplyController<T> {
    		return result;
    	}
    	
+   	/**
+   	 * 
+   	* @Title: findApplyInfoByToken
+   	* @Description: TODO 模糊查询 
+   	* @param @param token
+   	* @param @param status
+   	* @param @param response    设定文件
+   	* @return void    返回类型
+   	* @throws
+   	 */
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/findApplyInfoByToken")
    	public void findApplyInfoByToken(String token,int status,HttpServletResponse response){
@@ -264,5 +276,36 @@ public class AdminApplyController<T> {
 			e.printStackTrace();
 			return "0";
 		}
+   	}
+   	
+   	
+   	/**
+   	 * 
+   	* @Title: updateBeginApply
+   	* @Description: TODO 开启报名，关闭
+   	* @param @param begin
+   	* @param @return    设定文件
+   	* @return String    返回类型
+   	* @throws
+   	 */
+   	@RequestMapping("/updateBeginApply")
+   	@ResponseBody
+   	public String updateBeginApply(int begin){
+   		try{
+   		    //获取当前年份
+   		 	String s_year=GetDateUtil.getYear();
+   			int year=Integer.parseInt(s_year);
+   			if(begin==1){
+   				begin=0;
+   			}else if(begin==0){
+   				begin=1;
+   			}
+   			applyService.updateBeginStatus(year, begin);
+   			return "1";
+   		}catch(RuntimeException e){
+   			e.printStackTrace();
+   			return "0";	
+   		}
+   		
    	}
 }

@@ -1,6 +1,7 @@
 package com.primaryschool.apply.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Index;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 
@@ -36,10 +38,12 @@ public class ApplyDate implements Serializable{
 	private int year;
 	
 	@Column(name="start_date")
-	private String startDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")  
+	private Date startDate;
 	
 	@Column(name="end_date")
-	private String endDate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")  
+	private Date endDate;
 	
 	@Column(name="begin_apply")
 	private int beginApply;
@@ -57,16 +61,17 @@ public class ApplyDate implements Serializable{
 	public void setYear(int year) {
 		this.year = year;
 	}
-	public String getStartDate() {
+
+	public Date getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 	public int getBeginApply() {

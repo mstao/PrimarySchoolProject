@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -243,12 +244,66 @@ $(function(){
 	
 	//设置开启报名功能
 	$(".begin-apply-btn").bind("click",function(){
+		var mythis=$(this);
+		//获取绑定的值
+		var default_value=mythis.attr("data-beginApply");
+		
 		layer.confirm('确定操作？', {
 			  btn: ['确定','取消'] 
 			}, function(){
-				alert("zzz");
+				if(default_value!=""){
+					$.ajax({
+						type:'post',
+						dataType:'text',
+						url:CTPPATH+"/admin/apply/updateBeginApply",
+						data:{"begin":default_value},
+					
+						beforeSend:function(){
+							//显示正在加载
+							layer.load(2);
+						},
+						success:function(data){
+
+							//关闭正在加载
+							setTimeout(function(){
+								  layer.closeAll('loading');
+							}, 1000);
+							
+							//修改成功
+							if(data==1){
+								
+								//如果原来的值为1，说明已经修改为0
+								if(default_value==1){
+									layer.msg("结束报名成功！", {icon: 1,time:2000});
+									mythis.text("开启报名");
+									mythis.attr("data-beginApply",0);
+								}else if(default_value==0){
+									layer.msg("开启报名成功！", {icon: 1,time:2000});
+									//如果原来的值为0，说明已经修改为1
+									mythis.text("结束报名");
+									mythis.attr("data-beginApply",1);
+								}
+							
+							}else{
+								layer.msg("更改出错了", {icon: 2,time:2000});
+							}
+						},
+						error:function(){
+
+							//关闭正在加载
+							setTimeout(function(){
+								  layer.closeAll('loading');
+							}, 1000);
+							layer.msg("出错了", {icon: 2,time:2000});
+						}
+					});
+					
+				   //end
+				}
 			}, function(){
   			    //取消操作 ，这里可以为空
+  			    
+				
   			});
 	});
 	
@@ -336,7 +391,7 @@ $(function(){
          }
     });
 	   
-	
+
 });
 
 </script>
@@ -354,7 +409,7 @@ $(function(){
 
 <span style="font-weight: bold;">报名管理</span>
 <!-- 开始报名按钮 -->
-<button  class="begin-apply-btn"  <c:if test="${empty dateInfo}">disabled="disabled"  style="color:#666666;background:#CCCCCC;cursor:not-allowed;"</c:if> >
+<button  data-beginApply="${dateInfo.beginApply}" class="begin-apply-btn"  <c:if test="${empty dateInfo}">disabled="disabled"  style="color:#666666;background:#CCCCCC;cursor:not-allowed;"</c:if> >
 <c:choose>
 <c:when test="${dateInfo.beginApply eq 0}">
 开启报名
@@ -375,9 +430,9 @@ $(function(){
 <b>暂未设置报名起止时间，点击右侧按钮进行设置</b>
 </c:if>
 <b>
-${dateInfo.startDate}
+<fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/>
  ~ 
-${dateInfo.endDate}
+<fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd"/>
 </b>
 
 <!-- 设置报名时间隐藏域，用于 处理报名时间标志 -->
@@ -409,13 +464,13 @@ ${dateInfo.endDate}
 
 <label>报名开始时间</label>
 <div class="date-div">
-<input type="text"  placeholder="填写报名开始时间" class="a-start-date" value="${dateInfo.startDate}">
+<input type="text"  placeholder="填写报名开始时间" class="a-start-date" value="<fmt:formatDate value='${dateInfo.startDate}' pattern='yyyy-MM-dd'/>">
 </div>
 
 <label>报名截止时间</label>
 
 <div class="date-div">
-<input type="text"  placeholder="填写报名截止时间" class="a-end-date" value="${dateInfo.endDate}">
+<input type="text"  placeholder="填写报名截止时间" class="a-end-date" value="<fmt:formatDate value='${dateInfo.endDate}' pattern='yyyy-MM-dd'/>">
 </div>
 
 <button class="submit">确定</button><button class="reset">取消</button>

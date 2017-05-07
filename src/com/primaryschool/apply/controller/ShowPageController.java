@@ -1,8 +1,13 @@
 package com.primaryschool.apply.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.primaryschool.apply.entity.ApplyDate;
+import com.primaryschool.apply.service.IApplyService;
+import com.primaryschool.global.util.GetDateUtil;
 
 /**
  * 
@@ -15,8 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/apply/show")
-public class ShowPageController {
+public class ShowPageController<T> {
 
+	  @Autowired
+	  private IApplyService<T> applyService;
+	    
 	
 	/**
 	 * 
@@ -27,9 +35,15 @@ public class ShowPageController {
 	* @throws
 	 */
 	@RequestMapping("/stuLogin")
-	public String showStudentLogin(){
+	public String showStudentLogin(ModelMap map){
+		//获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
 		
+		//根据年份找到报名日期信息		
+		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
 		
+		map.put("dateInfo",dateInfo);
 		return "admin/loginOrregister/student-login";
 	}
 	
@@ -43,7 +57,15 @@ public class ShowPageController {
 	* @throws
 	 */
 	@RequestMapping("/stuRegister")
-	public String showStudentRegister(){
+	public String showStudentRegister(ModelMap map){
+		//获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
+		
+		//根据年份找到报名日期信息		
+		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
+		
+		map.put("dateInfo",dateInfo);
 		return "admin/loginOrregister/student-register";
 	}
 	

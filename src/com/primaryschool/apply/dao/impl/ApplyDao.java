@@ -208,4 +208,17 @@ public class ApplyDao<T> implements IApplyDao<T> {
 		 query.setParameterList("ids", ids).executeUpdate();
 	}
 
+	/**
+	 * 开启，关闭报名功能
+	 */
+	@Override
+	public void updateBeginStatus(int year,int beginApply) {
+		// TODO Auto-generated method stub
+		String hql="update ApplyDate a set a.beginApply=? where a.year=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0,beginApply);
+		query.setInteger(1, year);
+		query.executeUpdate();
+	}
+
 }

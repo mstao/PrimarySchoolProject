@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.Date"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +10,7 @@
 <jsp:include page="../common/meta.jsp" flush="true"/>	
 <title>登录-万科小学新生报名系统</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="CTP_APPLY" value="${pageContext.request.contextPath}/resources/apply"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 
 <link rel="stylesheet" type="text/css" href="${CTP_ADMIN}/css/login.css" />
@@ -24,9 +27,29 @@ var CTPPATH="${pageContext.request.contextPath}";
 
 <jsp:include page="../common/student-login-header.jsp"></jsp:include>
 
+
+<%--S 设置时间 --%>
+<c:set var="nowDate">  
+    <fmt:formatDate value="<%=new Date()%>" pattern="yyyy-MM-dd" type="date"/>  
+</c:set>  
+<c:set var="XstartDate">  
+    <fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd" type="date"/>  
+</c:set>  
+<c:set var="XendDate">  
+    <fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd " type="date"/>  
+</c:set>
+
+
+
+<%--e 设置时间 --%>
+
+
 <!-- S 内容 -->
 	
 	<div class="boss">
+
+	
+	
 	<div id="lefts">
 		
 			<!--图片-->
@@ -34,6 +57,36 @@ var CTPPATH="${pageContext.request.contextPath}";
 			<img src="${CTP_ADMIN}/img/wk1.jpg">
 		</div>
 	</div>
+	
+<c:choose>	
+<%-- 后台不开启报名  ，页面提示报名未开始  --%>
+<c:when test="${dateInfo.beginApply eq 0 || empty dateInfo}">
+<div class="no-begin-apply">
+
+<img alt="" src="${CTP_APPLY}/img/no-begin.png"/><br>
+<span>暂未开始报名，请在报名时间之内开始报名</span>
+<span>该系统将会在报名时间之后关闭，请注意时间</span>
+<span>今年报名时间为：<b>
+<fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/>
+ ~ 
+<fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd"/>
+
+</b></span>
+</div>
+
+</c:when>
+
+
+
+
+<%-- 后台不开启报名  ，页面禁止显示渲染 --%>
+<c:when test="${dateInfo.beginApply eq 1}">
+	
+<!-- S 时间段判断  -->
+<c:choose>
+<c:when test="${nowDate >= XstartDate && nowDate <= XendDate }">
+	
+	
 	<div id="rights">
 
 			<div class="container">
@@ -62,7 +115,25 @@ var CTPPATH="${pageContext.request.contextPath}";
 		</div><!-- container -->
 	</div>
 
+</c:when>
 
+<c:otherwise>
+<div class="no-begin-apply">
+
+<img alt="" src="${CTP_APPLY}/img/sys-close.png">
+<span class="no-begin-tips">不在报名时间段，系统暂不开放</span>
+</div>
+
+</c:otherwise>
+
+
+</c:choose>
+
+<!--E 时间段判断   -->
+
+	
+</c:when>
+</c:choose>
 
 </div>
 <!-- E 内容 -->

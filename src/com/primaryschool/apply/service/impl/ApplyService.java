@@ -107,6 +107,12 @@ public class ApplyService<T> implements IApplyService<T> {
 		applyDao.deleteApplyInfoById(ids);
 	}
 
+	@Override
+	public void updateBeginStatus(int year, int beginApply) {
+		// TODO Auto-generated method stub
+		applyDao.updateBeginStatus(year, beginApply);
+	}
+
 	
 
 }

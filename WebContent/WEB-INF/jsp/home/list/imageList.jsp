@@ -12,11 +12,10 @@
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/list.css" />
-<link rel="stylesheet" href="${CTP_HOME}/js/extends/zoomify/zoomify.min.css"/>
+<link rel="stylesheet" href="${CTP_HOME}/static/baguetteBox/css/baguetteBox.css" />
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
-<script type="text/javascript" src="${CTP_HOME}/js/extends/zoomify/zoomify.min.js" ></script>
-
+<script type="text/javascript" src="${CTP_HOME}/static/baguetteBox/js/baguetteBox.js"></script>
 
 </head>
 <body>
@@ -31,12 +30,13 @@
 			<div class="list">
 				<div class="list-navi  img-navi"><span>校园风光<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
 				<div class="list-content img-content">
-			
+			<div class="img-list-div gallery">
 			   	<c:forEach items="${list}" var="list">	
-					<div class="img-list-div">
-					<img src="${list.imgPath}"/>
-					</div>
+					
+					<a href="${list.imgPath}"><img src="${list.imgPath}"/></a>
+					
 			    </c:forEach>
+			    </div>
 				</div>
 				
 				
@@ -57,8 +57,8 @@
 
 
 $(function(){
-	
-	$(".img-list-div img").zoomify();
+	baguetteBox.run('.img-list-div');
 });
+
 
 </script>

@@ -54,4 +54,7 @@ public interface IApplyDao<T> {
 	
 	/**删除**/
 	void  deleteApplyInfoById(List<?> ids);    
+	
+	/**开启，关闭报名**/
+	void  updateBeginStatus(int year,int beginApply);
 }

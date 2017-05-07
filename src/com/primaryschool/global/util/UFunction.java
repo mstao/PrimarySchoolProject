@@ -82,7 +82,8 @@ public class UFunction{
     * @throws
      */
     public static String dateToString(String strDate) throws ParseException{
-    	 SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
+    	
+    	SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
     	 
     	 //将string类型转为date类型
 
