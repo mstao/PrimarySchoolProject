@@ -13,12 +13,13 @@ $(function(){
     	if( str ==""|| str==null ){
     		layer.tips('*用户名不能为空', '#userName');
     		$(this).focus();
-			
+    		ok_username=false;
 		}else{
 			
 			if(!filter.test( $(this).val() )){
 				layer.tips('*用户名为2-9字符,首字不为数字,无特殊字符 !', '#userName');
 				$(this).focus();
+				ok_username=false;
 			}else{
 				ok_username=true;
 			}
@@ -33,6 +34,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('*密码不能为空', '#password');
     		$(this).focus();
+    		ok_password=false;
 		}else{
 			if(filter.test( $(this).val() )){
 				layer.tips('密码格式正确', '#password');
@@ -40,6 +42,7 @@ $(function(){
 			}else{
 				layer.tips('*密码5-18字符 ,不能有特殊字符!', '#password');
 				$(this).focus();
+				ok_password=false;
 			}
 		}
 	});

@@ -101,6 +101,16 @@
 	top:7px;
 	margin-right:5px;
 }
+.apply-info-tips a{
+	float:right;
+	text-decoration: none;
+	line-height: 40px;
+	color:#FFFFFF;
+	margin-right:5px;
+}
+.apply-info-tips a:hover{
+	text-decoration: underline;
+}
 .student-info{
 	width:1170px;
 	width:0 auto;

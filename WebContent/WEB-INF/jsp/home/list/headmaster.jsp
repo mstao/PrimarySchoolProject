@@ -16,6 +16,8 @@
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
 </head>
 <body>
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
 
 <%--引入header --%>
 

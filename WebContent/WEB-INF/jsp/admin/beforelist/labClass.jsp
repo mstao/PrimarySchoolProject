@@ -102,6 +102,9 @@
 	</script>
 </head>
 <body>
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+	
 <%--引入header --%>
 
 <jsp:include page="../common/header.jsp"></jsp:include>

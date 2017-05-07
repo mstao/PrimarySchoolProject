@@ -12,9 +12,7 @@
 <title>${WEBSITE_NAME} </title>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
 <link rel="stylesheet" href="${CTP_HOME}/slider/themes/default/default.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="${CTP_HOME}/slider/themes/light/light.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="${CTP_HOME}/slider/themes/dark/dark.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="${CTP_HOME}/slider/themes/bar/bar.css" type="text/css" media="screen" />
+
 <link rel="stylesheet" href="${CTP_HOME}/slider/nivo-slider.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="${CTP_HOME}/css/liMarquee.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/index.css" />
@@ -38,12 +36,17 @@ $(function() {
 		var c = $("> span", this).text();
 		var d = c.substr(6, 5);
 		d = "[" + d + "]";
-		$("> span", this).text(d)
-	})
+		$("> span", this).text(d);
+	});
+	
+	
 });
 </script>
 </head>
 <body>
+<%--检测浏览器 --%>
+<jsp:include page="../common/browsehappy.jsp"></jsp:include>
+
 <%--引入header --%>
 
 <jsp:include page="common/header.jsp"></jsp:include>

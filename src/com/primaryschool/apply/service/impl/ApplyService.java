@@ -113,6 +113,12 @@ public class ApplyService<T> implements IApplyService<T> {
 		applyDao.updateBeginStatus(year, beginApply);
 	}
 
+	@Override
+	public void updateApplyInfo(T t) {
+		// TODO Auto-generated method stub
+		applyDao.updateApplyInfo(t);
+	}
+
 	
 
 }

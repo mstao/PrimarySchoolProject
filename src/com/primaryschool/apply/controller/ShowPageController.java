@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.apply.entity.Apply;
 import com.primaryschool.apply.entity.ApplyDate;
 import com.primaryschool.apply.service.IApplyService;
 import com.primaryschool.global.util.GetDateUtil;
@@ -70,5 +71,30 @@ public class ShowPageController<T> {
 	}
 	
 
+	/**
+	 * 
+	* @Title: showUpdate
+	* @Description: TODO  更新
+	* @param @param id
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/update")
+	public String showUpdate(int id,ModelMap map){
+		Apply apply=(Apply) applyService.findApplyInfo(id);
+		//获取当前年份
+		String s_year=GetDateUtil.getYear();
+		int year=Integer.parseInt(s_year);
+		
+		//根据年份找到报名日期信息		
+		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
+		
+		map.put("dateInfo",dateInfo);
+		map.put("apply", apply);
+		map.put("id", id);
+		return "apply/update";
+	}
 	
 }

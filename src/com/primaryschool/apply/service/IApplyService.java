@@ -14,6 +14,9 @@ public interface IApplyService<T> {
 	/**通过注册用户身份证获取相关联的 报名学生身份证**/
 	T findApplyCardCodeByUserCardCode(String userCardCode);
 	
+	/**更新报名信息**/
+	void updateApplyInfo(T t);
+	
 	/**根据当前年份找 date ID**/
 	int findDateIdByYear(int year);
 	/**根据当前年份获取报名时间信息**/

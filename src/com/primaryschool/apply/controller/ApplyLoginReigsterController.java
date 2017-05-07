@@ -134,6 +134,30 @@ public class ApplyLoginReigsterController<T> {
 		
 	}
 	
+	/**
+	 * 
+	* @Title: checkEamil
+	* @Description: TODO 验证邮箱
+	* @param @param email
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/checkEmail")
+	@ResponseBody
+	public String checkEamil(String email){
+		ApplyUser user=(ApplyUser) userService.findUserByEmail(email);
+		
+		String result=""; 
+        if(user==null){
+        	result="1";
+        }else{
+        	result="0";
+        }
+		return result;
+	}
+	
+	
 	@RequestMapping("/logout")
 	public String logout(HttpServletRequest request){
 		//进入登录页面，即将session信息清空

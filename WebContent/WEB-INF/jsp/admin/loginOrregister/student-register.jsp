@@ -93,6 +93,9 @@ var CTPPATH="${pageContext.request.contextPath}";
 					<input type="text" placeholder="请输入学生身份证号" required="required" id="number" />
 				</div>
 				<div>
+					<input type="text" placeholder="请输入邮箱"   autocomplete="off" id="email" />
+				</div>
+				<div>
 					<input type="password" placeholder="请输入密码" required="required" id="password" />
 				</div>
 				<div>
@@ -142,6 +145,7 @@ $(function(){
 	var ok_card=false;
 	var ok_password=false;
 	var ok_re_password=false;
+	var ok_email=false;
 	
 	//校验  数据
 	//检验不能为空和数字
@@ -180,6 +184,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('*密码不能为空', '#password');
     		$(this).focus();
+    		ok_password=false;
 		}else{
 			if(filter.test( $(this).val() )){
 				layer.tips('密码格式正确', '#password');
@@ -187,10 +192,73 @@ $(function(){
 			}else{
 				layer.tips('*密码5-18字符 ,不能有特殊字符!', '#password');
 				$(this).focus();
+				ok_password=false;
 			}
 		}
 	});
 	
+	//检验邮箱
+	/**
+     * 对邮箱校验
+     */
+    $("#email").bind("blur",function(){
+    	var filter  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    	var str = $(this).val();
+		str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+		if( $(this).val() == "" || $(this).val==null ){
+			layer.tips('邮箱不能为空', '#email');
+    		$(this).focus();
+    		ok_email=false;
+		}else{
+			if(filter.test( $(this).val() )){
+				//ajax验证邮箱是否被使用
+				//start
+				$.ajax({
+					type:'post',
+					dataType:'json',
+					url:CTPPATH+"/apply/checkEmail",
+					data:{"email":str},
+				
+					beforeSend:function(){
+						//显示正在加载
+						layer.load(2,{offset: 10,time:2000});
+					},
+					success:function(data){
+	
+						//关闭正在加载
+						setTimeout(function(){
+							  layer.closeAll('loading');
+						}, 1000);
+						
+						//代表用户名可用
+						if(data==1){
+							layer.tips('恭喜！邮箱可用', '#email');
+							ok_email=true;
+						}else if(data==0){
+							//代表用户名不可用
+							layer.tips('*抱歉，邮箱已被使用', '#email');
+							$(this).focus();
+							ok_email=false;
+						}
+					},
+					error:function(){
+	
+						//关闭正在加载
+						setTimeout(function(){
+							  layer.closeAll('loading');
+						}, 1000);
+						layer.msg("出错了", {icon: 2,time:2000});
+					}
+				});
+				
+				//end
+			}else{
+				layer.tips('*邮箱格式不正确', '#email');
+				$(this).focus();
+				ok_email=false;
+			}
+		}
+    });
 	
 	//校检身份证
 	
@@ -222,7 +290,7 @@ $(function(){
  	   	if( str ==""|| str==null ){
  	   		layer.tips('*身份证不能为空', $(this));
  	   		$(this).focus();
- 				
+ 	      	ok_card=false;	
  		}else{
  			layer.tips(CheckIdCard(str), $(this));
  		
@@ -256,6 +324,7 @@ $(function(){
 							//代表用户名不可用
 							layer.tips('*抱歉，身份证已被使用', '#number');
 							$(this).focus();
+							ok_card=false;
 						}
 					},
 					error:function(){
@@ -284,6 +353,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('*重复密码不能为空', '#passwords');
     		$(this).focus();
+    		ok_re_password=false;
 		}else{
 			if(filter.test( $(this).val() )){
 				 
@@ -298,6 +368,7 @@ $(function(){
 			}else{
 				layer.tips('*重复密码5-18字符 ,不能有特殊字符!', '#passwords');
 				$(this).focus();
+				ok_re_password=false;
 			}
 		}
     	
@@ -315,17 +386,17 @@ $(function(){
     	//阻止自动提交
     	e.preventDefault();
     	
-    	if(ok_username==true && ok_card==true   && ok_password==true  && ok_re_password==true){
+    	if(ok_username==true && ok_card==true &&  ok_email==true  && ok_password==true  && ok_re_password==true){
         	var userName=$("#username").val();
         	var number=$("#number").val();
-
+            var email=$("#email").val();
         	var password=$("#password").val();
             //注册
     		$.ajax({
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+"/apply/saveUser",
-				data:{"userName":userName,"cardCode":number,"password":password},
+				data:{"userName":userName,"cardCode":number,"password":password,"email":email},
 			
 				beforeSend:function(){
 					//显示正在加载

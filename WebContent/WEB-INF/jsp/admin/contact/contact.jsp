@@ -18,7 +18,10 @@
 		
 	</head>
 	<body>
-		<!-- S header -->
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+	
+	<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
 			<div id="location">您现在的位置: 后台管理 ><span>联系我们</span></div>

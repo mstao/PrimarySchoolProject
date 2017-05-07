@@ -17,7 +17,10 @@
 		<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 		
 	</head>
-	<body>
+<body>
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+	
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->

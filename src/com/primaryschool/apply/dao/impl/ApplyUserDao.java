@@ -53,4 +53,15 @@ public class ApplyUserDao<T> implements IApplyUserDao<T> {
 		return (T) query.uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		String hql="from ApplyUser u where u.email=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, email);
+		
+		return (T) query.uniqueResult();
+	}
+
 }

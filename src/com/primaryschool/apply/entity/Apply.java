@@ -78,6 +78,9 @@ public class Apply implements Serializable{
 	@Column(name="date_id")
 	private int dateId;
 	
+	@Column(name="img_path")
+	private String imgPath;
+	
 	public Apply() {
 		super();
 	}
@@ -266,6 +269,14 @@ public class Apply implements Serializable{
 
 	public void setDateId(int dateId) {
 		this.dateId = dateId;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 
 

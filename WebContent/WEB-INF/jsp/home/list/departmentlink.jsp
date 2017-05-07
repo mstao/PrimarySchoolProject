@@ -27,6 +27,9 @@ var CTP_HOME=CTPPATH+"/resources/home";
 <title>部门链接主页</title>
 </head>
 <body>
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+
 <%--引入header --%>
 
 <jsp:include page="../common/header.jsp"></jsp:include>

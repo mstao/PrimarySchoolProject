@@ -30,4 +30,10 @@ public class ApplyUserService<T> implements IApplyUserService<T> {
 		return userDao.findUserByCardPassword(card, password);
 	}
 
+	@Override
+	public T findUserByEmail(String email) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByEmail(email);
+	}
+
 }

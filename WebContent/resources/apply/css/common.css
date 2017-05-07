@@ -31,6 +31,11 @@
 	position: relative;
 	top:10px;
 }
+.status-span{
+	float:right;
+	position: relative;
+	top:10px;
+}
 .no-begin-apply{
 	width:500px;
 	margin: 0 auto;

@@ -38,6 +38,9 @@ $(function(){
 });
 //-->
 </script>
+<%--检测浏览器 --%>
+<jsp:include page="../common/browsehappy.jsp"></jsp:include>
+
 <%--引入header --%>
 
 <jsp:include page="../home/common/header.jsp"></jsp:include>
@@ -151,7 +154,8 @@ $(function(){
 					  <span><img alt="" src="${CTP_APPLY}/img/complete-tips.png">您已完成学生报名</span>
 					</c:when>
 					<c:when test="${apply.status eq 2}">
-					  <span><img alt="" src="${CTP_APPLY}/img/feature-tips.png">学生报名失败,请在下面查看失败原因</span>
+					  <span><img alt="" src="${CTP_APPLY}/img/feature-tips.png">学生报名失败,请在下面查看失败原因或者修改信息重新提交</span>
+					  <a href="${CTP}/apply/show/update?id=${id}">修改信息</a>
 					</c:when>
 				    <c:when test="${apply.status eq 0}">
 					  <span><img alt="" src="${CTP_APPLY}/img/shenhe-tips.png">学生报名信息正在审核中</span>

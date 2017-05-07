@@ -130,4 +130,29 @@ public class ApplyIndexController<T> {
 		return result;
 	}
 	
+	
+	/**
+	 * 
+	* @Title: updateApply
+	* @Description: TODO 更新   信息
+	* @param @param apply
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/update")
+	@ResponseBody
+	public String updateApply(Apply apply){
+		try{
+			//更改将报名状态更改为待审核
+			apply.setStatus(0);
+			applyService.updateApplyInfo((T) apply);
+			return "1";
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+		}
+	}
+	
 }

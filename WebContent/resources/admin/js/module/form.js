@@ -21,7 +21,7 @@ $(function(){
     	if( str ==""|| str==null ){
     		layer.tips('*用户名不能为空', '#username');
     		$(this).focus();
-			
+    		ok_usrename=false;
 		}else{
 			
 			if(filter.test( $(this).val() )){
@@ -53,6 +53,7 @@ $(function(){
 							//代表用户名不可用
 							layer.tips('*抱歉，用户名已被使用', '#username');
 							$(this).focus();
+							ok_usrename=false;
 						}
 					},
 					error:function(){
@@ -69,6 +70,7 @@ $(function(){
 			}else{
 				layer.tips('*用户名为2-9字符,首字不为数字,无特殊字符 !', '#username');
 				$(this).focus();
+				ok_usrename=false;
 			}
 		}
     });
@@ -83,6 +85,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('邮箱不能为空', '#email');
     		$(this).focus();
+    		ok_email=false;
 		}else{
 			if(filter.test( $(this).val() )){
 				//ajax验证邮箱是否被使用
@@ -112,6 +115,7 @@ $(function(){
 							//代表用户名不可用
 							layer.tips('*抱歉，邮箱已被使用', '#email');
 							$(this).focus();
+							ok_email=false;
 						}
 					},
 					error:function(){
@@ -128,6 +132,7 @@ $(function(){
 			}else{
 				layer.tips('*邮箱格式不正确', '#email');
 				$(this).focus();
+				ok_email=false;
 			}
 		}
     });
@@ -143,6 +148,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('*密码不能为空', '#password');
     		$(this).focus();
+    		ok_password=false;
 		}else{
 			if(filter.test( $(this).val() )){
 				layer.tips('密码格式正确', '#password');
@@ -150,6 +156,7 @@ $(function(){
 			}else{
 				layer.tips('*密码5-18字符 ,不能有特殊字符!', '#password');
 				$(this).focus();
+				ok_password=false;
 			}
 		}
     });
@@ -164,6 +171,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('*重复密码不能为空', '#passwords');
     		$(this).focus();
+    		ok_re_password=false;
 		}else{
 			if(filter.test( $(this).val() )){
 				 
@@ -178,6 +186,7 @@ $(function(){
 			}else{
 				layer.tips('*重复密码5-18字符 ,不能有特殊字符!', '#passwords');
 				$(this).focus();
+				ok_re_password=false;
 			}
 		}
     	
@@ -194,6 +203,7 @@ $(function(){
 		if( $(this).val() == "" || $(this).val==null ){
 			layer.tips('*重复密码不能为空', '#number');
     		$(this).focus();
+    		ok_number=false;
 		}else{
 			layer.tips('*工号正确', '#number');
     		ok_number=true;

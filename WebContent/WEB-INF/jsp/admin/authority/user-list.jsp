@@ -220,10 +220,15 @@ $(function(){
 });
 		
 </script>
-	</head>
-	<body>
-		<!-- S header -->
-	<jsp:include page="../common/header.jsp" />
+</head>
+<body>
+
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+	
+
+<!-- S header -->
+<jsp:include page="../common/header.jsp" />
 	<!--S main-->
 			
             <div class="new_div1"><span class="new_div1_span">角色分配</span>              

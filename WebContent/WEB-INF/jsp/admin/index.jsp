@@ -20,8 +20,11 @@ var CTPPATH="${pageContext.request.contextPath}";
 </script>
 </head>
 <body>
-	<!-- 导入header -->
-	<jsp:include page="common/header.jsp"></jsp:include>
+<%--检测浏览器 --%>
+<jsp:include page="../common/browsehappy.jsp"></jsp:include>
+
+<!-- 导入header -->
+<jsp:include page="common/header.jsp"></jsp:include>
 	<!--S main-->
 <div class="main">
 <%--只有管理可见  --%>   

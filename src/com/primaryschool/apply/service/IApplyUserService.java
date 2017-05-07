@@ -9,4 +9,7 @@ public interface IApplyUserService<T> {
 	
 	/**用来登录**/
 	T findUserByCardPassword(String card,String password);
+	
+	/**验证邮箱是否已被使用**/
+	T findUserByEmail(String email);
 }

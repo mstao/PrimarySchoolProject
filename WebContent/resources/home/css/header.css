@@ -49,21 +49,13 @@ body {
 	width: 240px;
 	font-size:15px;
 	padding:3px;
-	background: url(../img/search_s.png) 248px #F4F4F4 no-repeat;
+	background: url(../img/search_s.png) right  #F4F4F4 no-repeat;
 	padding-right: 30px;
+	transition: background 0.4s; 
 }
-.search input:focus{
-	border: 1px solid #fff;
-	line-height:20px;
-	
-	border-radius:3px ;
-	height:20px;
-	width: 240px;
-	font-size:15px;
-	padding:3px;
-	background: url(../img/search_s.png) 248px #FFFFFF no-repeat;
-	padding-right: 30px;
-}
+
+.searchinput.x  { background-position: right 5px center; } /* (jQ) Show icon */  
+.searchinput.onX{ cursor: pointer; }              /* (jQ) hover cursor style */ 
 
 /* WebKit browsers */
 ::-webkit-input-placeholder {
@@ -84,23 +76,6 @@ body {
 	color: #777;
 }
 
-
-.search .search_btn{
-	background-color:#f4f4f4;
-	display:inline-block;	
-	border-radius:0px 3px 3px 0px;
-    height:28px;
-	width:30px;
-    position: relative;
-	line-height:28px;
-	left: -1px;
-}
-
-.search_btn > img{
-     position: relative;
-     top: 5px;
-     left: 4px;;
-}
 
 .header-school-logo-bg{
 	width: 100%;
@@ -292,3 +267,4 @@ body {
 	position: relative;
 	left:-50px;
 }
+.browsehappy{padding:8px 0;background:#FBE3E4;color:#8A1F11;text-align:center;}.browsehappy a{color:#8A1F11;text-decoration:underline;font-weight:bold;}

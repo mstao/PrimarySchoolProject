@@ -40,6 +40,10 @@
 </script>
 </head>
 	<body>
+	
+	<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+	
 	<!-- S header -->
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	
@@ -104,10 +108,7 @@
 </div>
 <!--E main-->
 <!--S footer-->
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp" />
 <!--E footer-->
 	</body>
 </html>

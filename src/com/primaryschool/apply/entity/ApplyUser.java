@@ -45,6 +45,8 @@ public class ApplyUser implements Serializable{
 	@Column(name="salt")
 	private String salt;
 	
+	@Column(name="email")
+	private String email;
 	
 	public int getId() {
 		return id;
@@ -81,6 +83,12 @@ public class ApplyUser implements Serializable{
 	}
 	public void setSalt(String salt) {
 		this.salt = salt;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	

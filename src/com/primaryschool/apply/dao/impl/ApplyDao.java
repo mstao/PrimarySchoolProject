@@ -221,4 +221,14 @@ public class ApplyDao<T> implements IApplyDao<T> {
 		query.executeUpdate();
 	}
 
+	@Override
+	public void updateApplyInfo(T t) {
+		// TODO Auto-generated method stub
+		String hql="update Apply a set  a.stuName=:stuName,a.stuNation=:stuNation,a.stuSex=:stuSex,a.stuIdNum=:stuIdNum,a.originalSchool=:originalSchool,a.address=:address,a.register=:register,a.fatherName=:fatherName,a.fatherIdNum=:fatherIdNum,a.fatherPhone=:fatherPhone,a.motherName=:motherName,a.motherIdNum=:motherIdNum,a.motherPhone=:motherPhone,a.status=:status where a.id=:id";
+		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
+		query.setProperties(t);
+		query.executeUpdate();
+		
+	}
+
 }

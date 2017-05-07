@@ -1,6 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<script type="text/javascript">
+
+$(function(){
+	function tog(v){return v?'addClass':'removeClass';}   
+	  
+	$(document).on('input', '.searchinput', function() {  
+	    $(this)[tog(this.value)]('x');  
+	}).on('mousemove', '.x', function(e) {  
+	    $(this)[tog(this.offsetWidth-24 < e.clientX-this.getBoundingClientRect().left)]('onX');     
+	}).on('click', '.onX', function(){  
+	   // $(this).removeClass('x onX').val('').change(); 
+	   alert("zzzz");
+	}); 
+});
+</script>    
 <!-- S header -->
 <div class="header">
 		   <div class="header-top-bg">

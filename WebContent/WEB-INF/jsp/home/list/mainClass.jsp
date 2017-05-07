@@ -10,14 +10,17 @@
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <title>Insert title here</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/classdetails.css" />
-		<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
-		<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
-		<script type="text/javascript" src="${CTP_HOME}/js/jquery-1.10.2.min.js" ></script>
-		<script type="text/javascript" src="${CTP_HOME}/js/common.js" ></script>
-		<script type="text/javascript" src="${CTP_HOME}/js/YuxiSlider.jQuery.min.js"></script>
-	    <script type="text/javascript" src="${CTP_HOME}/js/jquery.liMarquee.js" ></script>
-	</head>
+<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
+<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
+<script type="text/javascript" src="${CTP_HOME}/js/jquery-1.10.2.min.js" ></script>
+<script type="text/javascript" src="${CTP_HOME}/js/common.js" ></script>
+<script type="text/javascript" src="${CTP_HOME}/js/YuxiSlider.jQuery.min.js"></script>
+<script type="text/javascript" src="${CTP_HOME}/js/jquery.liMarquee.js" ></script>
+</head>
 <body>
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+
 <jsp:include page="../common/classHeader.jsp"></jsp:include>
 
 <div id="mianBag">

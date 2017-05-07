@@ -89,6 +89,10 @@ var CTPPATH="${pageContext.request.contextPath}";
 	</script>
 	</head>
 	<body>
+	
+	<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+	
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->

@@ -18,8 +18,10 @@
 <script type="text/javascript" src="${CTP_HOME}/js/extends/jquery.liMarquee.js" ></script>
 </head>
 <body>
+<%--检测浏览器 --%>
+<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
 
- <jsp:include page="../common/classHeader.jsp"></jsp:include>
+<jsp:include page="../common/classHeader.jsp"></jsp:include>
 
 <div id="mianBag">
 	<div id="mianDiv1">

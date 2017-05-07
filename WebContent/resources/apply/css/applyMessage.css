@@ -4,11 +4,27 @@
 .applybody-content-tab{
 	margin: 0 auto;
 	width:1170px;
-	height:600px;
+	min-height:600px;
 	margin-top:30px;
-	border: solid #006666 8px;
+	border: 8px solid #006666;
 	margin-bottom:100px;
+	
 }
+
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+/* Hides from IE-mac \*/
+
+* html .clearfix {height: 1%;}
+
+/* End hide from IE-mac */
 
 .applybody-content-tab a{
 	text-decoration: none;
@@ -49,7 +65,7 @@
 /*报名内容中的学生基本信息部分*/
 .applybody-content-tab-basicMes{
 	float: left;
-	height:450px;
+	min-height:450px;
 	width:550px;
 	margin-left: 10px;
 	border-right: solid #0066661px;
@@ -168,7 +184,7 @@
 	
 	float:left;
 	margin-left: 25px;
-	height:450px;
+	min-height:450px;
 	width: 550px;
 	border-left: solid #006666 1px;
 }
@@ -281,8 +297,165 @@
 	width:100px;
     height:25px;
 	margin:0 auto;
+
+	margin-bottom:5px;
     padding-top:3px;
     padding-bottom:3px;
 	background-color: #006666;
     border-radius: 3px;
+}
+.upload-tips-div {
+	margin-top:10px;
+}
+.upload-tips-div  span{
+	float:left;
+}
+.upload-tips-div a{
+	color:#006666;
+	position:relative;
+	top:25px;
+	left:30px;
+}
+.image-show{
+	
+	width:200px;
+	height:100px;
+    position:relative;
+    left:50px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+/**弹框**/
+.mark{
+	display:none;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:20000;
+	background: rgba(0,0,0,0.6);
+	position:fixed;
+    opacity: .4;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+}
+.dialog{
+	display:none;
+	border-radius:6px;
+    position: fixed;
+    left: 55%;
+    top: 40%;
+    width: 300px;
+    margin:-135px 0 0 -250px;
+    background: #fff;
+    z-index: 230000;
+}
+.dialog .dialog-close{
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    cursor: pointer;
+    background: url("../img/close.png") no-repeat;
+}
+.dialog .dialog-title{
+    height: 45px;
+	color:#fff;
+	border-radius:6px 6px 0px 0px;
+    line-height: 45px;
+    text-indent: 15px;
+    background: #34A9B1;
+}
+.dialog .dialog-content{
+    padding:38px 20px;
+    font-size: 14px;
+    min-height:100px;
+}
+.opt-div{
+	margin-bottom:20px;
+}
+.dialog-link{
+	margin-top:20px;
+	margin-left:30px;
+}
+
+.start-upload, .clean-queue{
+	border: 1px solid #FFFFFF;
+	height: 30px;	
+	border-radius: 5px;
+	color: #FFFFFF;
+	cursor: pointer;
+	margin-left:12px;
+	text-decoration:none;
+}
+.start-upload{
+	background:#0088CC;
+	padding:5px;
+	
+}
+ .clean-queue{
+ color:#444444 !important;
+ }
+.rest{
+	width:970px;
+	margin:50px  auto;
+}
+ .rest-spring,.rest-autumn{
+ 	min-height:200px;
+ 	padding:20px;
+ 	width:400px;
+ 	background-color:white;
+ 	border-radius:5px;
+ }
+ .rest-spring{
+ 	float:left;
+ }
+ .rest-autumn{
+ 	float:right;
+ }
+ 
+ .rest-content{
+ 	margin-top:10px;
+ 	padding-top:5px;
+ 	border-top: 1px dashed #cccccc; 
+ }
+  
+ .rest-content a{
+ 	color:#444444;
+ 	margin:5px 0;
+ 	text-decoration: none;
+ }
+ .rest-content a:hover{
+ 	color:#ef9722;
+ 	text-decoration: underline;
+ }
+ .only-info .only-select{
+    width: 45px;
+    height: 25px;
+    padding-left:5px;
+ }
+.rest-selects,.rest-select{
+ 	width: 45px;
+    height: 25px;
+    padding-left:5px;
+    color: #FFFFFF;
+    text-decoration:none;
+    float:right;
+    background-color: #467B96;
+    border-radius: 5px;
+    border: 1px solid;
+ }
+
+.rest-selects:hover,.rest-select:hover{
+	width: 45px;
+    height: 25px;
+    padding-left:5px;
+    color: #FFFFFF;
+    text-decoration:none;
+    background-color: #1A5D7E;
+    border-radius: 5px;
+    float: right;
 }
