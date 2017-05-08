@@ -150,3 +150,12 @@ max-width: none;
   color: #27323A;
   
 }
+
+.weixin:hover{
+	cursor: pointer;
+}
+.wenxin-on{
+	position:absolute;
+	bottom:40px;
+	display: none;
+}

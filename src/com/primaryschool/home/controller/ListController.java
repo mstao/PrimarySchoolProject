@@ -12,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.entity.CourseType;
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.ICampusSceneryService;
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.CampusScenery;
@@ -48,7 +50,6 @@ import com.primaryschool.home.service.ITeacherService;
 import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITrendsService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
-import com.primaryschool.home.service.impl.LabClassService;
 
 @Controller
 @RequestMapping("/list")
@@ -105,6 +106,8 @@ public class ListController<T> {
 	@Autowired
 	private IDepartmentLinkService<DepartmentLinkContent> departmentLinkService;
 	
+	@Autowired
+	private IAdminCourseScoreService<T> courseScoreService;
 	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
@@ -731,4 +734,69 @@ public class ListController<T> {
         map.put("departmentId", departmentId);
 		return "home/list/departmentLinkContentList";
 	}
+	
+	/**
+	 * 
+	* @Title: findScore
+	* @Description: TODO 查询成绩
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/findScore")
+	public String findScore(ModelMap map){
+		String durl="findScore";
+		int id = 0;
+		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
+		//获取考试类别
+	 	ArrayList<CourseType> courseType=(ArrayList<CourseType>) courseScoreService.findCourseType();
+		
+	//	ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String formatDate = sdf.format(date);
+        int d=Integer.parseInt(formatDate);
+        //获取默认年级
+        for(Grade list:grade){
+        	if(list.getGradeCode()==d)
+			id=list.getId();
+		}
+        ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfoById(id);
+		map.put("courseType", courseType);
+        map.put("durl", durl);
+        map.put("year", d);
+		map.put("sclass", sclass);
+		map.put("grade", grade);
+		return "/home/list/findScore";
+	}
+	
+	/**
+	 * 
+	* @Title: classList
+	* @Description: TODO 班级列表
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/classTable")
+	public String classTable(ModelMap map){
+		String fileType="fstudent";
+		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
+		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String formatDate = sdf.format(date);
+        int d=Integer.parseInt(formatDate);
+		map.put("year", d);
+		map.put("fileType", fileType);
+		map.put("sclass", sclass);
+		map.put("grade", grade);
+		return "/home/list/classTable";
+	}
+	
+	
 }

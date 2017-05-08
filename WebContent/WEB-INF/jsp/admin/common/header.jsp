@@ -163,7 +163,7 @@ $(function(){
 	
 				<ul class="menu-function user">
 					<li>
-						<a href="${pageContext.request.contextPath}/admin/user/showUpdatePassword" title="点击修改密码" class="home" >${sessionScope.role}<shiro:principal/></a>                                       
+						<a href="${pageContext.request.contextPath}/admin/user/showUpdatePassword" title="点击修改个人资料" class="home" >${sessionScope.role}<shiro:principal/></a>                                       
 					</li>
 					<li>
 						<a href="javascript:void(0);" title="" class="logout" class="home" >退出</a>                                       

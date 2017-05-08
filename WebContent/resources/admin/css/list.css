@@ -330,6 +330,18 @@
 	height:180px;
 }
 
+.errorinfo{
+	
+	
+	height:40px;
+	line-height:40px;
+	width:70%;
+	text-align:center;
+	background-color:#f2dede;
+	color:#444444;
+}
+
+
 .main-div{
    margin: 0 auto;
    width:900px;
@@ -469,8 +481,16 @@
    margin-left:20px;
    float:left;
    width:200px;
- 
+  border-right:1px dashed #CCCCCC; 
+  padding-right:10px;
 }
+.stu-info-display-img{
+   color:#467BA2;
+   margin-left:20px;
+   float:left;
+   min-width:200px;
+}
+
 .stu-info-display-left >div>span:FIRST-CHILD{
 	color: #666666;
 	white-space :nowrap;

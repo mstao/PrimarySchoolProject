@@ -15,11 +15,22 @@ public class SclassDao<T> implements ISclassDao<T> {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> findClassInfo() {
 		// TODO Auto-generated method stub
 		String hql="select new com.primaryschool.home.entity.Sclass(c.id, c.className, c.gradeId, g.gradeCode)from Sclass c,Grade g where c.gradeId=g.id";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		return query.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findClassInfoById(int id) {
+		// TODO Auto-generated method stub
+		String hql="from Sclass where gradeId=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
 		return query.list();
 	}
 	

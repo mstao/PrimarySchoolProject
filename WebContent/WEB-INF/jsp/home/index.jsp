@@ -318,7 +318,7 @@ $(function() {
 		<div class="school-dang">
 			<!--S 学校管理  -->
 			<div class="school-div">
-				<div class="trends-top school-trends-top"><img src="${CTP_HOME}/img/school.png"/> <span class="tag-ch">学校管理</span><span class="tag-en">Administration</span> <a class="link-tag" href="#">进入>></a></div>
+				<div class="trends-top school-trends-top"><img src="${CTP_HOME}/img/school.png"/> <span class="tag-ch">学校管理</span><span class="tag-en">Administration</span> <a class="link-tag" href="${CTP}/category/manage">进入>></a></div>
 			  <!--tab-->
 			    <div class="tab-container school-container">
 					 <div class="tab">
@@ -363,7 +363,7 @@ $(function() {
 			
 			<!--S 党务工会-->
 			<div class="dang-div">
-				<div class="trends-top dang-trends-top"><img src="${CTP_HOME}/img/dang.png"/> <span class="tag-ch">党务工会</span><span class="tag-en">The Party Union</span> <a class="link-tag" href="#">进入>></a></div>
+				<div class="trends-top dang-trends-top"><img src="${CTP_HOME}/img/dang.png"/> <span class="tag-ch">党务工会</span><span class="tag-en">The Party Union</span> <a class="link-tag" href="${CTP}/category/party">进入>></a></div>
 			    <!--tab-->
 			    <div class="tab-container school-container">
 					 <div class="tab">

@@ -96,7 +96,7 @@ public class Apply implements Serializable{
 	/**
 	 * 
 	* <p>Title: </p>
-	* <p>Description:  </p>
+	* <p>Description: </p>
 	* @param id
 	* @param stuName
 	* @param stuSex
@@ -104,9 +104,11 @@ public class Apply implements Serializable{
 	* @param stuIdNum
 	* @param addTime
 	* @param status
+	* @param reason
+	* @param imgPath
 	 */
 	public Apply(int id, String stuName, String stuSex, String stuNation, String stuIdNum, String addTime,int status
-			,String reason) {
+			,String reason,String imgPath) {
 		super();
 		this.id = id;
 		this.stuName = stuName;
@@ -116,6 +118,7 @@ public class Apply implements Serializable{
 		this.addTime = addTime;
 		this.status=status;
 		this.reason=reason;
+		this.imgPath=imgPath;
 	}
 	
 	

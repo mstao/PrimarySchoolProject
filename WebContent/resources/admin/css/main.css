@@ -100,7 +100,25 @@
 	width:400px;
 	color: #444444;
 	margin:0 auto;
-	margin-top:200px;
+	margin-top:100px;
 	border: 2px dashed #cccccc;
 	padding:20px;
+}
+.common-div{
+	width:400px;
+	height:150px;
+	margin:0 auto;
+	padding:20px;
+	margin-top:100px;
+	border: 2px dashed #cccccc;
+	color:#444444;
+}
+.common-div img{
+	float:left;
+	margin-right:20px;
+}
+.common-div .tips{
+	display:block;
+	margin-top:10px;
+	color:#666666;
 }

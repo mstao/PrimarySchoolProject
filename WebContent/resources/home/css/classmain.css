@@ -108,3 +108,68 @@
 .clear{
 	clear:both;
 }
+/**成绩查询**/
+.score-info{
+	height:50px;
+	padding:0 50px;
+}
+.score-info select{
+	height:25px;
+	width:100px;
+	margin-right:30px;
+	border: 1px solid #D9D9D6;
+	border-radius:5px;
+}
+.new_button{
+    width: 50px;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: #467B96;
+    border-radius: 5px;
+    float: right;
+    border: 1px solid;
+}
+.new_button:hover{
+	 width: 50px;
+    height: 30px;
+    color: #FFFFFF;
+    background-color: #1A5D7E;
+    border-radius: 5px;
+    float: right;
+}
+.new_text{
+    width: 200px;height: 25px;
+    float: right;
+    border: 1px solid #D9D9D6;
+    padding-left: 5px;
+}
+.scoredetail{
+	min-height:400px;
+	width:auto;
+	border:1px dashed  #CCCCCC;
+	border-radius:5px;
+}
+.scoredetail table{
+	width: 100%;
+    border-collapse: collapse;
+}
+
+.scoredetail table th{
+	height: 50px;
+    border-bottom: 2px aliceblue solid;
+	text-align:center;
+}
+.scoredetail table td{
+	height: 40px;
+    border-bottom: 1px aliceblue solid;
+    text-align:center;
+}
+.errorinfo{
+	
+	height:40px;
+	line-height:40px;
+	width:1170px;
+	text-align:center;
+	background-color:#f2dede;
+	color:#444444;
+}

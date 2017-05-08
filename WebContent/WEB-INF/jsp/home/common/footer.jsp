@@ -2,6 +2,18 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/extends/layer-2.4/layer.js"></script>
 
+<<script type="text/javascript">
+$(function(){
+	
+	$(".weixin").bind("mouseenter",function(){
+		$(".wenxin-on").slideDown();
+	}).bind("mouseleave",function(){
+		$(".wenxin-on").slideUp();
+	});
+	
+});
+</script>
+
 <!-- S FOOTER -->
 <div class="footer-bg">
 			  <div class="footer">
@@ -32,9 +44,18 @@
 	<div class="fixed-login">
 		<div class="fixed-login-content">
 			<div class="fixed-login-image">
-			<img src="${pageContext.request.contextPath}/resources/home/img/weixin.png" title="微信"/>	
-			
-			<img src="${pageContext.request.contextPath}/resources/home/img/weibo.png" title="微博"/>
+		
+			  
+			 
+           <img src="${pageContext.request.contextPath}/resources/home/img/weixin.png" title="微信" class="weixin"/>
+           
+           <div class="wenxin-on"><img src="${pageContext.request.contextPath}/resources/home/img/qrcode.gif"/></div>
+            
+
+           
+			<a href="#">
+			  <img src="${pageContext.request.contextPath}/resources/home/img/weibo.png" title="微博"/>
+			</a>
 			</div>
 			<div class="spinner  login-loading" style="display:none;"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>
 			<div class="fixed-login-input">
@@ -94,6 +115,8 @@ var CTPPATH="${pageContext.request.contextPath}";
 	   var CTPPATH="${pageContext.request.contextPath}";
 	   var ok_username=false;
 	   var ok_password=false;
+	  
+	   
 	   /**
 		 * 验证用户名
 		 */

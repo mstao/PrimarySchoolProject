@@ -5,13 +5,19 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.primaryschool.admin.entity.FileBean;
+import com.primaryschool.home.service.IBaseFileService;
 
 /**
  * 
@@ -24,8 +30,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/download")
-public class DownloadController {
-
+public class DownloadController<T> {
+	
+    @Autowired
+    private IBaseFileService<T> baseFileServcie;
 	/**
 	 * 
 	* @Title: download
@@ -82,5 +90,19 @@ public class DownloadController {
 		in.close();
 		//关闭输出流
 		out.close();
+	}
+	
+	@RequestMapping("/fileById")
+	public String downLoadById(int id,String belongType,RedirectAttributes attr,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException{
+		//request.setCharacterEncoding("UTF-8");
+		
+		FileBean filelist=(FileBean) baseFileServcie.findFileById(belongType,id);
+		//String fileName=java.net.URLEncoder.encode(filelist.getFileName());
+		String fileName=filelist.getFileName();
+		String realName=filelist.getRealName();
+		attr.addAttribute("fileName",fileName);
+		attr.addAttribute("realName",realName);
+		return "redirect:/download/file";
+		//return "redirect:/download/file?fileName="+fileName+"&realName="+realName+"";
 	}
 }

@@ -21,10 +21,20 @@ public class BaseFileService<T> implements IBaseFileService<T> {
 
 	@Autowired
 	private  IBaseFileDao<T> baseFileDao;
+	
 	@Override
 	public List<T> findFile(String belongType,int itemId) {
 		// TODO Auto-generated method stub
 		return baseFileDao.findFile(belongType,itemId);
 	}
-
+	@Override
+	public T findFileById(String belongType,int itemId) {
+		// TODO Auto-generated method stub
+		return baseFileDao.findFileById(belongType,itemId);
+	}
+	@Override
+	public List<T> findFiles(String belongType) {
+		// TODO Auto-generated method stub
+		return baseFileDao.findFiles(belongType);
+	}
 }

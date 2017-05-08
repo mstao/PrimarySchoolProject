@@ -470,7 +470,7 @@ $(function() {
                          
        	layer.msg(  file.name + ' 上传成功！  ',{icon: 1,time:3000});
        	//将 图片信息写到图片展示 
-           $('.image-show').attr("src",data);
+        $('.image-show').attr("src",data);
        	//将图片路径写入隐藏域，后面还用
        	$('.hidden-item-image').val(data);
        	
@@ -688,8 +688,8 @@ $(function(){
             <input type="hidden" class="hide-checked-id" value="">
             <div class="opt-div">
             <div align="center">
-            <h4>选择文件后请点击手动上传</h4>
-            <h5>可以重复上传，以最后一次为准</h5>
+            <h4>选择文件后文件自动上传</h4>
+            <h5>可以重复上传，最多5次，以最后一次为准</h5>
             </div>
 			
 			<div class="dialog-content">

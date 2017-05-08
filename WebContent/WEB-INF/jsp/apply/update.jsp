@@ -295,7 +295,7 @@ $(function(){
 		var mother_phone=$(".tab-guardianMes-mother-phonenum-input").val();
 		//获取 图片
 		var img_path=$(".hidden-item-image").val();
-		
+		alert(img_path);
 		if(stu_sex!=null){
 			ok_stu_sex=true;
 		}
@@ -576,7 +576,7 @@ $(function(){
 
 
 <!--描述：需要填写的报名内容主要包括学生基本信息，监护人基本信息-->
-		<div class="applybody-content-tab">
+		<div class="applybody-content-tab clearfix">
 			<span class="applybody-content-tab-top">招生信息修改</span>
 			<!--描述：报名内容中的学生基本信息模块-->
 			<div class="applybody-content-tab-basicMes">

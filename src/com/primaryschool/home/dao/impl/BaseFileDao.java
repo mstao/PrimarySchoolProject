@@ -44,5 +44,29 @@ public class BaseFileDao<T> implements IBaseFileDao<T> {
 		query.setInteger(1, itemId);
 		return query.list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findFileById(String belongType,int itemId) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeId.findFileBelongIdByBelongFalg(belongType);
+		String hql="select new com.primaryschool.admin.entity.FileBean(fb.id,fb.fileName,fb.realName) from FileBean fb,FileBelong fbg where fbg.id=? and fb.fileBlongId=fbg.id and fb.itemId=?  order by fb.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0,id);
+		query.setInteger(1, itemId);
+		query.setMaxResults(1);
+		return (T) query.uniqueResult();
+	}
 
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findFiles(String belongType) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeId.findFileBelongIdByBelongFalg(belongType);
+		String hql="from FileBean f where f.fileBlongId=? order by f.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0,id);
+		return query.list();
+	}
 }

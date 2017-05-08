@@ -93,9 +93,9 @@ public class ApplyDao<T> implements IApplyDao<T> {
 		// TODO Auto-generated method stub
 		String hql="";
 		if(status==3){
-			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
+			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason,a.imgPath) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=?";
 		}else{
-			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=? and a.status=?";
+			hql="select new com.primaryschool.apply.entity.Apply(a.id,a.stuName,a.stuSex,a.stuNation,a.stuIdNum,a.addTime,a.status,a.reason,a.imgPath) from Apply a,ApplyDate ae where a.dateId=ae.id and ae.year=? and a.status=?";
 		}
 
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -224,7 +224,7 @@ public class ApplyDao<T> implements IApplyDao<T> {
 	@Override
 	public void updateApplyInfo(T t) {
 		// TODO Auto-generated method stub
-		String hql="update Apply a set  a.stuName=:stuName,a.stuNation=:stuNation,a.stuSex=:stuSex,a.stuIdNum=:stuIdNum,a.originalSchool=:originalSchool,a.address=:address,a.register=:register,a.fatherName=:fatherName,a.fatherIdNum=:fatherIdNum,a.fatherPhone=:fatherPhone,a.motherName=:motherName,a.motherIdNum=:motherIdNum,a.motherPhone=:motherPhone,a.status=:status where a.id=:id";
+		String hql="update Apply a set  a.stuName=:stuName,a.stuNation=:stuNation,a.stuSex=:stuSex,a.stuIdNum=:stuIdNum,a.originalSchool=:originalSchool,a.address=:address,a.register=:register,a.fatherName=:fatherName,a.fatherIdNum=:fatherIdNum,a.fatherPhone=:fatherPhone,a.motherName=:motherName,a.motherIdNum=:motherIdNum,a.motherPhone=:motherPhone,a.status=:status,a.imgPath=:imgPath where a.id=:id";
 		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
 		query.setProperties(t);
 		query.executeUpdate();

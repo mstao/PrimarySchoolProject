@@ -210,3 +210,14 @@
 	color:#000000;
 
 }
+.apply-image{
+	width:200px;
+	height:100px;
+    position:relative;
+    left:100px;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.apply-image-tips{
+	margin-left:-50px;
+}

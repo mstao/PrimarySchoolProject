@@ -27,6 +27,9 @@ var CTPPATH="${pageContext.request.contextPath}";
 <jsp:include page="common/header.jsp"></jsp:include>
 	<!--S main-->
 <div class="main">
+<shiro:lacksRole name="superadmin">  
+<div class="common-div"><img src="${CTP_ADMIN}/img/hi.png"/><span>欢迎访问后台管理系统<br>您的角色是：<b>${sessionScope.role}</b><br>用户名是：<b><shiro:principal/></b></span><span class="tips">Tips:后台系统会根据您的角色来为您生成不同的界面，权限也随之分配。</span></div>
+</shiro:lacksRole>
 <%--只有管理可见  --%>   
   <shiro:hasRole name="superadmin">
 	<span class="web_summary_span">网站概要</span>

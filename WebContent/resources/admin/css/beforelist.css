@@ -142,3 +142,135 @@
     border: 1px solid #D9D9D6;
     margin:0 5px;
 }
+
+/**弹框**/
+.mark{
+	display:none;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	z-index:20;
+	background: rgba(0,0,0,0.6);
+	position:fixed;
+    opacity: .4;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+}
+.dialog{
+	display:none;
+	border-radius:6px;
+    position: fixed;
+    left: 55%;
+    top: 40%;
+    width: 300px;
+    margin:-135px 0 0 -250px;
+    background: #fff;
+    z-index: 23;
+}
+.dialog .dialog-close{
+    position: absolute;
+    right: 7px;
+    top: 10px;
+    width: 26px;
+    height: 26px;
+    display: inline-block;
+    cursor: pointer;
+    background: url("../img/close.png") no-repeat;
+}
+.dialog .dialog-title{
+    height: 45px;
+	color:#fff;
+	border-radius:6px 6px 0px 0px;
+    line-height: 45px;
+    text-indent: 15px;
+    background: #0F88EB;
+}
+.dialog .dialog-content{
+    padding:38px 20px;
+    font-size: 14px;
+    min-height:100px;
+}
+.opt-div{
+	margin-bottom:20px;
+}
+.dialog-link{
+	margin-top:20px;
+	margin-left:30px;
+}
+
+.start-upload, .clean-queue{
+	border: 1px solid #FFFFFF;
+	height: 30px;	
+	border-radius: 5px;
+	color: #FFFFFF;
+	cursor: pointer;
+	margin-left:12px;
+	text-decoration:none;
+}
+.start-upload{
+	background:#0088CC;
+}
+ .clean-queue{
+ color:#444444 !important;
+ }
+.rest{
+	width:970px;
+	margin:50px  auto;
+}
+ .rest-spring,.rest-autumn{
+ 	min-height:200px;
+ 	padding:20px;
+ 	width:400px;
+ 	background-color:white;
+ 	border-radius:5px;
+ }
+ .rest-spring{
+ 	float:left;
+ }
+ .rest-autumn{
+ 	float:right;
+ }
+ 
+ .rest-content{
+ 	margin-top:10px;
+ 	padding-top:5px;
+ 	border-top: 1px dashed #cccccc; 
+ }
+  
+ .rest-content a{
+ 	color:#444444;
+ 	margin:5px 0;
+ 	text-decoration: none;
+ }
+ .rest-content a:hover{
+ 	color:#ef9722;
+ 	text-decoration: underline;
+ }
+ .only-info .only-select{
+    width: 45px;
+    height: 25px;
+    padding-left:5px;
+ }
+.rest-selects,.rest-select{
+ 	width: 45px;
+    height: 25px;
+    padding-left:5px;
+    color: #FFFFFF;
+    text-decoration:none;
+    float:right;
+    background-color: #467B96;
+    border-radius: 5px;
+    border: 1px solid;
+ }
+
+.rest-selects:hover,.rest-select:hover{
+	width: 45px;
+    height: 25px;
+    padding-left:5px;
+    color: #FFFFFF;
+    text-decoration:none;
+    background-color: #1A5D7E;
+    border-radius: 5px;
+    float: right;
+}

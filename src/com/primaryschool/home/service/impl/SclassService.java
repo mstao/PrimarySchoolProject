@@ -12,12 +12,19 @@ import com.primaryschool.home.service.ISclassService;
 public class SclassService<T> implements ISclassService<T> {
 
 	@Autowired
-	private ISclassDao classDao;
-	@SuppressWarnings("unchecked")
+	private ISclassDao<T> classDao;
+	
+
 	@Override
 	public List<T> findClassInfo() {
 		// TODO Auto-generated method stub
 		return (List<T>)classDao.findClassInfo();
 	}
-
+	
+	
+	@Override
+	public List<T> findClassInfoById(int id) {
+		// TODO Auto-generated method stub
+		return (List<T>)classDao.findClassInfoById(id);
+	}
 }

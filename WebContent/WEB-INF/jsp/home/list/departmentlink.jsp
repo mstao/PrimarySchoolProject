@@ -67,7 +67,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					</div>
 					<div class="departmentlink-sp-bottom">
 						<c:forEach items="${departmentLinkStaff}"  var="departmentLink_Staff">
-							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Staff.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Staff.typeId}">${myTag:substr(departmentLink_Staff.itemTitle,0,40)}   </a><span >[${departmentLink_Staff.addTime}]</span></li>
+							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Staff.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Staff.typeId}">${myTag:substr(departmentLink_Staff.itemTitle,0,40,true)}   </a><span >[${departmentLink_Staff.addTime}]</span></li>
 						</c:forEach>
 					</div>
 				</div>
@@ -80,7 +80,7 @@ var CTP_HOME=CTPPATH+"/resources/home";
 					</div>
 					<div class="departmentlink-jp-bottom">
 							<c:forEach items="${departmentLinkJob}"  var="departmentLink_Job">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Job.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Job.typeId}">${myTag:substr(departmentLink_Job.itemTitle,0,40)}</a><span >[${departmentLink_Job.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${departmentLink_Job.id}&departmentId=${departmentId}&contentFlag=${departmentLink_Job.typeId}">${myTag:substr(departmentLink_Job.itemTitle,0,40,true)}</a><span >[${departmentLink_Job.addTime}]</span></li>
 							</c:forEach>
 					</div>
 				</div>

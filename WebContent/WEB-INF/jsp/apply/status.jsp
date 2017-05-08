@@ -18,8 +18,12 @@
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_APPLY}/css/common.css"/>
 <link rel="stylesheet" href="${CTP_APPLY}/css/applyStatus.css"/>
+<link rel="stylesheet" href="${CTP}/resources/home/js/extends/zoomify/zoomify.min.css"/>
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
+<script type="text/javascript" src="${CTP}/resources/home/js/extends/zoomify/zoomify.min.js" ></script>
+	
+
 </head>
 <body>
 <script type="text/javascript">
@@ -222,6 +226,11 @@ $(function(){
 			      <div><span>母亲电话：</span><span>${apply.motherPhone}</span></div>
 			 </div> 
 			 
+			 <div class="stu-info-display">
+			      <span class="tips apply-image-tips">户口本户主页，学生页，房产证页等</span><br>
+			      <div><img src="${apply.imgPath}" class="apply-image"/></div>
+			      
+			 </div> 
 			 
 			</div>
 			</div>
@@ -253,3 +262,12 @@ $(function(){
 	
 </body>
 </html>
+
+<script type="text/javascript">
+
+$(function(){
+	
+	$(".apply-image").zoomify();
+	
+});
+</script>

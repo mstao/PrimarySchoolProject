@@ -90,16 +90,16 @@ var CTPPATH="${pageContext.request.contextPath}";
 					<input type="text" placeholder="请输入学生真实姓名" required="required" id="username" />
 				</div>
 				<div>
-					<input type="text" placeholder="请输入学生身份证号" required="required" id="number" />
+					<input type="text" placeholder="请输入学生身份证号" autocomplete="off" required="required" id="number" />
 				</div>
 				<div>
 					<input type="text" placeholder="请输入邮箱"   autocomplete="off" id="email" />
 				</div>
 				<div>
-					<input type="password" placeholder="请输入密码" required="required" id="password" />
+					<input type="password" placeholder="请输入密码" autocomplete="off" required="required" id="password" />
 				</div>
 				<div>
-					<input type="password" placeholder="请再次输入密码" required="required" id="passwords" />
+					<input type="password" placeholder="请再次输入密码" autocomplete="off" required="required" id="passwords" />
 				</div>
 					<div>
 						<input type="submit" value="注册" />
@@ -360,6 +360,7 @@ $(function(){
 				if($(this).val()!=$("#password").val()){
 					layer.tips('*两次填写的密码不一致!', '#passwords');
 					$(this).focus();
+					ok_re_password=false;
 				}else{
 					layer.tips('重复密码正确!', '#passwords');
 					ok_re_password=true;

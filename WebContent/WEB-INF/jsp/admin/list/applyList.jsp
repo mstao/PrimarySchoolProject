@@ -20,6 +20,7 @@
 <link href="${CTP_ADMIN }/css/date.css" rel="stylesheet" type="text/css" />
 <link href="${CTP_ADMIN }/css/magic-check.css" rel="stylesheet" type="text/css" />
 <link href="${CTP}/resources/common/select-tether/dist/css/select-theme-dark.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript" src="${CTP_ADMIN }/js/lib/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${CTP_ADMIN }/js/module/common.js"></script>
 <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
@@ -27,6 +28,7 @@
 
 <script type="text/javascript" src="${CTP}/resources/common/select-tether/js/tether.js"></script>
 <script src="${CTP}/resources/common/select-tether/dist/js/select.min.js"></script>
+
 
 <script type="text/javascript">
 var CTPPATH="${pageContext.request.contextPath}";
@@ -670,9 +672,7 @@ function  substrzzz(maxLen,str,isDot){
 
 $(function(){
 	
-	
-	
-	
+
 	//动态加载报名用户的具体信息
 
 	$(document).on("mouseover",".item_title",function(){
@@ -712,10 +712,16 @@ $(function(){
 						
 						xhtml+="<div class='stu-info-display-right'><span class='tips'>监护人信息</span><br><br>";
 						xhtml+="<div><span>父亲姓名：</span><span>"+data.fatherName+"</span></div><div><span>父亲身份证：</span><span>"+data.fatherIdNum+"</span></div><div><span>父亲电话：</span><span>"+data.fatherPhone+"</span></div><div><span>母亲姓名：</span><span>"+data.motherName+"</span></div><div><span>母亲身份证：</span><span>"+data.motherIdNum+"</span></div><div><span>母亲电话：</span><span>"+data.motherPhone+"</span></div></div> ";
+					
+					    //图片信息
+					    
+					    xhtml+="<div class='stu-info-display-img'><span class='tips'>户口本户主页，学生页，房产证页等</span><br><br>";
+					    xhtml+="<div class='img-show-div'> <a href='"+data.imgPath+"' target='_blank' class='img-show-a'><img src='"+data.imgPath+"' class='img-show' style='width:250px; height:200px;'/></a> </div></div>"
+					    
 					}else{
 						
 						xhtml+="数据暂未找到，请重试^_^";
-						layer.msg("数据暂未找到，请重试^_^");
+					//	layer.msg("数据暂未找到，请重试^_^");
 					}
 					 mythis.next(".bubb-image").html(xhtml);
 					
@@ -929,3 +935,4 @@ $(function(){
 			});
 		});
 </script>
+

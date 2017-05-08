@@ -83,6 +83,14 @@
         <property name="loginUrl" value="/admin/loginRegister/showTeaLogin"/>
         <property name="unauthorizedUrl" value="/admin/loginRegister/unauthorized"/>
         
+        
+        <!-- 添加各种验证过滤器 -->  
+        <property name="filters">  
+            <map>  
+                <entry key="roleOrFilter" value-ref="roleOrFilter"/>  
+            </map>  
+        </property>
+        
         <!-- shiro连接约束配置,在这里使用自定义的动态获取资源类 -->  
        <property name="filterChainDefinitionMap" ref="filterChainDefinitionMap" />  
    
@@ -117,6 +125,8 @@
     
     <bean id="filterChainDefinitionMapBuilder"
     	class="com.primaryschool.admin.factory.FilterChainDefinitionMapBuilder"></bean>
-    
+     
+    <!-- 自定义的过滤器，用来判断当前用户是否是roleOrFilter["comm,test"]中的某个角色 -->  
+    <bean id="roleOrFilter" class="com.primaryschool.admin.filter.CustomRolesAuthorizationFilter" />  
 
 </beans>

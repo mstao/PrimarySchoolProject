@@ -35,6 +35,7 @@ public class FilterChainDefinitionMapBuilder {
 	            } 
         }
         
+    //    map.put("/admin/**","roles[superadmin]" );
 		map.put("/admin/**", "authc");
 	
 		return map;
