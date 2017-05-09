@@ -159,10 +159,7 @@ $(function(){
 <div class="clear"></div>
 <%--E 主体 --%>
 
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp" />
 <%--引入footer --%>
 </body>
 </html>

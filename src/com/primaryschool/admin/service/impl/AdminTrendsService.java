@@ -67,5 +67,11 @@ public class AdminTrendsService<T> implements IAdminTrendsService<T> {
 		// TODO Auto-generated method stub
 		return trendsDao.updateTrendsInfo(t);
 	}
+	
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return trendsDao.searchInfo(flag, token);
+	}
 
 }

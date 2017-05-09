@@ -59,7 +59,10 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
    	private static  String  SCHOOL_STUDENT_ACTIVITY;
    	private static  String  SCHOLL_STUDENT_CLASS;
    	private static  String  SCHOOL_STUDENT_LAB;
-	
+   	private static  String  SCHOOL_STUDENT_INFOMATION;
+   	private static  String  SCHOOL_STUDENT_SCORE;
+   	
+   	
 	/**教师园地**/
    	private static  String  SCHOOL_TEACHER;
    	private static  String  SCHOOL_TEACHER_RESOURCES;
@@ -156,6 +159,8 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
 	          SCHOOL_STUDENT_ACTIVITY=prop.getProperty("SCHOOL_STUDENT_ACTIVITY").trim();
 	          SCHOLL_STUDENT_CLASS=prop.getProperty("SCHOLL_STUDENT_CLASS").trim();
 	          SCHOOL_STUDENT_LAB=prop.getProperty("SCHOOL_STUDENT_LAB").trim();
+	          SCHOOL_STUDENT_INFOMATION=prop.getProperty("SCHOOL_STUDENT_INFOMATION").trim();
+	          SCHOOL_STUDENT_SCORE=prop.getProperty("SCHOOL_STUDENT_SCORE").trim();
 	          
 	          /*教师园地*/
 	          SCHOOL_TEACHER=prop.getProperty("SCHOOL_TEACHER").trim();
@@ -238,6 +243,8 @@ public class ReadWebConfig extends HttpServlet implements Serializable{
 		getServletContext().setAttribute("SCHOOL_STUDENT_ACTIVITY",SCHOOL_STUDENT_ACTIVITY);
 		getServletContext().setAttribute("SCHOLL_STUDENT_CLASS",SCHOLL_STUDENT_CLASS);
 		getServletContext().setAttribute("SCHOOL_STUDENT_LAB",SCHOOL_STUDENT_LAB);
+		getServletContext().setAttribute("SCHOOL_STUDENT_INFOMATION",SCHOOL_STUDENT_INFOMATION);
+		getServletContext().setAttribute("SCHOOL_STUDENT_SCORE",SCHOOL_STUDENT_SCORE);
 		
 		
 		getServletContext().setAttribute("SCHOOL_TEACHER",SCHOOL_TEACHER);	

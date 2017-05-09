@@ -67,6 +67,8 @@ public class AdminSclassDao<T> implements IAdminSclassDao<T> {
 		String hql="select new com.primaryschool.home.entity.ClassHomePage(t.id, t.itemTitle, t.itemContent, t.itemAuthor, t.typeId,t.addTime,t.isPublish) from ClassHomePage t where t.classId= ? order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, ClassId);
+		query.setMaxResults(item_per_page);
+		query.setFirstResult(position);
 		return query.list();
 	}
 	
@@ -180,6 +182,27 @@ public class AdminSclassDao<T> implements IAdminSclassDao<T> {
 		query.setString(0, flag);
 		
 		return (int) query.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(int flag, String token) {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.home.entity.ClassHomePage(t.id, t.itemTitle, t.itemContent, t.itemAuthor, t.typeId,t.addTime,t.isPublish) from ClassHomePage t where t.classId= ? and t.itemTitle like ? order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, flag);
+		query.setString(1, "%"+token+"%");
+		return query.list();
+	}
+
+	@Override
+	public int ifClassExists(int GradeId,int className) {
+		// TODO Auto-generated method stub
+		String hql="select s.id from Sclass s where s.gradeId=? and s.className=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, GradeId);
+		query.setInteger(1, className);
+		return (Integer)query.uniqueResult();
 	}
 
 	

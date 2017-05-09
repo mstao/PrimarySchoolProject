@@ -92,6 +92,18 @@ public class AdminDepartmentService<T> implements IAdminDepartmentService<T> {
 		return departmentDao.findDepartmentContentCount(deptId);
 	}
 
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return departmentDao.searchInfo(flag, token);
+	}
+
+	@Override
+	public int findDepartmentIdByName(String flag) {
+		// TODO Auto-generated method stub
+		return departmentDao.findDepartmentIdByName(flag);
+	}
+
 	
 
 }

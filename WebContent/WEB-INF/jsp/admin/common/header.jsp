@@ -57,7 +57,7 @@ $(function(){
 							<li><a href="${pageContext.request.contextPath}/admin/list/indexImages">首页轮播图</a></li>
 					        <li><a href="${pageContext.request.contextPath}/admin/contact" >联系我们</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/copyright">版权声明</a></li>
-			
+			                <li><a href="${pageContext.request.contextPath}/admin/list/restTime" >作息时间表</a></li>
 					</ul>
                  </li>
                  <li><a href="javascript:void(0);">${SCHOOL_CULTURE}</a>
@@ -99,8 +99,9 @@ $(function(){
 							<li><a href="${pageContext.request.contextPath}/admin/list/student?flag=activity&p=1">${SCHOOL_STUDENT_ACTIVITY}</a></li>
 						</shiro:hasAnyRoles>	
 						
-							
 							<li><a href="${pageContext.request.contextPath}/admin/list/sclass">${SCHOLL_STUDENT_CLASS}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/studentInfomation">${SCHOOL_STUDENT_INFOMATION}</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/list/studentScore">${SCHOOL_STUDENT_SCORE}</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/list/labclass">${SCHOOL_STUDENT_LAB}</a></li>
 					</ul>
                  	

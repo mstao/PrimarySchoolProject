@@ -1,11 +1,19 @@
 package com.primaryschool.admin.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.entity.CourseScore;
+import com.primaryschool.admin.entity.CourseStudentInfo;
+import com.primaryschool.admin.entity.CourseType;
 import com.primaryschool.admin.entity.SecurityRole;
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
@@ -15,6 +23,7 @@ import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
 import com.primaryschool.admin.service.IAdminSclassService;
+import com.primaryschool.admin.service.IAdminStuInfoService;
 import com.primaryschool.admin.service.IAdminStudentService;
 import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
@@ -105,7 +114,13 @@ public class AddInfoController<T> {
     
    @Autowired 
    private IAdminHeaderMasterService<T> headMasterService;
-    
+   
+   @Autowired 
+   private IAdminStuInfoService<T> stuInfoService;
+   
+   @Autowired
+   private IAdminCourseScoreService<T> courseScoreService;
+   
     /**
      * 
     * @Title: addIndexImages
@@ -198,25 +213,25 @@ public class AddInfoController<T> {
    	* @return String    返回类型
    	* @throws
    	 */
-       @SuppressWarnings("unchecked")
-      	@RequestMapping("/trends")
-          @ResponseBody
-      	public  String addTrends(Trends trends){
-          	
-          	//由typeFlag获取typeid
-          	int typeId =typeFlagToTypeIdService.findTrendsTypeIdByTypeFlag(trends.getItemTypeFlag());
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/trends")
+    @ResponseBody
+  	public  String addTrends(Trends trends){
+      	
+      	//由typeFlag获取typeid
+      	int typeId =typeFlagToTypeIdService.findTrendsTypeIdByTypeFlag(trends.getItemTypeFlag());
 
-          	//赋值
-          	trends.setTypeId(typeId);
-          	
-          	int result= trendsService.addTrendsInfo((T)trends);
-      		return result+"";
-      	}
+      	//赋值
+      	trends.setTypeId(typeId);
+      	
+      	int result= trendsService.addTrendsInfo((T)trends);
+  		return result+"";
+  	}
        
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/education")
-       @ResponseBody
+    @ResponseBody
    	public  String addEducation(Education education){
        	
        	//由typeFlag获取typeid
@@ -229,9 +244,9 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/student")
-       @ResponseBody
+    @ResponseBody
    	public  String addStudent(Student student){
        	
        	//由typeFlag获取typeid
@@ -244,9 +259,9 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/teacher")
-       @ResponseBody
+    @ResponseBody
    	public  String addTeacher(Teacher teacher){
        	
        	//由typeFlag获取typeid
@@ -259,9 +274,9 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/party")
-       @ResponseBody
+    @ResponseBody
    	public  String addParty(Party party){
        	
        	//由typeFlag获取typeid
@@ -274,9 +289,9 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/manage")
-       @ResponseBody
+    @ResponseBody
    	public  String addManage(Manage manage){
        	
        	//由typeFlag获取typeid
@@ -289,9 +304,9 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/resource")
-       @ResponseBody
+    @ResponseBody
    	public  String addResource(String typeFlag,TeachingResourcesContent teachingResourcesContent){
        	
        	//由typeFlag获取typeid
@@ -303,19 +318,19 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       /**添加教学资源类别Menu**/
-       @SuppressWarnings("unchecked")
-      	@RequestMapping("/manageResource")
-       @ResponseBody
-      	public  String manageResource(TeachingResourcesMenu teachingResourcesMenu){
-          	int result= teachingResourcesService.addTeachingResourceMenuInfo((T)teachingResourcesMenu);
-      		return result+"";
-      	}
+    /**添加教学资源类别Menu**/
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/manageResource")
+    @ResponseBody
+    public  String manageResource(TeachingResourcesMenu teachingResourcesMenu){
+      	int result= teachingResourcesService.addTeachingResourceMenuInfo((T)teachingResourcesMenu);
+  		return result+"";
+    }
        
-       //部门发布新信息
-       @SuppressWarnings("unchecked")
+    //部门发布新信息
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/department")
-       @ResponseBody
+    @ResponseBody
    	public  String addDepartment(String typeFlag,DepartmentLinkContent departmentLinkContent){
        	//由typeFlag获取typeid
        	int typeId =departmentService.findDepartmentTypeIdByTypeFlag(typeFlag);
@@ -326,19 +341,19 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       /**添加教学资源类别Menu**/
-       @SuppressWarnings("unchecked")
-      	@RequestMapping("/manageDepartment")
-       @ResponseBody
-      	public  String manageDepartment(String resourceName,DepartmentLinkNameList departmentLinkNameList){
+    /**添加教学资源类别Menu**/
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/manageDepartment")
+    @ResponseBody
+    public  String manageDepartment(String resourceName,DepartmentLinkNameList departmentLinkNameList){
        	departmentLinkNameList.setDepartmentName(resourceName);
           	int result= departmentService.addDepartmentName((T)departmentLinkNameList);
       		return result+"";
-      	}
+    }
    	
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/labclassinfo")
-       @ResponseBody
+    @ResponseBody
    	public  String addLabclassinfo(String typeFlag,StudentLabMenuContent studentLabMenuContent){
        	
        	//由typeFlag获取typeid
@@ -351,9 +366,9 @@ public class AddInfoController<T> {
    	}
        
        
-       @SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/sclassHomePage")
-       @ResponseBody
+    @ResponseBody
    	public  String addLabclassinfo(int labId,String typeFlag,String author,ClassHomePage classHomePage){
        	
        	//由typeFlag获取typeid
@@ -368,10 +383,10 @@ public class AddInfoController<T> {
    	}
        
        
-       /**添加班级简介**/
-       @SuppressWarnings("unchecked")
+    /**添加班级简介**/
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/sclassintro")
-       @ResponseBody
+    @ResponseBody
    	public  String sclassintro(String intro,int foreignId,ClassSynopsis classSynopsis){
        	classSynopsis.setClassSynopsis(intro);
        	classSynopsis.setClassId(foreignId);
@@ -380,10 +395,10 @@ public class AddInfoController<T> {
    	}
        
        
-       /**添加社团简介**/
-       @SuppressWarnings("unchecked")
+    /**添加社团简介**/
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/labintro")
-       @ResponseBody
+    @ResponseBody
    	public  String labintro(String intro,int foreignId,StudentLabMenuIntroduce studentLabMenuIntroduce){
        	studentLabMenuIntroduce.setIntroduce(intro);
        	studentLabMenuIntroduce.setMenuId(foreignId);
@@ -391,10 +406,10 @@ public class AddInfoController<T> {
    		return result+"";
    	}
        
-       //添加社团
-       @SuppressWarnings("unchecked")
+    //添加社团
+    @SuppressWarnings("unchecked")
    	@RequestMapping("/managelablist")
-       @ResponseBody
+    @ResponseBody
    	public  String managelablist(StudentLab studentLab){
        	int result= labClassService.addLabInfo((T)studentLab);
    		return result+"";
@@ -431,5 +446,134 @@ public class AddInfoController<T> {
     	int result=headMasterService.saveHeadMaster((T) headMaster);
     	return result+"";
     }
+    
+    
+    //测试班级
+   	@RequestMapping("/testClass")
+    @ResponseBody
+   	public  String testClass(int gradeCode,int className){
+       	try{
+       		sclassService.addGradeInfo();
+       		//根据gradeCode获取id
+           	int gradeId=sclassService.findGradeIdByCode(gradeCode);
+           	int exist=sclassService.ifClassExists(gradeId,className);
+           	if(exist !=0){
+           		return "1";
+           	}else{
+           		return "0";
+           	}
+       	}catch(RuntimeException e){
+       		e.printStackTrace();
+       		return "0";
+       	}
+       	
+   	}
+       
+       /**
+        * 添加学生
+        */
+       
+       //验证学生信息是否唯一ById
+       @RequestMapping("/testId")
+       @ResponseBody
+       public String testId(String id){
+       	
+       	CourseStudentInfo stuInfo=(CourseStudentInfo) stuInfoService.findStuInfoByStuId(id);
+       	if(stuInfo != null){
+       		return "1";
+       	}else   
+       	return null;
+       }
+       
+       //验证学生身份证信息是否唯一ById
+       @RequestMapping("/testCardId")
+       @ResponseBody
+       public String testCardId(String cardId){
+       	
+       	CourseStudentInfo stuInfo=(CourseStudentInfo) stuInfoService.findStuInfoByCardId(cardId);
+       	if(stuInfo != null){
+       		return "1";
+       	}else   
+       	return null;
+       }
+       
+       
+      @SuppressWarnings("unchecked")
+      @RequestMapping("/stuInfo")
+      @ResponseBody
+      public  String stuInfo(CourseStudentInfo courseStudentInfo){
+          //处理年龄
+          	String age=courseStudentInfo.getStuBirthday();
+           System.out.println("age--"+age);
+          	//出生年份
+          	int byear=Integer.parseInt(age.substring(0, 4));
+          	//当前年份
+          	SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
+          	Date date=new Date();
+          	String formatDate=sdf.format(date);
+          	int year=Integer.parseInt(formatDate);
+          	//真实年龄
+          	int stuAge=year-byear;
+          	courseStudentInfo.setStuAge(stuAge);
+
+          	int result= stuInfoService.addStuInfo((T)courseStudentInfo);
+      		return result+"";
+      	}
+       
+    /**添加考试科目类别Menu**/
+    @SuppressWarnings("unchecked")
+  	@RequestMapping("/manageScore")
+    @ResponseBody
+  	public  String manageScore(CourseType courseType){
+      	int result= courseScoreService.addCourseType((T)courseType);
+  		return result+"";
+  	}
+       
+
+     //更新学生成绩
+	@RequestMapping("/scoreInfo")
+	@ResponseBody
+	public String  scoreInfo(String stuId,int classId,String author,String addTime,String scores,String course){
+		try{
+			
+			int stuinfoId=stuInfoService.findIdByStuIdOrStuName(stuId);
+			boolean t=courseScoreService.scoreExist(stuinfoId, addTime);
+			if(t){
+	        //处理考试科目号
+	        String[] cidArray=course.split(",");
+
+	        Integer[] cid=new Integer[cidArray.length];
+	        for(int i=0;i<cid.length;i++){
+	        	cid[i]=Integer.parseInt(cidArray[i]);
+	        }
+	        //处理分数
+	        String[] sco=scores.split(",");
+	        
+			ArrayList<CourseScore> cs=new ArrayList<CourseScore>();
+			CourseScore score=null;
+			for(int i=0;i<cid.length;i++){
+				score=new CourseScore();
+				score.setStuinfoId(stuinfoId);
+				score.setClassId(classId);
+				score.setCourseId(cid[i]);
+				score.setScore(sco[i]);
+				score.setAddTime(addTime);
+				score.setAuthor(author);
+				cs.add(score);
+			}
+			//更新数据
+			courseScoreService.addScoreInfo(cs);
+			//返回结果
+		
+			return "1";
+			}
+			else{
+				return "0";
+			}
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+		}
+	}
     
 }

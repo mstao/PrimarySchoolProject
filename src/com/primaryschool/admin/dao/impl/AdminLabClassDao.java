@@ -157,4 +157,25 @@ public class AdminLabClassDao<T> implements IAdminLabClassDao<T> {
 		return (Integer)result;
 	}
 
+	@Override
+	public int findLabIdByFlag(String flag) {
+		// TODO Auto-generated method stub
+		String hql="select c.id from StudentLab c where c.labName=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, flag);
+		return (Integer)query.uniqueResult();
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		int id=findLabIdByFlag(flag);
+		String hql="select new com.primaryschool.home.entity.StudentLabMenuContent(t.id,t.itemTitle,t.author,t.menuId,t.addTime,t.isPublish) from StudentLabMenuContent t where t.labId= ? and t.itemTitle like ? order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setString(1, "%"+token+"%");
+		return query.list();
+	}
 }

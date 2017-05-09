@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.entity.CourseScore;
+import com.primaryschool.admin.entity.CourseStudentInfo;
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
@@ -17,6 +20,7 @@ import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
 import com.primaryschool.admin.service.IAdminSclassService;
+import com.primaryschool.admin.service.IAdminStuInfoService;
 import com.primaryschool.admin.service.IAdminStudentService;
 import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
@@ -89,6 +93,14 @@ public class DistributeInfoController<T> {
     
     @Autowired
     private IAdminHeaderMasterService<T> headMasterService;
+    
+    @Autowired
+    private IAdminStuInfoService<T> stuInfoService;
+    
+    @Autowired
+    private IAdminCourseScoreService<T> courseScoreService;
+    
+    
 	/**
 	 * 
 	* @Title: culture
@@ -375,5 +387,37 @@ public class DistributeInfoController<T> {
 			map.put("post", post);
 			map.put("headMaster", h);
 			return "admin/details/headMaster";
+		}
+		
+		
+		//修改学生信息
+		@RequestMapping("/stuInfo")
+		public String  stuInfo(int classId,String fullName,int id,ModelMap map,HttpServletRequest request){
+			String durl="stuInfo";
+			CourseStudentInfo courseStudentInfo=(CourseStudentInfo) stuInfoService.findStuInfoById(id);
+			
+			map.put("classId", classId);
+			map.put("fullName", fullName);
+			map.put("item", courseStudentInfo);
+			map.put("durl",durl);
+			return "admin/details/stuInfoDetail";
+		}
+		/**
+		 * 
+		 * @param classId  班级
+		 * @param stuinfoId  学号
+		 * @return
+		 */
+		@SuppressWarnings("unchecked")
+		//修改学生成绩 scoreInfo
+		@RequestMapping("/scoreInfo")
+		public String  scoreInfo(int classId,String stuId,String addTime,String fullName,ModelMap map,HttpServletRequest request){
+			String durl="scoreInfo";
+			ArrayList<CourseScore> courseScore=(ArrayList<CourseScore>) courseScoreService.findScoreInfoById(classId, stuId, addTime);
+			map.put("fullName", fullName);
+			map.put("classId", classId);
+			map.put("list", courseScore);
+			map.put("durl",durl);
+			return "admin/details/scoreInfoDetail";
 		}
 }

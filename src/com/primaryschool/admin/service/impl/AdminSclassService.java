@@ -114,4 +114,16 @@ public class AdminSclassService<T> implements IAdminSclassService<T> {
 		return sclassDao.findPageTypeIdByTypeFlag(flag);
 	}
 
+	@Override
+	public List<T> searchInfo(int flag, String token) {
+		// TODO Auto-generated method stub
+		return sclassDao.searchInfo(flag, token);
+	}
+
+	@Override
+	public int ifClassExists(int GradeId,int className) {
+		// TODO Auto-generated method stub
+		return sclassDao.ifClassExists(GradeId,className);
+	}
+
 }

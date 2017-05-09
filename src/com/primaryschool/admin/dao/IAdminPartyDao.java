@@ -15,6 +15,8 @@ public interface IAdminPartyDao<T> {
 	   /**添加信息，返回值为该记录的主键值**/
 	   int addPartyInfo(T t);
 	   /**删除信息**/
-	   void deletePartyById(List<?> ids);     
-
+	   void deletePartyById(List<?> ids);    
+	   
+	   /**模糊查询**/
+	   List<T> searchInfo(String flag, String token);
 }

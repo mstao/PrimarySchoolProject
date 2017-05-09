@@ -120,4 +120,16 @@ public class AdminTeachingResourceDao<T> implements IAdminTeachingResourceDao<T>
 		 query.setParameterList("ids", ids).executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(int flag, String token) {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.home.entity.TeachingResourcesContent(t.id,t.itemTitle,t.addTime,t.isPublish,t.author,t.typeId) from TeachingResourcesContent t where t.menuId= ? and t.itemTitle like ? order by t.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, flag);
+		query.setString(1, "%"+token+"%");
+		return query.list();
+	}
+
+	
 }

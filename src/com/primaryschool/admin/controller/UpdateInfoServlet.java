@@ -1,14 +1,17 @@
 package com.primaryschool.admin.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
-import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.entity.CourseScore;
+import com.primaryschool.admin.entity.CourseStudentInfo;
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
@@ -17,6 +20,7 @@ import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
 import com.primaryschool.admin.service.IAdminSclassService;
+import com.primaryschool.admin.service.IAdminStuInfoService;
 import com.primaryschool.admin.service.IAdminStudentService;
 import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
@@ -88,6 +92,12 @@ public class UpdateInfoServlet<T> {
     
     @Autowired
     private IAdminHeaderMasterService<T> headMasterService;
+       
+    @Autowired
+    private IAdminStuInfoService<T> stuInfoService;
+    
+    @Autowired
+    private IAdminCourseScoreService<T> courseScoreService;
 	/**
 	 * @Title: updateCulture
 	 * @Description: TODO 更新校园文化数据
@@ -373,5 +383,101 @@ public class UpdateInfoServlet<T> {
 			r=0;
 		}
 		return r+"";
+	}
+	
+	
+	/**
+	 * 
+	* @Title: stuInfo
+	* @Description: TODO 修改学生信息
+	* @param @param courseStudentInfo
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/stuInfo")
+	@ResponseBody
+	public String  stuInfo(CourseStudentInfo courseStudentInfo){
+		int r;
+		//处理年龄
+       	String age=courseStudentInfo.getStuBirthday();
+       	//出生年份
+       	int byear=Integer.parseInt(age.substring(0, 4));
+       	//当前年份
+       	SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
+       	Date date=new Date();
+       	String formatDate=sdf.format(date);
+       	int year=Integer.parseInt(formatDate);
+       	//真实年龄
+       	int stuAge=year-byear;
+       	courseStudentInfo.setStuAge(stuAge);
+		//更新数据
+		boolean result=stuInfoService.updateStuInfo((T) courseStudentInfo);
+		//返回结果
+		if(result==true){
+			r=1;
+		}else{
+			r=0;
+		}
+		return r+"";
+	}
+	
+	
+	/**
+	 * 
+	 * @param ids    所有信息的记录
+	 * @param stuinfoId   学生信息对应的Id
+	 * @param classId    班级ID
+	 * @param courseIds   科目ID集合
+	 * @param scores     分数集合
+	 * @param addTime    添加时间
+	 * @param author     负责人
+	 * @return
+	 */
+	//更新学生成绩
+	@RequestMapping("/scoreInfo")
+	@ResponseBody
+	public String  scoreInfo(String ids,int stuinfoId,int classId,String courseIds,String scores,String addTime,String author){
+		try{
+			 //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	         //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //处理考试科目号
+	        String[] cidArray=courseIds.split(",");
+
+	        Integer[] cid=new Integer[cidArray.length];
+	        for(int i=0;i<cid.length;i++){
+	        	cid[i]=Integer.parseInt(cidArray[i]);
+	        }
+	        //处理分数
+	        String[] sco=scores.split(",");
+	        
+			ArrayList<CourseScore> cs=new ArrayList<CourseScore>();
+			CourseScore score=null;
+			for(int i=0;i<idArray.length;i++){
+				score=new CourseScore();
+				score.setId(iid[i]);
+				score.setStuinfoId(stuinfoId);
+				score.setClassId(classId);
+				score.setCourseId(cid[i]);
+				score.setScore(sco[i]);
+				score.setAddTime(addTime);
+				score.setAuthor(author);
+				cs.add(score);
+			}
+			//更新数据
+			courseScoreService.updateScoreInfo(cs);
+			//返回结果
+		
+			return "1";
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+		}
 	}
 }

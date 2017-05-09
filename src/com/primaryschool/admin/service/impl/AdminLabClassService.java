@@ -107,5 +107,10 @@ public class AdminLabClassService<T> implements IAdminLabClassService<T> {
 		// TODO Auto-generated method stub
 		return labClass.addLabClassInfo(t);
 	}
-
+	
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return labClass.searchInfo(flag, token);
+	}
 }

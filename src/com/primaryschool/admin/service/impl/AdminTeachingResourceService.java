@@ -78,4 +78,9 @@ public class AdminTeachingResourceService<T> implements IAdminTeachingResourceSe
 		teachingResource.deleteTeachingResourceMenuById(ids);
 	}
 
+	@Override
+	public List<T> searchInfo(int flag, String token) {
+		// TODO Auto-generated method stub
+		return teachingResource.searchInfo(flag, token);
+	}
 }

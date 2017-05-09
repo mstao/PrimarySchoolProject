@@ -25,4 +25,7 @@ public interface IAdminTeachingResourceService<T> {
 	   int addTeachingResourceMenuInfo(T t);
 	   /**删除资源类别**/
 	   void deleteTeachingResourceMenuById(List<?> ids);  
+	   
+	   /**模糊查询**/
+	   List<T> searchInfo(int flag, String token);  
 }

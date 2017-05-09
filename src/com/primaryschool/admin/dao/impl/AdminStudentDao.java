@@ -84,4 +84,16 @@ public class AdminStudentDao<T> implements IAdminStudentDao<T> {
 		 query.setParameterList("ids", ids).executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeIdDao.findStudentTypeIdByTypeFlag(flag);
+		String hql="select new com.primaryschool.home.entity.Student(c.id,c.itemTitle,c.addTime,c.isPublish,c.author) from Student c where c.typeId=? and c.itemTitle like ? order by c.addTime desc";
+		//String hql="from Culture c where c.typeId=? and c.itemTitle like ?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setString(1, "%"+token+"%");
+		return query.list();
+	}
 }

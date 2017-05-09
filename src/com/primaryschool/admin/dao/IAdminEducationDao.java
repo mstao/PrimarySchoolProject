@@ -14,5 +14,7 @@ public interface IAdminEducationDao<T> {
 	   /**添加信息，返回值为该记录的主键值**/
 	   int addEducationInfo(T t);
 	   /**删除信息**/
-	   void deleteEducationById(List<?> ids);   
+	   void deleteEducationById(List<?> ids);  
+	   /**模糊查询**/
+	   List<T> searchInfo(String flag, String token);
 }

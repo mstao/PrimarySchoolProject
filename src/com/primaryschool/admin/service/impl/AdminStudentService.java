@@ -48,5 +48,10 @@ public class AdminStudentService<T> implements IAdminStudentService<T> {
 		// TODO Auto-generated method stub
 		studentDao.deleteStudentById(ids);
 	}
-
+	
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return studentDao.searchInfo(flag, token);
+	}
 }

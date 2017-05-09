@@ -47,5 +47,10 @@ public class AdminCultureService<T> implements IAdminCultureService<T> {
 		// TODO Auto-generated method stub
 		cultureDao.deleteCultureById(ids);
 	}
-
+	
+	@Override
+	public List<T> searchInfo(String type, String token) {
+		// TODO Auto-generated method stub
+		return cultureDao.searchInfo(type, token);
+	}
 }

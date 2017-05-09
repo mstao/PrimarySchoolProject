@@ -15,4 +15,6 @@ public interface IAdminManageService<T> {
 	  int addManageInfo(T t);
 	  /**删除信息**/
 	  void deleteManageById(List<?> ids);
+	  /**模糊查询**/
+	  List<T> searchInfo(String flag, String token);
 }

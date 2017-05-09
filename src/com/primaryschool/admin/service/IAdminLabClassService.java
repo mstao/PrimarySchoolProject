@@ -35,4 +35,6 @@ public interface IAdminLabClassService<T> {
 	   void deleteLabById(List<?> ids); 
 	   /**添加社团信息，返回值为该记录的主键值**/
 	   int addLabInfo(T t);
+	   /**模糊查询**/
+	   List<T> searchInfo(String flag, String token);
 }

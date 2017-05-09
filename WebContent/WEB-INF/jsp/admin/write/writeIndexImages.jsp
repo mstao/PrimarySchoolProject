@@ -71,7 +71,7 @@
 			width			: 120	, // 120 px
 			
 			fileObjName		: 'filedata',	//文件对象名称, 即属性名
-			fileSizeLimit	: '10MB'	,		// 文件大小限制, 10M
+			fileSizeLimit	: '20MB'	,		// 文件大小限制, 20M
 			fileTypeDesc	: '图片类型(.JPG,.GIF,.PNG)'	,	//文件类型说明 any(*.*)
 			fileTypeExts	: '*.jpg;*.png;.gif',		// 允许的文件类型,分号分隔
 			//formData		: {'id':'1', 'type':'myFile'} , //指定上传文件附带的其他数据。也动态设置。可通过getParameter()获取
@@ -80,7 +80,7 @@
 			multi			: false,	// 多文件上传
 			progressData	: 'speed,percentage',	// 进度显示, speed-上传速度,percentage-百分比	
 			queueID			: 'fileQueue',//上传队列的DOM元素的ID号
-			queueSizeLimit	: 99	,	// 队列长度
+			queueSizeLimit	: 30	,	// 队列长度
 			removeCompleted : true	,	// 上传完成后是否删除队列中的对应元素
 			removeTimeout	: 5	,	//上传完成后多少秒后删除队列中的进度条, 
 			requeueErrors	: true,	// 上传失败后重新加入队列

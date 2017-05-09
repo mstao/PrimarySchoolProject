@@ -14,5 +14,7 @@ public interface IAdminCultureService<T> {
 	   /**添加信息，返回值为该记录的主键值**/
 	   int addCultureInfo(T t);
 	   /**删除信息**/
-	   void deleteCultureById(List<?> ids);     
+	   void deleteCultureById(List<?> ids);    
+	   /**根据关键字查找信息**/
+	   List<T> searchInfo(String type, String token);  
 }

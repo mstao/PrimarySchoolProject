@@ -47,5 +47,10 @@ public class AdminManageService<T> implements IAdminManageService<T> {
 		// TODO Auto-generated method stub
 		ManageDao.deleteManageById(ids);
 	}
-
+	
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return ManageDao.searchInfo(flag, token);
+	}
 }

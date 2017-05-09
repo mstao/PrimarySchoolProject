@@ -23,5 +23,7 @@ public interface IAdminTrendsDao<T> {
     /**添加信息，返回值为该记录的主键值**/
     int addTrendsInfo(T t);
     /**删除信息**/
-    void deleteTrendsById(List<?> ids);     
+    void deleteTrendsById(List<?> ids);    
+    /**模糊查询**/
+   	List<T> searchInfo(String flag, String token);
 }

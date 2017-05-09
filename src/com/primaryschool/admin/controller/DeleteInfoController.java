@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
@@ -18,6 +19,7 @@ import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
 import com.primaryschool.admin.service.IAdminSclassService;
+import com.primaryschool.admin.service.IAdminStuInfoService;
 import com.primaryschool.admin.service.IAdminStudentService;
 import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
@@ -89,6 +91,11 @@ public class DeleteInfoController<T> {
     @Autowired
     private IAdminHeaderMasterService<T> headMasterService;
 	
+    @Autowired
+    private IAdminStuInfoService<T> stuInfoService;
+    
+    @Autowired
+    private IAdminCourseScoreService<T> courseScoreService;
 	/**
 	 * 
 	* @Title: deleteIndexImage
@@ -589,4 +596,80 @@ public class DeleteInfoController<T> {
 		}
 	}
 	
+	
+	/**
+	 * 学生信息
+	 */
+	//班级内学生信息删除 stuInfo
+	@RequestMapping("/stuInfo")
+	@ResponseBody
+	public  String  stuInfo(String ids){
+		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        stuInfoService.deleteStuById(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			return "0";
+		}
+        
+	}
+	
+	//删除考试科目名称
+	@RequestMapping("/manageScore")
+	@ResponseBody
+	public  String  manageScore(String ids){
+		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        courseScoreService.deleteCourseType(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			return "0";
+		}
+        
+	}
+	
+	
+	//班级内学生成绩删除 sscoreInfo
+	@RequestMapping("/scoreInfo")
+	@ResponseBody
+	public  String  scoreInfo(String ids){
+		try{
+		    //将字符串转为字符串数组
+	        String[] idArray = ids.split(","); 
+	        //将字符串数组转为整形数组
+	        Integer[] iid=new Integer[idArray.length];
+	        for(int i=0;i<iid.length;i++){
+	        	iid[i]=Integer.parseInt(idArray[i]);
+	        }
+	        //将数组转为list
+	        List<Integer> idList = new ArrayList<Integer>();	
+	        Collections.addAll(idList, iid);
+	        //执行删除语句
+	        courseScoreService.deleteScoreInfo(idList);
+	        return "1";
+		}catch(RuntimeException e){
+			return "0";
+		}
+        
+	}
 }

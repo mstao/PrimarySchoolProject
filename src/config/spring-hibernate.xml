@@ -57,6 +57,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>  
     </bean>  
     
+    
    <!--   配置事务拦截器-->
 	 <bean id="transactionInterceptor"
 	      class="org.springframework.transaction.interceptor.TransactionInterceptor">

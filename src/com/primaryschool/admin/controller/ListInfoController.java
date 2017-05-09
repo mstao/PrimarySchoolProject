@@ -9,6 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.entity.CourseScore;
+import com.primaryschool.admin.entity.CourseStudentInfo;
+import com.primaryschool.admin.entity.CourseType;
+import com.primaryschool.admin.entity.FileBean;
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
@@ -18,16 +23,13 @@ import com.primaryschool.admin.service.IAdminLabClassService;
 import com.primaryschool.admin.service.IAdminManageService;
 import com.primaryschool.admin.service.IAdminPartyService;
 import com.primaryschool.admin.service.IAdminSclassService;
+import com.primaryschool.admin.service.IAdminStuInfoService;
 import com.primaryschool.admin.service.IAdminStudentService;
 import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.admin.service.ICampusSceneryService;
-import com.primaryschool.apply.entity.Apply;
-import com.primaryschool.apply.entity.ApplyDate;
-import com.primaryschool.apply.service.IApplyService;
 import com.primaryschool.global.config.PageSizeConfig;
-import com.primaryschool.global.util.GetDateUtil;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.ClassSynopsis;
@@ -50,6 +52,7 @@ import com.primaryschool.home.entity.TeachingResourcesClass;
 import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.TeachingResourcesMenu;
 import com.primaryschool.home.entity.Trends;
+import com.primaryschool.home.service.IBaseFileService;
 import com.primaryschool.home.service.IGradeService;
 import com.primaryschool.home.service.ILabClassService;
 import com.primaryschool.home.service.IPageHelperService;
@@ -134,11 +137,19 @@ public class ListInfoController<T> {
     @Autowired
     private IAdminHeaderMasterService<T> headerMasterService;
     
-    //在线报名
+
     @Autowired
-    private IApplyService<T> applyService;
+    private IAdminStuInfoService<T> stuInfoService;
+    
+    @Autowired
+    private IAdminCourseScoreService<T> courseScoreService;
+    
+    @Autowired
+    private IBaseFileService<T> baseFileServcie;
     
     private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
+    
+    private int studentPageSize=PageSizeConfig.ADMIN_STUDENT_PAGESIZE;
     
 	/**
 	 * 
@@ -800,5 +811,172 @@ public class ListInfoController<T> {
    	   return "admin/list/headmasterList";
    	   
    	}
+   	
+   	
+   	/**
+   	 * 主要完成对班级学生信息的录入，修改和删除
+   	 */
+   	/**获取班级列表**/
+    @RequestMapping("/studentInfomation")
+ 	public String studentInfomation(ModelMap map){
+ 	   String durl="studentInfomation";
+ 		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
+ 		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+ 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+        Date date = new Date();
+        String formatDate = sdf.format(date);
+        int d=Integer.parseInt(formatDate);
+        map.put("durl", durl);
+ 		map.put("year", d);
+ 		map.put("sclass", sclass);
+ 		map.put("grade", grade);
+ 		return "/admin/beforelist/studentInfomation";
+ 	}
+    
+    
+    /**获取某个班级内学生详细信息**/
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/stuInfo")	
+    public  String stuInfo(int classId,String fullName,int p,ModelMap map){
+ 	//   String flag="resources";
+ 	   String sp=p+"";
+ 	   if(sp.equals("")){
+ 			p=1;
+ 	   }
+ 	   //查看详细信息url
+ 	   String durl="stuInfo";
+ 	   
+ 		
+ 	   //当前的url
+ 	   String url="./stuInfo?classId='"+classId+"'&fullName='"+fullName+"'&p=";
+ 	   
+ 		
+ 	   //获取总记录量
+ 	   int count=stuInfoService.findStuCount(classId);
+ 	   //计算偏移量
+ 	   int position=(p-1)*pageSize;
+ 	   
+ 	   //根据偏移量获取数据
+ 	   ArrayList<CourseStudentInfo> courseStudentInfo=(ArrayList<CourseStudentInfo>) stuInfoService.findStuInfo(classId, position, studentPageSize);
+      //处理年龄
+	   String age;
+	   int byear;
+	   int stuAge;
+	   SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
+	   Date date=new Date();
+	   String formatDate=sdf.format(date);
+	   int year=Integer.parseInt(formatDate);
+ 	   for(CourseStudentInfo info:courseStudentInfo){
+ 		  age=info.getStuBirthday();
+ 		  byear=Integer.parseInt(age.substring(0, 4));
+ 		  stuAge=year-byear;
+ 		  info.setStuAge(stuAge);
+ 	   }
+ 	   
+ 	   //获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+        
+        
+        map.put("classId", classId);
+        map.put("durl",durl);
+        map.put("toolBar", toolBar);
+        map.put("fullName", fullName);
+        map.put("item", courseStudentInfo);  
+ 	   return "admin/list/stuInfoList";
+    }
+    
+    /**
+     * TODO 各科成绩的管理
+     * @param map
+     * @return
+     */
+    @RequestMapping("/studentScore")
+    public String studentScore(ModelMap map){
+		String durl="studentScore";
+		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
+		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		Date date = new Date();
+		String formatDate = sdf.format(date);
+		int d=Integer.parseInt(formatDate);
+		map.put("durl", durl);
+		map.put("year", d);
+		map.put("sclass", sclass);
+		map.put("grade", grade);
+ 	   return "admin/beforelist/studentScore";
+    }
+    
+    //考试科目管理界面
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/manageScore")
+    public String manageScore(ModelMap map){
+ 	   String durl="manageScore";
+  		//获取考试项目列表
+  		ArrayList<CourseType>  menu=(ArrayList<CourseType>) courseScoreService.findCourseType();
+  		
+  		map.put("durl", durl);
+  		map.put("menu", menu);
+ 	   return "admin/beforelist/manageScore";
+    }
+    
+   //**获取某个班级内成绩信息**//
+    @SuppressWarnings("unchecked")
+    @RequestMapping("/scoreInfo")	
+    public  String scoreInfo(int classId,String fullName,int p,ModelMap map){
+ 	//   String flag="resources";
+ 	   String sp=p+"";
+ 	   if(sp.equals("")){
+ 			p=1;
+ 	   }
+ 	   //查看详细信息url
+ 	   String durl="scoreInfo";
+ 	   
+ 	  //当前的url
+ 	   String url="./scoreInfo?classId='"+classId+"'&fullName='"+fullName+"'&p=";
+ 	   
+ 	  //获取总记录量
+ 	   int count=courseScoreService.findScoreCount(classId);
+ 	   //计算偏移量
+ 	   int position=(p-1)*pageSize;
+ 	   
+ 	   //根据偏移量获取数据
+ 	   ArrayList<CourseScore> courseScore=(ArrayList<CourseScore>) courseScoreService.findScoreInfo(classId, position, studentPageSize);
+ 	   
+ 	   //获取考试的科目数
+ 	   long sum=courseScoreService.findTypeCount();
+ 	   //获取考试类别
+ 	   ArrayList<CourseType> courseType=(ArrayList<CourseType>) courseScoreService.findCourseType();
+ 	   
+ 	   //获取封装好的分页导航数据
+        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+        
+        map.put("courseType", courseType);
+        map.put("sum", sum);
+        map.put("classId", classId);
+        map.put("durl",durl);
+        map.put("toolBar", toolBar);
+        map.put("fullName", fullName);
+        map.put("item", courseScore);  
+ 	   return "admin/list/scoreInfoList";
+    }
+    
+    
+    //作息时间表 
+    @SuppressWarnings("unchecked")
+	@RequestMapping("/restTime")
+    public String restTime(ModelMap map){
+ 	   String durl="restTime";
+  		String fileType="frestTime";
+  		
+  	   String belongType="frestTime";
+        //获取文件列表
+        ArrayList<FileBean> Spring=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
+        ArrayList<FileBean> Autumn=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
+        map.put("Spring", Spring);  
+        map.put("Autumn", Autumn); 
+  		map.put("fileType", fileType);
+  		map.put("durl", durl);
+ 	   return "admin/list/restTime";
+    }
   
 }

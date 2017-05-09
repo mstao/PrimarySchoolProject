@@ -83,5 +83,17 @@ public class AdminManageDao<T> implements IAdminManageDao<T> {
 		 Query query  =  sessionFactory.getCurrentSession().createQuery(hql);
 		 query.setParameterList("ids", ids).executeUpdate();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeIdDao.findManageTypeIdByTypeFlag(flag);
+		String hql="select new com.primaryschool.home.entity.Manage(c.id,c.itemTitle,c.addTime,c.isPublish,c.author) from Manage c where c.typeId=? and c.itemTitle like ? order by c.addTime desc";
+		//String hql="from Culture c where c.typeId=? and c.itemTitle like ?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setString(1, "%"+token+"%");
+		return query.list();
+	}
 }

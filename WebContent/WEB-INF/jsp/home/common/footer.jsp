@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/extends/layer-2.4/layer.js"></script>
 
-<<script type="text/javascript">
+<script type="text/javascript">
 $(function(){
 	
 	$(".weixin").bind("mouseenter",function(){

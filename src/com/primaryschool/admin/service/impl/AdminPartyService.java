@@ -47,5 +47,10 @@ public class AdminPartyService<T> implements IAdminPartyService<T> {
 		// TODO Auto-generated method stub
 		partyDao.deletePartyById(ids);
 	}
-
+	
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return partyDao.searchInfo(flag, token);
+	}
 }

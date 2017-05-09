@@ -47,5 +47,11 @@ public class AdminEducationService<T> implements IAdminEducationService<T> {
 		// TODO Auto-generated method stub
 		educationDao.deleteEducationById(ids);
 	}
+	
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return educationDao.searchInfo(flag, token);
+	}
 
 }

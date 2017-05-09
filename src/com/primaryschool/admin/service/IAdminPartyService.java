@@ -15,4 +15,6 @@ public interface IAdminPartyService<T> {
 	   int addPartyInfo(T t);
 	   /**删除信息**/
 	   void deletePartyById(List<?> ids); 
+	   /**模糊查询**/
+	   List<T> searchInfo(String flag, String token);
 }

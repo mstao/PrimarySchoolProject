@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IAdminDepartmentDao;
+
+
 @Repository
 public class AdminDepartmentDao<T> implements IAdminDepartmentDao<T> {
 
@@ -33,6 +35,15 @@ public class AdminDepartmentDao<T> implements IAdminDepartmentDao<T> {
 		return (String)query.uniqueResult();
 	}
 	
+	@Override
+	public int findDepartmentIdByName(String flag) {
+		// TODO Auto-generated method stub
+		String hql="select d.id from DepartmentLinkNameList d where d.departmentName=? or d.departmentType=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, flag);
+		query.setString(1, flag);
+		return (int)query.uniqueResult();
+	}
 	
 	@Override
 	public int addDepartmentName(T t) {
@@ -134,5 +145,18 @@ public class AdminDepartmentDao<T> implements IAdminDepartmentDao<T> {
 		query.setString(0, flag);
 		return (int)query.uniqueResult();
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		int id=findDepartmentIdByName(flag);
+		String hql="select new com.primaryschool.home.entity.DepartmentLinkContent(d.id, d.itemTitle, d.typeId, d.addTime, d.isPublish, d.itemAuthor) from DepartmentLinkContent d where d.departmentId=? and d.itemTitle like ?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setString(1, "%"+token+"%");
+		return (List<T>)query.list();
+	}
+
 	
 }

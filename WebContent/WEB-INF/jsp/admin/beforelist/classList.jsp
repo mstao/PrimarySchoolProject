@@ -172,10 +172,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 
 
 <%--引入footer --%>
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>
 <script type="text/javascript">

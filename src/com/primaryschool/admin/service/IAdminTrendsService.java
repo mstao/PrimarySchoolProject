@@ -26,5 +26,6 @@ public interface IAdminTrendsService<T> {
     int addTrendsInfo(T t);
     /**删除信息**/
     void deleteTrendsById(List<?> ids);
-	    
+    /**模糊查询**/
+	List<T> searchInfo(String flag, String token);    
 }

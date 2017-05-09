@@ -115,6 +115,20 @@ public class AdminTrendsDao<T> implements IAdminTrendsDao<T> {
 		r=count.intValue();
 		return r;
 	}
+	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		int id=typeFlagToTypeIdDao.findTrendsTypeIdByTypeFlag(flag);
+		String hql="select new com.primaryschool.home.entity.Trends(c.id,c.itemTitle,c.addTime,c.isPublish,c.author) from Trends c where c.typeId=? and c.itemTitle like ? order by c.addTime desc";
+		//String hql="from Culture c where c.typeId=? and c.itemTitle like ?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, id);
+		query.setString(1, "%"+token+"%");
+		return query.list();
+	}
 
 
 }

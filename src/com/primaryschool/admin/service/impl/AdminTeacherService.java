@@ -48,4 +48,10 @@ public class AdminTeacherService<T> implements IAdminTeacherService<T> {
 		teacherDao.deleteTeacherById(ids);
 	}
 
+	@Override
+	public List<T> searchInfo(String flag, String token) {
+		// TODO Auto-generated method stub
+		return teacherDao.searchInfo(flag, token);
+	}
+
 }

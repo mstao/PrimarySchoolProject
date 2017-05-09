@@ -84,6 +84,71 @@
             }
        });
 	   
+	   
+     //查询功能
+	    $('.new_button').bind('click',function(){
+	        var token=$('.new_text').val();
+	        
+					$.ajax({
+						type:'post',
+						dataType:'json',
+						
+						url:CTPPATH+"/admin/ajax/${durl }",
+						data:{"flag":flag,"token":token},
+					
+						beforeSend:function(){
+							//显示正在加载
+							layer.load(2);
+						},
+						success:function(data){
+							var xhtml="";
+							var typeName="";
+							//关闭正在加载
+							 setTimeout(function(){
+								  layer.closeAll('loading');
+							}, 1000);
+							xhtml="<table><tr><th width='5%'></th><th width='35%'>标题</th><th width='20%'>作者</th><th width='20%'>类别</th><th width='20%'>发布日期</th></tr>";
+							$.each(data,function(id,item){
+								if(id=="typeName"){
+									typeName=data.typeName;
+								} 
+								 if(id=="culture"){
+									 if(item.length!=0){
+									 $.each(item,function(id2,item2){
+											if(item2.isPublish==0){
+												xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item2.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item2.id+"' class='item_title'>"+item2.itemTitle+"</a><span class='draft-span'>草稿</span></td><td width='20%'>"+item2.author+"</td><td width='20%'>${typeName}</td><td width='20%'>"+item2.addTime+"</td></tr>";
+												}
+											else{
+												xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item2.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item2.id+"' class='item_title'>"+item2.itemTitle+"</a></td><td width='20%'>"+item2.author+"</td><td width='20%'>${typeName}</td><td width='20%'>"+item2.addTime+"</td></tr>";
+											}
+											});
+									 }else{
+										xhtml+="<tr><td colspan='5' class='errorinfo'>没有记录!</td></tr>";
+										 }
+									} 
+							});
+							
+								xhtml+="</table>";
+							$('.new_div3').html(xhtml);
+						},
+						error:function(){
+		
+							//关闭正在加载
+							setTimeout(function(){
+								  layer.closeAll('loading');
+							}, 1000);
+							layer.msg("出错了", {icon: 2,time:2000});
+						}
+					});
+	        });
+	    //绑定回车键
+		 $('.new_text').keydown(function(event){  
+	  	    if(event.keyCode==13){  
+	  	       $(".new_button").click();  
+	  	    }  
+	  	 });  
+	   
+	   
 	 });
 	  
 	</script>

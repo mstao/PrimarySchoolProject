@@ -15,4 +15,7 @@ public interface IAdminTeacherService<T> {
 	   int addTeacherInfo(T t);
 	   /**删除信息**/
 	   void deleteTeacherById(List<?> ids);  
+	   
+	   /**模糊查询**/
+	   List<T> searchInfo(String flag, String token);
 }

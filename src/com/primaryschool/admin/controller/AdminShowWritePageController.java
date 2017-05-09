@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.primaryschool.admin.entity.CourseType;
+import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminHeaderMasterService;
 import com.primaryschool.admin.service.IAdminLabClassService;
@@ -46,6 +48,8 @@ public class AdminShowWritePageController<T> {
 	@Autowired
 	private IAdminHeaderMasterService<T> headMasterService;
 	
+	@Autowired
+	private IAdminCourseScoreService<T> courseScoreService;
 	/**
 	 * 
 	* @Title: indexImage
@@ -299,5 +303,32 @@ public class AdminShowWritePageController<T> {
 		
 		map.put("post", post);
 		return "admin/write/headMaster";
+	}
+	
+	/**
+	 * TODO 新增学生信息
+	 */
+	@RequestMapping("/stuInfo")
+	public String stuInfo(int classId,String fullName,ModelMap map){
+		String durl="stuInfo";
+        map.put("fullName", fullName);
+		map.put("durl", durl);
+		map.put("classId", classId);
+		return "admin/write/stuInfoWrite";
+	}
+	
+	/**
+	 * TODO 新增学生成绩
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/scoreInfo")
+	public String scoreInfo(int classId,String fullName,ModelMap map){
+		String durl="scoreInfo";
+		ArrayList<CourseType> courseType=(ArrayList<CourseType>) courseScoreService.findCourseType();
+        map.put("fullName", fullName);
+		map.put("durl", durl);
+		map.put("courseType", courseType);
+		map.put("classId", classId);
+		return "admin/write/scoreInfoWrite";
 	}
 }

@@ -8,6 +8,8 @@ public interface IAdminDepartmentDao<T> {
 	List<?> findDepartmentNameList();
 	/**根据Id获取部门名称**/
 	String findDepartmentNameById(int id);
+	/**根据部门名称获取id**/
+	int findDepartmentIdByName(String flag);
 	/**增加部门**/
 	int addDepartmentName(T t);
 	/**删除部门**/
@@ -32,5 +34,7 @@ public interface IAdminDepartmentDao<T> {
 	String findDepartmentTypeById(int id);
 	/**根据flag获取ID**/
 	int findDepartmentTypeIdByTypeFlag(String flag);
-	
+	/**模糊查询  flag--部门名称**/
+	List<T> searchInfo(String flag, String token);
+		
 }
