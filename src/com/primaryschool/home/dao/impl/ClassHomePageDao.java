@@ -113,6 +113,13 @@ public class ClassHomePageDao<T> implements IClassHomePageDao<T> {
 		query.setMaxResults(8);
 		return query.list();
 	}
+
+
+	@Override
+	public List<T> findSilderClassHomePageInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

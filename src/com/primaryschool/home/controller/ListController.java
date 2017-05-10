@@ -583,7 +583,7 @@ public class ListController<T> {
 		String durl="mainClass";
 		
 		//当前的url
-		String url="./mainclass?classId='"+classId+"'&gradeFlag='"+gradeFlag+"'&classFlag='"+classFlag+"'&flag='"+flag+"'&p=";
+		String url="./mainClass?classId='"+classId+"'&gradeFlag='"+gradeFlag+"'&classFlag='"+classFlag+"'&flag='"+flag+"'&p=";
 		//获取总记录量
 		int count=classHomePageService.findClassHomePageCount(flag);
 

@@ -1,5 +1,7 @@
 package com.primaryschool.apply.dao;
 
+import com.primaryschool.apply.entity.ApplyUser;
+
 /**
  * 
 * @ClassName: ApplyUser
@@ -16,8 +18,21 @@ public interface IApplyUserDao<T> {
 	/**验证用户是否被注册**/
 	T findUserByCard(String card);
 	
+	/**验证用户是否被注册**/
+	T findUserByEamil(String email);
+	
+	/**根据Id查找用户**/
+	T findUserById(int id);
+	
 	/**用来登录**/
 	T findUserByCardPassword(String card,String password);
-	/**验证邮箱是否已被使用**/
-	T findUserByEmail(String email);
+	
+	/**检测用户名是否存在**/
+	T getByUserName(String userName);
+	
+	/**检测用户名与邮箱是否匹配**/
+	T getByInfo(String userName,String email);
+	
+	/**更新用户**/
+	void updateStuInfo(ApplyUser user);
 }

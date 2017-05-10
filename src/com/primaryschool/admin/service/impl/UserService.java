@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.primaryschool.admin.dao.IUserDao;
+import com.primaryschool.admin.entity.SecurityUser;
 import com.primaryschool.admin.service.IUserService;
 /**
  * 
@@ -87,6 +88,18 @@ public class UserService<T> implements IUserService<T> {
 	public T findUserByUid(int uid) {
 		// TODO Auto-generated method stub
 		return userDao.findUserByUid(uid);
+	}
+
+	@Override
+	public T findUserByInfo(String email, String userName) {
+		// TODO Auto-generated method stub
+		return userDao.findUserByInfo(email, userName);
+	}
+
+	@Override
+	public void updateUser(SecurityUser user) {
+		// TODO Auto-generated method stub
+		userDao.updateUser(user);
 	}
 
 }

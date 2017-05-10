@@ -48,6 +48,14 @@ public class ApplyUser implements Serializable{
 	@Column(name="email")
 	private String email;
 	
+	//过期时间
+	@Column(name="out_date")
+	private Long outDate;
+	
+	//验证
+	@Column(name="validataCode")
+	private String validataCode;
+	
 	public int getId() {
 		return id;
 	}
@@ -90,7 +98,17 @@ public class ApplyUser implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
-	
+	public Long getOutDate() {
+		return outDate;
+	}
+	public void setOutDate(Long outDate) {
+		this.outDate = outDate;
+	}
+	public String getValidataCode() {
+		return validataCode;
+	}
+	public void setValidataCode(String validataCode) {
+		this.validataCode = validataCode;
+	}
+
 }

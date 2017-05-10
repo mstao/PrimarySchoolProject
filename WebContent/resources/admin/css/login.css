@@ -125,6 +125,10 @@ form:after {
 .container { 
 	width: 400px; 
 }
+.container-pass{
+	width: 400px; 
+	margin:100px auto;
+}
 #content {
 	background: #FFFFFF;
 
@@ -252,6 +256,25 @@ form:after {
 	background-color: #009a61;
 	cursor: pointer;
 	float: left;
+
+	height: 35px;
+	margin: 20px 0 35px 15px;
+	position: relative;
+	width: 120px;
+}
+#content form input[type="button"] {
+
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fee79a', endColorstr='#fec151',GradientType=0 );
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-ms-border-radius: 30px;
+	-o-border-radius: 30px;
+	border-radius: 3px;
+
+	border: 1px solid #C8C8C8;
+	color: #FFFFFF;
+	background-color: #009a61;
+	cursor: pointer;
 
 	height: 35px;
 	margin: 20px 0 35px 15px;

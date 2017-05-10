@@ -63,6 +63,14 @@ public class SecurityUser implements Serializable{
 	@Column(name="add_time")
 	private String addTime;
 	
+	//过期时间
+	@Column(name="out_date")
+	private Long outDate;
+	
+	//验证
+	@Column(name="validataCode")
+	private String validataCode;
+	
 	@Transient
 	private String roleName;
 	
@@ -219,6 +227,26 @@ public class SecurityUser implements Serializable{
 
 	public void setRoleCode(String roleCode) {
 		this.roleCode = roleCode;
+	}
+
+
+	public Long getOutDate() {
+		return outDate;
+	}
+
+
+	public void setOutDate(Long outDate) {
+		this.outDate = outDate;
+	}
+
+
+	public String getValidataCode() {
+		return validataCode;
+	}
+
+
+	public void setValidataCode(String validataCode) {
+		this.validataCode = validataCode;
 	}
 
 

@@ -23,4 +23,8 @@ public interface IClassHomePageDao <T> {
     
     /**获取班级主页的所有信息**/
 	List<T>  findClassHomePageListInfo();
+	
+	/**获取班级主页的轮播图**/
+    List<T>  findSilderClassHomePageInfo();
+	
 }

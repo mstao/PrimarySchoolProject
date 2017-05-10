@@ -9,7 +9,7 @@
 <jsp:include page="../common/meta.jsp" flush="true"/>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
-<title>Insert title here</title>
+<title>${grade }年级${className }</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/classdetails.css" />
 		<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
 		<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
