@@ -29,9 +29,11 @@ import com.primaryschool.admin.service.IAdminTeacherService;
 import com.primaryschool.admin.service.IAdminTeachingResourceService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.admin.service.IClassStyleService;
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
+import com.primaryschool.home.entity.ClassStyle;
 import com.primaryschool.home.entity.ClassSynopsis;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
@@ -146,6 +148,9 @@ public class ListInfoController<T> {
     
     @Autowired
     private IBaseFileService<T> baseFileServcie;
+    
+    @Autowired
+    private IClassStyleService<T> classStyleService;
     
     private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
     
@@ -979,6 +984,59 @@ public class ListInfoController<T> {
   		map.put("fileType", belongType);
   		map.put("durl", durl);
  	   return "admin/list/restTime";
+    }
+  
+    /**
+     * 
+    * @Title: classStyle
+    * @Description: TODO  班级风采动态
+    * @param @param map
+    * @param @return    设定文件
+    * @return String    返回类型
+    * @throws
+     */
+    @SuppressWarnings("unchecked")
+	@RequestMapping("/classStyle")
+    public String  classStyle(int classId,String className,ModelMap map){
+    	
+    	 ArrayList<ClassStyle> style=(ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
+    	
+    	 String url="classStyle";
+    	 map.put("style", style);
+    	 map.put("url", url);
+    	 map.put("className", className);
+    	 map.put("classId", classId);
+    	 return "admin/list/classStyle";
+    }
+    
+    
+    /**
+     * 
+    * @Title: helpdoc
+    * @Description: TODO  帮助文档
+    * @param @param map
+    * @param @return    设定文件
+    * @return String    返回类型
+    * @throws
+     */
+    @SuppressWarnings("unchecked")
+	@RequestMapping("/helpdoc")
+    public String helpdoc(ModelMap map){
+ 	   String durl="helpdoc";
+  		 		
+  	   String belongType="fhelpdoc";
+        //操作流程
+        ArrayList<FileBean> line=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
+        //注册指导
+        ArrayList<FileBean> document=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
+        //统计文件
+        ArrayList<FileBean> count=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,3);
+        map.put("line", line);  
+        map.put("document", document); 
+        map.put("count", count); 
+  		map.put("fileType", belongType);
+  		map.put("durl", durl);
+ 	   return "admin/list/helpdoc";
     }
   
 }

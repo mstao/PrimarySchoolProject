@@ -32,4 +32,7 @@ public interface IAuthorityDao<T> {
     
     /**根据用户名称模糊查询**/
     List<T> findUserByName(String userName);
+    
+    /***获取资源列表**/
+    List<T>  findResources();
 }

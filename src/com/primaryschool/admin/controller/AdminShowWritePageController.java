@@ -331,4 +331,19 @@ public class AdminShowWritePageController<T> {
 		map.put("classId", classId);
 		return "admin/write/scoreInfoWrite";
 	}
+	/**
+	 * 
+	* @Title: classStyle
+	* @Description: TODO 显示班级风采
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/classStyle")
+	public String classStyle(int classId,ModelMap map){
+		
+		map.put("classId", classId);
+		return "admin/write/writeClassStyle";
+	}
 }

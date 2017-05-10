@@ -239,53 +239,39 @@ $(function(){
 			<div class="auth-operation-list">
 				<ul>
 					<li><a href="${CTP}/admin/authority/roleList" > >角色列表</a></li>
-					<li><a href="${CTP}/admin/authority/allocation?p=1" class="checked-a"> >角色分配</a></li>
-					<li><a href="${CTP}/admin/authority/resources"> >权限列表</a></li>
+					<li><a href="${CTP}/admin/authority/allocation?p=1"> >角色分配</a></li>
+					<li><a href="${CTP}/admin/authority/resources" class="checked-a"> >权限列表</a></li>
 					
 				</ul>
 			</div>
 			
 			<div class="auth-content">
 				<div class="title">
-					<span>用户列表</span>
+					<span>权限资源列表</span>
 					
 				</div>
-				<div class="search">
-					<input  type="text" placeholder="请输入用户名称" class="user-input"/>
-					<button class="find">查询</button>
-					<button class="delete">删除用户</button>
-				</div>
+			
 				
 				<div class="a-content">
 					<table>
 						<tr>
 							<th><input type="checkbox" class="new_div2_input"/></th>
-							<th>用户名称</th>
-							<th>用户邮箱</th>
-							<th>用户工号</th>
-							<th>用户状态</th>
-							<th>拥有的角色</th>
-							<th>操作</th>
+							<th>value</th>
+							<th>permission</th>
+						
 						</tr>
-						<c:forEach items="${user}" var="user_list"> 
+						<c:forEach items="${resources}" var="list"> 
 						<tr>
 							<td> <input type="checkbox" name="info_id" value="${user_list.id}"></td>
-							<td>${user_list.userName}</td>
-							<td>${user_list.email }</td>
-							<td>${user_list.number }</td>
-							<td>
-								<c:choose>
-								 <c:when test="${user_list.status eq 1}">有效</c:when>
-								 <c:otherwise>无效</c:otherwise>
-								</c:choose>
-							</td>
-							<td>${user_list.roleName}</td>
-							<td><img src="${CTP_ADMIN }/img/assign.png"/><a href="javascript:void(0);" class="only-select">选择角色</a></td>
+							<td>${list.value}</td>
+							<td>${list.permission }</td>
+							
+							
 						</tr>
+						
 				        </c:forEach>
 					</table>
-					<!-- 分页 -->
-					${toolBar}
+
 				</div>
 				
 			</div>
@@ -299,33 +285,7 @@ $(function(){
 <jsp:include page="../common/footer.jsp" />
 <!--E footer-->
 
-<!-- 弹窗 -->
-<div class="mark"></div>
-<div class="dialog">
-     
-        <div class="dialog-close" onclick="$('.mark,.dialog').hide();"></div> 
-        <div class="dialog-title">
-                                        分配角色
-        </div> 
-        <div class="dialog-content"> 
-            <input type="hidden" class="hide-checked-id" value="">
-            <div class="opt-div">
-            <h4>请选择一个角色</h4>
-			
-			<c:forEach items="${roles}" var="role_list">
-			<div class="opt">
-				<input class="magic-radio" type="radio" name="radio" id="rr${role_list.id}" value="${role_list.id}">
-				<label for="rr${role_list.id}">${role_list.roleName}</label>
-			</div>
-	     	</c:forEach>
-            </div>
-           
-           <div class="active">
-				<button class="close" onclick="$('.mark,.dialog').hide();">关闭</button><button class="save">保存</button>
-		  <br>
-		   </div>
-        </div>
-</div> 
+
 
 	</body>
 </html>

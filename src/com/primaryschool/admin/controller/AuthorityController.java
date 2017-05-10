@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.primaryschool.admin.entity.SecurityResources;
 import com.primaryschool.admin.entity.SecurityRole;
 import com.primaryschool.admin.entity.SecurityUser;
 import com.primaryschool.admin.entity.SecurityUserToRole;
@@ -203,5 +203,22 @@ public class AuthorityController<T> {
 	}
 	
 	
+	/**
+	 * 
+	* @Title: resources
+	* @Description: TODO 权限资源
+	* @param @param map
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/resources")
+	public String resources(ModelMap map){
+		ArrayList<SecurityResources> resources=(ArrayList<SecurityResources>) authorityServcie.findResources();
+	
+		map.put("resources", resources);
+		return "admin/authority/resources-list";
+	}
 	
 }

@@ -45,4 +45,5 @@ public interface IAdminSclassDao<T> {
 	/**模糊查询**/
 	List<T> searchInfo(int flag, String token);
 	   
+   
 }

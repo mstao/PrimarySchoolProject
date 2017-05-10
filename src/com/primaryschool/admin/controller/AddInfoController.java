@@ -30,8 +30,10 @@ import com.primaryschool.admin.service.IAdminTeachingResourceService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.admin.service.IAuthorityService;
 import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.admin.service.IClassStyleService;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
+import com.primaryschool.home.entity.ClassStyle;
 import com.primaryschool.home.entity.ClassSynopsis;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
@@ -121,6 +123,8 @@ public class AddInfoController<T> {
    @Autowired
    private IAdminCourseScoreService<T> courseScoreService;
    
+   @Autowired
+   private IClassStyleService<T> classStyleService;
     /**
      * 
     * @Title: addIndexImages
@@ -574,6 +578,23 @@ public class AddInfoController<T> {
 			e.printStackTrace();
 			return "0";
 		}
+	}
+	
+	/**
+	 * 
+	* @Title: classStyle
+	* @Description: TODO  添加班级风采
+	* @param @param classStyle
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/classStyle")
+	@ResponseBody
+	public String classStyle(ClassStyle classStyle){
+		int result =authorityService.saveRole((T) classStyle);
+    	return result+"";
 	}
     
 }

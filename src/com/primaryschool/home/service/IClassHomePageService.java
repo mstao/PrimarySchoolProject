@@ -18,5 +18,6 @@ public interface IClassHomePageService<T> {
     
     /*获取班级主页记录，按时间降序排序*/
     List<T>  findClassHomePageListInfo();
-    
+    /**获取班级主页的轮播图**/
+    List<T>  findSilderClassHomePageInfo();
 }

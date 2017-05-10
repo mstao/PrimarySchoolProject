@@ -573,6 +573,7 @@ public class ListController<T> {
 	* @return String    返回类型
 	* @throws
 	 */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/mainClass")
 	public String mainClass(int classId,int gradeFlag,String classFlag,String flag, int p ,ModelMap map){
 		String sp=p+"";
@@ -605,6 +606,10 @@ public class ListController<T> {
         ArrayList<ClassStyle> style=(ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
         //获取班级简介
          ClassSynopsis synopsis = (ClassSynopsis) classSynopsisService.findClassSynopsisInfo(classId);
+      
+        //获取轮播图
+        ArrayList<ClassHomePage> sildeInfo=(ArrayList<ClassHomePage>) classHomePageService.findSilderClassHomePageInfo();
+         
         map.put("classId",classId);
         map.put("grade",gradeFlag);
         map.put("className",classFlag);
@@ -616,6 +621,8 @@ public class ListController<T> {
         map.put("hotItem", hotClass);
         map.put("style", style);
         map.put("synopsis", synopsis);
+        map.put("sildeInfo", sildeInfo);
+        
         return "home/list/mainClass";
 	}
 	

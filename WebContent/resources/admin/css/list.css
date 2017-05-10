@@ -690,3 +690,15 @@ background:#0088CC;
 .begin-apply-btn:hover{
 	 background:#1A5D7E;
 }
+.class-style-link{
+	margin-left:40px;
+
+}
+.class-style-link a{
+	font-weight:bold;
+	color:rgba(70, 123, 150);
+}
+.class-style-link a:hover{
+	color:#000000;
+	
+}

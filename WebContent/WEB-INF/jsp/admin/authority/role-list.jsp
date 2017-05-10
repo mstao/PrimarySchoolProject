@@ -246,10 +246,10 @@ $(function(){
             <div class="auth-div">
 			<div class="auth-operation-list">
 				<ul>
-					<li><a href="javascript:void(0);" class="checked-a"> >角色列表</a></li>
-					<li><a href="javascript:void(0);"> >角色分配</a></li>
-					<li><a href="javascript:void(0);"> >权限列表</a></li>
-					<li><a href="javascript:void(0);"> >权限分配</a></li>
+					<li><a href="${CTP}/admin/authority/roleList" class="checked-a"> >角色列表</a></li>
+					<li><a href="${CTP}/admin/authority/allocation?p=1"> >角色分配</a></li>
+					<li><a href="${CTP}/admin/authority/resources"> >权限列表</a></li>
+					
 				</ul>
 			</div>
 			

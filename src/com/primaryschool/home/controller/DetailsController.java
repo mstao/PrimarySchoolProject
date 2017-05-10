@@ -296,8 +296,10 @@ public class DetailsController<T>{
 		//获取班级风采
 		ArrayList<ClassStyle>  style=(ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
 		
+		 //获取轮播图
+        ArrayList<ClassHomePage> sildeInfo=(ArrayList<ClassHomePage>) classhomepageService.findSilderClassHomePageInfo();
 		
-		model.put("synopsis", synopsis);
+        model.put("synopsis", synopsis);
 		model.put("dynamic", dynamic);
 		model.put("growthstory", growthstory);
 		model.put("article", article);
@@ -312,6 +314,7 @@ public class DetailsController<T>{
 		model.put("articleFlag", articleFlag);
 		model.put("styleFlag", styleFlag);
 		
+		model.put("sildeInfo", sildeInfo);
 		return "home/details/classDetails";
 	}
    

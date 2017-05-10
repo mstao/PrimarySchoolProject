@@ -143,9 +143,23 @@ public class ClassHomePage implements Serializable{
 				this.addTime = addTime;
 		}    
 	  	  
+	  	/**班级主页轮播图**/  
+	  	public ClassHomePage(int id, String itemTitle, String itemContent, int classId, int gradeCode,
+				String className) {
+			super();
+			this.id = id;
+			this.itemTitle = itemTitle;
+			this.itemContent = itemContent;
+			this.classId = classId;
+			this.gradeCode = gradeCode;
+			this.className = className;
+		}
+	  	  
 		public int getId() {
 			return id;
 		}
+
+		
 
 		public void setId(int id) {
 			this.id = id;

@@ -205,6 +205,8 @@ public class AdminSclassDao<T> implements IAdminSclassDao<T> {
 		return (Integer)query.uniqueResult();
 	}
 
+
+
 	
 
 }

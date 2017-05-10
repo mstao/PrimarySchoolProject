@@ -71,4 +71,10 @@ public class AuthorityService<T> implements IAuthorityService<T> {
 		return authorityDao.findUserByName(userName);
 	}
 
+	@Override
+	public List<T> findResources() {
+		// TODO Auto-generated method stub
+		return authorityDao.findResources();
+	}
+
 }

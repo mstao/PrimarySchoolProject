@@ -33,6 +33,12 @@
 	padding-left: 5px;
 	
 }
+.edit-title:focus{
+	border:1px solid #2188FF;
+	-webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    box-shadow:0 0 10px rgba(0, 204, 204, .5); 
+}
 .edit-div  .edit-input{
 	border: 1px solid #D9D9D6;
 	border-radius: 3px;
@@ -43,6 +49,7 @@
 	font-size: 16px;
 	padding-left: 5px;
 }
+
 .edit-div .instrument-edit-span{
 	display:inline-block;
 	color: #666666;
@@ -279,4 +286,22 @@
 .image-div .person-image{
 	width:160px;
 	height:200px;
+}
+
+.img-desc{
+	border: 1px solid #D9D9D6;
+	border-radius: 3px;
+	width: 400px;
+	height: 35px;
+	margin-top:5px;
+
+	font-size: 16px;
+	padding-left: 5px;
+}
+
+.img-desc:focus{
+	border:1px solid #2188FF;
+	-webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    box-shadow:0 0 10px rgba(0, 204, 204, .5); 
 }

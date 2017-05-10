@@ -214,6 +214,7 @@
  .clean-queue{
  color:#444444 !important;
  }
+
 .rest{
 	width:970px;
 	margin:50px  auto;
@@ -252,7 +253,7 @@
     height: 25px;
     padding-left:5px;
  }
-.rest-selects,.rest-select{
+.rest-selects,.rest-select,.rest-selectss{
  	width: 45px;
     height: 25px;
     padding-left:5px;
@@ -264,7 +265,7 @@
     border: 1px solid;
  }
 
-.rest-selects:hover,.rest-select:hover{
+.rest-selects:hover,.rest-select:hover,.rest-selectss:hover{
 	width: 45px;
     height: 25px;
     padding-left:5px;
@@ -273,4 +274,17 @@
     background-color: #1A5D7E;
     border-radius: 5px;
     float: right;
+}
+.helps{
+	width:1170px;
+	margin:50px  auto;
+}
+.line,.document,.count{
+	min-height:200px;
+	margin-left:35px;
+ 	padding:20px;
+ 	width:300px;
+ 	background-color:white;
+ 	border-radius:5px;
+ 	float:left;
 }

@@ -153,10 +153,10 @@
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
-			<div id="location">您现在的位置: 后台管理 ><span>${CLASS_MAINPAGE }>${labName}</span></div>
+			<div id="location">您现在的位置: 后台管理 ><span>${CLASS_MAINPAGE }>${labName}班</span></div>
 			<!-- introduction简介 -->
 			<div id="intro">
-				<div id="intro-name"><span class="intro_span">${labName }简介</span>
+				<div id="intro-name"><span class="intro_span">${labName }班 简介</span>
 				<c:choose>
 					<c:when test="${ empty introduce.classSynopsis}">
 						<a href="${CTP }/admin/write/${introurl }?labId=${labId}&grade=${grade }&className=${className }" class="intro-add">新增</a>
@@ -166,11 +166,15 @@
 						<a href="${CTP }/admin/distribute/${introurl }?id=${introduce.id }&labId=${labId}&grade=${grade }&className=${className }" class="intro-add">修改</a>
 					</c:otherwise>
 				</c:choose>
+				
+				<span class="class-style-link"><a href="${CTP}/admin/list/classStyle?classId=${labId}&className=${labName}">班级风采管理</a></span>
 				</div>
 				<div id="intro-detail">${introduce.classSynopsis}</div>
 			</div>
 			<!-- E introduction -->
-            <div class="new_div1"><span class="new_div1_span">${labName }列表</span><a href="${CTP }/admin/write/${durl }?classId=${labId}&grade=${grade}&className=${className}&fileType=${fileType}" class="add_list">新增</a></div>
+			
+			
+            <div class="new_div1"><span class="new_div1_span">${labName }班 动态列表</span><a href="${CTP }/admin/write/${durl }?classId=${labId}&grade=${grade}&className=${className}&fileType=${fileType}" class="add_list">新增</a></div>
             <div class="new_div2">
             	
                 <input type="checkbox" class="new_div2_input"/>
@@ -206,7 +210,7 @@
 		             </c:if>
                     </td>
                     <td width="20%"><a href="">${list.itemAuthor }</a></td>
-                    <td width="20%"><a href="">${labName }</a></td>
+                    <td width="20%"><a href="">${labName }班</a></td>
                     <td width="20%">${list.addTime }</td>
                 </tr>
                 </c:forEach>

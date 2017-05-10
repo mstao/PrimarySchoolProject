@@ -26,6 +26,7 @@ import com.primaryschool.admin.service.IAdminTeachingResourceService;
 import com.primaryschool.admin.service.IAdminTrendsService;
 import com.primaryschool.admin.service.IAuthorityService;
 import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.admin.service.IClassStyleService;
 import com.primaryschool.admin.service.IUserService;
 
 /**
@@ -96,6 +97,9 @@ public class DeleteInfoController<T> {
     
     @Autowired
     private IAdminCourseScoreService<T> courseScoreService;
+    
+    @Autowired
+    private IClassStyleService<T> classStyleService;
 	/**
 	 * 
 	* @Title: deleteIndexImage
@@ -671,5 +675,27 @@ public class DeleteInfoController<T> {
 			return "0";
 		}
         
+	}
+	
+	/**
+	 * 
+	* @Title: classStyle
+	* @Description: TODO 删除班级风采
+	* @param @param id
+	* @param @return    设定文件
+	* @return String    返回类型
+	* @throws
+	 */
+	@RequestMapping("/classStyle")
+	@ResponseBody
+	public String classStyle(int id){
+		try{
+			classStyleService.deleteClassStyle(id);
+			return "1";
+		}catch(RuntimeException e){
+			e.printStackTrace();
+			return "0";
+
+		}
 	}
 }

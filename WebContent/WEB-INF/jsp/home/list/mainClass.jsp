@@ -29,8 +29,13 @@
 					<div class="slider-news">
 					<ul>
 				     
-						<li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/nemo.jpg" alt="aaaaaa"  /></a></li>
-					    <li class="slider-li"><a href="" target="_blank" ><img src="${CTP_HOME}/slider/images/toystory.jpg" alt="aaaaaa"  /></a></li>
+				     <c:forEach items="${sildeInfo}" var="s_list">  
+
+						<li class="slider-li"><a href="${CTP}/details/newsinfo?id=${s_list.id}&gradeFlag=${grade}&classFlag=${s_list.className}&classId=${s_list.classId}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+					</c:forEach>	
+				     <c:if test="${empty sildeInfo}">
+				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+				     </c:if>
 				   	
 					</ul>
 				    </div>
@@ -101,7 +106,7 @@
         <div id="banjifcDivM">
         	<div id="banjifcDivMul">
             	<c:forEach items="${style}" var="style_list">
-						<a href=""><img src="${style_list.imgPath}" title="${style_list.imgName}"/><span></span></a>
+						<a href="javascript:void(0);"><img src="${style_list.imgPath}" title="${style_list.imgName}"/><span></span></a>
 					  </c:forEach>	
         	</div>
         </div>

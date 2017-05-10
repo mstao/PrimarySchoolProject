@@ -134,4 +134,13 @@ public class AuthorityDao<T> implements IAuthorityDao<T> {
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findResources() {
+		// TODO Auto-generated method stub
+		String hql="from SecurityResources";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);     
+		return query.list();
+	}
+
 }

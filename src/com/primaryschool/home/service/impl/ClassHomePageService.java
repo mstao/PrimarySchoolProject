@@ -56,4 +56,10 @@ public class ClassHomePageService<T> implements IClassHomePageService<T> {
 		return classhomepageDao.findClassHomePageListInfo();
 	}
 
+	@Override
+	public List<T> findSilderClassHomePageInfo() {
+		// TODO Auto-generated method stub
+		return classhomepageDao.findSilderClassHomePageInfo();
+	}
+
 }

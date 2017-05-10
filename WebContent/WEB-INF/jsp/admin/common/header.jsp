@@ -39,16 +39,17 @@ $(function(){
                <shiro:hasRole name="superadmin">
                  <li><a href="javascript:void(0);">撰写</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="edit.html" >小学新闻</a></li>
-							<li><a href="edit.html" >公告通知</a></li>		
+							<li><a href="${pageContext.request.contextPath}/admin/write/trends?typeName=校内新闻&typeFlag=news&fileType=ftrends" >小学新闻</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/write/trends?typeName=通知公告&typeFlag=notice&fileType=ftrends" >公告通知</a></li>		
 			                <li><a href="${pageContext.request.contextPath}/admin/write/indexImages" >首页轮播图</a></li>		
 					</ul>
                  </li>
                  <li><a href="javascript:void(0);">管理</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" >角色管理</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1" >角色分配</a></li>
-							<li><a href="#">用户管理</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" > >角色列表</a></li>
+					        <li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1"> >角色分配</a></li>
+					        <li><a href="${pageContext.request.contextPath}/admin/authority/resources" class="checked-a"> >权限列表</a></li>
+					
 			                <li><a href="${pageContext.request.contextPath}/admin/apply/listAll?status=3&p=1">报名管理</a></li>
 					</ul>
                  </li>
@@ -58,6 +59,7 @@ $(function(){
 					        <li><a href="${pageContext.request.contextPath}/admin/contact" >联系我们</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin/copyright">版权声明</a></li>
 			                <li><a href="${pageContext.request.contextPath}/admin/list/restTime" >作息时间表</a></li>
+			                <li><a href="${pageContext.request.contextPath}/admin/list/helpdoc" >帮助文档</a></li>
 					</ul>
                  </li>
                  <li><a href="javascript:void(0);">${SCHOOL_CULTURE}</a>
