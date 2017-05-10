@@ -1,5 +1,7 @@
 $(function(){
-	
+	//获取当前年份
+	var  date=new Date();
+	var  year=date.getFullYear();
 	var sub=function(str,Len){
 		var maxLen=Len;
 		var len=str.length;
@@ -221,13 +223,16 @@ $(function(){
 							//	checkdiv.html("zzzzz"+data);
 					       
 					        var xhtml="";
+					        var grades="";
 					        if(data.length>0){
 					        	
 					        	xhtml+="<ul>";
 						        
 								
 				        		$.each(data,function(idx,item){ 
-				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/newsinfo?id="+item.id+"&gradeFlag="+item.gradeName+"&classFlag="+item.className+"&classId="+item.classId+"'>"+sub(item.itemTitle,35)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        			
+				        			grades=year-item.gradeCode+1;
+				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/newsinfo?id="+item.id+"&gradeFlag="+grades+"&classFlag="+item.className+"&classId="+item.classId+"'>"+sub(item.itemTitle,35)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
 				        		}); 
 				        	
 				        	

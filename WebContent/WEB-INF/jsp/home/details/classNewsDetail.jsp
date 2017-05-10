@@ -19,7 +19,6 @@
 
 <div id="mianBag">
 	<!--详细新闻-->
-	<div id="mainBag-left">
 		<div class="container-bottom-lift">
 		<c:set var="newsinfo" value="${newsinfo }"></c:set>
 					<!--描述：新闻标题 -->
@@ -41,21 +40,8 @@
 					
 					</div>
 				</div>
-	</div>
 	<!--详细新闻end-->
-	<div id="mainBag-right">
-		<div class="hot">
-				<div class="hot-tops"><img src="${CTP_HOME}/img/newTrends.png"/><span class="span">近期热点</span></div>
-				
-				<div class="hot-content">
-					<div class="hot-content-sum"><img src="${CTP_HOME}/img/time.png" /><span>2017.01.01</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${CTP_HOME}/img/look.png" /><span>111</span></div>
-					<span class="hot-news-detail">2017年华师附小春季学期开学典礼隆重举行！</span>
-				</div>
-				
-				
-			</div>
-	</div>
-    
+	
 </div>
 		<div id="footer">
     	<center>Copyright&copy;2017 www.xxxx.com .All Rights Reserved<br>地址:郑州高新技术开发区xxx&nbsp;邮编:450000</center>

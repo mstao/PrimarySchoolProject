@@ -430,6 +430,7 @@ public class DetailsController<T>{
    	  //获取该类型最近更新的信息
    	  ArrayList<DepartmentLinkContent> latest=(ArrayList<DepartmentLinkContent>) departmentLinkService.findLatestDepartmentLinkInfo(departmentId, contentFlag, 0, pageSize);
    	  
+   	  departmentLinkService.addViewCount(contentId);
    	  map.put("item",content);
    	  map.put("latestItem", latest);
    	  map.put("url",url);

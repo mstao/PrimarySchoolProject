@@ -31,13 +31,13 @@ img{border:0px;}
 #tpthDiv img{ width:558px; height:232px;}
 .KSS_titleBox{ line-height:35px !important;}
 
-#mainBag-left{background-color:#FFFEF0;width:985px;min-height:600px;height: auto;float:left;}
+#mainBag-left{background-color:#FFFFFF;width:985px;min-height:600px;height: auto;float:left;}
 /*班级简介标题*/
-.news-title{background-color:#FFFEF0;width:600px;margin-top:15px;text-align: center;padding-top: 25px;padding-bottom: 25px;border-bottom: 1px solid #CCCCCC; 	}
+.news-title{background-color:#FFFFFF;width:600px;margin-top:15px;text-align: center;padding-top: 25px;padding-bottom: 25px;border-bottom: 1px solid #CCCCCC; 	}
 .news-title > span{font-size:20px;}
 /*班级简介*/
 .synopsis{
-	background-color:#FFFEF0;
+	background-color:#FFFFFF;
 	color:#444444;
 	margin-top:20px;
 	text-align: left;
@@ -51,7 +51,7 @@ img{border:0px;}
 	font-size:15px;
 }
 
-#mainBag-right{background-color:#FFFEF0;width:300px;height: 340px;padding:0 10px;float:right;}
+#mainBag-right{background-color:#FFFFFF;width:300px;height: 340px;padding:0 10px;float:right;}
 
 
-.footer{background: #F5F2E3;width: 990px;}
+.footer{background: #F5F2E3;width: 990px; margin:0 auto;}

@@ -104,7 +104,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 					</div>
 					<div>
 						<input type="submit" value="登录" />
-						<a href="#">忘记密码?</a>
+						<a href="${CTP}/applyHelp/findStuPass">忘记密码?</a>
 						<a href="${CTP}/apply/show/stuRegister">注册</a>
 					</div>
 				</form><!-- form -->

@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 /**
  * 
  * @ClassName: Classhomepage
@@ -60,13 +62,13 @@ public class ClassHomePage implements Serializable{
 	    @Transient
 	    private String itemTypeFlag;
 	    
-	    @Transient
+	    @Transient	   
 		private String itemTypeName;
 		
 	    @Transient
-	    private String gradeName;
+	    private int gradeCode;
 	    
-	    @Transient
+	    @Transient	   
 	    private String className;
 	    
 		public ClassHomePage(){}
@@ -131,12 +133,12 @@ public class ClassHomePage implements Serializable{
 	  		}
 
 	  	  /**首页  显示***/
-	  	  public ClassHomePage(int id, String itemTitle, int classId, String gradeName, String className,String addTime) {
+	  	  public ClassHomePage(int id, String itemTitle, int classId, int gradeCode, String className,String addTime) {
 				super();
 				this.id = id;
 				this.itemTitle = itemTitle;
 				this.classId = classId;
-				this.gradeName = gradeName;
+				this.gradeCode = gradeCode;
 				this.className = className;
 				this.addTime = addTime;
 		}    
@@ -237,14 +239,24 @@ public class ClassHomePage implements Serializable{
 			this.itemAuthor = itemAuthor;
 		}
 
-		@Override
-		public String toString() {
-			return "ClassHomePage [id=" + id + ", itemTitle=" + itemTitle + ", itemContent=" + itemContent
-					+ ", itemAuthor=" + itemAuthor + ", typeId=" + typeId + ", addTime=" + addTime + ", viewCount="
-					+ viewCount + ", isImage=" + isImage + ", isPublish=" + isPublish + ", classId=" + classId
-					+ ", itemTypeFlag=" + itemTypeFlag + ", itemTypeName=" + itemTypeName + ", gradeName=" + gradeName
-					+ ", className=" + className + "]";
+	    
+
+		public int getGradeCode() {
+			return gradeCode;
 		}
-		
+
+		public void setGradeCode(int gradeCode) {
+			this.gradeCode = gradeCode;
+		}
+
+		public String getClassName() {
+			return className;
+		}
+
+		public void setClassName(String className) {
+			this.className = className;
+		}
+
+	
 
 }

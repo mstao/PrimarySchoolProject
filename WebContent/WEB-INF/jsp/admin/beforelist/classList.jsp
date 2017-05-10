@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <jsp:include page="../common/meta.jsp" flush="true"/>	
-<title>${SCHOOL_STUDENT_LAB}-${WEBSITE_NAME}</title>
+<title>${CLASS_MAINPAGE}-${WEBSITE_NAME}</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
@@ -111,7 +111,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 <%--引入header --%>
 
 <jsp:include page="../common/header.jsp"></jsp:include>
-<div id="location"><span>您现在的位置: 后台管理 ></span><span>${SCHOOL_STUDENT_LAB }</span></div>
+<div id="location"><span>您现在的位置: 后台管理 ></span><span>${CLASS_MAINPAGE }</span></div>
 
   
 	<!--s 操作-->
@@ -129,7 +129,7 @@ var CTPPATH="${pageContext.request.contextPath}";
        
                 <div class="addlist"> 
                 <input type="button" class="new_button" value="新增"/>
-                <input type="text" class="new_text" placeholder="请输入您想添加的班级，如“1班”" value="" name="keywords" /> 
+                <input type="text" class="new_text" placeholder="请输入您想添加的班级号，如“1”" value="" name="keywords" /> 
             	<select name="select-grade" id="select-grade">
             		<option value="${year}" >一年级</option>
             		<option value="${year-1}">二年级</option>
@@ -154,7 +154,7 @@ var CTPPATH="${pageContext.request.contextPath}";
     		<div class="only-info">
     		<c:forEach items="${sclass }" var="sclass">
     		<c:if test="${sclass.gradeCode==grade.gradeCode }">
-    			<span><input type="checkbox" name="info_id" value="${sclass.id}"/><a href="${CTP }/admin/list/sclassHomePage?classId=${sclass.id }&grade=${grades}&className=${sclass.className }&p=1">${grades}年级${sclass.className }</a></span>
+    			<span><input type="checkbox" name="info_id" value="${sclass.id}"/><a href="${CTP }/admin/list/sclassHomePage?classId=${sclass.id }&grade=${grades}&className=${sclass.className }&p=1">${grades}年级${sclass.className }班</a></span>
     		</c:if>
     		</c:forEach>
     		</div>
@@ -177,6 +177,39 @@ var CTPPATH="${pageContext.request.contextPath}";
 </html>
 <script type="text/javascript">
 $(function(){
+	
+	$('.new_text').bind('blur',function(){
+		var gradeCode=$('#select-grade').find("option:selected").attr('value');
+		var className=$('.new_text').val();
+		if(isNaN(className)||className.length==0){
+			layer.tips('请输入阿拉伯数字',this,{tips:3});
+			}else{
+		$.ajax({
+			type:'post',
+			dataType:'text',
+			url:CTPPATH+'/admin/add/testClass',
+			data:{"gradeCode":gradeCode,"className":className},
+			
+			success:function(data){
+
+				 if(data=="1"){
+					
+					layer.msg("该班级已存在", {icon: 2,time:2000});
+					$('.new_text').val("");
+				 }
+			},
+			error:function(){
+
+				//关闭正在加载
+				setTimeout(function(){
+					  layer.closeAll('loading');
+				}, 1000);
+				layer.msg("出错了", {icon: 2,time:2000});
+			}
+		});
+			}
+	});
+
 	
 $('.new_button').bind('click',function(){
 	//获取内容

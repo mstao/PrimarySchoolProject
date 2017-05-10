@@ -47,4 +47,10 @@ public interface IUserDao<T> {
     /**获取原密码**/    
     T  findUserByUid(int uid);
     
+    /**根据eamil和用户名查找账号**/
+   	T findUserByInfo(String email, String userName);
+   	
+   	/**更新用户**/
+   	void updateUser(SecurityUser user);
+    
 }

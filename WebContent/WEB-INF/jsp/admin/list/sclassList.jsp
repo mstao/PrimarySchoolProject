@@ -5,7 +5,7 @@
 <html>
 	<head>
 		
-		<title>${labName }简介</title>
+		<title>班级简介</title>
 		<c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 		<c:set var="CTP_ADMIN" value="${pageContext.request.contextPath}/resources/admin"></c:set>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -153,7 +153,7 @@
 		<!-- S header -->
 	<jsp:include page="../common/header.jsp" />
 	<!--S main-->
-			<div id="location">您现在的位置: 后台管理 ><span>${SCHOOL_STUDENT_LAB }>${labName}</span></div>
+			<div id="location">您现在的位置: 后台管理 ><span>${CLASS_MAINPAGE }>${labName}</span></div>
 			<!-- introduction简介 -->
 			<div id="intro">
 				<div id="intro-name"><span class="intro_span">${labName }简介</span>

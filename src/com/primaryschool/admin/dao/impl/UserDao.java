@@ -187,6 +187,28 @@ public class UserDao<T> implements IUserDao<T> {
 		return (T) query.uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findUserByInfo(String email, String userName) {
+		// TODO Auto-generated method stub
+		
+		String hql="from SecurityUser u where u.email=? and u.userName=?";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString(0, email);
+		query.setString(1, userName);
+		return (T) query.uniqueResult();
+	}
+
+	@Override
+	public void updateUser(SecurityUser user) {
+		// TODO Auto-generated method stub
+		
+		String hql="update SecurityUser u set u.outDate=:outDate,u.validataCode=:validataCode,u.password=:password where u.id=:id";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setProperties(user);
+		query.executeUpdate();
+	}
+
 		
 	
 

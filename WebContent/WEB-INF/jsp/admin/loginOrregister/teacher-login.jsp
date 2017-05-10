@@ -44,7 +44,7 @@
 					</div>
 					<div>
 						<input type="submit" value="登录" />
-						<a href="#">忘记密码?</a>
+						<a href="${CTP}/applyHelp/findTeaPass">忘记密码?</a>
 						<a href="${CTP}/admin/loginRegister/showTeaRegister">注册</a>
 					</div>
 					

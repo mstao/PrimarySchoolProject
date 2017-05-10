@@ -360,17 +360,16 @@ public class ItemToJsonController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/classHomePage")
-
+   
 	public void ClassToJson(HttpServletResponse response){
 		
 		response.setCharacterEncoding("UTF-8");  
 		
 		PrintWriter out=null;
-		ArrayList<ClassHomePage> ClassHomePage=(ArrayList<ClassHomePage>) classHomePageService.findClassHomePageListInfo();
+		ArrayList<ClassHomePage> classHomePage=(ArrayList<ClassHomePage>) classHomePageService.findClassHomePageListInfo();
 		
-		System.out.println(ClassHomePage.toString());
-		
-		String json = JSON.toJSONString(ClassHomePage,true);
+		System.out.println(classHomePage.toString());	
+		String json = JSON.toJSONString(classHomePage,true);
 		System.out.println(json);
 		response.setContentType("application/json");
 		try {

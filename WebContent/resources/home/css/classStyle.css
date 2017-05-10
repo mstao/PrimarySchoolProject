@@ -85,10 +85,10 @@ a{text-decoration:none; overflow:hidden;color:#333333;}
 
 
 .footer{
-	float:left;
-	margin-left:200px;
+	clear:both;
+	margin: 0 auto;
 	background: #F5F2E3;
-	width: 1170px;
+	width: 990px;
 	height:50px;
 	
 	}
