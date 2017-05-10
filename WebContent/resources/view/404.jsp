@@ -5,7 +5,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="utf-8">
-    <title>404错误 - Mingzhi</title>
+    <title>404错误</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
@@ -127,21 +127,21 @@
 <body>
     <div class="box">
         <div class="clearfix">
-            <div class="figure"><img src="${pageContext.request.contextPath}/resources/img/404.jpg" alt="维护中"></div>
+            <div class="figure"><img src="${pageContext.request.contextPath}/resources/img/404.jpg" alt="页面找不到"></div>
     
-            <h1>404</h1>
+            <h1>404页面</h1>
 
             <div class="p">
                 <p>系统维护中，请稍后访问。</p>
-                <p>任何疑问请发送邮件至 pr@Mingzhi.com，可关注官方微博查看最新动态。</p>
+                <p>任何疑问请联系网站管理员</p>
             </div>
 
-            <div class="p"><button type="button"      onclick="window.location.href='www.xxx.com'">关注微博</button></div>
+            <div class="p"><button type="button"      onclick="window.location.href='${pageContext.request.contextPath}/main/index'">返回主页</button>  <button type="button"      onclick="self.location=document.referrer;">返回上一页</button></div>
         </div>
     </div>
     <div class="footer text-center">
-        2017 &copy; <a href="https://wwwww">明之</a>
+         &copy;${WEB_CURRENT_YEAR} <a href="${pageContext.request.contextPath}/main/index">${WEBSITE_NAME}</a>
     </div>
- </div>
+
 </body>
 </html>

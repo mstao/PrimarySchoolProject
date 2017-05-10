@@ -142,7 +142,10 @@
     </error-page>
     
     <!-- 配置500 -->
-   
+   <error-page>
+	    <error-code>500</error-code>
+	    <location>/resources/view/500.jsp</location>
+    </error-page>
     <!-- 报名过滤器 -->
      <filter>
     <filter-name>LoginFilter</filter-name>
