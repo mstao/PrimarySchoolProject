@@ -32,7 +32,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 </div>
 
 <div class="content">
-    
+    <div class="trends-top"><img src="${CTP_HOME}/img/成绩.png"/> <span class="tag-ch">成绩查询</span> </div>
     <!--S CONETNT-->
     <div class="class-content">
     	<!--s class-info-->
@@ -63,7 +63,10 @@ var CTPPATH="${pageContext.request.contextPath}";
             <input type="text" class="new_text" placeholder="请输入关键字：姓名/学号" value="" name="keywords" />  
     		</div>
     		<div class="scoredetail">
-    		   
+    		   <div class="no-message-div">
+    		   	<img src="${CTP}/resources/apply/img/no-message.png"/>
+    		   	<span>还没有进行查询哦(●—●) </span>
+    		   </div>
     		</div>
     	</div>
     	<!--e class-info-->

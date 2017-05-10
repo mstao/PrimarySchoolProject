@@ -9,15 +9,13 @@
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <title>Insert title here</title>
-<link rel="stylesheet" href="${CTP_HOME}/css/classdetails.css" />
-<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
-<link rel="stylesheet" href="${CTP_HOME}/css/list.css" />
-</head>
-<body>
-<%--检测浏览器 --%>
-<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
+		<link rel="stylesheet" href="${CTP_HOME}/css/classdetails.css" />
+		<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
+		<link rel="stylesheet" href="${CTP_HOME}/css/list.css" />
+	</head>
+	<body >
 		
-<jsp:include page="../common/classHeader.jsp"></jsp:include>
+		<jsp:include page="../common/classHeader.jsp"></jsp:include>
 
 <div id="mianBag">
 	<!--详细新闻-->

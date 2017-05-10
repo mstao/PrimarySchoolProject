@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.primaryschool.admin.entity.CourseType;
 import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.ICampusSceneryService;
+import com.primaryschool.admin.service.IClassStyleService;
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.home.entity.CampusScenery;
 import com.primaryschool.home.entity.ClassHomePage;
+import com.primaryschool.home.entity.ClassStyle;
+import com.primaryschool.home.entity.ClassSynopsis;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
@@ -35,6 +38,7 @@ import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.TeachingResourcesMenu;
 import com.primaryschool.home.entity.Trends;
 import com.primaryschool.home.service.IClassHomePageService;
+import com.primaryschool.home.service.IClassSynopsisService;
 import com.primaryschool.home.service.ICultureService;
 import com.primaryschool.home.service.IDepartmentLinkService;
 import com.primaryschool.home.service.IEducationService;
@@ -109,8 +113,17 @@ public class ListController<T> {
 	@Autowired
 	private IAdminCourseScoreService<T> courseScoreService;
 	
+	@Autowired
+	private IClassStyleService<T> classStyleService;
+	
+	@Autowired
+	private IClassSynopsisService<T> classSynopsisService;
+	
 	//设置每页显示的数据量
 	int item_pre_page=PageSizeConfig.HOME_LIST_PAGESIZE;
+	
+	//设置班级主页显示的数量
+    int item_class_page=PageSizeConfig.CLASS_LIST_PAGESIZE;
 	
 	@RequestMapping("/trends")
 	public String details(String flag, int p ,HttpServletRequest request){
@@ -575,19 +588,23 @@ public class ListController<T> {
 		int count=classHomePageService.findClassHomePageCount(flag);
 
 		//计算偏移量
-		int position=(p-1)*item_pre_page;
+		int position=(p-1)*item_class_page;
 		
 		//根据偏移量获取数据
-		ArrayList<ClassHomePage>  mainClass=(ArrayList<ClassHomePage>) classHomePageService.findClassHomePageInfo(classId, flag, position, item_pre_page);
+		ArrayList<ClassHomePage>  mainClass=(ArrayList<ClassHomePage>) classHomePageService.findClassHomePageInfo(classId, flag, position, item_class_page);
 	   	
 		//获取封装好的分页导航数据
-        String toolBar=pageHelperService.createToolBar(count,item_pre_page, url, p);		
+        String toolBar=pageHelperService.createToolBar(count,item_class_page, url, p);		
         
         //根据typeFlag获取typeName
         String typeName=typeFlagToTypeNameService.findClassTypeNameByTypeFlag(flag);
         
         //获取热点信息
-        List<ClassHomePage> hotClass= (List<ClassHomePage> ) classHomePageService.findHotClasshomepageInfo(flag, position, item_pre_page);
+        List<ClassHomePage> hotClass= (List<ClassHomePage> ) classHomePageService.findHotClasshomepageInfo(flag, position, item_class_page);
+        //获取班级风采
+        ArrayList<ClassStyle> style=(ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
+        //获取班级简介
+         ClassSynopsis synopsis = (ClassSynopsis) classSynopsisService.findClassSynopsisInfo(classId);
         map.put("classId",classId);
         map.put("grade",gradeFlag);
         map.put("className",classFlag);
@@ -597,6 +614,8 @@ public class ListController<T> {
         map.put("typeFlag", flag);
         map.put("item", mainClass);
         map.put("hotItem", hotClass);
+        map.put("style", style);
+        map.put("synopsis", synopsis);
         return "home/list/mainClass";
 	}
 	
@@ -798,5 +817,18 @@ public class ListController<T> {
 		return "/home/list/classTable";
 	}
 	
+	
+	/*获取班级风采图片列表*/
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/classStyleList")
+	public String classStyleList(int classId,int gradeFlag,String classFlag,ModelMap map){
+		ArrayList<ClassStyle> style=(ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
+		
+		map.put("style", style);
+		map.put("grade", gradeFlag);
+		map.put("className", classFlag);
+		map.put("classId", classId);
+		return "home/list/classStyleList";
+	}
 	
 }

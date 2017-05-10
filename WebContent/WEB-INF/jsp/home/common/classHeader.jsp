@@ -10,7 +10,7 @@
          <li><a href="${pageContext.request.contextPath}/main/index">网站首页</a></li>
       	 <li><a href="${pageContext.request.contextPath }/details/classhomepage?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">${CLASS_MAINPAGE }</a></li>
           
-          <li><a href="${pageContext.request.contextPath }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_SYNOPSIS }">${CLASS_SYNOPSIS }</a></li>
+          <li><a href="${pageContext.request.contextPath }/details/classSynopsis?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_SYNOPSIS }">${CLASS_SYNOPSIS }</a></li>
                    
      <!--   <li><a href="${pageContext.request.contextPath }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_PHOTO }">${CLASS_PHOTO }</a></li>
                    
@@ -20,10 +20,11 @@
          -->
           
                    
-        <li><a href="${pageContext.request.contextPath }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=style&p=1">${CLASS_PHOTO }</a></li>
+        <li><a href="${pageContext.request.contextPath }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=article&p=1">${CLASS_ARTICLE}</a></li>
                    
         <li><a href="${pageContext.request.contextPath }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=dynamic&p=1">${CLASS_ACIVITY }</a></li>
                    
         <li><a href="${pageContext.request.contextPath }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=growthstory&p=1">${CLASS_STORY }</a></li>
+        
     </ul>
 </div>

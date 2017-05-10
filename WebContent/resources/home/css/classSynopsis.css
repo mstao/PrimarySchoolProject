@@ -1,0 +1,57 @@
+@CHARSET "UTF-8";
+@charset "utf-8";
+*{margin:0px; padding:0px;}
+body{ font-size:12px; margin:0 auto; padding:0px; color:#333333; background: url(../img/classbg.jpg);background-color:transparent;}
+div{margin:0 auto; overflow:hidden;}
+span{ overflow:hidden;}
+li{overflow:hidden;}
+ul{
+	list-style-type:none;
+	overflow: hidden;
+}
+a{text-decoration:none; overflow:hidden; color:#333333;}
+img{border:0px;}
+.fr{ float:right;}
+.fl{ float:left;}
+
+#topBag{ width:1000px; height:149px; }
+#topBagL{ width:auto; height:149px; float:left;  font-size:40px; font-weight:bold;   color:#EE9620; line-height:110px; padding-left:117px; min-width:443px;}
+#topBagR{ height:38px; line-height:38px; float:right;}
+#topBagR a:hover{ text-decoration:underline;}
+
+#navDiv{ width:1000px; height:41px; }
+#navDiv li{ width:166px; height:41px; float:left; }
+#navDiv li a{ display:block; width:166px; height:41px; float:left; line-height:41px; text-align:center; font-size:16px; font-family:"微软雅黑"; color:#444444;}
+#navDiv li a:hover{ color: #EE9620;}
+
+#mianBag{ width:990px; height:auto; background:#FFF; padding:10px 5px 18px 5px;}
+#mianDiv1{ width:990px; height:auto; }
+
+#tpthDiv{ width:558px; height:232px; float:left; padding:10px; border:1px solid #dfdfdf;}
+#tpthDiv img{ width:558px; height:232px;}
+.KSS_titleBox{ line-height:35px !important;}
+
+#mainBag-left{background-color:#FFFEF0;width:985px;min-height:600px;height: auto;float:left;}
+/*班级简介标题*/
+.news-title{background-color:#FFFEF0;width:600px;margin-top:15px;text-align: center;padding-top: 25px;padding-bottom: 25px;border-bottom: 1px solid #CCCCCC; 	}
+.news-title > span{font-size:20px;}
+/*班级简介*/
+.synopsis{
+	background-color:#FFFEF0;
+	color:#444444;
+	margin-top:20px;
+	text-align: left;
+	padding-top: 10px;
+	padding-left:15px;
+	padding-right:15px;
+	padding-bottom: 10px;
+	text-indent: 2em;
+	line-height:25px;
+	font-family: "微软雅黑";
+	font-size:15px;
+}
+
+#mainBag-right{background-color:#FFFEF0;width:300px;height: 340px;padding:0 10px;float:right;}
+
+
+.footer{background: #F5F2E3;width: 990px;}

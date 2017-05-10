@@ -13,12 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.primaryschool.admin.entity.CourseScore;
 import com.primaryschool.admin.entity.CourseStudentInfo;
 import com.primaryschool.admin.entity.CourseType;
 import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminStuInfoService;
 import com.primaryschool.global.config.PageSizeConfig;
+import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.entity.Manage;
@@ -27,6 +30,7 @@ import com.primaryschool.home.entity.Sclass;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLab;
 import com.primaryschool.home.entity.Teacher;
+import com.primaryschool.home.service.IClassHomePageService;
 import com.primaryschool.home.service.IDepartmentLinkService;
 import com.primaryschool.home.service.IEducationService;
 import com.primaryschool.home.service.ILabClassService;
@@ -77,6 +81,9 @@ public class ItemToJsonController<T> {
     
     @Autowired
     private IAdminCourseScoreService<CourseScore> courseScoreService;
+    
+    @Autowired
+	private IClassHomePageService<T> classHomePageService;
     
     
     int position=0;
@@ -340,5 +347,42 @@ public class ItemToJsonController<T> {
 		}finally{
 			out.close();
 		}
+	}
+	
+	
+	/**
+	 * 
+	* @Title: labClassToJson
+	* @Description: TODO 班级主页
+	* @param @param response    设定文件
+	* @return void    返回类型
+	* @throws
+	 */
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/classHomePage")
+
+	public void ClassToJson(HttpServletResponse response){
+		
+		response.setCharacterEncoding("UTF-8");  
+		
+		PrintWriter out=null;
+		ArrayList<ClassHomePage> ClassHomePage=(ArrayList<ClassHomePage>) classHomePageService.findClassHomePageListInfo();
+		
+		System.out.println(ClassHomePage.toString());
+		
+		String json = JSON.toJSONString(ClassHomePage,true);
+		System.out.println(json);
+		response.setContentType("application/json");
+		try {
+			out=response.getWriter();
+			out.write(json);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.close();
+		}
+	
 	}
 }

@@ -203,7 +203,52 @@ $(function(){
 							layer.msg("加载出错了", {icon: 2,time:2000});
 						}
 					});
-			  }
+			  }else if(index==2){
+				  //此时加载班级主页信息
+					//调用ajax加载信息
+					  $.ajax({
+							type:'post',
+							dataType:'json',
+							url:CTPPATH+'/tojson/classHomePage',				
+							beforeSend:function(){
+								//显示正在加载
+								checkdiv.html('<div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div>');
+							},
+							success:function(data){
+				
+								//关闭正在加载
+								
+							//	checkdiv.html("zzzzz"+data);
+					       
+					        var xhtml="";
+					        if(data.length>0){
+					        	
+					        	xhtml+="<ul>";
+						        
+								
+				        		$.each(data,function(idx,item){ 
+				        			xhtml+="<li><img src='"+CTP_HOME+"/img/sjiantou.png'/><a href='"+CTPPATH+"/details/newsinfo?id="+item.id+"&gradeFlag="+item.gradeName+"&classFlag="+item.className+"&classId="+item.classId+"'>"+sub(item.itemTitle,35)+"</a><span class='pub-data sub-time'>["+item.addTime+"]</span></li>";
+				        		}); 
+				        	
+				        	
+				        	xhtml+="</ul>";
+					        }else{
+					        	xhtml+="<div class='no-message'><img src='"+CTP_HOME+"/img/nomessage.png' /></div>";
+					        }
+					        
+							
+							checkdiv.html(xhtml);
+								
+							},
+							error:function(){
+				
+								//关闭正在加载
+								checkdiv.html('');
+								layer.msg("加载出错了", {icon: 2,time:2000});
+							}
+						});
+				  }
+			   
 		   
 	});
 	

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,10 +19,8 @@
 <script type="text/javascript" src="${CTP_HOME}/js/extends/jquery.liMarquee.js" ></script>
 </head>
 <body>
-<%--检测浏览器 --%>
-<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
 
-<jsp:include page="../common/classHeader.jsp"></jsp:include>
+ <jsp:include page="../common/classHeader.jsp"></jsp:include>
 
 <div id="mianBag">
 	<div id="mianDiv1">
@@ -44,11 +43,11 @@
         <div id="bjjianjie">
         	<div id="bjjianjieT">
             	<div>${CLASS_SYNOPSIS }</div>
-                <span><a href="${CTP }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_SYNOPSIS }">更多>></a></span>
+                <span><a href="${CTP }/details/classSynopsis?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">更多>></a></span>
             </div>
             <div id="bjjianjieM">
             	<img src="${CTP_HOME}/img/bg1.jpg" />
-                <span id="Lab_about">${synopsis.classSynopsis}</span>
+                <span id="Lab_about">${myTag:substr(synopsis.classSynopsis,0,120,true)}</span>
             </div>
             <div id="bjjianjieB"></div>
         </div>
@@ -65,7 +64,7 @@
                 <div class="banjidtM">
                     <ul>
                   		 <c:forEach items="${dynamic}" var="dynamic_list">
-							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/newsinfo?id=${dynamic_list.id}&gradeFlag=${grade}&classFlag=${className }&classId=${classId }"> ${dynamic_list.itemTitle}</a><span>[${dynamic_list.addTime}]</span></li>
+							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/newsinfo?id=${dynamic_list.id}&gradeFlag=${grade}&classFlag=${className }&classId=${classId }">${myTag:substr(dynamic_list.itemTitle,0,13,true)}</a><span>[${dynamic_list.addTime}]</span></li>
 	 					 </c:forEach>
                     </ul>
                 </div>
@@ -80,7 +79,7 @@
                 <div class="xswenzhangM">
                     <ul>
                 		  <c:forEach items="${article}" var="article_list">
-							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/newsinfo?id=${article_list.id}&gradeFlag=${grade}&classFlag=${className }&classId=${classId }"> ${article_list.itemTitle}</a><span>[${article_list.addTime}]</span></li>
+							<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/newsinfo?id=${article_list.id}&gradeFlag=${grade}&classFlag=${className }&classId=${classId }">${myTag:substr(article_list.itemTitle,0,13,true)} </a><span>[${article_list.addTime}]</span></li>
 						  </c:forEach>
                     </ul>
                 </div>
@@ -91,12 +90,12 @@
         <div id="banjixc">
         	<div id="banjixcT">
             	<div><img src="${CTP_HOME}/img/green.png"/> <span>${CLASS_STORY }</span></div>
-                <span><a href="${CTP }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_STORY }">更多>></a></span>
+                <span><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=growthstory&p=1">更多>></a></span>
             </div>
             <div id="banjixcM">
             	<ul>
                 	<c:forEach items="${growthstory}" var="growthstory_list">
-						<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=growthstory&p=1"> ${growthstory_list.itemTitle}</a><span>[${growthstory_list.addTime}]</span></li>
+						<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP }/details/newsinfo?id=${growthstory_list.id }&gradeFlag=${grade}&classFlag=${className }&classId=${classId}">${myTag:substr(growthstory_list.itemTitle,0,30,true)}</a><span>[${growthstory_list.addTime}]</span></li>
 					  </c:forEach>	
                 </ul>
             </div>
@@ -108,12 +107,13 @@
     <div id="banjifcDiv">
     	<div id="banjifcDivT">
         	<div><img src="${CTP_HOME}/img/fengcai.png"/><span>${CLASS_PHOTO }</span></div>
-            <span><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=style&p=1">更多>></a></span>
+            <span><a href="${CTP }/list/classStyleList?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">更多>></a></span>
         </div>
         <div id="banjifcDivM">
         	<div id="banjifcDivMul">
-            	<a href=""><img src="${CTP_HOME}/img/bg1.jpg"  title="ddddd"/><span></span></a>
-                <a href=""><img src="${CTP_HOME}/img/bg1.jpg"  title="ddddd"/><span></span></a>
+        		<c:forEach items="${style}" var="style_list">
+						<a href=""><img src="${style_list.imgPath}" title="${style_list.imgName}"/><span></span></a>
+					  </c:forEach>	
         	</div>
         </div>
         <div id="banjifcDivB"></div>

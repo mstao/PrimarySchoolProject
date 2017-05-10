@@ -20,4 +20,7 @@ public interface IClassHomePageDao <T> {
     int  findClassHomePageCount(String flag);
     /**获取近期热点**/
     List<T>  findHotClassHomePageInfo(String flag,int position,int item_per_page);
+    
+    /**获取班级主页的所有信息**/
+	List<T>  findClassHomePageListInfo();
 }

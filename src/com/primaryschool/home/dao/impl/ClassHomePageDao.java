@@ -104,6 +104,15 @@ public class ClassHomePageDao<T> implements IClassHomePageDao<T> {
 		return query.list();
 	}
 
-
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findClassHomePageListInfo() {
+		// TODO Auto-generated method stub
+		String hql="select new com.primaryschool.home.entity.ClassHomePage(hp.id, hp.itemTitle, hp.classId, g.gradeName, sc.className,hp.addTime)  from ClassHomePage hp,Sclass sc,Grade g  where hp.classId=sc.id  and g.id=sc.gradeId   order by hp.addTime desc";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setMaxResults(8);
+		return query.list();
+	}
+	
 	
 }

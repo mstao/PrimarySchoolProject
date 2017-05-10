@@ -7,4 +7,7 @@ public interface ISclassService<T> {
 	List<T> findClassInfo();
 	//获取指定年级信息
 	List<T> findClassInfoById(int id);
+	
+	/*通过ClassId获取ClassName和gradeId*/
+    T findClassNameAndGradeIdByClassId(int classId);
 }

@@ -28,7 +28,7 @@
 </div>
 
 <div class="content">
-    <div class="tips-"></div>
+    <div class="trends-top"><img src="${CTP_HOME}/img/课表.png"/> <span class="tag-ch">班级课表下载</span> </div>
     <!--S CONETNT-->
     <div class="class-content">
     	<!--s class-info-->

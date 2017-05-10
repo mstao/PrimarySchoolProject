@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +11,14 @@
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <title>Insert title here</title>
 <link rel="stylesheet" href="${CTP_HOME}/css/classdetails.css" />
-<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
-<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
-<script type="text/javascript" src="${CTP_HOME}/js/jquery-1.10.2.min.js" ></script>
-<script type="text/javascript" src="${CTP_HOME}/js/common.js" ></script>
-<script type="text/javascript" src="${CTP_HOME}/js/YuxiSlider.jQuery.min.js"></script>
-<script type="text/javascript" src="${CTP_HOME}/js/jquery.liMarquee.js" ></script>
-</head>
+		<link rel="stylesheet" href="${CTP_HOME}/css/liMarqueeImg.css" />
+		<link rel="stylesheet" href="${CTP}/resources/common/css/page.css"/>
+		<script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js" ></script>
+<script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
+<script type="text/javascript" src="${CTP_HOME}/js/extends/YuxiSlider.jQuery.min.js"></script>
+<script type="text/javascript" src="${CTP_HOME}/js/extends/jquery.liMarquee.js" ></script>
+	</head>
 <body>
-<%--检测浏览器 --%>
-<jsp:include page="../../common/browsehappy.jsp"></jsp:include>
-
 <jsp:include page="../common/classHeader.jsp"></jsp:include>
 
 <div id="mianBag">
@@ -44,11 +42,11 @@
         <div id="bjjianjie">
         	<div id="bjjianjieT">
             	<div>${CLASS_SYNOPSIS }</div>
-                <span><a href="${CTP }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_SYNOPSIS }">更多>></a></span>
+                <span><a href="${CTP }/details/classSynopsis?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">更多>></a></span>
             </div>
             <div id="bjjianjieM">
             	<img src="${CTP_HOME}/img/bg1.jpg" />
-                <span id="Lab_about">${synopsis.classSynopsis }</span>
+                <span id="Lab_about">${myTag:substr(synopsis.classSynopsis,0,120,true)}</span>
             </div>
             
         </div>
@@ -62,15 +60,14 @@
     		</div>
     		<div id="mianDiv2-navB">
 	            <ul>
-          
-				        <li><a href="${CTP }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_SYNOPSIS }">${CLASS_SYNOPSIS }</a></li>    
-				                   
-				        <li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=style&p=1">${CLASS_PHOTO }</a></li>
+          			
+				        <li><a href="${CTP }/details/classSynopsis?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">${CLASS_SYNOPSIS }</a></li>    
+                   		<li><a href="${CTP }/list/classStyleList?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">${CLASS_PHOTO }</a></li>
                    
-      					  <li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=dynamic&p=1">${CLASS_ACIVITY }</a></li>
+      					<li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=dynamic&p=1">${CLASS_ACIVITY }</a></li>
                    
-      					  <li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=growthstory&p=1">${CLASS_STORY }</a></li>
-     					   <li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=article&p=1">${CLASS_ARTICLE }</a></li>
+      					<li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=growthstory&p=1">${CLASS_STORY }</a></li>
+     					<li><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=article&p=1">${CLASS_ARTICLE }</a></li>
 	            </ul>
             </div>
         </div>
@@ -78,7 +75,6 @@
         <div id="mianDiv2-det">
         	<div id="mianDiv2-detT">
             	<div><img src="${CTP_HOME}/img/green.png"/> <span>${typeName }</span></div>
-                <span id="mianDiv2-detTs"><a href="${CTP }/list/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&flag=${typeFlag }&p=1">更多>></a></span>
             </div>
             <div id="mianDiv2-detB">
             	<ul>
@@ -86,7 +82,7 @@
             		<span>${synopsis.classSynopsis }</span>
             	</c:if>
             	<c:forEach var="tongyi" items="${item }">
-                 	<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/newsinfo?id=${tongyi.id}&gradeFlag=${grade}&classFlag=${className }&classId=${classId }"> ${tongyi.itemTitle}</a><span>[${tongyi.addTime }]</span></li>
+                 	<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/newsinfo?id=${tongyi.id}&gradeFlag=${grade}&classFlag=${className }&classId=${classId }"> ${myTag:substr(tongyi.itemTitle,0,30,true)}</a><span>[${tongyi.addTime }]</span></li>
                 </c:forEach>
                 </ul>
                 
@@ -100,12 +96,13 @@
     <div id="banjifcDiv">
     	<div id="banjifcDivT">
         	<div><img src="${CTP_HOME}/img/fengcai.png"/><span>${CLASS_PHOTO }</span></div>
-            <span><a href="${CTP }/details/mainClass?classId=${classId }&gradeFlag=${grade}&classFlag=${className }&type=${CLASS_PHOTO }">更多>></a></span>
+            <span><a href="${CTP }/list/classStyleList?classId=${classId }&gradeFlag=${grade}&classFlag=${className }">更多>></a></span>
         </div>
         <div id="banjifcDivM">
         	<div id="banjifcDivMul">
-            	<a href=""><img src="${CTP_HOME}/img/bg1.jpg"  title="ddddd"/><span></span></a>
-                <a href=""><img src="${CTP_HOME}/img/bg1.jpg"  title="ddddd"/><span></span></a>
+            	<c:forEach items="${style}" var="style_list">
+						<a href=""><img src="${style_list.imgPath}" title="${style_list.imgName}"/><span></span></a>
+					  </c:forEach>	
         	</div>
         </div>
         <div id="banjifcDivB"></div>

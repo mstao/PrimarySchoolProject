@@ -1,14 +1,16 @@
 @charset "utf-8";
 *{margin:0px; padding:0px;}
-body{ font-size:12px; margin:0 auto; padding:0px; color:#333333; background: url(../img/classbg.jpg);background-color:transparent;}
-div{margin:0 auto; overflow:hidden;}
+body{ font-size:15px; margin:0 auto; padding:0px; color:#333333; background: url(../img/classbg.jpg);background-color:transparent;}
+div{margin:0 auto;}
 span{ overflow:hidden;}
-li{overflow:hidden;}
+li{
+	margin-top:7px;
+	overflow:hidden;}
 ul{
 	list-style-type:none;
 	overflow: hidden;
 }
-a{text-decoration:none; overflow:hidden; color:#333333;}
+a{text-decoration:none; overflow:hidden;color:#333333;}
 img{border:0px;}
 .fr{ float:right;}
 .fl{ float:left;}
@@ -24,24 +26,24 @@ img{border:0px;}
 #navDiv li a:hover{ color: #EE9620;}
 
 #mianBag{ width:990px; height:auto; background:#FFF; padding:10px 5px 18px 5px;}
-#mianDiv1{ width:990px; height:auto; }
+#mianDiv1{ width:990px; height:auto;  overflow:hidden;}
 
 #tpthDiv{ width:558px; height:232px; float:left; padding:10px; border:1px solid #dfdfdf;}
 #tpthDiv img{ width:558px; height:232px;}
 
 .KSS_titleBox{ line-height:35px !important;}
 
-#bjjianjie{ width:399px; height:253px; float:right; background:#34A9B1;}
+#bjjianjie{ width:399px; height:253px; float:right; background:#34A9B1; overflow:hidden;}
 #bjjianjieT{ width:399px; height:35px; background:url(../images/jjt.png) no-repeat top center;}
 #bjjianjieT div{ height:35px; line-height:35px; float:left; font-size:15px; font-family:"微软雅黑"; color:#FFF;  padding-left:38px;}
 #bjjianjieT span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#FFF; float: right;}
 #bjjianjieT span a{ color:#ff8a00;}
 
-#bjjianjieM{ width:369px; height:168px; border-left:1px solid #ffe7ca; border-right:1px solid #ffe7ca; background:#fffef0; line-height:24px; padding:12px 14px 20px 14px; text-indent:24px; }
+#bjjianjieM{ overflow:hidden; width:369px; height:168px; border-left:1px solid #ffe7ca; border-right:1px solid #ffe7ca; background:#fffef0; line-height:24px; padding:12px 14px 20px 14px; text-indent:24px; }
 #bjjianjieM img{ width:165px; height:90px; float:left; padding-right:17px;}
 #bjjianjieB{ width:399px; height:18px; background:url(../images/jjb.png) no-repeat top center;}
 
-#mianDiv2{ width:990px; height:auto; padding-top:21px;}
+#mianDiv2{ width:990px; height:auto; padding-top:21px; overflow:hidden;}
 #mianDiv2-nav{width:260px; height:413px;background:#FFFEF0;float:left}
 #mianDiv2-nav span{color:#FF8A00;}
 #mianDiv2-navT{font-size:15px;color:#444444;line-height: 2.6em;border-bottom: 1px dotted #FF8A00;}
@@ -123,25 +125,27 @@ img{border:0px;}
 #banjixcT div>img{position: relative;right: 5px; top: 5px;}
 #banjixcT div>span{
 	position: relative;
-    font-size: 15px;
+    font-size: 10px;
      color: #128758;
 	top: -4px;
 }
 
 #mianDiv2-detB span{
-	padding-right: 50px;
 	position: relative;
 	float: right;
-	font-size: 15px;
+	font-size: 13px;
 	color: #666666;
 }
 #mianDiv2-detB a{
-	font-size: 16px;
+	font-size: 15px;
 	color:#444444;
 	text-decoration: none;
 }
 #mianDiv2-detB ul{
 	margin-top: 10px;
+}
+#mianDiv2-detB ul > li>img{
+	margin-left:5px;
 }
 #mianDiv2-detB ul li a{
 	list-style: none;
@@ -158,7 +162,7 @@ img{border:0px;}
 #banjixcM li a:hover{color:#EF9722;}
 #banjixcB{ width:614px; height:10px; background:url(../images/bjxcb.png) no-repeat top center;}
 
-#banjifcDiv{ width:990px; height:auto; margin-top:22px; }
+#banjifcDiv{ width:990px; height:auto; margin-top:22px;  overflow:hidden;}
 #banjifcDivT{ width:990px; height:35px; background:#FFFEF0; border-bottom: 1px dashed #EE9620;}
 #banjifcDivT div{ height:35px; line-height:35px; float:left; font-size:15px; font-family:"微软雅黑"; color:#EE9620; font-weight:bold; padding-left:20px;}
 #banjifcDivT div>span{
@@ -169,10 +173,16 @@ img{border:0px;}
 }
 #banjifcDivT span{ display:block; height:35px; line-height:35px; float:right; font-size:12px; font-family:"微软雅黑"; color:#EE9620; font-weight:bold; padding-right:25px;}
 #banjifcDivT span a{ color:#ff8a00;}
-#banjifcDivM{ width:988px; height:200px; border-left:1px solid #ffe7ca; border-right:1px solid #ffe7ca; background:#fffef0; padding-top:14px;}
-#banjifcDivMul{ width:955px; height:165px; }
+#banjifcDivM{ overflow:visible !important; height:200px; border-left:1px solid #ffe7ca; border-right:1px solid #ffe7ca; background:#fffef0; padding-top:14px;}
+#banjifcDivMul{  height:165px; overflow:visible !important; }
 #banjifcDivMul img{
 	margin-left: 10px;
+	width:300px;
+	height:200px;
+}
+#banjifcDivMul >a{
+	width:310px;
+	height:210px;
 }
 
 
@@ -214,4 +224,5 @@ img{border:0px;}
 
 
 .footer{background: #F5F2E3;width: 990px;}
+
 .browsehappy{padding:8px 0;background:#FBE3E4;color:#8A1F11;text-align:center;}.browsehappy a{color:#8A1F11;text-decoration:underline;font-weight:bold;}

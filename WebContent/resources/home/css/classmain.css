@@ -190,3 +190,19 @@
 	background-color:#f2dede;
 	color:#444444;
 }
+.no-message-div{
+	margin: 0 auto;
+	width:200px;
+	margin-top:80px;
+}
+.no-message-div span{
+	display: block;
+	margin-left:-20px;
+	color:#444444;
+}
+input:focus{
+	border:1px solid #2188FF;
+	-webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+    box-shadow:0 0 10px rgba(0, 204, 204, .5); 
+}

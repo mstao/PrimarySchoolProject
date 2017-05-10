@@ -63,6 +63,12 @@ public class ClassHomePage implements Serializable{
 	    @Transient
 		private String itemTypeName;
 		
+	    @Transient
+	    private String gradeName;
+	    
+	    @Transient
+	    private String className;
+	    
 		public ClassHomePage(){}
 	    
 	    public ClassHomePage(int id,String itemTitle,String addTime,String itemAuthor){
@@ -124,7 +130,17 @@ public class ClassHomePage implements Serializable{
 	  			this.isPublish=isPublish;
 	  		}
 
-	  	    
+	  	  /**首页  显示***/
+	  	  public ClassHomePage(int id, String itemTitle, int classId, String gradeName, String className,String addTime) {
+				super();
+				this.id = id;
+				this.itemTitle = itemTitle;
+				this.classId = classId;
+				this.gradeName = gradeName;
+				this.className = className;
+				this.addTime = addTime;
+		}    
+	  	  
 		public int getId() {
 			return id;
 		}
@@ -219,6 +235,15 @@ public class ClassHomePage implements Serializable{
 
 		public void setItemAuthor(String itemAuthor) {
 			this.itemAuthor = itemAuthor;
+		}
+
+		@Override
+		public String toString() {
+			return "ClassHomePage [id=" + id + ", itemTitle=" + itemTitle + ", itemContent=" + itemContent
+					+ ", itemAuthor=" + itemAuthor + ", typeId=" + typeId + ", addTime=" + addTime + ", viewCount="
+					+ viewCount + ", isImage=" + isImage + ", isPublish=" + isPublish + ", classId=" + classId
+					+ ", itemTypeFlag=" + itemTypeFlag + ", itemTypeName=" + itemTypeName + ", gradeName=" + gradeName
+					+ ", className=" + className + "]";
 		}
 		
 

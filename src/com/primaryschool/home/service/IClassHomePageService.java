@@ -15,4 +15,8 @@ public interface IClassHomePageService<T> {
     int  findClassHomePageCount(String flag);
     /**获取最近更新**/
     List<T>  findHotClasshomepageInfo(String flag,int position,int item_per_page);
+    
+    /*获取班级主页记录，按时间降序排序*/
+    List<T>  findClassHomePageListInfo();
+    
 }

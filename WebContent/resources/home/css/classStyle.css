@@ -1,0 +1,94 @@
+@charset "utf-8";
+
+*{margin:0px; padding:0px;}
+body{ font-size:12px; margin:0 auto; padding:0px; color:#333333; background: url(../img/classStyleList.jpg);background-color:transparent;}
+span{ overflow:hidden;}
+li{overflow:hidden;}
+ul{
+	list-style-type:none;
+	overflow: hidden;
+}
+a{text-decoration:none; overflow:hidden;color:#333333;}
+.fr{ float:right;}
+.fl{ float:left;}
+/*设置表头部分*/
+/*设置显示班级，设为首页，加入收藏*/
+#topBag{margin:0 auto; width:1000px; height:149px; }
+#topBagL{ width:auto; height:149px; float:left;  font-size:40px; font-weight:bold;   color:#EE9620; line-height:110px; padding-left:117px; min-width:443px;}
+#topBagR{ height:38px; line-height:38px; float:right;}
+#topBagR a:hover{ text-decoration:underline;}
+/*设置表头的列表部分*/
+#navDiv{ width:1000px; height:41px;margin:0 auto; }
+#navDiv li{ width:166px; height:41px; float:left; }
+#navDiv li a{ display:block; width:166px; height:41px; float:left; line-height:41px; text-align:center; font-size:16px; font-family:"微软雅黑"; color:#444444;}
+#navDiv li a:hover{ color: #EE9620;}
+
+.content{
+	margin: 0 auto;
+	margin-top: 20px;
+    width: 900px;
+   
+}
+.content .list{
+	float: left;
+	width: 800px;
+	min-height: 500px;
+}
+.list .list-navi{
+	border-bottom: 2px solid #34A9B1;
+	padding-bottom: 10px;
+	margin-top: 10px;
+}
+.list .list-navi > span{
+	font-size: 25px;
+	color: #006372;
+	
+}
+.list .list-navi > span > img{
+	position: relative;
+	top:2px;
+}
+.list .list-content{
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
+.img-list-div{
+	margin-top:20px;
+	width:400px;
+	float:left;
+	margin-bottom:20px;
+}
+.img-navi{
+	width:900px;
+}
+.img-content{
+	width:900px;
+}
+.img-list-div{
+	width:400px;
+	height:250px;
+	float:left;
+}
+.img-list-div:nth-of-type(even) {
+	float:right;
+}
+.img-list-div img{
+ width:400px;
+ height:250px;
+ -webkit-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+ -moz-box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+ box-shadow:0 0 10px rgba(0, 204, 204, .5);  
+}
+
+
+
+
+.footer{
+	float:left;
+	margin-left:200px;
+	background: #F5F2E3;
+	width: 1170px;
+	height:50px;
+	
+	}

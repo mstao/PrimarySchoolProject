@@ -50,4 +50,10 @@ public class ClassHomePageService<T> implements IClassHomePageService<T> {
 		return (List<T>)classhomepageDao.findHotClassHomePageInfo(flag, position, item_per_page);
 	}
 
+	@Override
+	public List<T> findClassHomePageListInfo() {
+		// TODO Auto-generated method stub
+		return classhomepageDao.findClassHomePageListInfo();
+	}
+
 }

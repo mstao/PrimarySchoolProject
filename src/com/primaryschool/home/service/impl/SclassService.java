@@ -27,4 +27,10 @@ public class SclassService<T> implements ISclassService<T> {
 		// TODO Auto-generated method stub
 		return (List<T>)classDao.findClassInfoById(id);
 	}
+	
+	@Override
+	public T findClassNameAndGradeIdByClassId(int classId) {
+		// TODO Auto-generated method stub
+		return (T) classDao.findClassNameAndGradeIdByClassId(classId);
+	}
 }

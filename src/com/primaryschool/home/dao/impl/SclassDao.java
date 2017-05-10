@@ -34,5 +34,17 @@ public class SclassDao<T> implements ISclassDao<T> {
 		return query.list();
 	}
 	
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public T findClassNameAndGradeIdByClassId(int classId) {
+		// TODO Auto-generated method stub
+		System.out.println("用于数据查询的参数===================="+classId);
+		String hql="select new com.primaryschool.home.entity.Sclass(c.id, c.className, c.gradeId)from Sclass c where c.id=? ";
+		Query query=sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger(0, classId);
+		return (T) query.uniqueResult();
+	}
+
 
 }
