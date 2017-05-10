@@ -24,6 +24,13 @@ public class GetDateUtil {
  	    return condate;
      }
      
+     
+     public static String getAllDate(){
+    	 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");//设置日期格式
+  	    String condate=df.format(new Date());// new Date()为获取当前系统时间
+  	    return condate;
+     }
+     
      /**
       * 
      * @Title: getYear

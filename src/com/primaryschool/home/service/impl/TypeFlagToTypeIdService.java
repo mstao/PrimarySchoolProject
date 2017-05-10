@@ -83,4 +83,10 @@ public class TypeFlagToTypeIdService implements ITypeFlagToTypeIdService {
 		// TODO Auto-generated method stub
 		return typeFlagToTypeIdDao.findLabClassMenuIdByTypeFlag(flag);
 	}
+	
+	@Override
+	public int findFileBelongIdByBelongFalg(String flag) {
+		// TODO Auto-generated method stub
+		return typeFlagToTypeIdDao.findFileBelongIdByBelongFalg(flag);
+	}
 }

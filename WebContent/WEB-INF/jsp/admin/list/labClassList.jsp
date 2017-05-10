@@ -19,6 +19,18 @@
 		<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 		
 <script type="text/javascript">
+
+var sub=function(str,Len){
+	var maxLen=Len;
+	var len=str.length;
+	if(len>maxLen){
+	    //此时需要截取
+		return str.substring(0,maxLen)+"...";
+	}else{
+		return str;
+	}
+}
+
 	$(function(){
 		var CTPPATH="${pageContext.request.contextPath}";
 	   
@@ -90,6 +102,11 @@
   	 $('.new_button').bind('click',function(){
   	     var token=$('.new_text').val();
   /* 	     alert("${durl}   "+flag+"    "+token); */
+  
+  	   token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+       if(token==null || token==""){
+       	 layer.msg("请输入要搜索的内容！");
+       }else {
   		$.ajax({
   			type:'post',
   			dataType:'json',
@@ -112,10 +129,10 @@
   				if(data.length!=0){
   				$.each(data,function(id,item){
   						if(item.isPublish==0){
-  							xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item.id+"&labId="+item.labId+"&labName=${labName}&menuId="+item.menuId+"' class='item_title'>"+item.itemTitle+"</a><span class='draft-span'>草稿</span></td><td width='20%'>"+item.author+"</td><td width='20%'>${labName}</td><td width='20%'>"+item.addTime+"</td></tr>";
+  							xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item.id+"&labId="+item.labId+"&labName=${labName}&menuId="+item.menuId+"' class='item_title'>"+sub(item.itemTitle,17)+"</a><span class='draft-span'>草稿</span></td><td width='20%'>"+item.author+"</td><td width='20%'>${labName}</td><td width='20%'>"+item.addTime+"</td></tr>";
   							}
   						else{
-  							xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item.id+"&&labId="+item.labId+"&labName=${labName}&menuId="+item.menuId+"' class='item_title'>"+item.itemTitle+"</a></td><td width='20%'>"+item.author+"</td><td width='20%'>${labName}</td><td width='20%'>"+item.addTime+"</td></tr>";
+  							xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item.id+"&&labId="+item.labId+"&labName=${labName}&menuId="+item.menuId+"' class='item_title'>"+sub(item.itemTitle,17)+"</a></td><td width='20%'>"+item.author+"</td><td width='20%'>${labName}</td><td width='20%'>"+item.addTime+"</td></tr>";
   						}
   				
   				});
@@ -135,7 +152,9 @@
   				layer.msg("出错了", {icon: 2,time:2000});
   			}
   		});
-  	     });
+  		
+       }
+  	 });
   	 //绑定回车键
 	 $('.new_text').keydown(function(event){  
   	    if(event.keyCode==13){  

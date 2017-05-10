@@ -18,11 +18,22 @@
 	    <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/uploadify/js/jquery.uploadify.min.js" ></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/jquery.date_input.pack.js"></script> 
+	 <c:set var="url" value="labclassinfo"></c:set>
+	
+	<c:choose>
+		<c:when  test="${durl eq url}">
+			<c:set var="surl" value="/admin/list/${durl}?labId=${labId}&p=1"></c:set>
+		</c:when>
+	
+		<c:otherwise>
+			<c:set var="surl" value="/admin/list/${durl}?classId=${item.classId}&grade=${grade}&className=${className}&p=1"></c:set>
+		</c:otherwise>
+	</c:choose>
 	
 <script type="text/javascript">
 	 var CTPPATH="${pageContext.request.contextPath}";
 	 var CTP_ADMIN=CTPPATH+"/resources/admin";
-	 var url="labclassinfo";
+	
 	 function check(val,obj){
 		    obj.style.backgroundColor="#E9E9E6";
 			if(val=='f'){
@@ -38,7 +49,6 @@
 		
 $(function() {
 		
-	
 		/*************setting***************/  
 	    var definedData = [];  
 	    definedData.fileSizeLimit = "20MB";  //上传大小  
@@ -146,14 +156,8 @@ $(function() {
                      //上传队列全部完成后执行的回调函数    
                     if(queueData.uploadsErrored==0){
                     	layer.msg("全部文件上传完成了",{icon: 1,time:3000});
-                    	//此时可以进行跳转页面
-                    	if("${durl}"== url){
-                    		//跳转界面
-    						window.location.href=CTPPATH+"/admin/list/${durl}?labId=${labId}&p=1";
-                        	}else{
-                        		//跳转界面
-								window.location.href=CTPPATH+"/admin/list/${durl}?classId=${item.classId}&grade=${grade}&className=${className}&p=1";
-                            	}
+                    	window.location.href=CTPPATH+"${surl}";
+                    	
                     	
                     }else{
                     	layer.msg("文件上传成功的有"+queueData.uploadsSuccessful+"个-|-文件上传失败的有"+queueData.uploadsErrored+"个,请您点击开始上传按钮手动上传文件");
@@ -243,7 +247,7 @@ $(function() {
 		<div class="clear"></div>
 		<!--clear-->
 		<div class="options-checked-div" id="s">
-		 <c:set var="url" value="labclassinfo"></c:set>
+		
 			<span class="publish-dept-span">发布者</span>
 			<c:choose>
 				<c:when test="${durl == url}">
@@ -427,13 +431,7 @@ $(function(){
 							//此时开始上传文件 ，前提是有文件  这时在文件处理那块将id值写到隐藏域
 							upload("uploadify");
 						}else{
-							if("${durl}"== url){
-	                    		//跳转界面
-	    						window.location.href=CTPPATH+"/admin/list/${durl}?labId=${labId}&p=1";
-	                        	}else{
-	                        		//跳转界面
-									window.location.href=CTPPATH+"/admin/list/${durl}?classId=${item.classId}&grade=${grade}&className=${className}&p=1";
-	                            	}
+							window.location.href=CTPPATH+"${surl}";
 						}
 
 					}else{
@@ -504,13 +502,7 @@ $(function(){
 							//此时开始上传文件 ，前提是有文件  这时在文件处理那块将id值写到隐藏域
 							upload("uploadify");
 						}else{
-							if("${durl}"== url){
-	                    		//跳转界面
-	    						window.location.href=CTPPATH+"/admin/list/${durl}?labId=${labId}&p=1";
-	                        	}else{
-	                        		//跳转界面
-									window.location.href=CTPPATH+"/admin/list/${durl}?classId=${item.classId}&grade=${grade}&className=${className}&p=1";
-	                            	}
+							window.location.href=CTPPATH+"${surl}";
 						}
 
 					}else{

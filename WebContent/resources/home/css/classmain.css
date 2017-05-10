@@ -86,7 +86,19 @@
 	
 }
 
-.only-info{
+.only-nav >span{
+	float: left;
+    display: table-cell;
+	font-size: 20px;
+	height: 32px;
+	width: 80px;
+	background: #F2F2F2;
+	text-align: center;
+	vertical-align: middle;
+	
+}
+
+.only-info,.score-info{
 	clear: both;
 	margin-top: 10px;
 }
@@ -105,10 +117,15 @@
 	text-decoration: underline;
 	color: #EE9620;
 }
+.only-info .dot{
+	position: relative;
+	top:0px;
+}
+
 .clear{
 	clear:both;
 }
-/**成绩查询**/
+/**�ɼ���ѯҳ��**/
 .score-info{
 	height:50px;
 	padding:0 50px;

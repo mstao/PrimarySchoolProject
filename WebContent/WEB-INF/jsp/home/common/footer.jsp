@@ -36,7 +36,13 @@ $(function(){
 							<span class="ad">地址:${SCHOOL_ADDRESS}&nbsp;邮编:${SCHOOL_POSTCODE}</span>
 			  	   </div>
 			  	   </center>
-			  	   <div class="reight-con"></div>
+			  	   <div class="right-con">
+				  	   <div class="img-show-div">
+				  	      <img src="${pageContext.request.contextPath}/resources/home/img/qrcode.gif"/>
+				  	      <img src="${pageContext.request.contextPath}/resources/home/img/qrcode.gif"/>
+				  	   </div>
+			  	  <%--  <img src="${pageContext.request.contextPath}/resources/home/img/qrcode.gif"/> --%>
+			  	   </div>
 			  </div>
 		</div>
 		

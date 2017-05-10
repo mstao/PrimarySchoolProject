@@ -89,6 +89,10 @@
 
        $('.new_button').bind('click',function(){
     		var info=$('.new_text').val();
+    		 token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+ 	        if(token==null || token==""){
+ 	        	 layer.msg("请输入要搜索的内容！");
+ 	        }else {
     		 $.ajax({
     				type:'post',
     				dataType:'json',
@@ -136,6 +140,7 @@
     					layer.msg("信息不匹配,请重新输入", {icon: 2,time:2000});
     				}
     			}); 
+ 	        }
     	}); 
        //绑定回车键
   	 $('.new_text').keydown(function(event){  
@@ -211,10 +216,7 @@
 <!--E main-->
 
 <!--S footer-->
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp" />
 <!--E footer-->
 	</body>
 </html>

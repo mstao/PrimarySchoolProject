@@ -1,3 +1,36 @@
+#location{
+	 margin: 80px auto 10px;
+     width: 70%;
+}
+#intro{
+	margin: auto;
+     margin-bottom: 10px;
+     width: 70%;
+     margin-top: 20px;
+}
+#intro .intro_span{
+	font-weight: bold;
+  	font-size: 17px;
+}
+#intro .intro-add{
+	margin-left: 10px;
+  	display:inline-block ;
+  		width: 35px;
+      height: 25px;
+      line-height: 25px;
+      padding-left: 3px;
+      color: #FFFFFF;
+      font-size: 14px;
+      background-color: #467B96;
+      border-radius: 5px;
+      border: 1px solid;
+      text-decoration: none;
+}
+#intro-detail{
+	min-height: 115px;
+    margin: auto;margin-top: 10px;
+    background-color: white;
+}
 .new_div1{
      margin: auto;
      margin-bottom: 10px;

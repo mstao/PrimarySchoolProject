@@ -18,9 +18,9 @@ public class PageSizeConfig {
     public static int HOME_SLIDE_PAGESIZE=5;
     
     /************后台列表显示 记录数*************/
-    public static int ADMIN_LIST_PAGESIZE=15;
+    public static int ADMIN_LIST_PAGESIZE=3;
     
     /*********学生信息显示记录数****************/
-    public static int ADMIN_STUDENT_PAGESIZE=30;
+    public static int ADMIN_STUDENT_PAGESIZE=3;
     
 }

@@ -50,6 +50,14 @@ public class ClassSynopsis implements Serializable{
 		
 		
 		
+		public ClassSynopsis(int classId, String classSynopsis) {
+			super();
+			this.classId = classId;
+			this.classSynopsis = classSynopsis;
+		}
+
+
+
 		public ClassSynopsis(String classSynopsis) {
 			super();
 			this.classSynopsis = classSynopsis;

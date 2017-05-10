@@ -67,6 +67,8 @@ public class AdminDepartmentDao<T> implements IAdminDepartmentDao<T> {
 		String hql="select new com.primaryschool.home.entity.DepartmentLinkContent(d.id, d.itemTitle, d.typeId, d.addTime, d.isPublish, d.itemAuthor) from DepartmentLinkContent d where d.departmentId=?";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, deptId);
+		query.setFirstResult(position);
+		query.setMaxResults(item_per_page);
 		return (List<T>)query.list();
 	}
 

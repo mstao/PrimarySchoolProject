@@ -27,5 +27,6 @@ public interface ITypeFlagToTypeIdService {
   	int findTeachingResourcesTypeIdByTypeFlag(String flag);
   	//社团资源类型
   	int findLabClassMenuIdByTypeFlag(String flag);
-  	
+    //文件类型id
+    int findFileBelongIdByBelongFalg(String flag);
 }

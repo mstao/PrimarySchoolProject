@@ -117,6 +117,7 @@ public class AdminCourseScoreDao<T> implements IAdminCourseScoreDao<T> {
 		query.setParameterList("ids", ids).executeUpdate();
 	}
 
+
 	@Override
 	public boolean scoreExist(int stuinfoId, String addTime) {
 		// TODO Auto-generated method stub
@@ -124,7 +125,12 @@ public class AdminCourseScoreDao<T> implements IAdminCourseScoreDao<T> {
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, stuinfoId);
 		query.setString(1, addTime);
-		return (query.executeUpdate()>0);
+		if(query.list().size()>0){
+			return false;
+		}else{
+			return true;
+		}
+
 	}
 
 	@Override

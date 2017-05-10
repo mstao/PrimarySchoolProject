@@ -43,6 +43,16 @@ $(".rest-selects").bind("click",function(){
 		sid=$(".rest-selects").attr('data-id');
 		//$("input[type='radio']:checked").val();
 	});
+	
+	/*************setting***************/  
+	var definedData = [];  
+	definedData.fileSizeLimit = "20MB";  //上传大小  
+	definedData.queueSizeLimit = 5;      //允许上传个数文件  
+	
+	var errorData = [];  
+	errorData.err100 = "文件个数超出系统限制，只允许上传" + definedData.queueSizeLimit + "个文件！";  
+	errorData.err110 = "文件超出系统限制的大小，限制文件大小" + definedData.fileSizeLimit + "！";  
+	errorData.err120 = "文件大小异常！";  
 
 	$("#uploadify").uploadify({
 		debug			: false, 
@@ -60,7 +70,7 @@ $(".rest-selects").bind("click",function(){
 		width			: 120	, // 120 px
 		
 		fileObjName		: 'filedata',	//文件对象名称, 即属性名
-		fileSizeLimit	: 100000	,		// 文件大小限制, 10000 KB
+		fileSizeLimit	: '20MB'	,		// 文件大小限制, 10000 KB
 		fileTypeDesc	: 'any'	,	//文件类型说明 any(*.*)
 		fileTypeExts	: '*.*;*.txt',		// 允许的文件类型,分号分隔
 		//formData		: {'id':'1', 'type':'myFile'} , //指定上传文件附带的其他数据。也动态设置。可通过getParameter()获取
@@ -69,7 +79,7 @@ $(".rest-selects").bind("click",function(){
 		multi			: true ,	// 多文件上传
 		progressData	: 'speed,percentage',	// 进度显示, speed-上传速度,percentage-百分比	
 		queueID			: 'fileQueue',//上传队列的DOM元素的ID号
-		queueSizeLimit	: 99	,	// 队列长度
+		queueSizeLimit	: 10	,	// 队列长度
 		removeCompleted : false	,	// 上传完成后是否删除队列中的对应元素
 		removeTimeout	: 10	,	//上传完成后多少秒后删除队列中的进度条, 
 		requeueErrors	: true,	// 上传失败后重新加入队列
@@ -129,7 +139,22 @@ $(".rest-selects").bind("click",function(){
                	$(".start-upload").show();
                }
                 
-            }  
+            },
+          //返回一个错误，选择文件的时候触发  
+          'onSelectError': function (file, errorCode, errorMsg) {  
+              switch (errorCode) {  
+                  case -100:  
+                      alert(errorData.err100);  
+                      break;  
+                  case -110:  
+                      alert(errorData.err110);  
+                      break;  
+                  case -120:  
+                      alert(errorData.err120);  
+                      break;  
+              
+              }  
+          }
             
 
 	});
@@ -237,9 +262,6 @@ function getQueueSize(id){
 
 
 <%--引入footer --%>
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp" />
 </body>
 </html>

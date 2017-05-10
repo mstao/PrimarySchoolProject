@@ -110,7 +110,7 @@ public class StudentLabMenuContent implements Serializable{
 	/*
 	 * 后台管理列表页面获取内容
 	 */
-	public StudentLabMenuContent(int id, String itemTitle, String addTime, int menuId, String author, int isPublish) {
+	public StudentLabMenuContent(int id, String itemTitle, String author, int menuId, String addTime, int isPublish) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;

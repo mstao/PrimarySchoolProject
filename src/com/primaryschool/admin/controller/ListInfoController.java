@@ -745,7 +745,7 @@ public class ListInfoController<T> {
  	   String introurl="labintro";
  		
  	   //当前的url
- 	   String url="./labclassinfo?typeId='"+labId+"'&p=";
+ 	   String url="./labclassinfo?labId='"+labId+"'&p=";
  	   
  	   //文件上传类型
   	   String fileType="fstudent";
@@ -797,7 +797,7 @@ public class ListInfoController<T> {
 	   }
 	   
 	   //当前的url
-	   String url="./department?p=";
+	   String url="./headMaster?p=";
 	   		
 	   //获取总记录量
 	   int count=headerMasterService.findHeadMasterCount();
@@ -854,8 +854,8 @@ public class ListInfoController<T> {
  	   //获取总记录量
  	   int count=stuInfoService.findStuCount(classId);
  	   //计算偏移量
- 	   int position=(p-1)*pageSize;
- 	   
+ 	   int position=(p-1)*studentPageSize;
+ 	   System.out.println("count-"+count+"position--"+position);
  	   //根据偏移量获取数据
  	   ArrayList<CourseStudentInfo> courseStudentInfo=(ArrayList<CourseStudentInfo>) stuInfoService.findStuInfo(classId, position, studentPageSize);
       //处理年龄
@@ -874,7 +874,7 @@ public class ListInfoController<T> {
  	   }
  	   
  	   //获取封装好的分页导航数据
-        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+        String toolBar=pageHelperService.createToolBar(count,studentPageSize, url, p);		
         
         
         map.put("classId", classId);
@@ -936,14 +936,17 @@ public class ListInfoController<T> {
  	   
  	  //获取总记录量
  	   int count=courseScoreService.findScoreCount(classId);
- 	   //计算偏移量
- 	   int position=(p-1)*pageSize;
- 	   
- 	   //根据偏移量获取数据
- 	   ArrayList<CourseScore> courseScore=(ArrayList<CourseScore>) courseScoreService.findScoreInfo(classId, position, studentPageSize);
- 	   
- 	   //获取考试的科目数
+ 	  //获取考试的科目数
  	   long sum=courseScoreService.findTypeCount();
+ 	   
+ 	   int sSum=(int)sum;
+ 	   //计算偏移量
+ 	   int position=(p-1)*sSum*pageSize;
+ 	  System.out.println("count-"+count+"position--"+position);
+ 	   //根据偏移量获取数据
+ 	   ArrayList<CourseScore> courseScore=(ArrayList<CourseScore>) courseScoreService.findScoreInfo(classId, position, pageSize*sSum);
+ 	   System.out.println("size--"+courseScore.size());
+ 	 
  	   //获取考试类别
  	   ArrayList<CourseType> courseType=(ArrayList<CourseType>) courseScoreService.findCourseType();
  	   
@@ -966,15 +969,14 @@ public class ListInfoController<T> {
 	@RequestMapping("/restTime")
     public String restTime(ModelMap map){
  	   String durl="restTime";
-  		String fileType="frestTime";
-  		
+  		 		
   	   String belongType="frestTime";
         //获取文件列表
         ArrayList<FileBean> Spring=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
         ArrayList<FileBean> Autumn=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
         map.put("Spring", Spring);  
         map.put("Autumn", Autumn); 
-  		map.put("fileType", fileType);
+  		map.put("fileType", belongType);
   		map.put("durl", durl);
  	   return "admin/list/restTime";
     }

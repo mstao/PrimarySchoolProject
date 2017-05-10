@@ -141,6 +141,8 @@
 	    <location>/resources/view/404.jsp</location>
     </error-page>
     
+    <!-- 配置500 -->
+   
     <!-- 报名过滤器 -->
      <filter>
     <filter-name>LoginFilter</filter-name>

@@ -145,7 +145,7 @@ public class AdminUploadController<T> {
 	                    
 	                    //将数据整理一下
 	                    //获取当前时间
-	                    String date=GetDateUtil.getData();
+	                    String date=GetDateUtil.getAllDate();
 	                    //由typeFlag转化为id
 	                    int belongId=fileService.findBelongIdByTypeFlag(flag);
 	                    FileBean file=new FileBean();

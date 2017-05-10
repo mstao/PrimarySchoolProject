@@ -28,7 +28,7 @@
 </div>
 
 <div class="content">
-    
+    <div class="tips-"></div>
     <!--S CONETNT-->
     <div class="class-content">
     	<!--s class-info-->

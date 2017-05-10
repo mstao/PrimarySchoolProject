@@ -89,6 +89,11 @@ var CTPPATH="${pageContext.request.contextPath}";
        //查询功能
   	 $('.new_button').bind('click',function(){
   	     var token=$('.new_text').val();
+  	   token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+       if(token==null || token==""){
+       	 layer.msg("请输入要搜索的内容！");
+       }else {
+  	     
   		$.ajax({
   			type:'post',
   			dataType:'json',
@@ -134,7 +139,8 @@ var CTPPATH="${pageContext.request.contextPath}";
   				layer.msg("出错了", {icon: 2,time:2000});
   			}
   		});
-  	     });
+       }
+  	 });
        //绑定回车键
   	 $('.new_text').keydown(function(event){  
     	    if(event.keyCode==13){  

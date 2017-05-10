@@ -8,7 +8,7 @@
 .footer{
 	width: 1170px;
 	margin: 0 auto;
-	margin-bottom: 67px;
+	margin-bottom: 62px;
 }
 .footer .left-con{
 	float: left;
@@ -39,7 +39,7 @@
 	margin-top: 5px;
 }
 .footer .center-con .school-logo{
-
+    margin-top:5px;
 }
 .footer .center-con .school-name{
 	color: #FFFFFF;
@@ -48,8 +48,17 @@
 .footer .center-con .copyright,.ad{
 	font-size: 14px;
 }
-.footer .reight-con{
+.footer .right-con{
 	float: right;
+	height:100px;
+	margin-top:-150px;
+}
+.right-con .img-show-div img{
+	width:100px;
+	height:100px;
+}
+.right-con .img-show-div img:FIRST-CHILD{
+	margin-right:10px;
 }
 .fixed-login{
 	position: fixed;

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>成绩查询</title>
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>
 <c:set var="CTP_HOME" value="${pageContext.request.contextPath}/resources/home"></c:set>
 <link rel="stylesheet" href="${CTP_HOME}/css/header.css" />
@@ -28,7 +28,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 <%--S 主体 --%>
 
 <div class="content-location">
-<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="#">成绩查询</a></span>
+<img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">成绩查询</a></span>
 </div>
 
 <div class="content">

@@ -19,9 +19,25 @@
 		<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 		
 <script type="text/javascript">
+	
+var CTPPATH="${pageContext.request.contextPath}";
+var durl="${durl}";
+var flag="${typeFlag}";
+
+var sub=function(str,Len){
+	var maxLen=Len;
+	var len=str.length;
+	if(len>maxLen){
+	    //此时需要截取
+		return str.substring(0,maxLen)+"...";
+	}else{
+		return str;
+	}
+}
+
 	$(function(){
-		var CTPPATH="${pageContext.request.contextPath}";
-	   
+		
+		
 	   //批量删除信息
        $('.deleteInfo-btn').bind('click',function(){
        	var t=document.getElementsByName("info_id");
@@ -88,6 +104,11 @@
      //查询功能
 	    $('.new_button').bind('click',function(){
 	        var token=$('.new_text').val();
+	        token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+	        if(token==null || token==""){
+	        	 layer.msg("请输入要搜索的内容！");
+	        }else {
+	        	
 	        
 					$.ajax({
 						type:'post',
@@ -116,10 +137,10 @@
 									 if(item.length!=0){
 									 $.each(item,function(id2,item2){
 											if(item2.isPublish==0){
-												xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item2.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item2.id+"' class='item_title'>"+item2.itemTitle+"</a><span class='draft-span'>草稿</span></td><td width='20%'>"+item2.author+"</td><td width='20%'>${typeName}</td><td width='20%'>"+item2.addTime+"</td></tr>";
+												xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item2.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item2.id+"' class='item_title' title='${item2.itemTitle}'>"+sub(item2.itemTitle,17)+"</a><span class='draft-span'>草稿</span></td><td width='20%'>"+item2.author+"</td><td width='20%'>${typeName}</td><td width='20%'>"+item2.addTime+"</td></tr>";
 												}
 											else{
-												xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item2.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item2.id+"' class='item_title'>"+item2.itemTitle+"</a></td><td width='20%'>"+item2.author+"</td><td width='20%'>${typeName}</td><td width='20%'>"+item2.addTime+"</td></tr>";
+												xhtml+="<tr><td width='5%' align='center'><input type='checkbox' name='info_id' value="+item2.id+"></td><td width='35%'><a href='${CTP}/admin/distribute/${durl }?id="+item2.id+"' class='item_title' title='${item2.itemTitle}'>"+sub(item2.itemTitle,17)+"</a></td><td width='20%'>"+item2.author+"</td><td width='20%'>${typeName}</td><td width='20%'>"+item2.addTime+"</td></tr>";
 											}
 											});
 									 }else{
@@ -140,6 +161,7 @@
 							layer.msg("出错了", {icon: 2,time:2000});
 						}
 					});
+	          }
 	        });
 	    //绑定回车键
 		 $('.new_text').keydown(function(event){  
@@ -191,7 +213,7 @@
                 <c:forEach var="list" items="${item }">
                 <tr>
                     <td width="5%" align="center"><input type="checkbox" name="info_id" value="${list.id}"/></td>
-                    <td width="35%"><a href="${CTP}/admin/distribute/${durl }?id=${list.id}" class="item_title">${list.itemTitle }</a>
+                    <td width="35%"><a href="${CTP}/admin/distribute/${durl }?id=${list.id}" class="item_title" title="${list.itemTitle }">${list.itemTitle }</a>
                      <c:if test="${list.isPublish eq 0}">
 		              <span class="draft-span">草稿</span>
 		             </c:if>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
@@ -17,6 +18,18 @@
 		<script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 		
 <script type="text/javascript">
+
+var sub=function(str,Len){
+	var maxLen=Len;
+	var len=str.length;
+	if(len>maxLen){
+	    //此时需要截取
+		return str.substring(0,maxLen)+"...";
+	}else{
+		return str;
+	}
+}
+
 	$(function(){
 		var CTPPATH="${pageContext.request.contextPath}";
 	   
@@ -86,6 +99,12 @@
      //查询功能
   	 $('.new_button').bind('click',function(){
   	     var token=$('.new_text').val();
+  	     
+  	   token=token.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
+       if(token==null || token==""){
+       	 layer.msg("请输入要搜索的内容！");
+       }else {
+  	     
   		$.ajax({
   			type:'post',
   			dataType:'json',
@@ -107,7 +126,7 @@
   				if(data.length!=0){
   				$.each(data,function(id,item){
 						xhtml+=" <tr><td align='center'><input type='checkbox' name='info_id' value="+item.id+"/></td><td><a href='${CTP}/admin/distribute/${durl }?classId=${classId }&fullName=${fullName }&id="+item.id+"' class='item_title'>"+item.stuId+"</a></td>";
-	                    xhtml+=" <td>"+item.stuName+"</td><td>"+item.stuNation+"</td><td>"+item.stuSex+"</td><td>"+item.stuAge+"</td><td>"+item.stuBirthday+"</td><td>"+item.stuCardId+"</td><td>"+item.stuAddress+"</td><td>"+item.stuParent+"</td><td>"+item.stuPhone+"</td> <td>"+item.stuAuthor+"</td></tr>";
+	                    xhtml+=" <td>"+item.stuName+"</td><td>"+item.stuNation+"</td><td>"+item.stuSex+"</td><td>"+item.stuAge+"</td><td>"+item.stuBirthday+"</td><td>"+item.stuCardId+"</td><td>"+sub(item.stuAddress,10)+"</td><td>"+item.stuParent+"</td><td>"+item.stuPhone+"</td> <td>"+item.stuAuthor+"</td></tr>";
   				});
   				}else{
   					xhtml+="<tr><td colspan='12' class='errorinfo'>没有记录!</td></tr>";
@@ -125,7 +144,10 @@
   				layer.msg("出错了", {icon: 2,time:2000});
   			}
   		});
-  	     });
+  		
+       }
+  	   
+  	 });
 	   
   	 //绑定回车键
 	 $('.new_text').keydown(function(event){  
@@ -188,7 +210,7 @@
                     <td>${list.stuAge }</td>
                     <td>${list.stuBirthday }</td>
                     <td>${list.stuCardId }</td>
-                    <td>${list.stuAddress}</td>
+                    <td>${myTag:substr(list.stuAddress,0,10,true)}</td>
                     <td>${list.stuParent }</td>
                     <td>${list.stuPhone }</td> 
                     <td>${list.stuAuthor }</td>
@@ -203,10 +225,7 @@
 <!--E main-->
 
 <!--S footer-->
-<div class="footer">
-			<center><span>Copyright &copy;万科城小学  版权所有 2016 All Rights Reserved.</span></center>
-<br><br>
-</div>
+<jsp:include page="../common/footer.jsp" />
 <!--E footer-->
 	</body>
 </html>
