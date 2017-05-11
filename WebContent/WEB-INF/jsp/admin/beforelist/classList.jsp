@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,7 +155,7 @@ var CTPPATH="${pageContext.request.contextPath}";
     		<div class="only-info">
     		<c:forEach items="${sclass }" var="sclass">
     		<c:if test="${sclass.gradeCode==grade.gradeCode }">
-    			<span><input type="checkbox" name="info_id" value="${sclass.id}"/><a href="${CTP }/admin/list/sclassHomePage?classId=${sclass.id }&grade=${grades}&className=${sclass.className }&p=1">${grades}年级${sclass.className }班</a></span>
+    			<span><input type="checkbox" name="info_id" value="${sclass.id}"/><a href="${CTP }/admin/list/sclassHomePage?classId=${sclass.id }&grade=${grades}&className=${sclass.className }&p=1"> ${myTag:numToChinese(grades)}(${sclass.className })班</a></span>
     		</c:if>
     		</c:forEach>
     		</div>
