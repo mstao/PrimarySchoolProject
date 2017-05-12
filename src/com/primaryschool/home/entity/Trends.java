@@ -56,6 +56,9 @@ public class Trends implements Serializable{
 	@Column(name="author")
 	private String author;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
     //临时属性
     @Transient
     private String itemTypeFlag;
@@ -120,13 +123,12 @@ public class Trends implements Serializable{
 	
 	
     //图片；轮播
-	public Trends(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
+	public Trends(int id, String itemTitle,String itemTypeFlag,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
-		this.addTime = addTime;
 		this.itemTypeFlag = itemTypeFlag;
+		this.imagePath=imagePath;
 	}
 
 
@@ -247,6 +249,14 @@ public class Trends implements Serializable{
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 	

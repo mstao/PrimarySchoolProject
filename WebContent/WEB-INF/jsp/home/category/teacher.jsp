@@ -63,10 +63,10 @@
 		<div class="slider-news">
 		<ul>
 	     
-			<c:forEach items="${sliderTeacher}" var="s_list">  
-				<li class="slider-li"><a href="${CTP}/details/teacher?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+			<c:forEach items="${slideTeacher}" var="s_list">  
+				<li class="slider-li"><a href="${CTP}/details/teacher?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 			</c:forEach>	
-		     <c:if test="${empty sliderTeacher}">
+		     <c:if test="${empty slideTeacher}">
 		       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
 		     </c:if>
 		</ul>
@@ -75,22 +75,12 @@
 		<!--E 轮播图-->
 </div>
 <!--热门排行-->
-<div class="float-div right">
-	<div class="top-left-bottom"><b>${SCHOOL_TEACHER_RESOURCES}</b> <img src="${CTP_HOME}/img/jiantou.png"/><span><a href="#">更多>></a></span></div>
-	<ul class="sub-ul-category">
-	  <c:forEach items="${resources}" var="resources_list">
-		<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${resources_list.id}&flag=${resourcesFlag}"> ${resources_list.itemTitle}</a><span>[${resources_list.addTime}]</span></li>
-      </c:forEach>
-    </ul>
-	<c:if test="${empty resources}">
-		 <div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
-	</c:if>
-</div>
 
-         <div class="clear"></div>
+
+       
 <!---->
-	<div class="float-div">
-		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_TEACHERS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+	<div class="float-div right">
+		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_TEACHERS}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${pageContext.request.contextPath}/list/teacher?flag=teachers&p=1">更多>></a></span></div>
 		<ul class="sub-ul-category">
 		  <c:forEach items="${teachers}" var="teachers_list"> 
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${teachers_list.id}&flag=${teachersFlag}"> ${teachers_list.itemTitle}</a><span>[${teachers_list.addTime}]</span></li>
@@ -100,9 +90,9 @@
 		 <div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 		</c:if>
 	</div>
-	
-	<div class="float-div right">
-		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_TRAIN}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+	  <div class="clear"></div>
+	<div class="float-div">
+		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_TRAIN}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${pageContext.request.contextPath}/list/teacher?flag=train&p=1">更多>></a></span></div>
 		<ul class="sub-ul-category">
 		  <c:forEach items="${train}" var="train_list"> 
 			<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teacher?id=${train_list.id}&flag=${trainFlag}"> ${train_list.itemTitle}</a><span>[${train_list.addTime}]</span></li>
@@ -112,9 +102,9 @@
 		 <div class='no-message'><img src='${CTP_HOME}/img/nomessage.png' /></div>
 		</c:if>
 	</div>
-	<div class="clear"></div>
-	<div class="float-div ">
-		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_PRIZE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="#">更多>></a></span></div>
+	
+	<div class="float-div right">
+		<div class="top-left-bottom"><b>${SCHOOL_TEACHER_PRIZE}</b><img src="${CTP_HOME}/img/jiantou.png"/> <span><a href="${pageContext.request.contextPath}/list/teacher?flag=prize&p=1">更多>></a></span></div>
 		<ul class="sub-ul-category">
 		
 		   <c:forEach items="${prize}" var="prize_list">

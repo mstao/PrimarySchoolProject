@@ -76,7 +76,7 @@ $(function(){
                  <li><a href="${pageContext.request.contextPath}/category/student">${SCHOOL_STUDENT}</a>
                  	<ul class="dropdown-menu follow">
                  		    <li><a href="${pageContext.request.contextPath}/list/student?flag=book&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
-							<li><a href="${pageContext.request.contextPath}/list/student?flag=activity&p=1">${SCHOOL_STUDENT_BOOK}</a></li>
+							<li><a href="${pageContext.request.contextPath}/list/student?flag=activity&p=1">${SCHOOL_STUDENT_ACTIVITY}</a></li>
 							<li><a href="${pageContext.request.contextPath}/list/class">${SCHOLL_STUDENT_CLASS}</a></li>
 							<li><a href="${pageContext.request.contextPath}/list/labclass">${SCHOOL_STUDENT_LAB}</a></li>
 							

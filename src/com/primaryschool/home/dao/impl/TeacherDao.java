@@ -104,7 +104,7 @@ public class TeacherDao<T> implements ITeacherDao<T> {
 	public List<T> findSliderTreacherInfo(String flag, int position, int item_per_page) {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeIdDao.findTeacherTypeIdByTypeFlag(flag);
-		String hql="select new com.primaryschool.home.entity.Teacher(t.id,t.itemTitle,t.itemContent,t.addTime,tt.itemTypeFlag) from Teacher t,TeacherType tt where t.typeId=? and t.typeId=tt.id and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Teacher(t.id,t.itemTitle,tt.itemTypeFlag,t.imagePath) from Teacher t,TeacherType tt where t.typeId=? and t.typeId=tt.id and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

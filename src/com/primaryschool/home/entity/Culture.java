@@ -53,6 +53,9 @@ public class Culture implements Serializable{
 	@Column(name="author")
 	private String author;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -93,12 +96,12 @@ public class Culture implements Serializable{
     
     //轮播
     
-	public Culture(int id, String itemTitle, String itemContent, String itemTypeFlag) {
+	public Culture(int id, String itemTitle, String itemTypeFlag,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
 		this.itemTypeFlag = itemTypeFlag;
+		this.imagePath=imagePath;
 	}
 	
 	 public Culture(int id,String author, String itemTitle, String itemContent, String addTime, int viewCount, 
@@ -219,6 +222,16 @@ public class Culture implements Serializable{
 
 	public void setItemTypeName(String itemTypeName) {
 		this.itemTypeName = itemTypeName;
+	}
+
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 	

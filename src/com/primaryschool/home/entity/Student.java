@@ -53,6 +53,9 @@ public class Student implements Serializable{
 	@Column(name="author")
 	private String author;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -92,13 +95,12 @@ public class Student implements Serializable{
     
     //用于轮播 
     
-    public Student(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
+    public Student(int id, String itemTitle,String itemTypeFlag,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
-		this.addTime = addTime;
 		this.itemTypeFlag = itemTypeFlag;
+		this.imagePath=imagePath;
 	}
     /////    
 
@@ -229,6 +231,14 @@ public Student(int id,String author, String itemTitle, String itemContent,String
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 	

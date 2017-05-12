@@ -82,7 +82,7 @@ $(function() {
 					<div class="slider-news slide-s">
 					<ul>
 				    <c:forEach items="${sildeNews}" var="s_list">  
-						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						<li ><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath }" alt="${s_list.itemTitle}"  /></a></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeNews}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -136,7 +136,7 @@ $(function() {
 					<ul>
 				     
 				     <c:forEach items="${sildeEdu}" var="s_list">  
-						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeEdu}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -197,10 +197,10 @@ $(function() {
 					<div class="slider-sunshine slide-s">
 					<ul>
 				     
-						<c:forEach items="${sildeStudent}" var="s_list">  
-							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						<c:forEach items="${slideStudent}" var="s_list">  
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 						</c:forEach>	
-					     <c:if test="${empty sildeStudent}">
+					     <c:if test="${empty slideStudent}">
 					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
 					     </c:if>
 					</ul>
@@ -260,10 +260,10 @@ $(function() {
 					<div class="slider-sunshine slide-s">
 					<ul>
 				     
-						<c:forEach items="${sliderTeacher}" var="s_list">  
-							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/teacher?id=${s_list.id}&flag=teachers" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+						<c:forEach items="${slideTeacher}" var="s_list">  
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/teacher?id=${s_list.id}&flag=teachers" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 						</c:forEach>	
-					     <c:if test="${empty sliderTeacher}">
+					     <c:if test="${empty slideTeacher}">
 					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
 					     </c:if>
 					</ul>
@@ -377,7 +377,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						      <c:forEach items="${party}" var="party_list"> 
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}">${myTag:substr(party_list.itemTitle,0,32,true)}</a><span class="pub-data sub-time">[${party_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}">${myTag:substr(party_list.itemTitle,0,32,true)}</a><span class="pub-data sub-time">[${myTag:datesub(party_list.addTime)}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>

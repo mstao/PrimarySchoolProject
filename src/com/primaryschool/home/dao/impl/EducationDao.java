@@ -116,7 +116,7 @@ public class EducationDao<T> implements IEducationDao<T> {
 		
 		int id=typeFlagToTypeId.findEducationTypeIdByTypeFlag(flag);
 
-		String hql="select new com.primaryschool.home.entity.Education(t.id,t.itemTitle,t.itemContent,t.addTime,tt.itemTypeFlag) from Education t,EducationType tt where t.typeId=? and t.typeId=tt.id and t.isImage=1 and t.isPublish=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Education(t.id,t.itemTitle,tt.itemTypeFlag,t.imagePath) from Education t,EducationType tt where t.typeId=? and t.typeId=tt.id and t.isImage=1 and t.isPublish=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

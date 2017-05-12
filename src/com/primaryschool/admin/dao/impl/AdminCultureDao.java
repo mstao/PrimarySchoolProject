@@ -76,7 +76,7 @@ public class AdminCultureDao<T> implements IAdminCultureDao<T>{
 	@Override
 	public boolean updateCultureInfo(T t) {
 		// TODO Auto-generated method stub
-	    String hql="update Culture u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author  where u.id=:id";
+	    String hql="update Culture u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author,u.imagePath=:imagePath  where u.id=:id";
 		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
 		query.setProperties(t);
 		return (query.executeUpdate()>0);

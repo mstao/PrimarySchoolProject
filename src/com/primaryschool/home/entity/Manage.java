@@ -53,6 +53,9 @@ public class Manage implements Serializable{
 	@Column(name="author")
 	private String author;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -92,13 +95,12 @@ public class Manage implements Serializable{
 	}
     
     //轮播
-    public Manage(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
+    public Manage(int id, String itemTitle, String itemTypeFlag,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
-		this.addTime = addTime;
 		this.itemTypeFlag = itemTypeFlag;
+		this.imagePath=imagePath;
 	}
     
    /////////////
@@ -228,6 +230,14 @@ public class Manage implements Serializable{
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 	
