@@ -20,7 +20,7 @@ public class AdminStuInfoDao<T> implements IAdminStuInfoDao<T> {
 	public List<T> findStuInfo(int classId, int position, int item_per_page) {
 		
 		// TODO Auto-generated method stub
-		String hql="from CourseStudentInfo c where c.classId=?";
+		String hql="from CourseStudentInfo c where c.classId=? order by c.stuBirthday desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, classId);
 		query.setFirstResult(position);

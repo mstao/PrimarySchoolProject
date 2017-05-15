@@ -21,8 +21,7 @@
 <%--引入header --%>
 
 <jsp:include page="../common/header.jsp"></jsp:include>
-<div id="location"><span>您现在的位置: 后台管理 ></span><span>${SCHOOL_STUDENT_INFOMATION }></span>
-<a href="${CTP}/admin/list/manageScore">进入考试科目管理</a>
+<div id="location"><span>您现在的位置: 后台管理 ></span><span>${SCHOOL_STUDENT_INFOMATION }</span>
 </div>
 	
     <!--S CONETNT-->

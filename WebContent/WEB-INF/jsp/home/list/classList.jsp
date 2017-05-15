@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,7 +47,7 @@
     		<div class="only-info">
     		<c:forEach items="${sclass }" var="sclass">
     		<c:if test="${sclass.gradeCode==grade.gradeCode }">
-    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="${CTP }/details/classhomepage?classId=${sclass.id }&gradeFlag=${grades}&classFlag=${sclass.className }">${myTag:numToChinese(grades)}(${sclass.className })班</a></span>
+    			<span><img src="${CTP_HOME}/img/class-dot.png"/><a href="${CTP }/details/classhomepage?classId=${sclass.id }&gradeFlag=${grades}&classFlag=${sclass.className }">${grades}年级${sclass.className }</a></span>
     		</c:if>
     		</c:forEach>
     		</div>

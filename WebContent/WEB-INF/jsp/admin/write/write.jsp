@@ -344,7 +344,7 @@ $(function(){
 
   $('.publish-trends-btn').bind('click',function(){
 
-	//获取发表类型
+		//获取发表类型
 		var type=$('#publish-style').val();
 		//获取标题
 		var title=$('.edit-title').val();
@@ -356,31 +356,24 @@ $(function(){
 		var date_picker=$('.date_picker').val(); 
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
+		
 		//判断标题和内容是否为空
 		if(title=="" || text_content=="" ||publish_dept==""){
 			layer.msg("标题,内容和发布部门不能为空");
 		}else{
 			//判断内容里面是否含有图片 ,有图片设为1，无图片设为0
-		var is_image;
-		var img_path="";
-		var s_json;
-		var is_publish=1; //意味着要发表1，不是存为草稿0
-		if(editor.$txt.find("img[src!='']").length>0){
-			is_image=1;
-			img_path=editor.$txt.find("img[src!='']:first").attr('src');
-			
-		}else{
-			is_image=0;
-			img_path="0";
-			
-		}
-		s_json={"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker,"imagePath":img_path};
-				
+  		var is_image;
+  		if(editor.$txt.find("img[src!='']").length>0){
+  			is_image=1;
+  		}else{
+  			is_image=0;
+  		}
+  		var is_publish=1; //意味着要发表1，不是存为草稿0
 			$.ajax({
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+'/admin/add/${durl }',
-				data:s_json,
+				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -424,7 +417,9 @@ $(function(){
 	});
   /**************保存草稿******************/
   $('.draft-trends-btn').bind('click',function(){
-	//获取发表类型
+		//获取id
+		var nid=$('.hidden-item-id').val();
+		//获取发表类型
 		var type=$('#publish-style').val();
 		//获取标题
 		var title=$('.edit-title').val();
@@ -433,7 +428,7 @@ $(function(){
 		//获取发布部门
 		var publish_dept=$('.publish-dept').val();
 		//获取发布时间
-		var date_picker=$('.date_picker').val(); 
+		var date_picker=$('.date_picker').val();
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
 		//判断标题和内容是否为空
@@ -442,25 +437,17 @@ $(function(){
 		}else{
 			//判断内容里面是否含有图片 ,有图片设为1，无图片设为0
 		var is_image;
-		var img_path="";
-		var s_json;
-		var is_publish=0; //意味着要发表1，不是存为草稿0
 		if(editor.$txt.find("img[src!='']").length>0){
 			is_image=1;
-			img_path=editor.$txt.find("img[src!='']:first").attr('src');
-			
 		}else{
 			is_image=0;
-			img_path="0";
 		}
-		
-		s_json={"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker,"imagePath":img_path};
-		
+		var is_publish=0; //意味着要发表1，不是存为草稿0
 			$.ajax({
 				type:'post',
 				dataType:'text',
-				url:CTPPATH+'/admin/add/${durl }',
-				data:s_json,
+				url:CTPPATH+'/admin/add/${durl}',
+				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -474,9 +461,8 @@ $(function(){
 					}, 1000);
 		
 					 if(data>0){
-						layer.msg('发布成功，您可以在列表中查看', {icon: 1,time:2000});
-					
-					    //将id写入到隐藏域,供上传文件使用
+						layer.msg('保存草稿成功，您可以在列表中查看', {icon: 1,time:2000});
+						//将id写入到隐藏域,供上传文件使用
 					    $('.hidden-item-id').val(data);
 						//判断有无上传文件列队
 						if(getQueueSize("uploadify")>0){
@@ -488,7 +474,7 @@ $(function(){
 						}
 
 					}else{
-						layer.msg("发布出错了", {icon: 2,time:2000});
+						layer.msg("保存草稿出错了", {icon: 2,time:2000});
 					} 
 				},
 				error:function(){
