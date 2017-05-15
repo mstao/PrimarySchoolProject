@@ -19,7 +19,8 @@
 	    <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/uploadify/js/jquery.uploadify.min.js" ></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/jquery.date_input.pack.js"></script> 
-	
+	    <script type="text/javascript" src="${CTP_ADMIN }/js/module/common.js"></script>
+	    
 <script type="text/javascript">
 	 var CTPPATH="${pageContext.request.contextPath}";
 	 var CTP_ADMIN=CTPPATH+"/resources/admin";
@@ -273,23 +274,11 @@ $(function() {
 
 $('.date_picker').date_input();
 
-
-
 //获得信息
 $(function(){
 	
-	var date = new Date();
-    var seperator1 = "-";
-    var month = date.getMonth() + 1;
-    var strDate = date.getDate();
-    if (month >= 1 && month <= 9) {
-        month = "0" + month;
-    }
-    if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-    }
-    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
-    $('.date_picker').val(currentdate);
+
+    $('.date_picker').val(showLocale());
     
 	// 阻止输出log
   // wangEditor.config.printLog = false;
@@ -354,6 +343,7 @@ $(function(){
 		var publish_dept=$('.publish-dept').val();
 		//获取发布时间
 		var date_picker=$('.date_picker').val(); 
+		date_picker=date_picker+" "+hms();
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
 		
@@ -361,19 +351,27 @@ $(function(){
 		if(title=="" || text_content=="" ||publish_dept==""){
 			layer.msg("标题,内容和发布部门不能为空");
 		}else{
-			//判断内容里面是否含有图片 ,有图片设为1，无图片设为0
+		
   		var is_image;
-  		if(editor.$txt.find("img[src!='']").length>0){
-  			is_image=1;
-  		}else{
-  			is_image=0;
-  		}
-  		var is_publish=1; //意味着要发表1，不是存为草稿0
-			$.ajax({
+		var img_path="";
+		var s_json;
+		var is_publish=1; //意味着要发表1，不是存为草稿0
+		if(editor.$txt.find("img[src!='']").length>0){
+			is_image=1;
+			img_path=editor.$txt.find("img[src!='']:first").attr('src');
+			
+		}else{
+			is_image=0;
+			img_path="0";
+			
+		}
+		s_json={"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker,"imagePath":img_path};
+  	
+		$.ajax({
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+'/admin/add/${durl }',
-				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				data:s_json,
 			
 				beforeSend:function(){
 					//显示正在加载
@@ -429,25 +427,34 @@ $(function(){
 		var publish_dept=$('.publish-dept').val();
 		//获取发布时间
 		var date_picker=$('.date_picker').val();
+		date_picker=date_picker+" "+hms();
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
 		//判断标题和内容是否为空
 		if(title=="" || text_content=="" ||publish_dept==""){
 			layer.msg("标题,内容和发布部门不能为空");
 		}else{
-			//判断内容里面是否含有图片 ,有图片设为1，无图片设为0
-		var is_image;
-		if(editor.$txt.find("img[src!='']").length>0){
-			is_image=1;
-		}else{
-			is_image=0;
-		}
+			var is_image;
+			var img_path="";
+			var s_json;
+			var is_publish=0; //意味着要发表1，不是存为草稿0
+			if(editor.$txt.find("img[src!='']").length>0){
+				is_image=1;
+				img_path=editor.$txt.find("img[src!='']:first").attr('src');
+				
+			}else{
+				is_image=0;
+				img_path="0";
+				
+			}
+			s_json={"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker,"imagePath":img_path};
+	  	
 		var is_publish=0; //意味着要发表1，不是存为草稿0
 			$.ajax({
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+'/admin/add/${durl}',
-				data:{"itemTitle":title,"itemContent":content,"itemTypeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				data:s_json,
 			
 				beforeSend:function(){
 					//显示正在加载

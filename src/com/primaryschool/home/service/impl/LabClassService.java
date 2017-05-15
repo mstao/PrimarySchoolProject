@@ -76,9 +76,9 @@ public class LabClassService<T> implements ILabClassService<T> {
 	 * 轮播信息
 	 */
 	@Override
-	public List<T> findSliderLabClassContent(int id, String flag, int position, int item_per_page) {
+	public List<T> findSliderLabClassContent(int id, int position, int item_per_page) {
 		// TODO Auto-generated method stub
-		return labClassDao.findSliderLabClassContent(id, flag, position, item_per_page);
+		return labClassDao.findSliderLabClassContent(id, position, item_per_page);
 	}
 
 }

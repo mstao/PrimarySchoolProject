@@ -400,12 +400,12 @@ public class CategoryController<T> {
 		StudentLab labname=(StudentLab)labClassService.findLabClassNameById(id);
 		
 		//获取 轮播  --成果展示 
-		ArrayList<StudentLabMenuContent> silderContent=(ArrayList<StudentLabMenuContent>) labClassService.findSliderLabClassContent(id, showFlag, 0, slidePageSize);
+		ArrayList<StudentLabMenuContent> slideContent=(ArrayList<StudentLabMenuContent>) labClassService.findSliderLabClassContent(id, 0, slidePageSize);
 		
 		map.put("topicFlag", topicFlag);
 		map.put("showFlag", showFlag);
 		
-		map.put("silderContent", silderContent);
+		map.put("slideContent", slideContent);
 		map.put("introduce", introduce);
 		map.put("content", content);
 		map.put("show", show);
@@ -450,7 +450,7 @@ public class CategoryController<T> {
 		ArrayList<TeachingResourcesContent> questionBank=(ArrayList<TeachingResourcesContent>)teachingResourcesService.findTeachingResourcesContent(menuId, classId, questionBankFlag, 0, pageSize);
 		
 		//教学资源  轮播图 --教学研讨
-		ArrayList<TeachingResourcesContent>  sliderContent=(ArrayList<TeachingResourcesContent>) teachingResourcesService.findSliderTeachingResourcesContent(menuId, classId, discussFlag, 0, slidePageSize);
+		ArrayList<TeachingResourcesContent>  slideContent=(ArrayList<TeachingResourcesContent>) teachingResourcesService.findSliderTeachingResourcesContent(menuId, classId, 0, slidePageSize);
 		//年级名称
 		String className=teachingResourcesService.findTeachingResourcesClassNameByClassId(classId);
 		
@@ -469,7 +469,7 @@ public class CategoryController<T> {
 		map.put("courseware", courseware);
 		map.put("microlecture", microlecture);
 		map.put("questionBank", questionBank);
-		map.put("sliderContent", sliderContent);
+		map.put("slideContent", slideContent);
 		
 		
 		map.put("className", className);

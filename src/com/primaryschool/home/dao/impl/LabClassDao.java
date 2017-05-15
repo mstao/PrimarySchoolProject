@@ -139,14 +139,12 @@ public class LabClassDao<T> implements ILabClassDao<T> {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findSliderLabClassContent(int lid, String flag, int position, int item_per_page) {
+	public List<T> findSliderLabClassContent(int lid, int position, int item_per_page) {
 		// TODO Auto-generated method stub
-		int id=typeFlagToTypeIdDao.findLabClassTypeIdByTypeFlag(flag);
 
-		String hql="select new com.primaryschool.home.entity.StudentLabMenuContent(t.id,t.itemTitle,t.itemContent,t.addTime,tt.itemTypeFlag) from StudentLabMenuContent t,StudentLabMenuType tt where t.menuId=? and tt.id=t.menuId and t.labId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.StudentLabMenuContent(t.id,t.itemTitle,tt.itemTypeFlag,t.imagePath) from StudentLabMenuContent t,StudentLabMenuType tt where  tt.id=t.menuId and t.labId=? and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
-		query.setInteger(0, id);
-		query.setInteger(1, lid);
+		query.setInteger(0, lid);
 		query.setFirstResult(position);
 		query.setMaxResults(item_per_page);
 		return query.list();

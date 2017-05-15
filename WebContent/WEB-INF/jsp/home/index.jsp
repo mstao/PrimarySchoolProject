@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +98,7 @@ $(function() {
 						<div class="current-new">
 					   
 					    <c:forEach items="${news}" var="news_list">
-			               <div class="current-new-info"><img src="${CTP_HOME}/img/dot.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}" target="_blank">${news_list.itemTitle}</a><span class="data-sub pub-data">[${news_list.addTime}]</span><img src="${CTP_HOME}/img/hot.gif" /></div>
+			               <div class="current-new-info"><img src="${CTP_HOME}/img/dot.png"/><a href="${CTP}/details/trends?id=${news_list.id}&flag=${newsFlag}" target="_blank" title="${news_list.itemTitle}">${news_list.itemTitle}</a><span class="data-sub pub-data">[${news_list.addTime}]</span><img src="${CTP_HOME}/img/hot.gif" /></div>
 						</c:forEach>	
 							
 					    <div class="look-more-news"><span><a href="${CTP}/list/trends?flag=${newsFlag}&p=1">更多新闻<img src="${CTP_HOME}/img/more.png"/></a></span></div>
@@ -108,7 +109,7 @@ $(function() {
 										
 						<ul>
 						<c:forEach items="${notice}" var="notice">
-						<li><img src="${CTP_HOME}/img/dot.png"/><a href="${CTP}/details/trends?id=${notice.id}&flag=${noticeFlag}">${notice.itemTitle}</a><span class="pub-data sub-time">[${notice.addTime}]</span><img src="${CTP_HOME}/img/hot.gif"/></li>
+						<li><img src="${CTP_HOME}/img/dot.png"/><a href="${CTP}/details/trends?id=${notice.id}&flag=${noticeFlag}">${notice.itemTitle}</a><span class="pub-data sub-time">[<fmt:formatDate value="${notice.addTime}" pattern="yyyy-MM-dd"/>]</span><img src="${CTP_HOME}/img/hot.gif"/></li>
 						</c:forEach>
 						</ul>
 						
@@ -163,7 +164,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						        <c:forEach items="${education}"  var="education_list">
-									<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}">${myTag:substr(education_list.itemTitle,0,35,true)}</a><span class="pub-data sub-time">[${education_list.addTime}]</span></li>
+									<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/education?id=${education_list.id}&flag=${educationFlag}" title="${education_list.itemTitle}">${myTag:substr(education_list.itemTitle,0,35,true)}</a><span class="pub-data sub-time">[<fmt:formatDate value="${education_list.addTime}" pattern="yyyy-MM-dd"/>]</span></li>
 								</c:forEach>
 							</ul>
 				           </div>
@@ -216,7 +217,7 @@ $(function() {
 				         <li>沐浴书香</li>
 				         <li>活动风采</li>
 				         <li>班级主页</li>
-				         <li>综合实验课</li>
+				         <li>综合实践课</li>
 				        
 				       </ul>
 				       <dl class="tab-paper">
@@ -225,7 +226,7 @@ $(function() {
 				           	<ul>
 						        
 						      <c:forEach items="${student}" var="student_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${student_list.id}&flag=${studentFlag}">${myTag:substr(student_list.itemTitle,0,35,true)}</a><span class="pub-data sub-time">[${student_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/student?id=${student_list.id}&flag=${studentFlag}" title="${student_list.itemTitle}">${myTag:substr(student_list.itemTitle,0,35,true)}</a><span class="pub-data sub-time">[<fmt:formatDate value="${student_list.addTime}" pattern="yyyy-MM-dd"/>]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>
@@ -287,7 +288,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						       <c:forEach items="${teacher}" var ="teacher_list">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teachingResources?menuId=${teacher_list.menuId}&classId=${teacher_list.classId}&tid=${teacher_list.id}&flag=${teacher_list.itemTypeFlag}">${myTag:substr(teacher_list.itemTitle,0,35,true)}</a><span class="pub-data sub-time">[${teacher_list.addTime}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/teachingResources?menuId=${teacher_list.menuId}&classId=${teacher_list.classId}&tid=${teacher_list.id}&flag=${teacher_list.itemTypeFlag}"  title="${teacher_list.itemTitle}">${myTag:substr(teacher_list.itemTitle,0,35,true)}</a><span class="pub-data ">[${teacher_list.addTime}]</span></li>
 							   </c:forEach>
 							</ul>
 				           </div>
@@ -334,7 +335,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						      <c:forEach items="${deptContent}" var="deptContent">
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${deptContent.id}&departmentId=${deptContent.departmentId}&contentFlag=${deptContent.typeId}">${myTag:substr(deptContent.itemTitle,0,27,true)}</a><span class="pub-data sub-time">[${myTag:datesub(deptContent.addTime)}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/departmentLink?contentId=${deptContent.id}&departmentId=${deptContent.departmentId}&contentFlag=${deptContent.typeId}"  title="${deptContent.itemTitle}">${myTag:substr(deptContent.itemTitle,0,27,true)}</a><span class="pub-data sub-time">[${myTag:datesub(deptContent.addTime)}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>
@@ -377,7 +378,7 @@ $(function() {
 				           <div>
 				           	<ul>
 						      <c:forEach items="${party}" var="party_list"> 
-								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}">${myTag:substr(party_list.itemTitle,0,32,true)}</a><span class="pub-data sub-time">[${myTag:datesub(party_list.addTime)}]</span></li>
+								<li><img src="${CTP_HOME}/img/sjiantou.png"/><a href="${CTP}/details/party?id=${party_list.id}&flag=${partyFlag}" title="${party_list.itemTitle}">${myTag:substr(party_list.itemTitle,0,32,true)}</a><span class="pub-data sub-time">[${myTag:datesub(party_list.addTime)}]</span></li>
 							  </c:forEach>
 							</ul>
 				           </div>

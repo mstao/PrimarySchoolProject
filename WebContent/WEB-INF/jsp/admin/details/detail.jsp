@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
 	    <script type="text/javascript" src="${CTP}/resources/common/js/extends/layer-2.4/layer.js"></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/uploadify/js/jquery.uploadify.min.js" ></script>
 	    <script type="text/javascript" src="${CTP_ADMIN }/js/extends/jquery.date_input.pack.js"></script> 
-	
+	    <script type="text/javascript" src="${CTP_ADMIN }/js/module/common.js"></script>
 <script type="text/javascript">
 	 var CTPPATH="${pageContext.request.contextPath}";
 	 var CTP_ADMIN=CTPPATH+"/resources/admin";
@@ -237,7 +238,7 @@ $(function() {
 		    <br>
 		    <span class="publish-dept-span">发布时间</span>
 		    <div id="date-div">
-		    <input type="text"  class="date_picker" value="${item.addTime}">
+		    <input type="text"  class="date_picker" value="<fmt:formatDate value="${item.addTime}" pattern="yyyy-MM-dd"/>">
 		    </div>
 		     <span class="publish-dept-span">分类(${school_trends_c})</span>
 		    <select name="publish_style" id="publish-style">
@@ -341,6 +342,7 @@ $(function(){
 		var publish_dept=$('.publish-dept').val();
 		//获取发布时间
 		var date_picker=$('.date_picker').val();
+		date_picker=date_picker+" "+hms();
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
 		//判断标题和内容是否为空
@@ -420,6 +422,7 @@ $(function(){
 		var publish_dept=$('.publish-dept').val();
 		//获取发布时间
 		var date_picker=$('.date_picker').val();
+		date_picker=date_picker+" "+hms();
 		//获取内容的纯文本  
 		var text_content=editor.$txt.text();
 		//判断标题和内容是否为空

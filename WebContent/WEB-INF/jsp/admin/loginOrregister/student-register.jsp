@@ -108,7 +108,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 					</div>
 				</form><!-- form -->
 				<div class="button">
-					<a href="#">返回主页</a>
+					<a href="${pageContext.request.contextPath}/main/index">返回主页</a>
 				</div><!-- button -->
 			</section><!-- content -->
 		</div><!-- container -->

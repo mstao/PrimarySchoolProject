@@ -57,14 +57,35 @@ $(function(){
 		
 	});
 	
-	//图片轮播 动态获取第一张图片
-	$('.slider-li').each(function(){
-		//获取内容的第一张图片url
-		var s_n_s=$(this).find('.hide-content-slider').find("img[src!='']:first").attr('src');
-		//将图片url添加到图片显示区域src
-		$(">a>img",this).attr('src',s_n_s);
-	});
 	
 	//首页 学校管理和党务工会  
 	
 });
+
+
+//时间     - 年月日
+function showLocale(ds){
+	
+    date = new Date(ds);
+    var seperator1 = "-";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    
+    var hh = date.getHours();
+	if(hh<10) hh = '0' + hh;
+	var mm = date.getMinutes();
+	if(mm<10) mm = '0' + mm;
+	var ss = date.getSeconds();
+	if(ss<10) ss = '0' + ss;
+	
+	
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+    
+    return currentdate;
+}

@@ -44,5 +44,5 @@ public interface ITeachingResourcesDao<T> {
 	List<T> findHomeTeachingResourcesContent(int position,int item_per_page);
 	
 	/**教学资源轮播图**/
-	List<T> findSliderTeachingResourcesContent(int menuId,int classId,String flag,int position,int item_per_page);
+	List<T> findSliderTeachingResourcesContent(int menuId,int classId,int position,int item_per_page);
 }

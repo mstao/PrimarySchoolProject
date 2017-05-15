@@ -399,19 +399,27 @@ $(function(){
 		if(title=="" || text_content=="" ||publish_dept==""){
 			layer.msg("标题,内容和发布部门不能为空");
 		}else{
-			//判断内容里面是否含有图片 ,有图片设为1，无图片设为0
-  		var is_image;
-  		if(editor.$txt.find("img[src!='']").length>0){
-  			is_image=1;
-  		}else{
-  			is_image=0;
-  		}
-  		var is_publish=1; //意味着要发表1，不是存为草稿0
+			var is_image;
+			var img_path="";
+			var s_json;
+			var is_publish=1; //意味着要发表1，不是存为草稿0
+			if(editor.$txt.find("img[src!='']").length>0){
+				is_image=1;
+				img_path=editor.$txt.find("img[src!='']:first").attr('src');
+				
+			}else{
+				is_image=0;
+				img_path="0";
+				
+			}
+			
+			s_json={"id":nid,"itemTitle":title,"itemContent":content,"labId":"${labId}","typeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker,"imagePath":img_path};
+			
 			$.ajax({
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+'/admin/update/${durl}',
-				data:{"id":nid,"itemTitle":title,"itemContent":content,"labId":"${labId}","typeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				data:s_json,
 				beforeSend:function(){
 					//显示正在加载
 					layer.load(2);
@@ -469,19 +477,27 @@ $(function(){
 		if(title=="" || text_content=="" ||publish_dept==""){
 			layer.msg("标题,内容和发布部门不能为空");
 		}else{
-			//判断内容里面是否含有图片 ,有图片设为1，无图片设为0
-		var is_image;
-		if(editor.$txt.find("img[src!='']").length>0){
-			is_image=1;
-		}else{
-			is_image=0;
-		}
-		var is_publish=0; //意味着要发表1，不是存为草稿0
+			var is_image;
+			var img_path="";
+			var s_json;
+			var is_publish=0; //意味着要发表1，不是存为草稿0
+			if(editor.$txt.find("img[src!='']").length>0){
+				is_image=1;
+				img_path=editor.$txt.find("img[src!='']:first").attr('src');
+				
+			}else{
+				is_image=0;
+				img_path="0";
+				
+			}
+			
+			s_json={"id":nid,"itemTitle":title,"itemContent":content,"labId":"${labId}","typeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker,"imagePath":img_path};
+			
 			$.ajax({
 				type:'post',
 				dataType:'text',
 				url:CTPPATH+'/admin/update/${durl }',
-				data:{"id":nid,"itemTitle":title,"itemContent":content,"labId":"${labId}","typeFlag":type,"author":publish_dept,"isImage":is_image,"isPublish":is_publish,"addTime":date_picker},
+				data:s_json,
 			
 				beforeSend:function(){
 					//显示正在加载

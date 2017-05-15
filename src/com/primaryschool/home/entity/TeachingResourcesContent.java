@@ -50,6 +50,9 @@ public class TeachingResourcesContent implements Serializable{
 	@Column(name="type_id")
 	private int typeId;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	//临时属性
     @Transient
     private String resourcesName;
@@ -120,12 +123,12 @@ public class TeachingResourcesContent implements Serializable{
 
 	//轮播
 	
-	public TeachingResourcesContent(int id, String itemTitle, String itemContent,String itemTypeFlag) {
+	public TeachingResourcesContent(int id, String itemTitle,String itemTypeFlag,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
 		this.itemTypeFlag = itemTypeFlag;
+		this.imagePath=imagePath;
 	}
 
 
@@ -297,6 +300,18 @@ public class TeachingResourcesContent implements Serializable{
 
 	public void setItemTypeName(String itemTypeName) {
 		this.itemTypeName = itemTypeName;
+	}
+
+
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
     
     

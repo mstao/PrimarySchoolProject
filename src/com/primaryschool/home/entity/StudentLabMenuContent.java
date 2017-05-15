@@ -57,6 +57,9 @@ public class StudentLabMenuContent implements Serializable{
 	@Column(name="lab_id")
 	private int labId;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -96,13 +99,13 @@ public class StudentLabMenuContent implements Serializable{
 
 	//轮播
 
-	public StudentLabMenuContent(int id, String itemTitle, String itemContent, String addTime, String itemTypeName) {
+	public StudentLabMenuContent(int id, String itemTitle, String itemTypeName,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
-		this.addTime = addTime;
 		this.itemTypeName = itemTypeName;
+		this.imagePath=imagePath;
+		
 	}
 
 	/////
@@ -252,6 +255,18 @@ public class StudentLabMenuContent implements Serializable{
 
 	public void setItemTypeName(String itemTypeName) {
 		this.itemTypeName = itemTypeName;
+	}
+
+
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 	
