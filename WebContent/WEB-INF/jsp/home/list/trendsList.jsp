@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +35,7 @@
 				<div class="list-content">
 					<ul>
 					  <c:forEach items="${item}" var="trends_list">
-						<li><span><img src="${CTP_HOME}/img/time.png" /> ${trends_list.addTime}</span><a href="${CTP}/details/${durl}?cid=${cid}&id=${trends_list.id}&flag=${typeFlag}" title="${trends_list.itemTitle}">${trends_list.itemTitle}</a></li>
+						<li><span><img src="${CTP_HOME}/img/time.png" /> <fmt:formatDate value="${trends_list.addTime}" pattern="yyyy-MM-dd"/></span><a href="${CTP}/details/${durl}?cid=${cid}&id=${trends_list.id}&flag=${typeFlag}" title="${trends_list.itemTitle}">${trends_list.itemTitle}</a></li>
 					  </c:forEach>
 					</ul>
 				</div>
@@ -50,8 +52,8 @@
 				
 				<c:forEach items="${hotItem}" var="hotTrends">
 					<div class="hot-content">
-						<div class="hot-content-sum"><img src="${CTP_HOME}/img/time.png" /><span>${hotTrends.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${CTP_HOME}/img/look.png" /><span>${hotTrends.viewCount}</span></div>
-						<span class="hot-news-detail"><a href="${CTP}/details/${durl}?id=${hotTrends.id}&flag=${typeFlag}">${hotTrends.itemTitle}</a></span>
+						<div class="hot-content-sum"><img src="${CTP_HOME}/img/time.png" /><span><fmt:formatDate value="${hotTrends.addTime}" pattern="yyyy-MM-dd"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="${CTP_HOME}/img/look.png" /><span>${hotTrends.viewCount}</span></div>
+						<span class="hot-news-detail"><a href="${CTP}/details/${durl}?id=${hotTrends.id}&flag=${typeFlag}">${myTag:substr(hotTrends.itemTitle,0,39,true)}</a></span>
 					</div>
 				</c:forEach>
 			</div>

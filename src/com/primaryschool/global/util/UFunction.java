@@ -68,7 +68,7 @@ public class UFunction{
     * @throws
      */
     public static String dateSub(String dateStr){ 
-    	return  dateStr.substring(5);
+    	return  dateStr.substring(5,10);
     }
     
     /**
@@ -95,4 +95,32 @@ public class UFunction{
    	     return condate;
     }
     
+    
+    /**
+     * 将阿拉伯数字转化为汉字
+     * @param r
+     * @return
+     */
+    public static String numToChinese(int r){
+    	  String[] s1 = { "零", "一", "二", "三", "四", "五", "六", "七", "八", "九" };
+          String[] s2 = { "十", "百", "千", "万", "十", "百", "千", "亿", "十", "百", "千" };
+
+          String result = "";
+          String s=String.valueOf(r);
+          int n = s.length();
+          for (int i = 0; i < n; i++) {
+
+              int num = s.charAt(i) - '0';
+
+              if (i != n - 1 && num != 0) {
+                  result += s1[num] + s2[n - 2 - i];
+              } else {
+                  result += s1[num];
+              }
+
+          }
+
+          System.out.println(result);
+          return result;
+    }
 }  

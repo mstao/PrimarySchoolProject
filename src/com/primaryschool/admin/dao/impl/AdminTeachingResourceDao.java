@@ -57,7 +57,7 @@ public class AdminTeachingResourceDao<T> implements IAdminTeachingResourceDao<T>
 	@Override
 	public boolean updateTeachingResourceInfo(T t) {
 		// TODO Auto-generated method stub
-		String hql="update TeachingResourcesContent u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.classId=:classId,u.menuId=:menuId,u.typeId=:typeId,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author  where u.id=:id";
+		String hql="update TeachingResourcesContent u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.classId=:classId,u.menuId=:menuId,u.typeId=:typeId,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author,u.imagePath=:imagePath  where u.id=:id";
 		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
 		query.setProperties(t);
 		return (query.executeUpdate()>0);

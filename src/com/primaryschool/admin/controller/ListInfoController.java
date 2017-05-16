@@ -911,6 +911,30 @@ public class ListInfoController<T> {
  	   return "admin/beforelist/studentScore";
     }
     
+    
+    /**
+     * TODO 各科成绩的管理
+     * @param map
+     * @return
+     */
+    @RequestMapping("/manageClass")
+    public String manageClass(ModelMap map){
+		String durl="manageClass";
+		String fileType="fstudent";
+		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
+		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+		Date date = new Date();
+		String formatDate = sdf.format(date);
+		int d=Integer.parseInt(formatDate);
+		map.put("fileType", fileType);
+		map.put("durl", durl);
+		map.put("year", d);
+		map.put("sclass", sclass);
+		map.put("grade", grade);
+ 	   return "admin/beforelist/manageClass";
+    }
+    
     //考试科目管理界面
     @SuppressWarnings("unchecked")
     @RequestMapping("/manageScore")
@@ -923,6 +947,8 @@ public class ListInfoController<T> {
   		map.put("menu", menu);
  	   return "admin/beforelist/manageScore";
     }
+    
+    
     
    //**获取某个班级内成绩信息**//
     @SuppressWarnings("unchecked")

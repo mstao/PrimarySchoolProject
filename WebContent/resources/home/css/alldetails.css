@@ -95,6 +95,7 @@
 .float-div ul li >span{
 	position: relative;
 	top:0px;
+	color:#999999;
 }
 /*标题栏加入边框*/
 .top-left-bottom{

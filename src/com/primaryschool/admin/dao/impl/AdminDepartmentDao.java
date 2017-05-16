@@ -64,7 +64,7 @@ public class AdminDepartmentDao<T> implements IAdminDepartmentDao<T> {
 	@Override
 	public List<?> findDepartmentContentInfo(int deptId, int position, int item_per_page) {
 		// TODO Auto-generated method stub
-		String hql="select new com.primaryschool.home.entity.DepartmentLinkContent(d.id, d.itemTitle, d.typeId, d.addTime, d.isPublish, d.itemAuthor) from DepartmentLinkContent d where d.departmentId=?";
+		String hql="select new com.primaryschool.home.entity.DepartmentLinkContent(d.id, d.itemTitle, d.typeId, d.addTime, d.isPublish, d.itemAuthor) from DepartmentLinkContent d where d.departmentId=? order by d.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, deptId);
 		query.setFirstResult(position);

@@ -60,10 +60,10 @@
 		 <!--S 轮播图-->
 			<div class="slider-news">
 			<ul>
-		        <c:forEach items="${sildeStudent}" var="s_list">  
-					<li class="slider-li"><a href="${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+		        <c:forEach items="${slideStudent}" var="s_list">  
+					<li class="slider-li"><a href="${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 				</c:forEach>	
-			     <c:if test="${empty sildeStudent}">
+			     <c:if test="${empty slideStudent}">
 			       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
 			     </c:if>
 			</ul>

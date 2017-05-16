@@ -1,6 +1,7 @@
 package com.primaryschool.home.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 
@@ -40,7 +43,8 @@ public class Education implements Serializable{
 	private int  typeId;
 	
 	@Column(name="add_time")
-	private String addTime;
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")  
+	private Date addTime;
 	
 	@Column(name="view_count")
 	private int viewCount;
@@ -54,6 +58,9 @@ public class Education implements Serializable{
 	@Column(name="author")
 	private String author;
 	
+	@Column(name="image_path")
+	private String imagePath;
+	
 	//临时属性
     @Transient
     private String itemTypeFlag;
@@ -63,14 +70,14 @@ public class Education implements Serializable{
 	
 	public Education(){}
     
-    public Education(int id,String itemTitle,String addTime){
+    public Education(int id,String itemTitle,Date addTime){
     	super();
     	this.id = id;
 		this.itemTitle = itemTitle;
 		this.addTime = addTime;
     }
 		
-    public Education(int id , String itemTitle,String addTime,int viewCount){
+    public Education(int id , String itemTitle,Date addTime,int viewCount){
     	super();
     	this.id = id;
 		this.itemTitle = itemTitle;
@@ -78,7 +85,7 @@ public class Education implements Serializable{
 		this.viewCount =viewCount;
     }
     
-    public Education(int id, String itemTitle, String itemContent, String addTime, int viewCount, 
+    public Education(int id, String itemTitle, String itemContent, Date addTime, int viewCount, 
 			  String itemTypeName,String itemTypeFlag,String author) {
 		super();
 		this.id = id;
@@ -92,18 +99,17 @@ public class Education implements Serializable{
 	}
     
     //图片轮播
-	public Education(int id, String itemTitle, String itemContent, String addTime,String itemTypeFlag) {
+	public Education(int id, String itemTitle,String itemTypeFlag,String imagePath) {
 		super();
 		this.id = id;
 		this.itemTitle = itemTitle;
-		this.itemContent = itemContent;
-		this.addTime = addTime;
 		this.itemTypeFlag = itemTypeFlag;
+		this.imagePath=imagePath;
 	}  
     
 	
 
-		public Education(int id,String itemTitle,String addTime,int isPublish,String author){
+		public Education(int id,String itemTitle,Date addTime,int isPublish,String author){
 	    	super();
 	    	this.id = id;
 			this.itemTitle = itemTitle;
@@ -114,7 +120,7 @@ public class Education implements Serializable{
 			
 
 	    
-	    public Education(int id, String itemTitle, String itemContent, String addTime, int viewCount, String itemTypeName,
+	    public Education(int id, String itemTitle, String itemContent, Date addTime, int viewCount, String itemTypeName,
 				String itemTypeFlag) {
 			super();
 			this.id = id;
@@ -127,7 +133,7 @@ public class Education implements Serializable{
 		}
 
 
-		public Education(int id,String author, String itemTitle, String itemContent, String addTime, int viewCount, 
+		public Education(int id,String author, String itemTitle, String itemContent, Date addTime, int viewCount, 
 				  String itemTypeName,String itemTypeFlag,int isPublish) {
 			super();
 			this.id = id;
@@ -175,11 +181,13 @@ public class Education implements Serializable{
 		this.typeId = typeId;
 	}
 
-	public String getAddTime() {
+	
+
+	public Date getAddTime() {
 		return addTime;
 	}
 
-	public void setAddTime(String addTime) {
+	public void setAddTime(Date addTime) {
 		this.addTime = addTime;
 	}
 
@@ -229,6 +237,14 @@ public class Education implements Serializable{
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 	
 	

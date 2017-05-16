@@ -61,10 +61,11 @@ body {
 
 /*部门链接的主体部分*/
 .departmentlink-mainbody{
-	margin-left: 200px;
+	margin:0 auto;
+
 	width: 1170px;
-	height: 600px;
-	margin-bottom:200px;
+	height: 800px;
+
 }
 /*部门链接页面的左边部分，用于显示各个部门名称*/
 .departmentlink-departmentNameList{
@@ -111,7 +112,7 @@ body {
 /*部门链接主体的右边部分，人员安排*/
 .departmentlink-sp{
 	float: left;
-	width:800px;
+	width:940px;
 	height: 300px;
 	overflow:hidden;
 	line-height: 31px;
@@ -120,10 +121,11 @@ body {
 }
 /*人员安排标题设置*/
 .departmentlink-sp-top{
-	padding-bottom:10px;
+	padding-top:5px;
+	padding-bottom:5px;
 	color: #006269;
 	border-bottom: #CCCCCC solid 1px;
-    
+    padding-left:5px;
 }
 
 .departmentlink-sp-top img{
@@ -133,26 +135,32 @@ body {
 .departmentlink-sp-top span{
 	float:right;
 	padding-top:5px;
+
+}
+.departmentlink-sp-bottom{
+	padding-left:5px;
 }
 /*设置新闻时间位置*/
 .departmentlink-sp-bottom span{
 	float:right;
+
 }
 /*部门链接主体的右边，工作安排*/
 .departmentlink-jp{
 	float:left;
 	margin-top: 30px;
-	width:800px;
+	width:940px;
 	height:300px;
 	overflow: hidden;
 	line-height: 31px;
 	background-color: #F1F1F1;
 }
 .departmentlink-jp-top{
-	padding-bottom:10px;
+	padding-top:5px;
+	padding-bottom:5px;
 	color: #006269;
 	border-bottom: #CCCCCC solid 1px;
-	
+	padding-left:5px;
 }
 .departmentlink-jp-top img{
 	bottom: -4px;
@@ -162,8 +170,14 @@ body {
 	float:right;
 	padding-top:5px;
 }
+.departmentlink-jp-bottom{
+	padding-left:5px;
+}
 .departmentlink-jp-bottom span{
 	float:right;
+}
+.dept-time{
+	color:#999999;
 }
 /*部门名称列表被点击后的css*/
 .js-load-a{

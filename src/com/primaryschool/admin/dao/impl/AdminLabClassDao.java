@@ -55,7 +55,7 @@ public class AdminLabClassDao<T> implements IAdminLabClassDao<T> {
 	@Override
 	public boolean updateLabClassInfo(T t) {
 		// TODO Auto-generated method stub
-		String hql="update StudentLabMenuContent u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.labId=:labId,u.menuId=:menuId,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author  where u.id=:id";
+		String hql="update StudentLabMenuContent u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.labId=:labId,u.menuId=:menuId,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author,u.imagePath=:imagePath  where u.id=:id";
 		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
 		query.setProperties(t);
 		return (query.executeUpdate()>0);

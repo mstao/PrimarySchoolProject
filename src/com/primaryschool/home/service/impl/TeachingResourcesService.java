@@ -93,10 +93,10 @@ public class TeachingResourcesService<T> implements ITeachingResourcesService<T>
 	 * 教学资源轮播图
 	 */
 	@Override
-	public List<T> findSliderTeachingResourcesContent(int menuId, int classId, String flag, int position,
+	public List<T> findSliderTeachingResourcesContent(int menuId, int classId, int position,
 			int item_per_page) {
 		// TODO Auto-generated method stub
-		return teachingResourcesDao.findSliderTeachingResourcesContent(menuId, classId, flag, position, item_per_page);
+		return teachingResourcesDao.findSliderTeachingResourcesContent(menuId, classId, position, item_per_page);
 	}
 
 }

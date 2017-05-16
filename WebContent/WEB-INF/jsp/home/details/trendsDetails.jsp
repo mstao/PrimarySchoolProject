@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,7 +91,7 @@ $(function(){
 						<span class="new-attribute-span">作者：</span>
 						<span class="new-attribute-name">${item.author}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span class="new-attribute-span">发布时间：</span>
-						<span class="new-attribute-time">${item.addTime}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="new-attribute-time"><fmt:formatDate value="${item.addTime}" pattern="yyyy-MM-dd"/></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<span class="new-attribute-span">浏览次数：</span>
 						<span class="new-attribute-times">${item.viewCount}</span>
 					</div>

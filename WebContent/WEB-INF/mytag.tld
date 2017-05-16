@@ -33,4 +33,15 @@
          </function-signature>   
      
      </function>
+     
+     <function>
+         <description>numToChinese</description>     
+         <name>numToChinese</name>     
+         <function-class>com.primaryschool.global.util.UFunction</function-class>     
+         <function-signature>     
+             java.lang.String numToChinese(int)     
+         </function-signature>   
+     
+     </function>
+     
 </taglib>   

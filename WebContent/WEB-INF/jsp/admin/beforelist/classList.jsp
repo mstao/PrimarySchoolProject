@@ -111,7 +111,9 @@ var CTPPATH="${pageContext.request.contextPath}";
 <%--引入header --%>
 
 <jsp:include page="../common/header.jsp"></jsp:include>
-<div id="location"><span>您现在的位置: 后台管理 ></span><span>${CLASS_MAINPAGE }</span></div>
+<div id="location"><span>您现在的位置: 后台管理 ></span><span>${CLASS_MAINPAGE }></span>
+<a href="${CTP}/admin/list/manageClass">进入班级课表管理</a>
+</div>
 
   
 	<!--s 操作-->

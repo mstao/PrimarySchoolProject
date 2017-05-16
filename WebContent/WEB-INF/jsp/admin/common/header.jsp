@@ -46,9 +46,9 @@ $(function(){
                  </li>
                  <li><a href="javascript:void(0);">管理</a>
                  	<ul class="dropdown-menu follow">
-							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" > >角色列表</a></li>
-					        <li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1"> >角色分配</a></li>
-					        <li><a href="${pageContext.request.contextPath}/admin/authority/resources" class="checked-a"> >权限列表</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/authority/roleList" >角色列表</a></li>
+					        <li><a href="${pageContext.request.contextPath}/admin/authority/allocation?p=1">角色分配</a></li>
+					        <li><a href="${pageContext.request.contextPath}/admin/authority/resources" class="checked-a">权限列表</a></li>
 					
 			                <li><a href="${pageContext.request.contextPath}/admin/apply/listAll?status=3&p=1">报名管理</a></li>
 					</ul>

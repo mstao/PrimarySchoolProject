@@ -67,6 +67,7 @@ var CTPPATH="${pageContext.request.contextPath}";
     		   	<img src="${CTP}/resources/apply/img/no-message.png"/>
     		   	<span>还没有进行查询哦(●—●) </span>
     		   </div>
+    		   
     		</div>
     	</div>
     	<!--e class-info-->

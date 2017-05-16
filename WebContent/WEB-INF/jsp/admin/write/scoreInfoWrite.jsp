@@ -102,11 +102,15 @@ $('.stuId').bind('blur',function(){
 				  layer.closeAll('loading');
 			}, 1000);
 
-			 if(data!="1"){
-				layer.tips('抱歉，该学生不存在','.stuId');
+			 if(data.length>=0){
+				
+					/* 	$('.stuName').val($(data.stuName)); */
+					
+					layer.tips('可用','.stuId');
 			}else{
-				layer.tips('可用','.stuId');
+				 layer.tips('抱歉，该学生不存在','.stuId');
 				}
+			
 		},
 		error:function(){
 			//关闭正在加载

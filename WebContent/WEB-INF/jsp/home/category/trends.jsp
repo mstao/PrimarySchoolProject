@@ -59,10 +59,10 @@
 					<div class="slider-news">
 					<ul>
 				     
-					<c:forEach items="${sildeNews}" var="s_list">  
-						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="" alt="${s_list.itemTitle}"  /></a><div class="hide-content-slider" style="visibility: hidden;">${s_list.itemContent}</div></li>
+					<c:forEach items="${slideNews}" var="s_list">  
+						<li class="slider-li"><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 					</c:forEach>	
-				     <c:if test="${empty sildeNews}">
+				     <c:if test="${empty slideNews}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
 				     </c:if>
 					</ul>

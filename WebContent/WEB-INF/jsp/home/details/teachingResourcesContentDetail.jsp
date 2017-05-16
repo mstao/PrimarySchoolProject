@@ -13,12 +13,13 @@
 <link rel="stylesheet" href="${CTP_HOME}/css/footer.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/detailstype.css" />
 <link rel="stylesheet" href="${CTP_HOME}/css/time-axis.css" />
+<link rel="stylesheet" href="${CTP_HOME}/js/extends/zoomify/zoomify.min.css"/>
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.mousewheel.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/jquery.easing.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/extends/timeline/history.js"></script>
-
+<script type="text/javascript" src="${CTP_HOME}/js/extends/zoomify/zoomify.min.js" ></script>
 <script type="text/javascript">
 
 //将时间信息填充到具体显示区域中

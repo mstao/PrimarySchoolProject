@@ -77,7 +77,7 @@ public class AdminTrendsDao<T> implements IAdminTrendsDao<T> {
 	@Override
 	public boolean updateTrendsInfo(T t) {
 		// TODO Auto-generated method stub
-	    String hql="update Trends u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author  where u.id=:id";
+	    String hql="update Trends u set u.itemTitle=:itemTitle ,u.itemContent=:itemContent,u.addTime=:addTime,u.isImage=:isImage,u.isPublish=:isPublish,u.author=:author,u.imagePath=:imagePath  where u.id=:id";
 		Query query  = sessionFactory.getCurrentSession().createQuery(hql); 
 		query.setProperties(t);
 		return (query.executeUpdate()>0);

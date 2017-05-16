@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
 <!DOCTYPE html>
 <html>
 	<head>
@@ -220,7 +221,7 @@ var sub=function(str,Len){
                     </td>
                     <td width="20%"><a href="">${list.author }</a></td>
                     <td width="20%"><a href="">${typeName }</a></td>
-                    <td width="20%">${list.addTime }</td>
+                    <td width="20%"><fmt:formatDate value="${list.addTime }" pattern="yyyy-MM-dd"/></td>
                 </tr>
                 </c:forEach>
             </table>

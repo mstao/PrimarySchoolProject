@@ -114,7 +114,7 @@ public class StudentDao<T> implements IStudentDao<T> {
 		// TODO Auto-generated method stub
 		int id=typeFlagToTypeId.findStudentTypeIdByTypeFlag(flag);
 
-		String hql="select new com.primaryschool.home.entity.Student(t.id,t.itemTitle,t.itemContent,t.addTime,tt.itemTypeFlag) from Student t,StudentType tt  where t.typeId=? and t.typeId=tt.id and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
+		String hql="select new com.primaryschool.home.entity.Student(t.id,t.itemTitle,tt.itemTypeFlag,t.imagePath) from Student t,StudentType tt  where t.typeId=? and t.typeId=tt.id and t.isPublish=1 and t.isImage=1 order by t.addTime desc";
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.setFirstResult(position);

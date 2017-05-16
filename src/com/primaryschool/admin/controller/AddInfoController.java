@@ -1,14 +1,19 @@
 package com.primaryschool.admin.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
 import com.primaryschool.admin.entity.CourseScore;
 import com.primaryschool.admin.entity.CourseStudentInfo;
 import com.primaryschool.admin.entity.CourseType;
@@ -229,6 +234,7 @@ public class AddInfoController<T> {
       	trends.setTypeId(typeId);
       	
       	int result= trendsService.addTrendsInfo((T)trends);
+      	
   		return result+"";
   	}
        
@@ -383,6 +389,7 @@ public class AddInfoController<T> {
        	classHomePage.setItemAuthor(author);
        	
        	int result= sclassService.addSclassInfo((T)classHomePage);
+       	System.out.println(typeId+"  "+result);
    		return result+"";
    	}
        
@@ -479,15 +486,32 @@ public class AddInfoController<T> {
        
        //验证学生信息是否唯一ById
        @RequestMapping("/testId")
-       @ResponseBody
-       public String testId(String id){
+       public void testId(String id,HttpServletResponse response){
        	
-       	CourseStudentInfo stuInfo=(CourseStudentInfo) stuInfoService.findStuInfoByStuId(id);
+    	response.setCharacterEncoding("UTF-8");  
+   		PrintWriter out=null;
+   		
+   		CourseStudentInfo stuInfo=(CourseStudentInfo) stuInfoService.findStuInfoByStuId(id);
        	if(stuInfo != null){
-       		return "1";
-       	}else   
-       	return null;
-       }
+       	String json = JSON.toJSONString(stuInfo, true);
+   		System.out.println(json);
+   		response.setContentType("application/json");
+			try {
+				out=response.getWriter();
+				out.write(json);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				out.close();
+		
+		   	}
+       	}
+      }
+       	
+      
+    	
        
        //验证学生身份证信息是否唯一ById
        @RequestMapping("/testCardId")
