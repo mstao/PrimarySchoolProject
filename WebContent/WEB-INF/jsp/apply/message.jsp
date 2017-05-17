@@ -648,6 +648,7 @@ $(function(){
 		     
 			</div>
 			<div class="tab-message">填写注意：带<img src="${CTP_APPLY}/img/RequireField.png"/>为必填选项，请认真填写，检查无误后再提交，身份证必须经过验证才能提交。</div>
+			<div class="tab-message">是否同意  <a href="#">报名协议</a>       <input type="radio" id="s1" name="agree" value="yes" checked> <label for="s1">同意</label><input type="radio" name="agree" value="no" id="s2"> <label for="s2">不同意</label></div>
 			<div class="applybody-content-tab-submit">
 				<a href="javascript:void(0);" class="submit-btn">提交报名</a>
 			</div>
