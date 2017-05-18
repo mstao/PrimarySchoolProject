@@ -7,7 +7,7 @@ IoC容器:Spring4
 
 web框架:SpringMVC
 
-orm框架:mybatis
+orm框架:Hibernate
 
 安全框架:shiro
 
