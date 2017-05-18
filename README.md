@@ -13,7 +13,7 @@ orm框架:Hibernate
 
 数据源:c3p0
 
-日志: sl4j
+日志: log4j
 
 Json: fastjson
 
