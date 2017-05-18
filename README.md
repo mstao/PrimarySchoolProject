@@ -1,7 +1,7 @@
 # PrimaryScoolProject
 小学网站
 
-#用到的技术
+# 用到的技术
 
 IoC容器:Spring4
 
