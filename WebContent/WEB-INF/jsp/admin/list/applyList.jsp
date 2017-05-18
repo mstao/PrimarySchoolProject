@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>学校报名管理</title>
 
 <c:set var="CTP" value="${pageContext.request.contextPath}"></c:set>

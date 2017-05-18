@@ -57,14 +57,17 @@ var CTPPATH="${pageContext.request.contextPath}";
 			<img src="${CTP_ADMIN}/img/wk1.jpg">
 		</div>
 	</div>
-	
+
+<%-- 后台不开启报名  ，页面提示报名未开始  --%>	
+
 <c:choose>	
-<%-- 后台不开启报名  ，页面提示报名未开始  --%>
+
+
 <c:when test="${dateInfo.beginApply eq 0 || empty dateInfo}">
 <div class="no-begin-apply">
 
-<img alt="" src="${CTP_APPLY}/img/no-begin.png"/><br>
-<span>暂未开始报名，请在报名时间之内开始报名</span>
+<img alt="" src="${CTP_APPLY}/img/未开启.png"/><br>
+<span>系统关闭报名功能</span>
 <span>该系统将会在报名时间之后关闭，请注意时间</span>
 <span>今年报名时间为：<b>
 <fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/>
@@ -79,13 +82,15 @@ var CTPPATH="${pageContext.request.contextPath}";
 
 
 
-<%-- 后台不开启报名  ，页面禁止显示渲染 --%>
+ <%-- 后台不开启报名  ，页面禁止显示渲染 --%>
+
 <c:when test="${dateInfo.beginApply eq 1}">
-	
+
+<%--	
 <!-- S 时间段判断  -->
 <c:choose>
 <c:when test="${nowDate >= XstartDate && nowDate <= XendDate }">
-	
+	 --%>
 	
 	<div id="rights">
 
@@ -115,7 +120,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 		</div><!-- container -->
 	</div>
 
-</c:when>
+<%-- </c:when>
 
 <c:otherwise>
 <div class="no-begin-apply">
@@ -130,10 +135,10 @@ var CTPPATH="${pageContext.request.contextPath}";
 </c:choose>
 
 <!--E 时间段判断   -->
-
+--%>
 	
 </c:when>
-</c:choose>
+</c:choose> 
 
 </div>
 <!-- E 内容 -->

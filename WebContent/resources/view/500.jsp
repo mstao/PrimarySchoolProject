@@ -127,7 +127,7 @@
 <body>
     <div class="box">
         <div class="clearfix">
-            <div class="figure"><img src="${pageContext.request.contextPath}/resources/img/500.jpg" alt="服务器内部错误"></div>
+            <div class="figure"><img src="${pageContext.request.contextPath}/resources/img/500.png" width="200" alt="服务器内部错误"></div>
     
             <h1>500页面</h1>
 

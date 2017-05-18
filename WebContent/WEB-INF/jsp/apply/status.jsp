@@ -83,8 +83,15 @@ $(function(){
 <c:when test="${dateInfo.beginApply eq 0 || empty dateInfo}">
 <div class="no-begin-apply">
 
-<img alt="" src="${CTP_APPLY}/img/end.png">
-<span class="no-begin-tips">暂未开始报名，请在开始时间之后开始报名</span>
+<img alt="" src="${CTP_APPLY}/img/未开启.png"/><br>
+<span>系统关闭报名功能</span>
+<span>该系统将会在报名时间之后关闭，请注意时间</span>
+<span>今年报名时间为：<b>
+<fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/>
+ ~ 
+<fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd"/>
+
+</b></span>
 </div>
 
 </c:when>
@@ -94,8 +101,8 @@ $(function(){
 <c:when test="${dateInfo.beginApply eq 1}">
 
 <!-- S 时间段判断  -->
-<c:choose>
-<c:when test="${nowDate >= XstartDate && nowDate <= XendDate }">
+<%-- <c:choose>
+<c:when test="${nowDate >= XstartDate && nowDate <= XendDate }"> --%>
 
 
 <div class="apply-status-content">
@@ -159,7 +166,16 @@ $(function(){
 					</c:when>
 					<c:when test="${apply.status eq 2}">
 					  <span><img alt="" src="${CTP_APPLY}/img/feature-tips.png">学生报名失败,请在下面查看失败原因或者修改信息重新提交</span>
-					  <a href="${CTP}/apply/show/update?id=${id}">修改信息</a>
+					 
+					  <c:choose>
+							<c:when test="${nowDate >= XstartDate && nowDate <= XendDate }">
+				           	   <a href="${CTP}/apply/show/update?id=${id}">修改信息</a>
+							</c:when>
+							<c:otherwise>
+						     	<a href="javascript:void(0);">报名已结束</a>
+							</c:otherwise>
+					  </c:choose>
+					 
 					</c:when>
 				    <c:when test="${apply.status eq 0}">
 					  <span><img alt="" src="${CTP_APPLY}/img/shenhe-tips.png">学生报名信息正在审核中</span>
@@ -235,7 +251,7 @@ $(function(){
 			</div>
 			</div>
 </div>
-</c:when>
+<%-- </c:when>
 
 <c:otherwise>
 <div class="no-begin-apply">
@@ -245,7 +261,7 @@ $(function(){
 </div>
 
 </c:otherwise>
-</c:choose>
+</c:choose> --%>
 
 <!--E 时间段判断   -->
 

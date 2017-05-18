@@ -52,10 +52,14 @@ $(function(){
 	
 	//检验不能为空和数字
 	 function check(className,tips){
+		 if(document.readyState == "complete"){
 		    var str = $(className).val();
 			str = str.replace(/\s/g , '');//输入空格时自动忽略，\s表示空格
 	     	if( str ==""|| str==null ){
-	   		layer.tips("*"+tips+"不能为空", $(className));
+	     		
+	     			layer.tips("*"+tips+"不能为空", $(className));		
+	     		
+	   		
 			$(className).focus();
 				return false;
 			}else{
@@ -68,6 +72,7 @@ $(function(){
 					return true;
 				}
 			}
+		 }
 	   }
 	/*****初始验证******/	
 	
@@ -114,6 +119,7 @@ $(function(){
 		ok_mother_name=true;
 	} 
 		
+	
 	
 	//用户名校验
 	$(".tab-basicMes-stuname-input").bind("blur",function(){
@@ -292,7 +298,41 @@ $(function(){
 			}
 	});
 	
+	 //判断协议的同意情况
+	   var agree_status= $("input[type=radio][name=agree]:checked").val();
+		
+	    if(agree_status=="no"){
+	    	$(".submit-btn").addClass("no-allow");
+	    	$(".submit-btn").attr('disabled',true);  
+	    	$(".submit-btn").text("禁止提交");
+	    }else{
+	    	$(".submit-btn").removeClass("no-allow");
+	    	$(".submit-btn").removeAttr('disabled',true);
+	    	$(".submit-btn").text("提交报名");
+	    }		
+
+    
+	 //协议判断事件
+	 $("input[type=radio][name=agree]").bind("click",function(){
+		
+		//判断协议的同意情况
+		   var agree_status= $("input[type=radio][name=agree]:checked").val();
+			
+		    if(agree_status=="no"){
+		    	$(".submit-btn").addClass("no-allow");
+		    	$(".submit-btn").attr('disabled',true);
+		    	$(".submit-btn").text("禁止提交");
+		    }else{
+		    	$(".submit-btn").removeClass("no-allow");
+		    	$(".submit-btn").removeAttr('disabled',true);
+		    	$(".submit-btn").text("提交报名");
+		    }	
+	 });
+	    
 	$(".submit-btn").bind("click",function(){
+		
+		
+		
 		var stu_name=$(".tab-basicMes-stuname-input").val();
 		var stu_nation=$(".tab-basicMes-nation-input").val();
 		var stu_sex=$("input[type='radio']:checked").val();
@@ -367,8 +407,7 @@ $(function(){
     	
     });
 			
-			
-
+   
 });
 </script>
 <script type="text/javascript">
@@ -567,9 +606,15 @@ $(function(){
 <c:when test="${dateInfo.beginApply eq 0 || empty dateInfo}">
 <div class="no-begin-apply">
 
-<img alt="" src="${CTP_APPLY}/img/no-begin.png"/><br>
-<span class="no-begin-tips">暂未开始报名，请在开始时间之后开始报名</span>
+<img alt="" src="${CTP_APPLY}/img/未开启.png"/><br>
+<span>系统关闭报名功能</span>
+<span>该系统将会在报名时间之后关闭，请注意时间</span>
+<span>今年报名时间为：<b>
+<fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/>
+ ~ 
+<fmt:formatDate value="${dateInfo.endDate}" pattern="yyyy-MM-dd"/>
 
+</b></span>
 </div>
 
 </c:when>
@@ -648,9 +693,9 @@ $(function(){
 		     
 			</div>
 			<div class="tab-message">填写注意：带<img src="${CTP_APPLY}/img/RequireField.png"/>为必填选项，请认真填写，检查无误后再提交，身份证必须经过验证才能提交。</div>
-			<div class="tab-message">是否同意  <a href="#">报名协议</a>       <input type="radio" id="s1" name="agree" value="yes" checked> <label for="s1">同意</label><input type="radio" name="agree" value="no" id="s2"> <label for="s2">不同意</label></div>
+			<div class="tab-message">是否同意  <a href="javascript:void(0);" class="agreement-btn"  style="color:orange; text-decoration:underline;" title="点击查看协议详细内容">报名协议</a>       <input type="radio" id="s1" name="agree" value="yes" checked> <label for="s1">同意</label>&nbsp;&nbsp;<input type="radio" name="agree" value="no" id="s2"> <label for="s2">不同意</label></div>
 			<div class="applybody-content-tab-submit">
-				<a href="javascript:void(0);" class="submit-btn">提交报名</a>
+				<button  class="submit-btn">提交报名</button>
 			</div>
 	</div>
 </c:when>
@@ -659,7 +704,15 @@ $(function(){
 <div class="no-begin-apply">
 
 <img alt="" src="${CTP_APPLY}/img/sys-close.png">
+<br>
+<br>
+
 <span class="no-begin-tips">不在报名时间段，系统暂不开放</span>
+<br>
+<br>
+
+<br>
+<br>
 </div>
 
 </c:otherwise>
@@ -708,6 +761,41 @@ $(function(){
 </div> 
 </div>
     
+ <!--协议  -->   
+    <!--弹窗-->
+<div class="modalDialog">
+	<div>
+		<a href="javascript:void(0);" title="关闭" class="close agreement-close" >X</a>
+		<span class="openModal-title">万科城小学-报名协议</span>
+        <div class="openModal-agreement">
+            
+            <div class="agreement-content">
+            
+            欢迎您使用腾讯的服务！<br>
+　　为使用腾讯的服务，您应当阅读并遵守《腾讯服务协议》（以下简称“本协议”）和《QQ号码规则》。请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、管辖与法律适用条款，以及开通或使用某项服务的单独协议。限制、免责条款可能以黑体加粗或加下划线的形式提示您重点注意。除非您已阅读并接受本协议所有条款，否则您无权使用腾讯提供的服务。您使用腾讯的服务即视为您已阅读并同意上述协议的约束。<br>
+　　如果您未满18周岁，请在法定监护人的陪同下阅读本协议，并特别注意未成年人使用条款。<br>
+
+　　一、【协议的范围】<br>
+　　1.1本协议是您与腾讯之间关于用户使用腾讯相关服务所订立的协议。“腾讯”是指腾讯公司及其相关服务可能存在的运营关联单位。“用户”是指使用腾讯相关服务的使用人，在本协议中更多地称为“您”。<br>
+　　1.2本协议项下的服务是指腾讯向用户提供的包括但不限于即时通讯、网络媒体、互联网增值、互动娱乐、电子商务和广告等产品及服务（以下简称“本服务”）。<br>
+        
+        
+                
+            欢迎您使用腾讯的服务！<br>
+　　为使用腾讯的服务，您应当阅读并遵守《腾讯服务协议》（以下简称“本协议”）和《QQ号码规则》。请您务必审慎阅读、充分理解各条款内容，特别是免除或者限制责任的条款、管辖与法律适用条款，以及开通或使用某项服务的单独协议。限制、免责条款可能以黑体加粗或加下划线的形式提示您重点注意。除非您已阅读并接受本协议所有条款，否则您无权使用腾讯提供的服务。您使用腾讯的服务即视为您已阅读并同意上述协议的约束。<br>
+　　如果您未满18周岁，请在法定监护人的陪同下阅读本协议，并特别注意未成年人使用条款。<br>
+
+
+　 
+        
+            </div> 
+            
+           
+        </div>       
+		
+	</div>
+</div>
+    
 	
 </body>
 </html>
@@ -722,5 +810,17 @@ $(function(){
 		$('.mark,.dialog').show();
 		
 	});
+	
+	$(".agreement-btn").bind("click",function(){
+		$('.modalDialog').show();
+		$('html').addClass('overHiden');
+	});
+
+	$('.agreement-close').bind('click',function(){
+		$('.modalDialog').hide();
+		$('html').removeClass('overHiden');
+	});
+	
+	
 });
 </script>
