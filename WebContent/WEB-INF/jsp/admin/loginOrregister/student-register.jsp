@@ -61,7 +61,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 <div class="no-begin-apply">
 
 <img alt="" src="${CTP_APPLY}/img/未开启.png"/><br>
-<span>后台关闭报名功能</span>
+<span>系统关闭报名功能</span>
 <span>该系统将会在报名时间之后关闭，请注意时间</span>
 <span>今年报名时间为：<b>
 <fmt:formatDate value="${dateInfo.startDate}" pattern="yyyy-MM-dd"/>
