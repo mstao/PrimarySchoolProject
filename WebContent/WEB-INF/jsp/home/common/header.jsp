@@ -10,11 +10,12 @@ $(function(){
 	}).on('mousemove', '.x', function(e) {  
 	    $(this)[tog(this.offsetWidth-24 < e.clientX-this.getBoundingClientRect().left)]('onX');     
 	}).on('click', '.onX', function(){  
-	   // $(this).removeClass('x onX').val('').change(); 
-	   alert("zzzz");
+	   $(".search-form").submit();
 	}); 
 });
 </script>    
+<!-- Baidu Search -->
+<script type="text/javascript">(function(){document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E'));var bdcs = document.createElement('script');bdcs.type = 'text/javascript';bdcs.async = true;bdcs.src = 'http://znsv.baidu.com/customer_search/api/js?sid=5890444423123324781' + '&plate_url=' + encodeURIComponent(window.location.href) + '&t=' + Math.ceil(new Date()/3600000);var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bdcs, s);})();</script> 
 <!-- S header -->
 <div class="header">
 		   <div class="header-top-bg">
@@ -22,7 +23,9 @@ $(function(){
 					
 						<a href="${pageContext.request.contextPath}/list/findScore">成绩查询</a>|<a href="${pageContext.request.contextPath}/list/classTable">课表查询</a>|<a href="${pageContext.request.contextPath}/apply/show/stuLogin">在线报名</a>
 						<div class="search">
-						   <input type="text" name="" class="searchinput" placeholder="输入搜索关键词">
+						  <form class="search-form">
+						   <input type="text" name="" class="searchinput"  id="bdcsMain" placeholder="输入搜索关键词">
+					      </form>
 					    </div>
 				    
 				</div>
