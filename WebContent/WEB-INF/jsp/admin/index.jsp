@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +72,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 	    		<div class="last-update-content">
 	    			<ul>
 	    			  <c:forEach items="${news}" var="news_list">
-	    				<li><span>${news_list.addTime}</span><a href="${CTP}/admin/distribute/trends?id=${news_list.id}">${news_list.itemTitle}</a></li>
+	    				<li><span><fmt:formatDate value="${news_list.addTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span><a href="${CTP}/admin/distribute/trends?id=${news_list.id}">${news_list.itemTitle}</a></li>
 	    			  </c:forEach>
 	    			</ul>
 	    		</div>
@@ -81,7 +82,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 	    		<div class="last-update-content">
 	    			<ul>
 	    			  <c:forEach items="${notice}" var="notice_list">
-	    				<li><span>${notice_list.addTime}</span><a href="${CTP}/admin/distribute/trends?id=${notice_list.id}">${notice_list.itemTitle}</a></li>
+	    				<li><span><fmt:formatDate value="${notice_list.addTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span><a href="${CTP}/admin/distribute/trends?id=${notice_list.id}">${notice_list.itemTitle}</a></li>
 	    			  </c:forEach>
 	    			</ul>
 	    		</div>
@@ -92,7 +93,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 	    			<ul>
 	    			
 	    			<c:forEach  items="${affairs}" var="affairs_list">
-	    				<li><span>${affairs_list.addTime}</span><a href="${CTP}/admin/distribute/culture?id=${affairs_list.id}">${affairs_list.itemTitle}</a></li>
+	    				<li><span><fmt:formatDate value="${affairs_list.addTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span><a href="${CTP}/admin/distribute/culture?id=${affairs_list.id}">${affairs_list.itemTitle}</a></li>
 	    			</c:forEach>
 	    			</ul>
 	    		</div>

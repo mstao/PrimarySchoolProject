@@ -136,7 +136,7 @@
                 <p>任何疑问请联系网站管理员</p>
             </div>
 
-            <div class="p"><button type="button"      onclick="window.location.href='${pageContext.request.contextPath}/main/index'">返回主页</button>  <button type="button"      onclick="self.location=document.referrer;">返回上一页</button></div>
+            <div class="p"><button type="button"      onclick="window.location.href='${pageContext.request.contextPath}/main/index'">返回主页</button>  <button type="button"      onclick="javascript:history.back(-1);">返回上一页</button></div>
         </div>
     </div>
     <div class="footer text-center">
