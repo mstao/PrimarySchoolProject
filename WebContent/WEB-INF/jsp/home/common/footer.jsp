@@ -12,7 +12,7 @@ $(function(){
 	});
 	
 });
-</script>
+</script>-
 
 <!-- S FOOTER -->
 <div class="footer-bg">

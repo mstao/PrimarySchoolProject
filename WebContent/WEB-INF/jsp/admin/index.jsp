@@ -34,7 +34,7 @@ var CTPPATH="${pageContext.request.contextPath}";
   <shiro:hasRole name="superadmin">
 	<span class="web_summary_span">网站概要</span>
 	<div class="web_summary_content">
-		<span class="current_tag">目前网站有</span>
+		<%-- <span class="current_tag">目前网站有</span>
 		<table>
 			<tr>
 				<td>${SCHOOL_TRENDS }:</td><td><span><em>20</em></span> 条新闻</td>
@@ -47,7 +47,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 				<td>${SCHOOL_MANAGE }:</td><td><span><em>20</em></span> 条新闻</td>
 			</tr>
 
-		</table>
+		</table> --%>
 		
 		<span class="link_operation_span">点击下面的链接快速操作</span>
 		<div class="operate_div">

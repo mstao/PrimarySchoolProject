@@ -21,6 +21,7 @@
 <script type="text/javascript" src="${CTP_HOME}/js/lib/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/loadinfo.js" ></script>
 <script type="text/javascript" src="${CTP_HOME}/js/module/common.js" ></script>
+<script src="${CTP}/resources/common/layui/layui.js"></script>
 <script type="text/javascript">
 
 var CTPPATH="${pageContext.request.contextPath}";
@@ -41,6 +42,29 @@ $(function() {
 	});
 	
 	
+	//根据日期判断是否显示最新图标
+	$('.pub-data').each(function(){
+		//获取日期的标志月份信息
+		var data_m=$(this).text().substring(6,8);
+		//获取日期的标志年份信息
+		var data_y=$(this).text().substring(1,5);
+		
+		//获取系统时间的月份
+		var today = new Date();
+		var month=today.getMonth()+1;
+		var year=today.getFullYear();
+		if(month!=data_m || data_y!=year ){
+			$(this).next().hide();
+		}
+	});
+	
+
+});
+
+layui.use('flow', function(){
+	  var flow = layui.flow;
+	  //图片懒加载
+	  flow.lazyimg(); 
 });
 </script>
 </head>
@@ -60,7 +84,7 @@ $(function() {
 		        <div class="slider-wrapper theme-default">
 		            <div id="slider" class="nivoSlider">
 		            <c:forEach items="${indexImages}" var="indexImages"> 
-		                <img src="${indexImages.imgPath}" data-thumb="${indexImages.imgPath}" alt="" />
+		                <img lay-src="${indexImages.imgPath}" data-thumb="${indexImages.imgPath}" alt="" />
 		            </c:forEach>  
 		            </div>
 		          <!--   <div id="htmlcaption" class="nivo-html-caption">
@@ -83,10 +107,10 @@ $(function() {
 					<div class="slider-news slide-s">
 					<ul>
 				    <c:forEach items="${sildeNews}" var="s_list">  
-						<li ><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath }" alt="${s_list.itemTitle}"  /></a></li>
+						<li ><a href="${CTP}/details/trends?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img lay-src="${s_list.imagePath }" alt="${s_list.itemTitle}"  /></a></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeNews}">
-				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
+				       <li class="slider-li"><img lay-src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
 				     </c:if>
 					</ul>
 				    </div>
@@ -137,7 +161,7 @@ $(function() {
 					<ul>
 				     
 				     <c:forEach items="${sildeEdu}" var="s_list">  
-						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
+						<li class="slider-li"><a href="${CTP}/details/education?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img lay-src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 					</c:forEach>	
 				     <c:if test="${empty sildeEdu}">
 				       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -199,7 +223,7 @@ $(function() {
 					<ul>
 				     
 						<c:forEach items="${slideStudent}" var="s_list">  
-							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/student?id=${s_list.id}&flag=${s_list.itemTypeFlag}" target="_blank" ><img lay-src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 						</c:forEach>	
 					     <c:if test="${empty slideStudent}">
 					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
@@ -262,7 +286,7 @@ $(function() {
 					<ul>
 				     
 						<c:forEach items="${slideTeacher}" var="s_list">  
-							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/teacher?id=${s_list.id}&flag=teachers" target="_blank" ><img src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
+							<li class="slider-li"><a href="${CTP}/details/${CTP}/details/teacher?id=${s_list.id}&flag=teachers" target="_blank" ><img lay-src="${s_list.imagePath}" alt="${s_list.itemTitle}"  /></a></li>
 						</c:forEach>	
 					     <c:if test="${empty slideTeacher}">
 					       <li class="slider-li"><img src="${CTP_HOME}/img/noimage.gif" alt="暂无图片"  /></li>
