@@ -39,8 +39,8 @@ public class AdminContactCopyrightController<T> {
 	* @throws
 	 */
 	@RequestMapping("/contact")
-	public String contact(ModelMap map){
-		Contact contact=(Contact) contactServcie.findContactInfo();
+	public String contact(ModelMap map) {
+		Contact contact = (Contact) contactServcie.findContactInfo();
 		
 		map.put("contact", contact);
 		return "admin/contact/contact";
@@ -55,9 +55,9 @@ public class AdminContactCopyrightController<T> {
 	* @throws
 	 */
 	@RequestMapping("/copyright")
-	public String copyright(ModelMap map){
+	public String copyright(ModelMap map) {
 		
-		CopyRight  copyRight=(CopyRight)copyRightService.findCopyRightInfo();
+		CopyRight  copyRight = (CopyRight)copyRightService.findCopyRightInfo();
 		
 		map.put("copyRight", copyRight);
 		return "admin/copyright/copyright";
@@ -72,8 +72,8 @@ public class AdminContactCopyrightController<T> {
 	* @throws
 	 */
 	@RequestMapping("/editContact")
-	public String editContact(ModelMap map){
-        Contact contact=(Contact) contactServcie.findContactInfo();
+	public String editContact(ModelMap map) {
+        Contact contact = (Contact) contactServcie.findContactInfo();
 		
 		map.put("contact", contact);
 		return "admin/write/writeContact";
@@ -92,29 +92,31 @@ public class AdminContactCopyrightController<T> {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/dealEditContact")
 	@ResponseBody
-	public String dealEditContact(Contact contact){
+	public String dealEditContact(Contact contact) {
 		//判断id是否有值
-		int id=contact.getId();
-		String sid=id+"";
+		int id = contact.getId();
+		String sid = id+"";
 		
 		int result;
 		//如果没有值，代表将要进行添加操作
-		if(sid.equals("0")){
-			result=contactServcie.saveContactInfo((T)contact);	
-		}else{
+		if(sid.equals("0")) {
+			result = contactServcie.saveContactInfo((T)contact);	
+		} else {
 			//进行修改操作
-			boolean r=contactServcie.updateContactInfo((T)contact);
-			if(r==true){
-				result=1;
-			}else{
-				result=0;
+			boolean r = contactServcie.updateContactInfo((T)contact);
+			if(r == true) {
+				result = 1;
+			} else {
+				result = 0;
 			}
 		}
 		
 	
 		
-		return result+"";
+		return result + "";
 	}
+	
+	
 	/**
 	 * 
 	* @Title: editCopyright
@@ -124,8 +126,8 @@ public class AdminContactCopyrightController<T> {
 	* @throws
 	 */
 	@RequestMapping("/editCopyRight")
-	public String editCopyright(ModelMap map){
-		CopyRight  copyRight=(CopyRight)copyRightService.findCopyRightInfo();
+	public String editCopyright(ModelMap map) {
+		CopyRight  copyRight = (CopyRight)copyRightService.findCopyRightInfo();
 		
 		map.put("copyRight", copyRight);
 		return "admin/write/writeCopyRight";
@@ -143,25 +145,25 @@ public class AdminContactCopyrightController<T> {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/dealEditCopyRight")
 	@ResponseBody
-	public String dealEditCopyRight(CopyRight copyRight){
+	public String dealEditCopyRight(CopyRight copyRight) {
 		//判断id是否有值
-		int id=copyRight.getId();
-		String sid=id+"";
+		int id = copyRight.getId();
+		String sid = id + "";
 		
 		int result;
 		//如果没有值，代表将要进行添加操作
-		if(sid.equals("0")){
+		if(sid.equals("0")) {
 			result=copyRightService.saveCopyRightInfo((T) copyRight);
-		}else{
+		} else {
 			//进行修改操作
-			boolean r=copyRightService.updateCopyRightInfo((T) copyRight);
-			if(r==true){
-				result=1;
+			boolean r = copyRightService.updateCopyRightInfo((T) copyRight);
+			if(r == true){
+				result = 1;
 			}else{
-				result=0;
+				result = 0;
 			}
 		}
 					
-		return result+"";
+		return result + "";
 	}
 }

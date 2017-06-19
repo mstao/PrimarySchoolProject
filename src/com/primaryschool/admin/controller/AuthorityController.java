@@ -53,10 +53,10 @@ public class AuthorityController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/roleList")
-	public String showRoleList(ModelMap map){
+	public String showRoleList(ModelMap map) {
 		
 		//获取角色列表
-		ArrayList<SecurityRole> roles=(ArrayList<SecurityRole>) authorityServcie.findAllRoles();
+		ArrayList<SecurityRole> roles = (ArrayList<SecurityRole>) authorityServcie.findAllRoles();
 		
 		map.put("roles", roles);
 		return "admin/authority/role-list";
@@ -71,7 +71,7 @@ public class AuthorityController<T> {
 	* @throws
 	 */
 	@RequestMapping("/showAddRole")
-	public String showAddRole(){
+	public String showAddRole() {
 		return "admin/authority/add-role";
 	}
 	
@@ -86,22 +86,22 @@ public class AuthorityController<T> {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/findRoleByName")
-	public  void findRoleByName(String token,HttpServletResponse response){
+	public  void findRoleByName(String token,HttpServletResponse response) {
 		PrintWriter out=null;
 		//获取权限列表
-		ArrayList<SecurityRole> roles=(ArrayList<SecurityRole>) authorityServcie.findRoleByName(token);
+		ArrayList<SecurityRole> roles = (ArrayList<SecurityRole>) authorityServcie.findRoleByName(token);
 		 //调用fastjson生成json信息
 		String json = JSON.toJSONString(roles, true);
 		System.out.println(json);
 		response.setContentType("application/json");
 		try {
-			out=response.getWriter();
+			out = response.getWriter();
 			out.write(json);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	
@@ -117,26 +117,26 @@ public class AuthorityController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/allocation")
-	public String showAllotRole(int p,ModelMap map){
+	public String showAllotRole(int p,ModelMap map) {
 		 
-		   String sp=p+"";
-		   if(sp.equals("")){
-				p=1;
+		   String sp = p+"";
+		   if("".equals(sp)){
+				p = 1;
 		   }
 		   //当前的url
-		   String url="./allocation?p=";
+		   String url = "./allocation?p=";
 			
 		   //获取总记录量
-		   int count=authorityServcie.findUserCount();
+		   int count = authorityServcie.findUserCount();
 		   //计算偏移量
-		   int position=(p-1)*pageSize;
-		   ArrayList<SecurityUser> user=(ArrayList<SecurityUser>) authorityServcie.findAllUser(position, pageSize);
+		   int position = (p-1)*pageSize;
+		   ArrayList<SecurityUser> user = (ArrayList<SecurityUser>) authorityServcie.findAllUser(position, pageSize);
 		 
 		   //获取封装好的分页导航数据
-	       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+	       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
 
-			//获取角色列表
-			ArrayList<SecurityRole> roles=(ArrayList<SecurityRole>) authorityServcie.findAllRoles();
+		   //获取角色列表
+		   ArrayList<SecurityRole> roles = (ArrayList<SecurityRole>) authorityServcie.findAllRoles();
 			
 		   map.put("roles", roles);
 	       map.put("user", user);
@@ -158,17 +158,17 @@ public class AuthorityController<T> {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/updateUserRole")
 	@ResponseBody
-	public String  updateUserRole(SecurityUserToRole userToRole){
+	public String  updateUserRole(SecurityUserToRole userToRole) {
 		int r;
 		//更新数据
-		boolean result=authorityServcie.updateUserRole((T) userToRole);
+		boolean result = authorityServcie.updateUserRole((T) userToRole);
 		//返回结果
-		if(result==true){
-			r=1;
+		if(result == true){
+			r = 1;
 		}else{
-			r=0;
+			r = 0;
 		}
-		return r+"";
+		return r + "";
 	}
 	
 	/**
@@ -182,22 +182,22 @@ public class AuthorityController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/findUserByName")
-	public  void findUserByName(String token,HttpServletResponse response){
+	public  void findUserByName(String token,HttpServletResponse response) {
 		PrintWriter out=null;
 		//获取权限列表
-		ArrayList<SecurityUser> roles=(ArrayList<SecurityUser>) authorityServcie.findUserByName(token);
+		ArrayList<SecurityUser> roles = (ArrayList<SecurityUser>) authorityServcie.findUserByName(token);
 		 //调用fastjson生成json信息
 		String json = JSON.toJSONString(roles, true);
 		System.out.println(json);
 		response.setContentType("application/json");
 		try {
-			out=response.getWriter();
+			out = response.getWriter();
 			out.write(json);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	}
@@ -214,8 +214,8 @@ public class AuthorityController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/resources")
-	public String resources(ModelMap map){
-		ArrayList<SecurityResources> resources=(ArrayList<SecurityResources>) authorityServcie.findResources();
+	public String resources(ModelMap map) {
+		ArrayList<SecurityResources> resources = (ArrayList<SecurityResources>) authorityServcie.findResources();
 	
 		map.put("resources", resources);
 		return "admin/authority/resources-list";

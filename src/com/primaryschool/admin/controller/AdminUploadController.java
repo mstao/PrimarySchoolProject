@@ -93,7 +93,7 @@ public class AdminUploadController<T> {
 	@RequestMapping(value="/uploadfile",method=RequestMethod.POST)
 	@ResponseBody
 	public void uploadFile( HttpServletRequest request, HttpServletResponse response)
-			 throws ServletException, IOException{
+			 throws ServletException, IOException {
 		    // 从request中取时, 以UTF-8编码解析
 			request.setCharacterEncoding( "UTF-8" );
 			String fileName = null;
@@ -106,18 +106,18 @@ public class AdminUploadController<T> {
 
 			new java.io.File( path ).mkdir();
 		
-	        MultipartHttpServletRequest multipartRequest =(MultipartHttpServletRequest) request;
+	        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 	        
 	        //获取参数列表
 	        //获取id
-	        String[] sid=multipartRequest.getParameterValues("item_id");
+	        String[] sid = multipartRequest.getParameterValues("item_id");
 	        //获取类型
-	        String[] type=multipartRequest.getParameterValues("item_type");
+	        String[] type = multipartRequest.getParameterValues("item_type");
 	  
-	        if(!sid.equals("")){
+	        if(!"".equals(sid)){
 	        	id=Integer.parseInt(sid[0]);
 	        }
-	        if(!type.equals("")){
+	        if(!"".equals(type)){
 	        	flag=type[0];
 	        }
 	        System.out.println("ID="+id+"flag="+flag);
@@ -134,21 +134,21 @@ public class AdminUploadController<T> {
                 String uuid = UUID.randomUUID().toString().replaceAll("\\-", "");
                 String suffix = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf("."), fileName.length()) : null;
                 // 构成新文件名
-                String newFileName =uuid + (suffix!=null?suffix:"");
+                String newFileName = uuid + (suffix!=null?suffix:"");
                 File uploadFile = new File(path, newFileName); 
                 
 	            try {  
 	                    FileCopyUtils.copy(mf.getBytes(), uploadFile); 
-	                    String filePath =path+newFileName;
+	                    String filePath = path+newFileName;
 	                    System.out.println(filePath);
 	                    //将信息写到数据库
 	                    
 	                    //将数据整理一下
 	                    //获取当前时间
-	                    String date=GetDateUtil.getAllDate();
+	                    String date = GetDateUtil.getAllDate();
 	                    //由typeFlag转化为id
-	                    int belongId=fileService.findBelongIdByTypeFlag(flag);
-	                    FileBean file=new FileBean();
+	                    int belongId = fileService.findBelongIdByTypeFlag(flag);
+	                    FileBean file = new FileBean();
 	                    file.setAddTime(date);
 	                    file.setFileName(fileName);
 	                    file.setRealName(newFileName);
@@ -180,18 +180,18 @@ public class AdminUploadController<T> {
 	@RequestMapping(value="/uploadimage",method=RequestMethod.POST)
 	@ResponseBody
 	public  String uploadImage(HttpServletRequest request, HttpServletResponse response)
-			 throws ServletException, IOException{
+			 throws ServletException, IOException {
 		 // 从request中取时, 以UTF-8编码解析
 		request.setCharacterEncoding( "UTF-8" );
 		String fileName = null;
-	    String filePath=null;
+	    String filePath = null;
 		// 获取上传文件存放的 目录 , 无则创建
 		String path = request.getServletContext().getRealPath( "/resources/Uploads/images" );
 		System.out.println("path : " + path);
 
 		new java.io.File( path ).mkdir();
 	
-        MultipartHttpServletRequest multipartRequest =(MultipartHttpServletRequest) request;
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
 
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap(); 
         
@@ -206,14 +206,14 @@ public class AdminUploadController<T> {
             String uuid = UUID.randomUUID().toString().replaceAll("\\-", "");
             String suffix = fileName.indexOf(".") != -1 ? fileName.substring(fileName.lastIndexOf("."), fileName.length()) : null;
             // 构成新文件名
-            String newFileName =uuid + (suffix!=null?suffix:"");
+            String newFileName = uuid + (suffix!=null?suffix:"");
             File uploadFile = new File(path, newFileName); 
             
             try {  
                     FileCopyUtils.copy(mf.getBytes(), uploadFile); 
                    
-                    String filep=request.getContextPath();
-                    filePath =filep+"/resources/Uploads/images/"+newFileName;
+                    String filep = request.getContextPath();
+                    filePath = filep+"/resources/Uploads/images/"+newFileName;
                     System.out.println(filePath);
    
 

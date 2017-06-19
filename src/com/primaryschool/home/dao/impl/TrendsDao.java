@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.primaryschool.home.dao.ITrendsDao;
 import com.primaryschool.home.dao.ITypeFlagToTypeIdDao;
-import com.primaryschool.home.entity.Trends;
 
 /**
  * 

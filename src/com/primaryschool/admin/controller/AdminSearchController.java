@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
-import com.primaryschool.admin.entity.CourseScore;
 import com.primaryschool.admin.entity.CourseStudentInfo;
-import com.primaryschool.admin.entity.CourseType;
-import com.primaryschool.admin.service.IAdminCourseScoreService;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminDepartmentService;
 import com.primaryschool.admin.service.IAdminEducationService;
@@ -33,21 +30,13 @@ import com.primaryschool.home.entity.ClassHomePage;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.DepartmentLinkContent;
 import com.primaryschool.home.entity.Education;
-import com.primaryschool.home.entity.Grade;
 import com.primaryschool.home.entity.Manage;
 import com.primaryschool.home.entity.Party;
-import com.primaryschool.home.entity.Sclass;
 import com.primaryschool.home.entity.Student;
 import com.primaryschool.home.entity.StudentLabMenuContent;
 import com.primaryschool.home.entity.Teacher;
 import com.primaryschool.home.entity.TeachingResourcesContent;
 import com.primaryschool.home.entity.Trends;
-import com.primaryschool.home.service.IBaseFileService;
-import com.primaryschool.home.service.IGradeService;
-import com.primaryschool.home.service.ILabClassService;
-import com.primaryschool.home.service.IPageHelperService;
-import com.primaryschool.home.service.ISclassService;
-import com.primaryschool.home.service.ITeachingResourcesService;
 import com.primaryschool.home.service.ITypeFlagToTypeNameService;
 
 /**
@@ -72,11 +61,6 @@ public class AdminSearchController<T> {
 	    @Autowired
 	    private IAdminStudentService<T> studentService;
 	    
-	    @Autowired
-	    private IGradeService<Grade> gradeService;
-		//前台Service,用于classList.jsp页面
-		@Autowired
-		private ISclassService<Sclass> sclassService;
 		//后台Service,用于后台班级主页管理
 		@Autowired
 		private IAdminSclassService<T> classService;
@@ -84,8 +68,6 @@ public class AdminSearchController<T> {
 	    @Autowired
 	    private IAdminTeacherService<T> teacherService;
 	    
-	    @Autowired
-	    private IAdminCourseScoreService<T> courseScoreService;
 	    
 	    @Autowired
 	    private IAdminPartyService<T> partyService;
@@ -104,240 +86,221 @@ public class AdminSearchController<T> {
 	    private IAdminLabClassService<T> labClassService;
 	    
 	    @Autowired
-	    private IPageHelperService pageHelperService;
-	    
-	    @Autowired
 	    private ITypeFlagToTypeNameService typeFlagToTypeNameService;
-	    
-		//获取所有的resource类型
-	    @Autowired
-		private ITeachingResourcesService<T> teachingResources;
-	    //获取所有的lab类型
-	    @Autowired
-		private ILabClassService<T> labService;
-	    
+	    	   
 	    @Autowired
 	    private IAdminStuInfoService<T> stuInfoService;
 	    
-	    @Autowired
-	    private IBaseFileService<T> baseFileServcie;
 
 	//校园文化
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked","rawtypes"})
 	@RequestMapping("/culture")
 	@ResponseBody
-	public void culture(String flag,String token,HttpServletResponse response){
+	public void culture(String flag,String token,HttpServletResponse response) {
 		response.setCharacterEncoding("UTF-8");
-		
-		PrintWriter out=null;
-	try{
-		ArrayList<Culture> culture=(ArrayList<Culture>) cultureService.searchInfo(flag,token);
-		
-		//根据typeFlag获取typeName
-        String typeName=typeFlagToTypeNameService.findCultureTypeNameByTypeFlag(flag);
-		System.out.println(typeName);
-        @SuppressWarnings("rawtypes")
-		HashMap map=new HashMap();
-        map.put("typeName", typeName);
-        map.put("culture", culture);
-        String json=JSON.toJSONString(map,true);
-        response.setContentType("application/json");
-		System.out.println(json);
-		
-			out=response.getWriter();
-	        out.write(json);
-		}catch(Exception e){
+		response.setContentType("application/json");
+		PrintWriter out = null;
+	    try{
+			ArrayList<Culture> culture = (ArrayList<Culture>) cultureService.searchInfo(flag,token);
+			
+			//根据typeFlag获取typeName
+	        String typeName = typeFlagToTypeNameService.findCultureTypeNameByTypeFlag(flag);
+			System.out.println(typeName);
+	        
+			HashMap map = new HashMap();
+	        map.put("typeName", typeName);
+	        map.put("culture", culture);
+	        String json = JSON.toJSONString(map,true);
+	       
+			System.out.println(json);
+			
+			out = response.getWriter();
+		    out.write(json);
+		} catch(Exception e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	}
 	
 	
 		//校园动态
-		@SuppressWarnings("unchecked")
+	    @SuppressWarnings({"unchecked","rawtypes"})
 		@RequestMapping("/trends")
 		@ResponseBody
-		public void trends(String flag,String token,HttpServletResponse response){
+		public void trends(String flag,String token,HttpServletResponse response) {
 			response.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out=null;
-		try{
-			ArrayList<Trends> culture=(ArrayList<Trends>) trendsService.searchInfo(flag,token);
-			
-			//根据typeFlag获取typeName
-	        String typeName=typeFlagToTypeNameService.findTrendsTypeNameByTypeFlag(flag);
-			System.out.println(typeName);
-	        @SuppressWarnings("rawtypes")
-			HashMap map=new HashMap();
-	        map.put("typeName", typeName);
-	        map.put("culture", culture);
-	        String json=JSON.toJSONString(map,true);
 	        response.setContentType("application/json");
-			System.out.println(json);
-			
-				out=response.getWriter();
-		        out.write(json);
-			}catch(Exception e){
+			PrintWriter out = null;
+		    try{
+				ArrayList<Trends> culture = (ArrayList<Trends>) trendsService.searchInfo(flag,token);
+				
+				//根据typeFlag获取typeName
+		        String typeName = typeFlagToTypeNameService.findTrendsTypeNameByTypeFlag(flag);
+				System.out.println(typeName);
+				HashMap map = new HashMap();
+		        map.put("typeName", typeName);
+		        map.put("culture", culture);
+		        String json = JSON.toJSONString(map,true);
+		
+				System.out.println(json);
+				
+				out = response.getWriter();
+			    out.write(json);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
 		
 		//阳光德育
-		@SuppressWarnings("unchecked")
+	    @SuppressWarnings({"unchecked","rawtypes"})
 		@RequestMapping("/education")
 		@ResponseBody
-		public void education(String flag,String token,HttpServletResponse response){
+		public void education(String flag,String token,HttpServletResponse response) {
 			response.setCharacterEncoding("UTF-8");
+		    response.setContentType("application/json");
+			PrintWriter out = null;
+		    try{
+				ArrayList<Education> culture = (ArrayList<Education>) educationService.searchInfo(flag,token);
+				
+				//根据typeFlag获取typeName
+		        String typeName = typeFlagToTypeNameService.findEducationTypeNameByTypeFlag(flag);
+				System.out.println(typeName);
+		    
+				HashMap map = new HashMap();
+		        map.put("typeName", typeName);
+		        map.put("culture", culture);
+		        String json = JSON.toJSONString(map,true);
+		      
+				System.out.println(json);
 			
-			PrintWriter out=null;
-		try{
-			ArrayList<Education> culture=(ArrayList<Education>) educationService.searchInfo(flag,token);
-			
-			//根据typeFlag获取typeName
-	        String typeName=typeFlagToTypeNameService.findEducationTypeNameByTypeFlag(flag);
-			System.out.println(typeName);
-	        @SuppressWarnings("rawtypes")
-			HashMap map=new HashMap();
-	        map.put("typeName", typeName);
-	        map.put("culture", culture);
-	        String json=JSON.toJSONString(map,true);
-	        response.setContentType("application/json");
-			System.out.println(json);
-			
-				out=response.getWriter();
+				out = response.getWriter();
 		        out.write(json);
-			}catch(Exception e){
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
 		
 		//学生天地
-		@SuppressWarnings("unchecked")
+	    @SuppressWarnings({"unchecked","rawtypes"})
 		@RequestMapping("/student")
 		@ResponseBody
-		public void student(String flag,String token,HttpServletResponse response){
+		public void student(String flag,String token,HttpServletResponse response) {
 			response.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out=null;
-		try{
-			ArrayList<Student> culture=(ArrayList<Student>) studentService.searchInfo(flag,token);
-			
-			//根据typeFlag获取typeName
-	        String typeName=typeFlagToTypeNameService.findStudentTypeNameByTypeFlag(flag);
-			System.out.println(typeName);
-	        @SuppressWarnings("rawtypes")
-			HashMap map=new HashMap();
-	        map.put("typeName", typeName);
-	        map.put("culture", culture);
-	        String json=JSON.toJSONString(map,true);
-	        response.setContentType("application/json");
-			System.out.println(json);
-			
+			response.setContentType("application/json");
+			PrintWriter out = null;
+		    try{
+				ArrayList<Student> culture = (ArrayList<Student>) studentService.searchInfo(flag,token);
+				
+				//根据typeFlag获取typeName
+		        String typeName = typeFlagToTypeNameService.findStudentTypeNameByTypeFlag(flag);
+				System.out.println(typeName);
+				HashMap map = new HashMap();
+		        map.put("typeName", typeName);
+		        map.put("culture", culture);
+		        String json = JSON.toJSONString(map,true);
+		        
+				System.out.println(json);
+				
 				out=response.getWriter();
-		        out.write(json);
-			}catch(Exception e){
+			    out.write(json);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
 		
 		//教师园地
-		@SuppressWarnings("unchecked")
+	    @SuppressWarnings({"unchecked","rawtypes"})
 		@RequestMapping("/teacher")
 		@ResponseBody
-		public void teacher(String flag,String token,HttpServletResponse response){
+		public void teacher(String flag,String token,HttpServletResponse response) {
 			response.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out=null;
-		try{
-			ArrayList<Teacher> culture=(ArrayList<Teacher>) teacherService.searchInfo(flag,token);
-			
-			//根据typeFlag获取typeName
-	        String typeName=typeFlagToTypeNameService.findTeacherTypeNameByTypeFlag(flag);
-			System.out.println(typeName);
-	        @SuppressWarnings("rawtypes")
-			HashMap map=new HashMap();
-	        map.put("typeName", typeName);
-	        map.put("culture", culture);
-	        String json=JSON.toJSONString(map,true);
-	        response.setContentType("application/json");
-			System.out.println(json);
-			
-				out=response.getWriter();
-		        out.write(json);
-			}catch(Exception e){
+			response.setContentType("application/json");
+			PrintWriter out = null;
+		    try{
+				ArrayList<Teacher> culture=(ArrayList<Teacher>) teacherService.searchInfo(flag,token);
+				
+				//根据typeFlag获取typeName
+		        String typeName = typeFlagToTypeNameService.findTeacherTypeNameByTypeFlag(flag);
+				System.out.println(typeName);
+				HashMap map = new HashMap();
+		        map.put("typeName", typeName);
+		        map.put("culture", culture);
+		        String json = JSON.toJSONString(map,true);
+				System.out.println(json);
+				
+				out = response.getWriter();
+			    out.write(json);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
 		
 		
 		//党务工会
-		@SuppressWarnings("unchecked")
+	    @SuppressWarnings({"unchecked","rawtypes"})
 		@RequestMapping("/party")
 		@ResponseBody
 		public void party(String flag,String token,HttpServletResponse response){
 			response.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out=null;
-		try{
-			ArrayList<Party> culture=(ArrayList<Party>) partyService.searchInfo(flag,token);
-			
-			//根据typeFlag获取typeName
-	        String typeName=typeFlagToTypeNameService.findPartyTypeNameByTypeFlag(flag);
-			System.out.println(typeName);
-	        @SuppressWarnings("rawtypes")
-			HashMap map=new HashMap();
-	        map.put("typeName", typeName);
-	        map.put("culture", culture);
-	        String json=JSON.toJSONString(map,true);
-	        response.setContentType("application/json");
-			System.out.println(json);
-			
-				out=response.getWriter();
-		        out.write(json);
-			}catch(Exception e){
+			response.setContentType("application/json");
+			PrintWriter out = null;
+	    	try{
+				ArrayList<Party> culture = (ArrayList<Party>) partyService.searchInfo(flag,token);
+				
+				//根据typeFlag获取typeName
+		        String typeName = typeFlagToTypeNameService.findPartyTypeNameByTypeFlag(flag);
+				System.out.println(typeName);
+				HashMap map = new HashMap();
+		        map.put("typeName", typeName);
+		        map.put("culture", culture);
+		        String json = JSON.toJSONString(map,true);
+				System.out.println(json);
+				
+			    out = response.getWriter();
+			    out.write(json);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
 		
 		
 		//党务工会
-		@SuppressWarnings("unchecked")
+	    @SuppressWarnings({"unchecked","rawtypes"})
 		@RequestMapping("/manage")
 		@ResponseBody
-		public void manage(String flag,String token,HttpServletResponse response){
+		public void manage(String flag,String token,HttpServletResponse response) {
 			response.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out=null;
-		try{
-			ArrayList<Manage> culture=(ArrayList<Manage>) manageService.searchInfo(flag,token);
-			
-			//根据typeFlag获取typeName
-	        String typeName=typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
-			System.out.println(typeName);
-	        @SuppressWarnings("rawtypes")
-			HashMap map=new HashMap();
-	        map.put("typeName", typeName);
-	        map.put("culture", culture);
-	        String json=JSON.toJSONString(map,true);
-	        response.setContentType("application/json");
-			System.out.println(json);
-			
-				out=response.getWriter();
-		        out.write(json);
-			}catch(Exception e){
+			response.setContentType("application/json");
+			PrintWriter out = null;
+		    try{
+				ArrayList<Manage> culture = (ArrayList<Manage>) manageService.searchInfo(flag,token);
+				
+				//根据typeFlag获取typeName
+		        String typeName = typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
+				System.out.println(typeName);
+				HashMap map = new HashMap();
+		        map.put("typeName", typeName);
+		        map.put("culture", culture);
+		        String json = JSON.toJSONString(map,true);
+		   
+				System.out.println(json);
+				
+				out = response.getWriter();
+			    out.write(json);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
@@ -347,22 +310,19 @@ public class AdminSearchController<T> {
 		@SuppressWarnings("unchecked")
 		@RequestMapping("/department")
 		@ResponseBody
-		public void department(String flag,String token,HttpServletResponse response){
+		public void department(String flag,String token,HttpServletResponse response) {
 			response.setCharacterEncoding("UTF-8");
-			
-			PrintWriter out=null;
-		try{
-			ArrayList<DepartmentLinkContent> departmentLinkContent=(ArrayList<DepartmentLinkContent>) departmentService.searchInfo(flag,token);
-			
-	        String json=JSON.toJSONString(departmentLinkContent,true);
-	        response.setContentType("application/json");
-			System.out.println(json);
-			
-				out=response.getWriter();
-		        out.write(json);
-			}catch(Exception e){
+			response.setContentType("application/json");
+			PrintWriter out = null;
+		    try{
+				ArrayList<DepartmentLinkContent> departmentLinkContent = (ArrayList<DepartmentLinkContent>) departmentService.searchInfo(flag,token);			
+		        String json = JSON.toJSONString(departmentLinkContent,true);		      
+				System.out.println(json);				
+				out = response.getWriter();
+			    out.write(json);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
@@ -372,20 +332,19 @@ public class AdminSearchController<T> {
 		@SuppressWarnings("unchecked")
 		@RequestMapping("/labclassinfo")
 		@ResponseBody
-		public void labclassinfo(String flag,String token,HttpServletResponse response) throws IOException{
+		public void labclassinfo(String flag,String token,HttpServletResponse response) throws IOException {
 			response.setCharacterEncoding("UTF-8");
-			PrintWriter out=null;
+			response.setContentType("application/json");
+			PrintWriter out = null;
 			try{
-				ArrayList<StudentLabMenuContent> studentLabMenuContent=(ArrayList<StudentLabMenuContent>) labClassService.searchInfo(flag,token);
-				String json=JSON.toJSONString(studentLabMenuContent,true);
-				System.out.println(json);
-				
-				response.setContentType("application/json");
-				out=response.getWriter();
+				ArrayList<StudentLabMenuContent> studentLabMenuContent = (ArrayList<StudentLabMenuContent>) labClassService.searchInfo(flag,token);
+				String json = JSON.toJSONString(studentLabMenuContent,true);
+				System.out.println(json);							
+				out = response.getWriter();
 				out.write(json);
-			}catch(RuntimeException e){
+			} catch(RuntimeException e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
@@ -397,17 +356,18 @@ public class AdminSearchController<T> {
 		@ResponseBody
 		public void resource(int flag,String token,HttpServletResponse response) throws IOException{
 			response.setCharacterEncoding("UTF-8");
-			PrintWriter out=null;
+			response.setContentType("application/json");
+			PrintWriter out = null;
 			try{
-				ArrayList<TeachingResourcesContent> teachingResourcesContent=(ArrayList<TeachingResourcesContent>)teachingResourcesService.searchInfo(flag,token);
-				String json=JSON.toJSONString(teachingResourcesContent,true);
+				ArrayList<TeachingResourcesContent> teachingResourcesContent = (ArrayList<TeachingResourcesContent>)teachingResourcesService.searchInfo(flag,token);
+				String json = JSON.toJSONString(teachingResourcesContent,true);
 				System.out.println(json);
-				out=response.getWriter();
+				out = response.getWriter();
 				out.write(json);
-				response.setContentType("application/json");
-			}catch(Exception e){
+				
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
@@ -418,17 +378,18 @@ public class AdminSearchController<T> {
 		@ResponseBody
 		public void sclassHomePage(int flag,String token,HttpServletResponse response) throws IOException{
 			response.setCharacterEncoding("UTF-8");
-			PrintWriter out=null;
+			response.setContentType("application/json");
+			PrintWriter out = null;
 			try{
-				ArrayList<ClassHomePage> sclassHomePage=(ArrayList<ClassHomePage>)classService.searchInfo(flag,token);
-				String json=JSON.toJSONString(sclassHomePage,true);
+				ArrayList<ClassHomePage> sclassHomePage = (ArrayList<ClassHomePage>)classService.searchInfo(flag,token);
+				String json = JSON.toJSONString(sclassHomePage,true);
 				System.out.println(json);
-				out=response.getWriter();
+				out = response.getWriter();
 				out.write(json);
-				response.setContentType("application/json");
-			}catch(Exception e){
+				
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}
@@ -437,20 +398,20 @@ public class AdminSearchController<T> {
 		@SuppressWarnings("unchecked")
 		@RequestMapping("/stuInfo")
 		@ResponseBody
-		public void stuInfo(int flag,String token,HttpServletResponse response) throws IOException{
+		public void stuInfo(int flag,String token,HttpServletResponse response) throws IOException {
 			response.setCharacterEncoding("UTF-8");
-			PrintWriter out=null;
+			response.setContentType("application/json");
+			PrintWriter out = null;
 			try{
 				
-				ArrayList<CourseStudentInfo> courseStudentInfo=(ArrayList<CourseStudentInfo>)stuInfoService.searchInfo(flag,token);
-				String json=JSON.toJSONString(courseStudentInfo,true);
+				ArrayList<CourseStudentInfo> courseStudentInfo = (ArrayList<CourseStudentInfo>)stuInfoService.searchInfo(flag,token);
+				String json = JSON.toJSONString(courseStudentInfo,true);
 				System.out.println(json);
-				out=response.getWriter();
+				out = response.getWriter();
 				out.write(json);
-				response.setContentType("application/json");
-			}catch(Exception e){
+			} catch(Exception e) {
 				e.printStackTrace();
-			}finally{
+			} finally {
 				out.close();
 			}
 		}

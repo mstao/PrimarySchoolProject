@@ -3,16 +3,8 @@ package com.primaryschool.apply.controller;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.Properties;
 import java.util.UUID;
 
-import javax.mail.Authenticator;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +17,6 @@ import com.primaryschool.admin.entity.SecurityUser;
 import com.primaryschool.admin.service.IUserService;
 import com.primaryschool.apply.entity.ApplyUser;
 import com.primaryschool.apply.service.IApplyUserService;
-import com.primaryschool.global.config.mailAccountConfig;
 import com.primaryschool.global.util.CrypographyUtil;
 import com.primaryschool.global.util.EmailUtil;
 import com.primaryschool.global.util.MD5Util;

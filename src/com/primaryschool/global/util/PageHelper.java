@@ -2,8 +2,6 @@ package com.primaryschool.global.util;
 
 import java.util.List;
 
-import org.springframework.stereotype.Component;
-
 
 
 /** 

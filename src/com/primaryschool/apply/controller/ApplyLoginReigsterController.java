@@ -1,6 +1,5 @@
 package com.primaryschool.apply.controller;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

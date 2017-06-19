@@ -21,7 +21,6 @@ import com.primaryschool.apply.entity.ApplyDate;
 import com.primaryschool.apply.service.IApplyService;
 import com.primaryschool.global.config.PageSizeConfig;
 import com.primaryschool.global.util.GetDateUtil;
-import com.primaryschool.home.entity.Education;
 import com.primaryschool.home.service.IPageHelperService;
 
 /**
@@ -44,7 +43,7 @@ public class AdminApplyController<T> {
     @Autowired
     private IPageHelperService pageHelperService;
     
-    private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
+    private  int pageSize = PageSizeConfig.ADMIN_LIST_PAGESIZE;
     
  	/**
    	 * 
@@ -57,49 +56,49 @@ public class AdminApplyController<T> {
    	
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/listAll")
-    public String applyList(int status,int p,ModelMap map){
+    public String applyList(int status,int p,ModelMap map) {
    		//获取当前年份
-		String s_year=GetDateUtil.getYear();
-		int year=Integer.parseInt(s_year);
+		String s_year = GetDateUtil.getYear();
+		int year = Integer.parseInt(s_year);
 		
 		//根据年份找到报名日期信息		
-		ApplyDate dateInfo=(ApplyDate) applyService.findDateInfoByYear(year);
+		ApplyDate dateInfo = (ApplyDate) applyService.findDateInfoByYear(year);
 		
-		String sp=p+"";
-	    if(sp.equals("")){
+		String sp = p+"";
+	    if("".equals(sp)){
 			p=1;
 	    }
 	   
 	    //当前的url
-	    String url="./listAll?status='"+status+"'&p=";
+	    String url = "./listAll?status='"+status+"'&p=";
 		
 	    //获取总记录量
-		int count=applyService.findApplyCountByStatusYear(status, year);
+		int count = applyService.findApplyCountByStatusYear(status, year);
 		//计算偏移量
-		int position=(p-1)*pageSize;
+		int position = (p-1)*pageSize;
 		//根据年份获取所有的报名信息
-		ArrayList<Apply> apply=(ArrayList<Apply>) applyService.findApplyInfoByYear(year,status, position, pageSize);
+		ArrayList<Apply> apply = (ArrayList<Apply>) applyService.findApplyInfoByYear(year,status, position, pageSize);
 		
 	    //获取封装好的分页导航数据
-        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);	
+        String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);	
    	    
         /**
          * 获取统计数据
          */
         
         //获取全部统计数
-        int zstatus=3;
-        int allCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        int zstatus = 3;
+        int allCount = applyService.findApplyCountByStatusYear(zstatus, year);
         //报名成功 
-        zstatus=1;
+        zstatus = 1;
         System.out.println("zz"+status);
-        int completeCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        int completeCount = applyService.findApplyCountByStatusYear(zstatus, year);
         //报名失败
-        zstatus=2;
-        int failCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        zstatus = 2;
+        int failCount = applyService.findApplyCountByStatusYear(zstatus, year);
         //等待审核
-        zstatus=0;
-        int waitCount=applyService.findApplyCountByStatusYear(zstatus, year);
+        zstatus = 0;
+        int waitCount = applyService.findApplyCountByStatusYear(zstatus, year);
        
         map.put("apply", apply);
    	    map.put("toolBar", toolBar);
@@ -122,23 +121,23 @@ public class AdminApplyController<T> {
    	* @throws
    	 */
    	@RequestMapping("/loadinfo")
-   	public void  loadApplyInfo(int id,HttpServletResponse response){
+   	public void  loadApplyInfo(int id,HttpServletResponse response) {
    		   	
    		response.setCharacterEncoding("UTF-8");  
-		PrintWriter out=null;
-		Apply apply=(Apply) applyService.findApplyInfo(id);	
+		PrintWriter out = null;
+		Apply apply = (Apply) applyService.findApplyInfo(id);	
         //调用fastjson生成json信息
 		String json = JSON.toJSONString(apply, true);
 		System.out.println(json);
 		response.setContentType("application/json");
 		try {
-			out=response.getWriter();
+			out = response.getWriter();
 			out.write(json);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
    	}
@@ -156,19 +155,19 @@ public class AdminApplyController<T> {
    	 */
    	@RequestMapping("/updateStatus")
    	@ResponseBody
-   	public String updateApplyStatusById(int id,int statusValue,@RequestParam(required=false) String reason){
+   	public String updateApplyStatusById(int id,int statusValue,@RequestParam(required=false) String reason) {
  
    		int r;
    		
 		//更新数据
-		boolean result= applyService.updateApplyStatus(id, statusValue,reason);
+		boolean result = applyService.updateApplyStatus(id, statusValue,reason);
 		//返回结果
-		if(result==true){
-			r=1;
-		}else{
-			r=0;
+		if(result == true) {
+			r = 1;
+		} else {
+			r = 0;
 		}
-		return r+"";
+		return r + "";
    	}
    
    	
@@ -185,27 +184,27 @@ public class AdminApplyController<T> {
    	@SuppressWarnings("unchecked")
    	@RequestMapping("/dealApplyDate")
    	@ResponseBody
-   	public String dealApplyDate(int flag,@RequestParam(required=false) Integer  id, ApplyDate date){
+   	public String dealApplyDate(int flag,@RequestParam(required=false) Integer  id, ApplyDate date) {
    		String result="";
    		//flag等于1，代表此时已有记录，将要进行修改操作
-   		if(flag==1){
-   			try{
+   		if(flag == 1){
+   			try {
    	   			applyService.updateApplyDate((T) date);
-   	   		    result= "1";
-   	   		}catch(RuntimeException e){
+   	   		    result = "1";
+   	   		} catch(RuntimeException e) {
    	   			e.printStackTrace();
-   	   		    result= "0";
+   	   		    result = "0";
    	   		}
-   		}else if(flag==0){
+   		} else if(flag == 0) {
    			//代表此时无记录，将要进行新增操作
-   			try{
+   			try {
    				//设置暂未开始报名
    				date.setBeginApply(0);
    	   			applyService.saveApplyDate((T) date);
-   	   			result= "1";
-   	   		}catch(RuntimeException e){
+   	   			result = "1";
+   	   		} catch(RuntimeException e) {
    	   		    e.printStackTrace();
-   	   		    result= "0";
+   	   		    result = "0";
    	   		}
    		}
    		return result;
@@ -223,24 +222,24 @@ public class AdminApplyController<T> {
    	 */
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/findApplyInfoByToken")
-   	public void findApplyInfoByToken(String token,int status,HttpServletResponse response){
+   	public void findApplyInfoByToken(String token,int status,HttpServletResponse response) {
    		response.setCharacterEncoding("UTF-8");  
-		PrintWriter out=null;
+		PrintWriter out = null;
    	    //获取当前年份
-		String s_year=GetDateUtil.getYear();
-		int year=Integer.parseInt(s_year);
-		ArrayList<Apply> apply=(ArrayList<Apply>) applyService.findApplyInfoByToken(token, status, year);
+		String s_year = GetDateUtil.getYear();
+		int year = Integer.parseInt(s_year);
+		ArrayList<Apply> apply = (ArrayList<Apply>) applyService.findApplyInfoByToken(token, status, year);
 		 //调用fastjson生成json信息
 		String json = JSON.toJSONString(apply, true);
 		System.out.println("下面开始打印json了----"+json);
 		response.setContentType("application/json");
 		try {
-			out=response.getWriter();
+			out = response.getWriter();
 			out.write(json);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
    	
@@ -257,14 +256,14 @@ public class AdminApplyController<T> {
    	 */
    	@RequestMapping("/delete")
    	@ResponseBody
-   	public String deleteApplyInfo(String ids){
-   		try{
+   	public String deleteApplyInfo(String ids) {
+   		try {
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -272,7 +271,7 @@ public class AdminApplyController<T> {
 	        //执行删除语句
 	        applyService.deleteApplyInfoById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -290,19 +289,19 @@ public class AdminApplyController<T> {
    	 */
    	@RequestMapping("/updateBeginApply")
    	@ResponseBody
-   	public String updateBeginApply(int begin){
+   	public String updateBeginApply(int begin) {
    		try{
    		    //获取当前年份
-   		 	String s_year=GetDateUtil.getYear();
-   			int year=Integer.parseInt(s_year);
-   			if(begin==1){
+   		 	String s_year = GetDateUtil.getYear();
+   			int year = Integer.parseInt(s_year);
+   			if (begin == 1) {
    				begin=0;
-   			}else if(begin==0){
-   				begin=1;
+   			} else if(begin == 0) {
+   				begin = 1;
    			}
    			applyService.updateBeginStatus(year, begin);
    			return "1";
-   		}catch(RuntimeException e){
+   		} catch(RuntimeException e) {
    			e.printStackTrace();
    			return "0";	
    		}

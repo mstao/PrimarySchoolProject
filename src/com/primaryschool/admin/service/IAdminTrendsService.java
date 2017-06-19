@@ -2,8 +2,6 @@ package com.primaryschool.admin.service;
 
 import java.util.List;
 
-import com.primaryschool.home.entity.Trends;
-
 /**
  * 
 * @ClassName: ITrendsService

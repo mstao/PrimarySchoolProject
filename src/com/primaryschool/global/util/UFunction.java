@@ -1,7 +1,6 @@
 package com.primaryschool.global.util;
 
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

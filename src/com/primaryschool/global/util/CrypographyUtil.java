@@ -1,18 +1,16 @@
 package com.primaryschool.global.util;
 
 import org.apache.shiro.codec.Base64;
-import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 
+/**
+ * 加密处理
+ * @author mingshan
+ *
+ */
 public class CrypographyUtil {
 
-	
-	public static void main(String[] args){
-		/*System.out.println(MD5("java123","123456"));
-		System.out.println(MD5("jack","123456"));
-		System.out.println(MD5("marry","123456"));*/
-	}
 	
 	/**
 	 * base64加密

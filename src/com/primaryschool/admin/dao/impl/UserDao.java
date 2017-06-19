@@ -12,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IUserDao;
 import com.primaryschool.admin.entity.SecurityUser;
-import com.primaryschool.home.entity.TrendsType;
 
 /**
  * 

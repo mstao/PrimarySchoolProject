@@ -5,11 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
 import com.primaryschool.admin.entity.SecurityUser;
 import com.primaryschool.admin.service.IUserService;
 import com.primaryschool.global.util.CrypographyUtil;
-import com.primaryschool.global.util.GetDateUtil;
 
 
 /**
@@ -36,7 +34,7 @@ public class AdminUserController<T> {
 	* @throws
 	 */
 	@RequestMapping("/showUpdatePassword")
-	public String showUpdatePassword(){
+	public String showUpdatePassword() {
 		return "admin/user/updatePassword";
 	}
 	
@@ -53,24 +51,24 @@ public class AdminUserController<T> {
 	 */
 	@RequestMapping("/updatePassword")
 	@ResponseBody
-	public String updatwePassword(int uid,String userName,String oldPassword,String newPassword){
-		String result="";
+	public String updatwePassword(int uid,String userName,String oldPassword,String newPassword) {
+		String result = "";
 		
-		SecurityUser user=(SecurityUser) userService.findUserByUid(uid);
+		SecurityUser user = (SecurityUser) userService.findUserByUid(uid);
 		//先获取原始密码
-		String oldpw=user.getPassword();
+		String oldpw = user.getPassword();
 		System.out.println(oldpw);
 		//获取原始用户名
-		String oldUsername=user.getUserName();
+		String oldUsername = user.getUserName();
 		//需要将传过来的比对的密码进行加密
-		Object object=CrypographyUtil.MD5(oldUsername, oldPassword, oldUsername);
-		String oldMD5Pw=object.toString();
+		Object object = CrypographyUtil.MD5(oldUsername, oldPassword, oldUsername);
+		String oldMD5Pw = object.toString();
 		if(oldMD5Pw.equals(oldpw)){
 			//此时密码比对正确，进行更改密码和用户名操作
 	
 			 //将密码进行MD5加密保存
-			 Object object2=CrypographyUtil.MD5(userName, newPassword, userName);
-			 String MD5Pw=object2.toString();
+			 Object object2 = CrypographyUtil.MD5(userName, newPassword, userName);
+			 String MD5Pw = object2.toString();
 		
 			 
 			 try{
@@ -81,7 +79,7 @@ public class AdminUserController<T> {
 				 result="2";
 			 }
 		}else{
-			result="0";
+			result = "0";
 		}
 		return result;
 	}

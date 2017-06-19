@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 /**
  * 
  * @ClassName: Classhomepage

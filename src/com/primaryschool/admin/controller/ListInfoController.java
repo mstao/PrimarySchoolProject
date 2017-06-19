@@ -152,7 +152,7 @@ public class ListInfoController<T> {
     @Autowired
     private IClassStyleService<T> classStyleService;
     
-    private  int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
+    private int pageSize=PageSizeConfig.ADMIN_LIST_PAGESIZE;
     
     private int studentPageSize=PageSizeConfig.ADMIN_STUDENT_PAGESIZE;
     

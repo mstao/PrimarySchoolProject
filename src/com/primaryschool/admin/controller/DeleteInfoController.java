@@ -112,12 +112,12 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/indexImages")
 	@ResponseBody
-	public String deleteIndexImage(int id){
+	public String deleteIndexImage(int id) {
 		
 		try{
 			indexImagesService.deleteImage(id);
 			return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 
@@ -135,12 +135,12 @@ public class DeleteInfoController<T> {
 	 */
 	@RequestMapping("/campusScenery")
 	@ResponseBody
-	public String deleteCampusScenery(int id){
+	public String deleteCampusScenery(int id) {
 		try{
 		
 			campusSceneryService.deleteCampusScenery(id);
 			return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -158,14 +158,14 @@ public class DeleteInfoController<T> {
 	 */
 	@RequestMapping("/role")
 	@ResponseBody
-	public String deleteRole(String ids){
+	public String deleteRole(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -173,7 +173,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        authorityService.deleteRoleById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -190,14 +190,14 @@ public class DeleteInfoController<T> {
 	 */
 	@RequestMapping("/user")
 	@ResponseBody
-	public String deleteUser(String ids){
+	public String deleteUser(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid= new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -205,7 +205,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        userService.deleteUserById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -215,14 +215,14 @@ public class DeleteInfoController<T> {
 	//////////////////////////////
 	@RequestMapping("/culture")
 	@ResponseBody
-	public  String  culture(String ids){
+	public  String  culture(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -230,7 +230,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        cultureService.deleteCultureById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -247,14 +247,14 @@ public class DeleteInfoController<T> {
 	 */
 	@RequestMapping("/trends")
 	@ResponseBody
-	public  String  trends(String ids){
+	public  String  trends(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -262,7 +262,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        trendsService.deleteTrendsById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -270,14 +270,14 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/education")
 	@ResponseBody
-	public  String  education(String ids){
+	public  String  education(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -285,7 +285,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        educationService.deleteEducationById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -293,14 +293,14 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/student")
 	@ResponseBody
-	public  String  student(String ids){
+	public  String  student(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i< iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -308,7 +308,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        studentService.deleteStudentById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
 	}
@@ -316,14 +316,14 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/teacher")
 	@ResponseBody
-	public  String  teacher(String ids){
+	public  String  teacher(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -331,7 +331,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        teacherService.deleteTeacherById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -339,14 +339,14 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/party")
 	@ResponseBody
-	public  String  party(String ids){
+	public  String  party(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -354,7 +354,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        partyService.deletePartyById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -362,14 +362,14 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/manage")
 	@ResponseBody
-	public  String  manage(String ids){
+	public  String  manage(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -377,7 +377,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        manageService.deleteManageById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -387,14 +387,14 @@ public class DeleteInfoController<T> {
 	//删除资源详细信息ById  
 	@RequestMapping("/resource")
 	@ResponseBody
-	public  String  resource(String ids){
+	public  String  resource(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -402,7 +402,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        resourceService.deleteTeachingResourceById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -411,14 +411,14 @@ public class DeleteInfoController<T> {
 	//删除教学资源名称
 	@RequestMapping("/manageResource")
 	@ResponseBody
-	public  String  manageResource(String ids){
+	public  String  manageResource(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0; i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -426,7 +426,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        resourceService.deleteTeachingResourceMenuById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -435,14 +435,14 @@ public class DeleteInfoController<T> {
 	//删除资源详细信息ById
 		@RequestMapping("/department")
 		@ResponseBody
-		public  String  department(String ids){
+		public  String  department(String ids) {
 			try{
 			    //将字符串转为字符串数组
 		        String[] idArray = ids.split(","); 
 		        //将字符串数组转为整形数组
-		        Integer[] iid=new Integer[idArray.length];
-		        for(int i=0;i<iid.length;i++){
-		        	iid[i]=Integer.parseInt(idArray[i]);
+		        Integer[] iid = new Integer[idArray.length];
+		        for(int i = 0;i < iid.length; i++){
+		        	iid[i] = Integer.parseInt(idArray[i]);
 		        }
 		        //将数组转为list
 		        List<Integer> idList = new ArrayList<Integer>();	
@@ -450,7 +450,7 @@ public class DeleteInfoController<T> {
 		        //执行删除语句
 		        departmentService.deleteDepartmentContent(idList);
 		        return "1";
-			}catch(RuntimeException e){
+			} catch(RuntimeException e) {
 				return "0";
 			}
 	        
@@ -459,14 +459,14 @@ public class DeleteInfoController<T> {
 	//删除部门链接 manageDepartment
 	@RequestMapping("/manageDepartment")
 	@ResponseBody
-	public  String  manageDepartment(String ids){
+	public  String  manageDepartment(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -474,7 +474,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        departmentService.deleteDepartmentName(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -483,14 +483,14 @@ public class DeleteInfoController<T> {
 	//删除社团内的信息
 	@RequestMapping("/labclassinfo")
 	@ResponseBody
-	public  String  labclassinfo(String ids){
+	public  String  labclassinfo(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -498,7 +498,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        labClassService.deleteLabClassById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -508,14 +508,14 @@ public class DeleteInfoController<T> {
 	//删除社团名称
 	@RequestMapping("/managelablist")
 	@ResponseBody
-	public  String  managelablist(String ids){
+	public  String  managelablist(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -523,7 +523,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        labClassService.deleteLabById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -533,14 +533,14 @@ public class DeleteInfoController<T> {
 	//删除班级内信息
 	@RequestMapping("/sclassHomePage")
 	@ResponseBody
-	public  String  sclassHomePage(String ids){
+	public  String  sclassHomePage(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -548,7 +548,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        sclassService.deleteSclassInfoById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -557,14 +557,14 @@ public class DeleteInfoController<T> {
 	//删除班级
 	@RequestMapping("/manageSclass")
 	@ResponseBody
-	public  String  manageSclass(String ids){
+	public  String  manageSclass(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -572,7 +572,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        sclassService.deleteSclassById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -580,14 +580,14 @@ public class DeleteInfoController<T> {
 	
 	@RequestMapping("/headMaster")
 	@ResponseBody
-	public String headMaster(String ids){
+	public String headMaster(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -595,7 +595,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        headMasterService.deleteHeadMasterById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
 	}
@@ -607,14 +607,14 @@ public class DeleteInfoController<T> {
 	//班级内学生信息删除 stuInfo
 	@RequestMapping("/stuInfo")
 	@ResponseBody
-	public  String  stuInfo(String ids){
+	public  String  stuInfo(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -622,7 +622,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        stuInfoService.deleteStuById(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -631,14 +631,14 @@ public class DeleteInfoController<T> {
 	//删除考试科目名称
 	@RequestMapping("/manageScore")
 	@ResponseBody
-	public  String  manageScore(String ids){
+	public  String  manageScore(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -646,7 +646,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        courseScoreService.deleteCourseType(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -656,14 +656,14 @@ public class DeleteInfoController<T> {
 	//班级内学生成绩删除 sscoreInfo
 	@RequestMapping("/scoreInfo")
 	@ResponseBody
-	public  String  scoreInfo(String ids){
+	public  String  scoreInfo(String ids) {
 		try{
 		    //将字符串转为字符串数组
 	        String[] idArray = ids.split(","); 
 	        //将字符串数组转为整形数组
-	        Integer[] iid=new Integer[idArray.length];
-	        for(int i=0;i<iid.length;i++){
-	        	iid[i]=Integer.parseInt(idArray[i]);
+	        Integer[] iid = new Integer[idArray.length];
+	        for(int i = 0;i < iid.length; i++){
+	        	iid[i] = Integer.parseInt(idArray[i]);
 	        }
 	        //将数组转为list
 	        List<Integer> idList = new ArrayList<Integer>();	
@@ -671,7 +671,7 @@ public class DeleteInfoController<T> {
 	        //执行删除语句
 	        courseScoreService.deleteScoreInfo(idList);
 	        return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			return "0";
 		}
         
@@ -688,11 +688,11 @@ public class DeleteInfoController<T> {
 	 */
 	@RequestMapping("/classStyle")
 	@ResponseBody
-	public String classStyle(int id){
+	public String classStyle(int id) {
 		try{
 			classStyleService.deleteClassStyle(id);
 			return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 

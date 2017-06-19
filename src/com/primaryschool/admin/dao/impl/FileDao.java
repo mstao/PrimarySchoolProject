@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.primaryschool.admin.dao.IFileDao;
 import com.primaryschool.admin.entity.FileBelong;
-import com.primaryschool.home.entity.TrendsType;
 
 /**
  * 

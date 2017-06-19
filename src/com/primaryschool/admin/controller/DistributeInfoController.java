@@ -110,11 +110,11 @@ public class DistributeInfoController<T> {
 	* @throws
 	 */
 	@RequestMapping("/culture")
-	public String  culture(int id,ModelMap map,HttpServletRequest request){
-		String fileType="fculture";
-		String durl="culture";
-		Culture culture=(Culture) cultureService.findCultureInfoById(id);
-		String SCHOOL_CULTURE=(String) request.getServletContext().getAttribute("SCHOOL_CULTURE");
+	public String  culture(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "fculture";
+		String durl = "culture";
+		Culture culture = (Culture) cultureService.findCultureInfoById(id);
+		String SCHOOL_CULTURE = (String) request.getServletContext().getAttribute("SCHOOL_CULTURE");
 		map.put("item", culture);
 		map.put("fileType", fileType);
 		map.put("durl", durl);
@@ -131,11 +131,11 @@ public class DistributeInfoController<T> {
 	* @throws
 	 */
 	@RequestMapping("/trends")
-	public String  trends(int id,ModelMap map,HttpServletRequest request){
-		String fileType="ftrends";
-		String durl="trends";
-		Trends trends=(Trends) trendsService.findTrendsInfoById(id);
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_TRENDS");
+	public String  trends(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "ftrends";
+		String durl = "trends";
+		Trends trends = (Trends) trendsService.findTrendsInfoById(id);
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_TRENDS");
 		map.put("item", trends);
 		map.put("fileType", fileType);
 		map.put("durl",durl);
@@ -144,11 +144,11 @@ public class DistributeInfoController<T> {
 	}
 	
 	@RequestMapping("/education")
-	public String  education(int id,ModelMap map,HttpServletRequest request){
-		String fileType="feducation";
-		String durl="education";
-		Education education=(Education) educationService.findEducationInfoById(id);
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_EDUCATION");
+	public String  education(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "feducation";
+		String durl = "education";
+		Education education = (Education) educationService.findEducationInfoById(id);
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_EDUCATION");
 		map.put("item", education);
 		map.put("fileType", fileType);
 		map.put("durl",durl);
@@ -157,11 +157,11 @@ public class DistributeInfoController<T> {
 	}
 	
 	@RequestMapping("/student")
-	public String  student(int id,ModelMap map,HttpServletRequest request){
-		String fileType="fstudent";
-		String durl="student";
-		Student student=(Student) studentService.findStudentInfoById(id);
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_STUDENT");
+	public String  student(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "fstudent";
+		String durl = "student";
+		Student student = (Student) studentService.findStudentInfoById(id);
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_STUDENT");
 		map.put("item", student);
 		map.put("fileType", fileType);
 		map.put("durl",durl);
@@ -170,11 +170,11 @@ public class DistributeInfoController<T> {
 	}
 	
 	@RequestMapping("/teacher")
-	public String  teacher(int id,ModelMap map,HttpServletRequest request){
-		String fileType="fteacher";
-		String durl="teacher";
-		Teacher teacher=(Teacher) teacherService.findTeacherInfoById(id);
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_TEACHER");
+	public String  teacher(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "fteacher";
+		String durl = "teacher";
+		Teacher teacher = (Teacher) teacherService.findTeacherInfoById(id);
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_TEACHER");
 		map.put("item", teacher);
 		map.put("fileType", fileType);
 		map.put("durl",durl);
@@ -183,11 +183,11 @@ public class DistributeInfoController<T> {
 	}
 	
 	@RequestMapping("/party")
-	public String  party(int id,ModelMap map,HttpServletRequest request){
-		String fileType="fparty";
-		String durl="party";
-		Party party=(Party) partyService.findPartyInfoById(id);
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_PARTY");
+	public String  party(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "fparty";
+		String durl = "party";
+		Party party = (Party) partyService.findPartyInfoById(id);
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_PARTY");
 		map.put("item", party);
 		map.put("fileType", fileType);
 		map.put("durl",durl);
@@ -196,11 +196,11 @@ public class DistributeInfoController<T> {
 	}
 	
 	@RequestMapping("/manage")
-	public String  manage(int id,ModelMap map,HttpServletRequest request){
-		String fileType="fmanage";
-		String durl="manage";
-		Manage manage=(Manage) manageService.findManageInfoById(id);
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_MANAGE");
+	public String  manage(int id,ModelMap map,HttpServletRequest request) {
+		String fileType = "fmanage";
+		String durl = "manage";
+		Manage manage = (Manage) manageService.findManageInfoById(id);
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_MANAGE");
 		map.put("item", manage);
 		map.put("fileType", fileType);
 		map.put("durl",durl);
@@ -219,19 +219,19 @@ public class DistributeInfoController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/resource")
-	public String  resource(int id,int classId,int menuId,int typeId,ModelMap map,HttpServletRequest request){
-		String fileType="fteacher";
-		String durl="resource";
+	public String  resource(int id,int classId,int menuId,int typeId,ModelMap map,HttpServletRequest request) {
+		String fileType = "fteacher";
+		String durl = "resource";
 		 //获取所有的资源类型
-		ArrayList<TeachingResourcesContentType> resouceType=(ArrayList<TeachingResourcesContentType>) teachingResourcesService.findTeachingResourceTypeInfo();     
+		ArrayList<TeachingResourcesContentType> resouceType = (ArrayList<TeachingResourcesContentType>) teachingResourcesService.findTeachingResourceTypeInfo();     
 		
-		TeachingResourcesContent teachingResourcesContent=(TeachingResourcesContent) teachingResourcesService.findTeachingResourceInfoById(id);
+		TeachingResourcesContent teachingResourcesContent = (TeachingResourcesContent) teachingResourcesService.findTeachingResourceInfoById(id);
 		//获取menuName用于辨别所属学科
-		String menuName=teachingResourcesService.findTeachingResurceNameById(menuId);
+		String menuName = teachingResourcesService.findTeachingResurceNameById(menuId);
 		//获取typeName用于下拉列表框
-		String typeName=teachingResourcesService.findTeachingResurceTypeById(typeId);
+		String typeName = teachingResourcesService.findTeachingResurceTypeById(typeId);
 		
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_TEACHER_RESOURCES");
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_TEACHER_RESOURCES");
 		map.put("classId", classId);
 		map.put("menuId", menuId);
 		map.put("typeName", typeName);
@@ -247,20 +247,20 @@ public class DistributeInfoController<T> {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/department")
-	public String  department(int id,int deptId,int typeId,ModelMap map,HttpServletRequest request){
-		String fileType="fmanage";
-		String durl="department";
+	public String  department(int id,int deptId,int typeId,ModelMap map,HttpServletRequest request) {
+		String fileType = "fmanage";
+		String durl = "department";
 		 //获取所有的资源类型
-		ArrayList<DepartmentLinkContentType> resouceType=(ArrayList<DepartmentLinkContentType>) departmentService.findDepartmentType();     
+		ArrayList<DepartmentLinkContentType> resouceType = (ArrayList<DepartmentLinkContentType>) departmentService.findDepartmentType();     
 		
-		DepartmentLinkContent departmentLinkContent=(DepartmentLinkContent) departmentService.findDeptContentInfo(id);
+		DepartmentLinkContent departmentLinkContent = (DepartmentLinkContent) departmentService.findDeptContentInfo(id);
 		//获取所属部门
-		String deptName=departmentService.findDepartmentNameById(deptId);
+		String deptName = departmentService.findDepartmentNameById(deptId);
 		
 		//获取typeName用于下拉列表框
-		String typeName=departmentService.findDepartmentTypeById(typeId);
+		String typeName = departmentService.findDepartmentTypeById(typeId);
 		
-		String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_MANAGE_DEPARTMENT");
+		String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_MANAGE_DEPARTMENT");
 		map.put("deptId", deptId);
 		map.put("deptName", deptName);
 		map.put("typeName", typeName);
@@ -283,17 +283,17 @@ public class DistributeInfoController<T> {
 		 */
 		@SuppressWarnings("unchecked")
 		@RequestMapping("/labclassinfo")
-		public String  labclassinfo(int id,int labId,String labName,int menuId,ModelMap map,HttpServletRequest request){
-			String fileType="fteacher";
-			String durl="labclassinfo";
+		public String  labclassinfo(int id,int labId,String labName,int menuId,ModelMap map,HttpServletRequest request) {
+			String fileType = "fteacher";
+			String durl = "labclassinfo";
 			 //获取所有的资源类型
-			ArrayList<StudentLabMenuType> resouceType=(ArrayList<StudentLabMenuType>) labClassService.findLabClassMenuInfo();     
+			ArrayList<StudentLabMenuType> resouceType = (ArrayList<StudentLabMenuType>) labClassService.findLabClassMenuInfo();     
 			
-			StudentLabMenuContent studentLabMenuContent=(StudentLabMenuContent) labClassService.findLabClassInfoById(id);
+			StudentLabMenuContent studentLabMenuContent = (StudentLabMenuContent) labClassService.findLabClassInfoById(id);
 			//获取menuName用于下拉列表框
-			String menuName=labClassService.findLabClassMenuById(menuId);
+			String menuName = labClassService.findLabClassMenuById(menuId);
 			
-			String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_STUDENT_LAB");
+			String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_STUDENT_LAB");
 			map.put("menuId", menuId);
 			map.put("labId", labId);
 			map.put("labName", labName);
@@ -308,19 +308,19 @@ public class DistributeInfoController<T> {
 		//修改班级主页内信息
 		@SuppressWarnings("unchecked")
 		@RequestMapping("/sclassHomePage")
-		public String  sclassHomePage(int id,int grade,String className,int typeId,ModelMap map,HttpServletRequest request){
-			String fileType="fstudent";
-			String durl="sclassHomePage";
+		public String  sclassHomePage(int id,int grade,String className,int typeId,ModelMap map,HttpServletRequest request) {
+			String fileType = "fstudent";
+			String durl = "sclassHomePage";
 			 //获取所有的资源类型
-			ArrayList<ClassHomePageType> resouceType=(ArrayList<ClassHomePageType>) classService.findClassPageType();     
+			ArrayList<ClassHomePageType> resouceType = (ArrayList<ClassHomePageType>) classService.findClassPageType();     
 			//根据信息ID获取其详细内容
-			ClassHomePage classHomePage=(ClassHomePage) classService.findSclassInfoById(id);
+			ClassHomePage classHomePage = (ClassHomePage) classService.findSclassInfoById(id);
 			//获取menuName用于下拉列表框
-			String menuName=classService.findfindClassPageTypeByTypeId(typeId);
+			String menuName = classService.findfindClassPageTypeByTypeId(typeId);
 			
-			 //获取labName即社团名称
-		       String labName=grade+"年级"+className;
-			String SCHOOL_TRENDS=(String) request.getServletContext().getAttribute("SCHOOL_STUDENT_LAB");
+			//获取labName即社团名称
+		    String labName = grade + "年级" + className;
+			String SCHOOL_TRENDS = (String) request.getServletContext().getAttribute("SCHOOL_STUDENT_LAB");
 			map.put("grade", grade);
 			map.put("className", className);
 			map.put("labName", labName);
@@ -338,11 +338,11 @@ public class DistributeInfoController<T> {
 		 * 修改社团简介信息
 		 */
 		@RequestMapping("/labintro")
-		public String  labintro(int id,int labId,String labName,ModelMap map,HttpServletRequest request){
-			String durl="labclassinfo";
-			String introurl="labintro";
+		public String  labintro(int id,int labId,String labName,ModelMap map,HttpServletRequest request) {
+			String durl = "labclassinfo";
+			String introurl = "labintro";
 			//根据labId获取intro信息
-			StudentLabMenuIntroduce studentLabMenuIntroduce=(StudentLabMenuIntroduce) labClassService.findLabMenuIntroById(labId);
+			StudentLabMenuIntroduce studentLabMenuIntroduce = (StudentLabMenuIntroduce) labClassService.findLabMenuIntroById(labId);
 			
 			
 			map.put("introurl", introurl);
@@ -357,13 +357,13 @@ public class DistributeInfoController<T> {
 		 * 修改班级简介信息
 		 */
 		@RequestMapping("/sclassintro")
-		public String  sclassintro(int id,int labId,int grade,String className,ModelMap map,HttpServletRequest request){
-			String durl="sclassHomePage";
-			String introurl="sclassintro";
+		public String  sclassintro(int id,int labId,int grade,String className,ModelMap map,HttpServletRequest request) {
+			String durl = "sclassHomePage";
+			String introurl = "sclassintro";
 			//根据labId获取intro信息
-			ClassSynopsis classSynopsis=(ClassSynopsis) classService.findSclassIntroById(labId);
+			ClassSynopsis classSynopsis = (ClassSynopsis) classService.findSclassIntroById(labId);
 			//获取labName即社团名称
-		     String labName=grade+"年级"+className;
+		    String labName = grade + "年级" + className;
 			
 			map.put("introurl", introurl);
 			map.put("labId", labId);
@@ -380,9 +380,9 @@ public class DistributeInfoController<T> {
 		 */
 		@SuppressWarnings("unchecked")
 		@RequestMapping("/headMaster")
-		public String headMaster(int id,ModelMap map){
-			HeadMaster h=(HeadMaster) headMasterService.findHeadMasterById(id);
-			ArrayList<HeadMasterPost> post=(ArrayList<HeadMasterPost>) headMasterService.findHeadMasterPost();
+		public String headMaster(int id,ModelMap map) {
+			HeadMaster h = (HeadMaster) headMasterService.findHeadMasterById(id);
+			ArrayList<HeadMasterPost> post = (ArrayList<HeadMasterPost>) headMasterService.findHeadMasterPost();
 			
 			map.put("post", post);
 			map.put("headMaster", h);
@@ -392,9 +392,9 @@ public class DistributeInfoController<T> {
 		
 		//修改学生信息
 		@RequestMapping("/stuInfo")
-		public String  stuInfo(int classId,String fullName,int id,ModelMap map,HttpServletRequest request){
-			String durl="stuInfo";
-			CourseStudentInfo courseStudentInfo=(CourseStudentInfo) stuInfoService.findStuInfoById(id);
+		public String  stuInfo(int classId,String fullName,int id,ModelMap map,HttpServletRequest request) {
+			String durl = "stuInfo";
+			CourseStudentInfo courseStudentInfo = (CourseStudentInfo) stuInfoService.findStuInfoById(id);
 			
 			map.put("classId", classId);
 			map.put("fullName", fullName);
@@ -411,9 +411,9 @@ public class DistributeInfoController<T> {
 		@SuppressWarnings("unchecked")
 		//修改学生成绩 scoreInfo
 		@RequestMapping("/scoreInfo")
-		public String  scoreInfo(int classId,String stuId,String addTime,String fullName,ModelMap map,HttpServletRequest request){
-			String durl="scoreInfo";
-			ArrayList<CourseScore> courseScore=(ArrayList<CourseScore>) courseScoreService.findScoreInfoById(classId, stuId, addTime);
+		public String  scoreInfo(int classId,String stuId,String addTime,String fullName,ModelMap map,HttpServletRequest request) {
+			String durl = "scoreInfo";
+			ArrayList<CourseScore> courseScore = (ArrayList<CourseScore>) courseScoreService.findScoreInfoById(classId, stuId, addTime);
 			map.put("fullName", fullName);
 			map.put("classId", classId);
 			map.put("list", courseScore);

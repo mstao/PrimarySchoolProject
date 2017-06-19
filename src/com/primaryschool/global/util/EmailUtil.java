@@ -2,9 +2,7 @@ package com.primaryschool.global.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Date;
 import java.util.Properties;
-import java.util.UUID;
 
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -16,11 +14,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.primaryschool.admin.dao.impl.UserDao;
 import com.primaryschool.admin.entity.SecurityUser;
-import com.primaryschool.admin.service.IUserService;
 import com.primaryschool.apply.entity.ApplyUser;
 import com.primaryschool.global.config.mailAccountConfig;
 

@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 import com.primaryschool.home.dao.IGradeDao;
 import com.primaryschool.home.service.IGradeService;
 @Service
+@SuppressWarnings({"unchecked","rawtypes"})
 public class GradeService<T> implements IGradeService<T> {
 
 	@Autowired
 	private IGradeDao gradeDao;
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public List<T> findGradeCode() {
 		// TODO Auto-generated method stub

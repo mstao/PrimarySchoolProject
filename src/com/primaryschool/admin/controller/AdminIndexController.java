@@ -1,21 +1,15 @@
 package com.primaryschool.admin.controller;
 
 import java.util.ArrayList;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.primaryschool.admin.entity.SecurityUser;
 import com.primaryschool.admin.service.IAdminCultureService;
 import com.primaryschool.admin.service.IAdminTrendsService;
-import com.primaryschool.admin.service.IUserService;
 import com.primaryschool.home.entity.Culture;
 import com.primaryschool.home.entity.Trends;
 
@@ -33,8 +27,6 @@ import com.primaryschool.home.entity.Trends;
 @RequestMapping("/admin")
 public class AdminIndexController<T> {
 
-	@Autowired
-	private IUserService<SecurityUser> userService;
 	
 	@Autowired
     private  IAdminTrendsService<T> trendsService;
@@ -51,17 +43,17 @@ public class AdminIndexController<T> {
 	 */
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/index")
-	public String index(HttpServletRequest request){
+	public String index(HttpServletRequest request) {
 	
 		
 		//获取最近新闻
-		ArrayList<Trends> news=(ArrayList<Trends>) trendsService.findTrendsInfo("news", 0, 8);
+		ArrayList<Trends> news = (ArrayList<Trends>) trendsService.findTrendsInfo("news", 0, 8);
 		
 		//获取最近公告
-		ArrayList<Trends> notice=(ArrayList<Trends>) trendsService.findTrendsInfo("notice", 0, 8);
+		ArrayList<Trends> notice = (ArrayList<Trends>) trendsService.findTrendsInfo("notice", 0, 8);
 		
 		//获取校务公开
-		ArrayList<Culture> affairs=(ArrayList<Culture>) cultureService.findCultureInfo("affairs", 0, 8);
+		ArrayList<Culture> affairs = (ArrayList<Culture>) cultureService.findCultureInfo("affairs", 0, 8);
 		
 		
 		request.setAttribute("news", news);

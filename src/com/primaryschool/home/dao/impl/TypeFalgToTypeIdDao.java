@@ -1,7 +1,5 @@
 package com.primaryschool.home.dao.impl;
 
-import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
