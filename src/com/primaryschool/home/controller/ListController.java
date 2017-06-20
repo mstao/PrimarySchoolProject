@@ -128,7 +128,7 @@ public class ListController<T> {
 	@RequestMapping("/trends")
 	public String details(String flag, int p ,HttpServletRequest request){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -166,7 +166,7 @@ public class ListController<T> {
 	@RequestMapping("/education")
 	public String education(String flag, int p ,HttpServletRequest request){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -207,7 +207,7 @@ public class ListController<T> {
 	public String student(String flag, int p ,HttpServletRequest request){
 		
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -247,7 +247,7 @@ public class ListController<T> {
 	@RequestMapping("/teacher")
 	public String teacher(String flag, int p ,HttpServletRequest request){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -286,7 +286,7 @@ public class ListController<T> {
 	@RequestMapping("/party")
 	public String party(String flag, int p ,HttpServletRequest request){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -325,7 +325,7 @@ public class ListController<T> {
 	@RequestMapping("/manage")
 	public String manage(String flag, int p ,HttpServletRequest request){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -382,7 +382,7 @@ public class ListController<T> {
 	@RequestMapping("/culture")
 	public String culture(String flag, int p ,ModelMap map){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -499,7 +499,7 @@ public class ListController<T> {
 	@RequestMapping("/labClassMenu")
 	public String labClassMenuList(int id,String flag,int p,ModelMap map){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -577,7 +577,7 @@ public class ListController<T> {
 	@RequestMapping("/mainClass")
 	public String mainClass(int classId,int gradeFlag,String classFlag,String flag, int p ,ModelMap map){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -641,7 +641,7 @@ public class ListController<T> {
 	@RequestMapping("/teachingResourcesContent")
 	public String teachingResourcesContent(int menuId,int classId,	String flag,int p,ModelMap map){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url
@@ -727,7 +727,7 @@ public class ListController<T> {
 	@RequestMapping("/departmentLinkContent")
 	public String departmentLinkContent(int departmentId,String contentFlag,int p,ModelMap map){
 		String sp=p+"";
-		if(sp.equals("")){
+		if("".equals(sp)){
 			p=1;
 		}
 		//查看详细信息url

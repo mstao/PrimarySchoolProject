@@ -167,33 +167,33 @@ public class ListInfoController<T> {
 	 */
    @SuppressWarnings("unchecked")
    @RequestMapping("/trends")	
-   public  String trends(String flag,int p,ModelMap map){
+   public  String trends(String flag,int p,ModelMap map) {
 	   
-	   String fileType="ftrends";
+	   String fileType = "ftrends";
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
+	   String sp = p + "";
+	   if("".equals(sp)){
 			p=1;
 	   }
 	   //查看详细信息url
-	   String durl="trends";
+	   String durl = "trends";
 		
 	   //当前的url
-	   String url="./trends?flag='"+flag+"'&p=";
+	   String url = "./trends?flag='"+flag+"'&p=";
 		
 	   //获取总记录量
-	   int count=trendsService.findTrendsCount(flag);
+	   int count = trendsService.findTrendsCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Trends> trends=(ArrayList<Trends>) trendsService.findTrendsInfo(flag, position, pageSize);
+	   ArrayList<Trends> trends = (ArrayList<Trends>) trendsService.findTrendsInfo(flag, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findTrendsTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findTrendsTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -215,12 +215,12 @@ public class ListInfoController<T> {
     */
    @SuppressWarnings("unchecked")
    @RequestMapping("/indexImages")
-   public  String indexImages(ModelMap map){
+   public  String indexImages(ModelMap map) {
 	   
 	   //获取图片列表
-	   ArrayList<IndexImages> list=(ArrayList<IndexImages>) indexImagesService.findImagesList();
-	   String  title="首页大轮播图";
-	   String  url="indexImages";
+	   ArrayList<IndexImages> list = (ArrayList<IndexImages>) indexImagesService.findImagesList();
+	   String  title = "首页大轮播图";
+	   String  url = "indexImages";
 		
 	   map.put("title", title);
 	   map.put("url", url);
@@ -240,11 +240,11 @@ public class ListInfoController<T> {
     */
    @SuppressWarnings("unchecked")
    @RequestMapping("/campusScenery")
-   public String campusScenery(ModelMap map){
-	   ArrayList<CampusScenery> campusScenery=(ArrayList<CampusScenery>) campusSceneryService.findCampusSceneryList();
+   public String campusScenery(ModelMap map) {
+	   ArrayList<CampusScenery> campusScenery = (ArrayList<CampusScenery>) campusSceneryService.findCampusSceneryList();
 	   
-	   String  title="校园风光";
-	   String  url="campusScenery";
+	   String  title = "校园风光";
+	   String  url = "campusScenery";
 		
 	   map.put("title", title);
 	   map.put("url", url);
@@ -254,35 +254,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/culture")	
-   public  String culture(String flag,int p,ModelMap map){
+   public  String culture(String flag,int p,ModelMap map) {
 	   
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
+	   String sp = p + "";
+	   if("".equals(sp)){
 			p=1;
 	   }
 	   //查看详细信息url
-	   String durl="culture";
+	   String durl = "culture";
 	   
 	   //文件上传类型
-	   String fileType="fculture";
+	   String fileType = "fculture";
 		
 	   //当前的url
-	   String url="./culture?flag='"+flag+"'&p=";
+	   String url = "./culture?flag='"+flag+"'&p=";
 		
 	   //获取总记录量
-	   int count=cultureService.findCultureCount(flag);
+	   int count = cultureService.findCultureCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Culture> culture=(ArrayList<Culture>) cultureService.findCultureInfo(flag, position, pageSize); 	   	
+	   ArrayList<Culture> culture = (ArrayList<Culture>) cultureService.findCultureInfo(flag, position, pageSize); 	   	
 		
 	   //获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findCultureTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findCultureTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -297,35 +297,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/education")	
-   public  String education(String flag,int p,ModelMap map){
+   public  String education(String flag,int p,ModelMap map) {
 	   
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="education";
+	   String durl = "education";
 		
 	   //当前的url
-	   String url="./education?flag='"+flag+"'&p=";
+	   String url = "./education?flag='"+flag+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="feducation";
+ 	   String fileType = "feducation";
 		
 	   //获取总记录量
-	   int count=educationService.findEducationCount(flag);
+	   int count = educationService.findEducationCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Education> education=(ArrayList<Education>) educationService.findEducationInfo(flag, position, pageSize);
+	   ArrayList<Education> education = (ArrayList<Education>) educationService.findEducationInfo(flag, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findEducationTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findEducationTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -339,35 +339,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/student")	
-   public  String student(String flag,int p,ModelMap map){
+   public  String student(String flag,int p,ModelMap map) {
 	   
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="student";
+	   String durl = "student";
 		
 	   //当前的url
-	   String url="./student?flag='"+flag+"'&p=";
+	   String url = "./student?flag='"+flag+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fstudent";
+ 	   String fileType = "fstudent";
 		
 	   //获取总记录量
-	   int count=studentService.findStudentCount(flag);
+	   int count = studentService.findStudentCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Student> student=(ArrayList<Student>) studentService.findStudentInfo(flag, position, pageSize);
+	   ArrayList<Student> student = (ArrayList<Student>) studentService.findStudentInfo(flag, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findStudentTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findStudentTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -381,58 +381,58 @@ public class ListInfoController<T> {
    
    /**获取班级列表**/
    @RequestMapping("/sclass")
-	public String classList(ModelMap map){
-	   String durl="sclass";
-	   String murl="manageSclass";
-		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
-		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+	public String classList(ModelMap map) {
+	   String durl = "sclass";
+	   String murl = "manageSclass";
+	   ArrayList<Grade> grade = (ArrayList<Grade>) gradeService.findGradeCode();
+	   ArrayList<Sclass> sclass = (ArrayList<Sclass>) sclassService.findClassInfo();
+	   SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
        Date date = new Date();
        String formatDate = sdf.format(date);
-       int d=Integer.parseInt(formatDate);
+       int d = Integer.parseInt(formatDate);
        map.put("durl", durl);
-		map.put("murl", murl);
-		map.put("year", d);
-		map.put("sclass", sclass);
-		map.put("grade", grade);
-		return "/admin/beforelist/classList";
+	   map.put("murl", murl);
+	   map.put("year", d);
+	   map.put("sclass", sclass);
+	   map.put("grade", grade);
+	   return "/admin/beforelist/classList";
 	}
    
    /**获取班级内详细信息**/
    @SuppressWarnings("unchecked")
    @RequestMapping("/sclassHomePage")	
-   public  String sclassHomePage(int classId,int grade,String className,int p,ModelMap map){
+   public  String sclassHomePage(int classId,int grade,String className,int p,ModelMap map) {
 	//   String flag="resources";
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="sclassHomePage";
+	   String durl = "sclassHomePage";
 	   
-	   String introurl="sclassintro";
+	   String introurl = "sclassintro";
 		
 	   //当前的url
-	   String url="./sclassHomePage?classId='"+classId+"'&grade='"+grade+"'&className='"+className+"'&p=";
+	   String url = "./sclassHomePage?classId='"+classId+"'&grade='"+grade+"'&className='"+className+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fstudent";
+ 	   String fileType = "fstudent";
 		
 	   //获取总记录量
-	   int count=classService.findSclassCount(classId);
+	   int count = classService.findSclassCount(classId);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 	   
 	   //根据classId获取简介信息
-	   ClassSynopsis classSynopsis=(ClassSynopsis) classService.findSclassIntroById(classId);
+	   ClassSynopsis classSynopsis = (ClassSynopsis) classService.findSclassIntroById(classId);
 	   //根据偏移量获取数据
-	   ArrayList<ClassHomePage> classHomePage=(ArrayList<ClassHomePage>) classService.findClassInfoByClassId(classId, position, pageSize);
+	   ArrayList<ClassHomePage> classHomePage = (ArrayList<ClassHomePage>) classService.findClassInfoByClassId(classId, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //获取labName即社团名称
-       String labName=grade+"年级"+className;
+       String labName = grade+"年级"+className;
        
        map.put("introurl",introurl);
        map.put("introduce",classSynopsis);
@@ -451,35 +451,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/teacher")	
-   public  String teacher(String flag,int p,ModelMap map){
+   public  String teacher(String flag,int p,ModelMap map) {
 	   
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="teacher";
+	   String durl = "teacher";
 		
 	   //当前的url
-	   String url="./teacher?flag='"+flag+"'&p=";
+	   String url = "./teacher?flag='"+flag+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fteacher";
+ 	   String fileType = "fteacher";
 		
 	   //获取总记录量
-	   int count=teacherService.findTeacherCount(flag);
+	   int count = teacherService.findTeacherCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Teacher> teacher=(ArrayList<Teacher>) teacherService.findTeacherInfo(flag, position, pageSize);
+	   ArrayList<Teacher> teacher = (ArrayList<Teacher>) teacherService.findTeacherInfo(flag, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findTeacherTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findTeacherTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -493,35 +493,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/party")	
-   public  String party(String flag,int p,ModelMap map){
+   public  String party(String flag,int p,ModelMap map) {
 	   
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="party";
+	   String durl = "party";
 		
 	   //当前的url
-	   String url="./party?flag='"+flag+"'&p=";
+	   String url = "./party?flag='"+flag+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fparty";
+ 	   String fileType = "fparty";
 		
 	   //获取总记录量
-	   int count=partyService.findPartyCount(flag);
+	   int count = partyService.findPartyCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Party> party=(ArrayList<Party>) partyService.findPartyInfo(flag, position, pageSize);
+	   ArrayList<Party> party = (ArrayList<Party>) partyService.findPartyInfo(flag, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findPartyTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findPartyTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -535,35 +535,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/manage")	
-   public  String manage(String flag,int p,ModelMap map){
+   public  String manage(String flag,int p,ModelMap map) {
 	   
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
+	   String sp = p + "";
+	   if("".equals(sp)){
 			p=1;
 	   }
 	   //查看详细信息url
-	   String durl="manage";
+	   String durl = "manage";
 		
 	   //当前的url
-	   String url="./manage?flag='"+flag+"'&p=";
+	   String url = "./manage?flag='"+flag+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fmanage";
+ 	   String fileType = "fmanage";
 		
 	   //获取总记录量
-	   int count=manageService.findManageCount(flag);
+	   int count = manageService.findManageCount(flag);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<Manage> manage=(ArrayList<Manage>) manageService.findManageInfo(flag, position, pageSize);
+	   ArrayList<Manage> manage = (ArrayList<Manage>) manageService.findManageInfo(flag, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //根据typeFlag获取typeName
-       String typeName=typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
+       String typeName = typeFlagToTypeNameService.findManageTypeNameByTypeFlag(flag);
        
       
        map.put("durl",durl);
@@ -580,12 +580,12 @@ public class ListInfoController<T> {
     */
    @SuppressWarnings("unchecked")
    @RequestMapping("/teachingResource")
-   public String teachingResource(ModelMap map){
+   public String teachingResource(ModelMap map) {
 	 //获取班级列表
- 		ArrayList<TeachingResourcesClass> classlist=(ArrayList<TeachingResourcesClass>)  teachingResources.findTeachingResourcesClassList();
+ 		ArrayList<TeachingResourcesClass> classlist = (ArrayList<TeachingResourcesClass>)  teachingResources.findTeachingResourcesClassList();
  		
  		//获取教学资源项目列表
- 		ArrayList<TeachingResourcesMenu>   menu=(ArrayList<TeachingResourcesMenu>) teachingResources.findTeachingResourcesMenu();
+ 		ArrayList<TeachingResourcesMenu>   menu = (ArrayList<TeachingResourcesMenu>) teachingResources.findTeachingResourcesMenu();
  		
  		map.put("classlist", classlist);
  		map.put("menu", menu);
@@ -599,13 +599,13 @@ public class ListInfoController<T> {
     */
    @SuppressWarnings("unchecked")
    @RequestMapping("/manageResource")
-   public String manageResource(ModelMap map){
+   public String manageResource(ModelMap map) {
 	   String durl="manageResource";
 	 //获取班级列表
- 		ArrayList<TeachingResourcesClass> classlist=(ArrayList<TeachingResourcesClass>)  teachingResources.findTeachingResourcesClassList();
+ 		ArrayList<TeachingResourcesClass> classlist = (ArrayList<TeachingResourcesClass>)  teachingResources.findTeachingResourcesClassList();
  		
  		//获取教学资源项目列表
- 		ArrayList<TeachingResourcesMenu>   menu=(ArrayList<TeachingResourcesMenu>) teachingResources.findTeachingResourcesMenu();
+ 		ArrayList<TeachingResourcesMenu>   menu = (ArrayList<TeachingResourcesMenu>) teachingResources.findTeachingResourcesMenu();
  		
  		String name="教学资源";
  		map.put("name",name);
@@ -617,11 +617,11 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/manageDepartment")
-   public String partyLink(ModelMap map){
-	   String durl="manageDepartment";
+   public String partyLink(ModelMap map) {
+	   String durl = "manageDepartment";
 	   //获取部门列表
- 		ArrayList<DepartmentLinkNameList> menu=(ArrayList<DepartmentLinkNameList>)  departmentService.findDepartmentNameList();
- 		String name="部门链接";
+ 		ArrayList<DepartmentLinkNameList> menu = (ArrayList<DepartmentLinkNameList>)  departmentService.findDepartmentNameList();
+ 		String name = "部门链接";
  		
  		map.put("name",name);
  		map.put("durl", durl);
@@ -632,35 +632,35 @@ public class ListInfoController<T> {
    //获取部门内所有信息BydeptId 
    @SuppressWarnings("unchecked")
    @RequestMapping("/department")	
-   public  String department(int deptId,int p,ModelMap map){
+   public  String department(int deptId,int p,ModelMap map) {
 	//   String flag="resources";
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="department";
+	   String durl = "department";
 		
 	   //当前的url
-	   String url="./department?deptId='"+deptId+"'&p=";
+	   String url = "./department?deptId='"+deptId+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fmanage";
+ 	   String fileType = "fmanage";
 		
 	   //获取总记录量
-	   int count=departmentService.findDepartmentContentCount(deptId);
+	   int count = departmentService.findDepartmentContentCount(deptId);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<DepartmentLinkContent> departmentLinkContent=(ArrayList<DepartmentLinkContent>) departmentService.findDepartmentContentInfo(deptId, position, pageSize);
+	   ArrayList<DepartmentLinkContent> departmentLinkContent = (ArrayList<DepartmentLinkContent>) departmentService.findDepartmentContentInfo(deptId, position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //获取menuName即该部门的名称
-       String menuName=departmentService.findDepartmentNameById(deptId);
+       String menuName = departmentService.findDepartmentNameById(deptId);
        
        map.put("deptId", deptId);
        map.put("durl",durl);
@@ -675,35 +675,35 @@ public class ListInfoController<T> {
    
    @SuppressWarnings("unchecked")
    @RequestMapping("/resource")	
-   public  String resource(int classId,int menuId,int p,ModelMap map){
+   public  String resource(int classId,int menuId,int p,ModelMap map) {
 	//   String flag="resources";
 	   
-	   String sp=p+"";
-	   if(sp.equals("")){
-			p=1;
+	   String sp = p + "";
+	   if("".equals(sp)){
+			p = 1;
 	   }
 	   //查看详细信息url
-	   String durl="resource";
+	   String durl = "resource";
 		
 	   //当前的url
-	   String url="./resource?classId='"+classId+"'&menuId='"+menuId+"'&p=";
+	   String url = "./resource?classId='"+classId+"'&menuId='"+menuId+"'&p=";
 	   
 	   //文件上传类型
- 	   String fileType="fteacher";
+ 	   String fileType = "fteacher";
 		
 	   //获取总记录量
-	   int count=teachingResourcesService.findTeachingResourceCount(classId, menuId);
+	   int count = teachingResourcesService.findTeachingResourceCount(classId, menuId);
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
+	   int position = (p-1)*pageSize;
 		
 	   //根据偏移量获取数据
-	   ArrayList<TeachingResourcesContent> TeachingResourcesContent=(ArrayList<TeachingResourcesContent>) teachingResourcesService.findTeachingResourceInfo(classId,menuId,position, pageSize);
+	   ArrayList<TeachingResourcesContent> TeachingResourcesContent = (ArrayList<TeachingResourcesContent>) teachingResourcesService.findTeachingResourceInfo(classId,menuId,position, pageSize);
 	   	
 		//获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
        
        //获取menuName
-       String menuName=teachingResourcesService.findTeachingResurceNameById(menuId);
+       String menuName = teachingResourcesService.findTeachingResurceNameById(menuId);
        
        map.put("classId", classId);
        map.put("menuId", menuId);
@@ -724,10 +724,10 @@ public class ListInfoController<T> {
     */
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/labclass")
-	public String labClassList(ModelMap map){
-		String durl="labclass";
-   		String murl="managelablist";
-		ArrayList<StudentLab> labClass=(ArrayList<StudentLab>) labService.findLabClassListInfo();
+	public String labClassList(ModelMap map) {
+		String durl = "labclass";
+   		String murl = "managelablist";
+		ArrayList<StudentLab> labClass = (ArrayList<StudentLab>) labService.findLabClassListInfo();
 		map.put("durl", durl);
 		map.put("murl", murl);
 		map.put("labClass", labClass);
@@ -737,39 +737,39 @@ public class ListInfoController<T> {
    	
    	@SuppressWarnings("unchecked")
     @RequestMapping("/labclassinfo")	
-    public  String labclassinfo(int labId,int p,ModelMap map){
+    public  String labclassinfo(int labId,int p,ModelMap map) {
  	//   String flag="resources";
  	   
- 	   String sp=p+"";
- 	   if(sp.equals("")){
- 			p=1;
+ 	   String sp = p + "";
+ 	   if("".equals(sp)){
+ 			p = 1;
  	   }
  	   //查看详细信息url
- 	   String durl="labclassinfo";
+ 	   String durl = "labclassinfo";
  	   
- 	   String introurl="labintro";
+ 	   String introurl = "labintro";
  		
  	   //当前的url
- 	   String url="./labclassinfo?labId='"+labId+"'&p=";
+ 	   String url = "./labclassinfo?labId='"+labId+"'&p=";
  	   
  	   //文件上传类型
-  	   String fileType="fstudent";
+  	   String fileType = "fstudent";
  		
  	   //获取总记录量
- 	   int count=labClassService.findLabClassCount(labId);
+ 	   int count = labClassService.findLabClassCount(labId);
  	   //计算偏移量
- 	   int position=(p-1)*pageSize;
+ 	   int position = (p-1)*pageSize;
  	   
  	   //根据labId获取简介信息
- 	   StudentLabMenuIntroduce studentLabMenuIntroduce=(StudentLabMenuIntroduce) labClassService.findLabMenuIntroById(labId);
+ 	   StudentLabMenuIntroduce studentLabMenuIntroduce = (StudentLabMenuIntroduce) labClassService.findLabMenuIntroById(labId);
  	   //根据偏移量获取数据
- 	   ArrayList<StudentLabMenuContent> studentLabMenuContent=(ArrayList<StudentLabMenuContent>) labClassService.findLabClassInfo(labId, position, pageSize);
+ 	   ArrayList<StudentLabMenuContent> studentLabMenuContent = (ArrayList<StudentLabMenuContent>) labClassService.findLabClassInfo(labId, position, pageSize);
  	   	
  		//获取封装好的分页导航数据
-        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+        String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
         
         //获取labName即社团名称
-        String labName=labClassService.findLabClassTypeById(labId);
+        String labName = labClassService.findLabClassTypeById(labId);
         
         map.put("introurl", introurl);
         map.put("introduce", studentLabMenuIntroduce);
@@ -795,22 +795,22 @@ public class ListInfoController<T> {
    	 */
    	@SuppressWarnings("unchecked")
 	@RequestMapping("/headMaster")
-   	public String HeaderMasterInfo(int p,ModelMap map){
-   	   String sp=p+"";
+   	public String HeaderMasterInfo(int p,ModelMap map) {
+   	   String sp = p + "";
 	   if(sp.equals("")){
-			p=1;
+			p = 1;
 	   }
 	   
 	   //当前的url
-	   String url="./headMaster?p=";
+	   String url = "./headMaster?p=";
 	   		
 	   //获取总记录量
-	   int count=headerMasterService.findHeadMasterCount();
+	   int count = headerMasterService.findHeadMasterCount();
 	   //计算偏移量
-	   int position=(p-1)*pageSize;
-   	   ArrayList<HeadMaster> headMaster=(ArrayList<HeadMaster>) headerMasterService.findHeaderMasterInfo(position, pageSize);
+	   int position = (p-1)*pageSize;
+   	   ArrayList<HeadMaster> headMaster = (ArrayList<HeadMaster>) headerMasterService.findHeaderMasterInfo(position, pageSize);
        //获取封装好的分页导航数据
-       String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);	
+       String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);	
    	   map.put("headMaster", headMaster);
    	   map.put("toolBar", toolBar);
    	   return "admin/list/headmasterList";
@@ -823,14 +823,14 @@ public class ListInfoController<T> {
    	 */
    	/**获取班级列表**/
     @RequestMapping("/studentInfomation")
- 	public String studentInfomation(ModelMap map){
+ 	public String studentInfomation(ModelMap map) {
  	   String durl="studentInfomation";
- 		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
- 		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+ 		ArrayList<Grade> grade = (ArrayList<Grade>) gradeService.findGradeCode();
+ 		ArrayList<Sclass> sclass = (ArrayList<Sclass>) sclassService.findClassInfo();
  		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
         Date date = new Date();
         String formatDate = sdf.format(date);
-        int d=Integer.parseInt(formatDate);
+        int d = Integer.parseInt(formatDate);
         map.put("durl", durl);
  		map.put("year", d);
  		map.put("sclass", sclass);
@@ -842,44 +842,44 @@ public class ListInfoController<T> {
     /**获取某个班级内学生详细信息**/
     @SuppressWarnings("unchecked")
     @RequestMapping("/stuInfo")	
-    public  String stuInfo(int classId,String fullName,int p,ModelMap map){
+    public  String stuInfo(int classId,String fullName,int p,ModelMap map) {
  	//   String flag="resources";
- 	   String sp=p+"";
- 	   if(sp.equals("")){
- 			p=1;
+ 	   String sp = p + "";
+ 	   if("".equals(sp)){
+ 			p = 1;
  	   }
  	   //查看详细信息url
- 	   String durl="stuInfo";
+ 	   String durl = "stuInfo";
  	   
  		
  	   //当前的url
- 	   String url="./stuInfo?classId='"+classId+"'&fullName='"+fullName+"'&p=";
+ 	   String url = "./stuInfo?classId='"+classId+"'&fullName='"+fullName+"'&p=";
  	   
  		
  	   //获取总记录量
- 	   int count=stuInfoService.findStuCount(classId);
+ 	   int count = stuInfoService.findStuCount(classId);
  	   //计算偏移量
- 	   int position=(p-1)*studentPageSize;
+ 	   int position = (p-1)*studentPageSize;
  	   System.out.println("count-"+count+"position--"+position);
  	   //根据偏移量获取数据
- 	   ArrayList<CourseStudentInfo> courseStudentInfo=(ArrayList<CourseStudentInfo>) stuInfoService.findStuInfo(classId, position, studentPageSize);
+ 	   ArrayList<CourseStudentInfo> courseStudentInfo = (ArrayList<CourseStudentInfo>) stuInfoService.findStuInfo(classId, position, studentPageSize);
       //处理年龄
 	   String age;
 	   int byear;
 	   int stuAge;
-	   SimpleDateFormat sdf=new SimpleDateFormat("yyyy");
-	   Date date=new Date();
-	   String formatDate=sdf.format(date);
-	   int year=Integer.parseInt(formatDate);
+	   SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
+	   Date date = new Date();
+	   String formatDate = sdf.format(date);
+	   int year = Integer.parseInt(formatDate);
  	   for(CourseStudentInfo info:courseStudentInfo){
- 		  age=info.getStuBirthday();
- 		  byear=Integer.parseInt(age.substring(0, 4));
- 		  stuAge=year-byear;
+ 		  age = info.getStuBirthday();
+ 		  byear = Integer.parseInt(age.substring(0, 4));
+ 		  stuAge = year-byear;
  		  info.setStuAge(stuAge);
  	   }
  	   
  	   //获取封装好的分页导航数据
-        String toolBar=pageHelperService.createToolBar(count,studentPageSize, url, p);		
+        String toolBar = pageHelperService.createToolBar(count,studentPageSize, url, p);		
         
         
         map.put("classId", classId);
@@ -896,14 +896,14 @@ public class ListInfoController<T> {
      * @return
      */
     @RequestMapping("/studentScore")
-    public String studentScore(ModelMap map){
-		String durl="studentScore";
-		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
-		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+    public String studentScore(ModelMap map) {
+		String durl = "studentScore";
+		ArrayList<Grade> grade = (ArrayList<Grade>) gradeService.findGradeCode();
+		ArrayList<Sclass> sclass = (ArrayList<Sclass>) sclassService.findClassInfo();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 		Date date = new Date();
 		String formatDate = sdf.format(date);
-		int d=Integer.parseInt(formatDate);
+		int d = Integer.parseInt(formatDate);
 		map.put("durl", durl);
 		map.put("year", d);
 		map.put("sclass", sclass);
@@ -918,15 +918,15 @@ public class ListInfoController<T> {
      * @return
      */
     @RequestMapping("/manageClass")
-    public String manageClass(ModelMap map){
-		String durl="manageClass";
-		String fileType="fstudent";
-		ArrayList<Grade> grade=(ArrayList<Grade>) gradeService.findGradeCode();
-		ArrayList<Sclass> sclass=(ArrayList<Sclass>) sclassService.findClassInfo();
+    public String manageClass(ModelMap map) {
+		String durl = "manageClass";
+		String fileType = "fstudent";
+		ArrayList<Grade> grade = (ArrayList<Grade>) gradeService.findGradeCode();
+		ArrayList<Sclass> sclass = (ArrayList<Sclass>) sclassService.findClassInfo();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy");
 		Date date = new Date();
 		String formatDate = sdf.format(date);
-		int d=Integer.parseInt(formatDate);
+		int d = Integer.parseInt(formatDate);
 		map.put("fileType", fileType);
 		map.put("durl", durl);
 		map.put("year", d);
@@ -938,10 +938,10 @@ public class ListInfoController<T> {
     //考试科目管理界面
     @SuppressWarnings("unchecked")
     @RequestMapping("/manageScore")
-    public String manageScore(ModelMap map){
- 	   String durl="manageScore";
+    public String manageScore(ModelMap map) {
+ 	   String durl = "manageScore";
   		//获取考试项目列表
-  		ArrayList<CourseType>  menu=(ArrayList<CourseType>) courseScoreService.findCourseType();
+  		ArrayList<CourseType>  menu = (ArrayList<CourseType>) courseScoreService.findCourseType();
   		
   		map.put("durl", durl);
   		map.put("menu", menu);
@@ -953,36 +953,36 @@ public class ListInfoController<T> {
    //**获取某个班级内成绩信息**//
     @SuppressWarnings("unchecked")
     @RequestMapping("/scoreInfo")	
-    public  String scoreInfo(int classId,String fullName,int p,ModelMap map){
+    public  String scoreInfo(int classId,String fullName,int p,ModelMap map) {
  	//   String flag="resources";
- 	   String sp=p+"";
- 	   if(sp.equals("")){
- 			p=1;
+ 	   String sp = p + "";
+ 	   if("".equals(sp)){
+ 			p = 1;
  	   }
  	   //查看详细信息url
- 	   String durl="scoreInfo";
+ 	   String durl = "scoreInfo";
  	   
  	  //当前的url
- 	   String url="./scoreInfo?classId='"+classId+"'&fullName='"+fullName+"'&p=";
+ 	   String url = "./scoreInfo?classId='"+classId+"'&fullName='"+fullName+"'&p=";
  	   
  	  //获取总记录量
- 	   int count=courseScoreService.findScoreCount(classId);
+ 	   int count = courseScoreService.findScoreCount(classId);
  	  //获取考试的科目数
- 	   long sum=courseScoreService.findTypeCount();
+ 	   long sum = courseScoreService.findTypeCount();
  	   
- 	   int sSum=(int)sum;
+ 	   int sSum = (int)sum;
  	   //计算偏移量
- 	   int position=(p-1)*sSum*pageSize;
+ 	   int position = (p-1)*sSum*pageSize;
  	  System.out.println("count-"+count+"position--"+position);
  	   //根据偏移量获取数据
- 	   ArrayList<CourseScore> courseScore=(ArrayList<CourseScore>) courseScoreService.findScoreInfo(classId, position, pageSize*sSum);
+ 	   ArrayList<CourseScore> courseScore = (ArrayList<CourseScore>) courseScoreService.findScoreInfo(classId, position, pageSize*sSum);
  	   System.out.println("size--"+courseScore.size());
  	 
  	   //获取考试类别
- 	   ArrayList<CourseType> courseType=(ArrayList<CourseType>) courseScoreService.findCourseType();
+ 	   ArrayList<CourseType> courseType = (ArrayList<CourseType>) courseScoreService.findCourseType();
  	   
  	   //获取封装好的分页导航数据
-        String toolBar=pageHelperService.createToolBar(count,pageSize, url, p);		
+        String toolBar = pageHelperService.createToolBar(count,pageSize, url, p);		
         
         map.put("courseType", courseType);
         map.put("sum", sum);
@@ -998,13 +998,13 @@ public class ListInfoController<T> {
     //作息时间表 
     @SuppressWarnings("unchecked")
 	@RequestMapping("/restTime")
-    public String restTime(ModelMap map){
- 	   String durl="restTime";
+    public String restTime(ModelMap map) {
+ 	   String durl = "restTime";
   		 		
-  	   String belongType="frestTime";
+  	   String belongType = "frestTime";
         //获取文件列表
-        ArrayList<FileBean> Spring=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
-        ArrayList<FileBean> Autumn=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
+        ArrayList<FileBean> Spring = (ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
+        ArrayList<FileBean> Autumn = (ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
         map.put("Spring", Spring);  
         map.put("Autumn", Autumn); 
   		map.put("fileType", belongType);
@@ -1023,11 +1023,11 @@ public class ListInfoController<T> {
      */
     @SuppressWarnings("unchecked")
 	@RequestMapping("/classStyle")
-    public String  classStyle(int classId,String className,ModelMap map){
+    public String  classStyle(int classId,String className,ModelMap map) {
     	
-    	 ArrayList<ClassStyle> style=(ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
+    	 ArrayList<ClassStyle> style = (ArrayList<ClassStyle>) classStyleService.findClassStyleList(classId);
     	
-    	 String url="classStyle";
+    	 String url = "classStyle";
     	 map.put("style", style);
     	 map.put("url", url);
     	 map.put("className", className);
@@ -1047,16 +1047,16 @@ public class ListInfoController<T> {
      */
     @SuppressWarnings("unchecked")
 	@RequestMapping("/helpdoc")
-    public String helpdoc(ModelMap map){
- 	   String durl="helpdoc";
+    public String helpdoc(ModelMap map) {
+ 	   String durl = "helpdoc";
   		 		
-  	   String belongType="fhelpdoc";
+  	   String belongType = "fhelpdoc";
         //操作流程
-        ArrayList<FileBean> line=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
+        ArrayList<FileBean> line = (ArrayList<FileBean>) baseFileServcie.findFile(belongType,1);
         //注册指导
-        ArrayList<FileBean> document=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
+        ArrayList<FileBean> document = (ArrayList<FileBean>) baseFileServcie.findFile(belongType,2);
         //统计文件
-        ArrayList<FileBean> count=(ArrayList<FileBean>) baseFileServcie.findFile(belongType,3);
+        ArrayList<FileBean> count = (ArrayList<FileBean>) baseFileServcie.findFile(belongType,3);
         map.put("line", line);  
         map.put("document", document); 
         map.put("count", count); 

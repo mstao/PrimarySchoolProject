@@ -53,7 +53,7 @@ public class LoginRegisterController<T> {
 	 */
 	
 	@RequestMapping("/showTeaLogin")
-	public String showTeacherLogin(){
+	public String showTeacherLogin() {
 		
 		return "admin/loginOrregister/teacher-login";
 	}
@@ -68,7 +68,7 @@ public class LoginRegisterController<T> {
 	 */
 	
 	@RequestMapping("/showTeaRegister")
-	public String showTeacherRegister(){
+	public String showTeacherRegister() {
 		return "admin/loginOrregister/teacher-register";
 	}
 	
@@ -81,7 +81,7 @@ public class LoginRegisterController<T> {
 	* @throws
 	 */
 	@RequestMapping("/unauthorized")
-	public  String unauthorized(){
+	public  String unauthorized() {
 		return "admin/loginOrregister/unauthorized";
 	}
 	
@@ -98,32 +98,32 @@ public class LoginRegisterController<T> {
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/save")
 	@ResponseBody
-	public String saveUser(SecurityUser user){
+	public String saveUser(SecurityUser user) {
 		try{
 			//获取当前时间
-			String c_data=GetDateUtil.getData();
+			String c_data = GetDateUtil.getData();
 			user.setAddTime(c_data);
 			//获取原始密码
-			String pw=user.getPassword();
+			String pw = user.getPassword();
 			//获取用户名
-			String userName=user.getUserName();
+			String userName = user.getUserName();
 			//密码用MD5加密，并且需要加点盐
 			user.setSalt(userName);
-			Object object=CrypographyUtil.MD5(userName, pw, userName);
+			Object object = CrypographyUtil.MD5(userName, pw, userName);
 			
 			user.setPassword(object.toString());
 			//将用户状态置为1
 			user.setStatus(1);
-			int uid=userService.saveUser((T) user);
+			int uid = userService.saveUser((T) user);
 			
 			//将用户的角色置为游客
-			SecurityUserToRole userToRole=new SecurityUserToRole();
+			SecurityUserToRole userToRole = new SecurityUserToRole();
 			userToRole.setRoleId(2);
 			userToRole.setUserId(uid);
 			userService.saveUserRole((T) userToRole);
 			
 			return "1";
-		}catch(RuntimeException e){
+		} catch(RuntimeException e) {
 			e.printStackTrace();
 			return "0";
 		}
@@ -141,14 +141,14 @@ public class LoginRegisterController<T> {
 	 */
 	@RequestMapping("/checkUser")
 	@ResponseBody
-	public String checkUser(String userName){
-		SecurityUser user=(SecurityUser) userService.findUserByUserName(userName);
+	public String checkUser(String userName) {
+		SecurityUser user = (SecurityUser) userService.findUserByUserName(userName);
       
-        String result=""; 
-        if(user==null){
-        	result="1";
-        }else{
-        	result="0";
+        String result = ""; 
+        if(user == null) {
+        	result = "1";
+        } else {
+        	result = "0";
         }
 		return result;
 	}
@@ -164,14 +164,14 @@ public class LoginRegisterController<T> {
 	 */
 	@RequestMapping("/checkEmail")
 	@ResponseBody
-	public String checkEmail(String email){
-		SecurityUser user=(SecurityUser) userService.findUserByEmail(email);
+	public String checkEmail(String email) {
+		SecurityUser user = (SecurityUser) userService.findUserByEmail(email);
 	      
-        String result=""; 
-        if(user==null){
-        	result="1";
-        }else{
-        	result="0";
+        String result = ""; 
+        if(user == null) {
+        	result = "1";
+        } else {
+        	result = "0";
         }
 		return result;
 	}
@@ -185,7 +185,7 @@ public class LoginRegisterController<T> {
 	* @throws
 	 */
 	@RequestMapping("/login")
-	public String login(String userName,String password,HttpServletRequest request){
+	public String login(String userName,String password,HttpServletRequest request) {
 		Subject currentUser = SecurityUtils.getSubject();
 		if (!currentUser.isAuthenticated()) {
         	// 把用户名和密码封装为 UsernamePasswordToken 对象
@@ -197,12 +197,12 @@ public class LoginRegisterController<T> {
             	// 执行登录. 
                 currentUser.login(token);
                
-        		Set<String> role= userService.getRoles(userName);
+        		Set<String> role = userService.getRoles(userName);
         		
-        		SecurityUser user=(SecurityUser) userService.getByUerName(userName);
+        		SecurityUser user = (SecurityUser) userService.getByUerName(userName);
         		//获取uid
         		int uid=user.getId();
-        		HttpSession session =request.getSession();
+        		HttpSession session = request.getSession();
         		//将用户信息保存到session 中
                 session.setAttribute("role", role);
                 session.setAttribute("uid", uid);
@@ -229,10 +229,10 @@ public class LoginRegisterController<T> {
 	* @throws
 	 */
 	@RequestMapping("/ajaxLogin")
-	public void ajaxLogin(String userName,String password,HttpServletRequest request,HttpServletResponse response){
+	public void ajaxLogin(String userName,String password,HttpServletRequest request,HttpServletResponse response) {
 		response.setCharacterEncoding("UTF-8");  
 		response.setContentType("application/json");
-		PrintWriter out=null;
+		PrintWriter out = null;
 		String flag="1";
 		Subject currentUser = SecurityUtils.getSubject();
 		if (!currentUser.isAuthenticated()) {
@@ -245,34 +245,35 @@ public class LoginRegisterController<T> {
             	// 执行登录. 
                 currentUser.login(token);
                 
-        		Set<String> role= userService.getRoles(userName);
+        		Set<String> role = userService.getRoles(userName);
         		
-                SecurityUser user=(SecurityUser) userService.getByUerName(userName);
+                SecurityUser user = (SecurityUser) userService.getByUerName(userName);
         		//获取uid
         		int uid=user.getId();
-        		HttpSession session =request.getSession();
+        		HttpSession session = request.getSession();
         		//将用户信息保存到session 中
                 session.setAttribute("role", role);
                 session.setAttribute("uid", uid);
+                session.setMaxInactiveInterval(60*60*24*7);
             } 
             // 所有认证时异常的父类. 
             catch (AuthenticationException ae) {
                 //unexpected condition?  error?
             	System.out.println("登录失败: " + ae.getMessage());
-            	flag="0";
+            	flag = "0";
         		
             }
         }
 		
 		
 		try {
-			out=response.getWriter();
+			out = response.getWriter();
 			out.write(flag);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally{
+		} finally {
 			out.close();
 		}
 	
@@ -287,7 +288,7 @@ public class LoginRegisterController<T> {
 	* @throws
 	 */
 	@RequestMapping("/logout")
-	public String logout(){
+	public String logout() {
 		Subject currentUser = SecurityUtils.getSubject();
 		currentUser.logout();
 		return "redirect:showTeaLogin";
