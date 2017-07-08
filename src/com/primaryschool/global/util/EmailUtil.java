@@ -28,8 +28,8 @@ public class EmailUtil<T> extends HttpServlet{
 		  String account=mailAccountConfig.account;
 	      String password=mailAccountConfig.passWord;
           // 指定发送邮件的主机为 localhost
-	      String host = "smtp.qq.com";  //QQ 邮件服务器
-
+	      //String host = "smtp.qq.com";  //QQ 邮件服务器
+	      String host="smtp.163.com";  //163 邮件服务器
 	      // 获取系统属性
 	      Properties properties = System.getProperties();
 
