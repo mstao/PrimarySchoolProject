@@ -182,10 +182,13 @@ $(function(){
 					setTimeout(function(){
 						  layer.closeAll('loading');
 					}, 1000);
+					layer.msg(data);
 					if(data==1){
-						layer.msg('邮件发送成功，请前往注册邮箱，按照提示操作',{time:4000});
-						}
-					},
+						layer.msg('邮件发送成功，请前往注册邮箱，按照提示操作',{time:2000});
+					}else{
+						layer.msg('抱歉，邮件发送失败！',{time:2000})	
+					}
+				},
             	});
             }else{
             	layer.msg("*用户信息验证失败，请仔细核对无误后进行提交！");

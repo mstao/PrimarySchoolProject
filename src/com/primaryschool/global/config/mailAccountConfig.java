@@ -7,10 +7,10 @@ package com.primaryschool.global.config;
 public class mailAccountConfig {
 
 	//设置邮箱账号
-	public static String account="318368246@qq.com";
+	public static String account="zzgxqwkcxx@163.com";
 	
 	//设置邮箱密码
-	public static String passWord="ueyhbuqxveygbhad";
+	public static String passWord="wkcxx1234567";
 	
 
 }

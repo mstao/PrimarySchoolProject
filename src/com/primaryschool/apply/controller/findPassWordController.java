@@ -124,7 +124,6 @@ public class findPassWordController<T> {
 	@RequestMapping("/sendUserInfo")
 	@ResponseBody
 	public String sendUserInfo(String email,String userName,HttpServletRequest request){
-		String result=null;
         SecurityUser user=(SecurityUser) userService.findUserByUserName(userName);
         //生成密钥    
 	    String secretKey=UUID.randomUUID().toString();    
@@ -141,9 +140,9 @@ public class findPassWordController<T> {
 	    //将用户名、过期时间、密钥生成链接密钥    
 	    String key =user.getId() + "$" + date + "$" + secretKey; 
         EmailUtil emailUtil=new EmailUtil();
-        
-        result=emailUtil.sendEmail(user, email,key,request);
-        return result;
+       
+        emailUtil.sendEmail(user, email,key,request);
+        return "1";
 	}
 	
 	
@@ -258,7 +257,6 @@ public class findPassWordController<T> {
 	@RequestMapping("/sendStuInfo")
 	@ResponseBody
 	public String sendStuInfo(String email,String userName,HttpServletRequest request){
-		String result=null;
 		ApplyUser user=(ApplyUser) applyService.getByUserName(userName);
 	      
         //生成密钥    
@@ -277,8 +275,8 @@ public class findPassWordController<T> {
 	    String key =user.getId() + "$" + date + "$" + secretKey; 
         EmailUtil emailUtil=new EmailUtil();
         
-        result=emailUtil.sendStuEmail(user, email,key,request);
-        return result;
+        emailUtil.sendStuEmail(user, email,key,request);
+        return "1";
 	}
 	
 	
