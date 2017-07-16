@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50710
+Source Server         : localhost_3306
+Source Server Version : 50716
 Source Host           : localhost:3306
 Source Database       : school
 
 Target Server Type    : MYSQL
-Target Server Version : 50710
+Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-05-11 06:16:03
+Date: 2017-07-16 18:04:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -48,7 +48,7 @@ CREATE TABLE `ps_apply` (
 -- ----------------------------
 -- Records of ps_apply
 -- ----------------------------
-INSERT INTO `ps_apply` VALUES ('4', '刀剑', '男', '汉', '510302199404106988', '小学', '河南郑州市33', '河南郑州市科学大道', '啊啊啊', '510302199404106988', '13592531024', '水水水', '230000199301301805', '', '2', '1', '2017-05-07 15:14:24', '', '2', '/PrimaryScoolProject/resources/Uploads/images/bf844ac204824829937ea417b06859d5.png');
+INSERT INTO `ps_apply` VALUES ('4', '刀剑', '男', '汉', '510302199404106988', '小学', '河南郑州市33', '河南郑州市科学大道', '啊啊啊', '510302199404106988', '13592531024', '水水水', '230000199301301805', '', '1', '1', '2017-05-07 15:14:24', '', '2', '/PrimaryScoolProject/resources/Uploads/images/bf844ac204824829937ea417b06859d5.png');
 
 -- ----------------------------
 -- Table structure for ps_apply_date
@@ -67,7 +67,7 @@ CREATE TABLE `ps_apply_date` (
 -- ----------------------------
 -- Records of ps_apply_date
 -- ----------------------------
-INSERT INTO `ps_apply_date` VALUES ('2', '2017', '2017-05-04', '2017-05-29', '1');
+INSERT INTO `ps_apply_date` VALUES ('2', '2017', '2017-05-03', '2017-05-10', '0');
 
 -- ----------------------------
 -- Table structure for ps_apply_user
@@ -124,7 +124,7 @@ CREATE TABLE `ps_class` (
   `class_name` varchar(25) DEFAULT NULL,
   `grade_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_class
@@ -184,7 +184,7 @@ CREATE TABLE `ps_class_homepage` (
 -- ----------------------------
 INSERT INTO `ps_class_homepage` VALUES ('8', 'sdfs ', '<p>sdfsds<br></p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/72e349d9-f451-4618-98e3-246941be7235.png\" alt=\"2017-04-19_130552\" style=\"max-width: 100%; width: 650px; height: 335px;\" class=\"\"></p><p><br></p>', '1', '2017-05-09', '6', '1', '1', '25', '万科小学', null, null, '0');
 INSERT INTO `ps_class_homepage` VALUES ('9', 'sdfs ', '<p>sdfsds<br></p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/77b4ebda-1995-4428-ba69-44195e58c4d2.png\" alt=\"2017-04-19_130831\" style=\"max-width: 100%; width: 696px; height: 450px;\" class=\"\"></p><p><br></p>', '1', '2017-05-09', '1', '1', '1', '25', '万科小学', null, null, '0');
-INSERT INTO `ps_class_homepage` VALUES ('10', '1241434423424234', '<p>234234234234233242<br></p>', '3', '2017-05-10', '12', '0', '1', '14', '万科小学', null, null, '0');
+INSERT INTO `ps_class_homepage` VALUES ('10', '1241434423424234', '<p>234234234234233242<br></p>', '3', '2017-05-10', '13', '0', '1', '14', '万科小学', null, null, '0');
 
 -- ----------------------------
 -- Table structure for ps_class_homepage_type
@@ -373,22 +373,23 @@ CREATE TABLE `ps_culture` (
   `item_title` varchar(255) DEFAULT NULL COMMENT '标题',
   `item_content` text COMMENT '内容',
   `type_id` int(2) DEFAULT NULL,
-  `add_time` date DEFAULT NULL,
+  `add_time` datetime DEFAULT NULL,
   `view_count` int(11) DEFAULT NULL COMMENT '浏览量',
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_culture
 -- ----------------------------
-INSERT INTO `ps_culture` VALUES ('1', '校务公开222222', '<p>下达是的飒飒大大大大<br></p>', '2', '2017-04-26', '0', '0', '1', '万科小学');
-INSERT INTO `ps_culture` VALUES ('2', '校务公开胜多负少第三方', '<p>大声道撒大所多<br></p>', '2', '2017-04-26', '0', '0', '1', '万科小学');
-INSERT INTO `ps_culture` VALUES ('3', 'wqeqwwqewqeqeqe', '<p>qweqe<br></p>', '2', '2017-04-26', '0', '0', '1', '万科小学');
-INSERT INTO `ps_culture` VALUES ('4', 'asddsaddsad', '<p>asdad<br></p>', '2', '2017-04-26', '0', '0', '1', '万科小学');
-INSERT INTO `ps_culture` VALUES ('5', '学校简介', '<p>请问请问群翁<br></p>', '1', '2017-05-09', '0', '0', '1', '万科小学');
+INSERT INTO `ps_culture` VALUES ('1', '校务公开222222', '<p>下达是的飒飒大大大大<br></p>', '2', '2017-04-26 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_culture` VALUES ('2', '校务公开胜多负少第三方', '<p>大声道撒大所多<br></p>', '2', '2017-04-26 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_culture` VALUES ('3', 'wqeqwwqewqeqeqe', '<p>qweqe<br></p>', '2', '2017-04-26 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_culture` VALUES ('4', 'asddsaddsad', '<p>asdad<br></p>', '2', '2017-04-26 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_culture` VALUES ('5', '学校简介', '<p>请问请问群翁<br></p><p><br></p>', '1', '2017-05-09 22:31:02', '3', '0', '1', '万科小学', '0');
 
 -- ----------------------------
 -- Table structure for ps_culture_type
@@ -431,14 +432,14 @@ CREATE TABLE `ps_departmentlink_content` (
 -- ----------------------------
 -- Records of ps_departmentlink_content
 -- ----------------------------
-INSERT INTO `ps_departmentlink_content` VALUES ('1', '第一个工作是遮掩是多大撒大大奥大大大大大大大大奥所大大大大啊大艾斯德斯大', '快干活了<p><br></p>', '1', '2017-03-27', '22', '0', '1', 'ss', '1');
+INSERT INTO `ps_departmentlink_content` VALUES ('1', '第一个工作是遮掩是多大撒大大奥大大大大大大大大奥所大大大大啊大艾斯德斯大大大大大奥所大大大大啊大艾斯德斯大', '快干活了<p><br></p>', '1', '2017-03-27', '23', '0', '1', 'ss', '1');
 INSERT INTO `ps_departmentlink_content` VALUES ('2', '第二个工作', '干活发工资', '1', '2017-03-29', '13', '0', '1', 'ss', '1');
-INSERT INTO `ps_departmentlink_content` VALUES ('3', '第三个工作', '干活要有热情', '2', '2017-03-29', '5', '0', '1', 'ss', '1');
+INSERT INTO `ps_departmentlink_content` VALUES ('3', '第三个工作', '干活要有热情', '2', '2017-03-29', '16', '0', '1', 'ss', '1');
 INSERT INTO `ps_departmentlink_content` VALUES ('4', '第四个工作', '我是为了测试而生', '2', '2017-04-06', '1', '0', '1', 'ss', '1');
 INSERT INTO `ps_departmentlink_content` VALUES ('7', '第七个工作', '我是为了测试而生7', '1', '2017-04-22', '1', '0', '1', 'zsk', '2');
 INSERT INTO `ps_departmentlink_content` VALUES ('8', '第八个工作', '我是为了测试而生8', '1', '2017-04-22', '1', '1', '1', 'zsk', '2');
 INSERT INTO `ps_departmentlink_content` VALUES ('9', '第九个工作', '我为了测试而生9', '2', '2017-04-22', '1', '1', '1', 'zsk', '2');
-INSERT INTO `ps_departmentlink_content` VALUES ('10', '试试', '<p><img src=\"/PrimaryScoolProject/resources/Uploads/images/28eeefb4-25af-40e9-851b-275db8aa6021.jpg\" alt=\"2\" style=\"max-width:100%;\">试试<br></p><p>试试才<br></p><p><br></p>', '2', '2017-04-23', '0', '1', '1', '万科小学', '5');
+INSERT INTO `ps_departmentlink_content` VALUES ('10', '试试', '<p><img src=\"/PrimaryScoolProject/resources/Uploads/images/28eeefb4-25af-40e9-851b-275db8aa6021.jpg\" alt=\"2\" style=\"max-width:100%;\">试试<br></p><p>试试才<br></p><p><br></p>', '2', '2017-04-23', '3', '1', '1', '万科小学', '5');
 
 -- ----------------------------
 -- Table structure for ps_departmentlink_content_type
@@ -497,15 +498,19 @@ CREATE TABLE `ps_education` (
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_education
 -- ----------------------------
-INSERT INTO `ps_education` VALUES ('1', '郑州大学曹少魁教授做“侧链挂接金属配合物的共轭聚合物合成与表征”学术报告与表征”学术报告', '<p>但是对方是谁说的是</p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/3027d660-3318-49fa-9e53-a24607634b83.jpg\" alt=\"inde33x\" style=\"max-width:100%;\"></p><p><br></p>', '2', '2017-03-27', '42', '1', '1', '万科小学');
-INSERT INTO `ps_education` VALUES ('2', '郑州大学曹少魁教授做“侧链挂接金属配合物的共轭聚合物合成与表征”学术报告与表征”学术报告', '的委屈饿温热微软<p><br></p>', '3', '2017-03-29', '16', '0', '1', '万科小学');
-INSERT INTO `ps_education` VALUES ('3', 'saa啊啊三大', '的撒大苏打倒萨啊', '3', '2017-03-29', '5', '0', '1', null);
+INSERT INTO `ps_education` VALUES ('2', '郑州大学曹少魁教授做“侧链挂接金属配合物的共轭聚合物合成与表征”学术报告与表征”学术报告', '<p>的委屈饿温热微软</p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/bb15bb1d-9c0f-4ffc-85f7-21f191bbf9b8.jpg\" alt=\"1494479805892\" style=\"max-width:100%;\"></p><p><br></p>', '3', '2017-03-29', '16', '1', '1', '万科小学', '/PrimaryScoolProject/resources/Uploads/images/bb15bb1d-9c0f-4ffc-85f7-21f191bbf9b8.jpg');
+INSERT INTO `ps_education` VALUES ('3', 'saa啊啊三大', '的撒大苏打倒萨啊', '3', '2017-03-29', '5', '0', '1', null, null);
+INSERT INTO `ps_education` VALUES ('4', 'ss', '<p>ss<br></p><p><img style=\"max-width:100%;\" alt=\"ChMkJlauze2IPKICABzBh_ueXY0AAH9JAMQ2qUAHMGf334\" src=\"http://localhost:8080/PrimaryScoolProject/resources/Uploads/images/c9abb186-ab82-43ad-8a1a-f3b2b5d16d6b.jpg\"><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p><p><br></p>', '2', '2017-05-11', '1', '1', '1', '万科小学', 'http://localhost:8080/PrimaryScoolProject/resources/Uploads/images/c9abb186-ab82-43ad-8a1a-f3b2b5d16d6b.jpg');
+INSERT INTO `ps_education` VALUES ('5', 'ss', '<p>ss<br></p>', '2', '2017-05-11', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_education` VALUES ('6', 'ss', '<p>ss<br></p>', '2', '2017-05-11', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_education` VALUES ('7', '主题教育test', '<p>请问</p><p><img style=\"max-width:100%;\" alt=\"1494479889250\" src=\"http://localhost:8080/PrimaryScoolProject/resources/Uploads/images/8d7ca00f-86ae-4d80-a897-480976c7a58f.jpg\"><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p><p><br></p>', '2', '2017-05-12', '0', '1', '1', '万科小学', 'http://localhost:8080/PrimaryScoolProject/resources/Uploads/images/8d7ca00f-86ae-4d80-a897-480976c7a58f.jpg');
 
 -- ----------------------------
 -- Table structure for ps_education_type
@@ -627,8 +632,6 @@ CREATE TABLE `ps_headmaster` (
 -- ----------------------------
 -- Records of ps_headmaster
 -- ----------------------------
-INSERT INTO `ps_headmaster` VALUES ('2', '小明2', '负责学校的日常的管理工作', '4991234@qq.com', '/PrimaryScoolProject/resources/Uploads/images/50e8682a7de046a7a8b1a786b09d5b1d.jpg', '2', '1', null, '2017-04-29');
-INSERT INTO `ps_headmaster` VALUES ('4', '小明4', '负责学校的日常的管理工作', '4991234@qq.com', '/PrimaryScoolProject/resources/Uploads/images/c13036bb4f1548ee866cce3a993f3273.jpg', '2', '1', null, '2017-04-29');
 INSERT INTO `ps_headmaster` VALUES ('5', '啊啊', '负责宣传工作', '12345566@qq.com', '/PrimaryScoolProject/resources/Uploads/images/8637c829a2ad4a639ee404a9d889f964.jpg', '2', '1', null, '2017-04-29');
 INSERT INTO `ps_headmaster` VALUES ('6', '对对对w', '负责大部分工作', '234424@qq.com', '/PrimaryScoolProject/resources/Uploads/images/83641c24ad2047ec8ebec3c23979567c.jpg', '1', '1', null, '2017-04-29');
 
@@ -655,13 +658,15 @@ DROP TABLE IF EXISTS `ps_index_images`;
 CREATE TABLE `ps_index_images` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `img_path` varchar(255) NOT NULL,
-  `add_time` date DEFAULT NULL,
+  `add_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_index_images
 -- ----------------------------
+INSERT INTO `ps_index_images` VALUES ('10', '/PrimarySchoolProject/resources/Uploads/images/f3d156dcff46475ba093a4c843de9cfd.jpg', '2017-06-19 00:00:00');
+INSERT INTO `ps_index_images` VALUES ('11', '/PrimarySchoolProject/resources/Uploads/images/4a661d425b9d4f80b46c5c662783c37a.jpg', '2017-06-19 00:00:00');
 
 -- ----------------------------
 -- Table structure for ps_manage
@@ -677,13 +682,15 @@ CREATE TABLE `ps_manage` (
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_manage
 -- ----------------------------
-INSERT INTO `ps_manage` VALUES ('1', '学校管理test', '去问问去文万琴俄文全额', '1', '2017-03-28', '4', '0', '1', null);
+INSERT INTO `ps_manage` VALUES ('1', '学校管理test', '去问问去文万琴俄文全额', '1', '2017-03-28', '4', '0', '1', null, null);
+INSERT INTO `ps_manage` VALUES ('2', '评职评优', '<p>完全恶气<br></p>', '2', '2017-05-15', '1', '0', '1', '万科小学', '0');
 
 -- ----------------------------
 -- Table structure for ps_manage_type
@@ -721,13 +728,14 @@ CREATE TABLE `ps_party` (
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_party
 -- ----------------------------
-INSERT INTO `ps_party` VALUES ('1', '支部活动test', '我的亲吻全额企鹅企鹅请问', '1', '2017-03-28', '7', '0', '1', null);
+INSERT INTO `ps_party` VALUES ('1', '支部活动test', '我的亲吻全额企鹅企鹅请问', '1', '2017-03-28', '10', '0', '1', null, null);
 
 -- ----------------------------
 -- Table structure for ps_party_type
@@ -777,7 +785,7 @@ CREATE TABLE `ps_security_resources` (
   `value` varchar(255) DEFAULT NULL COMMENT 'url',
   `permission` varchar(255) DEFAULT NULL COMMENT 'permission',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_security_resources
@@ -802,6 +810,13 @@ INSERT INTO `ps_security_resources` VALUES ('19', '/admin/delete/trends', 'perms
 INSERT INTO `ps_security_resources` VALUES ('20', '/admin/write/party', 'perms[super:*]');
 INSERT INTO `ps_security_resources` VALUES ('21', '/admin/distribute/party', 'perms[super:*]');
 INSERT INTO `ps_security_resources` VALUES ('22', '/admin/delete/party', 'perms[super:*]');
+INSERT INTO `ps_security_resources` VALUES ('23', '/admin/list/student?flag=book**', 'roleOrFilter[\"superadmin,education\"]');
+INSERT INTO `ps_security_resources` VALUES ('24', '/admin/list/student?flag=activity**', 'roleOrFilter[\"superadmin,education\"]');
+INSERT INTO `ps_security_resources` VALUES ('25', '/admin/list/sclass', 'roleOrFilter[\"superadmin,headteacher\"]');
+INSERT INTO `ps_security_resources` VALUES ('26', '/admin/list/studentInfomation', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('27', '/admin/list/studentScore', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('28', '/admin/list/labclass', 'roleOrFilter[\"superadmin\"]');
+INSERT INTO `ps_security_resources` VALUES ('33', '/admin/list/headMaster', 'roleOrFilter[\"superadmin,office\"]');
 
 -- ----------------------------
 -- Table structure for ps_security_role
@@ -879,7 +894,7 @@ CREATE TABLE `ps_security_user` (
 -- Records of ps_security_user
 -- ----------------------------
 INSERT INTO `ps_security_user` VALUES ('2', 'mingshan', '5f9d2c655e00de34e468083421a4d4ef', 'mingshan', '1', '715604127@qq.com', '345', '2017-04-22 00:00:00', null, null);
-INSERT INTO `ps_security_user` VALUES ('3', 'admin', '038bdaf98f2037b31f1e75b5b4c9b26e', 'admin', '1', '499445428@qq.com', '2233', '2017-04-22 00:00:00', null, null);
+INSERT INTO `ps_security_user` VALUES ('3', 'admin', '038bdaf98f2037b31f1e75b5b4c9b26e', 'admin', '1', '499445428@qq.com', '2233', '2017-04-22 00:00:00', '1499391086000', '8b6002f8-4ae0-4747-bb26-c82b735bdde2');
 INSERT INTO `ps_security_user` VALUES ('14', '哇哇哇哇哇', 'b21c6c8d7b350edd8927ce2f79533183', '哇哇哇哇哇', '1', '123456789@qq.com', '23344', '2017-04-22 00:00:00', null, null);
 INSERT INTO `ps_security_user` VALUES ('15', 'hq', '98f9647a0e4b2ce82909f5c5a23e2d89', 'hq', '1', '1872069226@qq.com', '666', '2017-05-07 00:00:00', null, null);
 
@@ -919,13 +934,15 @@ CREATE TABLE `ps_student` (
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_student
 -- ----------------------------
-INSERT INTO `ps_student` VALUES ('1', '沐浴额的亲吻全额', '234244为而我却发我', '1', '2017-03-28', '15', '0', '1', null);
+INSERT INTO `ps_student` VALUES ('1', '沐浴额的亲吻全额', '<p>234244为而我却发我</p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/8446cb9e-ac10-4067-b48f-c7da68e610c8.jpg\" alt=\"1494479828733\" style=\"max-width:100%;\"></p><p><br></p>', '1', '2017-03-28', '21', '1', '1', '万科小学', '/PrimaryScoolProject/resources/Uploads/images/8446cb9e-ac10-4067-b48f-c7da68e610c8.jpg');
+INSERT INTO `ps_student` VALUES ('2', '活动风采test', '<p>啊大苏打大</p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/03bf337a-414c-4ecb-9b6b-0fbbc0a992b0.jpg\" alt=\"1494479828733\" style=\"max-width:100%;\"></p><p><br></p>', '2', '2017-05-12', '1', '1', '1', '万科小学', '/PrimaryScoolProject/resources/Uploads/images/03bf337a-414c-4ecb-9b6b-0fbbc0a992b0.jpg');
 
 -- ----------------------------
 -- Table structure for ps_student_lab
@@ -992,18 +1009,20 @@ CREATE TABLE `ps_student_lab_menu_content` (
   `is_image` int(2) DEFAULT '0',
   `lab_id` int(11) DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `imagePath` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_student_lab_menu_content
 -- ----------------------------
-INSERT INTO `ps_student_lab_menu_content` VALUES ('1', '每周主题1', '啊实打实大大', '2', '2017-04-07', '23', '1', '0', '1', '万科小学');
-INSERT INTO `ps_student_lab_menu_content` VALUES ('2', '成果展示2', '的肤色收费方式', '3', '2017-04-07', '6', '1', '0', '1', null);
-INSERT INTO `ps_student_lab_menu_content` VALUES ('3', '1312', '<p>123313<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学');
-INSERT INTO `ps_student_lab_menu_content` VALUES ('4', '12333', '<p>1231<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学');
-INSERT INTO `ps_student_lab_menu_content` VALUES ('5', '123123', '<p>3123123<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学');
-INSERT INTO `ps_student_lab_menu_content` VALUES ('6', 'sdd', '<p>fsdfs<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学');
+INSERT INTO `ps_student_lab_menu_content` VALUES ('1', '每周主题1', '啊实打实大大', '2', '2017-04-07', '23', '1', '0', '1', '万科小学', null, null);
+INSERT INTO `ps_student_lab_menu_content` VALUES ('2', '成果展示2', '的肤色收费方式', '3', '2017-04-07', '7', '1', '0', '1', null, null, null);
+INSERT INTO `ps_student_lab_menu_content` VALUES ('3', '1312', '<p>123313<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学', null, null);
+INSERT INTO `ps_student_lab_menu_content` VALUES ('4', '12333', '<p>1231<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学', null, null);
+INSERT INTO `ps_student_lab_menu_content` VALUES ('5', '123123', '<p>3123123<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学', null, null);
+INSERT INTO `ps_student_lab_menu_content` VALUES ('6', 'sdd', '<p>fsdfs<br></p>', '2', '2017-05-09', '0', '1', '0', '1', '万科小学', null, null);
 
 -- ----------------------------
 -- Table structure for ps_student_lab_menu_intro
@@ -1056,13 +1075,16 @@ CREATE TABLE `ps_teacher` (
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
+  `imagePath` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_teacher
 -- ----------------------------
-INSERT INTO `ps_teacher` VALUES ('1', '教师xxxxx', '的权威地位啊上次', '1', '2017-03-28', '8', '0', '1', null);
+INSERT INTO `ps_teacher` VALUES ('1', '教师xxxxx', '的权威地位啊上次', '1', '2017-03-28', '8', '0', '1', null, null, null);
+INSERT INTO `ps_teacher` VALUES ('2', '教师风采test', '<p>是大大的啊实打实 阿斯顿</p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/178f7083-f37a-4f08-8d7a-461bb998b79a.jpg\" alt=\"beda23fe2ab7d80093742f01350fc60c\" style=\"max-width:100%;\"></p><p><br></p>', '2', '2017-05-12', '1', '1', '1', '万科小学', '/PrimaryScoolProject/resources/Uploads/images/178f7083-f37a-4f08-8d7a-461bb998b79a.jpg', null);
 
 -- ----------------------------
 -- Table structure for ps_teacher_type
@@ -1121,16 +1143,17 @@ CREATE TABLE `ps_teaching_resources_content` (
   `class_id` int(11) DEFAULT NULL,
   `author` varchar(255) DEFAULT NULL,
   `type_id` int(11) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_teaching_resources_content
 -- ----------------------------
-INSERT INTO `ps_teaching_resources_content` VALUES ('3', 'qwqe', 'eqweq<p><br></p>', '1', '2017-04-09', '0', '1', '0', '1', '万科小学', '1');
-INSERT INTO `ps_teaching_resources_content` VALUES ('4', '12231', '<p>1231233<br></p>', '1', '2017-05-09', '0', '1', '0', '1', '万科小学', '1');
-INSERT INTO `ps_teaching_resources_content` VALUES ('5', '12313', '<p>3123123<br></p>', '1', '2017-05-09', '0', '1', '0', '1', '万科小学', '1');
-INSERT INTO `ps_teaching_resources_content` VALUES ('6', '231312', '<p>312313<br></p>', '1', '2017-05-09', '0', '1', '0', '1', '万科小学', '1');
+INSERT INTO `ps_teaching_resources_content` VALUES ('3', 'qwqe', 'eqweq<p><br></p>', '1', '2017-04-09', '0', '1', '0', '1', '万科小学', '1', null);
+INSERT INTO `ps_teaching_resources_content` VALUES ('4', '12231', '<p>1231233<br></p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/72c008a9-24f2-4523-92fc-53d85ad26587.jpg\" alt=\"ec3e357b87ce76f2920b0b6b7e12b49a\" style=\"max-width:100%;\"></p><p><br></p>', '1', '2017-05-09', '0', '1', '1', '1', '万科小学', '1', '/PrimaryScoolProject/resources/Uploads/images/72c008a9-24f2-4523-92fc-53d85ad26587.jpg');
+INSERT INTO `ps_teaching_resources_content` VALUES ('5', '12313', '<p>3123123<br></p>', '1', '2017-05-09', '0', '1', '0', '1', '万科小学', '1', null);
+INSERT INTO `ps_teaching_resources_content` VALUES ('6', '231312', '<p>312313<br></p>', '1', '2017-05-09', '0', '1', '0', '1', '万科小学', '1', null);
 
 -- ----------------------------
 -- Table structure for ps_teaching_resources_content_type
@@ -1189,27 +1212,33 @@ CREATE TABLE `ps_trends` (
   `item_title` varchar(255) DEFAULT NULL COMMENT '标题',
   `item_content` text COMMENT '内容',
   `type_id` int(2) DEFAULT NULL,
-  `add_time` date DEFAULT NULL,
+  `add_time` datetime DEFAULT NULL,
   `view_count` int(11) DEFAULT NULL COMMENT '浏览量',
   `is_image` int(2) DEFAULT NULL COMMENT '是否包含图片',
   `is_publish` int(2) DEFAULT NULL COMMENT '是否发布',
   `author` varchar(50) DEFAULT NULL,
+  `image_path` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ps_trends
 -- ----------------------------
-INSERT INTO `ps_trends` VALUES ('10', '啊是大', '<p>啊是大<br></p><p><br></p>', '2', '2017-04-16', '0', '0', '0', '万科小学');
-INSERT INTO `ps_trends` VALUES ('12', '风格豆腐干', '<p>但是反复<br></p><p><br></p>', '2', '2017-04-16', '4', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('13', '好看的风景好看的风景好看的风景好看的风景', '<p>水水水水水水水水sssssss</p><p><br></p><p>&nbsp;&nbsp; 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。</p><p>&nbsp;&nbsp;\n\n    曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。 <br></p><p>&nbsp;&nbsp;\n    会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p><img src=\"/PrimaryScoolProject/resources/Uploads/images/2aafc8cb-d301-4136-8249-35e299495f55.png\" alt=\"2017-04-19_130831\" style=\"max-width: 100%; width: 719px; height: 494px;\" class=\"\"></p><p><br></p>', '1', '2017-04-19', '154', '1', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('14', '郑州大学曹少魁教授做“侧链挂接金属配合物的共轭聚合物合成与表征”学术报告与表征”学术报告', '<p>请问饿企鹅恶气呃呃呃请问王企</p><p>鹅请问而且请问饿<br></p><p>的请问企鹅<br></p><p><br></p>', '1', '2017-04-16', '30', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('15', 'w\'q\'e\'e', '<p>&nbsp;请问请问去<br></p>', '2', '2017-04-16', '0', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('16', 'ewerwr', '<p>wewr<br></p>', '1', '2017-05-09', '1', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('17', 'rwer', '<p>wer<br></p>', '1', '2017-05-09', '0', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('18', 'rwerwrr', '<p>rwerwrwerwe<br></p>', '1', '2017-05-09', '0', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('19', 'qweqe', '<p>eqweqqw<br></p>', '1', '2017-05-09', '0', '0', '1', '万科小学');
-INSERT INTO `ps_trends` VALUES ('20', 'wdqwfsdcs', '<p>sdfsfsfdfsfsd <br></p><p>fd s <br></p>', '1', '2017-05-09', '0', '0', '1', '万科小学');
+INSERT INTO `ps_trends` VALUES ('10', '啊是大', '<p>啊是大<br></p><p><br></p>', '2', '2017-04-16 00:00:00', '0', '0', '0', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('12', '风格豆腐干', '<p>但是反复<br></p><p><br></p>', '2', '2017-04-16 00:00:00', '4', '0', '1', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('13', '好看的风景好看的风景好看的风景好看的风景恶气额为请问去请问', '<p>水水水水水水水水sssssss</p><p><br></p><p>&nbsp;&nbsp; 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。</p><p>&nbsp;&nbsp;\n\n    曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。 <br></p><p>&nbsp;&nbsp;\n    会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p> 4月14日，应材料与化学工程学院邀请，郑州大学博士生导师曹少魁教授在科学校区化工楼222室作了题为“侧链挂接金属配合物的共轭聚合物合成与表征”的学术报告，我院相关专业教师、学生参加了此次报告。\n\n   曹少魁教授介绍了将金属元素引入聚合物链可以赋予聚合物材料独特的光物理、电化学及光化学性能及其在电致发光、光伏器件、传感器和非线性光学等领域所具有的潜在的应用价值；结合课题组相关研究，详细讲解了侧链挂接金属配合物的制备方法以及影响其三阶非线性光学性质的因素；曹教授重点介绍了含金属聚合物在传感器和非线性光学方面的应用。\n\n   会后，曹教授结合自己多年撰写和评审国基金的经验，现场点评指导了我院相关专业教师的国基金申请书。 </p><p></p><p></p><p><br></p>', '1', '2017-04-19 21:17:28', '165', '0', '1', '万科小学', '0');
+INSERT INTO `ps_trends` VALUES ('14', '郑州大学曹少魁教授做“侧链挂接金属配合物的共轭聚合物合成与表征”学术报告与表征”学术报告', '<p>请问饿企鹅恶气呃呃呃请问王企</p><p>鹅请问而且请问饿<br></p><p>的请问企鹅<br></p><p><br></p>', '1', '2017-04-16 00:00:00', '33', '0', '1', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('15', 'w\'q\'e\'e', '<p>&nbsp;请问请问去<br></p>', '2', '2017-04-16 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('16', 'ewerwreqweqeq认为热热微软认为士大夫士大夫沙发上发呆', '<p>wewr<br></p><p><br></p>', '1', '2017-05-09 21:19:04', '1', '0', '1', '万科小学', '0');
+INSERT INTO `ps_trends` VALUES ('17', 'rwer', '<p>wer<br></p>', '1', '2017-05-09 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('18', 'rwerwrr', '<p>rwerwrwerwe<br></p>', '1', '2017-05-09 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('20', 'wdqwfsdcs', '<p>sdfsfsfdfsfsd <br></p><p>fd s <br></p>', '1', '2017-05-09 00:00:00', '0', '0', '1', '万科小学', null);
+INSERT INTO `ps_trends` VALUES ('21', '撒大大大苏打去问驱蚊器恶气恶气企鹅企鹅企鹅企鹅请问驱蚊器', '<p><img src=\"/PrimarySchoolProject/resources/Uploads/images/82a25170-307b-49fb-a7e0-d3f67d275550.jpg\" alt=\"1494479853481\" style=\"max-width:100%;\">完全<br></p><p></p><p><b></b><i></i><u></u><sub></sub><sup></sup><strike></strike><br></p><p><br></p>', '1', '2017-05-11 21:15:15', '8', '1', '1', '万科小学', '/PrimarySchoolProject/resources/Uploads/images/82a25170-307b-49fb-a7e0-d3f67d275550.jpg');
+INSERT INTO `ps_trends` VALUES ('22', 'fffffffqw恶气恶气额企鹅请问恶气驱蚊器恶趣味恶气 恶气去 q\'w', '<p>asdfasf</p><p></p><p></p><p><br></p>', '1', '2017-05-11 21:17:54', '1', '0', '1', '万科小学', '0');
+INSERT INTO `ps_trends` VALUES ('25', '是的哇', '<p>阿斯顿阿斯顿<img src=\"/PrimarySchoolProject/resources/Uploads/images/fbe86179-beff-4f47-a0a6-79e86dddbdab.png\" alt=\"snipaste20170527_090039\" style=\"max-width:100%;\"></p><p></p><p><br></p>', '1', '2017-05-12 21:15:42', '1', '1', '1', '万科小学', '/PrimarySchoolProject/resources/Uploads/images/fbe86179-beff-4f47-a0a6-79e86dddbdab.png');
+INSERT INTO `ps_trends` VALUES ('26', 'qweq q驱蚊器企鹅企鹅企鹅强强饿企鹅恶气恶气去去完全恶气', '<p>亲吻鹅<img src=\"/PrimarySchoolProject/resources/Uploads/images/e16d66a8-ee05-421d-9ad1-d64cebe34ef1.jpg\" alt=\"ChMkJlauze2IPKICABzBh_ueXY0AAH9JAMQ2qUAHMGf334\" style=\"max-width:100%;\"></p><p></p><p></p><p><br></p>', '1', '2017-05-12 21:14:37', '3', '1', '1', '万科小学', '/PrimarySchoolProject/resources/Uploads/images/e16d66a8-ee05-421d-9ad1-d64cebe34ef1.jpg');
+INSERT INTO `ps_trends` VALUES ('30', '测试时间', '<p>啊伟大的<br></p>', '1', '2017-05-15 15:53:21', '1', '0', '1', '万科小学', '0');
+INSERT INTO `ps_trends` VALUES ('32', '时间啧啧啧z', '<p>QWEEQ <br></p><p><img src=\"/PrimarySchoolProject/resources/Uploads/images/de40352a-38da-4f50-9ac2-7170277076e3.jpg\" alt=\"1494479853481\" style=\"max-width:100%;\"></p><p><br></p>', '1', '2017-05-15 21:08:08', '3', '1', '1', '万科小学', '/PrimarySchoolProject/resources/Uploads/images/de40352a-38da-4f50-9ac2-7170277076e3.jpg');
 
 -- ----------------------------
 -- Table structure for ps_trends_type
