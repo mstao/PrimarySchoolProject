@@ -47,7 +47,7 @@
 
 <div class="footer" style="background: #F5F2E3;">
     	<center>Copyright&copy;2017 www.xxxx.com .All Rights Reserved<br>地址:郑州高新技术开发区xxx&nbsp;邮编:450000</center>
-    </div>
+</div>
 </body>
 </html>
 

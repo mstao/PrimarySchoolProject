@@ -80,8 +80,7 @@ var CTPPATH="${pageContext.request.contextPath}";
 
 <%--引入footer --%>
 <jsp:include page="../common/footer.jsp"></jsp:include>
-</body>
-</html>
+
 <script type="text/javascript">
 $('.gradeId').bind('change',function(){
 	var id=$('.gradeId').val();
@@ -166,3 +165,5 @@ $('.new_button').bind('click',function(){
 });
 
 </script>
+</body>
+</html>
