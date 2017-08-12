@@ -1,4 +1,4 @@
-# PrimaryScoolProject
+# PrimarySchoolProject
 小学网站
 
 # 用到的技术
