@@ -18,4 +18,5 @@ orm框架:Hibernate
 Json: fastjson
 
 ## Tips
-提交Pull request先同步仓库，项目需要进行大量优化，保证代码最新。
+提交Pull request先同步仓库，项目需要进行大量优化，保证代码最新,
+提交Issues等都是可以的。
