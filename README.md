@@ -1,7 +1,7 @@
-# PrimarySchoolProject
+## PrimarySchoolProject
 小学网站
 
-# 用到的技术
+## 用到的技术
 
 IoC容器:Spring4
 
@@ -17,3 +17,5 @@ orm框架:Hibernate
 
 Json: fastjson
 
+## Tips
+提交Pull request先同步仓库，项目需要进行大量优化，保证代码最新。
