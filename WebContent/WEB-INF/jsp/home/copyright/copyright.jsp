@@ -30,8 +30,8 @@
         <img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="javascript:void(0);">版权声明</a></span>
     </div>
 
-<%--S 主体 --%>
-<!--S content-->
+    <%--S 主体 --%>
+    <!--S content-->
     <div class="content">
         <div class="trends-top"><img src="${CTP_HOME}/img/copyright.png"/> <span class="tag-ch">版权声明</span> </div>
         <!--左  -->

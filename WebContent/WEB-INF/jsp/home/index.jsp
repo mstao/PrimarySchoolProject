@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>  
+<%@ taglib uri="/WEB-INF/mytag.tld" prefix="myTag" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,30 +56,28 @@ $(function() {
     });
 });
 
-layui.use('flow', function(){
+layui.use('flow', function() {
       var flow = layui.flow;
       //图片懒加载
-      flow.lazyimg(); 
+      flow.lazyimg();
 });
 </script>
 </head>
 <body>
-<%--检测浏览器 --%>
-<jsp:include page="../common/browsehappy.jsp"></jsp:include>
+    <%--检测浏览器 --%>
+    <jsp:include page="../common/browsehappy.jsp"></jsp:include>
 
-<%--引入header --%>
+    <%--引入header --%>
+    <jsp:include page="common/header.jsp"></jsp:include>
 
-<jsp:include page="common/header.jsp"></jsp:include>
-
-<%--S 主体 --%>
-<!--S 幻灯图片-->
+    <%--S 主体 --%>
+    <!--S 幻灯图片-->
     <div id="wrapper">
-
         <div class="slider-wrapper theme-default">
             <div id="slider" class="nivoSlider">
             <c:forEach items="${indexImages}" var="indexImages"> 
                 <img lay-src="${indexImages.imgPath}" data-thumb="${indexImages.imgPath}" alt="" />
-            </c:forEach>  
+            </c:forEach>
             </div>
         </div>
      </div>
@@ -308,7 +306,7 @@ layui.use('flow', function(){
                     </ul>
                 </div>
                 <!--E 轮播图-->
-    
+
                 <!--tab-->
                 <div class="tab-container teacher-container">
                      <div class="tab">
@@ -348,7 +346,7 @@ layui.use('flow', function(){
             </div>
         </div>
         <!--E 教师园地-->
-    
+
         <!--S 学校管理   党务工会-->
         <div class="school-dang">
             <!--S 学校管理  -->
@@ -438,17 +436,16 @@ layui.use('flow', function(){
     <div class="clear"></div>
     <%--E 主体 --%>
 
-<%--引入footer --%>
-<jsp:include page="common/footer.jsp"></jsp:include>
+    <%--引入footer --%>
+    <jsp:include page="common/footer.jsp"></jsp:include>
 
-<script type="text/javascript" src="${CTP_HOME}/slider/jquery.nivo.slider.js"></script>
-<script type="text/javascript" src="${CTP_HOME}/js/extends/jquery.liMarquee.js"></script>
-<script type="text/javascript" src="${CTP_HOME}/js/extends/YuxiSlider.jQuery.min.js"></script>
-<script type="text/javascript" src="//cdn.gbtags.com/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script type="text/javascript" src="${CTP_HOME}/js/module/tab.js" ></script>
-<script type="text/javascript">
-eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(j).g(7(){$(\'#0\').h({\'i\':1})});$(7(){$(\'.k-l-m-o\').p({q:\'r\',s:f});$(".0-v").4({5:6,2:8,9:n,a:b,c:d,e:1});$(".0-t").4({5:6,2:8,9:u,a:b,c:d,e:1});$(".3").3()});',32,32,'slider|false|height|tab|YuxiSlider|width|420|function|300|during|speed|800|mousewheel|true|direkey|30|load|nivoSlider|controlNav|window|roll|new|info|3000|list|liMarquee|direction|up|scrollamount|sunshine|4000|news'.split('|'),0,{}))
-
-</script>
+    <script type="text/javascript" src="${CTP_HOME}/slider/jquery.nivo.slider.js"></script>
+    <script type="text/javascript" src="${CTP_HOME}/js/extends/jquery.liMarquee.js"></script>
+    <script type="text/javascript" src="${CTP_HOME}/js/extends/YuxiSlider.jQuery.min.js"></script>
+    <script type="text/javascript" src="//cdn.gbtags.com/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="${CTP_HOME}/js/module/tab.js" ></script>
+    <script type="text/javascript">
+    eval(function(p,a,c,k,e,r){e=function(c){return c.toString(a)};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('$(j).g(7(){$(\'#0\').h({\'i\':1})});$(7(){$(\'.k-l-m-o\').p({q:\'r\',s:f});$(".0-v").4({5:6,2:8,9:n,a:b,c:d,e:1});$(".0-t").4({5:6,2:8,9:u,a:b,c:d,e:1});$(".3").3()});',32,32,'slider|false|height|tab|YuxiSlider|width|420|function|300|during|speed|800|mousewheel|true|direkey|30|load|nivoSlider|controlNav|window|roll|new|info|3000|list|liMarquee|direction|up|scrollamount|sunshine|4000|news'.split('|'),0,{}))
+    </script>
 </body>
 </html>
