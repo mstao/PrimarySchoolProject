@@ -23,44 +23,32 @@
 <jsp:include page="../../common/browsehappy.jsp"></jsp:include>
 
 <%--引入header --%>
-
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <%--S 主体 --%>
 <div class="content">
-			<!--S list-->
-			<div class="list">
-				<div class="list-navi  img-navi"><span>校园风光<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
-				<div class="list-content img-content">
-			<div class="img-list-div gallery">
-			   	<c:forEach items="${list}" var="list">	
-					
-					<a href="${list.imgPath}"><img src="${list.imgPath}"/></a>
-					
-			    </c:forEach>
-			    </div>
-				</div>
-				
-				
-			</div>
-			<!--E list-->	
-			
-		</div>
-		 <div class="clear"></div>
+    <!--S list-->
+    <div class="list">
+        <div class="list-navi  img-navi"><span>校园风光<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
+        <div class="list-content img-content">
+            <div class="img-list-div gallery">
+                <c:forEach items="${list}" var="list">    
+                    <a href="${list.imgPath}"><img src="${list.imgPath}"/></a>
+                </c:forEach>
+            </div>
+        </div>
+    </div>
+    <!--E list-->
+</div>
+<div class="clear"></div>
 <%--E 主体 --%>
 
 <%--引入footer --%>
 <jsp:include page="../common/footer.jsp"></jsp:include>
+<script type="text/javascript">
+$(function(){
+    baguetteBox.run('.img-list-div');
+});
+</script>
 </body>
 </html>
-
-<script type="text/javascript">
-
-
-
-$(function(){
-	baguetteBox.run('.img-list-div');
-});
-
-
-</script>

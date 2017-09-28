@@ -20,36 +20,31 @@
 <jsp:include page="../../common/browsehappy.jsp"></jsp:include>
 
 <%--引入header --%>
-
 <jsp:include page="../common/header.jsp"></jsp:include>
 
 <%--S 主体 --%>
 <div class="content">
-			<!--S list-->
-			<div class="list">
-				<div class="list-navi  headmaster-navi"><span>校长信箱<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
-				<div class="list-content headmaster-content">
-					
-				 <c:forEach items="${headMasterInfo}" var="headMasterInfo">
-					<div  class="headmaster-info">
-					<img alt="" src="${headMasterInfo.avatar}">
-					<div class="headmaster-info-right">
-				    
-				     <div>${headMasterInfo.name}&nbsp; ${headMasterInfo.postName}</div>
-				     <div><span>具体工作:</span><span>${headMasterInfo.work}</span></div>
-				     <div><a href="mailto:${headMasterInfo.email}" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
-					</div>
-					</div>
-				</c:forEach>
-					
-				</div>
-				
-				
-			</div>
-			<!--E list-->	
-			
-		</div>
-		 <div class="clear"></div>
+    <!--S list-->
+    <div class="list">
+        <div class="list-navi  headmaster-navi"><span>校长信箱<img src="${CTP_HOME}/img/jiantou.png"/></span></div>
+        <div class="list-content headmaster-content">
+            
+         <c:forEach items="${headMasterInfo}" var="headMasterInfo">
+            <div class="headmaster-info">
+                <img alt="" src="${headMasterInfo.avatar}">
+                <div class="headmaster-info-right">
+                    <div>${headMasterInfo.name}&nbsp; ${headMasterInfo.postName}</div>
+                    <div><span>具体工作:</span><span>${headMasterInfo.work}</span></div>
+                    <div><a href="mailto:${headMasterInfo.email}" title="给校长写信" target="_blank"><img src="${CTP_HOME}/img/email.png">给校长写信</a></div>
+                </div>
+            </div>
+        </c:forEach>
+        </div>
+
+    </div>
+    <!--E list-->
+</div>
+<div class="clear"></div>
 <%--E 主体 --%>
 
 <%--引入footer --%>
