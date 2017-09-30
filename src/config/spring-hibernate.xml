@@ -10,25 +10,25 @@
 	
 	<!-- 导入外部文件 -->
     <context:property-placeholder location="classpath:config/db.properties"/> 
-   
-	<!-- 配置数据源 -->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-		   <property name="driverClass" value="${jdbc.driverclass}"></property>
-			<property name="jdbcUrl" value="${jdbc.url}"></property>
-			<property name="user" value="${jdbc.username}"></property>
-			<property name="password" value="${jdbc.password}"></property>
-	        <!-- 指定数据库连接池的最大连接数 -->
-	        <property name="maxPoolSize" value="${c3p0.maxPoolSize}"/>
-	        <!-- 指定数据库连接池的最小连接数 -->
-	        <property name="minPoolSize" value="${c3p0.minPoolSize}"/>
-	        <!--指定数据库连接池的初始化连接参数  -->
-	        <property name="initialPoolSize" value="${c3p0.initialPoolSize}"/>
-	        <!--指定数据库连接池的连接的最大的空闲时间  -->
-	        <property name="maxIdleTime" value="${c3p0.maxIdleTime}"/>
-	        <!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
-			<property name="acquireIncrement" value="${c3p0.acquireIncrement}" />
-	</bean>
-	
+    <!-- 阿里 druid 数据库连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+        init-method="init" destroy-method="close">
+        <!-- 数据库基本信息配置 -->  
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="filters" value="${druid.filters}" />
+
+        <!-- 最大并发连接数 --> 
+        <property name="maxActive" value="${druid.maxActive}" />
+        <!-- 初始化连接数量 -->  
+        <property name="initialSize" value="${druid.initialSize}" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${druid.maxWait}" />
+        <!-- 最小空闲连接数 -->
+        <property name="minIdle" value="${druid.minIdle}" />
+    </bean>
+
 	<!--定义了Hibernate的SessionFactory  -->
 	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 	    <property name="dataSource">
