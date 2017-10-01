@@ -11,7 +11,7 @@ orm框架:Hibernate
 
 安全框架:shiro
 
-数据源:c3p0
+数据源:druid
 
 日志: log4j
 
