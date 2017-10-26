@@ -22,3 +22,6 @@ Json: fastjson
 提交Issues等都是可以的。
 ## Coding style
 注意一下提交代码的coding style, 保持与项目整体一致。
+## Druid监控界面
+启动项目后输入以下url即可(ip与端口自行替换)，用户名和密码请参考代码
+http://localhost:8080/PrimarySchoolProject/druid/index.html
