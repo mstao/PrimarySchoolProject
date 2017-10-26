@@ -91,7 +91,6 @@ public class AdminApplyController<T> {
         int allCount = applyService.findApplyCountByStatusYear(zstatus, year);
         //报名成功 
         zstatus = 1;
-        System.out.println("zz"+status);
         int completeCount = applyService.findApplyCountByStatusYear(zstatus, year);
         //报名失败
         zstatus = 2;
