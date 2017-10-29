@@ -27,7 +27,7 @@
         <span>版权声明</span>
     </div>
     <div class="content-location">
-        <img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="#">万科城小学</a> > <a href="javascript:void(0);">版权声明</a></span>
+        <img src="${CTP_HOME}/img/home.png"/><span> 您现在的位置: <a href="${CTP}/main/index">万科城小学</a> > <a href="javascript:void(0);">版权声明</a></span>
     </div>
 
     <%--S 主体 --%>
